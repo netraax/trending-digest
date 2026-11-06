@@ -155,6 +155,7 @@ def make_candidate(item, net, now):
         "forks": int(item.get("forks_count", 0)),
         "open_issues": int(item.get("open_issues_count", 0)),
         "age_days": age_days,
+        "created_str": f"{created:%d/%m/%Y}",
         "push_age_days": max(0, (now - pushed).days),
         "stars_per_day": round(stars / age_days, 1),
         "topics": item.get("topics") or [],
@@ -434,10 +435,12 @@ def fill_defaults(c):
     c.setdefault("fit_score", 5)
     c.setdefault("category", "Tendance")
     c.setdefault("problem", c.get("description") or "Outil open-source récent")
+    c.setdefault("code_mechanism", "Architecture technique et code source open-source")
     c.setdefault("target", "Développeurs et technophiles")
     c.setdefault("idea", "Tester le projet et évaluer une version cloud")
     c.setdefault("mvp", "1 à 2 semaines")
     c.setdefault("eu_angle", "Alternative souveraine / RGPD")
+    c.setdefault("france_competition", "Océan bleu en France : aucun acteur direct identifié")
     c.setdefault("risk", "")
     return c
 
@@ -486,8 +489,9 @@ def analyze_business_opportunities(candidates, api_key, profile=None):
     prompt = (
         "Tu es un analyste en capital-risque et créateur de micro-SaaS expérimenté. "
         "Voici des dépôts GitHub récents, déjà pré-filtrés sur leur croissance.\n"
-        "Ta mission : éliminer les projets gadget/jouets/académiques et sélectionner uniquement "
-        "entre 3 et 5 dépôts présentant le MEILLEUR potentiel commercial ou de création de produit.\n"
+        "Ta mission : éliminer les projets gadget/jouets/académiques et sélectionner TOUS les dépôts "
+        "qui ont un réel potentiel commercial ou de création de produit (jusqu'à 10 opportunités maximum). "
+        "Ne te restreins pas arbitrairement à un petit nombre : si un projet présente une vraie valeur, inclus-le.\n"
         f"{profile_ctx}\n"
         f"{feedback_ctx}\n"
         "RÈGLES STRICTES :\n"
@@ -502,14 +506,17 @@ def analyze_business_opportunities(candidates, api_key, profile=None):
         "- fit_score: note entière de 1 à 10 d'adéquation avec le profil du créateur (stack, temps dispo, budget)\n"
         "- category: 1 à 2 mots (ex: 'Micro-SaaS', 'API & Données', 'Outil Pro', 'Extension')\n"
         "- problem: Quel est le problème douloureux résolu en 1 phrase claire ?\n"
+        "- code_mechanism: Concrètement, comment le code résout-il le problème ? (1 à 2 phrases précises sur l'architecture, l'algorithme, la librairie ou le composant technique du repo)\n"
         "- target: Qui est la cible qui a du budget pour payer (ex: comptables, agences, e-commerçants) ?\n"
         "- idea: Quelle est l'opportunité de monétisation concrète (ex: version hébergée sans code, wrapper UI, connecteur) ?\n"
         "- mvp: temps estimé pour construire un premier prototype (ex: '1 week-end', '10 jours')\n"
         "- eu_angle: opportunité spécifique marché France/Europe (RGPD, souveraineté, langue française, facturation)\n"
+        "- france_competition: Quel est le paysage concurrentiel en France/Europe ? (Cite 1 ou 2 acteurs établis connus s'ils existent, sinon écris obligatoirement 'Océan bleu en France : aucun acteur direct identifié')\n"
         "- risk: Pourquoi ça pourrait échouer, en 1 phrase (concurrence, licence, marché étroit)\n\n"
         'Format de réponse STRICT en JSON :\n'
         '{"opportunities": [{"name": "...", "score": 8, "fit_score": 7, "category": "...", "problem": "...", '
-        '"target": "...", "idea": "...", "mvp": "...", "eu_angle": "...", "risk": "..."}]}\n\n'
+        '"code_mechanism": "...", "target": "...", "idea": "...", "mvp": "...", "eu_angle": "...", '
+        '"france_competition": "...", "risk": "..."}]}\n\n'
         + json.dumps(items, ensure_ascii=False)
     )
 
@@ -527,18 +534,20 @@ def analyze_business_opportunities(candidates, api_key, profile=None):
                 "fit_score": parse_score(item.get("fit_score"), default=parse_score(item.get("score"))),
                 "category": item.get("category") or "Micro-SaaS",
                 "problem": item.get("problem") or full.get("description", ""),
+                "code_mechanism": item.get("code_mechanism") or "Architecture technique open-source",
                 "target": item.get("target") or "Professionnels et développeurs",
                 "idea": item.get("idea") or "Créer une version hébergée ou une extension",
                 "mvp": item.get("mvp") or "1 à 2 semaines",
                 "eu_angle": item.get("eu_angle") or "",
+                "france_competition": item.get("france_competition") or "Océan bleu en France : aucun acteur direct identifié",
                 "risk": item.get("risk") or "",
             })
             validated.append(full)
 
     validated.sort(key=lambda x: (int(x.get("score", 0)) + int(x.get("fit_score", 0))), reverse=True)
     if validated:
-        return validated[:5], model
-    return [fill_defaults(dict(c)) for c in candidates[:4]], model
+        return validated[:10], model
+    return [fill_defaults(dict(c)) for c in candidates[:max(4, min(10, len(candidates)))]], model
 
 
 # ---------------------------------------------------------------------------
@@ -554,10 +563,12 @@ def render_plain_text(opportunities):
             f"   Lien: {op.get('url', '')}\n"
             f"   Score: {op.get('score', 5)}/10 [Fit profil: {op.get('fit_score', 5)}/10 · {op.get('category', '')}]\n"
             f"   Problème: {op.get('problem', '')}\n"
+            f"   Code source: {op.get('code_mechanism', '')}\n"
             f"   Cible: {op.get('target', '')}\n"
             f"   Opportunité: {op.get('idea', '')}\n"
             f"   MVP estimé: {op.get('mvp', '1 à 2 semaines')}\n"
             f"   Angle FR/UE: {op.get('eu_angle', 'n/a')}\n"
+            f"   Concurrence FR: {op.get('france_competition', '')}\n"
             f"   Risque: {op.get('risk') or 'non renseigné'}"
         )
     return "\n".join(lines)
@@ -599,7 +610,7 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="skip Groq analysis for offline smoke test")
     ap.add_argument("--out", default=os.getenv("OUT_DIR", "."), help="output directory")
     ap.add_argument("--days-back", type=int, default=10, help="fenêtre (jours) du filet 'frais'")
-    ap.add_argument("--shortlist", type=int, default=15, help="nombre de candidats envoyés à Groq")
+    ap.add_argument("--shortlist", type=int, default=22, help="nombre de candidats envoyés à Groq")
     args = ap.parse_args()
 
     mode = "dry-run" if args.dry_run else "email"

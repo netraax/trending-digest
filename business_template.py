@@ -61,8 +61,10 @@ def _card(i, item):
     lic = html.escape(item.get("license") or "aucune")
     score = item.get("score", 7)
     problem = html.escape(item.get("problem", ""))
+    code_mechanism = html.escape(item.get("code_mechanism", ""))
     target = html.escape(item.get("target", ""))
     idea = html.escape(item.get("idea", ""))
+    france_comp = html.escape(item.get("france_competition", ""))
     risk = html.escape(item.get("risk", ""))
     category = html.escape(item.get("category", "SaaS"))
     monetized = item.get("monetized_hints") or []
@@ -73,11 +75,43 @@ def _card(i, item):
         m_str = html.escape(", ".join(monetized[:3]))
         monetized_html = f'<div style="margin-top:6px"><span style="display:inline-block;font:600 10px/1 {MONO};color:#9A3412;background:#FFEDD5;border-radius:4px;padding:4px 8px">⚡ Offre existante détectée: {m_str}</span></div>'
 
+    spd = item.get("stars_per_day", 0.0)
+    if spd >= 30:
+        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#15803D;background:#DCFCE7;border-radius:4px;padding:4px 8px">🚀 FULGURANT (+{spd:.1f}★/j)</span>'
+    elif spd >= 10:
+        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#1D4ED8;background:#DBEAFE;border-radius:4px;padding:4px 8px">📈 RAPIDE (+{spd:.1f}★/j)</span>'
+    else:
+        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#475569;background:#F1F5F9;border-radius:4px;padding:4px 8px">🌱 RÉGULIER (+{spd:.1f}★/j)</span>'
+
+    created_str = item.get("created_str") or f"il y a {age_days}j"
+    push_days = item.get("push_age_days", 0)
+    active_str = "Commit aujourd’hui" if push_days == 0 else f"Dernier commit il y a {push_days}j"
+
+    code_html = ""
+    if code_mechanism:
+        code_html = f"""
+      <tr>
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
+          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#0F172A;text-transform:uppercase">⚙️ Ce que fait le code source</div>
+          <div style="font:500 13px/1.55 {SANS};color:#334155;margin-top:4px">{code_mechanism}</div>
+        </td>
+      </tr>"""
+
+    comp_html = ""
+    if france_comp:
+        comp_html = f"""
+      <tr>
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
+          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#1D4ED8;text-transform:uppercase">🇫🇷 Concurrence en France / Europe</div>
+          <div style="font:400 13px/1.55 {SANS};color:#1E3A8A;margin-top:4px">{france_comp}</div>
+        </td>
+      </tr>"""
+
     risk_html = ""
     if risk:
         risk_html = f"""
       <tr>
-        <td style="padding:8px 0;border-top:1px solid #F3F4F6">
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
           <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#DC2626;text-transform:uppercase">⚠️ Risque identifié</div>
           <div style="font:400 13px/1.55 {SANS};color:#991B1B;margin-top:4px">{risk}</div>
         </td>
@@ -89,7 +123,7 @@ def _card(i, item):
         eu_val = html.escape(item.get("eu_angle") or "Alternative souveraine / RGPD")
         mvp_html = f"""
       <tr>
-        <td style="padding:8px 0;border-top:1px solid #F3F4F6">
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
             <td width="48%" valign="top">
               <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">🛠️ MVP estimé</div>
@@ -97,7 +131,7 @@ def _card(i, item):
             </td>
             <td width="4%">&nbsp;</td>
             <td width="48%" valign="top">
-              <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#1D4ED8;text-transform:uppercase">🇫🇷 Angle FR / UE</div>
+              <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#1D4ED8;text-transform:uppercase">�� Atout Régional / UE</div>
               <div style="font:500 13px/1.5 {SANS};color:#1E3A8A;margin-top:3px">{eu_val}</div>
             </td>
           </tr></table>
@@ -119,35 +153,58 @@ def _card(i, item):
 <tr>
   <td valign="top">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td valign="middle">{_score_badge(score, item.get("fit_score"))} &nbsp; <span style="font:500 11px/1 {MONO};color:{MUTED};text-transform:uppercase">{category}</span></td>
-      <td align="right" valign="middle" style="font:600 12px/1 {MONO};color:{MUTED}">★ {stars:,} <span style="font-weight:400;color:#9CA3AF">({stars_per_day:.1f}★/j {v_src} · {age_days}j)</span></td>
+      <td valign="middle">{_score_badge(score, item.get("fit_score"))} &nbsp; <span style="font:600 11px/1 {MONO};color:{MUTED};text-transform:uppercase">{category}</span></td>
+      <td align="right" valign="middle"><span style="font:600 11px/1 {MONO};color:{MUTED}">#{i:02d}</span></td>
     </tr></table>
 
-    <div style="margin:14px 0 6px">
-      <a href="{url}" style="text-decoration:none;font:700 20px/1.3 {SANS};color:{INK}">{name}</a>
+    <div style="margin:14px 0 4px">
+      <a href="{url}" style="text-decoration:none;font:700 22px/1.25 {SANS};color:{INK}">{name}</a>
       {monetized_html}
     </div>
 
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:14px 0">
+    <!-- Mini tableau de bord : Métriques, traction & dates précises -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#F8FAFC" style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;margin:12px 0 16px">
+    <tr>
+      <td width="33%" valign="top" style="padding:10px 12px;border-right:1px solid #E2E8F0">
+        <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">TOTAL ÉTOILES</div>
+        <div style="font:700 20px/1.2 {SANS};color:#0F172A;margin-top:4px">★ {stars:,}</div>
+        <div style="font:500 10px/1.3 {MONO};color:#475569;margin-top:3px">{v_src or 'croissance estimée'}</div>
+      </td>
+      <td width="34%" valign="top" style="padding:10px 12px;border-right:1px solid #E2E8F0">
+        <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">TRACTION & USAGE</div>
+        <div style="margin-top:4px">{growth_badge}</div>
+        <div style="font:500 10px/1.3 {MONO};color:#64748B;margin-top:3px">{forks} forks &middot; {open_issues} issues</div>
+      </td>
+      <td width="33%" valign="top" style="padding:10px 12px">
+        <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">DATE DE CRÉATION</div>
+        <div style="font:600 12px/1.3 {SANS};color:#1E293B;margin-top:4px">{created_str} ({age_days}j)</div>
+        <div style="font:500 10px/1.3 {MONO};color:#64748B;margin-top:3px">{active_str}</div>
+      </td>
+    </tr>
+    </table>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:12px 0">
       <tr>
-        <td style="padding:8px 0;border-top:1px solid #F3F4F6">
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
           <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">🎯 Problème douloureux</div>
           <div style="font:400 14px/1.55 {SANS};color:#1F2937;margin-top:4px">{problem}</div>
         </td>
       </tr>
+      {code_html}
       <tr>
-        <td style="padding:8px 0;border-top:1px solid #F3F4F6">
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
           <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">👥 Cible solvable</div>
           <div style="font:400 14px/1.55 {SANS};color:#1F2937;margin-top:4px">{target}</div>
         </td>
       </tr>
       <tr>
-        <td style="padding:8px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{ACCENT};text-transform:uppercase">💡 Angle Business / Monétisation</div>
+        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
+          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{ACCENT};text-transform:uppercase">💡 Angle Business (SaaS en ligne)</div>
           <div style="font:500 14px/1.55 {SANS};color:#111827;margin-top:4px">{idea}</div>
         </td>
       </tr>
       {mvp_html}
+      {comp_html}
       {risk_html}
     </table>
 

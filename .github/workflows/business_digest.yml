@@ -68,12 +68,13 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
           GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           mkdir -p out logs errors
           docker run --rm --user "$(id -u):$(id -g)" \
             -v "$PWD/out:/app/out" -v "$PWD/logs:/app/logs" -v "$PWD/errors:/app/errors" \
             -e LOG_DIR=/app/logs -e ERROR_DIR=/app/errors \
-            -e GROQ_API_KEY -e GMAIL_ADDRESS -e GMAIL_APP_PASSWORD -e EMAIL_TO -e GITHUB_TOKEN \
+            -e GROQ_API_KEY -e GMAIL_ADDRESS -e GMAIL_APP_PASSWORD -e EMAIL_TO -e GITHUB_TOKEN -e GITHUB_REPOSITORY \
             --entrypoint python trending-digest business_digest.py ${{ inputs.dry_run && '--dry-run' || '' }}
 
       - name: Commit history
