@@ -1,0 +1,97 @@
+name: Business radar (every 2 days)
+
+on:
+  schedule:
+    # Runs daily at 06:00 UTC (~07:00 / 08:00 Paris time).
+    # The guard checks logs/business_state.json to ensure at least 2 days between sends.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no email, HTML saved as artifact)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: business-digest
+  cancel-in-progress: false
+
+env:
+  COMMIT_NAME: netraax
+  COMMIT_EMAIL: dils389@gmail.com
+
+jobs:
+  business_digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Guard (runs every 2 days)
+        id: guard
+        run: |
+          STATUS="$(python3 - <<'PY'
+          import json, os, datetime
+          p = 'logs/business_state.json'
+          if not os.path.exists(p):
+              print('run')
+          else:
+              try:
+                  last = json.load(open(p)).get('last_sent', '')
+                  last_dt = datetime.date.fromisoformat(last)
+                  today_dt = datetime.date.today()
+                  diff = (today_dt - last_dt).days
+                  print('run' if diff >= 2 else 'skip')
+              except Exception:
+                  print('run')
+          PY
+          )"
+          echo "event=${{ github.event_name }} guard_status=$STATUS"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$STATUS" = "skip" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Already sent within the last 2 days; skipping."
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build image
+        if: steps.guard.outputs.run == 'true'
+        run: docker build -t trending-digest .
+
+      - name: Run business digest
+        if: steps.guard.outputs.run == 'true'
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p out logs errors
+          docker run --rm --user "$(id -u):$(id -g)" \
+            -v "$PWD/out:/app/out" -v "$PWD/logs:/app/logs" -v "$PWD/errors:/app/errors" \
+            -e LOG_DIR=/app/logs -e ERROR_DIR=/app/errors \
+            -e GROQ_API_KEY -e GMAIL_ADDRESS -e GMAIL_APP_PASSWORD -e EMAIL_TO -e GITHUB_TOKEN \
+            --entrypoint python trending-digest business_digest.py ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Commit history
+        if: always() && steps.guard.outputs.run == 'true'
+        run: |
+          git config user.name  "$COMMIT_NAME"
+          git config user.email "$COMMIT_EMAIL"
+          git add logs errors
+          if git diff --staged --quiet; then
+            echo "Nothing to commit."; exit 0
+          fi
+          git commit -m "log: $(date -u +%F) business radar"
+          git pull --rebase --autostash origin main || true
+          git push origin HEAD:main
+
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.guard.outputs.run == 'true'
+        with:
+          name: business-digest
+          path: out/
+          if-no-files-found: ignore

@@ -1,4 +1,4 @@
-"""GitHub Trending digest: scrape trending repos, explain each like you're five (Groq), email it (Gmail SMTP).
+"""GitHub Trending digest: scrape trending repos, explain each in French like you're five (Groq), email it (Gmail SMTP).
 
 Env vars:
   GROQ_API_KEY        required (free key from console.groq.com)
@@ -119,18 +119,19 @@ def explain(repos, api_key):
     items = [{"name": r["name"], "description": r["description"], "language": r["language"],
               "readme_excerpt": r["readme"]} for r in repos]
     prompt = (
-        "For each GitHub repo below, write an ELI5 explanation: 1-2 short sentences a curious "
-        "10-year-old would understand, using an everyday analogy where it helps. Say what it does "
-        "and who would use it. No jargon, no hype, no markdown. Also give a 'category' of 1-3 words "
-        "(e.g. 'AI agent', 'dev tool', 'database').\n"
-        'Reply as JSON: {"repos": [{"name": "...", "eli5": "...", "category": "..."}]} '
-        "in the same order.\n\n" + json.dumps(items, ensure_ascii=False)
+        "Pour chaque dépôt GitHub ci-dessous, écris une explication simple en français : 1 à 2 "
+        "phrases courtes qu’un enfant curieux de 10 ans comprendrait, avec une analogie quotidienne "
+        "si ça aide. Dis ce que fait le projet et qui l’utiliserait. Pas de jargon, pas de hype, pas "
+        "de markdown. Donne aussi une 'category' de 1 à 3 mots en français (ex. 'agent IA', 'outil "
+        "dev', 'base de données').\n"
+        'Réponds en JSON : {"repos": [{"name": "...", "eli5": "...", "category": "..."}]} '
+        "dans le même ordre.\n\n" + json.dumps(items, ensure_ascii=False)
     )
     raw, model = groq_chat([{"role": "user", "content": prompt}], api_key)
     by_name = {x.get("name"): x for x in json.loads(raw).get("repos", [])}
     for r in repos:
         got = by_name.get(r["name"], {})
-        r["eli5"] = got.get("eli5") or r["description"] or "No description available."
+        r["eli5"] = got.get("eli5") or r["description"] or "Aucune description disponible."
         r["category"] = got.get("category", "")
     return model
 
@@ -171,7 +172,7 @@ def main():
         stage = "explain"
         if args.no_llm:
             for r in repos:
-                r["eli5"], r["category"] = r["description"] or "No description available.", ""
+                r["eli5"], r["category"] = r["description"] or "Aucune description disponible.", ""
         else:
             key = os.getenv("GROQ_API_KEY")
             if not key:
@@ -181,7 +182,7 @@ def main():
 
         stage = "render"
         html_body, text_body = render_html(repos, since), render_text(repos)
-        subject = f"GitHub Trending · {datetime.now(timezone.utc):%d %b} · {repos[0]['name']} and {len(repos) - 1} more"
+        subject = f"Tendances GitHub · {datetime.now(timezone.utc):%d/%m/%Y} · {repos[0]['name']} et {len(repos) - 1} autres"
         os.makedirs(args.out, exist_ok=True)
         with open(os.path.join(args.out, "digest.html"), "w", encoding="utf-8") as f:
             f.write(html_body)

@@ -1,6 +1,6 @@
 # Trending Digest
 
-Every morning at 8:00 IST a GitHub Action scrapes [github.com/trending](https://github.com/trending), asks Groq for a short "explain like I'm five" explanation of each of the top 10 repos, and emails you the list.
+Every morning at 8:00 IST a GitHub Action scrapes [github.com/trending](https://github.com/trending), asks Groq for a short French "explain like I'm five" explanation of each of the top 10 repos, and emails you the list.
 
 ```
 GitHub Actions cron ─► docker build/run ─► scrape trending ─► README excerpts ─► Groq (ELI5) ─► Gmail SMTP ─► your inbox
@@ -36,7 +36,11 @@ docker agent run test-agent.yaml --env-from-file .env --exec "run the tests"
 1. Push this folder to a new GitHub repo (private is fine).
 2. In the repo, go to **Settings → Secrets and variables → Actions** and add these secrets:
    `GROQ_API_KEY`, `GMAIL_ADDRESS`, `GMAIL_APP_PASSWORD`, `EMAIL_TO`
-3. Go to **Actions → Trending digest → Run workflow** to test it. Tick "Dry run" first if you want to see the HTML artifact without getting an email.
+3. Two workflows are available in the **Actions** tab:
+   - **Trending digest:** daily morning digest of top GitHub trending repos explained simply in French.
+   - **Business radar:** runs every 2 days, scanning recent fast-growing repos and using Groq to detect micro-SaaS / business opportunities.
+
+Tick "Dry run" first if you want to see the HTML artifact without sending an email.
 
 After that it runs on its own every day. To change the time, edit the `cron` in `.github/workflows/digest.yml`. Cron times are in UTC, and GitHub can start scheduled runs a few minutes late.
 

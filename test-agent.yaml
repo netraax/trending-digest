@@ -20,7 +20,7 @@ agents:
       Judge the summary against these rules:
          - 10 repos, html has all: True, html in order: True
          - every url starts with https://github.com/ and stars > 0
-         - every eli5 is 1-2 plain sentences, no markdown, and says what the project does in kid-friendly words
+         - every eli5 is 1-2 plain French sentences, no markdown, and says what the project does in kid-friendly words
       Report as a short table (check | PASS/FAIL | note), then one line: OVERALL PASS or OVERALL FAIL.
     toolsets:
       - type: shell

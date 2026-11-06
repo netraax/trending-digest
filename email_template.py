@@ -7,6 +7,10 @@ INK, PAPER, LIME, MUTED, LINE = "#111111", "#F4F1EA", "#C6FF3D", "#6E6A62", "#DC
 SERIF = "'Instrument Serif',Georgia,'Times New Roman',serif"
 SANS = "Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif"
 MONO = "'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace"
+DAYS_FR = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."]
+MONTHS_FR = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+PERIOD_FR = {"daily": "aujourd’hui", "weekly": "cette semaine", "monthly": "ce mois-ci"}
+PERIOD_LABEL_FR = {"daily": "AUJOURD’HUI", "weekly": "CETTE SEMAINE", "monthly": "CE MOIS-CI"}
 
 
 def _split(name):
@@ -63,17 +67,20 @@ def _stat(value, label, color, last=False):
 
 def render_html(repos, since):
     now = datetime.now(timezone.utc)
-    period = {"daily": "today", "weekly": "this week", "monthly": "this month"}.get(since, "today")
+    period = PERIOD_FR.get(since, "aujourd’hui")
+    period_label = PERIOD_LABEL_FR.get(since, "AUJOURD’HUI")
+    day_name = DAYS_FR[now.weekday()]
+    month_name = MONTHS_FR[now.month - 1]
     top = max((r["gained_n"] for r in repos), default=0)
     total = sum(r["gained_n"] for r in repos)
     langs = [r["language"] for r in repos if r["language"]]
-    lead_lang = max(set(langs), key=langs.count) if langs else "Mixed"
+    lead_lang = max(set(langs), key=langs.count) if langs else "Mixte"
     lead = repos[0]
     lo, lr = _split(lead["name"])
     rows = "".join(_row(i, r, top) for i, r in enumerate(repos[1:], 2))
 
     return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light only"><meta name="supported-color-schemes" content="light only">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <title>The Trending Diff</title>
@@ -90,27 +97,27 @@ def render_html(repos, since):
   }}
 </style></head>
 <body style="margin:0;padding:0;background:{PAPER}" bgcolor="{PAPER}">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0">#1 {period}: {html.escape(lead['name'])}. {html.escape(lead['eli5'][:110])}</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">#1 {period} : {html.escape(lead['name'])}. {html.escape(lead['eli5'][:110])}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="{PAPER}" style="background:{PAPER}"><tr><td align="center" style="padding:0">
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px">
 
 <tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:16px 40px;border-bottom:1px solid #2A2A2A">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
 <td class="tb" style="white-space:nowrap;font:600 11px/1 {MONO};letter-spacing:2px;color:{LIME}">&#9632;&nbsp;THE TRENDING DIFF</td>
-<td class="tb" align="right" style="white-space:nowrap;font:500 11px/1 {MONO};letter-spacing:1px;color:#8A8A8A">N&ordm;&nbsp;{now.timetuple().tm_yday:03d}<span class="hide-sm"> &middot; {now:%a}</span> &middot; {now:%d %b %Y}</td>
+<td class="tb" align="right" style="white-space:nowrap;font:500 11px/1 {MONO};letter-spacing:1px;color:#8A8A8A">N&ordm;&nbsp;{now.timetuple().tm_yday:03d}<span class="hide-sm"> &middot; {day_name}</span> &middot; {now:%d} {month_name} {now:%Y}</td>
 </tr></table></td></tr>
 
 <tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:52px 40px 44px">
-<div class="hl" style="font:400 66px/0.95 {SERIF};color:{PAPER};letter-spacing:-2px">What GitHub<br>is building<br><i style="color:{LIME}">{period}.</i></div>
-<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#A8A49C;max-width:440px">The {len(repos)} hottest repos on GitHub, each explained like you're five. About three minutes, no jargon.</p>
+<div class="hl" style="font:400 66px/0.95 {SERIF};color:{PAPER};letter-spacing:-2px">Ce que GitHub<br>construit<br><i style="color:{LIME}">{period}.</i></div>
+<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#A8A49C;max-width:440px">Les {len(repos)} dépôts les plus chauds de GitHub, chacun expliqué comme à un enfant. Environ trois minutes, sans jargon.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #2E2E2E"><tr>
-{_stat(f"+{total:,}", f"STARS {period.upper()}", LIME)}{_stat(html.escape(lead_lang), "TOP LANGUAGE", PAPER)}{_stat(f"{lead['gained_n']:,}", "STARS FOR #1", PAPER, last=True)}
+{_stat(f"+{total:,}", f"ÉTOILES {period_label}", LIME)}{_stat(html.escape(lead_lang), "LANGAGE PRINCIPAL", PAPER)}{_stat(f"{lead['gained_n']:,}", "ÉTOILES POUR #1", PAPER, last=True)}
 </tr></table>
 </td></tr>
 
 <tr><td class="px" bgcolor="{LIME}" style="background:{LIME};padding:40px 40px 44px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{INK}">TOP OF THE CHART</td>
+<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{INK}">EN TÊTE DU CLASSEMENT</td>
 <td align="right">{_pill(lead.get('category'), INK, INK)}</td></tr></table>
 <div class="lead-n" style="font:400 120px/0.85 {SERIF};color:{INK};letter-spacing:-6px;margin:22px 0 10px">01</div>
 <a href="{lead['url']}" style="text-decoration:none;color:{INK}"><span style="font:500 14px/1.3 {MONO};color:#3B4A12">{lo}&thinsp;/</span><br>
@@ -119,20 +126,20 @@ def render_html(repos, since):
 {_meta(lead, "#2F3A0E")}
 <div style="height:26px;line-height:26px">&nbsp;</div>
 <table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="{INK}" style="background:{INK};border-radius:99px">
-<a href="{lead['url']}" style="display:inline-block;padding:14px 24px;font:600 13px/1 {SANS};color:{LIME};text-decoration:none;letter-spacing:0.3px">Open the repo &nbsp;&rarr;</a>
+<a href="{lead['url']}" style="display:inline-block;padding:14px 24px;font:600 13px/1 {SANS};color:{LIME};text-decoration:none;letter-spacing:0.3px">Ouvrir le dépôt &nbsp;&rarr;</a>
 </td></tr></table>
 </td></tr>
 
 <tr><td class="px" style="padding:38px 40px 14px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{INK}">ALSO CLIMBING</td>
-<td align="right" style="font:500 11px/1 {MONO};letter-spacing:1px;color:{MUTED}">BAR = STARS {period.upper()}</td></tr></table>
+<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{INK}">AUSSI EN PROGRESSION</td>
+<td align="right" style="font:500 11px/1 {MONO};letter-spacing:1px;color:{MUTED}">BARRE = ÉTOILES {period_label}</td></tr></table>
 </td></tr>
 {rows}
 
 <tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:44px 40px">
-<div style="font:400 40px/1 {SERIF};color:{PAPER};letter-spacing:-1px">That's the diff<i style="color:{LIME}">.</i></div>
-<p style="margin:14px 0 0;font:400 13px/1.6 {SANS};color:#8A8A8A">Sent every morning from <a href="https://github.com/trending" style="color:#C9C5BC">github.com/trending</a>. Explanations written by Groq.</p>
+<div style="font:400 40px/1 {SERIF};color:{PAPER};letter-spacing:-1px">C’est la diff<i style="color:{LIME}">.</i></div>
+<p style="margin:14px 0 0;font:400 13px/1.6 {SANS};color:#8A8A8A">Envoyé chaque matin depuis <a href="https://github.com/trending" style="color:#C9C5BC">github.com/trending</a>. Explications écrites par Groq.</p>
 </td></tr>
 
 </table></td></tr></table>
