@@ -42,7 +42,7 @@ GH_SEARCH_URL = "https://api.github.com/search/repositories"
 SEARCH_PAUSE = float(os.getenv("GH_SEARCH_PAUSE", "2"))  # secondes entre deux requêtes Search
 PER_PAGE = 50
 MAX_PUSH_AGE_DAYS = 14   # sans commit depuis 2 semaines = projet mort-né
-README_CHARS = 700       # extrait envoyé à Groq
+README_CHARS = 400       # extrait compact envoyé à Groq pour rester sous le quota de 8 000 TPM
 STATE_KEEP_DAYS = 45     # durée de conservation d'un repo dans l'état
 
 # ---------------------------------------------------------------------------
@@ -357,7 +357,7 @@ def groq_chat(messages, api_key):
                 "model": model,
                 "messages": messages,
                 "temperature": 0.3,
-                "max_completion_tokens": 3000,
+                "max_completion_tokens": 1800,
                 "response_format": {"type": "json_object"},
             }
             if model.startswith("openai/gpt-oss"):
@@ -366,7 +366,7 @@ def groq_chat(messages, api_key):
             if r.status_code == 429:
                 time.sleep(float(r.headers.get("retry-after", 5 * (attempt + 1))))
                 continue
-            if r.status_code == 413 or (r.status_code in (400, 404) and "model" in r.text.lower()):
+            if r.status_code == 413 or (r.status_code in (400, 404) and ("model" in r.text.lower() or "limit" in r.text.lower())):
                 last = r.text
                 break
             r.raise_for_status()
@@ -610,7 +610,7 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="skip Groq analysis for offline smoke test")
     ap.add_argument("--out", default=os.getenv("OUT_DIR", "."), help="output directory")
     ap.add_argument("--days-back", type=int, default=10, help="fenêtre (jours) du filet 'frais'")
-    ap.add_argument("--shortlist", type=int, default=22, help="nombre de candidats envoyés à Groq")
+    ap.add_argument("--shortlist", type=int, default=15, help="nombre de candidats envoyés à Groq")
     args = ap.parse_args()
 
     mode = "dry-run" if args.dry_run else "email"

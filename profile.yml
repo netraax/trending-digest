@@ -13,33 +13,33 @@ builder:
 
 technical_mastery:
   languages:
-    - Python (FastAPI, backend async, scraping lourd, scripts IA, data processing)
-    - TypeScript / JavaScript (Next.js, React, TailwindCSS, Node.js, interfaces SaaS modernes)
-    - Architecture Web & Déploiement (Auth, Stripe, Supabase/PostgreSQL, Docker, Vercel/Fly.io)
+    - "Python (FastAPI, backend async, scraping lourd, scripts IA, data processing)"
+    - "TypeScript / JavaScript (Next.js, React, TailwindCSS, Node.js, interfaces SaaS modernes)"
+    - "Architecture Web & Déploiement (Auth, Stripe, Supabase/PostgreSQL, Docker, Vercel/Fly.io)"
   ai_and_automation:
-    - IA Moderne & IA Locale (Ollama, vLLM, Whisper, embeddings, RAG, agents autonomes)
-    - Wrappers Web pragmatiques (transformer des outils CLI/terminaux ou scripts Python complexes en superbes apps web utilisables en un clic)
-    - Automations & Connecteurs (Make, n8n, webhooks, extensions)
+    - "IA Moderne & IA Locale (Ollama, vLLM, Whisper, embeddings, RAG, agents autonomes)"
+    - "Wrappers Web pragmatiques (transformer des outils CLI/terminaux ou scripts Python complexes en superbes apps web utilisables en un clic)"
+    - "Automations & Connecteurs (Make, n8n, webhooks, extensions)"
 
 strategic_focus:
   # L'objectif roi : les Outils en ligne (SaaS)
   high_priority_sectors:
-    - Outils en ligne B2B / Micro-SaaS (Web applications prêtes à l'emploi avec abonnement Stripe)
-    - 'Wrapper SaaS' de technologies complexes (rendre un outil puissant accessible dans le navigateur pour les non-développeurs)
-    - IA appliquée utile au quotidien (génération, transcription audio, vision/OCR, enrichissement de données)
-    - Outils de productivité et de workflow pour indépendants, agences, e-commerçants et PME
-    - Utilitaires web ciblés (convertisseurs avancés, extracteurs, générateurs de documents/factures)
+    - "Outils en ligne B2B / Micro-SaaS (Web applications prêtes à l'emploi avec abonnement Stripe)"
+    - "Wrapper SaaS de technologies complexes (rendre un outil puissant accessible dans le navigateur pour les non-développeurs)"
+    - "IA appliquée utile au quotidien (génération, transcription audio, vision/OCR, enrichissement de données)"
+    - "Outils de productivité et de workflow pour indépendants, agences, e-commerçants et PME"
+    - "Utilitaires web ciblés (convertisseurs avancés, extracteurs, générateurs de documents/factures)"
 
   # Secteurs disqualifiés (zéro intérêt)
   disqualified_sectors:
-    - Jeux vidéo ou projets sans débouché SaaS en ligne
-    - Crypto spéculative, airdrops, memecoins
-    - Démos académiques de recherche sans cas d'usage web concret
-    - Outils système bas niveau qui ne peuvent pas devenir une interface web
+    - "Jeux vidéo ou projets sans débouché SaaS en ligne"
+    - "Crypto spéculative, airdrops, memecoins"
+    - "Démos académiques de recherche sans cas d'usage web concret"
+    - "Outils système bas niveau qui ne peuvent pas devenir une interface web"
 
 monetization_targets:
   target_audience: "PME, indépendants, créateurs et agences qui veulent gagner du temps et payer pour un outil clé en main"
   pricing_models:
-    - Abonnement SaaS mensuel (19€ à 99€/mois)
-    - Formule freemium avec crédits / recharge
+    - "Abonnement SaaS mensuel (19€ à 99€/mois)"
+    - "Formule freemium avec crédits / recharge"
   regional_advantage: "Positionnement fort sur la France et l'Europe (interface soignée en français, RGPD, souveraineté, support réactif)"

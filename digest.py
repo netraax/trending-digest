@@ -76,7 +76,7 @@ def scrape_trending(since="daily", top_n=10):
     return repos
 
 
-def fetch_readme(name, limit=1000):  # 10 x 1000 chars keeps one request under the free 8k tokens/min
+def fetch_readme(name, limit=600):  # 10 x 600 chars keeps Groq call well under 8k tokens/min
     headers = {**UA, "Accept": "application/vnd.github.raw+json"}
     if os.getenv("GITHUB_TOKEN"):
         headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
@@ -119,12 +119,13 @@ def explain(repos, api_key):
     items = [{"name": r["name"], "description": r["description"], "language": r["language"],
               "readme_excerpt": r["readme"]} for r in repos]
     prompt = (
-        "Pour chaque dépôt GitHub ci-dessous, écris une explication simple en français : 1 à 2 "
-        "phrases courtes qu’un enfant curieux de 10 ans comprendrait, avec une analogie quotidienne "
-        "si ça aide. Dis ce que fait le projet et qui l’utiliserait. Pas de jargon, pas de hype, pas "
-        "de markdown. Donne aussi une 'category' de 1 à 3 mots en français (ex. 'agent IA', 'outil "
-        "dev', 'base de données').\n"
-        'Réponds en JSON : {"repos": [{"name": "...", "eli5": "...", "category": "..."}]} '
+        "Pour chaque dépôt GitHub ci-dessous, rédige en français :\n"
+        "1. 'eli5' : une explication simple en 1 à 2 phrases courtes qu’un enfant curieux de 10 ans comprendrait, "
+        "avec une analogie quotidienne si ça aide. Dis ce que fait le projet et qui l’utiliserait. Pas de jargon.\n"
+        "2. 'category' : 1 à 3 mots (ex. 'Agent IA', 'Outil Dev', 'Automatisation', 'Data').\n"
+        "3. 'business_idea' : une idée concrète d'outil web en ligne / Micro-SaaS ou de produit monétisable à construire "
+        "autour de ce projet ou de son cas d'usage, en 1 phrase percutante (ex: 'Créer un wrapper web simple à 29€/mois avec export automatique').\n\n"
+        'Réponds STRICTEMENT en JSON : {"repos": [{"name": "...", "eli5": "...", "category": "...", "business_idea": "..."}]} '
         "dans le même ordre.\n\n" + json.dumps(items, ensure_ascii=False)
     )
     raw, model = groq_chat([{"role": "user", "content": prompt}], api_key)
@@ -133,11 +134,15 @@ def explain(repos, api_key):
         got = by_name.get(r["name"], {})
         r["eli5"] = got.get("eli5") or r["description"] or "Aucune description disponible."
         r["category"] = got.get("category", "")
+        r["business_idea"] = got.get("business_idea", "Créer un outil web en ligne ou un wrapper automatisé.")
     return model
 
 
 def render_text(repos):
-    return "\n\n".join(f"{i}. {r['name']} ({r['url']})\n   {r['eli5']}" for i, r in enumerate(repos, 1))
+    return "\n\n".join(
+        f"{i}. {r['name']} ({r['url']})\n   {r['eli5']}\n   💡 Idée SaaS: {r.get('business_idea', '')}"
+        for i, r in enumerate(repos, 1)
+    )
 
 
 def send_email(subject, html_body, text_body):

@@ -43,6 +43,14 @@ def _meta(r, color):
 
 def _row(i, r, top):
     o, n = _split(r["name"])
+    biz_html = ""
+    if r.get("business_idea"):
+        biz_html = (
+            f'<div style="margin:10px 0 12px;padding:8px 12px;background:#E8E2D4;border-left:3px solid {INK};border-radius:0 4px 4px 0">'
+            f'<span style="font:600 10px/1 {MONO};letter-spacing:1px;color:{INK};text-transform:uppercase">💡 ANGLE SAAS : </span>'
+            f'<span style="font:400 13px/1.45 {SANS};color:#1A1815">{html.escape(r["business_idea"])}</span>'
+            f'</div>'
+        )
     return f"""
 <tr><td class="px" style="padding:30px 40px;border-top:1px solid {LINE}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
@@ -52,6 +60,7 @@ def _row(i, r, top):
   <span style="font:700 21px/1.25 {SANS};color:{INK};letter-spacing:-0.4px">{n}</span></a>
   {'<div style="height:10px;line-height:10px">&nbsp;</div>' + _pill(r.get('category'), MUTED, LINE) if r.get('category') else ''}
   <p style="margin:12px 0 14px;font:400 15px/1.6 {SANS};color:#2A2824">{html.escape(r['eli5'])}</p>
+  {biz_html}
   {_meta(r, MUTED)}
   <div style="height:12px;line-height:12px">&nbsp;</div>{_bar(r, top, "#E6E0D2", INK)}
 </td></tr></table>
@@ -77,6 +86,15 @@ def render_html(repos, since):
     lead_lang = max(set(langs), key=langs.count) if langs else "Mixte"
     lead = repos[0]
     lo, lr = _split(lead["name"])
+    lead_biz_html = ""
+    if lead.get("business_idea"):
+        lead_biz_html = f"""
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="{INK}" style="background:{INK};border-radius:8px;margin:20px 0 22px">
+<tr><td style="padding:16px 20px">
+  <div style="font:600 10px/1 {MONO};letter-spacing:1.5px;color:{LIME};text-transform:uppercase">&#9632;&nbsp;OPPORTUNITÉ SAAS &amp; BUSINESS</div>
+  <div style="font:400 14px/1.55 {SANS};color:{PAPER};margin-top:6px">{html.escape(lead['business_idea'])}</div>
+</td></tr>
+</table>"""
     rows = "".join(_row(i, r, top) for i, r in enumerate(repos[1:], 2))
 
     return f"""<!doctype html>
@@ -124,7 +142,8 @@ def render_html(repos, since):
 <span style="font:700 34px/1.1 {SANS};color:{INK};letter-spacing:-1px">{lr}</span></a>
 <p style="margin:18px 0 22px;font:400 23px/1.4 {SERIF};color:{INK}">{html.escape(lead['eli5'])}</p>
 {_meta(lead, "#2F3A0E")}
-<div style="height:26px;line-height:26px">&nbsp;</div>
+{lead_biz_html}
+<div style="height:20px;line-height:20px">&nbsp;</div>
 <table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="{INK}" style="background:{INK};border-radius:99px">
 <a href="{lead['url']}" style="display:inline-block;padding:14px 24px;font:600 13px/1 {SANS};color:{LIME};text-decoration:none;letter-spacing:0.3px">Ouvrir le dépôt &nbsp;&rarr;</a>
 </td></tr></table>
