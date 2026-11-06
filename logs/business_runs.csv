@@ -1,3 +1,4 @@
 date,time_utc,status,mode,model,opportunities,note
 2026-11-06,18:03:24,ok,email,openai/gpt-oss-120b,4,email sent | trouves=259 > filtres=202 > nouveaux=202 > shortlist=15 > retenus=4
 2026-11-06,18:32:58,error,email,,0,"Groq call failed: {""error"":{""message"":""Request too large for model `openai/gpt-oss-20b` in organization `org_01m6rvepc6efhs2hgk4jf1drk1` service tier `on_demand` on tokens per minute (TPM): Limit 8000"
+2026-11-06,19:01:50,ok,email,openai/gpt-oss-120b,6,email sent | trouves=260 > filtres=201 > nouveaux=187 > shortlist=15 > retenus=6
