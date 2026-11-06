@@ -1,0 +1,24 @@
+time_utc: 2026-11-06T16:55:12.242507+00:00
+mode: email
+stage: send
+error: SMTPServerDisconnected: Connection unexpectedly closed
+run: https://github.com/netraax/trending-digest/actions/runs/42256752765
+
+Traceback (most recent call last):
+  File "/app/digest.py", line 197, in main
+    print(f"Email sent to {send_email(subject, html_body, text_body)}")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/digest.py", line 150, in send_email
+    s.login(user, pw)
+  File "/usr/local/lib/python3.12/smtplib.py", line 739, in login
+    (code, resp) = self.auth(
+                   ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 642, in auth
+    (code, resp) = self.docmd("AUTH", mechanism + " " + response)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 432, in docmd
+    return self.getreply()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 405, in getreply
+    raise SMTPServerDisconnected("Connection unexpectedly closed")
+smtplib.SMTPServerDisconnected: Connection unexpectedly closed
