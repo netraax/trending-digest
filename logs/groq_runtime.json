@@ -143,8 +143,17 @@
       "estimated": false,
       "prompt_tokens": 2786,
       "completion_tokens": 1463
+    },
+    {
+      "at": 1794016775.270324,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3996,
+      "estimated": false,
+      "prompt_tokens": 2633,
+      "completion_tokens": 1363
     }
   ],
   "cache": {},
-  "next_call_at": 1794016735.2911327
+  "next_call_at": 1794016840.270324
 }
