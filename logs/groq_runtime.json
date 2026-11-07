@@ -44,8 +44,53 @@
       "estimated": false,
       "prompt_tokens": 1989,
       "completion_tokens": 1314
+    },
+    {
+      "at": 1794015754.2682378,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3638,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1069
+    },
+    {
+      "at": 1794015819.2685962,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3724,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1155
+    },
+    {
+      "at": 1794015884.2689679,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3769,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1200
+    },
+    {
+      "at": 1794015949.2693467,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3715,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1146
+    },
+    {
+      "at": 1794016014.26972,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3762,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1193
     }
   ],
   "cache": {},
-  "next_call_at": 1794015754.2679846
+  "next_call_at": 1794016079.26972
 }
