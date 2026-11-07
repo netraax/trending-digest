@@ -54,6 +54,19 @@ reste explicite, pas de remplissage inventé. Les idées et prix sont des hypoth
 """
 
 
+def field_text(value):
+    """Render a structured field as readable prose instead of raw JSON."""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, dict):
+        return " ; ".join(f"{k} : {field_text(v)}" for k, v in value.items())
+    if isinstance(value, (list, tuple)):
+        return "\n".join("• " + field_text(v) for v in value)
+    if value is None:
+        return ""
+    return str(value)
+
+
 def clip(text, size):
     return text.encode("utf-8")[:max(0, size)].decode("utf-8", errors="ignore")
 
@@ -160,13 +173,8 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                         return False
                 for key in FIELDS:
                     value = row.get(key)
-                    if isinstance(value, list):
-                        row[key] = "\n".join(
-                            json.dumps(x, ensure_ascii=False) if isinstance(x, (dict, list)) else str(x)
-                            for x in value)
-                    elif value is not None and not isinstance(value, str):
-                        row[key] = json.dumps(value, ensure_ascii=False) \
-                            if isinstance(value, (dict, bool)) else str(value)
+                    if value is not None and not isinstance(value, str):
+                        row[key] = field_text(value)
                 for key in FIELDS:
                     if isinstance(row.get(key), str):
                         row[key] = re.sub(r"\[(S\d+)\]",
@@ -182,7 +190,8 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                         and (not source_ids or bool(row["evidence_ids"])))
 
             hint = ("\nRéponse précédente rejetée : tous les champs textuels doivent être des "
-                    "chaînes non vides, eligible booléen, score et fit_score entiers 1..10, et "
+                    "chaînes de texte non vides (jamais d'objets ni de listes JSON), "
+                    "eligible booléen, score et fit_score entiers 1..10, et "
                     "au moins une citation [Sx] correspondant à une source fournie.")
             try:
                 rows, model = client.analyze(retry_instructions, [item], "projects", batch_size=1,
@@ -252,9 +261,9 @@ def details_html(repo, theme="business", show_scores=True):
             "line": "#DCD6C8", "link": "#315B24",
         },
         "business": {
-            "panel": "#F8FAFC", "tile": "#FFFFFF", "ink": "#111827",
-            "muted": "#64748B", "accent": "#2563EB", "accent_bg": "#DBEAFE",
-            "line": "#E2E8F0", "link": "#2455A4",
+            "panel": "#161B22", "tile": "#1C2128", "ink": "#E6EDF3",
+            "muted": "#8B949E", "accent": "#58A6FF", "accent_bg": "#102A4C",
+            "line": "#30363D", "link": "#58A6FF",
         },
     }
     colors = palettes.get(theme, palettes["business"])
@@ -297,9 +306,7 @@ def details_html(repo, theme="business", show_scores=True):
         for key, label, value in rows:
             text = html.escape(value).replace("\n", "<br>")
             emphasis = key in ("products", "next_step")
-            bg = colors["accent_bg"] if emphasis and theme == "editorial" else (
-                "#EFF6FF" if emphasis else colors["tile"]
-            )
+            bg = colors["accent_bg"] if emphasis else colors["tile"]
             parts.append(
                 f'<tr><td style="padding:0 10px 8px">'
                 f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
