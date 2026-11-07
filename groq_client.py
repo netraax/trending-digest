@@ -9,6 +9,7 @@ import math
 import os
 from pathlib import Path
 import re
+import sys
 import time
 
 import requests
@@ -34,6 +35,26 @@ def duration(value):
 def estimate_tokens(text):
     # Conservative heuristic, NOT an exact tokenizer. 413 still triggers splitting.
     return math.ceil(len(text.encode("utf-8")) / 2) + 128
+
+
+def response_error(response):
+    """Return a short provider error without logging prompts or credentials."""
+    try:
+        error = response.json().get("error", {})
+        detail = error.get("message") or error.get("code") or ""
+    except (ValueError, AttributeError, TypeError):
+        detail = ""
+    if not detail:
+        detail = getattr(response, "text", "")
+    return " ".join(str(detail).split())[:240]
+
+
+def request_too_large(response, detail):
+    text = (detail or "").lower()
+    return (response.status_code == 413
+            or "request too large" in text
+            or ("requested" in text and "limit" in text
+                and any(word in text for word in ("token", "tpm", "context"))))
 
 
 class GroqClient:
@@ -75,7 +96,7 @@ class GroqClient:
             time.sleep(part)
             seconds -= part
 
-    def call(self, prompt, output_tokens, validate):
+    def call(self, prompt, output_tokens, validate, retry_hint=""):
         body_base = {"messages": [{"role": "user", "content": prompt}],
                      "temperature": .3, "max_completion_tokens": output_tokens,
                      "response_format": {"type": "json_object"}}
@@ -88,7 +109,9 @@ class GroqClient:
         reserved = estimate_tokens(prompt) + output_tokens
         if reserved > self.request_limit:
             raise SmallerBatchNeeded("Lot au-dessus du budget prudent par requête")
+        invalid_seen = False
         for model in self.models:
+            last_error = "aucune réponse reçue"
             for attempt in range(5):
                 self.wait(self.state["next_call_at"] - time.time())
                 now = time.time()
@@ -102,16 +125,23 @@ class GroqClient:
                 self.state["next_call_at"] = now + 65
                 self.save()
                 body = dict(body_base, model=model)
+                if invalid_seen and retry_hint:
+                    body["messages"] = [{"role": "user", "content": prompt + retry_hint}]
                 if model.startswith("openai/gpt-oss"):
                     body["reasoning_effort"] = "low"
                 try:
                     response = requests.post(URL, headers={"Authorization": f"Bearer {self.api_key}"},
                                              json=body, timeout=90)
-                except (requests.Timeout, requests.ConnectionError):
+                except (requests.Timeout, requests.ConnectionError) as exc:
+                    last_error = type(exc).__name__
                     continue
-                if response.status_code == 413:
-                    raise SmallerBatchNeeded("Groq refuse la taille du lot")
+                detail = response_error(response)
+                if request_too_large(response, detail):
+                    raise SmallerBatchNeeded(
+                        f"Groq refuse la taille de la requête (HTTP {response.status_code}): {detail}"
+                    )
                 if response.status_code == 429:
+                    last_error = f"HTTP 429: {detail or 'quota temporairement indisponible'}"
                     delay = max(65, duration(response.headers.get("retry-after")))
                     for resource in ("tokens", "requests"):
                         remaining = response.headers.get(f"x-ratelimit-remaining-{resource}")
@@ -121,11 +151,15 @@ class GroqClient:
                     self.save()
                     continue
                 if response.status_code >= 500:
+                    last_error = f"HTTP {response.status_code}: {detail or 'erreur temporaire du fournisseur'}"
                     continue
                 if response.status_code in (400, 404) and "model" in response.text.lower():
+                    last_error = f"Modèle {model} indisponible (HTTP {response.status_code}): {detail}"
                     break
                 if not response.ok:
-                    raise RuntimeError(f"Groq HTTP {response.status_code} ; aucune réponse publiée")
+                    raise RuntimeError(
+                        f"Groq HTTP {response.status_code}: {detail or 'aucun détail fourni'}"
+                    )
                 payload = response.json()
                 usage = payload.get("usage", {})
                 if isinstance(usage.get("total_tokens"), int):
@@ -139,8 +173,12 @@ class GroqClient:
                 try:
                     data = json.loads(choice["message"]["content"])
                 except (ValueError, TypeError):
+                    last_error = "réponse reçue mais JSON illisible"
+                    invalid_seen = True
                     continue
                 if not validate(data):
+                    last_error = "JSON reçu mais réponse hors du schéma attendu"
+                    invalid_seen = True
                     continue
                 self.state["cache"][key] = {"at": time.time(), "data": data, "model": model}
                 self.save()
@@ -148,12 +186,15 @@ class GroqClient:
                       f"{' (estimation)' if record['estimated'] else ''}, "
                       f"total partagé 24h={sum(c['tokens'] for c in calls)}", flush=True)
                 return data, model
-            else:
-                raise RuntimeError("Groq indisponible ou réponse invalide après 5 essais ; cache conservé.")
-        raise RuntimeError("Aucun modèle Groq configuré disponible")
+            print(f"Groq : {model} a échoué après 5 essais ({last_error}); essai du modèle suivant.",
+                  file=sys.stderr, flush=True)
+        raise RuntimeError(
+            f"Groq indisponible après les modèles configurés. Dernier échec : {last_error}. "
+            "Les analyses déjà mises en cache sont conservées."
+        )
 
     def analyze(self, instructions, items, field, *, batch_size=2, output_tokens=2200,
-                require_all=False, required_fields=(), row_validator=None):
+                require_all=False, required_fields=(), row_validator=None, retry_hint=""):
         results, models = [], []
 
         def process(batch):
@@ -175,11 +216,10 @@ class GroqClient:
 
             try:
                 data, model = self.call(instructions + "\n\n" + json.dumps(batch, ensure_ascii=False),
-                                        output_tokens, valid)
+                                        output_tokens, valid, retry_hint=retry_hint)
             except SmallerBatchNeeded:
                 if len(batch) == 1:
-                    raise RuntimeError("Un dépôt dépasse le budget ou produit une réponse tronquée ; "
-                                       "réduire son contexte avant reprise.") from None
+                    raise
                 middle = len(batch) // 2
                 process(batch[:middle])
                 process(batch[middle:])

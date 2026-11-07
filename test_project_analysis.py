@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import project_analysis as analysis
 import email_template
 import business_template
-from groq_client import estimate_tokens
+from groq_client import SmallerBatchNeeded, estimate_tokens
 
 
 class EvidenceTests(unittest.TestCase):
@@ -41,12 +41,42 @@ class EvidenceTests(unittest.TestCase):
         def analyze(prompt, items, field, **kwargs):
             self.assertLessEqual(estimate_tokens(prompt + "\n\n" + json.dumps(items, ensure_ascii=False)) + kwargs["output_tokens"], 7000)
             self.assertTrue(kwargs["row_validator"](row))
-            self.assertFalse(kwargs["row_validator"](dict(row, evidence_ids=["S99"])))
+            repaired = dict(row, evidence_ids=["S99"])
+            self.assertTrue(kwargs["row_validator"](repaired))
+            self.assertEqual(repaired["evidence_ids"], ["S1"])
             return [row], "test"
 
         client.analyze.side_effect = analyze
         with patch.object(analysis, "GroqClient", return_value=client), patch.object(analysis, "collect_evidence", return_value=evidence):
             analysis.analyze_projects([{"name": "a/b"}], "fake", "business", profile={"text": "p" * 5000})
+
+    def test_tpm_size_rejection_reduces_source_context_and_retries(self):
+        evidence = {
+            "revision": "abc",
+            "sources": [{"id": "S1", "path": "README.md", "kind": "documentation auteur",
+                         "url": "https://github.com/a/b/blob/abc/README.md", "excerpt": "preuve " * 500}],
+            "notes": [],
+        }
+        row = dict(name="a/b", eligible=True, score=7, fit_score=7, evidence_ids=["S1"],
+                   **{key: "Exemple concret [S1]" for key in analysis.FIELDS})
+        client = Mock(request_limit=7000)
+        prompts = []
+
+        def analyze(prompt, items, field, **kwargs):
+            prompts.append(items[0]["sources"][0]["excerpt"])
+            if len(prompts) == 1:
+                raise SmallerBatchNeeded("Groq refuse la taille (TPM)")
+            self.assertTrue(kwargs["row_validator"](row))
+            return [row], "test"
+
+        client.analyze.side_effect = analyze
+        repo = {"name": "a/b", "description": "Test", "language": "Python"}
+        with patch.object(analysis, "GroqClient", return_value=client), \
+                patch.object(analysis, "collect_evidence", return_value=evidence):
+            analysis.analyze_projects([repo], "fake", "business")
+
+        self.assertEqual(len(prompts), 2)
+        self.assertLess(len(prompts[1]), len(prompts[0]))
 
     def test_both_html_templates_include_all_details_and_escape_content(self):
         repo = dict(name="a/b", url="https://github.com/a/b", language="Python", stars=100,

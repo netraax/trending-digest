@@ -9,7 +9,7 @@ from unittest.mock import Mock, patch
 import business_digest
 import digest
 import project_analysis
-from groq_client import GroqClient, duration
+from groq_client import GroqClient, SmallerBatchNeeded, duration
 
 
 class GroqTests(unittest.TestCase):
@@ -82,6 +82,33 @@ class GroqTests(unittest.TestCase):
         self.assertEqual(self.post.call_count, 2)
         self.assertGreaterEqual(self.clock, 1000125)
 
+    def test_oversized_tpm_429_requests_smaller_context_immediately(self):
+        payload = {"error": {"message": "Request too large: Requested 8998 tokens, limit 8000 TPM"}}
+        response = Mock(status_code=429, ok=False, headers={}, text=json.dumps(payload),
+                        json=Mock(return_value=payload))
+        self.post.side_effect = None
+        self.post.return_value = response
+
+        with self.assertRaisesRegex(SmallerBatchNeeded, "Requested 8998"):
+            GroqClient("secret", "business").call("short prompt", 100, lambda _: True)
+        self.assertEqual(self.post.call_count, 1)
+
+    def test_retry_exhaustion_reports_provider_status(self):
+        self.post.side_effect = [self.response({}, 503)] * 5
+        with self.assertRaisesRegex(RuntimeError, "HTTP 503"):
+            GroqClient("secret", "business").call("short prompt", 100, lambda _: True)
+        self.assertEqual(self.post.call_count, 5)
+
+    def test_transient_failure_moves_to_fallback_model(self):
+        self.post.side_effect = [self.response({}, 503)] * 5 + [
+            self.response({"repos": self.items(1)})
+        ]
+        client = GroqClient("secret", "business")
+        client.models = ["model-a", "model-b"]
+        rows, model = client.analyze("repos", self.items(1), "repos", require_all=True)
+        self.assertEqual(rows[0]["name"], "owner/repo0")
+        self.assertEqual(model, "model-b")
+
     def test_daily_limit_is_shared_between_emails(self):
         GroqClient("secret", "trending").analyze("repos", self.items(1), "repos")
         with patch.dict(os.environ, {"GROQ_DAILY_TOKEN_BUDGET": "300"}):
@@ -127,7 +154,7 @@ class GroqTests(unittest.TestCase):
         self.assertEqual(self.post.call_count, 1)
 
     def test_oversized_single_item_fails_before_network(self):
-        with self.assertRaisesRegex(RuntimeError, "dépasse le budget"):
+        with self.assertRaisesRegex(SmallerBatchNeeded, "budget"):
             GroqClient("secret", "trending").analyze("repos", [{"name": "x", "text": "x" * 20000}], "repos")
         self.post.assert_not_called()
 

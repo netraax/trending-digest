@@ -8,7 +8,7 @@ from urllib.parse import quote
 
 import requests
 
-from groq_client import GroqClient, estimate_tokens
+from groq_client import GroqClient, SmallerBatchNeeded, estimate_tokens
 from builder_profile import profile_context
 
 FIELDS = ("summary", "workflow", "use_cases", "products", "monetization",
@@ -146,19 +146,72 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
             if largest is None or len(largest["excerpt"].encode()) < 200:
                 raise RuntimeError("Budget insuffisant pour le contexte d'un projet")
             largest["excerpt"] = clip(largest["excerpt"], len(largest["excerpt"].encode()) - 200)
-        source_ids = {s["id"] for s in item["sources"]}
+        retry_instructions = instructions
+        compacted_answer = False
+        for retry in range(6):
+            source_ids = {s["id"] for s in item["sources"]}
 
-        def valid(row):
-            refs = row.get("evidence_ids")
-            inline = set(re.findall(r"\[(S\d+)\]", " ".join(row.get(k, "") for k in FIELDS)))
-            return (type(row.get("eligible")) is bool
-                    and all(type(row.get(k)) is int and 1 <= row[k] <= 10 for k in ("score", "fit_score"))
-                    and isinstance(refs, list) and all(isinstance(s, str) and s in source_ids for s in refs)
-                    and inline.issubset(set(refs)) and (not source_ids or bool(inline)))
+            def valid(row):
+                # Repair before rejecting: normalize scores and reconcile citations.
+                for key in ("score", "fit_score"):
+                    try:
+                        row[key] = max(1, min(10, int(float(str(row[key]).split("/")[0]))))
+                    except (TypeError, ValueError):
+                        return False
+                for key in FIELDS:
+                    if isinstance(row.get(key), str):
+                        row[key] = re.sub(r"\[(S\d+)\]",
+                                          lambda m: m.group(0) if m.group(1) in source_ids else "",
+                                          row[key]).strip()
+                inline = set(re.findall(r"\[(S\d+)\]", " ".join(row.get(k, "") for k in FIELDS)))
+                refs = row.get("evidence_ids")
+                refs = {s for s in refs if isinstance(s, str) and s in source_ids} \
+                    if isinstance(refs, list) else set()
+                row["evidence_ids"] = sorted(refs | inline)
+                return (type(row.get("eligible")) is bool
+                        and (not source_ids or bool(row["evidence_ids"])))
 
-        rows, model = client.analyze(instructions, [item], "projects", batch_size=1,
-                                     output_tokens=output, require_all=True, required_fields=FIELDS,
-                                     row_validator=valid)
+            hint = ("\nRéponse précédente rejetée : tous les champs textuels doivent être des "
+                    "chaînes non vides, eligible booléen, score et fit_score entiers 1..10, et "
+                    "au moins une citation [Sx] correspondant à une source fournie.")
+            try:
+                rows, model = client.analyze(retry_instructions, [item], "projects", batch_size=1,
+                                             output_tokens=output, require_all=True,
+                                             required_fields=FIELDS, row_validator=valid,
+                                             retry_hint=hint)
+                break
+            except SmallerBatchNeeded as exc:
+                if "tronquée" in str(exc).lower():
+                    if compacted_answer:
+                        raise RuntimeError(f"Réponse Groq encore tronquée pour {repo['name']}.") from exc
+                    retry_instructions += (
+                        "\nLa réponse précédente a été tronquée. Garde tous les champs requis, "
+                        "mais limite chaque champ à 1 ou 2 phrases très concises."
+                    )
+                    compacted_answer = True
+                    continue
+
+                largest = max(item["sources"],
+                              key=lambda s: len(s["excerpt"].encode("utf-8")), default=None)
+                if largest and len(largest["excerpt"].encode("utf-8")) > 240:
+                    excerpt = largest["excerpt"]
+                    largest["excerpt"] = clip(excerpt, max(240, int(len(excerpt.encode("utf-8")) * .65)))
+                elif item["sources"]:
+                    removed = item["sources"].pop()
+                    evidence["notes"].append(
+                        f"{removed['path']} retiré de l'analyse pour respecter le quota Groq"
+                    )
+                elif output > 1500:
+                    output = max(1500, output - 300)
+                else:
+                    raise RuntimeError(
+                        f"Requête Groq toujours trop volumineuse pour {repo['name']} "
+                        "après réduction des extraits et de la réponse."
+                    ) from exc
+                print(f"Groq : contexte réduit pour {repo['name']} après refus de taille.", flush=True)
+        else:
+            raise RuntimeError(f"Impossible d'obtenir une analyse Groq valide pour {repo['name']}.")
+
         repo.update(rows[0])
         if not profile:
             repo["fit_score"] = None
