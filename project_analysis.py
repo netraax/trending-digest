@@ -159,6 +159,11 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                     except (TypeError, ValueError):
                         return False
                 for key in FIELDS:
+                    if isinstance(row.get(key), list):
+                        row[key] = "\n".join(
+                            json.dumps(x, ensure_ascii=False) if isinstance(x, (dict, list)) else str(x)
+                            for x in row[key])
+                for key in FIELDS:
                     if isinstance(row.get(key), str):
                         row[key] = re.sub(r"\[(S\d+)\]",
                                           lambda m: m.group(0) if m.group(1) in source_ids else "",

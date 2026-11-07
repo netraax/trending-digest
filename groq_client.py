@@ -78,6 +78,18 @@ class GroqClient:
         self.state["cache"] = {k: v for k, v in self.state["cache"].items()
                                if v["at"] > now - 86400}
 
+    def dump_invalid(self, data, model):
+        """Keep the last rejected payload so schema failures are debuggable."""
+        try:
+            directory = Path(os.getenv("ERROR_DIR", "errors"))
+            directory.mkdir(parents=True, exist_ok=True)
+            payload = {"at": time.time(), "stream": self.namespace, "model": model,
+                       "content": json.dumps(data, ensure_ascii=False)[:4000]}
+            (directory / f"groq_invalid_{self.namespace}.json").write_text(
+                json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        except OSError:
+            pass
+
     def save(self):
         self.path.parent.mkdir(parents=True, exist_ok=True)
         temporary = self.path.with_suffix(".tmp")
@@ -179,6 +191,7 @@ class GroqClient:
                 if not validate(data):
                     last_error = "JSON reçu mais réponse hors du schéma attendu"
                     invalid_seen = True
+                    self.dump_invalid(data, model)
                     continue
                 self.state["cache"][key] = {"at": time.time(), "data": data, "model": model}
                 self.save()
@@ -204,14 +217,18 @@ class GroqClient:
                 if not isinstance(data, dict) or not isinstance(data.get(field), list):
                     return False
                 rows = data[field]
+                # Single-item batches: trust position over a mistyped repo name.
+                if len(rows) == 1 and len(names) == 1 and isinstance(rows[0], dict):
+                    rows[0]["name"] = next(iter(names))
+                if row_validator and not all(isinstance(row, dict) and row_validator(row)
+                                             for row in rows):
+                    return False
                 if not all(isinstance(row, dict) and isinstance(row.get("name"), str)
                            and row["name"] in names
                            and all(isinstance(row.get(k), str) and row[k].strip() for k in required_fields)
                            for row in rows):
                     return False
                 returned = [row["name"] for row in rows]
-                if row_validator and not all(row_validator(row) for row in rows):
-                    return False
                 return len(returned) == len(set(returned)) and (not require_all or set(returned) == names)
 
             try:
