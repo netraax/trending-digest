@@ -14,9 +14,11 @@ on:
 
 permissions:
   contents: write
+  issues: read
 
 concurrency:
-  group: business-digest
+  # Both emails share the Groq quota ledger; serialize the entire jobs.
+  group: groq-digests
   cancel-in-progress: false
 
 env:
@@ -26,9 +28,11 @@ env:
 jobs:
   business_digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Guard (runs every 2 days)
         id: guard
@@ -87,7 +91,7 @@ jobs:
             echo "Nothing to commit."; exit 0
           fi
           git commit -m "log: $(date -u +%F) business radar"
-          git pull --rebase --autostash origin main || true
+          git pull --rebase --autostash origin main
           git push origin HEAD:main
 
       - uses: actions/upload-artifact@v4

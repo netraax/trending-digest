@@ -5,10 +5,11 @@
 
 builder:
   role: "Full-Stack Engineer & SaaS Founder"
-  primary_goal: "Construire des SAAS et outils web en ligne (Web Apps, dashboards, plateformes hébergées)"
+  primary_goal: "Explorer des projets récents intéressants pour comprendre leurs usages et trouver plusieurs inspirations de produits"
+  radar_budget: "Groq gratuit uniquement ; privilégier la qualité et accepter les temps d’attente"
   capacity:
     time_available: "Temps plein intensif (8 à 10 heures par jour sans relâche)"
-    execution_speed: "Capacité de sprint rapide : MVP déployé en 24h à 72h"
+    execution_speed: "Préférence pour un prototype rapide ; estimer le délai selon le périmètre réel, sans imposer 24 à 72h"
     budget: "Autonome, prêt à investir dans les infrastructures cloud et APIs nécessaires"
 
 technical_mastery:
@@ -30,16 +31,16 @@ strategic_focus:
     - "Outils de productivité et de workflow pour indépendants, agences, e-commerçants et PME"
     - "Utilitaires web ciblés (convertisseurs avancés, extracteurs, générateurs de documents/factures)"
 
-  # Secteurs disqualifiés (zéro intérêt)
+  # Préférences de sélection : ne pas confondre absence de SaaS et absence d’intérêt
   disqualified_sectors:
-    - "Jeux vidéo ou projets sans débouché SaaS en ligne"
+    - "Jeux vidéo sans cas d’usage pertinent pour mes projets"
     - "Crypto spéculative, airdrops, memecoins"
     - "Démos académiques de recherche sans cas d'usage web concret"
-    - "Outils système bas niveau qui ne peuvent pas devenir une interface web"
+    - "Outils bas niveau sans usage concret identifié pour mes projets"
 
 monetization_targets:
   target_audience: "PME, indépendants, créateurs et agences qui veulent gagner du temps et payer pour un outil clé en main"
   pricing_models:
-    - "Abonnement SaaS mensuel (19€ à 99€/mois)"
+    - "Abonnement, paiement à l’usage ou prestation ; prix à justifier comme hypothèse"
     - "Formule freemium avec crédits / recharge"
-  regional_advantage: "Positionnement fort sur la France et l'Europe (interface soignée en français, RGPD, souveraineté, support réactif)"
+  regional_advantage: "France/Europe : langue, intégrations et support à explorer ; conformité et souveraineté jamais présumées"

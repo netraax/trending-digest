@@ -20,7 +20,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: digest
+  # Both emails share the Groq quota ledger; serialize the entire jobs.
+  group: groq-digests
   cancel-in-progress: false
 
 env:
@@ -32,9 +33,12 @@ env:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Read the latest quota ledger after any preceding queued workflow.
+          ref: main
 
       - name: Guard (already sent today?)
         id: guard
@@ -96,7 +100,7 @@ jobs:
           fi
           STATUS=ok; [ -n "$(git diff --staged --name-only -- errors)" ] && STATUS=error
           git commit -m "log: $(date -u +%F) digest $STATUS"
-          git pull --rebase --autostash origin main || true
+          git pull --rebase --autostash origin main
           git push origin HEAD:main
 
       - uses: actions/upload-artifact@v4

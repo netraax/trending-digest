@@ -1,4 +1,4 @@
-"""GitHub Trending digest: scrape trending repos, explain each in French like you're five (Groq), email it (Gmail SMTP).
+"""GitHub Trending digest: scrape trending repos, explain concrete uses and product ideas in French (Groq), email it (Gmail SMTP).
 
 Env vars:
   GROQ_API_KEY        required (free key from console.groq.com)
@@ -31,10 +31,10 @@ from bs4 import BeautifulSoup
 
 import run_log
 from email_template import render_html
+from project_analysis import analyze_projects, details_text
+from builder_profile import load_profile
 
 UA = {"User-Agent": "trending-digest/1.0"}
-GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
-FALLBACK_MODELS = ["openai/gpt-oss-120b", "qwen/qwen3.8-27b", "openai/gpt-oss-20b"]
 
 
 def num(text):
@@ -76,71 +76,13 @@ def scrape_trending(since="daily", top_n=10):
     return repos
 
 
-def fetch_readme(name, limit=600):  # 10 x 600 chars keeps Groq call well under 8k tokens/min
-    headers = {**UA, "Accept": "application/vnd.github.raw+json"}
-    if os.getenv("GITHUB_TOKEN"):
-        headers["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
-    try:
-        r = requests.get(f"https://api.github.com/repos/{name}/readme", headers=headers, timeout=20)
-        if r.ok:
-            text = re.sub(r"<[^>]+>|!\[[^\]]*\]\([^)]*\)", " ", r.text)  # drop html tags and images
-            return re.sub(r"\s+", " ", text)[:limit]
-    except requests.RequestException:
-        pass
-    return ""
-
-
-def groq_chat(messages, api_key):
-    models = [os.getenv("GROQ_MODEL")] if os.getenv("GROQ_MODEL") else FALLBACK_MODELS
-    last = None
-    for model in models:
-        for attempt in range(3):
-            body = {"model": model, "messages": messages, "temperature": 0.4,
-                    "max_completion_tokens": 2500, "response_format": {"type": "json_object"}}
-            if model.startswith("openai/gpt-oss"):
-                body["reasoning_effort"] = "low"  # short task; saves tokens for the answer
-            r = requests.post(GROQ_URL, headers={"Authorization": f"Bearer {api_key}"}, json=body, timeout=60)
-            if r.status_code == 429:  # free tier rate limit, back off
-                time.sleep(float(r.headers.get("retry-after", 5 * (attempt + 1))))
-                continue
-            if r.status_code == 413 or (r.status_code in (400, 404) and "model" in r.text.lower()):
-                last = r.text
-                break  # request over this model's per-minute budget, or model retired: try the next one
-            r.raise_for_status()
-            return r.json()["choices"][0]["message"]["content"], model
-        else:
-            last = "rate limited"
-    raise RuntimeError(f"Groq call failed: {last}")
-
-
 def explain(repos, api_key):
-    for repo in repos:
-        repo["readme"] = fetch_readme(repo["name"])
-    items = [{"name": r["name"], "description": r["description"], "language": r["language"],
-              "readme_excerpt": r["readme"]} for r in repos]
-    prompt = (
-        "Pour chaque dépôt GitHub ci-dessous, rédige en français :\n"
-        "1. 'eli5' : une explication simple en 1 à 2 phrases courtes qu’un enfant curieux de 10 ans comprendrait, "
-        "avec une analogie quotidienne si ça aide. Dis ce que fait le projet et qui l’utiliserait. Pas de jargon.\n"
-        "2. 'category' : 1 à 3 mots (ex. 'Agent IA', 'Outil Dev', 'Automatisation', 'Data').\n"
-        "3. 'business_idea' : une idée concrète d'outil web en ligne / Micro-SaaS ou de produit monétisable à construire "
-        "autour de ce projet ou de son cas d'usage, en 1 phrase percutante (ex: 'Créer un wrapper web simple à 29€/mois avec export automatique').\n\n"
-        'Réponds STRICTEMENT en JSON : {"repos": [{"name": "...", "eli5": "...", "category": "...", "business_idea": "..."}]} '
-        "dans le même ordre.\n\n" + json.dumps(items, ensure_ascii=False)
-    )
-    raw, model = groq_chat([{"role": "user", "content": prompt}], api_key)
-    by_name = {x.get("name"): x for x in json.loads(raw).get("repos", [])}
-    for r in repos:
-        got = by_name.get(r["name"], {})
-        r["eli5"] = got.get("eli5") or r["description"] or "Aucune description disponible."
-        r["category"] = got.get("category", "")
-        r["business_idea"] = got.get("business_idea", "Créer un outil web en ligne ou un wrapper automatisé.")
-    return model
+    return analyze_projects(repos, api_key, "trending", profile=load_profile())
 
 
 def render_text(repos):
     return "\n\n".join(
-        f"{i}. {r['name']} ({r['url']})\n   {r['eli5']}\n   💡 Idée SaaS: {r.get('business_idea', '')}"
+        f"{i}. {r['name']} ({r['url']})\n{r['eli5']}\n{details_text(r)}"
         for i, r in enumerate(repos, 1)
     )
 
@@ -164,6 +106,8 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="skip Groq and use repo descriptions")
     ap.add_argument("--out", default=os.getenv("OUT_DIR", "."), help="folder for digest.html/json")
     args = ap.parse_args()
+    if args.no_llm and not args.dry_run:
+        ap.error("--no-llm exige --dry-run : aperçu uniquement, aucun envoi")
 
     since = os.getenv("SINCE", "daily")
     top_n = int(os.getenv("TOP_N", "10"))

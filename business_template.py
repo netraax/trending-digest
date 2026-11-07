@@ -6,6 +6,8 @@ import os
 import urllib.parse
 from datetime import datetime, timezone
 
+from project_analysis import details_html
+
 INK = "#111111"
 PAPER = "#F7F5F0"
 ACCENT = "#2563EB"  # Clean business blue
@@ -23,19 +25,21 @@ MONTHS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "
 
 
 def _score_badge(score, fit_score=None):
-    s = int(score) if str(score).isdigit() else 7
+    if score is None:
+        return '<span style="font:12px Arial;color:#555">Non évalué · aperçu sans analyse</span>'
+    s = int(score) if str(score).isdigit() else 0
     if s >= 8:
         color = "#15803D"
         bg = "#DCFCE7"
-        text = f"🔥 Potentiel · {s}/10"
+        text = f"Intérêt estimé · {s}/10"
     elif s >= 6:
         color = "#B45309"
         bg = "#FEF3C7"
-        text = f"⚡ Viable · {s}/10"
+        text = f"Intérêt estimé · {s}/10"
     else:
         color = "#4B5563"
         bg = "#F3F4F6"
-        text = f"💡 Niche · {s}/10"
+        text = f"Intérêt estimé · {s}/10"
 
     badge = (f'<span style="display:inline-block;font:600 11px/1 {MONO};letter-spacing:0.5px;'
              f'color:{color};background:{bg};border-radius:99px;padding:6px 11px">{text}</span>')
@@ -43,7 +47,7 @@ def _score_badge(score, fit_score=None):
         f = int(fit_score) if str(fit_score).isdigit() else s
         fit_badge = (f'<span style="display:inline-block;font:600 11px/1 {MONO};letter-spacing:0.5px;'
                      f'color:#1D4ED8;background:#DBEAFE;border-radius:99px;padding:6px 11px;margin-left:6px">'
-                     f'🎯 Fit profil · {f}/10</span>')
+                     f'Adéquation estimée · {f}/10</span>')
         return badge + " " + fit_badge
     return badge
 
@@ -59,13 +63,7 @@ def _card(i, item):
     open_issues = item.get("open_issues", 0)
     lang = html.escape(item.get("language") or "Général")
     lic = html.escape(item.get("license") or "aucune")
-    score = item.get("score", 7)
-    problem = html.escape(item.get("problem", ""))
-    code_mechanism = html.escape(item.get("code_mechanism", ""))
-    target = html.escape(item.get("target", ""))
-    idea = html.escape(item.get("idea", ""))
-    france_comp = html.escape(item.get("france_competition", ""))
-    risk = html.escape(item.get("risk", ""))
+    score = item.get("score")
     category = html.escape(item.get("category", "SaaS"))
     monetized = item.get("monetized_hints") or []
 
@@ -73,70 +71,21 @@ def _card(i, item):
     monetized_html = ""
     if monetized:
         m_str = html.escape(", ".join(monetized[:3]))
-        monetized_html = f'<div style="margin-top:6px"><span style="display:inline-block;font:600 10px/1 {MONO};color:#9A3412;background:#FFEDD5;border-radius:4px;padding:4px 8px">⚡ Offre existante détectée: {m_str}</span></div>'
+        monetized_html = f'<div style="margin-top:6px"><span style="display:inline-block;font:600 10px/1 {MONO};color:#9A3412;background:#FFEDD5;border-radius:4px;padding:4px 8px">⚡ Indice commercial non vérifié: {m_str}</span></div>'
 
     spd = item.get("stars_per_day", 0.0)
-    if spd >= 30:
-        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#15803D;background:#DCFCE7;border-radius:4px;padding:4px 8px">🚀 FULGURANT (+{spd:.1f}★/j)</span>'
-    elif spd >= 10:
-        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#1D4ED8;background:#DBEAFE;border-radius:4px;padding:4px 8px">📈 RAPIDE (+{spd:.1f}★/j)</span>'
+    measured = item.get("velocity_source") == "mesurée"
+    if measured:
+        growth_label = f"Variation mesurée : {spd:+.1f} ★/j"
     else:
-        growth_badge = f'<span style="display:inline-block;font:600 10px/1 {MONO};color:#475569;background:#F1F5F9;border-radius:4px;padding:4px 8px">🌱 RÉGULIER (+{spd:.1f}★/j)</span>'
+        growth_label = f"Indice estimé : {spd:.1f} ★/j"
+    growth_badge = (f'<span style="font:600 11px/1.5 {MONO};color:#334155">'
+                    f'{growth_label}</span>')
+    growth_note = "Entre deux relevés" if measured else "Total / (âge + 3) ; pas une croissance récente mesurée"
 
     created_str = item.get("created_str") or f"il y a {age_days}j"
     push_days = item.get("push_age_days", 0)
-    active_str = "Commit aujourd’hui" if push_days == 0 else f"Dernier commit il y a {push_days}j"
-
-    code_html = ""
-    if code_mechanism:
-        code_html = f"""
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#0F172A;text-transform:uppercase">⚙️ Ce que fait le code source</div>
-          <div style="font:500 13px/1.55 {SANS};color:#334155;margin-top:4px">{code_mechanism}</div>
-        </td>
-      </tr>"""
-
-    comp_html = ""
-    if france_comp:
-        comp_html = f"""
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#1D4ED8;text-transform:uppercase">🇫🇷 Concurrence en France / Europe</div>
-          <div style="font:400 13px/1.55 {SANS};color:#1E3A8A;margin-top:4px">{france_comp}</div>
-        </td>
-      </tr>"""
-
-    risk_html = ""
-    if risk:
-        risk_html = f"""
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#DC2626;text-transform:uppercase">⚠️ Risque identifié</div>
-          <div style="font:400 13px/1.55 {SANS};color:#991B1B;margin-top:4px">{risk}</div>
-        </td>
-      </tr>"""
-
-    mvp_html = ""
-    if item.get("mvp") or item.get("eu_angle"):
-        mvp_val = html.escape(item.get("mvp") or "1 à 2 semaines")
-        eu_val = html.escape(item.get("eu_angle") or "Alternative souveraine / RGPD")
-        mvp_html = f"""
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-            <td width="48%" valign="top">
-              <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">🛠️ MVP estimé</div>
-              <div style="font:500 13px/1.5 {SANS};color:#1F2937;margin-top:3px">{mvp_val}</div>
-            </td>
-            <td width="4%">&nbsp;</td>
-            <td width="48%" valign="top">
-              <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:#1D4ED8;text-transform:uppercase">�� Atout Régional / UE</div>
-              <div style="font:500 13px/1.5 {SANS};color:#1E3A8A;margin-top:3px">{eu_val}</div>
-            </td>
-          </tr></table>
-        </td>
-      </tr>"""
+    active_str = "Push aujourd’hui" if push_days == 0 else f"Dernier push il y a {push_days}j"
 
     my_repo = os.getenv("GITHUB_REPOSITORY", "netraax/trending-digest")
     q_up_title = urllib.parse.quote(f"[Feedback] Intéressant : {name}")
@@ -168,12 +117,12 @@ def _card(i, item):
       <td width="33%" valign="top" style="padding:10px 12px;border-right:1px solid #E2E8F0">
         <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">TOTAL ÉTOILES</div>
         <div style="font:700 20px/1.2 {SANS};color:#0F172A;margin-top:4px">★ {stars:,}</div>
-        <div style="font:500 10px/1.3 {MONO};color:#475569;margin-top:3px">{v_src or 'croissance estimée'}</div>
+        <div style="font:500 10px/1.3 {MONO};color:#475569;margin-top:3px">Total relevé sur GitHub</div>
       </td>
       <td width="34%" valign="top" style="padding:10px 12px;border-right:1px solid #E2E8F0">
-        <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">TRACTION & USAGE</div>
-        <div style="margin-top:4px">{growth_badge}</div>
-        <div style="font:500 10px/1.3 {MONO};color:#64748B;margin-top:3px">{forks} forks &middot; {open_issues} issues</div>
+        <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">ÉTOILES & ACTIVITÉ</div>
+        <div style="margin-top:4px">{growth_badge}</div><div style="font:10px/1.4 Arial;color:#64748B">{growth_note}</div>
+        <div style="font:500 10px/1.3 {MONO};color:#64748B;margin-top:3px">{forks} forks &middot; {open_issues} issues/PR ouvertes</div>
       </td>
       <td width="33%" valign="top" style="padding:10px 12px">
         <div style="font:600 9px/1 {MONO};color:#64748B;letter-spacing:1px;text-transform:uppercase">DATE DE CRÉATION</div>
@@ -183,30 +132,11 @@ def _card(i, item):
     </tr>
     </table>
 
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:12px 0">
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">🎯 Problème douloureux</div>
-          <div style="font:400 14px/1.55 {SANS};color:#1F2937;margin-top:4px">{problem}</div>
-        </td>
-      </tr>
-      {code_html}
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{MUTED};text-transform:uppercase">👥 Cible solvable</div>
-          <div style="font:400 14px/1.55 {SANS};color:#1F2937;margin-top:4px">{target}</div>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:10px 0;border-top:1px solid #F3F4F6">
-          <div style="font:600 11px/1.4 {MONO};letter-spacing:1px;color:{ACCENT};text-transform:uppercase">💡 Angle Business (SaaS en ligne)</div>
-          <div style="font:500 14px/1.55 {SANS};color:#111827;margin-top:4px">{idea}</div>
-        </td>
-      </tr>
-      {mvp_html}
-      {comp_html}
-      {risk_html}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="#F8FAFC" style="width:100%;background:#F8FAFC;border-left:3px solid {ACCENT};margin:14px 0">
+      <tr><td style="padding:11px 13px;font:600 10px/1.4 {MONO};letter-spacing:1px;color:{ACCENT};text-transform:uppercase">Le projet en bref</td></tr>
+      <tr><td style="padding:0 13px 13px;font:14px/1.6 {SANS};color:#1F2937">{html.escape(item.get('summary', item.get('problem', '')))}</td></tr>
     </table>
+    {details_html(item, theme="business", show_scores=False)}
 
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:12px"><tr>
       <td><a href="{url}" style="display:inline-block;padding:9px 16px;background:{INK};color:#FFFFFF;border-radius:6px;font:600 12px/1 {SANS};text-decoration:none">Analyser le code &rarr;</a></td>
@@ -247,7 +177,7 @@ def render_html(opportunities, total_scanned=0):
   <div style="font:600 11px/1 {MONO};letter-spacing:2px;color:{ACCENT};text-transform:uppercase">&#9632;&nbsp;RADAR BUSINESS GITHUB</div>
   <div style="font:400 36px/1.1 {SERIF};color:{INK};margin:12px 0 6px">Pépites récentes &amp; Opportunités</div>
   <div style="font:400 14px/1.5 {SANS};color:{MUTED}">
-    Sélection des dépôts récents avec traction rapide analysés par Groq.
+    Projets récents expliqués : usages, produits possibles et hypothèses de monétisation.
     &middot; {day_name.capitalize()} {now:%d} {month_name} {now:%Y}
   </div>
 </td></tr>
@@ -264,7 +194,7 @@ def render_html(opportunities, total_scanned=0):
 <tr><td class="px" style="padding:28px 32px;text-align:center">
   <div style="font:400 12px/1.6 {SANS};color:{MUTED}">
     Généré automatiquement tous les 2 jours &middot; Filtrage intelligent GitHub Search + Groq.<br>
-    Critères : dépôts récents à croissance rapide, évaluation pain point &amp; cible solvable.
+    Pistes exploratoires : les prix et la demande restent à valider auprès des clients.
   </div>
 </td></tr>
 

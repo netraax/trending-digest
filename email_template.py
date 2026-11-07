@@ -1,6 +1,7 @@
 """Editorial email template. Tables + inline styles only, so Gmail, Outlook and Apple Mail all keep the layout.
 Web fonts load in Apple Mail / iOS; Gmail falls back to Georgia / Helvetica / Menlo, which is designed for."""
 import html
+from project_analysis import details_html
 from datetime import datetime, timezone
 
 INK, PAPER, LIME, MUTED, LINE = "#111111", "#F4F1EA", "#C6FF3D", "#6E6A62", "#DCD6C8"
@@ -60,7 +61,7 @@ def _row(i, r, top):
   <span style="font:700 21px/1.25 {SANS};color:{INK};letter-spacing:-0.4px">{n}</span></a>
   {'<div style="height:10px;line-height:10px">&nbsp;</div>' + _pill(r.get('category'), MUTED, LINE) if r.get('category') else ''}
   <p style="margin:12px 0 14px;font:400 15px/1.6 {SANS};color:#2A2824">{html.escape(r['eli5'])}</p>
-  {biz_html}
+  {details_html(r, theme="editorial") if r.get("summary") else biz_html}
   {_meta(r, MUTED)}
   <div style="height:12px;line-height:12px">&nbsp;</div>{_bar(r, top, "#E6E0D2", INK)}
 </td></tr></table>
@@ -127,7 +128,7 @@ def render_html(repos, since):
 
 <tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:52px 40px 44px">
 <div class="hl" style="font:400 66px/0.95 {SERIF};color:{PAPER};letter-spacing:-2px">Ce que GitHub<br>construit<br><i style="color:{LIME}">{period}.</i></div>
-<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#A8A49C;max-width:440px">Les {len(repos)} dépôts les plus chauds de GitHub, chacun expliqué comme à un enfant. Environ trois minutes, sans jargon.</p>
+<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#A8A49C;max-width:440px">Une sélection de {len(repos)} tendances GitHub : fonctionnement, usages concrets et pistes de produits à explorer.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #2E2E2E"><tr>
 {_stat(f"+{total:,}", f"ÉTOILES {period_label}", LIME)}{_stat(html.escape(lead_lang), "LANGAGE PRINCIPAL", PAPER)}{_stat(f"{lead['gained_n']:,}", "ÉTOILES POUR #1", PAPER, last=True)}
 </tr></table>
@@ -142,7 +143,7 @@ def render_html(repos, since):
 <span style="font:700 34px/1.1 {SANS};color:{INK};letter-spacing:-1px">{lr}</span></a>
 <p style="margin:18px 0 22px;font:400 23px/1.4 {SERIF};color:{INK}">{html.escape(lead['eli5'])}</p>
 {_meta(lead, "#2F3A0E")}
-{lead_biz_html}
+{details_html(lead, theme="editorial") if lead.get("summary") else lead_biz_html}
 <div style="height:20px;line-height:20px">&nbsp;</div>
 <table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="{INK}" style="background:{INK};border-radius:99px">
 <a href="{lead['url']}" style="display:inline-block;padding:14px 24px;font:600 13px/1 {SANS};color:{LIME};text-decoration:none;letter-spacing:0.3px">Ouvrir le dépôt &nbsp;&rarr;</a>
