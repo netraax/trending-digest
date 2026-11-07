@@ -159,16 +159,21 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                     except (TypeError, ValueError):
                         return False
                 for key in FIELDS:
-                    if isinstance(row.get(key), list):
+                    value = row.get(key)
+                    if isinstance(value, list):
                         row[key] = "\n".join(
                             json.dumps(x, ensure_ascii=False) if isinstance(x, (dict, list)) else str(x)
-                            for x in row[key])
+                            for x in value)
+                    elif value is not None and not isinstance(value, str):
+                        row[key] = json.dumps(value, ensure_ascii=False) \
+                            if isinstance(value, (dict, bool)) else str(value)
                 for key in FIELDS:
                     if isinstance(row.get(key), str):
                         row[key] = re.sub(r"\[(S\d+)\]",
                                           lambda m: m.group(0) if m.group(1) in source_ids else "",
                                           row[key]).strip()
-                inline = set(re.findall(r"\[(S\d+)\]", " ".join(row.get(k, "") for k in FIELDS)))
+                inline = set(re.findall(r"\[(S\d+)\]",
+                                        " ".join(str(row.get(k) or "") for k in FIELDS)))
                 refs = row.get("evidence_ids")
                 refs = {s for s in refs if isinstance(s, str) and s in source_ids} \
                     if isinstance(refs, list) else set()

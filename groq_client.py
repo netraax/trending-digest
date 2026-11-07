@@ -188,7 +188,11 @@ class GroqClient:
                     last_error = "réponse reçue mais JSON illisible"
                     invalid_seen = True
                     continue
-                if not validate(data):
+                try:
+                    acceptable = validate(data)
+                except Exception:
+                    acceptable = False
+                if not acceptable:
                     last_error = "JSON reçu mais réponse hors du schéma attendu"
                     invalid_seen = True
                     self.dump_invalid(data, model)
