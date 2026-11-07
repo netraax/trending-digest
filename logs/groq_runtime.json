@@ -89,8 +89,62 @@
       "estimated": false,
       "prompt_tokens": 2569,
       "completion_tokens": 1193
+    },
+    {
+      "at": 1794016345.2890086,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3869,
+      "estimated": false,
+      "prompt_tokens": 2609,
+      "completion_tokens": 1260
+    },
+    {
+      "at": 1794016410.2893999,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3852,
+      "estimated": false,
+      "prompt_tokens": 2660,
+      "completion_tokens": 1192
+    },
+    {
+      "at": 1794016475.2898667,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3886,
+      "estimated": false,
+      "prompt_tokens": 2660,
+      "completion_tokens": 1226
+    },
+    {
+      "at": 1794016540.2903013,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3756,
+      "estimated": false,
+      "prompt_tokens": 2660,
+      "completion_tokens": 1096
+    },
+    {
+      "at": 1794016605.2906954,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3843,
+      "estimated": false,
+      "prompt_tokens": 2660,
+      "completion_tokens": 1183
+    },
+    {
+      "at": 1794016670.2911327,
+      "stream": "business",
+      "model": "qwen/qwen3.8-27b",
+      "tokens": 4249,
+      "estimated": false,
+      "prompt_tokens": 2786,
+      "completion_tokens": 1463
     }
   ],
   "cache": {},
-  "next_call_at": 1794016079.26972
+  "next_call_at": 1794016735.2911327
 }
