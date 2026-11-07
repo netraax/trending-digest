@@ -33,6 +33,7 @@ import run_log
 from email_template import render_html
 from project_analysis import analyze_projects, details_text
 from builder_profile import load_profile
+from chatgpt_export import make_message, export_files
 
 UA = {"User-Agent": "trending-digest/1.0"}
 
@@ -90,10 +91,7 @@ def render_text(repos):
 def send_email(subject, html_body, text_body):
     user, pw = os.environ["GMAIL_ADDRESS"], os.environ["GMAIL_APP_PASSWORD"].replace(" ", "")
     to = os.getenv("EMAIL_TO") or user
-    msg = MIMEMultipart("alternative")
-    msg["Subject"], msg["From"], msg["To"] = subject, user, to
-    msg.attach(MIMEText(text_body, "plain", "utf-8"))
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+    msg = make_message(subject, user, to, html_body, text_body)
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as s:
         s.login(user, pw)
         s.sendmail(user, [a.strip() for a in to.split(",")], msg.as_string())
@@ -132,6 +130,7 @@ def main():
         stage = "render"
         html_body, text_body = render_html(repos, since), render_text(repos)
         subject = f"Tendances GitHub · {datetime.now(timezone.utc):%d/%m/%Y} · {repos[0]['name']} et {len(repos) - 1} autres"
+        export_files(args.out, subject, html_body, "trending")
         os.makedirs(args.out, exist_ok=True)
         with open(os.path.join(args.out, "digest.html"), "w", encoding="utf-8") as f:
             f.write(html_body)

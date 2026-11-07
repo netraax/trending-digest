@@ -49,22 +49,74 @@ next_step: un test technique et une question à un utilisateur potentiel ;
 assessment: justifie score et adéquation avec les éléments disponibles du profil
 et des sources ; explicite le manque de preuves. Aucune note ne prouve la viabilité ;
 evidence_ids: liste des identifiants de sources effectivement utilisés.
+Le quota gratuit Groq concerne uniquement le radar, jamais le budget d'un produit.
+Ne suppose pas qu'un SaaS peut fonctionner gratuitement : préciser volume, hébergement,
+API et maintenance, sinon coût non estimable. Aucun gain chiffré (%, vitesse, économies)
+sans citation et chiffre présent dans l'extrait ; attribue les chiffres à l'auteur,
+jamais à une mesure personnelle. Les prix proposés sont des hypothèses, pas des revenus.
+Vérifie que charge en heures, durée en semaines et disponibilité sont cohérentes ;
+préfère une seule estimation conditionnelle sans inventer de disponibilité.
+Respecte la nature du logiciel (natif, bibliothèque, serveur) et précise les composants
+à développer pour changer de plateforme. N'ajoute pas systématiquement Stripe ou un SaaS.
 Tous les champs textuels sont des chaînes non vides. Si les données manquent,
 reste explicite, pas de remplissage inventé. Les idées et prix sont des hypothèses.
 """
 
 
-def field_text(value):
-    """Render a structured field as readable prose instead of raw JSON."""
+def field_text(value, depth=0):
+    """Decode objects, JSON strings and JSONL without exposing serialization."""
+    if depth > 8:
+        return "Détail non exploitable."
     if isinstance(value, str):
-        return value
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", value.strip())
+        if text.startswith(("{", "[", '"')):
+            try:
+                return field_text(json.loads(text), depth + 1)
+            except (ValueError, TypeError):
+                lines = text.splitlines()
+                if len(lines) > 1:
+                    try:
+                        return field_text([json.loads(line) for line in lines if line.strip()], depth + 1)
+                    except ValueError:
+                        pass
+                if text.startswith(("{", "[{")):
+                    return "Détail structuré illisible ; à vérifier dans le dépôt."
+        return text
     if isinstance(value, dict):
-        return " ; ".join(f"{k} : {field_text(v)}" for k, v in value.items())
+        labels = {"actor": "Utilisateur", "task": "Tâche", "result": "Résultat",
+                  "target": "Cible", "product": "Produit", "price": "Prix hypothétique",
+                  "input": "Entrée", "output": "Résultat", "steps": "Étapes",
+                  "buyer": "Acheteur", "value": "Valeur", "costs": "Coûts estimés"}
+        return " ; ".join(f"{labels.get(k, k.replace('_', ' '))} : {field_text(v, depth + 1)}"
+                          for k, v in value.items())
     if isinstance(value, (list, tuple)):
-        return "\n".join("• " + field_text(v) for v in value)
-    if value is None:
-        return ""
-    return str(value)
+        return "\n".join("• " + field_text(v, depth + 1) for v in value)
+    return "" if value is None else str(value)
+
+
+def quality_issues(row, sources):
+    """Conservative checks for detectable unsupported claims, not fact verification."""
+    issues = []
+    for key in FIELDS:
+        value = field_text(row.get(key, ""))
+        for sentence in re.split(r"[.!?\n]", value):
+            percentages = re.findall(r"\b\d+(?:[,.]\d+)?\s*%", sentence)
+            performance = re.search(r"rédu|économ|gain|rapide|amélior|accél|perform", sentence, re.I)
+            if percentages and performance and not re.search(r"hypoth|objectif|à mesurer|à tester", sentence, re.I):
+                refs = re.findall(r"\[(S\d+)\]", sentence)
+                cited = " ".join(s.get("excerpt", "") for s in sources if s["id"] in refs)
+                if any(n.replace(" ", "") not in cited.replace(" ", "") for n in percentages):
+                    issues.append("Gain chiffré sans preuve citée : supprimer le chiffre ou le présenter comme objectif à tester.")
+        if key in ("monetization", "build_plan") and re.search(r"groq", value, re.I) and re.search(r"gratuit|0\s*[€$]", value, re.I):
+            if not re.search(r"hypoth|à vérifier|à valider|quota|limite", value, re.I):
+                issues.append("Coût Groq gratuit non conditionné : distinguer quota du radar et coût du produit.")
+    plan = field_text(row.get("build_plan", ""))
+    hours = re.search(r"(\d+)\s*(?:heures|h)\b", plan)
+    weeks = re.search(r"(\d+)(?:\s*[–-]\s*\d+)?\s*semaines", plan)
+    daily = re.search(r"(\d+)(?:\s*[–-]\s*\d+)?\s*(?:h|heures)\s*(?:/|par)\s*(?:j|jour)", plan)
+    if hours and weeks and daily and int(weeks[1]) * 5 * int(daily[1]) > int(hours[1]) * 1.5:
+        issues.append("Charge et calendrier incohérents : utiliser une seule estimation conditionnelle.")
+    return list(dict.fromkeys(issues))
 
 
 def clip(text, size):
@@ -112,15 +164,17 @@ def collect_evidence(name):
              and f.get("mode") != "120000" and f.get("size", 0) < 150000]
     readmes = sorted((p for p in files if p.lower().split("/")[-1].startswith("readme")), key=len)
     manifests = sorted((p for p in files if p.split("/")[-1] in
-                        ("package.json", "pyproject.toml", "Cargo.toml", "requirements.txt", "go.mod")), key=len)
+                        ("package.json", "pyproject.toml", "Cargo.toml", "requirements.txt", "go.mod", "Gemfile", "gemspec")), key=len)
     examples = sorted((p for p in files if re.search(r"(^|/)(examples?|demo|quickstart)(/|\.)", p, re.I)
                        and p.endswith((".py", ".ts", ".js", ".md", ".rs"))), key=len)
     if not examples:
-        examples = sorted((p for p in files if p.endswith(("main.py", "cli.py", "main.rs", "index.ts"))), key=len)
+        examples = sorted((p for p in files if p.split("/")[-1] in ("main.py", "cli.py", "main.rs")), key=len)
     chosen = [(p[0], kind, budget) for p, kind, budget in
               ((readmes, "documentation auteur", 2200), (manifests, "dépendances", 600),
                (examples, "extrait technique non exécuté", 1000)) if p]
     for path, kind, budget in chosen:
+        if path.lower().endswith(".md"):
+            kind = "documentation auteur"
         data = get("contents/" + quote(path, safe="/"), {"ref": sha})
         if data.get("encoding") != "base64":
             notes.append(f"{path}: contenu indisponible")
@@ -142,7 +196,7 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
     client = GroqClient(api_key, stream)
     models = []
     instructions = PROMPT + ("\nVise 350-450 mots par projet." if stream == "business"
-                             else "\nVise 220-300 mots par projet, phrases courtes.")
+                             else "\nVise 150-220 mots par projet, une phrase courte par champ.")
     if profile:
         instructions += "\nProfil (rubriques conservées, textes abrégés) : " + profile_context(profile)
     if feedback:
@@ -169,11 +223,11 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                 for key in ("score", "fit_score"):
                     try:
                         row[key] = max(1, min(10, int(float(str(row[key]).split("/")[0]))))
-                    except (TypeError, ValueError):
+                    except (KeyError, TypeError, ValueError):
                         return False
                 for key in FIELDS:
                     value = row.get(key)
-                    if value is not None and not isinstance(value, str):
+                    if value is not None:
                         row[key] = field_text(value)
                 for key in FIELDS:
                     if isinstance(row.get(key), str):
@@ -186,13 +240,16 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
                 refs = {s for s in refs if isinstance(s, str) and s in source_ids} \
                     if isinstance(refs, list) else set()
                 row["evidence_ids"] = sorted(refs | inline)
-                return (type(row.get("eligible")) is bool
+                return (not quality_issues(row, item["sources"])
+                        and type(row.get("eligible")) is bool
                         and (not source_ids or bool(row["evidence_ids"])))
 
             hint = ("\nRéponse précédente rejetée : tous les champs textuels doivent être des "
                     "chaînes de texte non vides (jamais d'objets ni de listes JSON), "
                     "eligible booléen, score et fit_score entiers 1..10, et "
-                    "au moins une citation [Sx] correspondant à une source fournie.")
+                    "au moins une citation [Sx] correspondant à une source fournie. "
+                    "Supprime les gains chiffrés sans preuve citée ; distingue coût du produit et gratuité "
+                    "du radar ; assure la cohérence entre heures, semaines et heures par jour.")
             try:
                 rows, model = client.analyze(retry_instructions, [item], "projects", batch_size=1,
                                              output_tokens=output, require_all=True,
@@ -243,7 +300,7 @@ def analyze_projects(repos, api_key, stream, profile=None, feedback=None):
 
 
 def details_text(repo):
-    lines = [f"{label} : {repo[key]}" for key, label in LABELS if repo.get(key)]
+    lines = [f"{label} : {field_text(repo[key])}" for key, label in LABELS if repo.get(key)]
     evidence = repo.get("evidence", {})
     lines.append(evidence_status(repo))
     lines.append("Profil chargé" if repo.get("profile_loaded") else "Adéquation au profil non évaluée")
@@ -253,91 +310,31 @@ def details_text(repo):
 
 
 def details_html(repo, theme="business", show_scores=True):
-    """Render analysis as email-safe tables, styled to match either digest."""
-    palettes = {
-        "editorial": {
-            "panel": "#161B22", "tile": "#1C2128", "ink": "#E6EDF3",
-            "muted": "#8B949E", "accent": "#C6FF3D", "accent_bg": "#1A2408",
-            "line": "#30363D", "link": "#58A6FF",
-        },
-        "business": {
-            "panel": "#161B22", "tile": "#1C2128", "ink": "#E6EDF3",
-            "muted": "#8B949E", "accent": "#58A6FF", "accent_bg": "#102A4C",
-            "line": "#30363D", "link": "#58A6FF",
-        },
-    }
-    colors = palettes.get(theme, palettes["business"])
-    groups = (
-        ("COMPRENDRE LE PROJET", ("workflow", "use_cases")),
-        ("PISTES DE PRODUIT — HYPOTHÈSES", ("products", "monetization")),
-        ("CONSTRUIRE ET TESTER", ("build_plan", "next_step")),
-        ("LIMITES ET ÉVALUATION", ("limitations", "assessment")),
-    )
-    labels = dict(LABELS)
-    parts = [
-        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
-        f'bgcolor="{colors["panel"]}" style="width:100%;background:{colors["panel"]};'
-        f'border:1px solid {colors["line"]};border-radius:8px;margin:16px 0">'
-    ]
-
-    if show_scores:
-        score = repo.get("score")
-        fit = repo.get("fit_score")
-        if score is None:
-            score_text = "Analyse business non évaluée"
-        else:
-            score_text = f"Intérêt estimé {score}/10"
-            if fit is not None and repo.get("profile_loaded"):
-                score_text += f" · Adéquation au profil {fit}/10"
-        parts.append(
-            f'<tr><td style="padding:12px 14px;border-bottom:1px solid {colors["line"]};'
-            f'font:600 11px/1.5 Arial,sans-serif;color:{colors["accent"]};letter-spacing:.5px">'
-            f'{html.escape(score_text)}</td></tr>'
-        )
-
-    for title, keys in groups:
-        rows = [(key, labels[key], repo.get(key)) for key in keys if repo.get(key)]
-        if not rows:
+    """Flat readable sections, without repeated nested card padding."""
+    accent = "#C6FF3D" if theme == "editorial" else "#58A6FF"
+    bg = "#1A2408" if theme == "editorial" else "#102A4C"
+    parts = []
+    for key, label in LABELS:
+        if not repo.get(key):
             continue
-        parts.append(
-            f'<tr><td style="padding:12px 14px 5px;font:700 10px/1.4 Arial,sans-serif;'
-            f'letter-spacing:1px;color:{colors["muted"]}">{title}</td></tr>'
-        )
-        for key, label, value in rows:
-            text = html.escape(value).replace("\n", "<br>")
-            emphasis = key in ("products", "next_step")
-            bg = colors["accent_bg"] if emphasis else colors["tile"]
-            parts.append(
-                f'<tr><td style="padding:0 10px 8px">'
-                f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
-                f'bgcolor="{bg}" style="width:100%;background:{bg};border-left:3px solid '
-                f'{colors["accent"]};border-radius:0 5px 5px 0"><tr><td style="padding:9px 11px;'
-                f'font:600 11px/1.4 Arial,sans-serif;color:{colors["ink"]}">{label}</td></tr>'
-                f'<tr><td style="padding:0 11px 10px;font:13px/1.55 Arial,sans-serif;'
-                f'color:{colors["ink"]}">{text}</td></tr></table></td></tr>'
-            )
-
+        title = ("PISTES DE PRODUIT · " if key == "products" else
+                 "CONSTRUIRE ET TESTER · " if key == "build_plan" else "")
+        emphasis = key == ("products" if theme == "editorial" else "next_step")
+        style = f"padding:12px;background:{bg};border-left:3px solid {accent};" if emphasis else ""
+        text = html.escape(field_text(repo[key])).replace("\n", "<br>")
+        parts.append(f'<div style="margin:18px 0;{style}"><strong style="font-size:14px;color:{accent}">{title}{label}</strong>'
+                     f'<div style="margin-top:6px;font:16px/1.6 Arial,sans-serif;color:#E6EDF3">{text}</div></div>')
     evidence = repo.get("evidence", {})
-    sources = evidence.get("sources", [])
-    links = [
-        f'<a href="{html.escape(s["url"], quote=True)}" style="color:{colors["link"]};'
-        f'text-decoration:underline">[{html.escape(s["id"])}] {html.escape(s["path"])}</a>'
-        for s in sources
-    ]
-    notes = " &middot; ".join(html.escape(n) for n in evidence.get("notes", []))
-    profile_status = ("Adéquation évaluée à partir du profil" if repo.get("profile_loaded")
-                      else "Adéquation au profil non évaluée")
+    links = [f'<a href="{html.escape(s["url"], quote=True)}" style="color:#8EC5FF">[{html.escape(s["id"])}] {html.escape(s["path"])}</a>'
+             for s in evidence.get("sources", [])]
     footer = html.escape(evidence_status(repo))
     if links:
-        footer += "<br>Sources consultées : " + " &middot; ".join(links)
-    footer += "<br>" + profile_status
+        footer += "<br>Sources : " + " · ".join(links)
+    footer += "<br>" + ("Profil chargé" if repo.get("profile_loaded") else "Adéquation au profil non évaluée")
+    notes = evidence.get("notes", [])
     if notes:
-        footer += "<br>Collecte : " + notes
-    parts.append(
-        f'<tr><td style="padding:10px 14px 13px;border-top:1px solid {colors["line"]};'
-        f'font:11px/1.5 Arial,sans-serif;color:{colors["muted"]}">{footer}</td></tr>'
-    )
-    parts.append("</table>")
+        footer += "<br>Collecte : " + html.escape(" · ".join(notes))
+    parts.append(f'<p style="font:13px/1.6 Arial;color:#AAB4BF;border-top:1px solid #30363D;padding-top:14px">{footer}</p>')
     return "".join(parts)
 
 

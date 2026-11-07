@@ -1,9 +1,9 @@
-name: Business radar (every 2 days)
+name: Business radar (daily)
 
 on:
   schedule:
     # Runs daily at 06:00 UTC (~07:00 / 08:00 Paris time).
-    # The guard checks logs/business_state.json to ensure at least 2 days between sends.
+    # The guard checks logs/business_state.json to avoid a second scheduled send on the same day.
     - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
@@ -34,7 +34,7 @@ jobs:
         with:
           ref: main
 
-      - name: Guard (runs every 2 days)
+      - name: Guard (already sent today?)
         id: guard
         run: |
           STATUS="$(python3 - <<'PY'
@@ -48,14 +48,14 @@ jobs:
                   last_dt = datetime.date.fromisoformat(last)
                   today_dt = datetime.date.today()
                   diff = (today_dt - last_dt).days
-                  print('run' if diff >= 2 else 'skip')
+                  print('run' if diff >= 1 else 'skip')
               except Exception:
                   print('run')
           PY
           )"
           echo "event=${{ github.event_name }} guard_status=$STATUS"
           if [ "${{ github.event_name }}" = "schedule" ] && [ "$STATUS" = "skip" ]; then
-            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Already sent within the last 2 days; skipping."
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Already sent today; skipping."
           else
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi

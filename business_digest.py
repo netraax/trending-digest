@@ -1,7 +1,7 @@
 """GitHub Business Opportunities Radar (v2, multi-filets):
 Cherche des repos récents via 5 filets historiques et 2 filets d'exploration,
 pré-classe avec un score lissé (vélocité réelle dès le 2e run), puis demande à Groq d'arbitrer
-le potentiel business des meilleurs candidats. Envoie un digest tous les 2 jours.
+le potentiel business des meilleurs candidats. Envoie un digest quotidien.
 
 Sécurité et quotas :
 - 7 requêtes Search (8 pages max) espacées de 2 s,
@@ -29,6 +29,7 @@ import requests
 from business_template import render_html
 from project_analysis import analyze_projects, details_text
 from builder_profile import load_profile
+from chatgpt_export import make_message, export_files
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -490,10 +491,7 @@ def send_email(subject, html_body, text_body):
     user = os.environ["GMAIL_ADDRESS"]
     pw = os.environ["GMAIL_APP_PASSWORD"].replace(" ", "")
     to = os.getenv("EMAIL_TO") or user
-    msg = MIMEMultipart("alternative")
-    msg["Subject"], msg["From"], msg["To"] = subject, user, to
-    msg.attach(MIMEText(text_body, "plain", "utf-8"))
-    msg.attach(MIMEText(html_body, "html", "utf-8"))
+    msg = make_message(subject, user, to, html_body, text_body)
     with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as s:
         s.login(user, pw)
         s.sendmail(user, [a.strip() for a in to.split(",")], msg.as_string())
@@ -558,13 +556,8 @@ def main():
             save_state(state, sent=False)
 
         if not candidates:
-            print("No candidates found; nothing to send.")
-            if not args.dry_run:
-                save_state(state, sent=False)
-            log_business_run("ok", mode, model, 0, "aucun candidat | " + funnel_str(funnel))
-            return
-
-        if args.no_llm:
+            opportunities = []
+        elif args.no_llm:
             opportunities = [fill_defaults(c) for c in candidates[:6]]
         else:
             key = os.getenv("GROQ_API_KEY")
@@ -572,19 +565,13 @@ def main():
                 raise RuntimeError("GROQ_API_KEY is not set (use --no-llm for an offline test)")
             opportunities, model = analyze_business_opportunities(candidates, key, profile=profile)
             print(f"Identified {len(opportunities)} business opportunities with {model}")
-        if not opportunities:
-            print("Aucune opportunité retenue ; aucun email envoyé.")
-            if not args.dry_run:
-                record_analysis(state, candidates, opportunities)
-                save_state(state, sent=False)
-            log_business_run("ok", mode, model, 0, "aucune opportunité retenue")
-            return
         funnel["retenus"] = len(opportunities)
 
         html_body = render_html(opportunities, funnel.get("trouves", len(candidates)))
         text_body = render_plain_text(opportunities)
         subject = f"Radar Opportunités GitHub · {now:%d/%m/%Y} · {len(opportunities)} pépites récentes"
 
+        export_files(args.out, subject, html_body, "business")
         os.makedirs(args.out, exist_ok=True)
         with open(os.path.join(args.out, "business_digest.html"), "w", encoding="utf-8") as f:
             f.write(html_body)

@@ -93,7 +93,7 @@ docker agent run test-agent.yaml --env-from-file .env --exec "run the tests"
    `GROQ_API_KEY`, `GMAIL_ADDRESS`, `GMAIL_APP_PASSWORD`, `EMAIL_TO`
 3. Two workflows are available in the **Actions** tab:
    - **Trending digest:** daily morning digest of top GitHub trending repos explained simply in French.
-   - **Business radar:** runs every 2 days, scanning recent fast-growing repos and using Groq to detect micro-SaaS / business opportunities.
+   - **Business radar:** runs daily, scanning recent fast-growing repos and using Groq to detect micro-SaaS / business opportunities.
 
 Tick "Dry run" first if you want to see the HTML artifact without sending an email.
 
@@ -231,3 +231,25 @@ La mémoire historique reste compatible. Un projet peut revenir si ses étoiles
 doublent, si un nouveau push est constaté au moins 14 jours après l'analyse, ou
 pour réévaluation après 30 jours. Ces règles évitent de le renvoyer quotidiennement.
 Les anciens enregistrements sans date d'analyse utilisent leur première observation.
+
+Le radar business est désormais quotidien, au créneau existant de 06:00 UTC. Un bulletin sans nouveauté est envoyé si la collecte réussit mais aucun projet n’est retenu. Le garde-fou empêche un second envoi programmé le même jour.
+
+
+## Copier un mail pour ChatGPT
+
+Les deux emails joignent `copier-pour-chatgpt.html` et `copier-pour-chatgpt.txt`.
+Ouvrir le HTML dans un navigateur (pas seulement dans l'aperçu du client mail),
+puis cliquer sur « Copier le mail + la consigne pour ChatGPT ». La page copie le
+texte intégral et les liens de l'email, précédés d'une demande de top 3, clients,
+monétisation, scénarios de revenus, coûts, risques et premier test.
+
+Aucun contenu n'est publié ni transmis automatiquement à ChatGPT. Le bouton est
+dans la pièce jointe : un email ordinaire ne peut pas écrire dans le presse-papiers.
+Si le navigateur refuse la copie, le texte est sélectionné pour une copie manuelle ;
+le fichier .txt contient exactement le même texte et constitue une autre solution.
+Le comportement du bouton et l'ouverture du fichier restent à tester sur le téléphone.
+
+Les dry-runs génèrent aussi `trending_chatgpt.html/.txt` ou
+`business_chatgpt.html/.txt` dans le dossier de sortie. Ces exports incluent le
+contenu avant l'ajout de la notice sur les pièces jointes. La mise en forme visuelle
+n'est pas copiée ; les textes, chiffres et liens sont conservés.
