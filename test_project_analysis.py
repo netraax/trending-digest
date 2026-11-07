@@ -94,7 +94,7 @@ class EvidenceTests(unittest.TestCase):
         editorial = email_template.render_html([repo, repo], "daily")
         business = business_template.render_html([repo], 15)
         self.assertIn("background:#C6FF3D", editorial)
-        self.assertIn("background:#DBEAFE", business)
+        self.assertIn("background:#102A4C", business)
         self.assertIn("PISTES DE PRODUIT", editorial)
         self.assertIn("CONSTRUIRE ET TESTER", business)
 

@@ -256,9 +256,9 @@ def details_html(repo, theme="business", show_scores=True):
     """Render analysis as email-safe tables, styled to match either digest."""
     palettes = {
         "editorial": {
-            "panel": "#F4F1EA", "tile": "#FFFFFF", "ink": "#111111",
-            "muted": "#6E6A62", "accent": "#111111", "accent_bg": "#C6FF3D",
-            "line": "#DCD6C8", "link": "#315B24",
+            "panel": "#161B22", "tile": "#1C2128", "ink": "#E6EDF3",
+            "muted": "#8B949E", "accent": "#C6FF3D", "accent_bg": "#1A2408",
+            "line": "#30363D", "link": "#58A6FF",
         },
         "business": {
             "panel": "#161B22", "tile": "#1C2128", "ink": "#E6EDF3",

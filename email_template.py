@@ -4,7 +4,8 @@ import html
 from project_analysis import details_html
 from datetime import datetime, timezone
 
-INK, PAPER, LIME, MUTED, LINE = "#111111", "#F4F1EA", "#C6FF3D", "#6E6A62", "#DCD6C8"
+INK, PAPER, LIME, MUTED, LINE = "#E6EDF3", "#0D1117", "#C6FF3D", "#8B949E", "#30363D"
+DARK = "#111111"  # near-black blocks (header, footer, lead button)
 SERIF = "'Instrument Serif',Georgia,'Times New Roman',serif"
 SANS = "Inter,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif"
 MONO = "'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace"
@@ -47,9 +48,9 @@ def _row(i, r, top):
     biz_html = ""
     if r.get("business_idea"):
         biz_html = (
-            f'<div style="margin:10px 0 12px;padding:8px 12px;background:#E8E2D4;border-left:3px solid {INK};border-radius:0 4px 4px 0">'
+            f'<div style="margin:10px 0 12px;padding:8px 12px;background:#1C2128;border-left:3px solid {INK};border-radius:0 4px 4px 0">'
             f'<span style="font:600 10px/1 {MONO};letter-spacing:1px;color:{INK};text-transform:uppercase">💡 ANGLE SAAS : </span>'
-            f'<span style="font:400 13px/1.45 {SANS};color:#1A1815">{html.escape(r["business_idea"])}</span>'
+            f'<span style="font:400 13px/1.45 {SANS};color:#C9D1D9">{html.escape(r["business_idea"])}</span>'
             f'</div>'
         )
     return f"""
@@ -60,10 +61,10 @@ def _row(i, r, top):
   <a href="{r['url']}" style="text-decoration:none;color:{INK}"><span style="font:500 13px/1.3 {MONO};color:{MUTED}">{o}&thinsp;/</span><br>
   <span style="font:700 21px/1.25 {SANS};color:{INK};letter-spacing:-0.4px">{n}</span></a>
   {'<div style="height:10px;line-height:10px">&nbsp;</div>' + _pill(r.get('category'), MUTED, LINE) if r.get('category') else ''}
-  <p style="margin:12px 0 14px;font:400 15px/1.6 {SANS};color:#2A2824">{html.escape(r['eli5'])}</p>
+  <p style="margin:12px 0 14px;font:400 15px/1.6 {SANS};color:#C9D1D9">{html.escape(r['eli5'])}</p>
   {details_html(r, theme="editorial") if r.get("summary") else biz_html}
   {_meta(r, MUTED)}
-  <div style="height:12px;line-height:12px">&nbsp;</div>{_bar(r, top, "#E6E0D2", INK)}
+  <div style="height:12px;line-height:12px">&nbsp;</div>{_bar(r, top, "#1C2128", INK)}
 </td></tr></table>
 </td></tr>"""
 
@@ -90,17 +91,17 @@ def render_html(repos, since):
     lead_biz_html = ""
     if lead.get("business_idea"):
         lead_biz_html = f"""
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="{INK}" style="background:{INK};border-radius:8px;margin:20px 0 22px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="{DARK}" style="background:{DARK};border-radius:8px;margin:20px 0 22px">
 <tr><td style="padding:16px 20px">
   <div style="font:600 10px/1 {MONO};letter-spacing:1.5px;color:{LIME};text-transform:uppercase">&#9632;&nbsp;OPPORTUNITÉ SAAS &amp; BUSINESS</div>
-  <div style="font:400 14px/1.55 {SANS};color:{PAPER};margin-top:6px">{html.escape(lead['business_idea'])}</div>
+  <div style="font:400 14px/1.55 {SANS};color:{INK};margin-top:6px">{html.escape(lead['business_idea'])}</div>
 </td></tr>
 </table>"""
     rows = "".join(_row(i, r, top) for i, r in enumerate(repos[1:], 2))
 
     return f"""<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="light only"><meta name="supported-color-schemes" content="light only">
+<meta name="color-scheme" content="dark"><meta name="supported-color-schemes" content="dark">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <title>The Trending Diff</title>
 <style>
@@ -120,32 +121,32 @@ def render_html(repos, since):
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="{PAPER}" style="background:{PAPER}"><tr><td align="center" style="padding:0">
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px">
 
-<tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:16px 40px;border-bottom:1px solid #2A2A2A">
+<tr><td class="px" bgcolor="{DARK}" style="background:{DARK};padding:16px 40px;border-bottom:1px solid #2A2A2A">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
 <td class="tb" style="white-space:nowrap;font:600 11px/1 {MONO};letter-spacing:2px;color:{LIME}">&#9632;&nbsp;THE TRENDING DIFF</td>
 <td class="tb" align="right" style="white-space:nowrap;font:500 11px/1 {MONO};letter-spacing:1px;color:#8A8A8A">N&ordm;&nbsp;{now.timetuple().tm_yday:03d}<span class="hide-sm"> &middot; {day_name}</span> &middot; {now:%d} {month_name} {now:%Y}</td>
 </tr></table></td></tr>
 
-<tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:52px 40px 44px">
-<div class="hl" style="font:400 66px/0.95 {SERIF};color:{PAPER};letter-spacing:-2px">Ce que GitHub<br>construit<br><i style="color:{LIME}">{period}.</i></div>
-<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#A8A49C;max-width:440px">Une sélection de {len(repos)} tendances GitHub : fonctionnement, usages concrets et pistes de produits à explorer.</p>
+<tr><td class="px" bgcolor="{DARK}" style="background:{DARK};padding:52px 40px 44px">
+<div class="hl" style="font:400 66px/0.95 {SERIF};color:{INK};letter-spacing:-2px">Ce que GitHub<br>construit<br><i style="color:{LIME}">{period}.</i></div>
+<p style="margin:22px 0 34px;font:400 16px/1.55 {SANS};color:#8B949E;max-width:440px">Une sélection de {len(repos)} tendances GitHub : fonctionnement, usages concrets et pistes de produits à explorer.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #2E2E2E"><tr>
-{_stat(f"+{total:,}", f"ÉTOILES {period_label}", LIME)}{_stat(html.escape(lead_lang), "LANGAGE PRINCIPAL", PAPER)}{_stat(f"{lead['gained_n']:,}", "ÉTOILES POUR #1", PAPER, last=True)}
+{_stat(f"+{total:,}", f"ÉTOILES {period_label}", LIME)}{_stat(html.escape(lead_lang), "LANGAGE PRINCIPAL", INK)}{_stat(f"{lead['gained_n']:,}", "ÉTOILES POUR #1", INK, last=True)}
 </tr></table>
 </td></tr>
 
 <tr><td class="px" bgcolor="{LIME}" style="background:{LIME};padding:40px 40px 44px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{INK}">EN TÊTE DU CLASSEMENT</td>
-<td align="right">{_pill(lead.get('category'), INK, INK)}</td></tr></table>
-<div class="lead-n" style="font:400 120px/0.85 {SERIF};color:{INK};letter-spacing:-6px;margin:22px 0 10px">01</div>
-<a href="{lead['url']}" style="text-decoration:none;color:{INK}"><span style="font:500 14px/1.3 {MONO};color:#3B4A12">{lo}&thinsp;/</span><br>
-<span style="font:700 34px/1.1 {SANS};color:{INK};letter-spacing:-1px">{lr}</span></a>
-<p style="margin:18px 0 22px;font:400 23px/1.4 {SERIF};color:{INK}">{html.escape(lead['eli5'])}</p>
+<td style="font:600 11px/1 {MONO};letter-spacing:2px;color:{DARK}">EN TÊTE DU CLASSEMENT</td>
+<td align="right">{_pill(lead.get('category'), DARK, DARK)}</td></tr></table>
+<div class="lead-n" style="font:400 120px/0.85 {SERIF};color:{DARK};letter-spacing:-6px;margin:22px 0 10px">01</div>
+<a href="{lead['url']}" style="text-decoration:none;color:{DARK}"><span style="font:500 14px/1.3 {MONO};color:#3B4A12">{lo}&thinsp;/</span><br>
+<span style="font:700 34px/1.1 {SANS};color:{DARK};letter-spacing:-1px">{lr}</span></a>
+<p style="margin:18px 0 22px;font:400 23px/1.4 {SERIF};color:{DARK}">{html.escape(lead['eli5'])}</p>
 {_meta(lead, "#2F3A0E")}
 {details_html(lead, theme="editorial") if lead.get("summary") else lead_biz_html}
 <div style="height:20px;line-height:20px">&nbsp;</div>
-<table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="{INK}" style="background:{INK};border-radius:99px">
+<table role="presentation" cellpadding="0" cellspacing="0"><tr><td bgcolor="{DARK}" style="background:{DARK};border-radius:99px">
 <a href="{lead['url']}" style="display:inline-block;padding:14px 24px;font:600 13px/1 {SANS};color:{LIME};text-decoration:none;letter-spacing:0.3px">Ouvrir le dépôt &nbsp;&rarr;</a>
 </td></tr></table>
 </td></tr>
@@ -157,9 +158,9 @@ def render_html(repos, since):
 </td></tr>
 {rows}
 
-<tr><td class="px" bgcolor="{INK}" style="background:{INK};padding:44px 40px">
-<div style="font:400 40px/1 {SERIF};color:{PAPER};letter-spacing:-1px">C’est la diff<i style="color:{LIME}">.</i></div>
-<p style="margin:14px 0 0;font:400 13px/1.6 {SANS};color:#8A8A8A">Envoyé chaque matin depuis <a href="https://github.com/trending" style="color:#C9C5BC">github.com/trending</a>. Explications écrites par Groq.</p>
+<tr><td class="px" bgcolor="{DARK}" style="background:{DARK};padding:44px 40px">
+<div style="font:400 40px/1 {SERIF};color:{INK};letter-spacing:-1px">C’est la diff<i style="color:{LIME}">.</i></div>
+<p style="margin:14px 0 0;font:400 13px/1.6 {SANS};color:#8B949E">Envoyé chaque matin depuis <a href="https://github.com/trending" style="color:#C9D1D9">github.com/trending</a>. Explications écrites par Groq.</p>
 </td></tr>
 
 </table></td></tr></table>
