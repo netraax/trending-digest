@@ -1,0 +1,51 @@
+{
+  "calls": [
+    {
+      "at": 1794015429.2665758,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3457,
+      "estimated": false,
+      "prompt_tokens": 1989,
+      "completion_tokens": 1468
+    },
+    {
+      "at": 1794015494.2669978,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3320,
+      "estimated": false,
+      "prompt_tokens": 1989,
+      "completion_tokens": 1331
+    },
+    {
+      "at": 1794015559.2672873,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3395,
+      "estimated": false,
+      "prompt_tokens": 1989,
+      "completion_tokens": 1406
+    },
+    {
+      "at": 1794015624.2676144,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3419,
+      "estimated": false,
+      "prompt_tokens": 1989,
+      "completion_tokens": 1430
+    },
+    {
+      "at": 1794015689.2679846,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3303,
+      "estimated": false,
+      "prompt_tokens": 1989,
+      "completion_tokens": 1314
+    }
+  ],
+  "cache": {},
+  "next_call_at": 1794015754.2679846
+}
