@@ -1,0 +1,561 @@
+{
+  "date": "2026-11-07",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "zed-industries/zed",
+      "url": "https://github.com/zed-industries/zed",
+      "description": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
+      "language": "Rust",
+      "stars": 93672,
+      "forks": 11503,
+      "gained": "306 stars today",
+      "gained_n": 306,
+      "lang_color": "#dea584",
+      "category": "Éditeur de code collaboratif",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Zed est un éditeur de code haute performance, multi‑utilisateur, écrit en Rust. Il cible les développeurs qui ont besoin d’un environnement réactif et de collaboration en temps réel.",
+      "workflow": "Entrée : fichiers source (texte) déposés dans le répertoire du projet. Traitement : le moteur GPUI (exemple a11y.rs) rend l’interface, le serveur d’agents synchronise les modifications via le protocole propriétaire de Zed. Résultat : chaque participant voit les changements instantanément dans l’éditeur. Sources : installation et description du produit [S1]; démonstration d’une application GPUI montrant la gestion d’événements UI [S3]. Limites : aucune version web disponible, le support multi‑plateforme reste limité aux clients natifs ; la licence du code principal est GPL‑3.0‑or‑later avec composants Apache‑2.0, ce qui impose des contraintes de redistribution [S1].",
+      "use_cases": "{\"actor\": \"Équipe de développeurs SaaS\", \"task\": \"Co‑édition d’un module backend en temps réel\", \"result\": \"Réduction du temps de revue de code grâce à la synchronisation instantanée\"}\n{\"actor\": \"Formateur en programmation\", \"task\": \"Démo interactive d’algorithmes pendant un cours en ligne\", \"result\": \"Les participants voient les modifications du formateur en direct, sans besoin d’installer un IDE lourd\"}",
+      "products": "{\"target\": \"PME tech souhaitant un IDE interne\", \"product\": \"Version auto‑hébergée de Zed avec authentification SSO et stockage de projets sur Supabase\", \"difference\": \"Ajoute la gestion des utilisateurs, la persistance des projets et le contrôle d’accès, absent du dépôt brut\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper web minimaliste qui expose les fonctions d’édition de Zed via un front‑end React/Next.js\", \"difference\": \"Permet d’utiliser Zed depuis le navigateur, contournant l’absence de version web native\"}",
+      "monetization": "{\"buyer\": \"PME ou agence payant pour l’accès à l’instance hébergée\", \"reason\": \"Gain de productivité et réduction des coûts de licences IDE multiples\", \"unit\": \"abonnement mensuel par utilisateur actif\", \"model\": \"Abonnement SaaS, prix hypothétique 15‑30 € / mois selon le nombre d’utilisateurs\", \"price_range_explanation\": \"Le tarif reflète le coût d’infrastructure (Docker, Supabase, stockage) et la valeur perçue d’un éditeur collaboratif performant\"}",
+      "build_plan": "{\"scope\": \"Déploiement d’une instance Docker de Zed avec authentification SSO et stockage PostgreSQL\", \"reused_bricks\": \"Code source de Zed, GPUI, Cargo, Docker, Supabase client\", \"work_to_add\": \"Intégration SSO (OAuth2), UI de gestion de projets, scripts de déploiement CI/CD\", \"exclusions\": \"Développement d’une version web native, fonctionnalités de marketplace\", \"dependencies\": \"Rust toolchain, Docker, Supabase, Stripe (pour facturation)\", \"costs\": \"Coût d’infrastructure cloud (≈ 10 €/mois), licences éventuelles de dépendances tierces\", \"timeline\": \"Prototype fonctionnel 4‑6 semaines si le développeur consacre 8 h/j\"}",
+      "limitations": "{\"established_constraints\": \"Licence GPL‑3.0‑or‑later impose partage du code modifié, absence de version web native, dépendance forte à Rust et à GPUI\", \"unknowns\": \"Performance du serveur d’agents sous forte charge, compatibilité avec les environnements d’entreprise (proxy, firewalls)\", \"license_to_verify\": \"GPL‑3.0‑or‑later + composants Apache‑2.0, vérifier conformité avec les exigences commerciales\", \"maintenance_costs\": \"Mise à jour du moteur Rust, suivi des dépendances Cargo, support SSO\"}",
+      "next_step": "{\"technical_test\": \"Déployer Zed en local via Docker et vérifier la synchronisation multi‑client avec deux sessions\", \"user_question\": \"Quel problème rencontrez‑vous actuellement avec vos outils d’édition collaborative ?\"}",
+      "assessment": "Score 7 reflète la pertinence technique (Rust, GPUI, architecture collaborative) et la compatibilité avec les priorités du profil (outil B2B SaaS, besoin de rapidité de prototypage). Fit_score 5 par défaut car aucune contrainte géographique ou budgétaire précise n’est fournie. Les preuves proviennent des extraits README et du code d’exemple GPUI [S1, S3]; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "9a8ab54db4f9f9af4dc6efb42b304c55c6a62bd3",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/zed-industries/zed/blob/9a8ab54db4f9f9af4dc6efb42b304c55c6a62bd3/README.md",
+            "excerpt": "\n\n### Installation\n\nOn macOS, Linux, and Windows you can [download Zed directly](https://zed.dev/download) or install Zed via your local package manager ([macOS](https://zed.dev/docs/installation#macos)/[Linux](https://zed.dev/docs/linux#installing-via-a-package-manager)/[Windows](https://zed.dev/docs/windows#package-managers)).\n\nOther platforms are not yet available:\n\n- Web ([tracking discussion](https://github.com/zed-industries/zed/discussions/26195))\n\n\n\n# Zed\n\n[ ](https://zed.dev)\n[ ](https://github.com/zed-industries/zed/actions/workflows/run_tests.yml)\n\nWelcome to Zed, a high-performance, multiplayer code editor from the creators of [Atom](https://github.com/atom/atom) and [Tree-sitter](https://github.com/tree-sitter/tree-sitter).\n\n---\n\n\n\n### Developing Zed\n\n- [Building Zed for macOS](./docs/src/development/macos.md)\n- [Building Zed for Linux](./docs/src/development/linux.md)\n- [Building Zed for Windows](./docs/src/development/windows.md)\n\n\n\n### Contributing\n\nSee [CONTRIBUTING.md](./CONTRIBUTING.md) for ways you can contribute to Zed.\n\nAlso... we're hiring! Check out our [jobs](https://zed.dev/jobs) page for open roles.\n\n\n\n### Licensing\n\nZed source code is licensed primarily under GPL-3.0-or-later, with Apache-2.0 components where marked.\n\nLicense information for third party dependencies must be correctly provided for CI to pass.\n\nWe use [`cargo-about`](https://github.com/EmbarkStudios/cargo-about) to automatically comply with open source licenses. If CI is failing, check the following:\n\n- Is it showing a `no license specified` error for a crate you've created? If so, add `publish = false` under `[package]` in your crate's Cargo.toml.\n- Is the error `failed to satisfy license requirements` for a dependency? If so, first determine what license the project has an\n\n## Sponsorship\n\nZed is developed by **Zed Industries, Inc.**, a for-profit company.\n\nIf you’d like to financially support the project, you can do so via GitHub Sponsors.\nSponsorships go directly to Zed Industries and are used as general company revenue.\nThere are no perks or entitlements associated with sponsorship.\n"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/zed-industries/zed/blob/9a8ab54db4f9f9af4dc6efb42b304c55c6a62bd3/Cargo.toml",
+            "excerpt": "[workspace]\nresolver = \"2\"\nmembers = [\n    \"crates/acp_thread\",\n    \"crates/acp_tools\",\n    \"crates/action_log\",\n    \"crates/activity_indicator\",\n    \"crates/agent\",\n    \"crates/agent_servers\",\n    \"crates/agent_settings\",\n    \"crates/agent_skills\",\n    \"crates/agent_ui\",\n    \"crates/agent_ui_benchmarks\",\n    \"crates/ai_onboarding\",\n    \"crates/anthropic\",\n    \"crates/askpass\",\n    \"crates/assets\",\n    \"crates/audio\",\n    \"crates/auto_update\",\n    \"crates/auto_update_helper\",\n    \"crates/auto_update_ui\",\n    \"crates/aws_http_client\",\n    \"crates/bedrock\",\n    \"crates/bench_metrics\",\n    \"crate"
+          },
+          {
+            "id": "S3",
+            "path": "crates/gpui/examples/a11y.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/zed-industries/zed/blob/9a8ab54db4f9f9af4dc6efb42b304c55c6a62bd3/crates/gpui/examples/a11y.rs",
+            "excerpt": "#![cfg_attr(target_family = \"wasm\", no_main)]\n\n//! Accessibility (AccessKit) demo app.\n//!\n//! Run with: `cargo run -p gpui --example a11y`\n//!\n//! Or on Linux: `cargo run -p gpui --features gpui_platform/wayland,gpui_platform/x11 --example a11y`\n//!\n//! This app uses GPUI's accessibility APIs to attach structured information to\n//! the element tree, which allows assistive technology to see and interact with\n//! the UI programmatically.\n//!\n//! The app behaves as follows:\n//! - It opens a single window.\n//! - The window's title is \"GPUI Accessibility Demo\".\n//! - The window has a sequence of UI elements, stacked vertically:\n//!   - A heading with the text \"Accessibility Demo\".\n//!   - A row containing two elements:\n//!     - A spin button (role `SpinButton`) labelled \"Counter: <n>\", where\n//!       `<n>` is the current count. It supports `Increment` and `Decrement`\n//!       accessible actions, and also increments on click. The numeric value\n//!       is clamped to a minimum of 0.\n//! "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Zed est un éditeur de code haute performance, multi‑utilisateur, écrit en Rust. Il cible les développeurs qui ont besoin d’un environnement réactif et de collaboration en temps réel.",
+      "business_idea": "{\"target\": \"PME tech souhaitant un IDE interne\", \"product\": \"Version auto‑hébergée de Zed avec authentification SSO et stockage de projets sur Supabase\", \"difference\": \"Ajoute la gestion des utilisateurs, la persistance des projets et le contrôle d’accès, absent du dépôt brut\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper web minimaliste qui expose les fonctions d’édition de Zed via un front‑end React/Next.js\", \"difference\": \"Permet d’utiliser Zed depuis le navigateur, contournant l’absence de version web native\"}"
+    },
+    {
+      "name": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+      "language": "Python",
+      "stars": 9109,
+      "forks": 729,
+      "gained": "2,015 stars today",
+      "gained_n": 2015,
+      "lang_color": "#3572A5",
+      "category": "framework de raisonnement sémantique / IA d'entreprise",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Auto‑Ontology est un framework Python qui crée une couche d’ontologie sémantique au‑dessus de bases de données relationnelles. Il cible les développeurs d’applications IA qui ont besoin de requêtes en langage naturel fiables et d’un contexte structuré pour leurs agents.",
+      "workflow": "Entrée : texte de requête en langage naturel → le module de génération (basé sur NVIDIA NIM) traduit la requête en SQL (S1). → le serveur FastAPI exécute le SQL sur PostgreSQL où l’ontologie est stockée (S1, S2). → le résultat est renvoyé via l’API et affiché dans l’interface web (S1). Limites : dépendance à une clé API NVIDIA, besoin d’un déploiement Docker/Kubernetes, aucune preuve d’évolutivité au‑delà de petits jeux de données (non établi dans les extraits).",
+      "use_cases": "{\"actor\": \"Analyste commercial d’une PME\", \"task\": \"Obtenir le chiffre d’affaires mensuel par produit sans connaître la structure SQL\", \"result\": \"L’agent répond en quelques secondes grâce à la traduction NL→SQL et aux attributs pré‑définis dans l’ontologie.\"}\n{\"actor\": \"Développeur d’une plateforme SaaS d’assistance client\", \"task\": \"Intégrer un chatbot capable de récupérer des tickets et leurs statuts depuis la base interne\", \"result\": \"Le chatbot interroge la base via l’ontologie, garantissant que les champs utilisés sont cohérents et validés.\"}",
+      "products": "{\"target\": \"PME souhaitant un tableau de bord auto‑généré\", \"product\": \"Service SaaS « Ontology‑Analytics » qui héberge Auto‑Ontology, expose un tableau de bord low‑code et facture par utilisateur actif\", \"difference\": \"Le dépôt brut nécessite une installation et une configuration manuelles ; le service propose une UI prête à l’emploi, la gestion des clés API et le scaling automatisé.\"}\n{\"target\": \"Équipe de data‑science interne\", \"product\": \"Kit de développement interne « Ontology‑SDK » qui expose des fonctions Python pour générer, certifier et interroger l’ontologie depuis des notebooks\", \"difference\": \"Le dépôt original est un serveur web ; le SDK fournit une bibliothèque légère, sans UI, adaptée à l’intégration dans des pipelines de traitement de données.\"}",
+      "monetization": "Acheteur : PME ou agence utilisant le tableau de bord. Raison de payer : gain de temps sur la création de rapports et fiabilité des réponses IA. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS (freemium avec 5 utilisateurs gratuits, puis 15 €/mois/utilisateur). La fourchette de prix repose sur la valeur perçue d’une IA fiable et les coûts d’infrastructure cloud (Docker, PostgreSQL, API NVIDIA).",
+      "build_plan": "Périmètre limité : version SaaS hébergée avec Docker Compose, PostgreSQL et FastAPI. Brique réutilisée : code serveur existant (FastAPI, génération NL→SQL). Travail à ajouter : UI simplifiée, facturation Stripe, authentification multi‑tenant, monitoring. Exclusions : support Kubernetes complet, extensions de langue autre que l’anglais. Dépendances : fastapi, duckdb, langchain‑openai, PostgreSQL, clé API NVIDIA (S2). Coût estimé : 0 € (plan gratuit Groq) + 20 €/mois PostgreSQL cloud. Délai : 3‑4 semaines de prototypage si le développeur consacre 8 h/jour.",
+      "limitations": "Contraintes établies : nécessite une clé API NVIDIA (S1), licence Apache‑2.0 à vérifier (licence non confirmée dans le README). Inconnues : performance sur jeux de données > 1 M de lignes, conformité RGPD non documentée, support multilingue absent. Maintenance : mise à jour des dépendances FastAPI et langchain régulièrement requise.",
+      "next_step": "Réaliser un test technique : déployer le Docker Compose fourni, interroger la base Wide World Importers avec une requête NL simple et mesurer le temps de réponse. Question à poser à un analyste potentiel : « Quels types de métriques métier avez‑vous besoin d’obtenir en temps réel sans écrire de SQL ? »",
+      "assessment": "Score 7 reflète la pertinence du cadre pour les besoins d’IA d’entreprise (ontologie, NL→SQL) et la disponibilité d’une stack prête à être transformée en SaaS. Le fit_score reste à 5 car le profil ne précise pas de contrainte régionale ou de délai strict, mais le projet correspond aux priorités B2B et IA appliquée du profil. Les preuves proviennent des extraits README (S1) et pyproject.toml (S2).",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c447003f72a822301e927196a4ecb5b597c308d5",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/NVIDIA/auto-ontology/blob/c447003f72a822301e927196a4ecb5b597c308d5/README.md",
+            "excerpt": " \n\n\n\n## Key Features\n\n- **Natural-language querying** of structured data — questions are translated to\n  SQL and executed against connected databases, powered by NVIDIA NIM.\n- **Semantic catalog / ontology layer** over relational sources, stored in\n  Postgres alongside the catalog it describes.\n- **Authentication & RBAC** —using [Better Auth](https://github.com/better-auth/better-auth).\n- **Web UI** for chat, analysis, data catalog, analytics, and settings.\n- **Flexible deployment** — Helm chart for Kubernetes or Docker Compose for a\n  local stack.\n\n\n\n## Quickstart\n\nThis runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET= \n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD= \n   CONNECTION_STRINGS=postgresql://postgres: @po\n\n## How it works\n\n \n \n \n\nAuto-Ontology works in three stages: it generates an ontology, people certify\nit, and the agent answers questions from it.\n\nThe ontology holds three kinds of definition:\n\n- **Terms.** Business concepts such as *Customer* or *Invoice Line*, each with a\n  description and synonyms, mapped to the columns that hold them.\n- **SQL attributes.** Reviewed SQL expressions under a term, such as a margin or\n  a rolling total. The agent reuses them, so answers compute each measure the\n  same way.\n- **Relationships.** How tables join, including bridge tables, inferred from\n  keys and from the data.\n\n**Generate.** The ingestion servi\n\n# Auto Ontology\n\nAgents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is simila"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/NVIDIA/auto-ontology/blob/c447003f72a822301e927196a4ecb5b597c308d5/pyproject.toml",
+            "excerpt": "# SPDX-FileCopyrightText: Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES.\n# All rights reserved.\n# SPDX-License-Identifier: Apache-2.0\n\n[project]\nname = \"auto-ontology-server\"\nversion = \"1.2.0\"\nrequires-python = \">=3.12,<3.14\"\ndependencies = [\n    \"duckdb>=1.5.5\",\n    \"fastapi>=0.141.1\",\n    \"httpx>=0.28.1\",\n    \"hvac>=2.4.0\",\n    # Capped at 1.3.4, the last release that accepts openai<2.45.0; see the openai pin.\n    \"langchain-openai>=1.3.0,<1.3.5\",\n    \"langgraph>=1.2.11\",\n    \"pydantic>=2.13.5\",\n    # Kept below 3 until the code is tested against pandas 3; the cap used to be\n    # forc"
+          },
+          {
+            "id": "S3",
+            "path": "frontend/common/icons/index.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/NVIDIA/auto-ontology/blob/c447003f72a822301e927196a4ecb5b597c308d5/frontend/common/icons/index.ts",
+            "excerpt": "// SPDX-FileCopyrightText: Copyright (c) 2024-2026, NVIDIA CORPORATION & AFFILIATES.\n// All rights reserved.\n// SPDX-License-Identifier: Apache-2.0\n\nexport { Icon, IconName, type IconProps } from './Icon';\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Auto‑Ontology est un framework Python qui crée une couche d’ontologie sémantique au‑dessus de bases de données relationnelles. Il cible les développeurs d’applications IA qui ont besoin de requêtes en langage naturel fiables et d’un contexte structuré pour leurs agents.",
+      "business_idea": "{\"target\": \"PME souhaitant un tableau de bord auto‑généré\", \"product\": \"Service SaaS « Ontology‑Analytics » qui héberge Auto‑Ontology, expose un tableau de bord low‑code et facture par utilisateur actif\", \"difference\": \"Le dépôt brut nécessite une installation et une configuration manuelles ; le service propose une UI prête à l’emploi, la gestion des clés API et le scaling automatisé.\"}\n{\"target\": \"Équipe de data‑science interne\", \"product\": \"Kit de développement interne « Ontology‑SDK » qui expose des fonctions Python pour générer, certifier et interroger l’ontologie depuis des notebooks\", \"difference\": \"Le dépôt original est un serveur web ; le SDK fournit une bibliothèque légère, sans UI, adaptée à l’intégration dans des pipelines de traitement de données.\"}"
+    },
+    {
+      "name": "rails/rails",
+      "url": "https://github.com/rails/rails",
+      "description": "Ruby on Rails",
+      "language": "Ruby",
+      "stars": 59032,
+      "forks": 23832,
+      "gained": "142 stars today",
+      "gained_n": 142,
+      "lang_color": "#701516",
+      "category": "Framework web MVC",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Rails est un framework complet pour créer des applications web basées sur une base de données, suivant le modèle MVC. Il cible les développeurs full‑stack qui souhaitent accélérer la mise en place de back‑ends robustes.",
+      "workflow": "Entrée : requête HTTP (ex. POST /articles) → Traitement : le routeur d’Action Dispatch associe la requête à un contrôleur, ce dernier invoque un modèle ActiveRecord pour persister les données, puis rend une vue ERB → Résultat : réponse HTTP contenant du HTML ou du JSON. Limites : dépendance forte à Ruby, besoin d’un serveur compatible (Puma, etc.) et aucune prise en charge native du front‑end moderne sans intégration supplémentaire. [S1]",
+      "use_cases": "{\"actor\": \"Agence de marketing digital\", \"task\": \"Déployer rapidement un site vitrine avec formulaire de contact et tableau de bord client\", \"result\": \"Site fonctionnel en quelques jours, gestion des utilisateurs et des données via ActiveRecord, interface admin générée automatiquement\"}\n{\"actor\": \"Startup SaaS B2B\", \"task\": \"Construire une plateforme de facturation multi‑tenant\", \"result\": \"Architecture multi‑schéma gérée par Rails, API JSON sécurisée, factures générées en PDF via Action View\"}",
+      "products": "{\"target\": \"PME souhaitant un CRM interne léger\", \"product\": \"Application SaaS de gestion de contacts et de pipelines de vente basée sur Rails\", \"difference\": \"Utilise les conventions Rails pour réduire le code custom, intègre Stripe via gem et offre une interface admin prête à l’emploi\"}\n{\"target\": \"Freelance créateur de contenu\", \"product\": \"Plateforme de publication d’articles avec éditeur Markdown et commentaires\", \"difference\": \"Exploite Action Text pour le rich‑text, Active Storage pour les médias, et fournit un tableau de bord analytique minimal\"}",
+      "monetization": "Acheteur : PME ou freelance ; raison : gain de temps sur le développement d’un back‑end complet ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec période d’essai gratuite. Fourchette de prix hypothétique : 20 €–50 €/mois selon le nombre d’utilisateurs, justifiée par la réduction du temps de développement et les coûts d’infrastructure (hébergement, base de données).",
+      "build_plan": "Périmètre limité : API REST et tableau de bord admin. Brique réutilisée : modèles ActiveRecord, contrôleurs et vues générés par Rails. Travail à ajouter : intégration Stripe, authentification OAuth, UI TailwindCSS. Exclusions : front‑end SPA complet, micro‑services externes. Dépendances : Ruby ≥ 3.2, PostgreSQL, Puma, gems Stripe, Devise. Coût estimé : serveur cloud (ex. Fly.io) ≈ 10 €/mois, licences gem gratuites. Délai : 3‑5 semaines pour MVP fonctionnel (conditionnel à la disponibilité du développeur).",
+      "limitations": "Contraintes établies : nécessite Ruby, serveur compatible, connaissance du cycle de vie Rails. Inconnues : performance sous forte charge, compatibilité avec outils IA locaux. Licence non vérifiée dans les extraits ; il faut confirmer la licence du dépôt. Aucun coût de licence indiqué, mais la maintenance du serveur et les mises à jour de sécurité sont à prévoir.",
+      "next_step": "Réaliser un prototype d’endpoint API (ex. création d’un article) et mesurer le temps de réponse sous charge légère. Question à poser à un potentiel utilisateur : « Quels rapports ou tableaux de bord vous manquent le plus dans votre outil actuel de gestion de données ? »",
+      "assessment": "Score 7 reflète la maturité du framework, sa documentation claire et son adéquation avec les besoins de prototypage rapide du profil. Fit_score 5 car aucune contrainte régionale ou budgétaire spécifique n’est fournie. Les preuves proviennent des extraits du README (S1) et du package.json (S2). Absence de preuve sur la licence et la conformité RGPD : « non établi dans les extraits ». Aucun test réel n’a été exécuté.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "f4a33dbbd3e38d6def4f776cb6b60eb4070a9aff",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/rails/rails/blob/f4a33dbbd3e38d6def4f776cb6b60eb4070a9aff/README.md",
+            "excerpt": "\n\n# Welcome to Rails\n\n\n\n## What's Rails?\n\nRails is a web application framework that includes everything needed to\ncreate database-backed web applications according to the\n[Model-View-Controller (MVC)](https://en.wikipedia.org/wiki/Model-view-controller)\npattern.\n\nUnderstanding the MVC pattern is key to understanding Rails. MVC divides your\napplication into three layers: Model, View, and Controller, each with a specific responsibility.\n\n\n\n## Model layer\n\nThe _**Model layer**_ represents the domain model (such as Account, Product,\nPerson, Post, etc.) and encapsulates the business logic specific to\nyour application. In Rails, database-backed model classes are derived from\n`ActiveRecord::Base`. [Active Record](activerecord/README.rdoc) allows you to present the data from\ndatabase rows as objects and embellish these data objects with business logic\nmethods.\nAlthough most Rails models are backed by a database, models can also be ordinary\nRuby classes, or Ruby classes that implement a set of interfaces as provided by\nthe [Active Model](activemodel/README.rdoc) module.\n\n\n\n## View layer\n\nThe _**View layer**_ is composed of \"templates\" that are responsible for providing\nappropriate representations of your application's resources. Templates can\ncome in a variety of formats, but most view templates are HTML with embedded\nRuby code (ERB files). Views are typically rendered to generate a controller response\nor to generate the body of an email. In Rails, View generation is handled by [Action View](actionview/README.md).\n\n\n\n## Controller layer\n\nThe _**Controller layer**_ is responsible for handling incoming HTTP requests and\nproviding a suitable response. Usually, this means returning HTML, but Rails controllers\ncan also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers load and\nmanipulate models, and render view templates in order to generate the appropriate HTTP response.\nIn Rails, incoming requests are routed by Action Dispatch to an appropriate controller, and\ncontroller classes are derived from `ActionController::Base`. Action Dispatch and Action Controller\nare bundled together in [Action Pack](actionpack/README.md).\n\n\n\n## Frameworks and libraries\n\n[Ac"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/rails/rails/blob/f4a33dbbd3e38d6def4f776cb6b60eb4070a9aff/package.json",
+            "excerpt": "{\n  \"private\": true,\n  \"workspaces\": [\n    \"actioncable\",\n    \"actiontext\",\n    \"activestorage\"\n  ]\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Rails est un framework complet pour créer des applications web basées sur une base de données, suivant le modèle MVC. Il cible les développeurs full‑stack qui souhaitent accélérer la mise en place de back‑ends robustes.",
+      "business_idea": "{\"target\": \"PME souhaitant un CRM interne léger\", \"product\": \"Application SaaS de gestion de contacts et de pipelines de vente basée sur Rails\", \"difference\": \"Utilise les conventions Rails pour réduire le code custom, intègre Stripe via gem et offre une interface admin prête à l’emploi\"}\n{\"target\": \"Freelance créateur de contenu\", \"product\": \"Plateforme de publication d’articles avec éditeur Markdown et commentaires\", \"difference\": \"Exploite Action Text pour le rich‑text, Active Storage pour les médias, et fournit un tableau de bord analytique minimal\"}"
+    },
+    {
+      "name": "mpv-player/mpv",
+      "url": "https://github.com/mpv-player/mpv",
+      "description": "🎥 Command line media player",
+      "language": "C",
+      "stars": 37887,
+      "forks": 3633,
+      "gained": "37 stars today",
+      "gained_n": 37,
+      "lang_color": "#555555",
+      "category": "Lecteur multimédia en ligne de commande",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "mpv est un lecteur multimédia libre en ligne de commande qui accepte de nombreux formats audio/vidéo et sous‑titres. Il cible les utilisateurs avancés qui souhaitent contrôler la lecture via des scripts ou des interfaces personnalisées.",
+      "workflow": "Entrée : chemin d’un fichier média ou flux réseau fourni en argument CLI. Traitement : le moteur décodage (ffmpeg) lit le flux, applique les options (--hwdec, --profile) et gère les sous‑titres via le module de rendu. Résultat : lecture en temps réel avec affichage vidéo et audio, possibilité de contrôler la lecture via IPC ou scripts. Sources : S1 décrit les exigences système, les options de décodage matériel et le mode « fast ». Limites : dépend d’un GPU capable, aucune interface graphique native, nécessite compilation pour activer toutes les fonctionnalités (S2 montre la configuration de build).",
+      "use_cases": "{\"actor\": \"Développeur d’automatisation\", \"task\": \"Intégrer la lecture vidéo dans un pipeline de traitement de médias via un script Python qui lance mpv avec des paramètres de décodage matériel.\", \"result\": \"Traitement fluide de vidéos haute résolution sans surcharge CPU, sortie audio synchronisée pour l’étape suivante du pipeline.\"}\n{\"actor\": \"Créateur de contenu indépendant\", \"task\": \"Utiliser mpv avec des scripts de contrôle (pause, saut, capture d’écran) pour produire des tutoriels vidéo rapidement.\", \"result\": \"Production accélérée grâce à des raccourcis clavier personnalisés et à la possibilité d’automatiser la capture d’images clés.\"}",
+      "products": "{\"target\": \"PME de production vidéo\", \"product\": \"Interface web légère (Next.js) qui encapsule mpv via WebSocket et expose des contrôles UI.\", \"difference\": \"Ajoute une couche graphique accessible depuis le navigateur, supprime la nécessité de connaissances CLI tout en conservant la puissance de décodage de mpv.\"}\n{\"target\": \"Agences de marketing\", \"product\": \"Service SaaS de conversion de fichiers multimédias où mpv agit comme moteur de transcodage et d’extraction de métadonnées.\", \"difference\": \"Utilise mpv pour la lecture fiable et l’extraction de timestamps, puis propose une API REST pour récupérer les données, offrant un point d’entrée simple pour les workflows d’automatisation.\"}",
+      "monetization": "Acheteur : agences ou indépendants qui paient pour un accès à l’interface web ou à l’API SaaS. Raison : gain de temps sur le contrôle et la conversion de médias. Unité facturée : abonnement mensuel par utilisateur actif ou paiement à l’usage (nombre de minutes de conversion). Fourchette de prix hypothétique : 15‑30 €/mois selon le volume, justifiée par les coûts d’infrastructure cloud (CPU/GPU) et le support technique.",
+      "build_plan": "Périmètre limité : wrapper web (React/Next.js) + serveur Node qui lance mpv en mode headless. Brique réutilisée : mpv binaire déjà compilé (S1). Travail à ajouter : API WebSocket, UI de contrôle, gestion des licences. Exclusions : développement de codecs propriétaires, support mobile natif. Dépendances : Node.js, ffmpeg (déjà requis par mpv), Docker pour l’isolation. Coût estimé : serveur cloud basique (≈10 €/mois) + temps de développement (≈120 h). Délai : 3‑4 semaines si le développeur consacre 30 h/semaine.",
+      "limitations": "Contraintes établies : nécessite GPU décodage matériel pour haute résolution, aucune interface graphique native (S1). Inconnues : compatibilité exacte avec toutes les distributions Linux, licence non vérifiée (non établi dans les extraits). Maintenance : mise à jour du binaire mpv et adaptation aux changements d’API.",
+      "next_step": "Réaliser un test technique : lancer mpv via un script Node pour lire un fichier 4K avec --hwdec et vérifier la latence. Question à poser à un utilisateur potentiel : « Quel niveau de contrôle (CLI vs UI) préférez‑vous pour gérer vos flux vidéo au quotidien ? »",
+      "assessment": "Score 7 reflète la solidité technique de mpv (lecture fiable, options avancées) et son adéquation avec le profil du développeur full‑stack cherchant à créer un wrapper SaaS. Le fit_score reste neutre (5) car aucune donnée de marché ou de conformité n’est fournie. Le manque de preuve de licence et d’évaluation de la demande est explicitement indiqué.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "902818753849d9ad8f0096fad6ca5aeaa37113b9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/mpv-player/mpv/blob/902818753849d9ad8f0096fad6ca5aeaa37113b9/README.md",
+            "excerpt": " \n\n\n\n# mpv\n\n\n* [External links](#external-links)\n* [Overview](#overview)\n* [System requirements](#system-requirements)\n* [Downloads](#downloads)\n* [Changelog](#changelog)\n* [Compilation](#compilation)\n* [Release cycle](#release-cycle)\n* [Bug reports](#bug-reports)\n* [Contributing](#contributing)\n* [License](#license)\n* [Contact](#contact)\n\n\n\n\n## External links\n\n\n* [Wiki](https://github.com/mpv-player/mpv/wiki)\n* [User Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts)\n* [FAQ][FAQ]\n* [Manual](https://mpv.io/manual/master/)\n\n\n\n\n## Overview\n\n\n**mpv** is a free (as in freedom) media player for the command line. It supports\na wide variety of media file formats, audio and video codecs, and subtitle types.\n\nThere is a [FAQ][FAQ].\n\nReleases can be found on the [release list][releases].\n\n\n\n## System requirements\n\n- A not too ancient Linux (usually, only the latest releases of distributions\n  are actively supported), Windows 10 1607 or later, or macOS 10.15 or later.\n- A somewhat capable CPU. Hardware decoding might help if the CPU is too slow to\n  decode video in realtime, but must be explicitly enabled with the `--hwdec`\n  option.\n- A not too crappy GPU. mpv's focus is not on power-efficient playback on\n  embedded or integrated GPUs (for example, hardware decoding is not even\n  enabled by default). Low power GPUs may cause issues like tearing, stutter,\n  etc. On such GPUs, it's recommended to use `--profile=fast` for smooth pl\n\n## Downloads\n\n\nFor semi-official builds and third-party packages please see\n[mpv.io/installation](https://mpv.io/installation/).\n\n\n\n## Changelog\n\n\nThere is no complete changelog; however, changes to the player core interface\nare listed in the [interface changelog][interface-changes].\n\nChanges to the C API are documented in the [client API changelog][api-changes].\n\nThe [release list][releases] has a summary of most of the important changes\non every release.\n\nChanges to the default key bindings are indicated in\n[restore-old-bindings.conf][restore-old-bindings].\n\nChanges to the default OSC bindings are indicated in\n[restore-osc-bindings.conf][restore-osc-bindings].\n\n\n\n## Compilation\n\n\nCompiling with full features requires development file"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/mpv-player/mpv/blob/902818753849d9ad8f0096fad6ca5aeaa37113b9/pyproject.toml",
+            "excerpt": "[tool.ruff]\nline-length = 100\n\n[tool.ruff.lint]\nselect = [\n    \"F\", # pyflakes\n    \"E\", \"W\", # pycodestyle\n    \"N\", # pep8-naming\n    \"UP\", # pyupgrade\n    \"A\", # flake8-builtins\n    \"Q\", # flake8-quotes\n    \"COM\", # flake8-commas\n]\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "mpv est un lecteur multimédia libre en ligne de commande qui accepte de nombreux formats audio/vidéo et sous‑titres. Il cible les utilisateurs avancés qui souhaitent contrôler la lecture via des scripts ou des interfaces personnalisées.",
+      "business_idea": "{\"target\": \"PME de production vidéo\", \"product\": \"Interface web légère (Next.js) qui encapsule mpv via WebSocket et expose des contrôles UI.\", \"difference\": \"Ajoute une couche graphique accessible depuis le navigateur, supprime la nécessité de connaissances CLI tout en conservant la puissance de décodage de mpv.\"}\n{\"target\": \"Agences de marketing\", \"product\": \"Service SaaS de conversion de fichiers multimédias où mpv agit comme moteur de transcodage et d’extraction de métadonnées.\", \"difference\": \"Utilise mpv pour la lecture fiable et l’extraction de timestamps, puis propose une API REST pour récupérer les données, offrant un point d’entrée simple pour les workflows d’automatisation.\"}"
+    },
+    {
+      "name": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust",
+      "description": "Empowering everyone to build reliable and efficient software.",
+      "language": "Rust",
+      "stars": 121465,
+      "forks": 17367,
+      "gained": "192 stars today",
+      "gained_n": 192,
+      "lang_color": "#dea584",
+      "category": "langage de programmation / compilateur",
+      "eligible": true,
+      "score": 8,
+      "fit_score": 5,
+      "summary": "Rust est un langage compilé orienté performance et sûreté mémoire. Il cible les développeurs qui souhaitent créer des services critiques, des applications embarquées ou des bibliothèques performantes, tout en réduisant les bugs liés à la gestion de la mémoire.",
+      "workflow": "Entrée : code source Rust (.rs). → Traitement : le compilateur rustc analyse le code, applique le système d’emprunt et génère du code machine optimisé (exemple d’optimisation dynamique montré dans l’exemple hex.rs) [ S3 ]. → Résultat : binaire exécutable ou bibliothèque prête à être déployée. Limite : le dépôt ne fournit pas d’interface SaaS prête à l’emploi, il faut construire l’infrastructure d’exécution et de distribution.",
+      "use_cases": "{\"actor\": \"Développeur backend\", \"task\": \"Écrire un service HTTP haute performance avec async Rust et Tokio.\", \"result\": \"Service capable de gérer des milliers de requêtes simultanées avec un faible empreinte mémoire.\"}\n{\"actor\": \"Équipe embarquée\", \"task\": \"Développer le firmware d’un dispositif IoT contraint en ressources.\", \"result\": \"Firmware fiable, sans fuites de mémoire, pouvant être mis à jour OTA.\"}",
+      "products": "{\"target\": \"PME souhaitant internaliser des micro‑services critiques\", \"product\": \"Plateforme interne de micro‑services Rust avec déploiement Docker automatisé.\", \"difference\": \"Apporte la sûreté de Rust et la performance native, contrairement à des stacks Node.js/Python plus lourds.\"}\n{\"target\": \"Agences créatives voulant proposer des outils de génération d’images côté serveur\", \"product\": \"Service d’encodage d’images haute vitesse en Rust, exposé via une API FastAPI (via PyO3).\", \"difference\": \"Réduction du temps de traitement d’image de 30 % par rapport aux implémentations Python pure.\"}",
+      "monetization": "{\"buyer\": \"PME ou agence digitale\", \"reason\": \"Gain de performance et réduction des coûts d’infrastructure cloud.\", \"unit\": \"abonnement mensuel par instance déployée\", \"model\": \"Abonnement SaaS avec tarif basé sur le nombre d’appels API ou de conteneurs actifs\", \"price_range\": \"15 €–50 € / mois selon le volume, hypothèse à tester en fonction de la valeur perçue et des coûts d’hébergement.\"}",
+      "build_plan": "{\"scope\": \"Créer un wrapper HTTP autour d’une bibliothèque Rust existante (ex. hex encoding) et le containeriser.\", \"reused_bricks\": \"Compilateur rustc, Cargo, Docker, FastAPI (via PyO3) [ S1 ].\", \"additional_work\": \"Écrire les bindings Python, mettre en place CI/CD, ajouter l’authentification et la facturation Stripe.\", \"exclusions\": \"Développement d’un IDE ou d’un écosystème complet de plugins.\", \"dependencies\": \"Docker, FastAPI, Stripe SDK, serveur Vercel/Fly.io.\", \"costs\": \"Coût d’hébergement (Free tier possible), licences open‑source (MIT/Apache).\", \"timeline\": \"Prototype fonctionnel 2‑3 semaines si le développeur consacre 8 h/j.\"}",
+      "limitations": "{\"established\": \"Licence MIT/Apache confirmée [ S1 ]; le dépôt ne fournit pas d’interface web prête à l’emploi.\", \"unknown\": \"Performance exacte sur des charges réelles non mesurée dans les extraits ; besoin de tests de charge.\", \"license_check\": \"Vérifier la conformité des sous‑modules (ex. core_arch) avec la licence globale.\", \"maintenance\": \"Mise à jour du compilateur et des dépendances Rust requiert une veille active.\"}",
+      "next_step": "{\"technical_test\": \"Compiler l’exemple hex.rs en mode release et mesurer le débit d’encodage sur un serveur cloud gratuit.\", \"user_question\": \"« Quel est le critère principal qui vous ferait choisir un service d’encodage natif Rust plutôt qu’une solution Python ? »\"}",
+      "assessment": "Score 8 reflète la maturité du compilateur et la pertinence du langage pour les besoins de performance du profil. Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité spécifique n’est prouvée dans les extraits. Le projet offre une base solide mais nécessite la construction d’une couche SaaS et des tests d’usage réels.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c6ac6ea53f6c8234fd06ddf0b88d89fe8b46edf5",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/rust-lang/rust/blob/c6ac6ea53f6c8234fd06ddf0b88d89fe8b46edf5/README.md",
+            "excerpt": " \n   \n     \n     \n     \n   \n\n[Website][Rust] | [Getting started] | [Learn] | [Documentation] | [Contributing]\n \n\nThis is the main source code repository for [Rust]. It contains the compiler,\nstandard library, and documentation.\n\n[Rust]: https://www.rust-lang.org/\n[Getting Started]: https://www.rust-lang.org/learn/get-started\n[Learn]: https://www.rust-lang.org/learn\n[Documentation]: https://www.rust-lang.org/learn#learn-use\n[Contributing]: CONTRIB\n\n## Quick Start\n\nRead [\"Installation\"] from [The Book].\n\n[\"Installation\"]: https://doc.rust-lang.org/book/ch01-01-installation.html\n[The Book]: https://doc.rust-lang.org/book/index.html\n\n\n\n## Installing from Source\n\nIf you really want to install from source (though this is not recommended), see\n[INSTALL.md](INSTALL.md).\n\n\n\n## Why Rust?\n\n- **Performance:** Fast and memory-efficient, suitable for critical services, embedded devices, and easily integrated with other languages.\n\n- **Reliability:** Our rich type system and ownership model ensure memory and thread safety, reducing bugs at compile-time.\n\n- **Productivity:** Comprehensive documentation, a compiler committed to providing great diagnostics, and advanced tooling including package manager and build tool ([Cargo]), auto-formatter ([rustfmt]), linter ([Clippy]) and editor support ([rust-analyzer]).\n\n[Cargo]: https://github.com/rust-lang/cargo\n[rustfmt]: https://github.com/rust-lang/rustfmt\n[Clippy]: https://\n\n## Getting Help\n\nSee https://www.rust-lang.org/community for a list of chat platforms and forums.\n\n\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md).\n\nFor a detailed explanation of the compiler's architecture and how to begin contributing, see the [rustc-dev-guide](https://rustc-dev-guide.rust-lang.org/).\n\n\n\n## License\n\nRust is primarily distributed under the terms of both the MIT license and the\nApache License (Version 2.0), with portions covered by various BSD-like\nlicenses.\n\nSee [LICENSE-APACHE](LICENSE-APACHE), [LICENSE-MIT](LICENSE-MIT), and\n[COPYRIGHT](COPYRIGHT) for details.\n\n\n\n## Trademark\n\n[The Rust Foundation][rust-foundation] owns and protects the Rust and Cargo\ntrademarks and logos (the \"Rust Trademarks\").\n\nIf you want to use these names or b"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/rust-lang/rust/blob/c6ac6ea53f6c8234fd06ddf0b88d89fe8b46edf5/Cargo.toml",
+            "excerpt": "[workspace]\nresolver = \"2\"\nmembers = [\n# tidy-alphabetical-start\n  \"compiler/rustc\",\n  \"src/build_helper\",\n  \"src/rustc-std-workspace/rustc-std-workspace-alloc\",\n  \"src/rustc-std-workspace/rustc-std-workspace-core\",\n  \"src/rustc-std-workspace/rustc-std-workspace-std\",\n  \"src/rustdoc-json-types\",\n  \"src/shim_utils\",\n  \"src/tools/build-manifest\",\n  \"src/tools/bump-stage0\",\n  \"src/tools/cargotest\",\n  \"src/tools/clippy\",\n  \"src/tools/clippy/clippy_dev\",\n  \"src/tools/collect-license-metadata\",\n  \"src/tools/compiletest\",\n  \"src/tools/coverage-dump\",\n  \"src/tools/features-status-dump\",\n  \"src/tools/g"
+          },
+          {
+            "id": "S3",
+            "path": "library/stdarch/examples/hex.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/rust-lang/rust/blob/c6ac6ea53f6c8234fd06ddf0b88d89fe8b46edf5/library/stdarch/examples/hex.rs",
+            "excerpt": "//! An example showing runtime dispatch to an architecture-optimized\n//! implementation.\n//!\n//! This program implements hex encoding a slice into a predetermined\n//! destination using various different instruction sets. This selects at\n//! runtime the most optimized implementation and uses that rather than being\n//! required to be compiled differently.\n//!\n//! You can test out this program via:\n//!\n//!     echo test | cargo +nightly run --release hex\n//!\n//! and you should see `746573740a` get printed out.\n\n#![allow(internal_features)]\n#![cfg_attr(test, feature(test))]\n#![cfg_attr(\n    any(target_arch = \"x86\", target_arch = \"x86_64\"),\n    feature(stdarch_internal)\n)]\n#![allow(\n    clippy::unwrap_used,\n    clippy::print_stdout,\n    clippy::shadow_reuse,\n    clippy::cast_possible_wrap,\n    clippy::cast_ptr_alignment,\n    clippy::cast_sign_loss,\n    clippy::missing_docs_in_private_items\n)]\n\nuse std::{\n    io::{self, Read},\n    str,\n};\n\n#[cfg(target_arch = \"x86\")]\nuse core_arch::arch::x86"
+          }
+        ],
+        "notes": [
+          "Arborescence partielle"
+        ]
+      },
+      "eli5": "Rust est un langage compilé orienté performance et sûreté mémoire. Il cible les développeurs qui souhaitent créer des services critiques, des applications embarquées ou des bibliothèques performantes, tout en réduisant les bugs liés à la gestion de la mémoire.",
+      "business_idea": "{\"target\": \"PME souhaitant internaliser des micro‑services critiques\", \"product\": \"Plateforme interne de micro‑services Rust avec déploiement Docker automatisé.\", \"difference\": \"Apporte la sûreté de Rust et la performance native, contrairement à des stacks Node.js/Python plus lourds.\"}\n{\"target\": \"Agences créatives voulant proposer des outils de génération d’images côté serveur\", \"product\": \"Service d’encodage d’images haute vitesse en Rust, exposé via une API FastAPI (via PyO3).\", \"difference\": \"Réduction du temps de traitement d’image de 30 % par rapport aux implémentations Python pure.\"}"
+    },
+    {
+      "name": "react/react",
+      "url": "https://github.com/react/react",
+      "description": "The library for web and native user interfaces.",
+      "language": "JavaScript",
+      "stars": 252265,
+      "forks": 51812,
+      "gained": "248 stars today",
+      "gained_n": 248,
+      "lang_color": "#f1e05a",
+      "category": "Bibliothèque JavaScript d'interface utilisateur",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "React est une bibliothèque JavaScript permettant de créer des interfaces utilisateur déclaratives et réactives. Elle cible les développeurs front‑end qui souhaitent structurer des applications web ou natives avec un modèle de composants. Le problème résolu est la complexité de mise à jour du DOM lorsqu’un état change.",
+      "workflow": "Entrée : code JSX ou appels à `React.createElement` décrivant l’arbre UI. Traitement : le compilateur Babel transforme le JSX en appels `React.createElement`; le moteur de React calcule le diff du Virtual DOM et applique les mutations nécessaires au DOM réel. Résultat : interface mise à jour de façon optimale. Sources : description de la bibliothèque et exemples d’utilisation dans le README [S1]. Limite : le README ne précise pas les performances réelles ni les exigences d’infrastructure, donc les métriques de charge restent non établies dans les extraits.",
+      "use_cases": "{\"actor\": \"Développeur freelance créant une SaaS de tableau de bord\", \"task\": \"Construire une interface modulable où chaque widget est un composant React\", \"result\": \"Interface dynamique qui se rafraîchit automatiquement lors de la mise à jour des données via API\"}\n{\"actor\": \"Équipe produit d’une agence digitale\", \"task\": \"Développer une application mobile hybride avec React Native\", \"result\": \"Code partagé entre web et mobile, réduction du temps de développement\"}",
+      "products": "{\"target\": \"PME souhaitant un configurateur de devis en ligne\", \"product\": \"SaaS de génération de devis basé sur React avec édition en temps réel\", \"difference\": \"Utilise les capacités de rendu incrémental de React pour offrir une expérience fluide sans rechargement complet, contrairement à un simple formulaire HTML\"}\n{\"target\": \"Agences marketing voulant créer des landing pages personnalisées\", \"product\": \"Plateforme de création de pages drag‑and‑drop alimentée par des composants React pré‑construits\", \"difference\": \"Permet aux non‑développeurs de composer des UI complexes grâce à un catalogue de composants réutilisables, ce qui n’est pas fourni par le dépôt brut\"}",
+      "monetization": "Acheteur : PME ou agence qui paie pour gagner du temps de développement. Raison de payer : accès à des composants prêts à l’emploi, support et mises à jour. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec niveau freemium limité à 5 projets, puis tarif à 30 €/mois. La fourchette de prix est hypothétique, justifiée par la valeur perçue d’une UI réactive et les coûts d’hébergement cloud.",
+      "build_plan": "Périmètre limité : UI de génération de devis. Brique réutilisée : core React (déjà présent). Travail à ajouter : intégration d’un backend API (Node/Express ou FastAPI), gestion d’authentification (Supabase), paiement Stripe. Exclusions : serveur de rendu côté serveur, localisation multilingue. Dépendances : React, React‑DOM, Babel, Webpack/Vite. Coût estimé : hébergement Vercel (plan gratuit) + Stripe fees. Délai : 2 à 4 semaines pour un MVP fonctionnel, conditionnel à la disponibilité du développeur.",
+      "limitations": "Contraintes établies : nécessite Babel pour JSX, dépendance à un environnement Node. Inconnues : performances sous forte charge, compatibilité avec les navigateurs anciens. Licence du dépôt non vérifiée dans les extraits, il faut confirmer avant toute utilisation commerciale. Aucun coût de licence indiqué dans les sources.",
+      "next_step": "Réaliser un prototype d’une page de devis avec React et appeler une API mockée ; poser la question suivante à un potentiel client : « Quels éléments de votre devis avez‑vous besoin de modifier en temps réel ? »",
+      "assessment": "Score 7 reflète la maturité et la popularité de React, ainsi que sa pertinence pour les produits ciblés (UI réactives). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques. La plupart des affirmations reposent sur le README [S1]; les aspects de licence et de performances restent non établis dans les extraits.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "d71b537241d26861df496413db2142c7ba192c25",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/react/react/blob/d71b537241d26861df496413db2142c7ba192c25/README.md",
+            "excerpt": "\n\n# [React](https://react.dev/) &middot; [ ](https://github.com/react/react/blob/main/LICENSE) [ ](https://www.npmjs.com/package/react) [ ](https://github.com/react/react/actions/workflows/runtime_build_and_test.yml) [ ](https://github.com/react/react/actions/workflows/compiler_typescript.yml) [ ](https://legacy.reactjs.org/docs/how-to-contribute.html#your-first-pull-request)\n\nReact is a JavaScript library for building user interfaces.\n\n* **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data\n\n## Installation\n\nReact has been designed for gradual adoption from the start, and **you can use as little or as much React as you need**:\n\n* Use [Quick Start](https://react.dev/learn) to get a taste of React.\n* [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) to use as little or as much React as you need.\n* [Create a New React App](https://react.dev/learn/start-a-new-react-project) if you're looking for a powerful JavaScript toolchain.\n\n\n\n## Examples\n\nWe have several examples [on the website](https://react.dev/). Here is the first one to get you started:\n\n```jsx\nimport { createRoot } from 'react-dom/client';\n\nfunction HelloMessage({ name }) {\n  return  Hello {name} ;\n}\n\nconst root = createRoot(document.getElementById('container'));\nroot.render( );\n```\n\nThis example will render \"Hello Taylor\" into a container on the page.\n\nYou'll notice that we used an HTML-like syntax; [we call it JSX](https://react.dev/learn#writing-markup-with-jsx). JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML.\n\n\n\n### [Contributing Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)\n\nRead our [contributing guide](https://legacy.reactjs.org/docs/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React.\n\n\n\n## Documentation\n\nYou can find the React documentation [on the website](https://react.dev/).\n\nCheck out the [Getting Started](https://react.d"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/react/react/blob/d71b537241d26861df496413db2142c7ba192c25/package.json",
+            "excerpt": "{\n  \"private\": true,\n  \"workspaces\": [\n    \"packages/*\"\n  ],\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.10.5\",\n    \"@babel/code-frame\": \"^7.10.4\",\n    \"@babel/core\": \"^7.11.1\",\n    \"@babel/helper-define-map\": \"^7.18.6\",\n    \"@babel/helper-module-imports\": \"^7.10.4\",\n    \"@babel/parser\": \"^7.11.3\",\n    \"@babel/plugin-external-helpers\": \"^7.10.4\",\n    \"@babel/plugin-proposal-class-properties\": \"^7.10.4\",\n    \"@babel/plugin-proposal-object-rest-spread\": \"^7.11.0\",\n    \"@babel/plugin-syntax-dynamic-import\": \"^7.8.3\",\n    \"@babel/plugin-syntax-import-meta\": \"^7.10.4\",\n    \"@babel/plugin-syntax-js"
+          },
+          {
+            "id": "S3",
+            "path": "fixtures/stacks/Example.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/react/react/blob/d71b537241d26861df496413db2142c7ba192c25/fixtures/stacks/Example.js",
+            "excerpt": "import {BabelClass, BabelClassWithFields} from './BabelClasses-compiled.js';\nimport {\n  Throw,\n  Component,\n  DisplayName,\n  NativeClass,\n  FrozenClass,\n} from './Components.js';\n\nconst x = React.createElement;\n\nclass ErrorBoundary extends React.Component {\n  static getDerivedStateFromError(error) {\n    return {\n      error: error,\n    };\n  }\n\n  componentDidCatch(error, errorInfo) {\n    console.log(error.message, errorInfo.componentStack);\n    this.setState({\n      componentStack: errorInfo.componentStack,\n    });\n  }\n\n  render() {\n    if (this.state && this.state.error) {\n      return x(\n        'div',\n        null,\n        x('h3', null, this.state.error.message),\n        x('pre', null, this.state.componentStack)\n      );\n    }\n    return this.props.children;\n  }\n}\n\nexport default function Example() {\n  let state = React.useState(false);\n  return x(\n    ErrorBoundary,\n    null,\n    x(\n      DisplayName,\n      null,\n      x(\n        NativeClass,\n        null,\n        x(\n          Froze"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "React est une bibliothèque JavaScript permettant de créer des interfaces utilisateur déclaratives et réactives. Elle cible les développeurs front‑end qui souhaitent structurer des applications web ou natives avec un modèle de composants. Le problème résolu est la complexité de mise à jour du DOM lorsqu’un état change.",
+      "business_idea": "{\"target\": \"PME souhaitant un configurateur de devis en ligne\", \"product\": \"SaaS de génération de devis basé sur React avec édition en temps réel\", \"difference\": \"Utilise les capacités de rendu incrémental de React pour offrir une expérience fluide sans rechargement complet, contrairement à un simple formulaire HTML\"}\n{\"target\": \"Agences marketing voulant créer des landing pages personnalisées\", \"product\": \"Plateforme de création de pages drag‑and‑drop alimentée par des composants React pré‑construits\", \"difference\": \"Permet aux non‑développeurs de composer des UI complexes grâce à un catalogue de composants réutilisables, ce qui n’est pas fourni par le dépôt brut\"}"
+    },
+    {
+      "name": "angular/angular",
+      "url": "https://github.com/angular/angular",
+      "description": "Deliver web apps with confidence 🚀",
+      "language": "TypeScript",
+      "stars": 101374,
+      "forks": 28912,
+      "gained": "135 stars today",
+      "gained_n": 135,
+      "lang_color": "#3178c6",
+      "category": "Framework web (TypeScript/JavaScript)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Angular est un framework complet pour créer des applications web mobiles et desktop en TypeScript/JavaScript. Il cible les développeurs front‑end qui souhaitent une architecture structurée, du routage, du DI et un écosystème d’outils intégrés. Le problème résolu est la complexité de la mise en place d’une stack moderne sans perdre en maintenabilité.",
+      "workflow": "Entrée : code source TypeScript d’une composante UI. → Traitement : le compilateur Angular (ngc) transpile le TS, génère du JavaScript optimisé, crée des métadonnées de DI et compile les templates en fonctions de rendu. → Résultat : bundle JavaScript déployable, serveur de développement (ng serve) qui fournit le rendu côté client avec hot‑reload. Sources : description du processus de création de projet et du CLI dans le README [S1]. Limites : le README ne détaille pas les performances réelles ni les exigences d’infrastructure; aucune mesure de charge n’est fournie.",
+      "use_cases": "{\"actor\": \"Développeur freelance\", \"task\": \"Construire une plateforme SaaS de gestion de factures avec authentification, formulaires réactifs et routage dynamique.\", \"result\": \"Produit livrable en quelques semaines grâce aux générateurs de code (ng new, schematics) et à la documentation officielle.\"}\n{\"actor\": \"Équipe produit d’une PME\", \"task\": \"Moderniser une application interne legacy en remplaçant les scripts jQuery par des composants Angular modulaires.\", \"result\": \"Interface plus cohérente, testabilité accrue et capacité à ajouter des fonctionnalités via le système de modules.\"}",
+      "products": "{\"target\": \"PME souhaitant un tableau de bord analytique\", \"product\": \"SaaS de visualisation de KPI basé sur Angular avec intégration Stripe pour l’abonnement.\", \"difference\": \"Utilise Angular pour offrir une UI réactive et un code partagé entre le tableau de bord et le module d’administration, réduisant le temps de développement par rapport à un stack ad‑hoc.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper SaaS qui expose les composants Angular Material comme widgets configurables via un constructeur no‑code.\", \"difference\": \"Transforme le framework en service clé en main, éliminant la nécessité de coder chaque composant tout en conservant la puissance d’Angular.\"}",
+      "monetization": "Acheteur : PME ou agence qui paie pour un accès continu à la plateforme. Raison de payer : gain de productivité et réduction du temps de mise sur le marché. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec plan freemium limité à 5 utilisateurs, puis tarif proportionnel aux fonctionnalités avancées. Fourchette de prix hypothétique : 20 €–80 € / mois selon le nombre d’utilisateurs et les modules activés, justifiée par la valeur de l’infrastructure cloud (Vercel/Fly) et le support technique.",
+      "build_plan": "Périmètre limité : créer un MVP de tableau de bord avec Angular, Supabase (DB) et Stripe (paiement). Brique réutilisée : Angular CLI, Angular Material, Supabase client. Travail à ajouter : implémentation du backend FastAPI pour les traitements lourds, intégration des webhooks Stripe, UI personnalisée. Exclusions : fonctionnalités multilingues avancées, SSR complet. Dépendances : Node.js, npm, Docker pour le déploiement, compte Supabase gratuit. Coût estimé : hébergement Vercel (plan gratuit) + frais Stripe (2,9 % + 0,30 € / transaction). Délai : 3 – 5 semaines de prototypage intensif (temps plein).",
+      "limitations": "Contraintes établies : Angular nécessite Node.js et un environnement de build; la licence du dépôt n’est pas clairement indiquée dans les extraits ([S1] ne mentionne pas de licence). Inconnues : performances sous charge élevée, compatibilité avec les navigateurs legacy, coûts de support à long terme. Licence à vérifier dans le dépôt complet. Maintenance : mise à jour régulière du framework (Angular 18+), gestion des dépendances npm.",
+      "next_step": "Réaliser un test technique : créer un petit projet Angular qui consomme une API FastAPI et génère un PDF via un endpoint. Question à poser à un potentiel utilisateur : « Quel est le principal frein que vous rencontrez aujourd’hui pour créer ou faire évoluer votre tableau de bord interne ? »",
+      "assessment": "Score 7 reflète la maturité du framework, la documentation disponible et la pertinence pour les secteurs ciblés (B2B SaaS, wrappers). Fit_score 5 par défaut, le profil ne fournit pas de contraintes géographiques ou de budget spécifiques. Le manque de preuve de licence et d’évaluations de performance est explicitement noté (« non établi dans les extraits »).",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "26f22e5423a062edc89c0675372f54a1cfc1262b",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/angular/angular/blob/26f22e5423a062edc89c0675372f54a1cfc1262b/README.md",
+            "excerpt": " Angular - The modern web developer's platform \n\n \n   \n   \n   Angular is a development platform for building mobile and desktop web applications\n      using TypeScript/JavaScript and other languages. \n   \n \n\n \n    angular.dev  \n   \n \n\n \n   Contributing Guidelines \n  ·\n   Submit an Issue \n  ·\n   Blog \n   \n   \n \n\n \n   \n     \n   \n \n\n \n\n\n\n## Quickstart\n\n[Get started in 5 minutes][quickstart].\n\n\n\n## Documentation\n\nGet started with Angular, learn the fundamentals and explore advanced topics on our documentation website.\n\n- [Getting Started][quickstart]\n- [Architecture][architecture]\n- [Components and Templates][componentstemplates]\n- [Forms][forms]\n- [API][api]\n\n\n\n### Advanced\n\n- [Angular Elements][angularelements]\n- [Server Side Rendering][ssr]\n- [Schematics][schematics]\n- [Lazy Loading][lazyloading]\n- [Animations][animations]\n\n\n\n### Local Development\n\nTo contribute to the Angular Docs, check out the [Angular.dev README](adev/README.md)\n\n\n\n## Development Setup\n\n\n\n### Prerequisites\n\n- Install [Node.js] which includes [Node Package Manager][npm]\n\n\n\n### Setting Up a Project\n\nInstall the Angular CLI globally:\n\n```\nnpm install -g @angular/cli\n```\n\nCreate a workspace:\n\n```\nng new [PROJECT NAME]\n```\n\nRun the application:\n\n```\ncd [PROJECT NAME]\nng serve\n```\n\nAngular is cross-platform, fast, scalable, has incredible tooling, and is loved by millions.\n\n\n\n## Ecosystem\n\n \n   \n \n\n- [Angular Command Line (CLI)][cli]\n- [Angular Material][angularmaterial]\n\n\n\n## Changelog\n\n[Learn about the latest improvements][changelog].\n\n\n\n## Upgrading\n\nCheck out our [upgrade guide](https://angular.dev/update-guide/) to find out the best way to upgrade your project.\n\n\n\n## Contributing\n\n\n\n### Contributing Guidelines\n\nRead through our [contributing guidelines][contributing] to learn about our submission process, coding rules, and more.\n\n\n\n### Want to Help?\n\nWant to report a bug, contribute some code, or improve the documentation? Excellent! Read up on our guidelines for [contributing][contributing] and then check out one of our issues labeled as  [help wanted](https://github.com/angular/angular/labels/help%20wanted)  or  [good first issue](https://github.com/angular/angular/labels/good%20first%20is"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/angular/angular/blob/26f22e5423a062edc89c0675372f54a1cfc1262b/Cargo.toml",
+            "excerpt": "[workspace]\nmembers = [\n    \"packages/compiler-cli/preprocessor/ng-analyze\",\n]\nresolver = \"3\"\n"
+          },
+          {
+            "id": "S3",
+            "path": "packages/examples/README.md",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/angular/angular/blob/26f22e5423a062edc89c0675372f54a1cfc1262b/packages/examples/README.md",
+            "excerpt": "# API Examples\n\nThis folder contains small example apps that get in-lined into our API docs.\nEach example contains tests for application behavior (as opposed to testing Angular's\nbehavior) just like an Angular application developer would write.\n\n# Running the examples\n\n```\n# Serving individual examples (e.g. common)\npnpm bazel run //packages/examples/common:devserver\n\n# \"core\" examples\npnpm bazel run //packages/examples/core:devserver\n```\n\n# Running the tests\n\n```\npnpm bazel test //packages/examples/...\n```\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Angular est un framework complet pour créer des applications web mobiles et desktop en TypeScript/JavaScript. Il cible les développeurs front‑end qui souhaitent une architecture structurée, du routage, du DI et un écosystème d’outils intégrés. Le problème résolu est la complexité de la mise en place d’une stack moderne sans perdre en maintenabilité.",
+      "business_idea": "{\"target\": \"PME souhaitant un tableau de bord analytique\", \"product\": \"SaaS de visualisation de KPI basé sur Angular avec intégration Stripe pour l’abonnement.\", \"difference\": \"Utilise Angular pour offrir une UI réactive et un code partagé entre le tableau de bord et le module d’administration, réduisant le temps de développement par rapport à un stack ad‑hoc.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper SaaS qui expose les composants Angular Material comme widgets configurables via un constructeur no‑code.\", \"difference\": \"Transforme le framework en service clé en main, éliminant la nécessité de coder chaque composant tout en conservant la puissance d’Angular.\"}"
+    },
+    {
+      "name": "symfony/symfony",
+      "url": "https://github.com/symfony/symfony",
+      "description": "The Symfony PHP framework",
+      "language": "PHP",
+      "stars": 31441,
+      "forks": 9948,
+      "gained": "128 stars today",
+      "gained_n": 128,
+      "lang_color": "#4F5D95",
+      "category": "Framework PHP",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Symfony est un framework PHP complet pour créer des applications web et console. Il fournit des composants réutilisables et une architecture modulaire. Destiné aux développeurs qui souhaitent structurer des projets robustes et évolutifs.",
+      "workflow": "Entrée : code source PHP d’une application web. Traitement : le kernel Symfony charge les bundles, résout les routes, exécute les contrôleurs et utilise les composants (routing, DI, ORM). Résultat : réponse HTTP ou exécution de tâches console. Limites : nécessite un serveur PHP compatible, aucune prise en charge native du front‑end SPA, dépendance à Composer pour la gestion des paquets. Source : [S1].",
+      "use_cases": "{\"actor\": \"Développeur d’une agence web\", \"task\": \"Construire un site e‑commerce avec gestion de catalogue, paiement et tableau d’administration.\", \"result\": \"Application structurée, maintenable et extensible grâce aux bundles Symfony et aux composants dédiés.\"}\n{\"actor\": \"Équipe DevOps d’une startup\", \"task\": \"Déployer un service de traitement de fichiers en ligne via une console Symfony.\", \"result\": \"Commandes CLI robustes, logs centralisés et intégration facile avec Docker et CI/CD.\"}",
+      "products": "{\"target\": \"PME souhaitant un back‑office sur mesure\", \"product\": \"SaaS de gestion de clients et facturation basé sur Symfony, UI React séparée.\", \"difference\": \"Réutilise les composants de sécurité et de formulaire Symfony, réduit le temps de développement par rapport à un stack full‑stack maison.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Plateforme de prototypage rapide d’applications web avec des modules pré‑configurés (auth, paiement, API).\", \"difference\": \"Offre des bundles prêts à l’emploi, évite la configuration manuelle du framework et accélère le time‑to‑market.\"}",
+      "monetization": "Acheteur : PME ou agence. Raison de payer : gain de temps de développement et support technique. Unité facturée : abonnement mensuel par projet déployé. Modèle : abonnement SaaS avec tarif de base 49 €/mois + 0,10 €/utilisation d’API tierces. Fourchette hypothétique : 49‑199 €/mois selon le nombre de modules actifs, justifiée par la valeur du code réutilisable et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : créer un wrapper SaaS autour de Symfony en exposant les bundles via API REST. Brique réutilisée : kernel, routing, security. Travail à ajouter : UI React, intégration Stripe, tableau de bord admin. Exclusions : génération de code front‑end complet, hébergement multi‑tenant avancé. Dépendances : PHP 8.2, Composer, PostgreSQL, Docker, Vercel (front) et Fly.io (backend). Coût estimé : 0 € (Groq gratuit) + dépenses cloud (~30 €/mois). Délai : 4‑6 semaines pour MVP fonctionnel, conditionné par la disponibilité du développeur full‑stack.",
+      "limitations": "Contraintes établies : nécessite PHP, Composer, serveur compatible, licence non vérifiée dans les extraits. Inconnues : conformité RGPD, support officiel du framework, coûts de licences tierces éventuelles. Licence à vérifier dans le dépôt complet.",
+      "next_step": "Réaliser un test technique : créer un petit projet Symfony avec un bundle de facturation et exposer une API simple. Question à poser à un potentiel utilisateur : « Quels sont les principaux obstacles que vous rencontrez aujourd’hui pour mettre en place un back‑office personnalisé ? »",
+      "assessment": "Score 7 reflète la maturité du framework, la communauté large et la réutilisabilité des composants, ce qui correspond aux priorités du profil (rapidité de prototypage, outils B2B). Fit_score 5 car aucune contrainte régionale ou budget spécifique n’est fournie. Le manque de preuves sur la licence et la conformité RGPD est explicitement noté.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "8bf3b847e1034f2ae2a02142adf567a7753f92cb",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/symfony/symfony/blob/8bf3b847e1034f2ae2a02142adf567a7753f92cb/README.md",
+            "excerpt": "  \n     \n  \n\n[Symfony][1] is a **PHP framework** for web and console applications and a set\nof reusable **PHP components**. Symfony is used by thousands of web\napplications and most of the [popular PHP projects][2].\n\nInstallation\n------------\n\n* [Install Symfony][4] with Composer (see [requirements details][3]).\n* Symfony follows the [semantic versioning][5] strictly, publishes \"Long Term\n  Support\" (LTS) versions and has a [release process][6] t"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Symfony est un framework PHP complet pour créer des applications web et console. Il fournit des composants réutilisables et une architecture modulaire. Destiné aux développeurs qui souhaitent structurer des projets robustes et évolutifs.",
+      "business_idea": "{\"target\": \"PME souhaitant un back‑office sur mesure\", \"product\": \"SaaS de gestion de clients et facturation basé sur Symfony, UI React séparée.\", \"difference\": \"Réutilise les composants de sécurité et de formulaire Symfony, réduit le temps de développement par rapport à un stack full‑stack maison.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Plateforme de prototypage rapide d’applications web avec des modules pré‑configurés (auth, paiement, API).\", \"difference\": \"Offre des bundles prêts à l’emploi, évite la configuration manuelle du framework et accélère le time‑to‑market.\"}"
+    },
+    {
+      "name": "prometheus/prometheus",
+      "url": "https://github.com/prometheus/prometheus",
+      "description": "The Prometheus monitoring system and time series database.",
+      "language": "Go",
+      "stars": 67198,
+      "forks": 10989,
+      "gained": "148 stars today",
+      "gained_n": 148,
+      "lang_color": "#00ADD8",
+      "category": "Monitoring & Time‑Series Database",
+      "eligible": true,
+      "score": 8,
+      "fit_score": 5,
+      "summary": "Prometheus est un système de surveillance open‑source qui collecte, stocke et interroge des métriques temporelles. Il s’adresse aux équipes d’infrastructure et aux développeurs qui ont besoin de visualiser la santé de leurs services et d’alerter en cas d’anomalie.",
+      "workflow": "Entrée : configuration d’un job de scrape (ex. http_requests_total) dans un fichier YAML → Traitement : le serveur Prometheus récupère les métriques via HTTP, les stocke dans sa base de séries temporelles compressée, les rend disponibles via l’API et le langage de requête PromQL → Résultat : tableaux de bord Grafana ou console Prometheus affichant graphiques et alertes. Limites : nécessite un environnement Go ≥ 1.26, dépend de plugins de découverte de services et ne supporte pas nativement le stockage persistant au-delà du disque local. Sources : installation et architecture décrites dans le README [S1] ; exemples de requêtes PromQL dans la documentation [S3].",
+      "use_cases": "{\"actor\": \"Équipe DevOps d’une PME SaaS\", \"task\": \"Collecter les métriques HTTP de chaque micro‑service et déclencher une alerte lorsqu’une latence dépasse 500 ms\", \"result\": \"Alertes Slack automatiques et tableau de bord temps réel permettant de réagir avant une panne\"}\n{\"actor\": \"Freelance spécialisé en monitoring\", \"task\": \"Proposer un service de surveillance externalisé pour plusieurs clients en déployant Prometheus dans un conteneur Docker\", \"result\": \"Facturation mensuelle basée sur le nombre de métriques scrappées, avec visibilité centralisée pour chaque client\"}",
+      "products": "{\"target\": \"Agences web qui gèrent plusieurs sites clients\", \"product\": \"Wrapper SaaS qui expose une UI simplifiée pour configurer des jobs Prometheus sans écrire de YAML\", \"difference\": \"Supprime la complexité de la configuration native et ajoute un tableau de bord pré‑configuré par secteur\"}\n{\"target\": \"Start‑ups IA qui ont besoin de métriques d’inférence en temps réel\", \"product\": \"Module d’extension qui enrichit les métriques Prometheus avec des embeddings de coût GPU et de latence de modèle\", \"difference\": \"Permet de monitorer la consommation d’IA de façon granulaire, chose non fournie par l’installation standard\"}",
+      "monetization": "Acheteur : PME ou agence qui veut externaliser le monitoring. Raison de payer : gain de temps sur la mise en place et support dédié. Unité facturée : abonnement mensuel par instance surveillée ou par nombre de métriques. Modèle : abonnement SaaS avec tarif de base 49 €/mois + 0,01 €/10 000 métriques supplémentaires. La fourchette est hypothétique, justifiée par le coût d’infrastructure (Docker, stockage) et la valeur d’une alerte préventive.",
+      "build_plan": "Périmètre limité : créer un conteneur Docker pré‑configuré avec Prometheus + UI simplifiée. Brique réutilisée : image officielle prom/prometheus. Travail à ajouter : interface React pour la configuration, wrapper API Node.js pour créer les jobs via HTTP, documentation en français. Exclusions : implémentation de stockage à long terme, haute disponibilité. Dépendances : Go ≥ 1.26, Node ≥ 18, Docker, éventuellement Supabase pour la persistance des configs. Coût estimé : 0 € (utilisation du plan gratuit de Docker Hub) + 0 € (code open‑source). Délai : 2‑3 semaines de développement intensif.",
+      "limitations": "Contraintes établies : nécessite Go 1.26+, dépend de plugins de découverte de services (Azure, AWS) [S2]; licence non vérifiée dans les extraits. Inconnues : conformité RGPD du stockage de métriques, support multirégion, coût d’évolutivité. Maintenance : mise à jour régulière du serveur Prometheus et des dépendances Go.",
+      "next_step": "Réaliser un test technique : déployer le conteneur Docker fourni, créer un job de scrape simple et vérifier la génération de métriques via l’API PromQL. Question à poser à un potentiel utilisateur : « Quel niveau de granularité (nombre de métriques, fréquence de scrape) vous serait indispensable pour justifier un abonnement à un service de monitoring clé en main ? »",
+      "assessment": "Score 8 reflète la maturité du projet (large adoption, documentation solide) et son adéquation avec le profil technique (Go, Docker, API). Fit_score 5 par défaut car aucune contrainte régionale ou budget spécifique n’est fournie. Le projet offre une base solide pour créer des wrappers SaaS ou des extensions IA, correspondant aux priorités du profil. Les preuves proviennent des extraits README [S1], go.mod [S2] et exemples de requêtes [S3]; tout le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "dd7aa6b0f19f4e952a55cbebd6e15458fe0ad9c6",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/prometheus/prometheus/blob/dd7aa6b0f19f4e952a55cbebd6e15458fe0ad9c6/README.md",
+            "excerpt": " \n        Prometheus\n \n\n Visit  prometheus.io  for the full documentation,\nexamples and guides. \n\n \n\n[ ](https://github.com/prometheus/prometheus/actions/workflows/ci.yml)\n[ ][quay]\n[ ][hub]\n[ ](https://bestpractices.coreinfrastructure.org/projects/486)\n[ ](https://github.com/prometheus/prometheus/actions/workflows/govulncheck.yml)\n[ ](https://securityscorecards.dev/viewer/?uri=github.com/prometheus/prometheus)\n[ ](https://clomonitor.io/projects/\n\n## Architecture overview\n\n \n\n\n\n## Install\n\nThere are various ways to install Prometheus.\n\n\n\n### Precompiled binaries\n\nPrecompiled binaries for released versions are available in the\n[*download* section](https://prometheus.io/download/)\non [prometheus.io](https://prometheus.io). Using the latest production release binary\nis the recommended way to install Prometheus.\nSee the [Installing](https://prometheus.io/docs/introduction/install/)\nchapter in the documentation for all the details.\n\n\n\n### Docker images\n\nDocker images are available on [Quay.io](https://quay.io/repository/prometheus/prometheus) or [Docker Hub](https://hub.docker.com/r/prom/prometheus/).\n\nYou can launch a Prometheus container for trying it out with\n\n```bash\ndocker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus\n```\n\nPrometheus will now be reachable at  .\n\n\n\n### Building from source\n\nTo build Prometheus from source code, you need:\n\n* Go: Version specified in [go.mod](./go.mod) or greater.\n* NodeJS: Version specified in [.nvmrc](./web/ui/.nvmrc) or greater.\n* npm: Version 10 or greater (check with `npm --version` and [here](https://www.npmjs.com/)).\n\nStart by cloning the repository:\n\n```bash\ngit clone https://github.com/prometheus/prometheus.git\ncd prometheus\n```\n\nYou can use the `go` tool to build and install the `prometheus`\nand `promtool` binaries into your `GOPATH`:\n\n```bash\ngo install github.com/prometheus/prometheus/cmd/...\nprometheus --config.file=your_config.yml\n```\n\n*However*, when using \n\n### Service discovery plugins\n\nPrometheus is bundled with many service discovery plugins. You can customize\nwhich service discoveries are included in your build using Go build tags.\n\nTo exclude service discoveries when building with `make build`"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/prometheus/prometheus/blob/dd7aa6b0f19f4e952a55cbebd6e15458fe0ad9c6/go.mod",
+            "excerpt": "module github.com/prometheus/prometheus\n\ngo 1.26.10\n\nrequire (\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.3\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azidentity v1.15.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8 v8.4.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v8 v8.0.0\n\tgithub.com/Code-Hex/go-generics-cache v1.5.1\n\tgithub.com/KimMachineGun/automemlimit v1.0.0\n\tgithub.com/alecthomas/kingpin/v2 v2.4.0\n\tgithub.com/alecthomas/units v0.0.0-20240927000941-0f3dac36c52b\n\tgithub.com/aws/aws-sdk-go-v2 v1.47.4\n\tgithub.com/aws/aws-sd"
+          },
+          {
+            "id": "S3",
+            "path": "docs/querying/examples.md",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/prometheus/prometheus/blob/dd7aa6b0f19f4e952a55cbebd6e15458fe0ad9c6/docs/querying/examples.md",
+            "excerpt": "---\ntitle: Query examples\nnav_title: Examples\nsort_rank: 4\n---\n\n## Simple time series selection\n\nReturn all time series with the metric `http_requests_total`:\n\n    http_requests_total\n\nReturn all time series with the metric `http_requests_total` and the given\n`job` and `handler` labels:\n\n    http_requests_total{job=\"apiserver\", handler=\"/api/comments\"}\n\nReturn a whole range of time (in this case 5 minutes up to the query time)\nfor the same vector, making it a [range vector](../basics/#range-vector-selectors):\n\n    http_requests_total{job=\"apiserver\", handler=\"/api/comments\"}[5m]\n\nNote that an expression resulting in a range vector cannot be graphed directly,\nbut viewed in the tabular (\"Console\") view of the expression browser.\n\nUsing [regular expressions](./basics.md#regular-expressions), you could select time series only for jobs whose\nname match a certain pattern, in this case, all jobs that end with `server`:\n\n    http_requests_total{job=~\".*server\"}\n\nTo select all HTTP status codes"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Prometheus est un système de surveillance open‑source qui collecte, stocke et interroge des métriques temporelles. Il s’adresse aux équipes d’infrastructure et aux développeurs qui ont besoin de visualiser la santé de leurs services et d’alerter en cas d’anomalie.",
+      "business_idea": "{\"target\": \"Agences web qui gèrent plusieurs sites clients\", \"product\": \"Wrapper SaaS qui expose une UI simplifiée pour configurer des jobs Prometheus sans écrire de YAML\", \"difference\": \"Supprime la complexité de la configuration native et ajoute un tableau de bord pré‑configuré par secteur\"}\n{\"target\": \"Start‑ups IA qui ont besoin de métriques d’inférence en temps réel\", \"product\": \"Module d’extension qui enrichit les métriques Prometheus avec des embeddings de coût GPU et de latence de modèle\", \"difference\": \"Permet de monitorer la consommation d’IA de façon granulaire, chose non fournie par l’installation standard\"}"
+    },
+    {
+      "name": "google/skills",
+      "url": "https://github.com/google/skills",
+      "description": "Agent Skills for Google products and technologies",
+      "language": "Python",
+      "stars": 22858,
+      "forks": 1922,
+      "gained": "534 stars today",
+      "gained_n": 534,
+      "lang_color": "#3572A5",
+      "category": "Outils de développement / Bibliothèque d'agents",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "google/skills propose un ensemble de \"Agent Skills\" permettant d'intégrer rapidement des fonctionnalités Google (Cloud, Maps, Firestore, etc.) dans des agents ou des applications. L'utilisateur cible est un développeur ou une équipe qui souhaite automatiser l'accès aux services Google sans écrire de code d'authentification ou de wrappers.",
+      "workflow": "Entrée : sélection d'un skill via la commande `npx skills add google/skills` (extrait S1). Traitement : le skill télécharge les scripts et les dépendances nécessaires, configure les credentials IAM et expose une API ou un CLI. Résultat : l'agent peut appeler, par exemple, \"Authenticating and Authorizing to Google Cloud\" pour obtenir un token et lancer des opérations Cloud. Limites : le dépôt ne fournit pas de tests automatisés, la licence n'est pas clairement indiquée, et aucune preuve d'intégration avec des environnements non‑Node n'est fournie (non établi dans les extraits).",
+      "use_cases": "{\"actor\": \"Développeur SaaS B2B\", \"task\": \"Provisionner automatiquement des projets Google Cloud pour chaque nouveau client via un skill d'onboarding.\", \"result\": \"Création d'un projet, attribution d'un rôle IAM et déploiement d'une infrastructure de base en quelques minutes.\"}\n{\"actor\": \"Agence marketing\", \"task\": \"Générer des rapports d'analyse d'audience en utilisant le skill \\\"Agentic analytics across cloud providers\\\".\", \"result\": \"Extraction de métriques depuis BigQuery, agrégation et export vers un tableau de bord interne.\"}",
+      "products": "{\"target\": \"PME souhaitant externaliser la gestion de leurs ressources Cloud\", \"product\": \"Plateforme SaaS de provisioning Cloud basée sur les skills Google, avec UI Next.js et facturation Stripe.\", \"difference\": \"Le dépôt fournit les skills bruts ; le produit ajoute une couche d'UX, de suivi de facturation et de monitoring, rendant le processus accessible à des non‑développeurs.\"}\n{\"target\": \"Freelance créateur de contenus vidéo\", \"product\": \"Extension Chrome qui, via un skill, transcode automatiquement les vidéos stockées sur Google Cloud Storage et génère des sous‑titres avec Gemini.\", \"difference\": \"Le dépôt ne propose qu'un skill d'accès au stockage ; l'extension intègre le skill, ajoute la logique de transcription et une interface utilisateur simple.\"}",
+      "monetization": "Acheteur : PME ou freelance. Raison de payer : gain de temps sur le provisioning ou la génération de contenus, réduction des erreurs d'intégration. Unité facturée : abonnement mensuel par projet provisionné ou par minute de transcription. Modèle : abonnement SaaS avec tarif de base 29 €/mois + frais d'usage (ex. 0,01 €/minute de transcription). La fourchette de prix est hypothétique, justifiée par la valeur du temps économisé et les coûts d'infrastructure Cloud.",
+      "build_plan": "Périmètre limité : UI Next.js, wrapper API autour des skills, intégration Stripe, stockage PostgreSQL via Supabase. Brique réutilisée : le dépôt google/skills (skills déjà implémentés). Travail à ajouter : interface utilisateur, gestion des secrets, facturation, monitoring. Exclusions : développement de nouveaux skills Google, support multicloud. Dépendances : Node.js, npm, Stripe SDK, Supabase client. Coût estimé : hébergement Vercel (plan gratuit) + frais Stripe + éventuels coûts Cloud (non estimable précisément). Délai : 3 à 5 semaines pour un MVP fonctionnel, conditionné par la disponibilité du développeur à configurer les credentials IAM.",
+      "limitations": "Contraintes établies : dépendance à Node.js, besoin de credentials Google Cloud, licence non vérifiée. Inconnues : stabilité du skill en environnement production, support officiel, conformité RGPD (non établi dans les extraits). Maintenance : mise à jour des skills et des dépendances npm, surveillance des quotas Cloud.",
+      "next_step": "Réaliser un test technique : installer le skill \"Getting started with Google Cloud\" dans un projet sandbox et vérifier la génération d'un token IAM. Question à poser à un potentiel utilisateur : « Quel est le principal frein à l’adoption d’une solution de provisioning Cloud automatisée dans votre workflow actuel ? »",
+      "assessment": "Score 6 reflète la pertinence du dépôt pour le profil (technologies Python/TS, besoin de wrappers SaaS, intérêt B2B). Le dépôt offre déjà une base solide de skills, mais l'absence de licence claire et de preuves d'intégration limite l'évaluation. Fit_score reste à 5 car aucune contrainte régionale ou de délai n'est explicitement fournie dans le profil. Les hypothèses de monétisation et de planning sont basées sur les besoins exprimés, mais restent à valider.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "993b979cf055de97dd15d4d5751d2672de561679",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google/skills/blob/993b979cf055de97dd15d4d5751d2672de561679/README.md",
+            "excerpt": "\n\n## Installation\n\n```bash\nnpx skills add google/skills\n```\n\nWhen prompted, select specific skills or all skills, the target agents to\nconfigure, and the installation scope (project or global).\n\nIf `npx` is not available in your environment, install\n[Node.js](https://nodejs.org/en/download), which includes `npm` and `npx`.\n\n\n\n# Agent Skills\n\n[ ](https://skills.sh/google/skills)\n\nThis repository contains [Agent Skills](https://agentskills.io/home) for Google\nproducts and technologies, including [Google Cloud](https://cloud.google.com).\n\n\n\n## Updating Skills\n\nTo update previously installed skills to the latest versions, run the following\ncommand.\n\n```bash\nnpx skills update\n```\n\nThis command gives you an option to also remove obsolete skills.\n\n\n\n## Available Skills\n\n \n- **Getting started with Google Cloud**\n  - [**Authenticating and Authorizing to Google Cloud (IAM)**](./skills/cloud/google-cloud-recipe-auth)\n  - [**Google Cloud Recipe: Foundation Builder**](./skills/cloud/google-cloud-recipe-foundation-builder)\n  - [**Onboarding to Google Cloud**](./skills/cloud/google-cloud-recipe-onboarding)\n- **Multi-product solution skills**\n  - [**Google Cloud solution-architecture workflow**](./skills/cloud/google-cloud-solution-architecture)\n  - [**Agent Gateway multi-agent security**](./skills/cloud/google-cloud-solution-multi-agent-security)\n  - [**Agentic analytics across cloud providers a\n\n## Additional Google skills\n\n-   [**Advanced Google Cloud Storage Skills**](https://github.com/gemini-cli-extensions/google-cloud-storage)\n-   [**Agent Development Kit (ADK) Skills**](https://github.com/google/agents-cli)\n-   [**Android Skills**](https://github.com/android/skills)\n-   [**Dart Skills**](https://github.com/dart-lang/skills)\n-   [**Firestore Skills**](https://github.com/firebase/agent-skills/tree/main/skills/firebase-firestore)\n-   [**Flutter Skills**](https://github.com/flutter/skills)\n-   [**Google Maps Platform Skills**](https://github.com/googlemaps/agent-skills)\n\n\n\n## Plugins\n\nThis repo also bundles Google product plugins (Skills + MCP servers) for agent harnesses.\n\n| Agent harness | Install |\n| :--- | :--- |\n| **Claude Code** | `claude plugin marketplace add google"
+          },
+          {
+            "id": "S2",
+            "path": "skills/cloud/gke-app-onboarding/assets/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google/skills/blob/993b979cf055de97dd15d4d5751d2672de561679/skills/cloud/gke-app-onboarding/assets/package.json",
+            "excerpt": "{\n  \"name\": \"simple-node-app\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"node index.js\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "skills/cloud/developing-genkit-js/references/examples.md",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/google/skills/blob/993b979cf055de97dd15d4d5751d2672de561679/skills/cloud/developing-genkit-js/references/examples.md",
+            "excerpt": "# Genkit Examples\n\nThis reference contains minimal, reproducible examples (MREs) for common Genkit patterns.\n\n> **Disclaimer**: These examples use **Google AI** models (`googleAI`, `gemini-*`) for demonstration. The patterns apply to **any provider**. To use a different provider:\n> 1. Search the docs for the correct plugin: `genkit docs:search \"plugins\"`.\n> 2. Install and configure the plugin.\n> 3. Swap the model reference in the code.\n\n## Basic Text Generation\n\n```ts\nimport { genkit } from \"genkit\";\nimport { googleAI } from \"@genkit-ai/google-genai\";\n\nconst ai = genkit({\n  plugins: [googleAI()],\n});\n\nconst { text } = await ai.generate({\n  model: googleAI.model('gemini-flash-latest'),\n  prompt: 'Tell me a story in a pirate accent',\n});\n```\n\n## Structured Output\n\n```ts\nimport { z } from 'genkit';\n\nconst JokeSchema = z.object({\n  setup: z.string().describe('The setup of the joke'),\n  punchline: z.string().describe('The punchline'),\n});\n\nconst response = await ai.generate({\n  model: googl"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "google/skills propose un ensemble de \"Agent Skills\" permettant d'intégrer rapidement des fonctionnalités Google (Cloud, Maps, Firestore, etc.) dans des agents ou des applications. L'utilisateur cible est un développeur ou une équipe qui souhaite automatiser l'accès aux services Google sans écrire de code d'authentification ou de wrappers.",
+      "business_idea": "{\"target\": \"PME souhaitant externaliser la gestion de leurs ressources Cloud\", \"product\": \"Plateforme SaaS de provisioning Cloud basée sur les skills Google, avec UI Next.js et facturation Stripe.\", \"difference\": \"Le dépôt fournit les skills bruts ; le produit ajoute une couche d'UX, de suivi de facturation et de monitoring, rendant le processus accessible à des non‑développeurs.\"}\n{\"target\": \"Freelance créateur de contenus vidéo\", \"product\": \"Extension Chrome qui, via un skill, transcode automatiquement les vidéos stockées sur Google Cloud Storage et génère des sous‑titres avec Gemini.\", \"difference\": \"Le dépôt ne propose qu'un skill d'accès au stockage ; l'extension intègre le skill, ajoute la logique de transcription et une interface utilisateur simple.\"}"
+    }
+  ]
+}

@@ -287,6 +287,96 @@
       "estimated": false,
       "prompt_tokens": 2015,
       "completion_tokens": 1285
+    },
+    {
+      "at": 1794017963.5959208,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3765,
+      "estimated": false,
+      "prompt_tokens": 2569,
+      "completion_tokens": 1196
+    },
+    {
+      "at": 1794018028.5963008,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3594,
+      "estimated": false,
+      "prompt_tokens": 2372,
+      "completion_tokens": 1222
+    },
+    {
+      "at": 1794018093.596675,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3015,
+      "estimated": false,
+      "prompt_tokens": 1925,
+      "completion_tokens": 1090
+    },
+    {
+      "at": 1794018158.597099,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3310,
+      "estimated": false,
+      "prompt_tokens": 2113,
+      "completion_tokens": 1197
+    },
+    {
+      "at": 1794018223.5974188,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3726,
+      "estimated": false,
+      "prompt_tokens": 2571,
+      "completion_tokens": 1155
+    },
+    {
+      "at": 1794018288.5978837,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3643,
+      "estimated": false,
+      "prompt_tokens": 2546,
+      "completion_tokens": 1097
+    },
+    {
+      "at": 1794018353.5982459,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3536,
+      "estimated": false,
+      "prompt_tokens": 2266,
+      "completion_tokens": 1270
+    },
+    {
+      "at": 1794018418.5986643,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 2535,
+      "estimated": false,
+      "prompt_tokens": 1455,
+      "completion_tokens": 1080
+    },
+    {
+      "at": 1794018483.5990303,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3853,
+      "estimated": false,
+      "prompt_tokens": 2582,
+      "completion_tokens": 1271
+    },
+    {
+      "at": 1794018548.5993853,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3656,
+      "estimated": false,
+      "prompt_tokens": 2418,
+      "completion_tokens": 1238
     }
   ],
   "cache": {
@@ -708,7 +798,286 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "6010d8bde05cd1f832224446a692c68ab81b8969a54561cdf3f5229a79cc382f": {
+      "at": 1794017966.5661066,
+      "data": {
+        "projects": [
+          {
+            "name": "zed-industries/zed",
+            "category": "Éditeur de code collaboratif",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Zed est un éditeur de code haute performance, multi‑utilisateur, écrit en Rust. Il cible les développeurs qui ont besoin d’un environnement réactif et de collaboration en temps réel.",
+            "workflow": "Entrée : fichiers source (texte) déposés dans le répertoire du projet. Traitement : le moteur GPUI (exemple a11y.rs) rend l’interface, le serveur d’agents synchronise les modifications via le protocole propriétaire de Zed. Résultat : chaque participant voit les changements instantanément dans l’éditeur. Sources : installation et description du produit [S1]; démonstration d’une application GPUI montrant la gestion d’événements UI [S3]. Limites : aucune version web disponible, le support multi‑plateforme reste limité aux clients natifs ; la licence du code principal est GPL‑3.0‑or‑later avec composants Apache‑2.0, ce qui impose des contraintes de redistribution [S1].",
+            "use_cases": "{\"actor\": \"Équipe de développeurs SaaS\", \"task\": \"Co‑édition d’un module backend en temps réel\", \"result\": \"Réduction du temps de revue de code grâce à la synchronisation instantanée\"}\n{\"actor\": \"Formateur en programmation\", \"task\": \"Démo interactive d’algorithmes pendant un cours en ligne\", \"result\": \"Les participants voient les modifications du formateur en direct, sans besoin d’installer un IDE lourd\"}",
+            "products": "{\"target\": \"PME tech souhaitant un IDE interne\", \"product\": \"Version auto‑hébergée de Zed avec authentification SSO et stockage de projets sur Supabase\", \"difference\": \"Ajoute la gestion des utilisateurs, la persistance des projets et le contrôle d’accès, absent du dépôt brut\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper web minimaliste qui expose les fonctions d’édition de Zed via un front‑end React/Next.js\", \"difference\": \"Permet d’utiliser Zed depuis le navigateur, contournant l’absence de version web native\"}",
+            "monetization": "{\"buyer\": \"PME ou agence payant pour l’accès à l’instance hébergée\", \"reason\": \"Gain de productivité et réduction des coûts de licences IDE multiples\", \"unit\": \"abonnement mensuel par utilisateur actif\", \"model\": \"Abonnement SaaS, prix hypothétique 15‑30 € / mois selon le nombre d’utilisateurs\", \"price_range_explanation\": \"Le tarif reflète le coût d’infrastructure (Docker, Supabase, stockage) et la valeur perçue d’un éditeur collaboratif performant\"}",
+            "build_plan": "{\"scope\": \"Déploiement d’une instance Docker de Zed avec authentification SSO et stockage PostgreSQL\", \"reused_bricks\": \"Code source de Zed, GPUI, Cargo, Docker, Supabase client\", \"work_to_add\": \"Intégration SSO (OAuth2), UI de gestion de projets, scripts de déploiement CI/CD\", \"exclusions\": \"Développement d’une version web native, fonctionnalités de marketplace\", \"dependencies\": \"Rust toolchain, Docker, Supabase, Stripe (pour facturation)\", \"costs\": \"Coût d’infrastructure cloud (≈ 10 €/mois), licences éventuelles de dépendances tierces\", \"timeline\": \"Prototype fonctionnel 4‑6 semaines si le développeur consacre 8 h/j\"}",
+            "limitations": "{\"established_constraints\": \"Licence GPL‑3.0‑or‑later impose partage du code modifié, absence de version web native, dépendance forte à Rust et à GPUI\", \"unknowns\": \"Performance du serveur d’agents sous forte charge, compatibilité avec les environnements d’entreprise (proxy, firewalls)\", \"license_to_verify\": \"GPL‑3.0‑or‑later + composants Apache‑2.0, vérifier conformité avec les exigences commerciales\", \"maintenance_costs\": \"Mise à jour du moteur Rust, suivi des dépendances Cargo, support SSO\"}",
+            "next_step": "{\"technical_test\": \"Déployer Zed en local via Docker et vérifier la synchronisation multi‑client avec deux sessions\", \"user_question\": \"Quel problème rencontrez‑vous actuellement avec vos outils d’édition collaborative ?\"}",
+            "assessment": "Score 7 reflète la pertinence technique (Rust, GPUI, architecture collaborative) et la compatibilité avec les priorités du profil (outil B2B SaaS, besoin de rapidité de prototypage). Fit_score 5 par défaut car aucune contrainte géographique ou budgétaire précise n’est fournie. Les preuves proviennent des extraits README et du code d’exemple GPUI [S1, S3]; le reste reste non établi dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "c758f9f92ebed24a44b579d4e1f64406b7808a3162ad0a063454d3cd8358094a": {
+      "at": 1794018031.5617151,
+      "data": {
+        "projects": [
+          {
+            "name": "NVIDIA/auto-ontology",
+            "category": "framework de raisonnement sémantique / IA d'entreprise",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Auto‑Ontology est un framework Python qui crée une couche d’ontologie sémantique au‑dessus de bases de données relationnelles. Il cible les développeurs d’applications IA qui ont besoin de requêtes en langage naturel fiables et d’un contexte structuré pour leurs agents.",
+            "workflow": "Entrée : texte de requête en langage naturel → le module de génération (basé sur NVIDIA NIM) traduit la requête en SQL (S1). → le serveur FastAPI exécute le SQL sur PostgreSQL où l’ontologie est stockée (S1, S2). → le résultat est renvoyé via l’API et affiché dans l’interface web (S1). Limites : dépendance à une clé API NVIDIA, besoin d’un déploiement Docker/Kubernetes, aucune preuve d’évolutivité au‑delà de petits jeux de données (non établi dans les extraits).",
+            "use_cases": "{\"actor\": \"Analyste commercial d’une PME\", \"task\": \"Obtenir le chiffre d’affaires mensuel par produit sans connaître la structure SQL\", \"result\": \"L’agent répond en quelques secondes grâce à la traduction NL→SQL et aux attributs pré‑définis dans l’ontologie.\"}\n{\"actor\": \"Développeur d’une plateforme SaaS d’assistance client\", \"task\": \"Intégrer un chatbot capable de récupérer des tickets et leurs statuts depuis la base interne\", \"result\": \"Le chatbot interroge la base via l’ontologie, garantissant que les champs utilisés sont cohérents et validés.\"}",
+            "products": "{\"target\": \"PME souhaitant un tableau de bord auto‑généré\", \"product\": \"Service SaaS « Ontology‑Analytics » qui héberge Auto‑Ontology, expose un tableau de bord low‑code et facture par utilisateur actif\", \"difference\": \"Le dépôt brut nécessite une installation et une configuration manuelles ; le service propose une UI prête à l’emploi, la gestion des clés API et le scaling automatisé.\"}\n{\"target\": \"Équipe de data‑science interne\", \"product\": \"Kit de développement interne « Ontology‑SDK » qui expose des fonctions Python pour générer, certifier et interroger l’ontologie depuis des notebooks\", \"difference\": \"Le dépôt original est un serveur web ; le SDK fournit une bibliothèque légère, sans UI, adaptée à l’intégration dans des pipelines de traitement de données.\"}",
+            "monetization": "Acheteur : PME ou agence utilisant le tableau de bord. Raison de payer : gain de temps sur la création de rapports et fiabilité des réponses IA. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS (freemium avec 5 utilisateurs gratuits, puis 15 €/mois/utilisateur). La fourchette de prix repose sur la valeur perçue d’une IA fiable et les coûts d’infrastructure cloud (Docker, PostgreSQL, API NVIDIA).",
+            "build_plan": "Périmètre limité : version SaaS hébergée avec Docker Compose, PostgreSQL et FastAPI. Brique réutilisée : code serveur existant (FastAPI, génération NL→SQL). Travail à ajouter : UI simplifiée, facturation Stripe, authentification multi‑tenant, monitoring. Exclusions : support Kubernetes complet, extensions de langue autre que l’anglais. Dépendances : fastapi, duckdb, langchain‑openai, PostgreSQL, clé API NVIDIA (S2). Coût estimé : 0 € (plan gratuit Groq) + 20 €/mois PostgreSQL cloud. Délai : 3‑4 semaines de prototypage si le développeur consacre 8 h/jour.",
+            "limitations": "Contraintes établies : nécessite une clé API NVIDIA (S1), licence Apache‑2.0 à vérifier (licence non confirmée dans le README). Inconnues : performance sur jeux de données > 1 M de lignes, conformité RGPD non documentée, support multilingue absent. Maintenance : mise à jour des dépendances FastAPI et langchain régulièrement requise.",
+            "next_step": "Réaliser un test technique : déployer le Docker Compose fourni, interroger la base Wide World Importers avec une requête NL simple et mesurer le temps de réponse. Question à poser à un analyste potentiel : « Quels types de métriques métier avez‑vous besoin d’obtenir en temps réel sans écrire de SQL ? »",
+            "assessment": "Score 7 reflète la pertinence du cadre pour les besoins d’IA d’entreprise (ontologie, NL→SQL) et la disponibilité d’une stack prête à être transformée en SaaS. Le fit_score reste à 5 car le profil ne précise pas de contrainte régionale ou de délai strict, mais le projet correspond aux priorités B2B et IA appliquée du profil. Les preuves proviennent des extraits README (S1) et pyproject.toml (S2).",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "48b54927c46bbe33da2bd4f0edeb4b601a442f92670dbc57f6283344e7ef1959": {
+      "at": 1794018096.1540864,
+      "data": {
+        "projects": [
+          {
+            "name": "rails/rails",
+            "category": "Framework web MVC",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Rails est un framework complet pour créer des applications web basées sur une base de données, suivant le modèle MVC. Il cible les développeurs full‑stack qui souhaitent accélérer la mise en place de back‑ends robustes.",
+            "workflow": "Entrée : requête HTTP (ex. POST /articles) → Traitement : le routeur d’Action Dispatch associe la requête à un contrôleur, ce dernier invoque un modèle ActiveRecord pour persister les données, puis rend une vue ERB → Résultat : réponse HTTP contenant du HTML ou du JSON. Limites : dépendance forte à Ruby, besoin d’un serveur compatible (Puma, etc.) et aucune prise en charge native du front‑end moderne sans intégration supplémentaire. [S1]",
+            "use_cases": "{\"actor\": \"Agence de marketing digital\", \"task\": \"Déployer rapidement un site vitrine avec formulaire de contact et tableau de bord client\", \"result\": \"Site fonctionnel en quelques jours, gestion des utilisateurs et des données via ActiveRecord, interface admin générée automatiquement\"}\n{\"actor\": \"Startup SaaS B2B\", \"task\": \"Construire une plateforme de facturation multi‑tenant\", \"result\": \"Architecture multi‑schéma gérée par Rails, API JSON sécurisée, factures générées en PDF via Action View\"}",
+            "products": "{\"target\": \"PME souhaitant un CRM interne léger\", \"product\": \"Application SaaS de gestion de contacts et de pipelines de vente basée sur Rails\", \"difference\": \"Utilise les conventions Rails pour réduire le code custom, intègre Stripe via gem et offre une interface admin prête à l’emploi\"}\n{\"target\": \"Freelance créateur de contenu\", \"product\": \"Plateforme de publication d’articles avec éditeur Markdown et commentaires\", \"difference\": \"Exploite Action Text pour le rich‑text, Active Storage pour les médias, et fournit un tableau de bord analytique minimal\"}",
+            "monetization": "Acheteur : PME ou freelance ; raison : gain de temps sur le développement d’un back‑end complet ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec période d’essai gratuite. Fourchette de prix hypothétique : 20 €–50 €/mois selon le nombre d’utilisateurs, justifiée par la réduction du temps de développement et les coûts d’infrastructure (hébergement, base de données).",
+            "build_plan": "Périmètre limité : API REST et tableau de bord admin. Brique réutilisée : modèles ActiveRecord, contrôleurs et vues générés par Rails. Travail à ajouter : intégration Stripe, authentification OAuth, UI TailwindCSS. Exclusions : front‑end SPA complet, micro‑services externes. Dépendances : Ruby ≥ 3.2, PostgreSQL, Puma, gems Stripe, Devise. Coût estimé : serveur cloud (ex. Fly.io) ≈ 10 €/mois, licences gem gratuites. Délai : 3‑5 semaines pour MVP fonctionnel (conditionnel à la disponibilité du développeur).",
+            "limitations": "Contraintes établies : nécessite Ruby, serveur compatible, connaissance du cycle de vie Rails. Inconnues : performance sous forte charge, compatibilité avec outils IA locaux. Licence non vérifiée dans les extraits ; il faut confirmer la licence du dépôt. Aucun coût de licence indiqué, mais la maintenance du serveur et les mises à jour de sécurité sont à prévoir.",
+            "next_step": "Réaliser un prototype d’endpoint API (ex. création d’un article) et mesurer le temps de réponse sous charge légère. Question à poser à un potentiel utilisateur : « Quels rapports ou tableaux de bord vous manquent le plus dans votre outil actuel de gestion de données ? »",
+            "assessment": "Score 7 reflète la maturité du framework, sa documentation claire et son adéquation avec les besoins de prototypage rapide du profil. Fit_score 5 car aucune contrainte régionale ou budgétaire spécifique n’est fournie. Les preuves proviennent des extraits du README (S1) et du package.json (S2). Absence de preuve sur la licence et la conformité RGPD : « non établi dans les extraits ». Aucun test réel n’a été exécuté.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "849555c38803d1bd80984435e6971fdb34472c6a85f3d93fcbabd832f75d241b": {
+      "at": 1794018161.419761,
+      "data": {
+        "projects": [
+          {
+            "name": "mpv-player/mpv",
+            "category": "Lecteur multimédia en ligne de commande",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "mpv est un lecteur multimédia libre en ligne de commande qui accepte de nombreux formats audio/vidéo et sous‑titres. Il cible les utilisateurs avancés qui souhaitent contrôler la lecture via des scripts ou des interfaces personnalisées.",
+            "workflow": "Entrée : chemin d’un fichier média ou flux réseau fourni en argument CLI. Traitement : le moteur décodage (ffmpeg) lit le flux, applique les options (--hwdec, --profile) et gère les sous‑titres via le module de rendu. Résultat : lecture en temps réel avec affichage vidéo et audio, possibilité de contrôler la lecture via IPC ou scripts. Sources : S1 décrit les exigences système, les options de décodage matériel et le mode « fast ». Limites : dépend d’un GPU capable, aucune interface graphique native, nécessite compilation pour activer toutes les fonctionnalités (S2 montre la configuration de build).",
+            "use_cases": "{\"actor\": \"Développeur d’automatisation\", \"task\": \"Intégrer la lecture vidéo dans un pipeline de traitement de médias via un script Python qui lance mpv avec des paramètres de décodage matériel.\", \"result\": \"Traitement fluide de vidéos haute résolution sans surcharge CPU, sortie audio synchronisée pour l’étape suivante du pipeline.\"}\n{\"actor\": \"Créateur de contenu indépendant\", \"task\": \"Utiliser mpv avec des scripts de contrôle (pause, saut, capture d’écran) pour produire des tutoriels vidéo rapidement.\", \"result\": \"Production accélérée grâce à des raccourcis clavier personnalisés et à la possibilité d’automatiser la capture d’images clés.\"}",
+            "products": "{\"target\": \"PME de production vidéo\", \"product\": \"Interface web légère (Next.js) qui encapsule mpv via WebSocket et expose des contrôles UI.\", \"difference\": \"Ajoute une couche graphique accessible depuis le navigateur, supprime la nécessité de connaissances CLI tout en conservant la puissance de décodage de mpv.\"}\n{\"target\": \"Agences de marketing\", \"product\": \"Service SaaS de conversion de fichiers multimédias où mpv agit comme moteur de transcodage et d’extraction de métadonnées.\", \"difference\": \"Utilise mpv pour la lecture fiable et l’extraction de timestamps, puis propose une API REST pour récupérer les données, offrant un point d’entrée simple pour les workflows d’automatisation.\"}",
+            "monetization": "Acheteur : agences ou indépendants qui paient pour un accès à l’interface web ou à l’API SaaS. Raison : gain de temps sur le contrôle et la conversion de médias. Unité facturée : abonnement mensuel par utilisateur actif ou paiement à l’usage (nombre de minutes de conversion). Fourchette de prix hypothétique : 15‑30 €/mois selon le volume, justifiée par les coûts d’infrastructure cloud (CPU/GPU) et le support technique.",
+            "build_plan": "Périmètre limité : wrapper web (React/Next.js) + serveur Node qui lance mpv en mode headless. Brique réutilisée : mpv binaire déjà compilé (S1). Travail à ajouter : API WebSocket, UI de contrôle, gestion des licences. Exclusions : développement de codecs propriétaires, support mobile natif. Dépendances : Node.js, ffmpeg (déjà requis par mpv), Docker pour l’isolation. Coût estimé : serveur cloud basique (≈10 €/mois) + temps de développement (≈120 h). Délai : 3‑4 semaines si le développeur consacre 30 h/semaine.",
+            "limitations": "Contraintes établies : nécessite GPU décodage matériel pour haute résolution, aucune interface graphique native (S1). Inconnues : compatibilité exacte avec toutes les distributions Linux, licence non vérifiée (non établi dans les extraits). Maintenance : mise à jour du binaire mpv et adaptation aux changements d’API.",
+            "next_step": "Réaliser un test technique : lancer mpv via un script Node pour lire un fichier 4K avec --hwdec et vérifier la latence. Question à poser à un utilisateur potentiel : « Quel niveau de contrôle (CLI vs UI) préférez‑vous pour gérer vos flux vidéo au quotidien ? »",
+            "assessment": "Score 7 reflète la solidité technique de mpv (lecture fiable, options avancées) et son adéquation avec le profil du développeur full‑stack cherchant à créer un wrapper SaaS. Le fit_score reste neutre (5) car aucune donnée de marché ou de conformité n’est fournie. Le manque de preuve de licence et d’évaluation de la demande est explicitement indiqué.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "35fe14bb85d56c1ec04fee5bb0b6c4e124bf143cf0c36c4c4ef07a2f03e0fcfd": {
+      "at": 1794018226.3645706,
+      "data": {
+        "projects": [
+          {
+            "name": "rust-lang/rust",
+            "category": "langage de programmation / compilateur",
+            "eligible": true,
+            "score": 8,
+            "fit_score": 5,
+            "summary": "Rust est un langage compilé orienté performance et sûreté mémoire. Il cible les développeurs qui souhaitent créer des services critiques, des applications embarquées ou des bibliothèques performantes, tout en réduisant les bugs liés à la gestion de la mémoire.",
+            "workflow": "Entrée : code source Rust (.rs). → Traitement : le compilateur rustc analyse le code, applique le système d’emprunt et génère du code machine optimisé (exemple d’optimisation dynamique montré dans l’exemple hex.rs) [ S3 ]. → Résultat : binaire exécutable ou bibliothèque prête à être déployée. Limite : le dépôt ne fournit pas d’interface SaaS prête à l’emploi, il faut construire l’infrastructure d’exécution et de distribution.",
+            "use_cases": "{\"actor\": \"Développeur backend\", \"task\": \"Écrire un service HTTP haute performance avec async Rust et Tokio.\", \"result\": \"Service capable de gérer des milliers de requêtes simultanées avec un faible empreinte mémoire.\"}\n{\"actor\": \"Équipe embarquée\", \"task\": \"Développer le firmware d’un dispositif IoT contraint en ressources.\", \"result\": \"Firmware fiable, sans fuites de mémoire, pouvant être mis à jour OTA.\"}",
+            "products": "{\"target\": \"PME souhaitant internaliser des micro‑services critiques\", \"product\": \"Plateforme interne de micro‑services Rust avec déploiement Docker automatisé.\", \"difference\": \"Apporte la sûreté de Rust et la performance native, contrairement à des stacks Node.js/Python plus lourds.\"}\n{\"target\": \"Agences créatives voulant proposer des outils de génération d’images côté serveur\", \"product\": \"Service d’encodage d’images haute vitesse en Rust, exposé via une API FastAPI (via PyO3).\", \"difference\": \"Réduction du temps de traitement d’image de 30 % par rapport aux implémentations Python pure.\"}",
+            "monetization": "{\"buyer\": \"PME ou agence digitale\", \"reason\": \"Gain de performance et réduction des coûts d’infrastructure cloud.\", \"unit\": \"abonnement mensuel par instance déployée\", \"model\": \"Abonnement SaaS avec tarif basé sur le nombre d’appels API ou de conteneurs actifs\", \"price_range\": \"15 €–50 € / mois selon le volume, hypothèse à tester en fonction de la valeur perçue et des coûts d’hébergement.\"}",
+            "build_plan": "{\"scope\": \"Créer un wrapper HTTP autour d’une bibliothèque Rust existante (ex. hex encoding) et le containeriser.\", \"reused_bricks\": \"Compilateur rustc, Cargo, Docker, FastAPI (via PyO3) [ S1 ].\", \"additional_work\": \"Écrire les bindings Python, mettre en place CI/CD, ajouter l’authentification et la facturation Stripe.\", \"exclusions\": \"Développement d’un IDE ou d’un écosystème complet de plugins.\", \"dependencies\": \"Docker, FastAPI, Stripe SDK, serveur Vercel/Fly.io.\", \"costs\": \"Coût d’hébergement (Free tier possible), licences open‑source (MIT/Apache).\", \"timeline\": \"Prototype fonctionnel 2‑3 semaines si le développeur consacre 8 h/j.\"}",
+            "limitations": "{\"established\": \"Licence MIT/Apache confirmée [ S1 ]; le dépôt ne fournit pas d’interface web prête à l’emploi.\", \"unknown\": \"Performance exacte sur des charges réelles non mesurée dans les extraits ; besoin de tests de charge.\", \"license_check\": \"Vérifier la conformité des sous‑modules (ex. core_arch) avec la licence globale.\", \"maintenance\": \"Mise à jour du compilateur et des dépendances Rust requiert une veille active.\"}",
+            "next_step": "{\"technical_test\": \"Compiler l’exemple hex.rs en mode release et mesurer le débit d’encodage sur un serveur cloud gratuit.\", \"user_question\": \"« Quel est le critère principal qui vous ferait choisir un service d’encodage natif Rust plutôt qu’une solution Python ? »\"}",
+            "assessment": "Score 8 reflète la maturité du compilateur et la pertinence du langage pour les besoins de performance du profil. Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité spécifique n’est prouvée dans les extraits. Le projet offre une base solide mais nécessite la construction d’une couche SaaS et des tests d’usage réels.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "5ad7e7da673bd94d18f5bb9f269c1db6f8252b1e3f99cbad048b5aa98da62ad8": {
+      "at": 1794018291.3473597,
+      "data": {
+        "projects": [
+          {
+            "name": "react/react",
+            "category": "Bibliothèque JavaScript d'interface utilisateur",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "React est une bibliothèque JavaScript permettant de créer des interfaces utilisateur déclaratives et réactives. Elle cible les développeurs front‑end qui souhaitent structurer des applications web ou natives avec un modèle de composants. Le problème résolu est la complexité de mise à jour du DOM lorsqu’un état change.",
+            "workflow": "Entrée : code JSX ou appels à `React.createElement` décrivant l’arbre UI. Traitement : le compilateur Babel transforme le JSX en appels `React.createElement`; le moteur de React calcule le diff du Virtual DOM et applique les mutations nécessaires au DOM réel. Résultat : interface mise à jour de façon optimale. Sources : description de la bibliothèque et exemples d’utilisation dans le README [S1]. Limite : le README ne précise pas les performances réelles ni les exigences d’infrastructure, donc les métriques de charge restent non établies dans les extraits.",
+            "use_cases": "{\"actor\": \"Développeur freelance créant une SaaS de tableau de bord\", \"task\": \"Construire une interface modulable où chaque widget est un composant React\", \"result\": \"Interface dynamique qui se rafraîchit automatiquement lors de la mise à jour des données via API\"}\n{\"actor\": \"Équipe produit d’une agence digitale\", \"task\": \"Développer une application mobile hybride avec React Native\", \"result\": \"Code partagé entre web et mobile, réduction du temps de développement\"}",
+            "products": "{\"target\": \"PME souhaitant un configurateur de devis en ligne\", \"product\": \"SaaS de génération de devis basé sur React avec édition en temps réel\", \"difference\": \"Utilise les capacités de rendu incrémental de React pour offrir une expérience fluide sans rechargement complet, contrairement à un simple formulaire HTML\"}\n{\"target\": \"Agences marketing voulant créer des landing pages personnalisées\", \"product\": \"Plateforme de création de pages drag‑and‑drop alimentée par des composants React pré‑construits\", \"difference\": \"Permet aux non‑développeurs de composer des UI complexes grâce à un catalogue de composants réutilisables, ce qui n’est pas fourni par le dépôt brut\"}",
+            "monetization": "Acheteur : PME ou agence qui paie pour gagner du temps de développement. Raison de payer : accès à des composants prêts à l’emploi, support et mises à jour. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec niveau freemium limité à 5 projets, puis tarif à 30 €/mois. La fourchette de prix est hypothétique, justifiée par la valeur perçue d’une UI réactive et les coûts d’hébergement cloud.",
+            "build_plan": "Périmètre limité : UI de génération de devis. Brique réutilisée : core React (déjà présent). Travail à ajouter : intégration d’un backend API (Node/Express ou FastAPI), gestion d’authentification (Supabase), paiement Stripe. Exclusions : serveur de rendu côté serveur, localisation multilingue. Dépendances : React, React‑DOM, Babel, Webpack/Vite. Coût estimé : hébergement Vercel (plan gratuit) + Stripe fees. Délai : 2 à 4 semaines pour un MVP fonctionnel, conditionnel à la disponibilité du développeur.",
+            "limitations": "Contraintes établies : nécessite Babel pour JSX, dépendance à un environnement Node. Inconnues : performances sous forte charge, compatibilité avec les navigateurs anciens. Licence du dépôt non vérifiée dans les extraits, il faut confirmer avant toute utilisation commerciale. Aucun coût de licence indiqué dans les sources.",
+            "next_step": "Réaliser un prototype d’une page de devis avec React et appeler une API mockée ; poser la question suivante à un potentiel client : « Quels éléments de votre devis avez‑vous besoin de modifier en temps réel ? »",
+            "assessment": "Score 7 reflète la maturité et la popularité de React, ainsi que sa pertinence pour les produits ciblés (UI réactives). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques. La plupart des affirmations reposent sur le README [S1]; les aspects de licence et de performances restent non établis dans les extraits.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "cefcd4f3c4cc5531744b0e63e888096949dd05f36ff27d60017fea603050eb80": {
+      "at": 1794018356.8003712,
+      "data": {
+        "projects": [
+          {
+            "name": "angular/angular",
+            "category": "Framework web (TypeScript/JavaScript)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Angular est un framework complet pour créer des applications web mobiles et desktop en TypeScript/JavaScript. Il cible les développeurs front‑end qui souhaitent une architecture structurée, du routage, du DI et un écosystème d’outils intégrés. Le problème résolu est la complexité de la mise en place d’une stack moderne sans perdre en maintenabilité.",
+            "workflow": "Entrée : code source TypeScript d’une composante UI. → Traitement : le compilateur Angular (ngc) transpile le TS, génère du JavaScript optimisé, crée des métadonnées de DI et compile les templates en fonctions de rendu. → Résultat : bundle JavaScript déployable, serveur de développement (ng serve) qui fournit le rendu côté client avec hot‑reload. Sources : description du processus de création de projet et du CLI dans le README [S1]. Limites : le README ne détaille pas les performances réelles ni les exigences d’infrastructure; aucune mesure de charge n’est fournie.",
+            "use_cases": "{\"actor\": \"Développeur freelance\", \"task\": \"Construire une plateforme SaaS de gestion de factures avec authentification, formulaires réactifs et routage dynamique.\", \"result\": \"Produit livrable en quelques semaines grâce aux générateurs de code (ng new, schematics) et à la documentation officielle.\"}\n{\"actor\": \"Équipe produit d’une PME\", \"task\": \"Moderniser une application interne legacy en remplaçant les scripts jQuery par des composants Angular modulaires.\", \"result\": \"Interface plus cohérente, testabilité accrue et capacité à ajouter des fonctionnalités via le système de modules.\"}",
+            "products": "{\"target\": \"PME souhaitant un tableau de bord analytique\", \"product\": \"SaaS de visualisation de KPI basé sur Angular avec intégration Stripe pour l’abonnement.\", \"difference\": \"Utilise Angular pour offrir une UI réactive et un code partagé entre le tableau de bord et le module d’administration, réduisant le temps de développement par rapport à un stack ad‑hoc.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Wrapper SaaS qui expose les composants Angular Material comme widgets configurables via un constructeur no‑code.\", \"difference\": \"Transforme le framework en service clé en main, éliminant la nécessité de coder chaque composant tout en conservant la puissance d’Angular.\"}",
+            "monetization": "Acheteur : PME ou agence qui paie pour un accès continu à la plateforme. Raison de payer : gain de productivité et réduction du temps de mise sur le marché. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec plan freemium limité à 5 utilisateurs, puis tarif proportionnel aux fonctionnalités avancées. Fourchette de prix hypothétique : 20 €–80 € / mois selon le nombre d’utilisateurs et les modules activés, justifiée par la valeur de l’infrastructure cloud (Vercel/Fly) et le support technique.",
+            "build_plan": "Périmètre limité : créer un MVP de tableau de bord avec Angular, Supabase (DB) et Stripe (paiement). Brique réutilisée : Angular CLI, Angular Material, Supabase client. Travail à ajouter : implémentation du backend FastAPI pour les traitements lourds, intégration des webhooks Stripe, UI personnalisée. Exclusions : fonctionnalités multilingues avancées, SSR complet. Dépendances : Node.js, npm, Docker pour le déploiement, compte Supabase gratuit. Coût estimé : hébergement Vercel (plan gratuit) + frais Stripe (2,9 % + 0,30 € / transaction). Délai : 3 – 5 semaines de prototypage intensif (temps plein).",
+            "limitations": "Contraintes établies : Angular nécessite Node.js et un environnement de build; la licence du dépôt n’est pas clairement indiquée dans les extraits ([S1] ne mentionne pas de licence). Inconnues : performances sous charge élevée, compatibilité avec les navigateurs legacy, coûts de support à long terme. Licence à vérifier dans le dépôt complet. Maintenance : mise à jour régulière du framework (Angular 18+), gestion des dépendances npm.",
+            "next_step": "Réaliser un test technique : créer un petit projet Angular qui consomme une API FastAPI et génère un PDF via un endpoint. Question à poser à un potentiel utilisateur : « Quel est le principal frein que vous rencontrez aujourd’hui pour créer ou faire évoluer votre tableau de bord interne ? »",
+            "assessment": "Score 7 reflète la maturité du framework, la documentation disponible et la pertinence pour les secteurs ciblés (B2B SaaS, wrappers). Fit_score 5 par défaut, le profil ne fournit pas de contraintes géographiques ou de budget spécifiques. Le manque de preuve de licence et d’évaluations de performance est explicitement noté (« non établi dans les extraits »).",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "f09d4f12dda34ed4f1c95da7728aa26a6047be6094595aec92f55d91f71ccaaa": {
+      "at": 1794018421.2837691,
+      "data": {
+        "projects": [
+          {
+            "name": "symfony/symfony",
+            "category": "Framework PHP",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Symfony est un framework PHP complet pour créer des applications web et console. Il fournit des composants réutilisables et une architecture modulaire. Destiné aux développeurs qui souhaitent structurer des projets robustes et évolutifs.",
+            "workflow": "Entrée : code source PHP d’une application web. Traitement : le kernel Symfony charge les bundles, résout les routes, exécute les contrôleurs et utilise les composants (routing, DI, ORM). Résultat : réponse HTTP ou exécution de tâches console. Limites : nécessite un serveur PHP compatible, aucune prise en charge native du front‑end SPA, dépendance à Composer pour la gestion des paquets. Source : [S1].",
+            "use_cases": "{\"actor\": \"Développeur d’une agence web\", \"task\": \"Construire un site e‑commerce avec gestion de catalogue, paiement et tableau d’administration.\", \"result\": \"Application structurée, maintenable et extensible grâce aux bundles Symfony et aux composants dédiés.\"}\n{\"actor\": \"Équipe DevOps d’une startup\", \"task\": \"Déployer un service de traitement de fichiers en ligne via une console Symfony.\", \"result\": \"Commandes CLI robustes, logs centralisés et intégration facile avec Docker et CI/CD.\"}",
+            "products": "{\"target\": \"PME souhaitant un back‑office sur mesure\", \"product\": \"SaaS de gestion de clients et facturation basé sur Symfony, UI React séparée.\", \"difference\": \"Réutilise les composants de sécurité et de formulaire Symfony, réduit le temps de développement par rapport à un stack full‑stack maison.\"}\n{\"target\": \"Agences créatives\", \"product\": \"Plateforme de prototypage rapide d’applications web avec des modules pré‑configurés (auth, paiement, API).\", \"difference\": \"Offre des bundles prêts à l’emploi, évite la configuration manuelle du framework et accélère le time‑to‑market.\"}",
+            "monetization": "Acheteur : PME ou agence. Raison de payer : gain de temps de développement et support technique. Unité facturée : abonnement mensuel par projet déployé. Modèle : abonnement SaaS avec tarif de base 49 €/mois + 0,10 €/utilisation d’API tierces. Fourchette hypothétique : 49‑199 €/mois selon le nombre de modules actifs, justifiée par la valeur du code réutilisable et les coûts d’infrastructure cloud.",
+            "build_plan": "Périmètre : créer un wrapper SaaS autour de Symfony en exposant les bundles via API REST. Brique réutilisée : kernel, routing, security. Travail à ajouter : UI React, intégration Stripe, tableau de bord admin. Exclusions : génération de code front‑end complet, hébergement multi‑tenant avancé. Dépendances : PHP 8.2, Composer, PostgreSQL, Docker, Vercel (front) et Fly.io (backend). Coût estimé : 0 € (Groq gratuit) + dépenses cloud (~30 €/mois). Délai : 4‑6 semaines pour MVP fonctionnel, conditionné par la disponibilité du développeur full‑stack.",
+            "limitations": "Contraintes établies : nécessite PHP, Composer, serveur compatible, licence non vérifiée dans les extraits. Inconnues : conformité RGPD, support officiel du framework, coûts de licences tierces éventuelles. Licence à vérifier dans le dépôt complet.",
+            "next_step": "Réaliser un test technique : créer un petit projet Symfony avec un bundle de facturation et exposer une API simple. Question à poser à un potentiel utilisateur : « Quels sont les principaux obstacles que vous rencontrez aujourd’hui pour mettre en place un back‑office personnalisé ? »",
+            "assessment": "Score 7 reflète la maturité du framework, la communauté large et la réutilisabilité des composants, ce qui correspond aux priorités du profil (rapidité de prototypage, outils B2B). Fit_score 5 car aucune contrainte régionale ou budget spécifique n’est fournie. Le manque de preuves sur la licence et la conformité RGPD est explicitement noté.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "7321e6eded556548eeb6ffebfd0e21bfd0c63b66860c2bcb26150af3fe5d3131": {
+      "at": 1794018486.6368706,
+      "data": {
+        "projects": [
+          {
+            "name": "prometheus/prometheus",
+            "category": "Monitoring & Time‑Series Database",
+            "eligible": true,
+            "score": 8,
+            "fit_score": 5,
+            "summary": "Prometheus est un système de surveillance open‑source qui collecte, stocke et interroge des métriques temporelles. Il s’adresse aux équipes d’infrastructure et aux développeurs qui ont besoin de visualiser la santé de leurs services et d’alerter en cas d’anomalie.",
+            "workflow": "Entrée : configuration d’un job de scrape (ex. http_requests_total) dans un fichier YAML → Traitement : le serveur Prometheus récupère les métriques via HTTP, les stocke dans sa base de séries temporelles compressée, les rend disponibles via l’API et le langage de requête PromQL → Résultat : tableaux de bord Grafana ou console Prometheus affichant graphiques et alertes. Limites : nécessite un environnement Go ≥ 1.26, dépend de plugins de découverte de services et ne supporte pas nativement le stockage persistant au-delà du disque local. Sources : installation et architecture décrites dans le README [S1] ; exemples de requêtes PromQL dans la documentation [S3].",
+            "use_cases": "{\"actor\": \"Équipe DevOps d’une PME SaaS\", \"task\": \"Collecter les métriques HTTP de chaque micro‑service et déclencher une alerte lorsqu’une latence dépasse 500 ms\", \"result\": \"Alertes Slack automatiques et tableau de bord temps réel permettant de réagir avant une panne\"}\n{\"actor\": \"Freelance spécialisé en monitoring\", \"task\": \"Proposer un service de surveillance externalisé pour plusieurs clients en déployant Prometheus dans un conteneur Docker\", \"result\": \"Facturation mensuelle basée sur le nombre de métriques scrappées, avec visibilité centralisée pour chaque client\"}",
+            "products": "{\"target\": \"Agences web qui gèrent plusieurs sites clients\", \"product\": \"Wrapper SaaS qui expose une UI simplifiée pour configurer des jobs Prometheus sans écrire de YAML\", \"difference\": \"Supprime la complexité de la configuration native et ajoute un tableau de bord pré‑configuré par secteur\"}\n{\"target\": \"Start‑ups IA qui ont besoin de métriques d’inférence en temps réel\", \"product\": \"Module d’extension qui enrichit les métriques Prometheus avec des embeddings de coût GPU et de latence de modèle\", \"difference\": \"Permet de monitorer la consommation d’IA de façon granulaire, chose non fournie par l’installation standard\"}",
+            "monetization": "Acheteur : PME ou agence qui veut externaliser le monitoring. Raison de payer : gain de temps sur la mise en place et support dédié. Unité facturée : abonnement mensuel par instance surveillée ou par nombre de métriques. Modèle : abonnement SaaS avec tarif de base 49 €/mois + 0,01 €/10 000 métriques supplémentaires. La fourchette est hypothétique, justifiée par le coût d’infrastructure (Docker, stockage) et la valeur d’une alerte préventive.",
+            "build_plan": "Périmètre limité : créer un conteneur Docker pré‑configuré avec Prometheus + UI simplifiée. Brique réutilisée : image officielle prom/prometheus. Travail à ajouter : interface React pour la configuration, wrapper API Node.js pour créer les jobs via HTTP, documentation en français. Exclusions : implémentation de stockage à long terme, haute disponibilité. Dépendances : Go ≥ 1.26, Node ≥ 18, Docker, éventuellement Supabase pour la persistance des configs. Coût estimé : 0 € (utilisation du plan gratuit de Docker Hub) + 0 € (code open‑source). Délai : 2‑3 semaines de développement intensif.",
+            "limitations": "Contraintes établies : nécessite Go 1.26+, dépend de plugins de découverte de services (Azure, AWS) [S2]; licence non vérifiée dans les extraits. Inconnues : conformité RGPD du stockage de métriques, support multirégion, coût d’évolutivité. Maintenance : mise à jour régulière du serveur Prometheus et des dépendances Go.",
+            "next_step": "Réaliser un test technique : déployer le conteneur Docker fourni, créer un job de scrape simple et vérifier la génération de métriques via l’API PromQL. Question à poser à un potentiel utilisateur : « Quel niveau de granularité (nombre de métriques, fréquence de scrape) vous serait indispensable pour justifier un abonnement à un service de monitoring clé en main ? »",
+            "assessment": "Score 8 reflète la maturité du projet (large adoption, documentation solide) et son adéquation avec le profil technique (Go, Docker, API). Fit_score 5 par défaut car aucune contrainte régionale ou budget spécifique n’est fournie. Le projet offre une base solide pour créer des wrappers SaaS ou des extensions IA, correspondant aux priorités du profil. Les preuves proviennent des extraits README [S1], go.mod [S2] et exemples de requêtes [S3]; tout le reste reste non établi dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "946f3be09e21b954bfdd84b3cb4136803e0862f37639732e9dd0948d07e8ca99": {
+      "at": 1794018551.6495974,
+      "data": {
+        "projects": [
+          {
+            "name": "google/skills",
+            "category": "Outils de développement / Bibliothèque d'agents",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "google/skills propose un ensemble de \"Agent Skills\" permettant d'intégrer rapidement des fonctionnalités Google (Cloud, Maps, Firestore, etc.) dans des agents ou des applications. L'utilisateur cible est un développeur ou une équipe qui souhaite automatiser l'accès aux services Google sans écrire de code d'authentification ou de wrappers.",
+            "workflow": "Entrée : sélection d'un skill via la commande `npx skills add google/skills` (extrait S1). Traitement : le skill télécharge les scripts et les dépendances nécessaires, configure les credentials IAM et expose une API ou un CLI. Résultat : l'agent peut appeler, par exemple, \"Authenticating and Authorizing to Google Cloud\" pour obtenir un token et lancer des opérations Cloud. Limites : le dépôt ne fournit pas de tests automatisés, la licence n'est pas clairement indiquée, et aucune preuve d'intégration avec des environnements non‑Node n'est fournie (non établi dans les extraits).",
+            "use_cases": "{\"actor\": \"Développeur SaaS B2B\", \"task\": \"Provisionner automatiquement des projets Google Cloud pour chaque nouveau client via un skill d'onboarding.\", \"result\": \"Création d'un projet, attribution d'un rôle IAM et déploiement d'une infrastructure de base en quelques minutes.\"}\n{\"actor\": \"Agence marketing\", \"task\": \"Générer des rapports d'analyse d'audience en utilisant le skill \\\"Agentic analytics across cloud providers\\\".\", \"result\": \"Extraction de métriques depuis BigQuery, agrégation et export vers un tableau de bord interne.\"}",
+            "products": "{\"target\": \"PME souhaitant externaliser la gestion de leurs ressources Cloud\", \"product\": \"Plateforme SaaS de provisioning Cloud basée sur les skills Google, avec UI Next.js et facturation Stripe.\", \"difference\": \"Le dépôt fournit les skills bruts ; le produit ajoute une couche d'UX, de suivi de facturation et de monitoring, rendant le processus accessible à des non‑développeurs.\"}\n{\"target\": \"Freelance créateur de contenus vidéo\", \"product\": \"Extension Chrome qui, via un skill, transcode automatiquement les vidéos stockées sur Google Cloud Storage et génère des sous‑titres avec Gemini.\", \"difference\": \"Le dépôt ne propose qu'un skill d'accès au stockage ; l'extension intègre le skill, ajoute la logique de transcription et une interface utilisateur simple.\"}",
+            "monetization": "Acheteur : PME ou freelance. Raison de payer : gain de temps sur le provisioning ou la génération de contenus, réduction des erreurs d'intégration. Unité facturée : abonnement mensuel par projet provisionné ou par minute de transcription. Modèle : abonnement SaaS avec tarif de base 29 €/mois + frais d'usage (ex. 0,01 €/minute de transcription). La fourchette de prix est hypothétique, justifiée par la valeur du temps économisé et les coûts d'infrastructure Cloud.",
+            "build_plan": "Périmètre limité : UI Next.js, wrapper API autour des skills, intégration Stripe, stockage PostgreSQL via Supabase. Brique réutilisée : le dépôt google/skills (skills déjà implémentés). Travail à ajouter : interface utilisateur, gestion des secrets, facturation, monitoring. Exclusions : développement de nouveaux skills Google, support multicloud. Dépendances : Node.js, npm, Stripe SDK, Supabase client. Coût estimé : hébergement Vercel (plan gratuit) + frais Stripe + éventuels coûts Cloud (non estimable précisément). Délai : 3 à 5 semaines pour un MVP fonctionnel, conditionné par la disponibilité du développeur à configurer les credentials IAM.",
+            "limitations": "Contraintes établies : dépendance à Node.js, besoin de credentials Google Cloud, licence non vérifiée. Inconnues : stabilité du skill en environnement production, support officiel, conformité RGPD (non établi dans les extraits). Maintenance : mise à jour des skills et des dépendances npm, surveillance des quotas Cloud.",
+            "next_step": "Réaliser un test technique : installer le skill \"Getting started with Google Cloud\" dans un projet sandbox et vérifier la génération d'un token IAM. Question à poser à un potentiel utilisateur : « Quel est le principal frein à l’adoption d’une solution de provisioning Cloud automatisée dans votre workflow actuel ? »",
+            "assessment": "Score 6 reflète la pertinence du dépôt pour le profil (technologies Python/TS, besoin de wrappers SaaS, intérêt B2B). Le dépôt offre déjà une base solide de skills, mais l'absence de licence claire et de preuves d'intégration limite l'évaluation. Fit_score reste à 5 car aucune contrainte régionale ou de délai n'est explicitement fournie dans le profil. Les hypothèses de monétisation et de planning sont basées sur les besoins exprimés, mais restent à valider.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1794017867.7637317
+  "next_call_at": 1794018613.5993853
 }
