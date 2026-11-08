@@ -122,13 +122,21 @@ def build_queries(now, days_back=10):
 def gh_search(query, sort, page):
     params = {"q": query, "sort": sort, "order": "desc", "per_page": PER_PAGE, "page": page}
     r = None
-    for _ in range(2):
-        r = requests.get(GH_SEARCH_URL, headers=gh_headers(), params=params, timeout=30)
-        if r.status_code in (403, 429):
+    for attempt in range(3):
+        try:
+            r = requests.get(GH_SEARCH_URL, headers=gh_headers(), params=params, timeout=30)
+        except requests.RequestException:
+            if attempt == 2:
+                raise
+            time.sleep(15)
+            continue
+        if r.status_code in (403, 429) or r.status_code >= 500:
+            if attempt == 2:
+                break
             retry = r.headers.get("retry-after")
             reset = int(r.headers.get("x-ratelimit-reset", time.time() + 60))
             wait = int(retry) if retry else max(5, reset - int(time.time()))
-            print(f"GitHub rate limit; attente {min(wait, 30)}s...", file=sys.stderr)
+            print(f"GitHub indisponible (HTTP {r.status_code}); attente {min(wait, 30)}s...", file=sys.stderr)
             time.sleep(min(wait, 30))
             continue
         break

@@ -5,6 +5,9 @@ on:
     # Runs daily at 06:00 UTC (~07:00 / 08:00 Paris time).
     # The guard checks logs/business_state.json to avoid a second scheduled send on the same day.
     - cron: "0 6 * * *"
+    # Outage backstops: retry later the same day if the 06:00 slot failed or was dropped.
+    - cron: "0 9 * * *"
+    - cron: "0 13 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

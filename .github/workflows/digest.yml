@@ -9,6 +9,8 @@ on:
     - cron: "30 3 * * *"   # 09:00 IST
     - cron: "30 5 * * *"   # 11:00 IST
     - cron: "30 8 * * *"   # 14:00 IST  last-chance backstop
+    - cron: "30 11 * * *"  # outage backstop (afternoon)
+    - cron: "30 14 * * *"  # outage backstop (afternoon)
   workflow_dispatch:
     inputs:
       dry_run:

@@ -44,8 +44,18 @@ def num(text):
 
 
 def scrape_trending(since="daily", top_n=10):
-    r = requests.get("https://github.com/trending", params={"since": since}, headers=UA, timeout=30)
-    r.raise_for_status()
+    for attempt in range(4):
+        try:
+            r = requests.get("https://github.com/trending", params={"since": since},
+                             headers=UA, timeout=45)
+            r.raise_for_status()
+            break
+        except requests.RequestException as exc:
+            if attempt == 3:
+                raise
+            wait = 20 * (attempt + 1)
+            print(f"Trending indisponible ({exc}) ; nouvel essai dans {wait}s", flush=True)
+            time.sleep(wait)
     soup = BeautifulSoup(r.text, "html.parser")
     repos = []
     for row in soup.select("article.Box-row")[:top_n]:
