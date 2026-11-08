@@ -1,0 +1,551 @@
+{
+  "date": "2026-11-08",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "stars": 47190,
+      "forks": 3233,
+      "gained": "190 stars today",
+      "gained_n": 190,
+      "lang_color": "#dea584",
+      "category": "outil d'automatisation de navigateur en ligne de commande",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑browser est un CLI Rust qui permet à un agent IA de piloter Chrome via le protocole DevTools, lire la page sous forme d'arbre d'accessibilité et interagir avec des éléments référencés. Il cible les développeurs IA qui ont besoin d'une interface navigateur scriptable.",
+      "workflow": "Entrée : commande texte (ex. `agent-browser open example.com`). Traitement : le daemon démarre, contrôle Chrome via CDP, crée un snapshot texte avec des références d'éléments. Sortie : texte compact contenant les refs et l'URL actuelle. Limites : nécessite Chrome for Testing, fonctionne en mode headless et s'arrête après une heure d'inactivité [S1].",
+      "use_cases": "1. Un développeur de chatbot IA utilise `open` puis `snapshot` pour extraire le titre d'une page et le fournir à l'agent ; résultat : texte du titre disponible dans le flux de conversation. 2. Un service de veille automatisée lance `click @e1` sur un bouton « Subscribe », puis récupère l'URL finale ; résultat : inscription réalisée sans intervention humaine.",
+      "products": "1. Service SaaS d'extraction de données web pour PME, interface web qui orchestre agent‑browser en arrière‑plan, différenciation : prise en charge multi‑session et stockage des snapshots. 2. Extension navigateur low‑code pour agences, UI drag‑and‑drop qui génère les commandes agent‑browser, différenciation : aucune ligne de code requise, tout est configuré via le tableau de bord.",
+      "monetization": "Acheteur : PME ou agence souhaitant automatiser la collecte d’informations. Raison de payer : gain de temps sur la veille concurrentielle. Unité facturée : nombre de sessions ou de snapshots traités. Modèle : abonnement mensuel avec forfait de 10 000 snapshots, prix hypothétique 49 €/mois, justifié par le coût d’infrastructure serveur et de support.",
+      "build_plan": "Périmètre : API REST (FastAPI) qui reçoit les requêtes et invoque le binaire agent‑browser. Brique réutilisée : le CLI existant. Travail à ajouter : wrapper HTTP, authentification JWT, tableau de bord React, persistance PostgreSQL. Exclusions : développement du moteur de rendu Chrome (déjà fourni). Dépendances : Rust, Node ≥22, Docker. Coût estimé : 150 h de dev (≈ 3 semaines à 40 h/semaine).",
+      "limitations": "Contraintes établies : besoin de Chrome for Testing, daemon s'arrête après 1 h d'inactivité, licence non vérifiée [S2]. Inconnues : compatibilité avec d’autres navigateurs, impact de charge élevée sur le serveur. Maintenance : mise à jour du binaire Rust et des dépendances Node.",
+      "next_step": "Tester l'intégration du CLI dans un conteneur Docker avec une requête simple `open` puis `snapshot`; demander à un product‑owner IA s'il souhaite pouvoir récupérer le titre d'une page via une API.",
+      "assessment": "Score 7 reflète la maturité du CLI et la documentation disponible [S1][S2]. Fit_score 5 car le profil indique un besoin de prototypes rapides mais aucune preuve de marché n’est fournie. Le projet correspond aux priorités B2B SaaS et IA appliquée, tout en restant réalisable avec les compétences listées.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4b0e9f01fa8d214d39bbfe5391257640634fb9a0",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/README.md",
+            "excerpt": "\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/sele\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](h\n\n# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n \n     \n     \n     \n     \n     \n \n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads t"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/package.json",
+            "excerpt": "{\n  \"name\": \"agent-browser\",\n  \"version\": \"0.41.2\",\n  \"description\": \"Browser automation CLI for AI agents\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.1.3\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"files\": [\n    \"bin\",\n    \"scripts\",\n    \"skill-data\",\n    \"skills\",\n    \"cli/src/native/a11y/LICENSE-axe-core.txt\",\n    \"cli/src/native/a11y/LICENSE-axe-core-THIRD-PARTY.txt\"\n  ],\n  \"bin\": {\n    \"agent-browser\": \"./bin/agent-browser.js\"\n  },\n  \"scripts\": {\n    \"mcp-tools:sync\": \"cd cli && AGENT_BROWSER_UPDATE_MCP_TOOLS=1 cargo test --bin agent-browser mcp_tool_catalog_snapshot\",\n    \"ver"
+          },
+          {
+            "id": "S3",
+            "path": "examples/eve/css.d.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/examples/eve/css.d.ts",
+            "excerpt": "declare module \"*.css\";\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑browser est un CLI Rust qui permet à un agent IA de piloter Chrome via le protocole DevTools, lire la page sous forme d'arbre d'accessibilité et interagir avec des éléments référencés. Il cible les développeurs IA qui ont besoin d'une interface navigateur scriptable.",
+      "business_idea": "1. Service SaaS d'extraction de données web pour PME, interface web qui orchestre agent‑browser en arrière‑plan, différenciation : prise en charge multi‑session et stockage des snapshots. 2. Extension navigateur low‑code pour agences, UI drag‑and‑drop qui génère les commandes agent‑browser, différenciation : aucune ligne de code requise, tout est configuré via le tableau de bord."
+    },
+    {
+      "name": "cloudflare/security-audit-skill",
+      "url": "https://github.com/cloudflare/security-audit-skill",
+      "description": "A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings",
+      "language": "JavaScript",
+      "stars": 66295,
+      "forks": 4317,
+      "gained": "2,085 stars today",
+      "gained_n": 2085,
+      "lang_color": "#f1e05a",
+      "category": "outil de sécurité automatisé",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Skill JavaScript qui transforme un coding‑agent en auditeur de sécurité, destiné aux développeurs qui souhaitent automatiser des revues de code et détecter des vulnérabilités.",
+      "workflow": "Entrée : chemin du répertoire à auditer (ex. ./src) → Traitement : le skill déclenche six phases (reconnaissance, chasse guidée, validation des candidats, génération de rapports structurés, vérification indépendante, export) en orchestrant des agents isolés → Résultat : artefacts de rapport (architecture.md, coverage‑ledger.json, fichiers de vulnérabilités confirmées) – source S1 ; limites : sortie par défaut dans le répertoire utilisateur, aucune garantie d’exhaustivité, dépend du moteur d’agents installé.",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Lancer un audit complet d’un projet client avant livraison ; outcome : Rapport détaillé des failles potentielles avec preuves vérifiables, facilitant la correction et la facturation du service\n• Utilisateur : Équipe DevSecOps d’une PME ; Tâche : Intégrer l’audit dans le pipeline CI/CD pour chaque build ; outcome : Détection précoce de vulnérabilités, génération automatique de tickets JIRA à partir des artefacts",
+      "products": "• Cible : PME tech ; Produit : Plateforme SaaS d’audit continu basée sur le skill ; differentiation : Interface web centralisée, tableau de bord multi‑projets, stockage cloud des rapports, notifications automatisées\n• Cible : Indépendants ; Produit : CLI premium avec options de personnalisation (règles, seuils, export PDF) ; differentiation : Licence locale, pas d’abonnement cloud, support de plugins tiers",
+      "monetization": "Acheteur : PME ou freelance ; raison : conformité sécurité et réduction du temps d’audit ; unité facturée : abonnement mensuel par projet ou paiement à l’usage (audit unique) ; fourchette hypothétique : 30‑120 €/mois selon nombre de projets, justifiée par le coût horaire d’un audit manuel (≈ 8 h × 80 €/h).",
+      "build_plan": "Périmètre limité : interface web et stockage cloud des artefacts ; brique réutilisée : skill existant (S1) ; travail à ajouter : UI React, API FastAPI, intégration OAuth, persistance PostgreSQL, CI/CD ; exclusions : génération de code de correctifs automatisés ; dépendances : Node.js, Skills CLI, Docker, Vercel ; coût estimé : 0 € (open‑source) + 0,10 €/heure d’infrastructure cloud ; délai conditionnel : 4‑6 semaines pour MVP.",
+      "limitations": "Contraintes établies : nécessite le Skills CLI, fonctionne uniquement sur environnements Unix‑like, sortie limitée à fichiers texte ; inconnues : performance sur très grands codebases, couverture réelle des vulnérabilités, licence non vérifiée ; maintenance : mise à jour du skill et des dépendances Node.",
+      "next_step": "Réaliser un test technique : exécuter le skill sur un petit dépôt open‑source et vérifier la présence des fichiers architecture.md et coverage‑ledger.json ; poser à un responsable sécurité la question : « Quel niveau de détail attend‑vous dans un rapport d’audit automatisé ? ».",
+      "assessment": "Score 7 reflète la pertinence du skill pour des audits automatisés et la disponibilité d’une documentation claire (S1). Fit_score 5 par défaut faute de critères de profil spécifiques. Les preuves proviennent uniquement de S1 ; aucune donnée supplémentaire n’est disponible.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c1c8a8c1471069fb0e188eeaff69b8e8db6564a8",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/cloudflare/security-audit-skill/blob/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/README.md",
+            "excerpt": "\n\n## Installation\n\nInstall the skill with the [Skills CLI](https://skills.sh):\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit\n```\n\nUse `--global` for a user-level installation:\n\n```bash\nnpx skills add https://github.com/cloudflare/security-audit-skill \\\n  --skill security-audit \\\n  --global\n```\n\nRun `npx skills --help` for agent-selection and non-interactive options.\n\n\n\n## Usage\n\nStart your coding agent in (or pointed at) the codebase you want to audit, then ask it to do a security audit:\n\n```\nsecurity audit this codebase\n```\n\n```\nfind security vulnerabilities in ./src\n```\n\n```\ndo a security review, output to ~/audits/my-project\n```\n\nThe skill activates automatically when the request matches its trigger (security audit, find vulnerabilities, pen-test the code, etc.). A direct codebase audit or pen-test request uses full audit mode. Security questions and focused vulnerability work use guidance mode unless you request report artifacts. In full audit mode, an unspecified output directory defaults to `~/securit\n\n# security-audit\n\nA coding-agent skill that turns your agent into a security auditor. It orchestrates isolated agents through reconnaissance, coverage-led hunting, candidate validation, structured output, independent record verification, and target-neutral reporting.\n\nThis is the skill that seeded Cloudflare's vulnerability discovery harness, described in [Build your own vulnerability harness](https://blog.cloudflare.com/build-your-own-vulnerability-harness). The harness grew into a multi-stage, fleet-wide system; this skill is the single-repo starting point it evolved from.\n\n\n\n## What it does\n\nThe skill runs a structured audit in six phases:\n\n1. **Reconnaissance** -- map architecture, trust boundaries, input surfaces, prior evidence, and deterministic coverage in `architecture.md` and `coverage-ledger.json`.\n2. **Coverage-led hunting** -- assign isolated hunters from ledger units, record their checks, and use coverage critics to find gaps.\n3. **Candidate validation** -- give every unique candidate to a fresh verifier that tries to disprove it.\n4. **Structured output** -- write `confirmed`, `needs_valid"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Skill JavaScript qui transforme un coding‑agent en auditeur de sécurité, destiné aux développeurs qui souhaitent automatiser des revues de code et détecter des vulnérabilités.",
+      "business_idea": "• Cible : PME tech ; Produit : Plateforme SaaS d’audit continu basée sur le skill ; differentiation : Interface web centralisée, tableau de bord multi‑projets, stockage cloud des rapports, notifications automatisées\n• Cible : Indépendants ; Produit : CLI premium avec options de personnalisation (règles, seuils, export PDF) ; differentiation : Licence locale, pas d’abonnement cloud, support de plugins tiers"
+    },
+    {
+      "name": "google/skills",
+      "url": "https://github.com/google/skills",
+      "description": "Agent Skills for Google products and technologies",
+      "language": "Python",
+      "stars": 23628,
+      "forks": 1971,
+      "gained": "443 stars today",
+      "gained_n": 443,
+      "lang_color": "#3572A5",
+      "category": "bibliothèque d'agents / collection de compétences",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un ensemble de « Agent Skills » permettant d'intégrer des fonctionnalités Google Cloud dans des agents automatisés, destiné aux développeurs qui souhaitent orchestrer des services cloud via des scripts ou des agents.",
+      "workflow": "Entrée : sélection d'une skill via `npx skills add google/skills` ; traitement : le skill installe des scripts ou des configurations spécifiques (ex. authentification IAM, workflow d'architecture) ; résultat : l'agent dispose d'une commande ou d'un module prêt à être invoqué. Sources : S1 (installation et liste des skills). Limites : aucune implémentation d'exécution fournie, dépend du runtime Node/Python choisi.",
+      "use_cases": "• Utilisateur : Développeur cloud ; Tâche : Automatiser le provisioning d'un projet GCP avec authentification IAM ; Résultat : Le skill crée les ressources et configure les permissions sans écrire de code manuel\n• Utilisateur : Équipe DevOps ; Tâche : Intégrer un workflow de sécurité multi‑agent dans un pipeline CI/CD ; Résultat : Le skill « Agent Gateway multi‑agent security » applique des politiques de sécurité sur les agents déployés",
+      "products": "• Cible : PME souhaitant externaliser la gestion de leurs services cloud ; Produit : Interface SaaS low‑code qui expose les skills comme des actions configurables via UI ; difference : Transforme les scripts CLI en actions web accessibles, réduisant la dépendance à Node.js\n• Cible : Agences marketing utilisant des modèles IA pour du contenu ; Produit : Plugin Next.js qui invoque les skills de génération de texte Gemini via API interne ; difference : Intègre directement la génération IA dans les pages web sans passer par un serveur séparé",
+      "monetization": "Acheteur : PME ou agence ; reason to pay : Accès à une suite pré‑configurée de compétences cloud évitant le développement manuel ; unit : abonnement mensuel par utilisateur actif ; model : freemium avec quota de 100 appels/mois, puis tarif à l'usage ; price range hypothesis : 5 €–15 €/mois selon le nombre de skills activées, justifié par le gain de temps de configuration",
+      "build_plan": "scope : Développer une UI web minimaliste qui liste les skills et génère des scripts d'installation ; reused bricks : Package npm du repo, documentation S1, scripts d'installation ; additional work : Création du front React, backend FastAPI pour orchestrer les appels, gestion des secrets GCP ; exclusions : Développement de nouveaux skills, hébergement des modèles IA ; dependencies : Node.js, FastAPI, Docker, compte GCP pour tests ; cost estimate : ≈ 200 € de cloud initial + 40 h de dev (≈ 400 € si tarif moyen 10 €/h) ; timeline : 2‑3 semaines conditionnelles (développement UI + API) si les compétences sont déjà installées",
+      "limitations": "Licence non vérifiée, aucune preuve d'authentification sécurisée intégrée, dépendance à Node.js et à des comptes Google Cloud ; maintenance des skills à jour non garantie (S1).",
+      "next_step": "Tester l'installation d'une skill sur un projet sandbox et interroger un développeur cloud sur la facilité d'intégration.",
+      "assessment": "Score 6 reflète la pertinence du dépôt pour créer des outils SaaS cloud‑centric, mais l'absence de licence claire et de preuves d'implémentation réduit la confiance. Fit_score 5 par défaut faute de critères de profil supplémentaires.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2194d3b8b1f31975fef2f1a0ae6b9ab55bd7ceee",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google/skills/blob/2194d3b8b1f31975fef2f1a0ae6b9ab55bd7ceee/README.md",
+            "excerpt": "\n\n## Installation\n\n```bash\nnpx skills add google/skills\n```\n\nWhen prompted, select specific skills or all skills, the target agents to\nconfigure, and the installation scope (project or global).\n\nIf `npx` is not available in your environment, install\n[Node.js](https://nodejs.org/en/download), which includes `npm` and `npx`.\n\n\n\n# Agent Skills\n\n[ ](https://skills.sh/google/skills)\n\nThis repository contains [Agent Skills](https://agentskills.io/home) for Google\nproducts and technologies, including [Google Cloud](https://cloud.google.com).\n\n\n\n## Updating Skills\n\nTo update previously installed skills to the latest versions, run the following\ncommand.\n\n```bash\nnpx skills update\n```\n\nThis command gives you an option to also remove obsolete skills.\n\n\n\n## Available Skills\n\n \n- **Getting started with Google Cloud**\n  - [**Authenticating and Authorizing to Google Cloud (IAM)**](./skills/cloud/google-cloud-recipe-auth)\n  - [**Google Cloud Recipe: Foundation Builder**](./skills/cloud/google-cloud-recipe-foundation-builder)\n  - [**Onboarding to Google Cloud**](./skills/cloud/google-cloud-recipe-onboarding)\n- **Multi-product solution skills**\n  - [**Google Cloud solution-architecture workflow**](./skills/cloud/google-cloud-solution-architecture)\n  - [**Agent Gateway multi-agent security**](./skills/cloud/google-cloud-solution-multi-agent-security)\n  - [**Agentic analytics across cloud providers a\n\n## Additional Google skills\n\n-   [**Advanced Google Cloud Storage Skills**](https://github.com/gemini-cli-extensions/google-cloud-storage)\n-   [**Agent Development Kit (ADK) Skills**](https://github.com/google/agents-cli)\n-   [**Android Skills**](https://github.com/android/skills)\n-   [**Dart Skills**](https://github.com/dart-lang/skills)\n-   [**Firestore Skills**](https://github.com/firebase"
+          },
+          {
+            "id": "S2",
+            "path": "skills/cloud/gke-app-onboarding/assets/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google/skills/blob/2194d3b8b1f31975fef2f1a0ae6b9ab55bd7ceee/skills/cloud/gke-app-onboarding/assets/package.json",
+            "excerpt": "{\n  \"name\": \"simple-node-app\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"node index.js\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "skills/cloud/developing-genkit-js/references/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google/skills/blob/2194d3b8b1f31975fef2f1a0ae6b9ab55bd7ceee/skills/cloud/developing-genkit-js/references/examples.md",
+            "excerpt": "\n\n# Genkit Examples\n\nThis reference contains minimal, reproducible examples (MREs) for common Genkit patterns.\n\n> **Disclaimer**: These examples use **Google AI** models (`googleAI`, `gemini-*`) for demonstration. The patterns apply to **any provider**. To use a different provider:\n> 1. Search the docs for the correct plugin: `genkit docs:search \"plugins\"`.\n> 2. Install and configure the plugin.\n> 3. Swap the model reference in the code.\n\n\n\n## Basic Text Generation\n\n```ts\nimport { genkit } from \"genkit\";\nimport { googleAI } from \"@genkit-ai/google-genai\";\n\nconst ai = genkit({\n  plugins: [googleAI()],\n});\n\nconst { text } = await ai.generate({\n  model: googleAI.model('gemini-flash-latest'),\n  prompt: 'Tell me a story in a pirate accent',\n});\n```\n\n\n\n## Structured Output\n\n```ts\nimport { z } from 'genkit';\n\nconst JokeSchema = z.object({\n  setup: z.string().describe('The setup of the joke'),\n  punchline: z.string().describe('The punchline'),\n});\n\nconst response = await ai.generate({\n  model:"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de « Agent Skills » permettant d'intégrer des fonctionnalités Google Cloud dans des agents automatisés, destiné aux développeurs qui souhaitent orchestrer des services cloud via des scripts ou des agents.",
+      "business_idea": "• Cible : PME souhaitant externaliser la gestion de leurs services cloud ; Produit : Interface SaaS low‑code qui expose les skills comme des actions configurables via UI ; difference : Transforme les scripts CLI en actions web accessibles, réduisant la dépendance à Node.js\n• Cible : Agences marketing utilisant des modèles IA pour du contenu ; Produit : Plugin Next.js qui invoque les skills de génération de texte Gemini via API interne ; difference : Intègre directement la génération IA dans les pages web sans passer par un serveur séparé"
+    },
+    {
+      "name": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "language": "Shell",
+      "stars": 318114,
+      "forks": 26626,
+      "gained": "1,100 stars today",
+      "gained_n": 1100,
+      "lang_color": "#89e051",
+      "category": "bibliothèque de scripts Shell pour agents IA",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un ensemble de compétences Shell destinées aux agents d’ingénierie, utilisable par des développeurs qui souhaitent automatiser des tâches de suivi de tickets, de génération de documentation et d’intégration d’outils CI. L’utilisateur cible est le développeur full‑stack qui exploite des LLMs comme Claude ou Codex.",
+      "workflow": "Entrée : dépôt Git contenant le code d’un projet. Traitement : le plugin `skills.sh` copie les scripts dans le répertoire du projet, pose des questions sur le tracker d’incidents, les libellés et le répertoire de sortie, puis crée les fichiers de configuration. Résultat : un répertoire enrichi de scripts prêts à être invoqués par l’agent. Sources : S1 (description de l’installation et du setup) ; limites : aucune validation d’intégration ni tests automatisés fournis (non établi dans les extraits).",
+      "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Automatiser la création de tickets GitHub à partir d’une requête utilisateur via un LLM ; Résultat : Tickets créés avec les libellés appropriés, sans intervention manuelle\n• Utilisateur : Équipe DevOps ; Tâche : Générer automatiquement la documentation de l’API à chaque merge ; Résultat : Fichiers Markdown mis à jour dans le repo, prêts à être publiés",
+      "products": "• Cible : PME souhaitant un assistant de gestion de projet IA ; Produit : Plateforme web qui intègre les skills comme micro‑services REST ; difference : Interface graphique et facturation Stripe, alors que le dépôt ne fournit que des scripts CLI\n• Cible : Freelance créateur de contenu vidéo ; Produit : Extension VS Code qui déclenche les skills pour transcrire et résumer des scripts vidéo ; difference : Ajoute une UI native et un stockage cloud, absent du dépôt original",
+      "monetization": "Acheteur : PME ou freelance. Raison de payer : gain de temps sur la gestion de tickets et la documentation. Unité facturée : abonnement mensuel par utilisateur. Modèle : SaaS avec plan freemium limité à 5 exécutions/mois, puis tarif à 15 €/mois. Hypothèse basée sur la valeur perçue d’une automatisation fiable et les coûts d’hébergement (serveur Node.js + stockage).",
+      "build_plan": "Périmètre : wrapper API autour des scripts Shell, UI React, authentification JWT. Brique réutilisée : les scripts du dépôt. Travail à ajouter : API Node.js, interface React, CI/CD Docker, gestion des quotas. Exclusions : support multi‑langue, IA locale. Dépendances : Node.js, Docker, Vercel/Fly.io. Coût estimé : 0 $ (plan gratuit Vercel) + 0 $ (GitHub). Délai : 3‑4 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence MIT confirmée (S2) mais le README indique une licence non vérifiée initialement. Aucun test automatisé fourni (non établi dans les extraits). Maintenance dépend du créateur du plugin. Le script ne gère que des environnements Unix.",
+      "next_step": "Réaliser un test technique : appeler le script `/setup-matt-pocock-skills` sur un repo de test et vérifier la création des fichiers de configuration. Question à poser à un utilisateur potentiel : « Quel est le principal obstacle que vous rencontrez aujourd’hui dans l’automatisation de la création de tickets ? »",
+      "assessment": "Score 6 reflète la pertinence du dépôt pour créer rapidement des automatisations d’agents IA, mais l’absence de tests et de documentation détaillée limite l’évaluation. Le fit_score reste neutre (5) car le profil ne spécifie pas de secteur ou de contrainte régionale précise. Les preuves proviennent des extraits S1 et S2.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/README.md",
+            "excerpt": " \n   \n     \n       \n       \n       \n     \n   \n \n\n\n\n## Installation (30-second setup)\n\nA plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.\n\n\n\n# Skills For Real Engineers\n\n[ ](https://skills.sh/mattpocock/skills)\n\nMy agent skills that I use every day to do real engineering - not vibe coding.\n\nDeveloping real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve.\n\nThese skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy.\n\nIf you want to keep up with changes to these skills, and any new ones I create, you can join\n\n### 1. Get the skills\n\n \n  Claude Code  \n\n```bash\nclaude plugin install mattpocock-skills@claude-plugins-official\n```\n\nUpdates itself by default.\n\n \n\n \n  Codex  \n\n```bash\ncodex plugin marketplace add mattpocock/skills\ncodex plugin add mattpocock-skills@mattpocock\n```\n\nUpdates itself at startup.\n\n \n\n \n  GitHub Copilot  (CLI and VS Code) \n\n```bash\ncopilot plugin marketplace add mattpocock/skills\ncopilot plugin install mattpocock-skills@mattpocock\n```\n\nThen, once, add to `~/.copilot/settings.json`:\n\n```json\n{\n  \"extraKnownMarketplaces\": {\n    \"mattpocock\": { \"source\": { \"source\": \"github\", \"repo\": \"mattpocock/skills\" }, \"autoUpdate\": true }\n  }\n\n\n### 2. Run `/setup-matt-pocock-skills`\n\nIn your agent, run it once per repo. It will:\n\n- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)\n- Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)\n- Ask you where you want to save any docs we create\n\n\n\n### 3. Bam - you're ready to go.\n\n\n\n## Why These Skills Exist\n\nI built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.\n\n\n\n### #1: The Agent Didn't Do What I Want\n\n> \"No-one knows exactly what the"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/mattpocock/skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/package.json",
+            "excerpt": "{\n  \"name\": \"mattpocock-skills\",\n  \"version\": \"1.3.2\",\n  \"private\": true,\n  \"description\": \"Matt Pocock's agent skills for real engineering\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/mattpocock/skills\"\n  },\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"changeset\": \"changeset\",\n    \"version\": \"changeset version && node scripts/sync-plugin-version.mjs\",\n    \"check-plugin-version\": \"node scripts/sync-plugin-version.mjs --check\"\n  },\n  \"devDependencies\": {\n    \"@changesets/changelog-github\": \"^0.7.0\",\n    \"@changesets/cli\": \"^2.30.0\"\n  },\n  \"packageManager\": \"npm@10.9.4\"\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de compétences Shell destinées aux agents d’ingénierie, utilisable par des développeurs qui souhaitent automatiser des tâches de suivi de tickets, de génération de documentation et d’intégration d’outils CI. L’utilisateur cible est le développeur full‑stack qui exploite des LLMs comme Claude ou Codex.",
+      "business_idea": "• Cible : PME souhaitant un assistant de gestion de projet IA ; Produit : Plateforme web qui intègre les skills comme micro‑services REST ; difference : Interface graphique et facturation Stripe, alors que le dépôt ne fournit que des scripts CLI\n• Cible : Freelance créateur de contenu vidéo ; Produit : Extension VS Code qui déclenche les skills pour transcrire et résumer des scripts vidéo ; difference : Ajoute une UI native et un stockage cloud, absent du dépôt original"
+    },
+    {
+      "name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "description": "Public repository for Agent Skills",
+      "language": "Python",
+      "stars": 189099,
+      "forks": 22292,
+      "gained": "390 stars today",
+      "gained_n": 390,
+      "lang_color": "#3572A5",
+      "category": "Bibliothèque de compétences pour IA Claude",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées, destiné aux développeurs souhaitant enrichir les capacités de Claude.",
+      "workflow": "Entrée : fichier `SKILL.md` décrivant la tâche → Traitement : Claude lit le dossier, charge les scripts et exécute les actions définies (ex. génération de documents, appels API) → Résultat : sortie structurée ou artefact produit (ex. document, image). Limites : les comportements peuvent différer de la démonstration et nécessitent des tests (S1).",
+      "use_cases": "• acteur : Agence de branding ; tâche : Générer automatiquement des maquettes de documents selon la charte graphique du client ; résultat : Livrables cohérents et prêts à être validés\n• acteur : Développeur SaaS ; tâche : Automatiser la création de tickets de support à partir d'e‑mails ; résultat : Tickets pré‑remplis dans le système de suivi",
+      "products": "• cible : PME souhaitant automatiser leurs processus internes ; produit : Plateforme web qui expose les skills sous forme d'API REST ; différence : Permet d'utiliser les compétences sans connaître la syntaxe interne de Claude\n• cible : Créateurs de contenu vidéo ; produit : Extension Slack qui crée des GIFs à la volée via le skill `slack-gif-creator` ; différence : Intègre directement la génération d'images animées dans les flux de travail collaboratifs",
+      "monetization": "Facturation à l'usage (nombre d'appels d'API Claude) ou abonnement mensuel pour accès illimité aux skills ; hypothèse de 10 €/mois pour PME, justifiée par la valeur de gain de temps et les coûts d'API (non estimés précisément).",
+      "build_plan": "Réutiliser le dépôt comme base de compétences (brique réutilisée) ; ajouter une couche API (FastAPI) pour exposer les skills, UI minimaliste (Next.js) et gestion des clés API. Exclusions : création de nouveaux skills complexes. Dépendances : `pillow`, `imageio`, `numpy` (S2). Coût estimé : 200 € de services cloud pour le prototype, 2 semaines de développement intensif.",
+      "limitations": "Licence non vérifiée (S1) ; comportement des skills peut diverger de la documentation, nécessite validation (S1). Coûts d'API Claude non inclus, maintenance des scripts Python requise.",
+      "next_step": "Tester l'intégration d'un skill simple via l'API FastAPI et interroger un développeur d'agence sur la pertinence du générateur de documents.",
+      "assessment": "Score 7 reflète la richesse du dépôt et la pertinence pour les secteurs ciblés (automatisation, IA appliquée). Fit_score 5 par défaut faute de critères de profil détaillés. De nombreuses affirmations reposent sur le README (S1) ; aucune preuve de viabilité commerciale directe.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/README.md",
+            "excerpt": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[ ](https://skills.sh/anthropics/skills)\n\n\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claud\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creatio\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks"
+          },
+          {
+            "id": "S2",
+            "path": "skills/slack-gif-creator/requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/slack-gif-creator/requirements.txt",
+            "excerpt": "pillow>=10.0.0\nimageio>=2.31.0\nimageio-ffmpeg>=0.4.9\nnumpy>=1.24.0"
+          },
+          {
+            "id": "S3",
+            "path": "skills/claude-api/curl/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/claude-api/curl/examples.md",
+            "excerpt": "\n\n# Read usage fields\ninput_tokens=$(echo \"$response\" | jq -r '.usage.input_tokens')\noutput_tokens=$(echo \"$response\" | jq -r '.usage.output_tokens')\n\n\n\n# Claude API - cURL / Raw HTTP\n\nUse these examples when the user needs raw HTTP requests or is working in a language without an official SDK.\n\n\n\n## Setup\n\n```bash\nexport ANTHROPIC_API_KEY=\"your-api-key\"\n```\n\n---\n\n\n\n## Basic Message Request\n\n```bash\ncurl https://api.anthropic.com/v1/messages \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5-5\",\n    \"max_tokens\": 16000,\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"What is the capital of France?\"}\n    ]\n  }'\n```\n\n\n\n### Parsing the response\n\nUse `jq` to extract fields from the JSON response. Do not use `grep`/`sed` -\nJSON strings can contain any character and regex parsing will break on quotes,\nescapes, or multi-line content.\n\n```bash\n\n\n# Capture the response, then extract fiel"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées, destiné aux développeurs souhaitant enrichir les capacités de Claude.",
+      "business_idea": "• cible : PME souhaitant automatiser leurs processus internes ; produit : Plateforme web qui expose les skills sous forme d'API REST ; différence : Permet d'utiliser les compétences sans connaître la syntaxe interne de Claude\n• cible : Créateurs de contenu vidéo ; produit : Extension Slack qui crée des GIFs à la volée via le skill `slack-gif-creator` ; différence : Intègre directement la génération d'images animées dans les flux de travail collaboratifs"
+    },
+    {
+      "name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "stars": 14960,
+      "forks": 1221,
+      "gained": "96 stars today",
+      "gained_n": 96,
+      "lang_color": "#3178c6",
+      "category": "Design System / Bibliothèque UI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI intégré. Il cible les développeurs front‑end et les équipes produit qui souhaitent créer rapidement des interfaces cohérentes.",
+      "workflow": "Entrée : fichier de configuration (theme, composants) → Traitement : le CLI compile les styles avec StyleX et génère le bundle JavaScript via les scripts npm (voir S2) → Résultat : package npm prêt à être importé dans une application React (voir S1). Limite : nécessite React 19+ et dépend du CLI, aucune preuve d’intégration serveur ou IA.",
+      "use_cases": "• Utilisateur : Développeur d’une SaaS B2B ; Tâche : Construire une interface admin avec thème sombre et branding personnalisé ; Résultat : Déploiement en quelques heures grâce aux composants prêts à l’emploi et au CLI\n• Utilisateur : Équipe produit d’une agence ; Tâche : Standardiser l’apparence de 20 sites clients ; Résultat : Réduction du temps de design grâce à la bibliothèque de thèmes et aux templates",
+      "products": "• Cible : PME recherchant un tableau de bord interne ; Produit : Plateforme SaaS de reporting utilisant Astryx comme UI core ; difference : Ajout d’un backend FastAPI pour la collecte de données, UI fournie par Astryx\n• Cible : Agences créatives ; Produit : Kit de prototypage rapide avec Astryx + CLI + hébergement Vercel ; difference : Livraison d’un environnement complet (CI, déploiement) au-delà de la simple bibliothèque",
+      "monetization": "Acheteur : agence ou PME ; raison de payer : gain de productivité sur le front‑end ; unité facturée : abonnement mensuel par projet ; modèle : abonnement SaaS avec tarif hypothétique 30‑80 €/mois selon nombre de projets, justifié par le coût de maintenance du backend et du support.",
+      "build_plan": "Périmètre : UI (Astryx) + API FastAPI + PostgreSQL ; briques réutilisées : Astryx (S1‑S2), FastAPI (existant) ; travail à ajouter : authentification, endpoints de reporting, intégration CI/CD ; exclusions : génération de design automatisée par IA ; dépendances : @astryxdesign/*, @stylexjs/stylex, FastAPI, Docker ; coût estimé : 150 h de développement (≈ 3 semaines à plein temps) + hébergement cloud (≈ 30 €/mois).",
+      "limitations": "Licence MIT confirmée dans package.json mais non vérifiée dans README (non établi dans les extraits) ; dépendance stricte à React 19+ ; aucune preuve d’intégration IA ou de support multilingue ; maintenance du CLI non détaillée.",
+      "next_step": "Réaliser un prototype d’une page de tableau de bord en intégrant Astryx et un endpoint FastAPI ; interroger un product manager d’agence sur les besoins de thématisation.",
+      "assessment": "Score 7 reflète la maturité du système (large catalogue, CLI, usage interne chez Meta) ; fit_score 5 car le profil ne précise pas de contraintes sectorielles précises. Les preuves proviennent des extraits S1 et S2, le reste reste hypothétique.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "7bc8230f8b9d0012d7b625aa05839c3c8a77167f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/meta/astryx/blob/7bc8230f8b9d0012d7b625aa05839c3c8a77167f/README.md",
+            "excerpt": " \n\n \n\n \n\n\n\n## Architecture\n\n\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now:   by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[ ](https://www.npmjs.com/package/@astryxdesign/core)\n[ ](LICENSE)\n[ ](https://github.com/meta/astryx/wiki/Contributing)\n\n[ ](https://astryx.atmeta.com)\n[ ](https://astryx.atmeta.com/storybook/)\n[ ](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributi\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Componen\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n\n\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both "
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/meta/astryx/blob/7bc8230f8b9d0012d7b625aa05839c3c8a77167f/package.json",
+            "excerpt": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pn"
+          },
+          {
+            "id": "S3",
+            "path": "scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/meta/astryx/blob/7bc8230f8b9d0012d7b625aa05839c3c8a77167f/scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "excerpt": "// Copyright (c) Meta Platforms, Inc. and affiliates.\n\n/** @param {string} name */\nfunction greet(name) {\n  return `hi ${name}`;\n}\n\nmodule.exports = {greet};\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI intégré. Il cible les développeurs front‑end et les équipes produit qui souhaitent créer rapidement des interfaces cohérentes.",
+      "business_idea": "• Cible : PME recherchant un tableau de bord interne ; Produit : Plateforme SaaS de reporting utilisant Astryx comme UI core ; difference : Ajout d’un backend FastAPI pour la collecte de données, UI fournie par Astryx\n• Cible : Agences créatives ; Produit : Kit de prototypage rapide avec Astryx + CLI + hébergement Vercel ; difference : Livraison d’un environnement complet (CI, déploiement) au-delà de la simple bibliothèque"
+    },
+    {
+      "name": "prometheus/prometheus",
+      "url": "https://github.com/prometheus/prometheus",
+      "description": "The Prometheus monitoring system and time series database.",
+      "language": "Go",
+      "stars": 67538,
+      "forks": 11011,
+      "gained": "322 stars today",
+      "gained_n": 322,
+      "lang_color": "#00ADD8",
+      "category": "Système de monitoring et base de séries temporelles",
+      "eligible": true,
+      "score": 8,
+      "fit_score": 5,
+      "summary": "Prometheus est une solution open‑source de collecte, stockage et requêtage de métriques. Elle s’adresse aux équipes d’infrastructure qui souhaitent surveiller la disponibilité et les performances de leurs services.",
+      "workflow": "Entrée : agents ou exporters exposent des métriques au format texte sur HTTP → Prometheus scrape ces endpoints à intervalles configurés, stocke les séries temporelles dans son TSDB interne → Les utilisateurs interrogent les données via le langage PromQL ou l’interface web pour obtenir graphiques ou alertes. Limites : nécessite la configuration d’exporters, ne gère pas les logs, la scalabilité horizontale repose sur le sharding manuel. [S1][S3]",
+      "use_cases": "• Utilisateur : Équipe DevOps d’une PME SaaS ; Tâche : Surveiller le taux d’erreurs HTTP de l’API en temps réel ; Résultat : Alertes instantanées via Alertmanager, tableau de bord Grafana intégré\n• Utilisateur : Administrateur système d’un cluster Kubernetes ; Tâche : Collecter les métriques de ressources (CPU, mémoire) des pods ; Résultat : Optimisation de l’allocation de ressources et réduction des coûts cloud",
+      "products": "• cible : Start‑ups tech souhaitant un monitoring auto‑hébergé ; produit : Plateforme SaaS « Prometheus‑Lite » avec UI simplifiée, onboarding en un clic ; différence : Abstraction de la configuration d’exporters et du stockage, facturation mensuelle\n• cible : Consultants en performance d’applications ; produit : Extension « Prometheus‑Analytics » qui enrichit les séries avec des modèles IA de prévision de charge ; différence : Ajoute des prédictions de tendance, aucune modification du cœur de Prometheus",
+      "monetization": "Acheteur : PME ou agence qui paie pour la version hébergée ; raison : éviter la gestion d’infrastructure et bénéficier d’un support dédié ; unité facturée : abonnement mensuel par instance ; modèle : SaaS avec tarif de base 49 €/mois, majoration selon volume de séries (hypothèse à tester).",
+      "build_plan": "Périmètre : UI simplifiée + scripts d’installation automatisés ; brique réutilisée : serveur Prometheus et Alertmanager existants ; travail à ajouter : tableau de bord custom, système de facturation, documentation multilingue ; exclusions : clustering avancé, intégration de logs ; dépendances : Docker, PostgreSQL pour la facturation ; coût estimé : 200 h de dev (≈ 4 semaines à plein temps) ; délai : 4‑6 semaines conditionnel selon disponibilité des ressources.",
+      "limitations": "Contraintes établies : nécessite Go 1.26+, Node >= 10, stockage local limité ; inconnues : performance à très grande échelle, conformité RGPD non vérifiée dans le code source ; licence : non vérifiée dans les extraits, à confirmer ; coûts de maintenance : mise à jour régulière du serveur et des exporters.",
+      "next_step": "Réaliser un test de déploiement d’une instance Docker avec un exporter simple et interroger un potentiel utilisateur (admin système) sur la facilité d’onboarding.",
+      "assessment": "Score 8 reflète la maturité du projet et son adéquation avec le besoin de monitoring rapide ; fit_score 5 par défaut faute de critères de profil précis. Les preuves proviennent des extraits README et exemples de requêtes. De nombreuses dimensions (licence, conformité) restent non établies dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "1d4faeaf10281aa16c4a5e73e4bfda92f81bc366",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/prometheus/prometheus/blob/1d4faeaf10281aa16c4a5e73e4bfda92f81bc366/README.md",
+            "excerpt": " \n        Prometheus\n \n\n Visit  prometheus.io  for the full documentation,\nexamples and guides. \n\n \n\n[ ](https://github.com/prometheus/prometheus/actions/workflows/ci.yml)\n[ ][quay]\n[ ][hub]\n[ ](https://bestpractices.coreinfrastructure.org/projects/486)\n[ ](https://github.com/prometheus/prometheus/actions/workflows/govulncheck.yml)\n[ ](https://securityscorecards.dev/viewer/?uri=github.com/prometheus/prometheus)\n[ ](https://clomonitor.io/projects/\n\n## Architecture overview\n\n \n\n\n\n## Install\n\nThere are various ways to install Prometheus.\n\n\n\n### Precompiled binaries\n\nPrecompiled binaries for released versions are available in the\n[*download* section](https://prometheus.io/download/)\non [prometheus.io](https://prometheus.io). Using the latest production release binary\nis the recommended way to install Prometheus.\nSee the [Installing](https://prometheus.io/docs/introduction/install/)\nchapter in the documentation for all the details.\n\n\n\n### Docker images\n\nDocker images are available on [Quay.io](https://quay.io/repository/prometheus/prometheus) or [Docker Hub](https://hub.docker.com/r/prom/prometheus/).\n\nYou can launch a Prometheus container for trying it out with\n\n```bash\ndocker run --name prometheus -d -p 127.0.0.1:9090:9090 prom/prometheus\n```\n\nPrometheus will now be reachable at  .\n\n\n\n### Building from source\n\nTo build Prometheus from source code, you need:\n\n* Go: Version specified in [go.mod](./go.mod) or greater.\n* NodeJS: Version specified in [.nvmrc](./web/ui/.nvmrc) or greater.\n* npm: Version 10 or greater (check with `npm --version` and [here](https://www.npmjs.com/)).\n\n"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/prometheus/prometheus/blob/1d4faeaf10281aa16c4a5e73e4bfda92f81bc366/go.mod",
+            "excerpt": "module github.com/prometheus/prometheus\n\ngo 1.26.10\n\nrequire (\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.3\n\tgithub.com/Azure/azure-sdk-for-go/sdk/azidentity v1.15.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v8 v8.4.0\n\tgithub.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v8 v8.0.0\n\tgithub.com/Code-Hex/go-generics-cache v1.5.1\n\tgithub.com/KimMachineGun/automemlimit v1.0.0\n\tgithub.com/alecthomas/kingpin/v2 v2.4.0\n\tgithub.com/alecthomas/units v0.0.0-20240927000941-0f3dac36c52b\n\tgithub.com/aws/aws-sdk-go-v2 v1.47.4\n\tgithub.com/aws/aws-sd"
+          },
+          {
+            "id": "S3",
+            "path": "docs/querying/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/prometheus/prometheus/blob/1d4faeaf10281aa16c4a5e73e4bfda92f81bc366/docs/querying/examples.md",
+            "excerpt": "---\ntitle: Query examples\nnav_title: Examples\nsort_rank: 4\n---\n\n\n\n## Simple time series selection\n\nReturn all time series with the metric `http_requests_total`:\n\n    http_requests_total\n\nReturn all time series with the metric `http_requests_total` and the given\n`job` and `handler` labels:\n\n    http_requests_total{job=\"apiserver\", handler=\"/api/comments\"}\n\nReturn a whole range of time (in this case 5 minutes up to the query time)\nfor the same vector, making it a [range vector](../basics/#range-vector-selectors):\n\n    http_requests_total{job=\"apiserver\", handler=\"/api/comments\"}[5m]\n\nNote that an expression resulting in a range vector cannot be graphed directly,\nbut viewed in the tabular (\"Console\") view of t\n\n## Subquery\n\nReturn the 5-minute [rate](./functions.md#rate) of the `http_requests_total` metric for the past 30 minutes, with a resolution of 1 minute.\n\n    rate(http_requests_total[5m])[30m:1m]\n\nThis is an example of a nested subquery. The subquery for the `deriv` function uses t"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Prometheus est une solution open‑source de collecte, stockage et requêtage de métriques. Elle s’adresse aux équipes d’infrastructure qui souhaitent surveiller la disponibilité et les performances de leurs services.",
+      "business_idea": "• cible : Start‑ups tech souhaitant un monitoring auto‑hébergé ; produit : Plateforme SaaS « Prometheus‑Lite » avec UI simplifiée, onboarding en un clic ; différence : Abstraction de la configuration d’exporters et du stockage, facturation mensuelle\n• cible : Consultants en performance d’applications ; produit : Extension « Prometheus‑Analytics » qui enrichit les séries avec des modèles IA de prévision de charge ; différence : Ajoute des prédictions de tendance, aucune modification du cœur de Prometheus"
+    },
+    {
+      "name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "description": "Hunt down social media accounts by username across social networks",
+      "language": "Python",
+      "stars": 101613,
+      "forks": 12006,
+      "gained": "1,766 stars today",
+      "gained_n": 1766,
+      "lang_color": "#3572A5",
+      "category": "outil en ligne de recherche d’identifiants",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné. Il s’adresse aux analystes de sécurité, aux enquêteurs et aux spécialistes du marketing qui doivent confirmer la présence ou l’absence d’un compte sur plusieurs plateformes.",
+      "workflow": "Entrée : un ou plusieurs noms d’utilisateur fournis en ligne de commande (ex. `sherlock user123`). Traitement : le script parcourt la liste des sites, envoie des requêtes HTTP et analyse les réponses pour détecter les pages existantes ; les options permettent de choisir le format de sortie, le proxy ou le timeout. Résultat : un fichier texte (ou CSV/JSON) contenant les URL trouvées ou un message d’absence. Limites : dépendance à la disponibilité des sites, aucune gestion de captchas, et le mode Docker recommandé pour les environnements où les paquets sont cassés [S1].",
+      "use_cases": "• acteur : Consultant en cybersécurité ; tâche : Vérifier la surface d’exposition d’un nom de marque sur les réseaux sociaux ; résultat : Rapport automatisé listant les comptes existants et les plateformes où le nom est disponible\n• acteur : Responsable marketing d’une PME ; tâche : Réserver un nom d’utilisateur cohérent sur les nouveaux réseaux ; résultat : Liste des réseaux où le nom est libre, permettant d’enregistrer rapidement les comptes",
+      "products": "• cible : Agences de branding ; produit : Service SaaS de réservation de noms d’utilisateur avec tableau de bord et notifications ; différence : Interface web, gestion multi‑client, automatisation de la création de comptes via API, alors que le dépôt brut est uniquement un CLI\n• cible : Développeurs d’outils d’investigation ; produit : Bibliothèque Python réutilisable intégrée à des pipelines d’OSINT ; différence : Expose des fonctions de recherche comme API interne, alors que le dépôt original nécessite l’exécution du script complet",
+      "monetization": "acheteur : PME ou agence souhaitant automatiser la veille de marque ; raison de payer : Gain de temps et fiabilité d’un service hébergé qui évite l’installation locale ; unité facturée : abonnement mensuel par projet ou nombre de requêtes ; modèle économique : SaaS avec forfait de base (ex. 30 €/mois) + tarif à l’usage pour les gros volumes",
+      "build_plan": "périmètre limité : Web UI + API REST autour du moteur de recherche existant ; brique réutilisée : Code de recherche de Sherlock (module Python) ; travail à ajouter : Interface React, authentification JWT, gestion de facturation Stripe, conteneurisation Docker ; exclusions : Gestion de captchas avancée, support de plus de 400 sites supplémentaires ; dépendances : FastAPI, PostgreSQL, Docker, Stripe SDK ; coûts estimés : ≈ 200 € de licences cloud (hébergement, base de données) + 40 h de dev (≈ 2 k€) ; délai : 4 à 6 semaines conditionnellement à la disponibilité d’un développeur full‑stack",
+      "limitations": "Fonctionne uniquement tant que les sites cibles restent accessibles ; aucune garantie de conformité RGPD pour la collecte d’URL [S1]; licence MIT du dépôt, à vérifier pour usage commercial [S2]; maintenance requise pour suivre les changements d’URL des réseaux.",
+      "next_step": "Réaliser un prototype d’API qui accepte un nom d’utilisateur et renvoie les résultats JSON ; interroger un responsable marketing sur la valeur d’un tableau de bord de suivi de disponibilité.",
+      "assessment": "Score 7 reflète la maturité du code (CLI fonctionnel, documentation) et la pertinence pour les secteurs ciblés (B2B, branding). Fit_score 5 car le profil ne précise pas de contrainte régionale ou de délai strict. Les preuves proviennent des extraits README et pyproject.toml, d’où le manque d’informations sur la licence exacte et la viabilité commerciale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c588d7c8b476df9f9c84912a05d1430fb8cdcdae",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "docs/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/docs/README.md",
+            "excerpt": " \n   \n     \n   \n   Hunt down social media accounts by username across  400+ social networks  \n   \n \n\n \n   Installation \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Usage \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Contributing \n \n\n \n \n \n\n\n\n\n## Installation\n\n \n     \n \n\n \n   &#8202;&#8202;   \n \n\n \n\n> [!WARNING]  \n> Packages for ParrotOS and Ubuntu 24.04, maintained by a third party, appear to be __broken__.  \n> Users of these systems should defer to [`uv`](https://docs.astral.sh/uv/)/`pipx`/`pip` or Docker.\n\n| Method | Notes |\n| - | - |\n| `pipx install sherlock-project` | `pip` or [`uv`](https://docs.astral.sh/uv/) may be used in place of `pipx` |\n| `docker run -it --rm sherlock/sherlock` |\n| `dnf install sherlock-project` | |\n\nCommunity-maintained packages are available for Debian (>= 13), Ubuntu (>= 22.10), Homebrew, Kali, and BlackArch. These packages are not directly supported\n\n## General usage\n\nTo search for only one user:\n```bash\nsherlock user123\n```\n\nTo search for more than one user:\n```bash\nsherlock user1 user2 user3\n```\n\nAccounts found will be stored in an individual text file with the corresponding username (e.g ```user123.txt```).\n\n```console\n$ sherlock --help\nusage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--dump-response]\n                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--nsfw] [--txt] [--ignore-exclusions]\n                USERNAMES [USE\n\n## Credits\n\nThank you to everyone who has contributed to Sherlock! ❤️\n\n \n   \n \n\n\n\n## Star History\n\n \n   \n   \n   \n \n\n\n\n## License\n\nMIT © Sherlock Project \nCreator - [Siddharth Dushantha](https://github.com/sdushantha)\n\n \n\n[ext_pypi]: https://pypi.org/project/sherlock-project/\n[ext_brew]: https://formulae.brew.sh/formula/sherlock\n"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [ \"poetry-core>=1.2.0\" ]\nbuild-backend = \"poetry.core.masonry.api\"\n# poetry-core 1.8 not available in .fc39. Can upgrade to 1.8.0 at .fc39 EOL\n\n[tool.poetry-version-plugin]\nsource = \"init\"\n\n[tool.poetry]\nname = \"sherlock-project\"\nversion = \"0.16.2\"\ndescription = \"Hunt down social media accounts by username across social networks\"\nlicense = \"MIT\"\nauthors = [\n    \"Siddharth Dushantha <siddharth.dushantha@gmail.com>\"\n]\nmaintainers = [\n    \"Paul Pfeister <code@pfeister.dev>\",\n    \"Matheus Felipe <matheusfelipeog@protonmail.com>\",\n    \"Sondre Karlsen Dyrnes <sondre@villdyr"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné. Il s’adresse aux analystes de sécurité, aux enquêteurs et aux spécialistes du marketing qui doivent confirmer la présence ou l’absence d’un compte sur plusieurs plateformes.",
+      "business_idea": "• cible : Agences de branding ; produit : Service SaaS de réservation de noms d’utilisateur avec tableau de bord et notifications ; différence : Interface web, gestion multi‑client, automatisation de la création de comptes via API, alors que le dépôt brut est uniquement un CLI\n• cible : Développeurs d’outils d’investigation ; produit : Bibliothèque Python réutilisable intégrée à des pipelines d’OSINT ; différence : Expose des fonctions de recherche comme API interne, alors que le dépôt original nécessite l’exécution du script complet"
+    },
+    {
+      "name": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "description": "Open-source Grok Bot alternative with a virtual machine that bots can use",
+      "language": "TypeScript",
+      "stars": 17575,
+      "forks": 2460,
+      "gained": "1,955 stars today",
+      "gained_n": 1955,
+      "lang_color": "#3178c6",
+      "category": "application de chat local avec agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "OpenMausBot est une application desktop (React + Tailwind, Electron) qui orchestre une équipe d’agents IA via un serveur harness. Destinée aux développeurs ou PME souhaitant contrôler leurs modèles localement, il résout le problème de dépendance à des services SaaS externes.",
+      "workflow": "Entrée : fichier Markdown décrivant une équipe (bots, playbooks, connecteurs) → Traitement : le serveur harness lit le front‑matter YAML, crée les processus agents, normalise les protocoles en un flux SSE unique → Résultat : interface chat où l’utilisateur interagit avec les bots, les connexions restent désactivées jusqu’à approbation. Sources : S1 (description du format Markdown et du flux SSE). Limites : aucune persistance cloud, dépend du système local, licence Apache‑2.0 à vérifier pour usage commercial.",
+      "use_cases": "• Utilisateur : Consultant en automatisation ; Tâche : Déployer rapidement un assistant IA pour analyser des rapports PDF via un playbook Markdown ; Résultat : Le consultant obtient des réponses instantanées sans exposer les données à un service externe\n• Utilisateur : Startup SaaS ; Tâche : Prototyper un service de support client interne en combinant plusieurs modèles locaux ; Résultat : Réduction du coût d’API tierces pendant la phase de MVP",
+      "products": "• Cible : PME souhaitant un support IA interne ; Produit : Plateforme SaaS hébergée qui reprend le moteur OpenMausBot en mode multi‑tenant ; difference : Ajout d’une couche d’authentification centralisée, facturation par utilisateur et stockage cloud sécurisé\n• Cible : Développeurs d’outils CLI ; Produit : Wrapper Node.js qui expose les agents OpenMausBot via une API REST simple ; difference : Permet l’intégration dans des pipelines CI/CD sans interface graphique",
+      "monetization": "Acheteur : PME ou agence; raison : éviter les coûts d’API externes et garder la confidentialité; unité facturée : abonnement mensuel par utilisateur actif; modèle : abonnement SaaS avec forfait de base + tarif à l’usage pour appels supplémentaires. Fourchette de prix hypothétique : 30‑80 €/mois selon le nombre d’agents, justifiée par les économies d’appels API et les frais d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : transformer le dépôt en service SaaS multi‑tenant; briques réutilisées : serveur harness, logique d’import Markdown, UI React; travail à ajouter : gestion multi‑tenant, facturation Stripe, stockage PostgreSQL, CI/CD Docker; exclusions : client desktop natif, support macOS/Windows séparé; dépendances : Electron (déprécié pour SaaS), Node ≥ 24, bibliothèque SSE; coût estimé : 2 k€ de dev (≈ 200 h) + 200 €/mois d’infra cloud. Délai : 6‑8 semaines conditionnel selon disponibilité d’un développeur full‑stack.",
+      "limitations": "Contraintes établies : nécessite Node ≥ 24, fonctionne uniquement en local ou sur serveur dédié; licence Apache‑2.0 (à valider pour usage commercial); aucune persistance cloud native, maintenance du serveur harness requise. Inconnues : scalabilité du flux SSE, performances avec > 50 agents simultanés.",
+      "next_step": "Réaliser un test technique : déployer le harness server sur un VPS et importer un playbook Markdown simple; question à poser à un potentiel utilisateur : « Quel niveau de contrôle sur les modèles IA (local vs cloud) est essentiel pour votre activité ? »",
+      "assessment": "Score 7 reflète la maturité du code (release 0.1.149, UI prête) et la pertinence pour le profil (full‑stack, besoin d’outils IA locaux). Fit_score 5 par défaut car aucune contrainte régionale ou tarif spécifique n’est confirmée dans les extraits. Manque de preuves : aucune donnée sur la charge serveur, aucune validation de licence pour usage commercial, aucune étude de marché.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "8634d539883f6e02ef9b666e3b456e6b3dfc5351",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/milind-soni/OpenMausBot/blob/8634d539883f6e02ef9b666e3b456e6b3dfc5351/README.md",
+            "excerpt": " \n\n\n\n## Features\n\n \n \n \n\n\n\n### 📦 Install a complete team from one Markdown file\n\nBrowse outcome-driven teams on [BotMRR](https://botmrr.io), then choose **Add to OpenMausBot**. The app\nopens a review screen before creating the bots, Chief of Staff, channels, playbooks, connector checklist,\nand suggested routines. You can also import the same `.md` file from disk or paste its public GitHub URL\nin **Teams → Import**.\n\nThe format stays portable: OpenMausBot reads the structured YAML frontmatter for a reliable one-click\ninstall, while Grok, Claude, ChatGPT, and people can follow the ordinary Markdown playbook. Connections\nremain off until you approve them, routines ar\n\n## How it works\n\nTwo processes. The app holds no transports of its own — it sends typed commands over HTTP and folds one SSE\nevent stream into state. The harness server owns every agent process and normalizes each provider's native\nprotocol into one canonical runtime event stream (logged per-thread as NDJSON).\n\n```mermaid\nflowchart LR\n    subgraph app [\"App — React + Tailwind (5199)\"]\n        UI[Chat UI · model picker · computer panel]\n    end\n    subgraph server [\"Harness server (127.0.0.1:8799)\"]\n        REG[Driver registry] --> BUS[Event bus → SSE]\n        BROKER[Permission broker]\n    end\n    subgraph agents [\"Agents on your compu\n\n## Quick start\n\n**Released builds ([latest release](https://github.com/milind-soni/OpenMausBot/releases/latest)):** the harness server is embedded, so no separate server setup is required.\n\n| | Download | Install |\n|---|---|---|\n| **macOS** (Apple silicon) | [OpenMausBot.dmg](https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot.dmg) | Drag it to Applications, open it. Signed & notarized. |\n| **macOS** (Intel) | [OpenMausBot-intel.dmg](https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot-intel.dmg) | Same app, built for Intel Macs. Signed & notarized. |\n| **Windows** (x64) | [OpenMausBot-se\n\n# OpenMausBot\n\n**The open-source Grok Bot alternative: your own team of AI bots, in a chat app.**\n\n[**openmausbot.com**](https://www.openmausbot.com) &nbsp;·&nbsp; [Download](https://www.openmausbot.com/download) &nb"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/milind-soni/OpenMausBot/blob/8634d539883f6e02ef9b666e3b456e6b3dfc5351/package.json",
+            "excerpt": "{\n  \"name\": \"openmausbot\",\n  \"private\": true,\n  \"version\": \"0.1.149\",\n  \"description\": \"A local-first chat app for running a team of AI agents.\",\n  \"homepage\": \"https://github.com/milind-soni/OpenMausBot\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/milind-soni/OpenMausBot.git\"\n  },\n  \"author\": {\n    \"name\": \"Milind Soni\",\n    \"email\": \"46266943+milind-soni@users.noreply.github.com\"\n  },\n  \"license\": \"Apache-2.0\",\n  \"desktopName\": \"com.openmausbot.app.desktop\",\n  \"type\": \"module\",\n  \"main\": \"electron/main.mjs\",\n  \"engines\": {\n    \"node\": \">=24\"\n  },\n  \"packageManager\": "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "OpenMausBot est une application desktop (React + Tailwind, Electron) qui orchestre une équipe d’agents IA via un serveur harness. Destinée aux développeurs ou PME souhaitant contrôler leurs modèles localement, il résout le problème de dépendance à des services SaaS externes.",
+      "business_idea": "• Cible : PME souhaitant un support IA interne ; Produit : Plateforme SaaS hébergée qui reprend le moteur OpenMausBot en mode multi‑tenant ; difference : Ajout d’une couche d’authentification centralisée, facturation par utilisateur et stockage cloud sécurisé\n• Cible : Développeurs d’outils CLI ; Produit : Wrapper Node.js qui expose les agents OpenMausBot via une API REST simple ; difference : Permet l’intégration dans des pipelines CI/CD sans interface graphique"
+    },
+    {
+      "name": "astral-sh/ruff",
+      "url": "https://github.com/astral-sh/ruff",
+      "description": "An extremely fast Python linter and code formatter, written in Rust.",
+      "language": "Rust",
+      "stars": 51079,
+      "forks": 2636,
+      "gained": "350 stars today",
+      "gained_n": 350,
+      "lang_color": "#dea584",
+      "category": "linter et formateur de code Python",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Ruff est un linter et formateur ultra‑rapide pour le code Python, écrit en Rust. Il cible les développeurs Python qui souhaitent détecter des erreurs et appliquer un formatage sans perte de temps.",
+      "workflow": "Entrée : fichiers *.py dans un répertoire → Traitement : Ruff analyse le code (lint) ou le reformate (format) en s’appuyant sur son moteur Rust très performant → Résultat : rapports de lint ou fichiers reformattés, affichés en console. Source : instructions d’utilisation du CLI dans le README [S1]. Limite : aucune interface graphique, dépendance à un environnement Python installé.",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Vérifier la conformité du code avant de livrer un projet client ; Résultat : Rapports de lint détaillés en quelques secondes, réduction des retours de code\n• Utilisateur : Équipe DevOps ; Tâche : Intégrer le formatage automatique dans le pipeline CI/CD ; Résultat : Code uniformisé automatiquement, aucune étape manuelle requise",
+      "products": "• Cible : PME développant des micro‑services Python ; Produit : Service SaaS qui expose Ruff via une API REST pour linting à la volée ; difference : Supprime l’installation locale de Ruff, offre un quota gratuit et un tarif à l’usage\n• Cible : Agences créatives utilisant des notebooks Jupyter ; Produit : Extension VS Code qui invoque Ruff en arrière‑plan et propose des correctifs instantanés ; difference : Intégration directe dans l’IDE, aucune configuration de ligne de commande nécessaire",
+      "monetization": "Acheteur : équipes de développement ou agences ; raison : gain de productivité et conformité du code ; unité facturée : appels API ou licences d’extension ; modèle : abonnement mensuel ou paiement à l’usage (hypothèse à tester).",
+      "build_plan": "Périmètre : wrapper API autour de l’exécutable Ruff existant (réutilisation du binaire Rust) ; travail à ajouter : service FastAPI, authentification, facturation Stripe, documentation ; exclusions : réécriture du moteur de linting ; dépendances : Python, FastAPI, Docker, Stripe ; coût estimé : hébergement cloud (~30 €/mois) + temps de développement (~120 h). Délai : 4‑6 semaines conditionnel selon disponibilité des ressources.",
+      "limitations": "Contraintes : nécessite Python installé, aucune UI native, licence MIT confirmée dans Cargo.toml [S2] mais la licence du README n’est pas vérifiée ; maintenance du wrapper API à prévoir ; performances limitées par le réseau pour l’API.",
+      "next_step": "Réaliser un prototype d’API qui accepte un fichier Python et renvoie le rapport Ruff ; interroger un développeur senior sur la valeur perçue d’un service de linting SaaS.",
+      "assessment": "Score 7 basé sur la rapidité annoncée (10‑100× plus rapide que les linters classiques) et la disponibilité via PyPI [S1]. Le projet correspond aux priorités du profil (outil B2B, automatisation, Python) mais aucune donnée de marché n’est fournie, d’où un fit_score neutre de 5.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "1091a8b5c97227bcb2815a861b90405dddc74924",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/astral-sh/ruff/blob/1091a8b5c97227bcb2815a861b90405dddc74924/README.md",
+            "excerpt": " \n\n\n\n### Installation\n\nRuff is available as [`ruff`](https://pypi.org/project/ruff/) on PyPI.\n\nInvoke Ruff directly with [`uvx`](https://docs.astral.sh/uv/):\n\n```shell\nuvx ruff@0.17.4 check   # Lint all files in the current directory.\nuvx ruff@0.17.4 format  # Format all files in the current directory.\n```\n\nOr install Ruff with `uv` (recommended), `pip`, or `pipx`:\n\n```shell\n\n\n### Usage\n\nTo run Ruff as a linter, try any of the following:\n\n```shell\nruff check                          # Lint all files in the current directory (and any subdirectories).\nruff check path/to/code/            # Lint all files in `/path/to/code` (and any subdirectories).\nruff check path/to/code/*.py        # Lint all `.py` files in `/path/to/code`.\nruff check path/to/code/to/file.py  # Lint `file.py`.\nruff check @arguments.txt           # Lint using an input file, treating its contents as newline-delimited command-line arguments.\n```\n\nOr, to run Ruff as a formatter:\n\n```shell\nruff format                          # Format all files in the cu\n\n## Show Your Support\n\nIf you're using Ruff, consider adding the Ruff badge to your project's `README.md`:\n\n```md\n[ ](https://github.com/astral-sh/ruff)\n```\n\n...or `README.rst`:\n\n```rst\n.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json\n    :target: https://github.com/astral-sh/ruff\n    :alt: Ruff\n```\n\n...or, as HTML:\n\n```html\n   \n```\n\n\n\n# Ruff\n\n[ ](https://github.com/astral-sh/ruff)\n[ ](https://pypi.python.org/pypi/ruff)\n[ ](https://github.com/astral-sh/ruff/blob/main/LICENSE)\n[ ](https://pypi.python.org/pypi/ruff)\n[ ](https://github.com/astral-sh/ruff/actions)\n[ ](https://discord.com/invite/astral-sh)\n\n[**Docs**](https://docs.astral.sh/ruff/) | [**Playground**](https://play.ruff.rs/)\n\nAn extremely fast Python linter and code formatter, written in Rust.\n\n \n   \n     \n     \n     \n   \n \n\n \n   Linting the CPython codebase from scratch. \n \n\n- ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)\n- 🐍 Installable via `pip`\n- 🛠️ `pyproject.tom\n\n## Testimonials\n\n[**Sebastián Ramírez**](https://twitter.com/tiangolo/status/1591912354882764802), creat"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/astral-sh/ruff/blob/1091a8b5c97227bcb2815a861b90405dddc74924/Cargo.toml",
+            "excerpt": "[workspace]\nmembers = [\"crates/*\"]\nresolver = \"2\"\n\n[workspace.package]\n# Please update rustfmt.toml when bumping the Rust edition\nedition = \"2024\"\nrust-version = \"1.97\"\nhomepage = \"https://docs.astral.sh/ruff\"\ndocumentation = \"https://docs.astral.sh/ruff\"\nrepository = \"https://github.com/astral-sh/ruff\"\nauthors = [\"Charlie Marsh <charlie.r.marsh@gmail.com>\"]\nlicense = \"MIT\"\n\n[workspace.dependencies]\nchar_str = { version = \"0.0.4\", default-features = false, features = [\"std\"] }\nruff = { version = \"0.17.4\", path = \"crates/ruff\" }\nruff_annotate_snippets = { version = \"0.0.21\", path = \"crates/ruff"
+          },
+          {
+            "id": "S3",
+            "path": "crates/ruff_unicode_names2/examples/name.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/astral-sh/ruff/blob/1091a8b5c97227bcb2815a861b90405dddc74924/crates/ruff_unicode_names2/examples/name.rs",
+            "excerpt": "use std::env;\n\nfn main() {\n    let mut arguments = env::args();\n    arguments.next(); // Executable name\n    for argument in arguments {\n        for c in argument.chars() {\n            match unicode_names2::name(c) {\n                Some(name) => println!(\"{}\", name),\n                None => println!(\"{}: unknown character\", argument),\n            }\n        }\n    }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Ruff est un linter et formateur ultra‑rapide pour le code Python, écrit en Rust. Il cible les développeurs Python qui souhaitent détecter des erreurs et appliquer un formatage sans perte de temps.",
+      "business_idea": "• Cible : PME développant des micro‑services Python ; Produit : Service SaaS qui expose Ruff via une API REST pour linting à la volée ; difference : Supprime l’installation locale de Ruff, offre un quota gratuit et un tarif à l’usage\n• Cible : Agences créatives utilisant des notebooks Jupyter ; Produit : Extension VS Code qui invoque Ruff en arrière‑plan et propose des correctifs instantanés ; difference : Intégration directe dans l’IDE, aucune configuration de ligne de commande nécessaire"
+    }
+  ]
+}
