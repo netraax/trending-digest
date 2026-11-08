@@ -29,3 +29,4 @@ date,time_utc,status,mode,model,repos,top_repo,note
 2026-11-07,01:46:57,error,email,,10,zed-industries/zed,explain: RuntimeError: Groq indisponible ou réponse invalide après 5 essais ; cache conservé.
 2026-11-07,02:29:13,ok,email,openai/gpt-oss-120b,10,zed-industries/zed,email sent
 2026-11-08,09:20:14,error,email,,0,,scrape: HTTPError: 504 Server Error: Gateway Time-out for url: https://github.com/trending?since=daily
+2026-11-08,10:38:03,error,email,,0,,"scrape: ReadTimeout: HTTPSConnectionPool(host='github.com', port=443): Read timed out. (read timeout=30)"
