@@ -1,0 +1,15 @@
+time_utc: 2026-11-08T09:20:14.614614+00:00
+mode: email
+stage: scrape
+error: HTTPError: 504 Server Error: Gateway Time-out for url: https://github.com/trending?since=daily
+run: https://github.com/netraax/trending-digest/actions/runs/42466715247
+
+Traceback (most recent call last):
+  File "/app/digest.py", line 116, in main
+    repos = scrape_trending(since, top_n)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/digest.py", line 48, in scrape_trending
+    r.raise_for_status()
+  File "/usr/local/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://github.com/trending?since=daily
