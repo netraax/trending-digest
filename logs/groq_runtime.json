@@ -314,6 +314,87 @@
       "estimated": false,
       "prompt_tokens": 2142,
       "completion_tokens": 1380
+    },
+    {
+      "at": 1794218673.859664,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3506,
+      "estimated": false,
+      "prompt_tokens": 2509,
+      "completion_tokens": 997
+    },
+    {
+      "at": 1794218738.8601058,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3460,
+      "estimated": false,
+      "prompt_tokens": 2423,
+      "completion_tokens": 1037
+    },
+    {
+      "at": 1794218803.8605003,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3455,
+      "estimated": false,
+      "prompt_tokens": 2435,
+      "completion_tokens": 1020
+    },
+    {
+      "at": 1794218868.8607879,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3501,
+      "estimated": false,
+      "prompt_tokens": 2563,
+      "completion_tokens": 938
+    },
+    {
+      "at": 1794218933.861064,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3386,
+      "estimated": false,
+      "prompt_tokens": 2501,
+      "completion_tokens": 885
+    },
+    {
+      "at": 1794218998.861493,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3474,
+      "estimated": false,
+      "prompt_tokens": 2451,
+      "completion_tokens": 1023
+    },
+    {
+      "at": 1794219063.8619182,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3373,
+      "estimated": false,
+      "prompt_tokens": 2551,
+      "completion_tokens": 822
+    },
+    {
+      "at": 1794219128.8623488,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3440,
+      "estimated": false,
+      "prompt_tokens": 2551,
+      "completion_tokens": 889
+    },
+    {
+      "at": 1794219193.8627965,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3482,
+      "estimated": false,
+      "prompt_tokens": 2551,
+      "completion_tokens": 931
     }
   ],
   "cache": {
@@ -1011,7 +1092,174 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "86b35e8cde07c3b7af422342bb1454c2656019c2d449906046547985a163935c": {
+      "at": 1794218676.3387537,
+      "data": {
+        "projects": [
+          {
+            "name": "dsx-ai-factory/nvke",
+            "category": "Gestion de clusters Kubernetes sur GPU bare‑metal",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "NVKE est un plan de gestion écrit en Go qui permet de créer et d’opérer des clusters Kubernetes dédiés à des charges de travail GPU sur du matériel bare‑metal. Il cible les équipes plateformes qui souhaitent offrir un service Kubernetes interne à leurs clients.",
+            "workflow": "Entrée : requête API (REST) ou commande kubectl pour créer un cluster → NVKE provisionne un plan de contrôle, etcd et des pools de nœuds GPU via le moteur de gestion → Résultat : un cluster Kubernetes autonome accessible via l’API Kubernetes. Limites : en preview, l’API et le comportement peuvent changer et le produit n’est pas recommandé en production [S1].",
+            "use_cases": "• Utilisateur : Équipe DevOps d’une société d’IA ; Tâche : Déployer un cluster GPU dédié à l’entraînement de modèles ; Résultat : Cluster opérationnel en quelques minutes, isolé des autres workloads\n• Utilisateur : Fournisseur de services cloud privé ; Tâche : Proposer à ses clients un service Kubernetes GPU managé ; Résultat : Chaque client obtient son propre plan de contrôle et ses pools de nœuds, facturés séparément",
+            "products": "• Cible : PME spécialisées en IA ; Produit : Plateforme SaaS « GPU‑K8s as‑a‑Service » basée sur NVKE ; difference : Ajoute une couche d’abonnement, facturation à l’usage GPU et tableau de bord multi‑tenant\n• Cible : Intégrateurs systèmes ; Produit : Kit d’intégration « NVKE‑Connector » pour automatiser le provisioning depuis des pipelines CI/CD ; difference : Expose des scripts et des templates Terraform, réduisant le besoin de développer le moteur de gestion",
+            "monetization": "Acheteur : entreprises qui consomment du GPU pour l’IA ; raison : accès à un cluster Kubernetes prêt à l’emploi ; unité facturée : heures GPU ou nombre de clusters ; modèle : abonnement mensuel avec tarif de base + coût variable GPU. Hypothèse de prix : 200 €/mois + 0,10 €/heure GPU, justifiée par la valeur du temps d’ingénierie économisé et les coûts d’infrastructure cloud.",
+            "build_plan": "Périmètre limité : conserver le moteur de gestion (code Go) et le CLI ; réutiliser les modules de provisionnement existants ; ajouter une interface web SaaS (Next.js) et un module de facturation (Stripe ou alternative) ; exclure le support de GPU physiques non‑NVIDIA ; dépendances : Go 1.27, Kubernetes, Docker, Vercel pour le front ; coût estimé : 150 h de développement (≈ 3 semaines à plein temps) + 0,5 k€ d’infrastructure cloud initiale.",
+            "limitations": "Licence non vérifiée, donc risque de non‑conformité ; le produit est en preview, API instable ; aucune preuve de support multi‑région ou de conformité RGPD ; maintenance du moteur Go et des charts Kubernetes requiert des compétences spécialisées.",
+            "next_step": "Réaliser un test technique : déployer NVKE en local via le quickstart et créer un cluster de test via l’API ; question utilisateur : « Quels indicateurs de performance (latence, coût GPU) sont décisifs pour choisir un service Kubernetes managé ? »",
+            "assessment": "Score 7 reflète la pertinence du produit pour les objectifs du profil (prototypage rapide, expertise Go/K8s) et la disponibilité d’une documentation claire. Le fit_score reste neutre (5) car aucune contrainte de région ou de prix n’est confirmée dans les extraits. Les preuves proviennent du README et du fichier go.mod ; d’autres aspects restent non établis.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "4860cfb31cc1ede4204609e5dfe9746b242d56ae71fb486da2feb84fd67a198f": {
+      "at": 1794218741.4317079,
+      "data": {
+        "projects": [
+          {
+            "name": "milind-soni/OpenMausBot",
+            "category": "application de chat local‑first pour équipes d’agents IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "OpenMausBot est une application desktop (React + Tailwind, Electron) qui permet d’orchestrer plusieurs bots IA via un serveur harness local. L’utilisateur cible est un développeur ou une petite équipe souhaitant tester des flux d’agents sans dépendre d’un service SaaS.",
+            "workflow": "Entrée : fichier Markdown contenant la description d’une équipe (agents, playbooks). Traitement : le serveur harness lit le front‑matter YAML, crée les processus agents, normalise leurs protocoles en un flux SSE unique. Résultat : interface chat où l’utilisateur interagit avec chaque bot et visualise l’état des routines. Limites : aucune couche de transport propre, dépend du réseau local et de la capacité du poste ; la persistance n’est pas décrite ([S1]).",
+            "use_cases": "• Utilisateur : Consultant en automatisation ; Tâche : Déployer rapidement un prototype de chaîne d’agents pour analyser des tickets support ; Résultat : Le consultant charge un fichier Markdown décrivant les agents, lance le serveur et obtient un tableau de bord chat pour tester les réponses\n• Utilisateur : Équipe produit ; Tâche : Simuler des scénarios d’onboarding client avec plusieurs assistants virtuels ; Résultat : Les membres importent le playbook, interagissent via l’UI et ajustent les routines sans toucher à une infrastructure cloud",
+            "products": "• Cible : PME souhaitant internaliser l’assistance IA ; Produit : Version hébergée sur serveur interne avec authentification SSO ; difference : Supprime la dépendance au poste client, ajoute gestion centralisée des droits et logs\n• Cible : Agences créatives ; Produit : Kit de création de playbooks pré‑configurés pour génération de contenus ; difference : Fournit des modèles prêts à l’emploi, réduit le temps de configuration par rapport au dépôt brut",
+            "monetization": "Acheteur : PME ou agence payant pour l’hébergement interne ou les modèles de playbooks. Raison : gain de productivité et réduction du temps de mise en place. Unité facturée : abonnement mensuel par instance serveur. Hypothèse de prix : 50‑150 € / mois selon nombre d’utilisateurs, justifié par le coût de licences modèles IA et support.",
+            "build_plan": "Périmètre limité : transformer le client Electron en application web SaaS. Brique réutilisée : serveur harness et logique d’import Markdown. Travail à ajouter : API d’authentification, facturation Stripe, UI multitenant. Exclusions : refonte du moteur d’agents, intégration de modèles IA propriétaires. Dépendances : Node ≥ 24, Electron, React, Tailwind, base de données PostgreSQL. Coût estimé : 200‑300 h de développement, soit 4‑6 semaines à plein temps. Délai conditionnel : si l’infrastructure cloud est déjà disponible, 3 semaines ; sinon 5‑6 semaines.",
+            "limitations": "Contraintes établies : nécessite Node ≥ 24, fonctionne uniquement en local ou sur serveur dédié ([S2]). Inconnues : persistance des états, scalabilité multi‑utilisateur, licence exacte du code tiers. Licence déclarée Apache‑2.0 mais non vérifiée dans le dépôt ([S2]). Maintenance : mise à jour du harness et des agents IA dépendra du rythme des évolutions des modèles sous‑jacents.",
+            "next_step": "Réaliser un test technique d’import d’un playbook complexe et mesurer la latence du flux SSE ; interroger un responsable d’agence sur le besoin d’une solution d’onboarding IA interne.",
+            "assessment": "Score 7 reflète la maturité du code (client complet, serveur harness) et la pertinence pour le profil (full‑stack, IA, besoin de prototypes rapides). Fit_score 5 par défaut faute de données de région ou de contrainte budgétaire précise. Les preuves proviennent des extraits README et package.json.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "b8b107716faac7f30abcf0944695d263f3e85dbcb9e443594d2d28eaff0132d3": {
+      "at": 1794218806.5561073,
+      "data": {
+        "projects": [
+          {
+            "name": "anthropics/claude-quickstarts",
+            "category": "bibliothèque / exemples de démarrage",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Une collection de projets d'exemple permettant de démarrer rapidement des applications qui utilisent l'API Claude. Destinée aux développeurs qui souhaitent intégrer des agents conversationnels ou des outils d'automatisation.",
+            "workflow": "Entrée : clé d'API Claude + configuration du projet → Traitement : scripts Python/TypeScript lancent un driver (CDP ou VNC) et invoquent l'API Claude via httpx → Résultat : démonstration fonctionnelle d'un agent (ex. navigateur ou ordinateur) affichée en console ou via une interface minimale. Limites : les quickstarts ne sont pas du code de production et ne gèrent pas la persistance, la scalabilité ou la sécurité ([S1]).",
+            "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Prototyper un agent de support client basé sur Claude ; Résultat : Interface de chat fonctionnelle prête à être personnalisée et intégrée à une stack existante\n• Utilisateur : Ingénieur R&D ; Tâche : Évaluer l'intégration de la toolset navigateur de Claude dans un produit de scraping ; Résultat : Preuve de concept montrant la navigation automatisée via le protocole CDP",
+            "products": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de ticketing enrichie d'un agent Claude capable de répondre aux questions fréquentes ; difference : Ajoute un agent LLM pré‑entraîné au lieu d'un chatbot rule‑based, réduisant le besoin de rédaction manuelle de réponses\n• Cible : Agences de marketing digital ; Produit : Outil web de génération de contenus web (articles, landing pages) piloté par Claude via le browser toolset ; difference : Permet de récupérer dynamiquement des données en ligne et de les synthétiser, fonctionnalité absente du dépôt brut",
+            "monetization": "Acheteur : PME ou agence payant pour chaque mois d'accès à l'outil ; raison : gain de temps sur le support ou la création de contenu ; unité facturée : abonnement mensuel par utilisateur ; modèle : abonnement SaaS avec tarif hypothétique 30‑50 €/mois, justifié par la valeur d'automatisation et les coûts d'infrastructure cloud.",
+            "build_plan": "Périmètre limité : transformer le quickstart navigateur en service web (FastAPI) ; briques réutilisées : driver CDP, appels API Claude, scripts d'exemple ; travail à ajouter : authentification, persistance PostgreSQL, UI React, gestion multi‑tenant ; exclusions : gestion avancée des logs, monitoring complet ; dépendances : fastapi, httpx, playwright, docker ; coût estimé : 150 € de services cloud mensuels + 200 € de licences éventuelles ; délai : 3‑4 semaines en mode intensif (conditionnel à la disponibilité du développeur).",
+            "limitations": "Code fourni est uniquement une démonstration, non testé en production ; licence non vérifiée, il faut confirmer les droits d'usage ; aucune prise en charge de la conformité RGPD ni de la résilience réseau ; maintenance requise pour mettre à jour les drivers CDP/VNC.",
+            "next_step": "Réaliser un test technique en déployant le quickstart navigateur sur un serveur de test et vérifier la latence des appels Claude ; question à poser à un potentiel utilisateur : « Quels types de requêtes de support souhaitez‑vous automatiser avec un agent LLM ? »",
+            "assessment": "Score 6 reflète la disponibilité d'un code fonctionnel et d'une documentation claire ([S1]), mais l'absence de licence confirmée et de preuves de production limite l'intérêt immédiat. Le fit_score reste neutre (5) car le profil ne fournit pas de contraintes spécifiques de secteur ou de région.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "04e3d6ec89a47edc70601a7f6900b5900b2837946fa4d447bf38e30e9162503e": {
+      "at": 1794218871.2679868,
+      "data": {
+        "projects": [
+          {
+            "name": "meta/astryx",
+            "category": "Design System / UI Component Library",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, proposant plus de 150 composants accessibles et un CLI. Il vise les équipes de développeurs et designers qui souhaitent un cadre UI partagé avec des agents IA.",
+            "workflow": "Entrée : fichier de configuration (theme, composant) → Traitement : le CLI compile les styles avec StyleX et génère les bundles JavaScript → Résultat : package npm importable et storybook visualisable. Limites : dépendance stricte à React 19+, aucune preuve d’intégration serveur ou de gestion d’état côté backend. Sources : [S1] décrit l’architecture et le CLI, [S2] montre le script de build.",
+            "use_cases": "• Utilisateur : Développeur front‑end d’une PME ; Tâche : Construire rapidement une interface admin cohérente ; Résultat : Déploiement d’une UI avec thème sombre et composants prêts à l’emploi, sans installer de bibliothèque de style supplémentaire\n• Utilisateur : Agent IA de génération de code ; Tâche : Composer des pages React en se basant sur les composants Astryx ; Résultat : Production de code conforme aux standards internes, réduisant le besoin de post‑édition",
+            "products": "• Cible : Agences web créant des sites clients ; Produit : Plateforme SaaS de création de pages avec Astryx comme moteur UI ; difference : Ajout d’un éditeur visuel, gestion multi‑tenant et facturation, ce qui n’est pas fourni dans le dépôt brut\n• Cible : Équipes internes de grandes entreprises ; Produit : Kit d’intégration interne incluant des thèmes brandés et des scripts de CI/CD ; difference : Personnalisation du thème et automatisation du build, au‑delà du simple composant library",
+            "monetization": "Facturation par abonnement mensuel aux agences (ex. 49 €/mois) pour l’accès à l’éditeur visuel, l’hébergement multi‑tenant et le support. Le modèle repose sur la valeur perçue de la rapidité de mise en marché et du gain de cohérence UI.",
+            "build_plan": "Périmètre limité : ajouter un éditeur low‑code (React‑Flow) et un backend Node.js pour la gestion des projets. Réutiliser le core Astryx et le CLI existants. Travail supplémentaire : UI de l’éditeur, API de persistance, authentification. Exclusions : création de thèmes brandés personnalisés au-delà de ceux fournis. Dépendances : React, StyleX, une base de données PostgreSQL. Coût estimé : 120 h de développement (≈ 3 semaines à temps plein).",
+            "limitations": "Licence MIT indiquée dans package.json mais non confirmée dans le README ([S2]); dépendance à React 19+ limite l’usage avec des stacks plus anciennes; aucune preuve de tests de performance ou de scalabilité. Maintenance du CLI et des thèmes requiert un suivi continu.",
+            "next_step": "Réaliser un prototype d’éditeur en intégrant le CLI Astryx et valider la génération de pages avec un designer UI. Question à poser : « Quel niveau de personnalisation de thème attendriez‑vous pour vos clients ? »",
+            "assessment": "Score 7 reflète la maturité du système (large catalogue, usage interne chez Meta) mais l’absence de preuves d’intégration SaaS limite l’adéquation immédiate (fit_score = 5, valeur par défaut). Le projet répond aux priorités B2B et aux wrappers SaaS, toutefois les contraintes de licence et de dépendance restent à confirmer.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "196f56a2c1ec6c85c0310bf36488d50bbcf41c0e2c155ff690cade59ec0f5711": {
+      "at": 1794218936.0815275,
+      "data": {
+        "projects": [
+          {
+            "name": "google-deepmind/mujoco",
+            "category": "Moteur de simulation physique",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "MuJoCo est un moteur de simulation multi‑articulations destiné à la robotique, la biomécanique et le machine‑learning. Il permet de modéliser des corps articulés en interaction avec leur environnement.",
+            "workflow": "Entrée : fichier XML décrivant un modèle articulé → Traitement : le moteur C++ calcule la dynamique et les contacts en temps réel, éventuellement exposé via les bindings JavaScript/TypeScript → Résultat : état du système (positions, forces) ou export USD pour visualisation. Limites : la version WebAssembly est plus lente que le natif et aucune garantie de stabilité n’est fournie dans les extraits [S1].",
+            "use_cases": "• Utilisateur : Chercheur en robotique ; Tâche : Évaluer le contrôle d’un bras robotique à 6 DOF ; outcome : Simulation rapide des trajectoires et des forces de contact pour itérer sur l’algorithme de contrôle\n• Utilisateur : Studio d’animation ; Tâche : Générer des séquences de mouvements réalistes pour des personnages virtuels ; outcome : Exportation du résultat en USD afin d’intégrer les animations dans le pipeline de rendu",
+            "products": "• Cible : PME d’ingénierie ; Produit : Plateforme SaaS de simulation en ligne (MuJoCo Cloud) ; difference : Interface web prête à l’emploi, facturation à l’usage, aucune installation locale requise\n• Cible : Développeurs d’applications IA ; Produit : Bibliothèque Python/JS simplifiée pour l’entraînement de modèles RL ; difference : Enveloppe légère autour du moteur, API asynchrone, documentation orientée IA",
+            "monetization": "Facturation à l’usage (minutes de simulation) aux équipes de R&D qui intègrent l’API ; modèle pay‑per‑compute, prix hypothétique 0,02 €/minute, à tester selon valeur perçue et coût d’infrastructure.",
+            "build_plan": "Réutiliser le core C++ et les bindings JS existants (S2). Ajouter une couche API REST (FastAPI) et un front Next.js. Exclure le développement du moteur lui‑même. Dépendances : Docker, Vercel, compte cloud GPU pour le rendu. Coût estimé : 150 € / mois d’infrastructure, 2 semaines de travail intensif pour le MVP.",
+            "limitations": "Licence non vérifiée dans les extraits, donc conformité juridique incertaine. Le moteur nécessite du GPU pour les scénarios complexes, ce qui augmente les coûts. Documentation limitée à la README et au package.json ; aucune preuve de stabilité du serveur WebAssembly [S1][S2].",
+            "next_step": "Lancer un test technique : appeler l’API de simulation depuis un script Python et mesurer le temps de réponse. Question utilisateur : « Quel niveau de précision de contact est indispensable pour votre cas d’usage ? »",
+            "assessment": "Score 7 reflète la maturité du moteur et la disponibilité de bindings, mais l’absence de licence claire et de preuve d’intégration SaaS réduit la certitude. Fit_score 5 par défaut, le profil indique un temps plein intensif mais aucune contrainte régionale spécifique.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "d5e6dce0730a55a5a20dafd81b98fc97a58067f4fbaa0d314c36536de2d85da1": {
+      "at": 1794219196.2254477,
+      "data": {
+        "projects": [
+          {
+            "name": "ranxianglei/billion-context",
+            "category": "Plugin de compression de contexte pour agents IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "billion-context est un plugin TypeScript qui compresse les historiques de conversation afin de réduire la consommation de tokens tout en conservant des fenêtres de contexte de 100 k tokens, ciblant les développeurs d’agents IA qui gèrent des sessions mensuelles très longues.",
+            "workflow": "Entrée : texte brut d’une conversation fourni par le client d’agent → Traitement : le plugin applique une compression basée sur la valeur de session brute (sans hachage) et stocke l’état compressé dans le proxy interne [S1] → Résultat : le client reçoit un contexte réduit, permettant d’économiser jusqu’à 5 fois le nombre de tokens, avec la contrainte que la compression dépend du format exact du client supporté [S1].",
+            "use_cases": "• Utilisateur : Développeur d’un assistant de code (ex. pi) ; Tâche : Intégrer le plugin pour réduire la longueur du contexte lors de sessions de codage prolongées ; Résultat : Le serveur consomme moins de tokens, prolongeant la durée de la session sans dépasser les limites d’API\n• Utilisateur : Équipe produit d’une plateforme de chat IA ; Tâche : Déployer le plugin en mode launcher pour éviter toute configuration manuelle ; Résultat : Les utilisateurs bénéficient d’une expérience transparente avec compression automatique du contexte",
+            "products": "• Cible : PME développant des assistants internes ; Produit : Service SaaS de compression de contexte en tant que micro‑service API ; difference : Expose la logique de compression via HTTP, séparant le plugin du client et permettant une facturation à l’usage\n• Cible : Indépendants créant des bots Discord ; Produit : Bibliothèque Node.js prête à être intégrée dans des bots existants ; difference : Livrée comme module npm sans serveur dédié, réduisant les coûts d’infrastructure",
+            "monetization": "Facturation à l’usage (tokens économisés) auprès des développeurs qui intègrent le service, modèle de paiement par appel d’API, prix hypothétique 0,001 €/1 000 tokens économisés, à tester selon la valeur perçue.",
+            "build_plan": "Périmètre : exposer la fonction de compression via une API REST légère (Node.js + FastAPI). Réutiliser le code du plugin existant (dist/index.js) [S2]. Travail à ajouter : wrapper HTTP, authentification API, tableau de facturation. Exclusions : interface graphique, support multi‑langage. Dépendances : npm, Docker, éventuellement Supabase pour le suivi des usages. Coût estimé : 10 h de développement + 5 h de tests, soit environ 1 semaine à temps plein.",
+            "limitations": "Compression uniquement compatible avec les clients listés (pi, omp, opencode, dsh, etc.) [S1]; licence non vérifiée, il faut confirmer la conformité avant redistribution; aucune preuve de performance chiffrée hors de l’affirmation du README.",
+            "next_step": "Réaliser un test d’intégration en appelant l’API de compression avec un historique réel et interroger un développeur d’agent IA sur la pertinence de la réduction de tokens.",
+            "assessment": "Score 7 reflète la pertinence technique du plugin pour les agents IA et la possibilité de le transformer en service monétisable ; fit_score 5 par défaut faute de contraintes de région ou de délai précises. Le manque de licence claire et d’évaluations chiffrées constitue une incertitude majeure.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1794139749.8523536
+  "next_call_at": 1794219258.8627965
 }

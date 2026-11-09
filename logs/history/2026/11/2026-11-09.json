@@ -1,0 +1,508 @@
+{
+  "date": "2026-11-09",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "description": "Hunt down social media accounts by username across social networks",
+      "language": "Python",
+      "stars": 105557,
+      "forks": 12274,
+      "gained": "2,373 stars today",
+      "gained_n": 2373,
+      "lang_color": "#3572A5",
+      "category": "outil en ligne de recherche d’identifiants",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné. Il s’adresse aux analystes de sécurité, aux enquêteurs et aux spécialistes du marketing qui doivent confirmer la présence ou l’absence d’un compte sur plusieurs plateformes.",
+      "workflow": "Entrée : un ou plusieurs noms d’utilisateur fournis en ligne de commande (ex. `sherlock user123`). Traitement : le script parcourt la liste des sites, envoie des requêtes HTTP et analyse les réponses pour détecter les pages existantes ; les options permettent de choisir le format de sortie, le proxy ou le timeout. Résultat : un fichier texte (ou CSV/JSON) contenant les URL trouvées ou un message d’absence. Limites : dépendance à la disponibilité des sites, aucune gestion de captchas, et le mode Docker recommandé pour les environnements où les paquets sont cassés [S1].",
+      "use_cases": "• acteur : Consultant en cybersécurité ; tâche : Vérifier la surface d’exposition d’un nom de marque sur les réseaux sociaux ; résultat : Rapport automatisé listant les comptes existants et les plateformes où le nom est disponible\n• acteur : Responsable marketing d’une PME ; tâche : Réserver un nom d’utilisateur cohérent sur les nouveaux réseaux ; résultat : Liste des réseaux où le nom est libre, permettant d’enregistrer rapidement les comptes",
+      "products": "• cible : Agences de branding ; produit : Service SaaS de réservation de noms d’utilisateur avec tableau de bord et notifications ; différence : Interface web, gestion multi‑client, automatisation de la création de comptes via API, alors que le dépôt brut est uniquement un CLI\n• cible : Développeurs d’outils d’investigation ; produit : Bibliothèque Python réutilisable intégrée à des pipelines d’OSINT ; différence : Expose des fonctions de recherche comme API interne, alors que le dépôt original nécessite l’exécution du script complet",
+      "monetization": "acheteur : PME ou agence souhaitant automatiser la veille de marque ; raison de payer : Gain de temps et fiabilité d’un service hébergé qui évite l’installation locale ; unité facturée : abonnement mensuel par projet ou nombre de requêtes ; modèle économique : SaaS avec forfait de base (ex. 30 €/mois) + tarif à l’usage pour les gros volumes",
+      "build_plan": "périmètre limité : Web UI + API REST autour du moteur de recherche existant ; brique réutilisée : Code de recherche de Sherlock (module Python) ; travail à ajouter : Interface React, authentification JWT, gestion de facturation Stripe, conteneurisation Docker ; exclusions : Gestion de captchas avancée, support de plus de 400 sites supplémentaires ; dépendances : FastAPI, PostgreSQL, Docker, Stripe SDK ; coûts estimés : ≈ 200 € de licences cloud (hébergement, base de données) + 40 h de dev (≈ 2 k€) ; délai : 4 à 6 semaines conditionnellement à la disponibilité d’un développeur full‑stack",
+      "limitations": "Fonctionne uniquement tant que les sites cibles restent accessibles ; aucune garantie de conformité RGPD pour la collecte d’URL [S1]; licence MIT du dépôt, à vérifier pour usage commercial [S2]; maintenance requise pour suivre les changements d’URL des réseaux.",
+      "next_step": "Réaliser un prototype d’API qui accepte un nom d’utilisateur et renvoie les résultats JSON ; interroger un responsable marketing sur la valeur d’un tableau de bord de suivi de disponibilité.",
+      "assessment": "Score 7 reflète la maturité du code (CLI fonctionnel, documentation) et la pertinence pour les secteurs ciblés (B2B, branding). Fit_score 5 car le profil ne précise pas de contrainte régionale ou de délai strict. Les preuves proviennent des extraits README et pyproject.toml, d’où le manque d’informations sur la licence exacte et la viabilité commerciale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c588d7c8b476df9f9c84912a05d1430fb8cdcdae",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "docs/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/docs/README.md",
+            "excerpt": " \n   \n     \n   \n   Hunt down social media accounts by username across  400+ social networks  \n   \n \n\n \n   Installation \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Usage \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Contributing \n \n\n \n \n \n\n\n\n\n## Installation\n\n \n     \n \n\n \n   &#8202;&#8202;   \n \n\n \n\n> [!WARNING]  \n> Packages for ParrotOS and Ubuntu 24.04, maintained by a third party, appear to be __broken__.  \n> Users of these systems should defer to [`uv`](https://docs.astral.sh/uv/)/`pipx`/`pip` or Docker.\n\n| Method | Notes |\n| - | - |\n| `pipx install sherlock-project` | `pip` or [`uv`](https://docs.astral.sh/uv/) may be used in place of `pipx` |\n| `docker run -it --rm sherlock/sherlock` |\n| `dnf install sherlock-project` | |\n\nCommunity-maintained packages are available for Debian (>= 13), Ubuntu (>= 22.10), Homebrew, Kali, and BlackArch. These packages are not directly supported\n\n## General usage\n\nTo search for only one user:\n```bash\nsherlock user123\n```\n\nTo search for more than one user:\n```bash\nsherlock user1 user2 user3\n```\n\nAccounts found will be stored in an individual text file with the corresponding username (e.g ```user123.txt```).\n\n```console\n$ sherlock --help\nusage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--dump-response]\n                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--nsfw] [--txt] [--ignore-exclusions]\n                USERNAMES [USE\n\n## Credits\n\nThank you to everyone who has contributed to Sherlock! ❤️\n\n \n   \n \n\n\n\n## Star History\n\n \n   \n   \n   \n \n\n\n\n## License\n\nMIT © Sherlock Project \nCreator - [Siddharth Dushantha](https://github.com/sdushantha)\n\n \n\n[ext_pypi]: https://pypi.org/project/sherlock-project/\n[ext_brew]: https://formulae.brew.sh/formula/sherlock\n"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [ \"poetry-core>=1.2.0\" ]\nbuild-backend = \"poetry.core.masonry.api\"\n# poetry-core 1.8 not available in .fc39. Can upgrade to 1.8.0 at .fc39 EOL\n\n[tool.poetry-version-plugin]\nsource = \"init\"\n\n[tool.poetry]\nname = \"sherlock-project\"\nversion = \"0.16.2\"\ndescription = \"Hunt down social media accounts by username across social networks\"\nlicense = \"MIT\"\nauthors = [\n    \"Siddharth Dushantha <siddharth.dushantha@gmail.com>\"\n]\nmaintainers = [\n    \"Paul Pfeister <code@pfeister.dev>\",\n    \"Matheus Felipe <matheusfelipeog@protonmail.com>\",\n    \"Sondre Karlsen Dyrnes <sondre@villdyr"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné. Il s’adresse aux analystes de sécurité, aux enquêteurs et aux spécialistes du marketing qui doivent confirmer la présence ou l’absence d’un compte sur plusieurs plateformes.",
+      "business_idea": "• cible : Agences de branding ; produit : Service SaaS de réservation de noms d’utilisateur avec tableau de bord et notifications ; différence : Interface web, gestion multi‑client, automatisation de la création de comptes via API, alors que le dépôt brut est uniquement un CLI\n• cible : Développeurs d’outils d’investigation ; produit : Bibliothèque Python réutilisable intégrée à des pipelines d’OSINT ; différence : Expose des fonctions de recherche comme API interne, alors que le dépôt original nécessite l’exécution du script complet"
+    },
+    {
+      "name": "dsx-ai-factory/nvke",
+      "url": "https://github.com/dsx-ai-factory/nvke",
+      "description": "NVIDIA Kubernetes Engine (NVKE). A management plane for GPU Kubernetes on bare metal.",
+      "language": "Go",
+      "stars": 984,
+      "forks": 114,
+      "gained": "345 stars today",
+      "gained_n": 345,
+      "lang_color": "#00ADD8",
+      "category": "Gestion de clusters Kubernetes sur GPU bare‑metal",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "NVKE est un plan de gestion écrit en Go qui permet de créer et d’opérer des clusters Kubernetes dédiés à des charges de travail GPU sur du matériel bare‑metal. Il cible les équipes plateformes qui souhaitent offrir un service Kubernetes interne à leurs clients.",
+      "workflow": "Entrée : requête API (REST) ou commande kubectl pour créer un cluster → NVKE provisionne un plan de contrôle, etcd et des pools de nœuds GPU via le moteur de gestion → Résultat : un cluster Kubernetes autonome accessible via l’API Kubernetes. Limites : en preview, l’API et le comportement peuvent changer et le produit n’est pas recommandé en production [S1].",
+      "use_cases": "• Utilisateur : Équipe DevOps d’une société d’IA ; Tâche : Déployer un cluster GPU dédié à l’entraînement de modèles ; Résultat : Cluster opérationnel en quelques minutes, isolé des autres workloads\n• Utilisateur : Fournisseur de services cloud privé ; Tâche : Proposer à ses clients un service Kubernetes GPU managé ; Résultat : Chaque client obtient son propre plan de contrôle et ses pools de nœuds, facturés séparément",
+      "products": "• Cible : PME spécialisées en IA ; Produit : Plateforme SaaS « GPU‑K8s as‑a‑Service » basée sur NVKE ; difference : Ajoute une couche d’abonnement, facturation à l’usage GPU et tableau de bord multi‑tenant\n• Cible : Intégrateurs systèmes ; Produit : Kit d’intégration « NVKE‑Connector » pour automatiser le provisioning depuis des pipelines CI/CD ; difference : Expose des scripts et des templates Terraform, réduisant le besoin de développer le moteur de gestion",
+      "monetization": "Acheteur : entreprises qui consomment du GPU pour l’IA ; raison : accès à un cluster Kubernetes prêt à l’emploi ; unité facturée : heures GPU ou nombre de clusters ; modèle : abonnement mensuel avec tarif de base + coût variable GPU. Hypothèse de prix : 200 €/mois + 0,10 €/heure GPU, justifiée par la valeur du temps d’ingénierie économisé et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : conserver le moteur de gestion (code Go) et le CLI ; réutiliser les modules de provisionnement existants ; ajouter une interface web SaaS (Next.js) et un module de facturation (Stripe ou alternative) ; exclure le support de GPU physiques non‑NVIDIA ; dépendances : Go 1.27, Kubernetes, Docker, Vercel pour le front ; coût estimé : 150 h de développement (≈ 3 semaines à plein temps) + 0,5 k€ d’infrastructure cloud initiale.",
+      "limitations": "Licence non vérifiée, donc risque de non‑conformité ; le produit est en preview, API instable ; aucune preuve de support multi‑région ou de conformité RGPD ; maintenance du moteur Go et des charts Kubernetes requiert des compétences spécialisées.",
+      "next_step": "Réaliser un test technique : déployer NVKE en local via le quickstart et créer un cluster de test via l’API ; question utilisateur : « Quels indicateurs de performance (latence, coût GPU) sont décisifs pour choisir un service Kubernetes managé ? »",
+      "assessment": "Score 7 reflète la pertinence du produit pour les objectifs du profil (prototypage rapide, expertise Go/K8s) et la disponibilité d’une documentation claire. Le fit_score reste neutre (5) car aucune contrainte de région ou de prix n’est confirmée dans les extraits. Les preuves proviennent du README et du fichier go.mod ; d’autres aspects restent non établis.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "92c39b8ad563ebe5ef705f781b3038b901aba10f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/dsx-ai-factory/nvke/blob/92c39b8ad563ebe5ef705f781b3038b901aba10f/README.md",
+            "excerpt": "\n\n# NVIDIA Kubernetes Engine (NVKE)\n\n[ ](LICENSE)\n[ ](go.work)\n\n**Run a managed Kubernetes service on your own NVIDIA GPU infrastructure.**\nNVIDIA Kubernetes® Engine (NVKE) provides the management plane that platform teams install to create and\noperate Kubernetes clusters for their customers. Each workload cluster has its\nown Kubernetes control plane, etcd and node pools. You operate the NVKE management\nplane; your customers use their clusters through the Kubernetes API and `kubectl`.\n\n> **Preview:** NVKE is available as a preview. APIs, configuration and behavior\n> can change between releases, and we do not recommend NVKE for production\n> wor\n\n## Getting started\n\n| Your goal | Start here | What you get |\n|---|---|---|\n| **Evaluate without GPU hardware** | [Local quickstart](docs/get-started/quickstart-local.md) | A development management plane and a workload cluster on simulated machines. No NVIDIA account is required. |\n| **Install on your infrastructure** | [Plan your installation](docs/operate/plan-installation.md) | The prerequisites and sequence for preparing nodes, bootstrapping a management cluster and installing its services. |\n| **Build or contribute** | [Build from source](#build-from-source) | The NVKE binaries and the contributor development loop. |\n\nThe local quickstar\n\n## What NVKE does\n\n- **Creates independent workload clusters.** Request clusters through the N"
+          },
+          {
+            "id": "S2",
+            "path": "cli/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/dsx-ai-factory/nvke/blob/92c39b8ad563ebe5ef705f781b3038b901aba10f/cli/go.mod",
+            "excerpt": "module github.com/dsx-ai-factory/nvke/cli\n\ngo 1.27.3\n\nrequire (\n\tgithub.com/dsx-ai-factory/nvke/controller/api v0.0.0-00010101000000-000000000000\n\tgithub.com/dsx-ai-factory/nvke/controller/deploy/charts v0.0.0-00010101000000-000000000000\n\tgithub.com/dsx-ai-factory/nvke/management-engine v0.0.0-00010101000000-000000000000\n\tgithub.com/go-logr/logr v1.4.4\n\tgithub.com/go-viper/mapstructure/v2 v2.5.0\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/oapi-codegen/runtime v1.8.0\n\tgithub.com/opencontainers/go-digest v1.0.0\n\tgithub.com/opencontainers/image-spec v1.1.1\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.c"
+          },
+          {
+            "id": "S3",
+            "path": "hack/rotation-demo/demo.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/dsx-ai-factory/nvke/blob/92c39b8ad563ebe5ef705f781b3038b901aba10f/hack/rotation-demo/demo.py",
+            "excerpt": "# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: Apache-2.0\n\"\"\"Live credential qualification. Command output stays private; evidence is allowlisted.\"\"\"\nimport argparse\nimport base64\nimport datetime as dt\nimport hashlib\nimport json\nimport math\nimport os\nfrom pathlib import Path\nimport re\nimport ssl\nimport socket\nimport subprocess\nimport sys\nimport tempfile\nimport threading\nimport time\nimport urllib.parse\nimport urllib.request\nimport uuid\n\nSCENARIOS = (\"forced-renewal\", \"scheduled-renewal\", \"alert-renewal\", \"etcd-key\", \"manual-t1\")\nCA = {\"kubernetes-ca\", \"front-proxy-ca\", \"etcd-ca\"}\nLEAF = {\"apiserver\", \"apiserver-kubelet-client\", \"front-proxy-client\", \"apiserver-etcd-client\",\n        \"etcd-server\", \"etcd-peer\", \"etcd-healthcheck-client\", \"admin\", \"controller-manager\", \"scheduler\"}\nCATALOG = CA | LEAF | {\"super-admin\", \"kubelet-client\", \"kubelet-serving\"}\nCOMPONENTS = {\"kube-apiserver\", \"etcd\", \"kube-controller-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "NVKE est un plan de gestion écrit en Go qui permet de créer et d’opérer des clusters Kubernetes dédiés à des charges de travail GPU sur du matériel bare‑metal. Il cible les équipes plateformes qui souhaitent offrir un service Kubernetes interne à leurs clients.",
+      "business_idea": "• Cible : PME spécialisées en IA ; Produit : Plateforme SaaS « GPU‑K8s as‑a‑Service » basée sur NVKE ; difference : Ajoute une couche d’abonnement, facturation à l’usage GPU et tableau de bord multi‑tenant\n• Cible : Intégrateurs systèmes ; Produit : Kit d’intégration « NVKE‑Connector » pour automatiser le provisioning depuis des pipelines CI/CD ; difference : Expose des scripts et des templates Terraform, réduisant le besoin de développer le moteur de gestion"
+    },
+    {
+      "name": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "description": "Open-source Grok Bot alternative with a virtual machine that bots can use",
+      "language": "TypeScript",
+      "stars": 19049,
+      "forks": 2628,
+      "gained": "1,439 stars today",
+      "gained_n": 1439,
+      "lang_color": "#3178c6",
+      "category": "application de chat local‑first pour équipes d’agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "OpenMausBot est une application desktop (React + Tailwind, Electron) qui permet d’orchestrer plusieurs bots IA via un serveur harness local. L’utilisateur cible est un développeur ou une petite équipe souhaitant tester des flux d’agents sans dépendre d’un service SaaS.",
+      "workflow": "Entrée : fichier Markdown contenant la description d’une équipe (agents, playbooks). Traitement : le serveur harness lit le front‑matter YAML, crée les processus agents, normalise leurs protocoles en un flux SSE unique. Résultat : interface chat où l’utilisateur interagit avec chaque bot et visualise l’état des routines. Limites : aucune couche de transport propre, dépend du réseau local et de la capacité du poste ; la persistance n’est pas décrite ([S1]).",
+      "use_cases": "• Utilisateur : Consultant en automatisation ; Tâche : Déployer rapidement un prototype de chaîne d’agents pour analyser des tickets support ; Résultat : Le consultant charge un fichier Markdown décrivant les agents, lance le serveur et obtient un tableau de bord chat pour tester les réponses\n• Utilisateur : Équipe produit ; Tâche : Simuler des scénarios d’onboarding client avec plusieurs assistants virtuels ; Résultat : Les membres importent le playbook, interagissent via l’UI et ajustent les routines sans toucher à une infrastructure cloud",
+      "products": "• Cible : PME souhaitant internaliser l’assistance IA ; Produit : Version hébergée sur serveur interne avec authentification SSO ; difference : Supprime la dépendance au poste client, ajoute gestion centralisée des droits et logs\n• Cible : Agences créatives ; Produit : Kit de création de playbooks pré‑configurés pour génération de contenus ; difference : Fournit des modèles prêts à l’emploi, réduit le temps de configuration par rapport au dépôt brut",
+      "monetization": "Acheteur : PME ou agence payant pour l’hébergement interne ou les modèles de playbooks. Raison : gain de productivité et réduction du temps de mise en place. Unité facturée : abonnement mensuel par instance serveur. Hypothèse de prix : 50‑150 € / mois selon nombre d’utilisateurs, justifié par le coût de licences modèles IA et support.",
+      "build_plan": "Périmètre limité : transformer le client Electron en application web SaaS. Brique réutilisée : serveur harness et logique d’import Markdown. Travail à ajouter : API d’authentification, facturation Stripe, UI multitenant. Exclusions : refonte du moteur d’agents, intégration de modèles IA propriétaires. Dépendances : Node ≥ 24, Electron, React, Tailwind, base de données PostgreSQL. Coût estimé : 200‑300 h de développement, soit 4‑6 semaines à plein temps. Délai conditionnel : si l’infrastructure cloud est déjà disponible, 3 semaines ; sinon 5‑6 semaines.",
+      "limitations": "Contraintes établies : nécessite Node ≥ 24, fonctionne uniquement en local ou sur serveur dédié ([S2]). Inconnues : persistance des états, scalabilité multi‑utilisateur, licence exacte du code tiers. Licence déclarée Apache‑2.0 mais non vérifiée dans le dépôt ([S2]). Maintenance : mise à jour du harness et des agents IA dépendra du rythme des évolutions des modèles sous‑jacents.",
+      "next_step": "Réaliser un test technique d’import d’un playbook complexe et mesurer la latence du flux SSE ; interroger un responsable d’agence sur le besoin d’une solution d’onboarding IA interne.",
+      "assessment": "Score 7 reflète la maturité du code (client complet, serveur harness) et la pertinence pour le profil (full‑stack, IA, besoin de prototypes rapides). Fit_score 5 par défaut faute de données de région ou de contrainte budgétaire précise. Les preuves proviennent des extraits README et package.json.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "1de1164d5040d8699f55e0907552270bd9fbd38f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/milind-soni/OpenMausBot/blob/1de1164d5040d8699f55e0907552270bd9fbd38f/README.md",
+            "excerpt": " \n\n\n\n## Features\n\n \n \n \n\n\n\n### 📦 Install a complete team from one Markdown file\n\nBrowse outcome-driven teams on [BotMRR](https://botmrr.io), then choose **Add to OpenMausBot**. The app\nopens a review screen before creating the bots, Chief of Staff, channels, playbooks, connector checklist,\nand suggested routines. You can also import the same `.md` file from disk or paste its public GitHub URL\nin **Teams → Import**.\n\nThe format stays portable: OpenMausBot reads the structured YAML frontmatter for a reliable one-click\ninstall, while Grok, Claude, ChatGPT, and people can follow the ordinary Markdown playbook. Connections\nremain off until you approve them, routines ar\n\n## How it works\n\nTwo processes. The app holds no transports of its own — it sends typed commands over HTTP and folds one SSE\nevent stream into state. The harness server owns every agent process and normalizes each provider's native\nprotocol into one canonical runtime event stream (logged per-thread as NDJSON).\n\n```mermaid\nflowchart LR\n    subgraph app [\"App — React + Tailwind (5199)\"]\n        UI[Chat UI · model picker · computer panel]\n    end\n    subgraph server [\"Harness server (127.0.0.1:8799)\"]\n        REG[Driver registry] --> BUS[Event bus → SSE]\n        BROKER[Permission broker]\n    end\n    subgraph agents [\"Agents on your compu\n\n## Quick start\n\n**Released builds ([latest release](https://github.com/milind-soni/OpenMausBot/releases/latest)):** the harness server is embedded, so no separate server setup is required.\n\n| | Download | Install |\n|---|---|---|\n| **macOS** (Apple silicon) | [OpenMausBot.dmg](https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot.dmg) | Drag it to Applications, open it. Signed & notarized. |\n| **macOS** (Intel) | [OpenMausBot-intel.dmg](https://github.com/milind-soni/OpenMausBot/releases/latest/download/OpenMausBot-intel.dmg) | Same app, built for Intel Macs. Signed & notarized. |\n| **Windows** (x64) | [OpenMausBot-se\n\n# OpenMausBot\n\n**The open-source Grok Bot alternative: your own team of AI bots, in a chat app.**\n\n[**openmausbot.com**](https://www.openmausbot.com) &nbsp;·&nbsp; [Download](https://www.openmausbot.com/download) &nb"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/milind-soni/OpenMausBot/blob/1de1164d5040d8699f55e0907552270bd9fbd38f/package.json",
+            "excerpt": "{\n  \"name\": \"openmausbot\",\n  \"private\": true,\n  \"version\": \"0.1.150\",\n  \"description\": \"A local-first chat app for running a team of AI agents.\",\n  \"homepage\": \"https://github.com/milind-soni/OpenMausBot\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/milind-soni/OpenMausBot.git\"\n  },\n  \"author\": {\n    \"name\": \"Milind Soni\",\n    \"email\": \"46266943+milind-soni@users.noreply.github.com\"\n  },\n  \"license\": \"Apache-2.0\",\n  \"desktopName\": \"com.openmausbot.app.desktop\",\n  \"type\": \"module\",\n  \"main\": \"electron/main.mjs\",\n  \"engines\": {\n    \"node\": \">=24\"\n  },\n  \"packageManager\": "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "OpenMausBot est une application desktop (React + Tailwind, Electron) qui permet d’orchestrer plusieurs bots IA via un serveur harness local. L’utilisateur cible est un développeur ou une petite équipe souhaitant tester des flux d’agents sans dépendre d’un service SaaS.",
+      "business_idea": "• Cible : PME souhaitant internaliser l’assistance IA ; Produit : Version hébergée sur serveur interne avec authentification SSO ; difference : Supprime la dépendance au poste client, ajoute gestion centralisée des droits et logs\n• Cible : Agences créatives ; Produit : Kit de création de playbooks pré‑configurés pour génération de contenus ; difference : Fournit des modèles prêts à l’emploi, réduit le temps de configuration par rapport au dépôt brut"
+    },
+    {
+      "name": "anthropics/claude-quickstarts",
+      "url": "https://github.com/anthropics/claude-quickstarts",
+      "description": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API",
+      "language": "Python",
+      "stars": 19678,
+      "forks": 3292,
+      "gained": "32 stars today",
+      "gained_n": 32,
+      "lang_color": "#3572A5",
+      "category": "bibliothèque / exemples de démarrage",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Une collection de projets d'exemple permettant de démarrer rapidement des applications qui utilisent l'API Claude. Destinée aux développeurs qui souhaitent intégrer des agents conversationnels ou des outils d'automatisation.",
+      "workflow": "Entrée : clé d'API Claude + configuration du projet → Traitement : scripts Python/TypeScript lancent un driver (CDP ou VNC) et invoquent l'API Claude via httpx → Résultat : démonstration fonctionnelle d'un agent (ex. navigateur ou ordinateur) affichée en console ou via une interface minimale. Limites : les quickstarts ne sont pas du code de production et ne gèrent pas la persistance, la scalabilité ou la sécurité ([S1]).",
+      "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Prototyper un agent de support client basé sur Claude ; Résultat : Interface de chat fonctionnelle prête à être personnalisée et intégrée à une stack existante\n• Utilisateur : Ingénieur R&D ; Tâche : Évaluer l'intégration de la toolset navigateur de Claude dans un produit de scraping ; Résultat : Preuve de concept montrant la navigation automatisée via le protocole CDP",
+      "products": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de ticketing enrichie d'un agent Claude capable de répondre aux questions fréquentes ; difference : Ajoute un agent LLM pré‑entraîné au lieu d'un chatbot rule‑based, réduisant le besoin de rédaction manuelle de réponses\n• Cible : Agences de marketing digital ; Produit : Outil web de génération de contenus web (articles, landing pages) piloté par Claude via le browser toolset ; difference : Permet de récupérer dynamiquement des données en ligne et de les synthétiser, fonctionnalité absente du dépôt brut",
+      "monetization": "Acheteur : PME ou agence payant pour chaque mois d'accès à l'outil ; raison : gain de temps sur le support ou la création de contenu ; unité facturée : abonnement mensuel par utilisateur ; modèle : abonnement SaaS avec tarif hypothétique 30‑50 €/mois, justifié par la valeur d'automatisation et les coûts d'infrastructure cloud.",
+      "build_plan": "Périmètre limité : transformer le quickstart navigateur en service web (FastAPI) ; briques réutilisées : driver CDP, appels API Claude, scripts d'exemple ; travail à ajouter : authentification, persistance PostgreSQL, UI React, gestion multi‑tenant ; exclusions : gestion avancée des logs, monitoring complet ; dépendances : fastapi, httpx, playwright, docker ; coût estimé : 150 € de services cloud mensuels + 200 € de licences éventuelles ; délai : 3‑4 semaines en mode intensif (conditionnel à la disponibilité du développeur).",
+      "limitations": "Code fourni est uniquement une démonstration, non testé en production ; licence non vérifiée, il faut confirmer les droits d'usage ; aucune prise en charge de la conformité RGPD ni de la résilience réseau ; maintenance requise pour mettre à jour les drivers CDP/VNC.",
+      "next_step": "Réaliser un test technique en déployant le quickstart navigateur sur un serveur de test et vérifier la latence des appels Claude ; question à poser à un potentiel utilisateur : « Quels types de requêtes de support souhaitez‑vous automatiser avec un agent LLM ? »",
+      "assessment": "Score 6 reflète la disponibilité d'un code fonctionnel et d'une documentation claire ([S1]), mais l'absence de licence confirmée et de preuves de production limite l'intérêt immédiat. Le fit_score reste neutre (5) car le profil ne fournit pas de contraintes spécifiques de secteur ou de région.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4a4224bdf0e9cfb3332167b69c90457403813625",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/README.md",
+            "excerpt": "\n\n# Claude Quickstarts\n\nClaude Quickstarts is a collection of projects designed to help developers quickly get started with building  applications using the Claude API. Each quickstart provides a foundation that you can easily build upon and customize for your specific needs.\n\n\n\n## Available Quickstarts\n\n\n\n### Browser Toolset Quickstart\n\nThe minimal CDP example of Claude's browser toolset (`browser_toolset_20260801`), in Python and TypeScript. It has a small driver for one Chromium tab over the Chrome DevTools Protocol, a script that runs the driver with the tool runner, and a script that exercises it without a model. It shows the interface and is not production code.\n\n[Go to Browser Toolset Quickstart](./browser-toolset)\n\n\n\n### Computer Toolset Quickstart\n\nThe minimal VNC example of Claude's computer toolset (`computer_toolset_20260801`), in Python and TypeScript. It has a small driver for one desktop over VNC (the RFB protocol, no VNC library), a script that runs the driver with the tool runner, and a script that exercises it without a model. It shows the interface and is not production code.\n\n[Go to Computer Toolset Quickstart](./computer-toolset)\n\n\n\n## General Usage\n\nEach quickstart project comes with its own README and setup instructions. Generally, you'll follow these steps:\n\n1. Clone this repository\n2. Navigate to the specific quickstart directory\n3. Install the required dependencies\n4. Set up your Claude API key as an environment variable\n5. Run the quickstart application\n\n\n\n## Getting Started\n\nTo use these quickstarts, you'll need an Claude API key. If you don't have one yet, you can sign up for free at [console.anthropic.com](https://console.anthropic.com).\n\n\n\n### Customer Support Agent\n\nA customer support agent powered by Claude. This project demonstrates how"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/pyproject.toml",
+            "excerpt": "[tool.pyright]\nvenvPath = \"computer-use-demo\"\nvenv = \".venv\"\nuseLibraryCodeForTypes = false"
+          },
+          {
+            "id": "S3",
+            "path": "managed-agents/self-hosted-sandboxes/openshell-policy/src/agentpolicy/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/managed-agents/self-hosted-sandboxes/openshell-policy/src/agentpolicy/cli.py",
+            "excerpt": "\"\"\"The agentpolicy command.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport difflib\nimport json\nimport os\nimport sys\nimport time\nfrom pathlib import Path\nfrom typing import Any\n\nimport httpx\n\nfrom . import managed_agents, config, ocsf, policyfile, profilecheck, promote, shrink\nfrom .policyfile import Bindings, PolicyError\nfrom .prover import CliProver, Enforced\nfrom .store import Store\n\n\ndef _settings(args: argparse.Namespace) -> config.Settings:\n    return config.load(args.config)\n\n\ndef _prover(s: config.Settings) -> Enforced:\n    return Enforced(CliProver(s.prover, s.prover_timeout))\n\n\ndef _read_secret(path: str | None) -> str:\n    if path:\n        return Path(path).read_text().strip()\n    return sys.stdin.read().strip()\n\n\ndef _api_key_if_any(args: argparse.Namespace) -> str:\n    if getattr(args, \"api_key_file\", None):\n        return Path(args.api_key_file).read_text().strip()\n    return \"\"\n\n\ndef _control_plane(args: argparse.Namespace) -> Any:\n    \"\"\"A client for oper"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Une collection de projets d'exemple permettant de démarrer rapidement des applications qui utilisent l'API Claude. Destinée aux développeurs qui souhaitent intégrer des agents conversationnels ou des outils d'automatisation.",
+      "business_idea": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de ticketing enrichie d'un agent Claude capable de répondre aux questions fréquentes ; difference : Ajoute un agent LLM pré‑entraîné au lieu d'un chatbot rule‑based, réduisant le besoin de rédaction manuelle de réponses\n• Cible : Agences de marketing digital ; Produit : Outil web de génération de contenus web (articles, landing pages) piloté par Claude via le browser toolset ; difference : Permet de récupérer dynamiquement des données en ligne et de les synthétiser, fonctionnalité absente du dépôt brut"
+    },
+    {
+      "name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "stars": 48036,
+      "forks": 3281,
+      "gained": "815 stars today",
+      "gained_n": 815,
+      "lang_color": "#dea584",
+      "category": "outil d'automatisation de navigateur en ligne de commande",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑browser est un CLI Rust qui permet à un agent IA de piloter Chrome via le protocole DevTools, lire la page sous forme d'arbre d'accessibilité et interagir avec des éléments référencés. Il cible les développeurs IA qui ont besoin d'une interface navigateur scriptable.",
+      "workflow": "Entrée : commande texte (ex. `agent-browser open example.com`). Traitement : le daemon démarre, contrôle Chrome via CDP, crée un snapshot texte avec des références d'éléments. Sortie : texte compact contenant les refs et l'URL actuelle. Limites : nécessite Chrome for Testing, fonctionne en mode headless et s'arrête après une heure d'inactivité [S1].",
+      "use_cases": "1. Un développeur de chatbot IA utilise `open` puis `snapshot` pour extraire le titre d'une page et le fournir à l'agent ; résultat : texte du titre disponible dans le flux de conversation. 2. Un service de veille automatisée lance `click @e1` sur un bouton « Subscribe », puis récupère l'URL finale ; résultat : inscription réalisée sans intervention humaine.",
+      "products": "1. Service SaaS d'extraction de données web pour PME, interface web qui orchestre agent‑browser en arrière‑plan, différenciation : prise en charge multi‑session et stockage des snapshots. 2. Extension navigateur low‑code pour agences, UI drag‑and‑drop qui génère les commandes agent‑browser, différenciation : aucune ligne de code requise, tout est configuré via le tableau de bord.",
+      "monetization": "Acheteur : PME ou agence souhaitant automatiser la collecte d’informations. Raison de payer : gain de temps sur la veille concurrentielle. Unité facturée : nombre de sessions ou de snapshots traités. Modèle : abonnement mensuel avec forfait de 10 000 snapshots, prix hypothétique 49 €/mois, justifié par le coût d’infrastructure serveur et de support.",
+      "build_plan": "Périmètre : API REST (FastAPI) qui reçoit les requêtes et invoque le binaire agent‑browser. Brique réutilisée : le CLI existant. Travail à ajouter : wrapper HTTP, authentification JWT, tableau de bord React, persistance PostgreSQL. Exclusions : développement du moteur de rendu Chrome (déjà fourni). Dépendances : Rust, Node ≥22, Docker. Coût estimé : 150 h de dev (≈ 3 semaines à 40 h/semaine).",
+      "limitations": "Contraintes établies : besoin de Chrome for Testing, daemon s'arrête après 1 h d'inactivité, licence non vérifiée [S2]. Inconnues : compatibilité avec d’autres navigateurs, impact de charge élevée sur le serveur. Maintenance : mise à jour du binaire Rust et des dépendances Node.",
+      "next_step": "Tester l'intégration du CLI dans un conteneur Docker avec une requête simple `open` puis `snapshot`; demander à un product‑owner IA s'il souhaite pouvoir récupérer le titre d'une page via une API.",
+      "assessment": "Score 7 reflète la maturité du CLI et la documentation disponible [S1][S2]. Fit_score 5 car le profil indique un besoin de prototypes rapides mais aucune preuve de marché n’est fournie. Le projet correspond aux priorités B2B SaaS et IA appliquée, tout en restant réalisable avec les compétences listées.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4b0e9f01fa8d214d39bbfe5391257640634fb9a0",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/README.md",
+            "excerpt": "\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/sele\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](h\n\n# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n \n     \n     \n     \n     \n     \n \n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads t"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/package.json",
+            "excerpt": "{\n  \"name\": \"agent-browser\",\n  \"version\": \"0.41.2\",\n  \"description\": \"Browser automation CLI for AI agents\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.1.3\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"files\": [\n    \"bin\",\n    \"scripts\",\n    \"skill-data\",\n    \"skills\",\n    \"cli/src/native/a11y/LICENSE-axe-core.txt\",\n    \"cli/src/native/a11y/LICENSE-axe-core-THIRD-PARTY.txt\"\n  ],\n  \"bin\": {\n    \"agent-browser\": \"./bin/agent-browser.js\"\n  },\n  \"scripts\": {\n    \"mcp-tools:sync\": \"cd cli && AGENT_BROWSER_UPDATE_MCP_TOOLS=1 cargo test --bin agent-browser mcp_tool_catalog_snapshot\",\n    \"ver"
+          },
+          {
+            "id": "S3",
+            "path": "examples/eve/css.d.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/4b0e9f01fa8d214d39bbfe5391257640634fb9a0/examples/eve/css.d.ts",
+            "excerpt": "declare module \"*.css\";\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑browser est un CLI Rust qui permet à un agent IA de piloter Chrome via le protocole DevTools, lire la page sous forme d'arbre d'accessibilité et interagir avec des éléments référencés. Il cible les développeurs IA qui ont besoin d'une interface navigateur scriptable.",
+      "business_idea": "1. Service SaaS d'extraction de données web pour PME, interface web qui orchestre agent‑browser en arrière‑plan, différenciation : prise en charge multi‑session et stockage des snapshots. 2. Extension navigateur low‑code pour agences, UI drag‑and‑drop qui génère les commandes agent‑browser, différenciation : aucune ligne de code requise, tout est configuré via le tableau de bord."
+    },
+    {
+      "name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "stars": 18076,
+      "forks": 1414,
+      "gained": "875 stars today",
+      "gained_n": 875,
+      "lang_color": "#3178c6",
+      "category": "Design System / UI Component Library",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, proposant plus de 150 composants accessibles et un CLI. Il vise les équipes de développeurs et designers qui souhaitent un cadre UI partagé avec des agents IA.",
+      "workflow": "Entrée : fichier de configuration (theme, composant) → Traitement : le CLI compile les styles avec StyleX et génère les bundles JavaScript → Résultat : package npm importable et storybook visualisable. Limites : dépendance stricte à React 19+, aucune preuve d’intégration serveur ou de gestion d’état côté backend. Sources : [S1] décrit l’architecture et le CLI, [S2] montre le script de build.",
+      "use_cases": "• Utilisateur : Développeur front‑end d’une PME ; Tâche : Construire rapidement une interface admin cohérente ; Résultat : Déploiement d’une UI avec thème sombre et composants prêts à l’emploi, sans installer de bibliothèque de style supplémentaire\n• Utilisateur : Agent IA de génération de code ; Tâche : Composer des pages React en se basant sur les composants Astryx ; Résultat : Production de code conforme aux standards internes, réduisant le besoin de post‑édition",
+      "products": "• Cible : Agences web créant des sites clients ; Produit : Plateforme SaaS de création de pages avec Astryx comme moteur UI ; difference : Ajout d’un éditeur visuel, gestion multi‑tenant et facturation, ce qui n’est pas fourni dans le dépôt brut\n• Cible : Équipes internes de grandes entreprises ; Produit : Kit d’intégration interne incluant des thèmes brandés et des scripts de CI/CD ; difference : Personnalisation du thème et automatisation du build, au‑delà du simple composant library",
+      "monetization": "Facturation par abonnement mensuel aux agences (ex. 49 €/mois) pour l’accès à l’éditeur visuel, l’hébergement multi‑tenant et le support. Le modèle repose sur la valeur perçue de la rapidité de mise en marché et du gain de cohérence UI.",
+      "build_plan": "Périmètre limité : ajouter un éditeur low‑code (React‑Flow) et un backend Node.js pour la gestion des projets. Réutiliser le core Astryx et le CLI existants. Travail supplémentaire : UI de l’éditeur, API de persistance, authentification. Exclusions : création de thèmes brandés personnalisés au-delà de ceux fournis. Dépendances : React, StyleX, une base de données PostgreSQL. Coût estimé : 120 h de développement (≈ 3 semaines à temps plein).",
+      "limitations": "Licence MIT indiquée dans package.json mais non confirmée dans le README ([S2]); dépendance à React 19+ limite l’usage avec des stacks plus anciennes; aucune preuve de tests de performance ou de scalabilité. Maintenance du CLI et des thèmes requiert un suivi continu.",
+      "next_step": "Réaliser un prototype d’éditeur en intégrant le CLI Astryx et valider la génération de pages avec un designer UI. Question à poser : « Quel niveau de personnalisation de thème attendriez‑vous pour vos clients ? »",
+      "assessment": "Score 7 reflète la maturité du système (large catalogue, usage interne chez Meta) mais l’absence de preuves d’intégration SaaS limite l’adéquation immédiate (fit_score = 5, valeur par défaut). Le projet répond aux priorités B2B et aux wrappers SaaS, toutefois les contraintes de licence et de dépendance restent à confirmer.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "16436bee4ef0e687174014496d45a7eba27894ee",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/meta/astryx/blob/16436bee4ef0e687174014496d45a7eba27894ee/README.md",
+            "excerpt": " \n\n \n\n \n\n\n\n## Architecture\n\n\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now:   by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[ ](https://www.npmjs.com/package/@astryxdesign/core)\n[ ](LICENSE)\n[ ](https://github.com/meta/astryx/wiki/Contributing)\n\n[ ](https://astryx.atmeta.com)\n[ ](https://astryx.atmeta.com/storybook/)\n[ ](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributi\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Componen\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n\n\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both "
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/meta/astryx/blob/16436bee4ef0e687174014496d45a7eba27894ee/package.json",
+            "excerpt": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pn"
+          },
+          {
+            "id": "S3",
+            "path": "scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/meta/astryx/blob/16436bee4ef0e687174014496d45a7eba27894ee/scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "excerpt": "// Copyright (c) Meta Platforms, Inc. and affiliates.\n\n/** @param {string} name */\nfunction greet(name) {\n  return `hi ${name}`;\n}\n\nmodule.exports = {greet};\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, proposant plus de 150 composants accessibles et un CLI. Il vise les équipes de développeurs et designers qui souhaitent un cadre UI partagé avec des agents IA.",
+      "business_idea": "• Cible : Agences web créant des sites clients ; Produit : Plateforme SaaS de création de pages avec Astryx comme moteur UI ; difference : Ajout d’un éditeur visuel, gestion multi‑tenant et facturation, ce qui n’est pas fourni dans le dépôt brut\n• Cible : Équipes internes de grandes entreprises ; Produit : Kit d’intégration interne incluant des thèmes brandés et des scripts de CI/CD ; difference : Personnalisation du thème et automatisation du build, au‑delà du simple composant library"
+    },
+    {
+      "name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "description": "Public repository for Agent Skills",
+      "language": "Python",
+      "stars": 190041,
+      "forks": 22385,
+      "gained": "792 stars today",
+      "gained_n": 792,
+      "lang_color": "#3572A5",
+      "category": "Bibliothèque de compétences pour IA Claude",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées, destiné aux développeurs souhaitant enrichir les capacités de Claude.",
+      "workflow": "Entrée : fichier `SKILL.md` décrivant la tâche → Traitement : Claude lit le dossier, charge les scripts et exécute les actions définies (ex. génération de documents, appels API) → Résultat : sortie structurée ou artefact produit (ex. document, image). Limites : les comportements peuvent différer de la démonstration et nécessitent des tests (S1).",
+      "use_cases": "• acteur : Agence de branding ; tâche : Générer automatiquement des maquettes de documents selon la charte graphique du client ; résultat : Livrables cohérents et prêts à être validés\n• acteur : Développeur SaaS ; tâche : Automatiser la création de tickets de support à partir d'e‑mails ; résultat : Tickets pré‑remplis dans le système de suivi",
+      "products": "• cible : PME souhaitant automatiser leurs processus internes ; produit : Plateforme web qui expose les skills sous forme d'API REST ; différence : Permet d'utiliser les compétences sans connaître la syntaxe interne de Claude\n• cible : Créateurs de contenu vidéo ; produit : Extension Slack qui crée des GIFs à la volée via le skill `slack-gif-creator` ; différence : Intègre directement la génération d'images animées dans les flux de travail collaboratifs",
+      "monetization": "Facturation à l'usage (nombre d'appels d'API Claude) ou abonnement mensuel pour accès illimité aux skills ; hypothèse de 10 €/mois pour PME, justifiée par la valeur de gain de temps et les coûts d'API (non estimés précisément).",
+      "build_plan": "Réutiliser le dépôt comme base de compétences (brique réutilisée) ; ajouter une couche API (FastAPI) pour exposer les skills, UI minimaliste (Next.js) et gestion des clés API. Exclusions : création de nouveaux skills complexes. Dépendances : `pillow`, `imageio`, `numpy` (S2). Coût estimé : 200 € de services cloud pour le prototype, 2 semaines de développement intensif.",
+      "limitations": "Licence non vérifiée (S1) ; comportement des skills peut diverger de la documentation, nécessite validation (S1). Coûts d'API Claude non inclus, maintenance des scripts Python requise.",
+      "next_step": "Tester l'intégration d'un skill simple via l'API FastAPI et interroger un développeur d'agence sur la pertinence du générateur de documents.",
+      "assessment": "Score 7 reflète la richesse du dépôt et la pertinence pour les secteurs ciblés (automatisation, IA appliquée). Fit_score 5 par défaut faute de critères de profil détaillés. De nombreuses affirmations reposent sur le README (S1) ; aucune preuve de viabilité commerciale directe.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/README.md",
+            "excerpt": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[ ](https://skills.sh/anthropics/skills)\n\n\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claud\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creatio\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks"
+          },
+          {
+            "id": "S2",
+            "path": "skills/slack-gif-creator/requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/slack-gif-creator/requirements.txt",
+            "excerpt": "pillow>=10.0.0\nimageio>=2.31.0\nimageio-ffmpeg>=0.4.9\nnumpy>=1.24.0"
+          },
+          {
+            "id": "S3",
+            "path": "skills/claude-api/curl/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/claude-api/curl/examples.md",
+            "excerpt": "\n\n# Read usage fields\ninput_tokens=$(echo \"$response\" | jq -r '.usage.input_tokens')\noutput_tokens=$(echo \"$response\" | jq -r '.usage.output_tokens')\n\n\n\n# Claude API - cURL / Raw HTTP\n\nUse these examples when the user needs raw HTTP requests or is working in a language without an official SDK.\n\n\n\n## Setup\n\n```bash\nexport ANTHROPIC_API_KEY=\"your-api-key\"\n```\n\n---\n\n\n\n## Basic Message Request\n\n```bash\ncurl https://api.anthropic.com/v1/messages \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5-5\",\n    \"max_tokens\": 16000,\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"What is the capital of France?\"}\n    ]\n  }'\n```\n\n\n\n### Parsing the response\n\nUse `jq` to extract fields from the JSON response. Do not use `grep`/`sed` -\nJSON strings can contain any character and regex parsing will break on quotes,\nescapes, or multi-line content.\n\n```bash\n\n\n# Capture the response, then extract fiel"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées, destiné aux développeurs souhaitant enrichir les capacités de Claude.",
+      "business_idea": "• cible : PME souhaitant automatiser leurs processus internes ; produit : Plateforme web qui expose les skills sous forme d'API REST ; différence : Permet d'utiliser les compétences sans connaître la syntaxe interne de Claude\n• cible : Créateurs de contenu vidéo ; produit : Extension Slack qui crée des GIFs à la volée via le skill `slack-gif-creator` ; différence : Intègre directement la génération d'images animées dans les flux de travail collaboratifs"
+    },
+    {
+      "name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "description": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+      "language": "C++",
+      "stars": 16676,
+      "forks": 1966,
+      "gained": "41 stars today",
+      "gained_n": 41,
+      "lang_color": "#f34b7d",
+      "category": "Moteur de simulation physique",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "MuJoCo est un moteur de simulation multi‑articulations destiné à la robotique, la biomécanique et le machine‑learning. Il permet de modéliser des corps articulés en interaction avec leur environnement.",
+      "workflow": "Entrée : fichier XML décrivant un modèle articulé → Traitement : le moteur C++ calcule la dynamique et les contacts en temps réel, éventuellement exposé via les bindings JavaScript/TypeScript → Résultat : état du système (positions, forces) ou export USD pour visualisation. Limites : la version WebAssembly est plus lente que le natif et aucune garantie de stabilité n’est fournie dans les extraits [S1].",
+      "use_cases": "• Utilisateur : Chercheur en robotique ; Tâche : Évaluer le contrôle d’un bras robotique à 6 DOF ; outcome : Simulation rapide des trajectoires et des forces de contact pour itérer sur l’algorithme de contrôle\n• Utilisateur : Studio d’animation ; Tâche : Générer des séquences de mouvements réalistes pour des personnages virtuels ; outcome : Exportation du résultat en USD afin d’intégrer les animations dans le pipeline de rendu",
+      "products": "• Cible : PME d’ingénierie ; Produit : Plateforme SaaS de simulation en ligne (MuJoCo Cloud) ; difference : Interface web prête à l’emploi, facturation à l’usage, aucune installation locale requise\n• Cible : Développeurs d’applications IA ; Produit : Bibliothèque Python/JS simplifiée pour l’entraînement de modèles RL ; difference : Enveloppe légère autour du moteur, API asynchrone, documentation orientée IA",
+      "monetization": "Facturation à l’usage (minutes de simulation) aux équipes de R&D qui intègrent l’API ; modèle pay‑per‑compute, prix hypothétique 0,02 €/minute, à tester selon valeur perçue et coût d’infrastructure.",
+      "build_plan": "Réutiliser le core C++ et les bindings JS existants (S2). Ajouter une couche API REST (FastAPI) et un front Next.js. Exclure le développement du moteur lui‑même. Dépendances : Docker, Vercel, compte cloud GPU pour le rendu. Coût estimé : 150 € / mois d’infrastructure, 2 semaines de travail intensif pour le MVP.",
+      "limitations": "Licence non vérifiée dans les extraits, donc conformité juridique incertaine. Le moteur nécessite du GPU pour les scénarios complexes, ce qui augmente les coûts. Documentation limitée à la README et au package.json ; aucune preuve de stabilité du serveur WebAssembly [S1][S2].",
+      "next_step": "Lancer un test technique : appeler l’API de simulation depuis un script Python et mesurer le temps de réponse. Question utilisateur : « Quel niveau de précision de contact est indispensable pour votre cas d’usage ? »",
+      "assessment": "Score 7 reflète la maturité du moteur et la disponibilité de bindings, mais l’absence de licence claire et de preuve d’intégration SaaS réduit la certitude. Fit_score 5 par défaut, le profil indique un temps plein intensif mais aucune contrainte régionale spécifique.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "fb0521eaafec70dc7ecc989297c845c6c95d7e38",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-deepmind/mujoco/blob/fb0521eaafec70dc7ecc989297c845c6c95d7e38/README.md",
+            "excerpt": " \n     \n \n\n \n   \n     \n   \n   \n     \n   \n   \n     \n   \n   \n     \n   \n \n\n**MuJoCo** stands for **Mu**lti-**Jo**int dynamics with **Co**ntact. It is a\ngeneral purpose physics engine that aims to facilitate research and development\nin robotics, biomechanics, graphics and animation, machine learning, and other\nareas which demand fast and accurate simulation of articulated structures\ninteracting with their environment.\n\nThis repository is maintained b\n\n## Installation\n\n\n\n## Bug reports and feature requests\n\nGitHub [Issues](https://github.com/google-deepmind/mujoco/issues) are reserved\nfor bug reports, feature requests and other development-related subjects.\n\n\n\n## Documentation\n\nMuJoCo's documentation can be found at [mujoco.readthedocs.io]. Upcoming\nfeatures due for the next release can be found in the [changelog] in the\n\"latest\" branch.\n\n\n\n## Getting Started\n\n1. **Try MuJoCo in your browser.**\nVisit [mujoco.org](https://mujoco.org) to explore MuJoCo on desktop or mobile\nwith nothing to install, or open [live.mujoco.org](https://live.mujoco.org) to\ninspect and drag and drop your own models in the WebAssembly version of the\n[MuJoCo Studio] app (slower than native C, since it runs in WebAssembly).\n\n2. **Run a viewer on your machine.**\nFollow the [Getting Started] guide in the documentation to download a prebuilt\nrelease and run the [MuJoCo Studio] app or the classic `simulate` viewer "
+          },
+          {
+            "id": "S2",
+            "path": "wasm/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google-deepmind/mujoco/blob/fb0521eaafec70dc7ecc989297c845c6c95d7e38/wasm/package.json",
+            "excerpt": "{\n  \"name\": \"mujoco\",\n  \"version\": \"1.0.0-alpha.1\",\n  \"description\": \"MuJoCo JavaScript Bindings\",\n  \"directories\": {\n    \"example\": \"examples\",\n    \"lib\": \"lib\",\n    \"test\": \"tests\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"test\": \"node --loader ts-node/esm --trace-warnings tests/run_tests.mjs\",\n    \"benchmark\": \"node --loader ts-node/esm --trace-warnings tests/run_benchmarks.mjs\",\n    \"dev:sandbox\": \"vite --config tests/sandbox/vite.sandbox.config.ts\",\n    \"build:sandbox\": \"vite build --config tests/sandbox/vite.sandbox.config.ts\",\n    \"dev:demo\": \"vite --config demo_app/vite.dem"
+          },
+          {
+            "id": "S3",
+            "path": "python/mujoco/usd/demo.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/google-deepmind/mujoco/blob/fb0521eaafec70dc7ecc989297c845c6c95d7e38/python/mujoco/usd/demo.py",
+            "excerpt": "# Copyright 2024 DeepMind Technologies Limited\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n# ==============================================================================\n\"\"\"Demo script for USD exporter.\"\"\"\n\nimport argparse\nimport pathlib\n\nimport mujoco\nfrom mujoco.usd import exporter\n\n\ndef generate_usd_trajectory(local_args):\n  \"\"\"Generates a USD file given the user arguments.\"\"\"\n  # load a model to mujoco\n  model_path = local_args.model_path\n  m = mujoco.MjModel.from_xml_path(model_path)\n  "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "MuJoCo est un moteur de simulation multi‑articulations destiné à la robotique, la biomécanique et le machine‑learning. Il permet de modéliser des corps articulés en interaction avec leur environnement.",
+      "business_idea": "• Cible : PME d’ingénierie ; Produit : Plateforme SaaS de simulation en ligne (MuJoCo Cloud) ; difference : Interface web prête à l’emploi, facturation à l’usage, aucune installation locale requise\n• Cible : Développeurs d’applications IA ; Produit : Bibliothèque Python/JS simplifiée pour l’entraînement de modèles RL ; difference : Enveloppe légère autour du moteur, API asynchrone, documentation orientée IA"
+    },
+    {
+      "name": "ranxianglei/billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "description": "A context-compression plugin for month-long single sessions (billions of tokens) ,small context windows (a 100K context is enough) and token savings (5x fewer tokens) .上下文压缩插件，月级长会话会话， 兼顾小窗口(100k上下文足矣)省token(省5倍token) . billion-context is all you need",
+      "language": "TypeScript",
+      "stars": 5539,
+      "forks": 421,
+      "gained": "460 stars today",
+      "gained_n": 460,
+      "lang_color": "#3178c6",
+      "category": "Plugin de compression de contexte pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "billion-context est un plugin TypeScript qui compresse les historiques de conversation afin de réduire la consommation de tokens tout en conservant des fenêtres de contexte de 100 k tokens, ciblant les développeurs d’agents IA qui gèrent des sessions mensuelles très longues.",
+      "workflow": "Entrée : texte brut d’une conversation fourni par le client d’agent → Traitement : le plugin applique une compression basée sur la valeur de session brute (sans hachage) et stocke l’état compressé dans le proxy interne [S1] → Résultat : le client reçoit un contexte réduit, permettant d’économiser jusqu’à 5 fois le nombre de tokens, avec la contrainte que la compression dépend du format exact du client supporté [S1].",
+      "use_cases": "• Utilisateur : Développeur d’un assistant de code (ex. pi) ; Tâche : Intégrer le plugin pour réduire la longueur du contexte lors de sessions de codage prolongées ; Résultat : Le serveur consomme moins de tokens, prolongeant la durée de la session sans dépasser les limites d’API\n• Utilisateur : Équipe produit d’une plateforme de chat IA ; Tâche : Déployer le plugin en mode launcher pour éviter toute configuration manuelle ; Résultat : Les utilisateurs bénéficient d’une expérience transparente avec compression automatique du contexte",
+      "products": "• Cible : PME développant des assistants internes ; Produit : Service SaaS de compression de contexte en tant que micro‑service API ; difference : Expose la logique de compression via HTTP, séparant le plugin du client et permettant une facturation à l’usage\n• Cible : Indépendants créant des bots Discord ; Produit : Bibliothèque Node.js prête à être intégrée dans des bots existants ; difference : Livrée comme module npm sans serveur dédié, réduisant les coûts d’infrastructure",
+      "monetization": "Facturation à l’usage (tokens économisés) auprès des développeurs qui intègrent le service, modèle de paiement par appel d’API, prix hypothétique 0,001 €/1 000 tokens économisés, à tester selon la valeur perçue.",
+      "build_plan": "Périmètre : exposer la fonction de compression via une API REST légère (Node.js + FastAPI). Réutiliser le code du plugin existant (dist/index.js) [S2]. Travail à ajouter : wrapper HTTP, authentification API, tableau de facturation. Exclusions : interface graphique, support multi‑langage. Dépendances : npm, Docker, éventuellement Supabase pour le suivi des usages. Coût estimé : 10 h de développement + 5 h de tests, soit environ 1 semaine à temps plein.",
+      "limitations": "Compression uniquement compatible avec les clients listés (pi, omp, opencode, dsh, etc.) [S1]; licence non vérifiée, il faut confirmer la conformité avant redistribution; aucune preuve de performance chiffrée hors de l’affirmation du README.",
+      "next_step": "Réaliser un test d’intégration en appelant l’API de compression avec un historique réel et interroger un développeur d’agent IA sur la pertinence de la réduction de tokens.",
+      "assessment": "Score 7 reflète la pertinence technique du plugin pour les agents IA et la possibilité de le transformer en service monétisable ; fit_score 5 par défaut faute de contraintes de région ou de délai précises. Le manque de licence claire et d’évaluations chiffrées constitue une incertitude majeure.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "406193b202c13248241f25201e1c6bbda747c99b",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ranxianglei/billion-context/blob/406193b202c13248241f25201e1c6bbda747c99b/README.md",
+            "excerpt": "\n\n## How it works\n\n \n\n\n\n## Install\n\nLinux / macOS — install with a user-level prefix (no `sudo`, no npm config\nchanges, and `bili`'s self-update never hits permission errors):\n\n```bash\nnpm install -g billion-context --prefix=~/.local\n```\n\nThe `bili` command lands in `~/.local/bin` — already on PATH in most distros;\nif not, add `export PATH=\"$HOME/.local/bin:$PATH\"` to `~/.bashrc` or\n`~/.zshrc`. On nvm or Homebrew Node the default prefix is already user-owned —\na plain `npm install -g billion-context` works as-is. On Windows the default\nprefix (`%APPDATA%\\npm`) is also user-writable — plain `npm install -g billion-context`.\n\nThis installs the `bili` command (\n\n## Quickstart\n\nThree ways to use it — pick one:\n\n- **Native plugin (most native):** `bili plugin install  ` — bili\n  becomes a plugin inside the client; start the client as usual.\n- **Launcher (config-free):** one `bili  ` command brings up the proxy and\n  the client together — no real config file is ever touched.\n- **URL change (most universal):** prefix your client's baseURL with the proxy\n  origin + `/bili/`.\n\nMechanism details behind these three options (plugin lifecycle, runtime-info\nprotocol, injection priority) live in [docs/technical-notes.md](docs/technical-notes.md).\n\nPorts, briefly (#1660): `bili start` (manual) owns `8787`. \n\n### Option 1 — Native plugin (`bili plugin install pi` / `omp` / `opencode` / `dsh` / `kimi` / `hermes` / `zcode`)\n\nThe proxy lives inside the client: install once, then start the client\nexactly as you always do — no launcher command, no env vars, no fixed port,\nno URL edits. Supported today for **pi**, **omp**, **opencode** (1.x and\n2.x), **dsh**, **kimi**, **hermes** and **zcode**:\n\n```bash\nbili plugin install pi          # registers a \"billion-context\" entry in pi's settings (npm form when bili itself was npm-installed)\nbili plugin install omp         # registers an extensions entry in omp's config.yml (~/.omp/agent/config.yml)\nbili pl\n\n## How sessions work\n\nThe proxy keys compression state on **the conversation value the client itself provides, verbatim** (`src/session-id.ts`) — no hashing, no protocol/upstream/API-key dimensions (those mutate mid-co"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ranxianglei/billion-context/blob/406193b202c13248241f25201e1c6bbda747c99b/package.json",
+            "excerpt": "{\n  \"name\": \"billion-context\",\n  \"version\": \"0.1.213\",\n  \"description\": \"A context-compression plugin \\u2014 small context windows (a 100K context is enough), 5x fewer tokens, month-long single sessions (billions of tokens), and compression quality \\u2014 for all agents: pi, OpenCode, Codex, Claude Code, and more. billion-context is all you need.\",\n  \"type\": \"module\",\n  \"main\": \"dist/index.js\",\n  \"exports\": {\n    \".\": \"./dist/agent/dsh-native.js\",\n    \"./server\": \"./dist/agent/opencode-native.js\",\n    \"./dsh\": \"./dist/agent/dsh-native.js\",\n    \"./dsh-compaction-gate\": \"./dist/agent/dsh-compact"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "billion-context est un plugin TypeScript qui compresse les historiques de conversation afin de réduire la consommation de tokens tout en conservant des fenêtres de contexte de 100 k tokens, ciblant les développeurs d’agents IA qui gèrent des sessions mensuelles très longues.",
+      "business_idea": "• Cible : PME développant des assistants internes ; Produit : Service SaaS de compression de contexte en tant que micro‑service API ; difference : Expose la logique de compression via HTTP, séparant le plugin du client et permettant une facturation à l’usage\n• Cible : Indépendants créant des bots Discord ; Produit : Bibliothèque Node.js prête à être intégrée dans des bots existants ; difference : Livrée comme module npm sans serveur dédié, réduisant les coûts d’infrastructure"
+    }
+  ]
+}
