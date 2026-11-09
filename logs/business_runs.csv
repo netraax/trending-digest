@@ -6,3 +6,4 @@ date,time_utc,status,mode,model,opportunities,note
 2026-11-07,01:59:38,error,email,,0,"sequence item 4: expected str instance, dict found | trouves=358 > filtres=358 > nouveaux=331 > shortlist=15"
 2026-11-07,02:16:48,ok,email,openai/gpt-oss-120b,6,email sent | trouves=358 > filtres=358 > nouveaux=331 > shortlist=15 > retenus=6
 2026-11-08,12:08:10,ok,email,"openai/gpt-oss-120b,qwen/qwen3.8-27b",6,email sent | trouves=355 > filtres=355 > nouveaux=337 > shortlist=15 > retenus=6
+2026-11-09,16:12:22,ok,email,openai/gpt-oss-120b,6,email sent | trouves=356 > filtres=356 > nouveaux=328 > shortlist=15 > retenus=6
