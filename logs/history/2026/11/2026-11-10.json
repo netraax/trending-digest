@@ -1,0 +1,583 @@
+{
+  "date": "2026-11-10",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "description": "Public repository for Agent Skills",
+      "language": "Python",
+      "stars": 191643,
+      "forks": 22516,
+      "gained": "1,038 stars today",
+      "gained_n": 1038,
+      "lang_color": "#3572A5",
+      "category": "Bibliothèque de compétences pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées. Destiné aux développeurs IA qui souhaitent enrichir les capacités de Claude avec des workflows réutilisables.",
+      "workflow": "Entrée : fichier `SKILL.md` décrivant la tâche (ex. création de GIF Slack) → Traitement : Claude lit le dossier, exécute les scripts Python ou Bash fournis, utilise les dépendances listées dans `requirements.txt` [S2] → Résultat : artefact produit (image GIF, document, etc.) ou réponse texte. Limite : les comportements réels de Claude peuvent différer du prototype décrit dans le dépôt [S1].",
+      "use_cases": "• Utilisateur : Agence de marketing ; Tâche : Générer automatiquement des GIF animés à partir de briefs texte pour les campagnes Slack ; Résultat : GIF conforme aux spécifications livrées en quelques secondes\n• Utilisateur : Équipe produit ; Tâche : Standardiser la rédaction de documents internes selon la charte de la société ; Résultat : Documents générés avec mise en forme et vocabulaire pré‑validés",
+      "products": "• Cible : PME souhaitant automatiser leurs communications internes ; Produit : SaaS de création de contenus multimédias (GIF, images) via une interface web ; difference : Utilise les skills existants comme moteur, ajoute une UI no‑code et un tableau de bord de suivi\n• Cible : Consultants en conformité ; Produit : Générateur de rapports de conformité basé sur des templates de skills ; difference : Transforme les skills en service d’édition de documents légaux, avec contrôle de version et audit",
+      "monetization": "Abonnement mensuel par utilisateur (ex. 15 €/mois) pour accéder à la plateforme, incluant un quota de génération d’artefacts ; facturation à l’usage possible pour les gros volumes (ex. 0,02 €/ génération supplémentaire).",
+      "build_plan": "Réutiliser les dossiers de skills comme brique centrale ; développer une UI React/Next.js, un backend FastAPI pour orchestrer les appels à Claude, et un service de stockage d’artefacts (Supabase). Exclure la création de nouveaux skills (hors scope). Dépendances : pillow, imageio, numpy [S2]. Coût estimé : 200 € de cloud mensuel + 40 h de dev initial. Délai : 4‑6 semaines (prototype fonctionnel).",
+      "limitations": "Licence du dépôt non vérifiée, risque de conflit de propriété intellectuelle [S1]; performances dépendantes de l’API Claude (quota, latence) ; aucune garantie de stabilité des skills fournis.",
+      "next_step": "Tester l’intégration d’un skill existant (ex. slack‑gif‑creator) via l’API Claude et interroger un responsable marketing sur la valeur perçue d’un générateur de GIF automatisé.",
+      "assessment": "Score 7 reflète la richesse des assets (skills, exemples) et la pertinence pour les secteurs ciblés (productivité, IA appliquée). Fit_score reste neutre (5) faute d’indications précises sur le profil de marché ou les exigences de conformité. Les preuves proviennent des extraits README et requirements [S1,S2].",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/README.md",
+            "excerpt": "> **Note:** This repository contains Anthropic's implementation of skills for Claude. For information about the Agent Skills standard, see [agentskills.io](http://agentskills.io).\n\n[ ](https://skills.sh/anthropics/skills)\n\n\n\n## Examples\n- Example usage 1\n- Example usage 2\n\n\n\n# Skills\nSkills are folders of instructions, scripts, and resources that Claude loads dynamically to improve performance on specialized tasks. Skills teach Claude how to complete specific tasks in a repeatable way, whether that's creating documents with your company's brand guidelines, analyzing data using your organization's specific workflows, or automating personal tasks.\n\nFor more information, check out:\n- [What are skills?](https://support.claude.com/en/articles/12512176-what-are-skills)\n- [Using skills in Claude](https://support.claude.com/en/articles/12512180-using-skills-in-claude)\n- [How to create custom skills](https://support.claud\n\n# About This Repository\n\nThis repository contains skills that demonstrate what's possible with Claude's skills system. These skills range from creative applications (art, music, design) to technical tasks (testing web apps, MCP server generation) to enterprise workflows (communications, branding, etc.).\n\nEach skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that Claude uses. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.\n\nMany skills in this repo are open source (Apache 2.0). We've also included the document creatio\n\n## Disclaimer\n\n**These skills are provided for demonstration and educational purposes only.** While some of these capabilities may be available in Claude, the implementations and behaviors you receive from Claude may differ from what is shown in these skills. These skills are meant to illustrate patterns and possibilities. Always test skills thoroughly in your own environment before relying on them for critical tasks"
+          },
+          {
+            "id": "S2",
+            "path": "skills/slack-gif-creator/requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/slack-gif-creator/requirements.txt",
+            "excerpt": "pillow>=10.0.0\nimageio>=2.31.0\nimageio-ffmpeg>=0.4.9\nnumpy>=1.24.0"
+          },
+          {
+            "id": "S3",
+            "path": "skills/claude-api/curl/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/skills/blob/2c5958ecac7cee2b583967a2c4981d0f4a75c579/skills/claude-api/curl/examples.md",
+            "excerpt": "\n\n# Read usage fields\ninput_tokens=$(echo \"$response\" | jq -r '.usage.input_tokens')\noutput_tokens=$(echo \"$response\" | jq -r '.usage.output_tokens')\n\n\n\n# Claude API - cURL / Raw HTTP\n\nUse these examples when the user needs raw HTTP requests or is working in a language without an official SDK.\n\n\n\n## Setup\n\n```bash\nexport ANTHROPIC_API_KEY=\"your-api-key\"\n```\n\n---\n\n\n\n## Basic Message Request\n\n```bash\ncurl https://api.anthropic.com/v1/messages \\\n  -H \"Content-Type: application/json\" \\\n  -H \"x-api-key: $ANTHROPIC_API_KEY\" \\\n  -H \"anthropic-version: 2023-06-01\" \\\n  -d '{\n    \"model\": \"claude-opus-5-5\",\n    \"max_tokens\": 16000,\n    \"messages\": [\n      {\"role\": \"user\", \"content\": \"What is the capital of France?\"}\n    ]\n  }'\n```\n\n\n\n### Parsing the response\n\nUse `jq` to extract fields from the JSON response. Do not use `grep`/`sed` -\nJSON strings can contain any character and regex parsing will break on quotes,\nescapes, or multi-line content.\n\n```bash\n\n\n# Capture the response, then extract fiel"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de dossiers contenant des instructions, scripts et ressources que Claude charge dynamiquement pour exécuter des tâches spécialisées. Destiné aux développeurs IA qui souhaitent enrichir les capacités de Claude avec des workflows réutilisables.",
+      "business_idea": "• Cible : PME souhaitant automatiser leurs communications internes ; Produit : SaaS de création de contenus multimédias (GIF, images) via une interface web ; difference : Utilise les skills existants comme moteur, ajoute une UI no‑code et un tableau de bord de suivi\n• Cible : Consultants en conformité ; Produit : Générateur de rapports de conformité basé sur des templates de skills ; difference : Transforme les skills en service d’édition de documents légaux, avec contrôle de version et audit"
+    },
+    {
+      "name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "stars": 21205,
+      "forks": 1645,
+      "gained": "3,278 stars today",
+      "gained_n": 3278,
+      "lang_color": "#3178c6",
+      "category": "Design System / Bibliothèque UI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI. Il cible les développeurs front‑end qui souhaitent un kit UI prêt à l’emploi et extensible, ainsi que les agents IA qui peuvent consommer les mêmes composants.",
+      "workflow": "Entrée : code source TypeScript d’un composant ou d’un thème → Traitement : le CLI compile les composants avec StyleX, génère le CSS et les métadonnées → Résultat : paquet npm installable et storybook visualisable. Limites : nécessite React 19+ et les dépendances @stylexjs/stylex, aucune preuve d’intégration serveur ou backend (non établi dans les extraits). [S1][S2]",
+      "use_cases": "• Utilisateur : Développeur d’une SaaS B2B ; Tâche : Intégrer rapidement une interface cohérente en important @astryxdesign/core et un thème neutre ; Résultat : Application web avec composants accessibles, theming sombre et documentation Storybook prête à être déployée\n• Utilisateur : Agent IA de génération de code ; Tâche : Utiliser le CLI pour créer un nouveau composant à partir d’un prompt ; Résultat : Fichier TypeScript généré, compilé et ajouté au dépôt sans configuration supplémentaire",
+      "products": "• Cible : PME souhaitant un tableau de bord interne ; Produit : Plateforme de reporting interne basée sur Astryx, avec des templates de graphiques et de tables ; difference : Ajoute une couche serveur (FastAPI) pour alimenter les composants en données, ce qui n’est pas fourni par le dépôt brut\n• Cible : Agences créatives ; Produit : Kit de création de sites vitrines « drag‑and‑drop » utilisant les composants Astryx et un éditeur low‑code ; difference : Intègre un éditeur visuel et un backend de gestion de contenu, alors que le dépôt ne propose que la bibliothèque UI",
+      "monetization": "Acheteur : agence ou PME ; raison : gain de productivité sur la mise en place d’interfaces cohérentes ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec forfait de base + frais d’usage pour le stockage de données. Hypothèse de prix : 30 €/mois/utilisateur, justifiée par la valeur d’un design system maintenu et la réduction du temps de développement.",
+      "build_plan": "Périmètre limité : créer un wrapper FastAPI qui expose les données au front‑end Astryx. Briques réutilisées : composants UI, CLI, thèmes. Travail à ajouter : API REST, authentification JWT, persistance PostgreSQL. Exclusions : génération de thèmes personnalisés avancés. Dépendances : React, StyleX, FastAPI, Docker. Coût estimé : 2 semaine de développement (≈80 h) + hébergement cloud (≈20 €/mois).",
+      "limitations": "Contrainte établie : nécessite React 19+ et StyleX, licence MIT confirmée dans package.json. Inconnues : support officiel, évolutivité du CLI, compatibilité avec d’autres frameworks. Maintenance : dépend du rythme de mise à jour de Meta, coût potentiel de mise à jour des dépendances.",
+      "next_step": "Réaliser un prototype d’API FastAPI qui renvoie des données de tableau de bord et vérifier l’intégration avec un composant Astryx; poser à un product manager d’agence la question : « Quel serait le critère décisif pour adopter un design system externe ? »",
+      "assessment": "Score 7 reflète la maturité du système (150+ composants, usage interne chez Meta) et la disponibilité d’un CLI. Le fit_score reste moyen (5) car le profil ne précise pas de besoin concret de design system, mais la capacité à créer rapidement des UI correspond à la préférence pour des prototypes rapides. Les preuves proviennent des extraits README et package.json; aucune donnée sur adoption externe n’est fournie.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "42f1a7615f64c79598b2db67b876ea8789957285",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/meta/astryx/blob/42f1a7615f64c79598b2db67b876ea8789957285/README.md",
+            "excerpt": " \n\n \n\n \n\n\n\n## Architecture\n\n\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now:   by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[ ](https://www.npmjs.com/package/@astryxdesign/core)\n[ ](LICENSE)\n[ ](https://github.com/meta/astryx/wiki/Contributing)\n\n[ ](https://astryx.atmeta.com)\n[ ](https://astryx.atmeta.com/storybook/)\n[ ](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributi\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Componen\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n\n\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both "
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/meta/astryx/blob/42f1a7615f64c79598b2db67b876ea8789957285/package.json",
+            "excerpt": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm -F @astryxdesign/theme-y2k build && pn"
+          },
+          {
+            "id": "S3",
+            "path": "scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/meta/astryx/blob/42f1a7615f64c79598b2db67b876ea8789957285/scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "excerpt": "// Copyright (c) Meta Platforms, Inc. and affiliates.\n\n/** @param {string} name */\nfunction greet(name) {\n  return `hi ${name}`;\n}\n\nmodule.exports = {greet};\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI. Il cible les développeurs front‑end qui souhaitent un kit UI prêt à l’emploi et extensible, ainsi que les agents IA qui peuvent consommer les mêmes composants.",
+      "business_idea": "• Cible : PME souhaitant un tableau de bord interne ; Produit : Plateforme de reporting interne basée sur Astryx, avec des templates de graphiques et de tables ; difference : Ajoute une couche serveur (FastAPI) pour alimenter les composants en données, ce qui n’est pas fourni par le dépôt brut\n• Cible : Agences créatives ; Produit : Kit de création de sites vitrines « drag‑and‑drop » utilisant les composants Astryx et un éditeur low‑code ; difference : Intègre un éditeur visuel et un backend de gestion de contenu, alors que le dépôt ne propose que la bibliothèque UI"
+    },
+    {
+      "name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "description": "Hunt down social media accounts by username across social networks",
+      "language": "Python",
+      "stars": 108059,
+      "forks": 12519,
+      "gained": "4,267 stars today",
+      "gained_n": 4267,
+      "lang_color": "#3572A5",
+      "category": "outil en ligne de recherche d’identifiants",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné, destiné aux analystes de sécurité ou aux équipes de renseignement en ligne.",
+      "workflow": "Entrée : liste de noms d’utilisateur (ex. « user123 ») → Traitement : le script lance des requêtes HTTP parallèles vers chaque site répertorié, analyse les réponses et consigne les comptes trouvés → Résultat : fichiers texte séparés contenant les URLs valides (ex. user123.txt) [ S1 ]. Limite : dépendance aux changements d’URL des sites, aucune gestion de captchas, nécessite un environnement Python ou Docker.",
+      "use_cases": "• Utilisateur : Consultant en cybersécurité ; Tâche : Vérifier la présence d’un pseudonyme suspect sur les réseaux sociaux avant une enquête ; Résultat : Rapport automatisé listant les comptes actifs et leurs URLs\n• Utilisateur : Marketeur d’une PME ; Tâche : Confirmer la disponibilité d’un nom de marque sur les plateformes sociales avant le lancement ; Résultat : Liste de plateformes où le nom est libre, facilitant la réservation de comptes",
+      "products": "• Cible : Agences de branding ; Produit : Service SaaS de vérification de disponibilité de marque avec tableau de bord et alertes ; difference : Interface web, stockage centralisé des historiques et notifications automatisées, alors que le dépôt brut ne propose qu’un CLI\n• Cible : Équipes de réponse à incident ; Produit : Module d’intégration API pour enrichir les flux de renseignement avec les résultats de Sherlock ; difference : API REST sécurisée et pagination, alors que le dépôt original ne fournit qu’une sortie fichier locale",
+      "monetization": "Facturation par abonnement mensuel aux équipes de sécurité (ex. 49 €/mois) pour l’accès à l’interface web, aux alertes et à l’API ; modèle freemium avec 100 requêtes/mois gratuites, le surplus facturé à l’usage.",
+      "build_plan": "Réutiliser le code Python existant (CLI) comme cœur ; ajouter une couche FastAPI pour l’API, un front Next.js pour le tableau de bord, Dockeriser le tout. Travail supplémentaire : UI/UX, gestion des quotas, authentification OAuth. Exclusions : prise en charge de tous les 400+ sites dès le départ (prioriser les 50 les plus utilisés). Dépendances : Python 3.11, FastAPI, PostgreSQL, Docker. Coût estimé : 0 € (open‑source) + 150 €/mois d’infrastructure cloud. Délai : 4‑6 semaines conditionnel selon disponibilité des développeurs.",
+      "limitations": "Licence MIT confirmée [ S2 ]; aucune garantie de mise à jour des endpoints des réseaux sociaux, risque de blocage IP, besoin de proxy pour certains sites, maintenance continue requise.",
+      "next_step": "Réaliser un test technique : déployer le script dans un conteneur Docker et appeler l’API FastAPI avec 10 noms d’utilisateur pour mesurer le temps moyen de réponse. Question utilisateur : « Quel niveau de détail (URL uniquement vs. métadonnées) attendez‑vous d’un rapport de disponibilité ? »",
+      "assessment": "Score 7 reflète la maturité du code (CLI fonctionnel, documentation claire) et la pertinence pour les secteurs ciblés (sécurité, branding). Fit_score 5 car le profil ne précise pas de contrainte sectorielle stricte. Les preuves proviennent des extraits README et pyproject.toml [ S1, S2 ]; le reste reste à valider.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c588d7c8b476df9f9c84912a05d1430fb8cdcdae",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "docs/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/docs/README.md",
+            "excerpt": " \n   \n     \n   \n   Hunt down social media accounts by username across  400+ social networks  \n   \n \n\n \n   Installation \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Usage \n  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;\n   Contributing \n \n\n \n \n \n\n\n\n\n## Installation\n\n \n     \n \n\n \n   &#8202;&#8202;   \n \n\n \n\n> [!WARNING]  \n> Packages for ParrotOS and Ubuntu 24.04, maintained by a third party, appear to be __broken__.  \n> Users of these systems should defer to [`uv`](https://docs.astral.sh/uv/)/`pipx`/`pip` or Docker.\n\n| Method | Notes |\n| - | - |\n| `pipx install sherlock-project` | `pip` or [`uv`](https://docs.astral.sh/uv/) may be used in place of `pipx` |\n| `docker run -it --rm sherlock/sherlock` |\n| `dnf install sherlock-project` | |\n\nCommunity-maintained packages are available for Debian (>= 13), Ubuntu (>= 22.10), Homebrew, Kali, and BlackArch. These packages are not directly supported\n\n## General usage\n\nTo search for only one user:\n```bash\nsherlock user123\n```\n\nTo search for more than one user:\n```bash\nsherlock user1 user2 user3\n```\n\nAccounts found will be stored in an individual text file with the corresponding username (e.g ```user123.txt```).\n\n```console\n$ sherlock --help\nusage: sherlock [-h] [--version] [--verbose] [--folderoutput FOLDEROUTPUT] [--output OUTPUT] [--csv] [--xlsx] [--site SITE_NAME] [--proxy PROXY_URL] [--dump-response]\n                [--json JSON_FILE] [--timeout TIMEOUT] [--print-all] [--print-found] [--no-color] [--browse] [--local] [--nsfw] [--txt] [--ignore-exclusions]\n                USERNAMES [USE\n\n## Credits\n\nThank you to everyone who has contributed to Sherlock! ❤️\n\n \n   \n \n\n\n\n## Star History\n\n \n   \n   \n   \n \n\n\n\n## License\n\nMIT © Sherlock Project \nCreator - [Siddharth Dushantha](https://github.com/sdushantha)\n\n \n\n[ext_pypi]: https://pypi.org/project/sherlock-project/\n[ext_brew]: https://formulae.brew.sh/formula/sherlock\n"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/sherlock-project/sherlock/blob/c588d7c8b476df9f9c84912a05d1430fb8cdcdae/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [ \"poetry-core>=1.2.0\" ]\nbuild-backend = \"poetry.core.masonry.api\"\n# poetry-core 1.8 not available in .fc39. Can upgrade to 1.8.0 at .fc39 EOL\n\n[tool.poetry-version-plugin]\nsource = \"init\"\n\n[tool.poetry]\nname = \"sherlock-project\"\nversion = \"0.16.2\"\ndescription = \"Hunt down social media accounts by username across social networks\"\nlicense = \"MIT\"\nauthors = [\n    \"Siddharth Dushantha <siddharth.dushantha@gmail.com>\"\n]\nmaintainers = [\n    \"Paul Pfeister <code@pfeister.dev>\",\n    \"Matheus Felipe <matheusfelipeog@protonmail.com>\",\n    \"Sondre Karlsen Dyrnes <sondre@villdyr"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sherlock est un script Python qui interroge plus de 400 réseaux sociaux pour vérifier l’existence d’un nom d’utilisateur donné, destiné aux analystes de sécurité ou aux équipes de renseignement en ligne.",
+      "business_idea": "• Cible : Agences de branding ; Produit : Service SaaS de vérification de disponibilité de marque avec tableau de bord et alertes ; difference : Interface web, stockage centralisé des historiques et notifications automatisées, alors que le dépôt brut ne propose qu’un CLI\n• Cible : Équipes de réponse à incident ; Produit : Module d’intégration API pour enrichir les flux de renseignement avec les résultats de Sherlock ; difference : API REST sécurisée et pagination, alors que le dépôt original ne fournit qu’une sortie fichier locale"
+    },
+    {
+      "name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "description": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+      "language": "C++",
+      "stars": 17135,
+      "forks": 2054,
+      "gained": "574 stars today",
+      "gained_n": 574,
+      "lang_color": "#f34b7d",
+      "category": "Moteur de simulation physique",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "MuJoCo est un moteur de simulation de dynamique multi-articulée avec contacts, destiné aux chercheurs et développeurs en robotique, biomécanique, animation et apprentissage automatique. Il permet de modéliser des structures articulées et leurs interactions avec l'environnement.",
+      "workflow": "Entrée : fichier XML décrivant un modèle articulé → Traitement : le moteur charge le modèle via `mujoco.MjModel.from_xml_path` (voir S3) puis exécute la simulation en temps réel ou génère des sorties (ex. export USD) → Résultat : trajectoires, visualisations ou fichiers USD exportés. Limites : la version WebAssembly est plus lente que le natif et aucune garantie de stabilité n’est fournie dans les extraits (S1).",
+      "use_cases": "• Utilisateur : Chercheur en robotique ; Tâche : Simuler le comportement d'un bras robotique pour tester des algorithmes de contrôle ; Résultat : Données de trajectoire précises et visualisation dans MuJoCo Studio\n• Utilisateur : Studio d'animation ; Tâche : Générer des animations physiques réalistes d'un personnage articulé ; Résultat : Fichiers USD exportés prêts à être intégrés dans un pipeline d'animation",
+      "products": "• Cible : PME d'ingénierie ; Produit : Plateforme SaaS de simulation en ligne basée sur MuJoCo WebAssembly ; difference : Supprime l'installation locale, ajoute une interface multi‑utilisateur et des quotas de calcul configurables\n• Cible : Agences de création ; Produit : Plugin d'export USD pour outils 3D (Blender, Maya) utilisant les bindings JavaScript ; difference : Intègre directement la génération de scènes physiques dans les workflows existants",
+      "monetization": "Acheteur : studios d'animation ou équipes R&D ; raison : gain de temps sur la génération de simulations réalistes ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajusté selon le nombre de simulations parallèles.",
+      "build_plan": "Périmètre : wrapper web + interface utilisateur ; brique réutilisée : bindings JavaScript (S2) ; travail à ajouter : UI React, gestion des comptes, facturation Stripe, orchestration Docker ; exclusions : développement du moteur C++ natif ; dépendances : Vite, React, Supabase, Docker ; coûts : hébergement cloud (~50 €/mois) + licences éventuelles ; délai : 6‑8 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence du dépôt non vérifiée (S1) ; performances WebAssembly inférieures au natif ; aucune preuve d’intégration CI/CD dans les extraits ; maintenance du moteur C++ hors du scope du projet.",
+      "next_step": "Réaliser un prototype de page de chargement de modèle et d’appel à `mujoco.MjModel.from_xml_path`; questionner un développeur d'animation sur les formats d'export souhaités.",
+      "assessment": "Score 7 reflète la maturité du moteur et la disponibilité de bindings JavaScript (S2). Fit_score 5 par défaut, le profil indique un besoin d'outils B2B rapides, ce qui correspond à la capacité de MuJoCo à être exposé via SaaS. Manque de preuves sur la licence et la stabilité du wrapper justifie la prudence.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "a937a4f916dc586660145973b015e56e04043377",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-deepmind/mujoco/blob/a937a4f916dc586660145973b015e56e04043377/README.md",
+            "excerpt": " \n     \n \n\n \n   \n     \n   \n   \n     \n   \n   \n     \n   \n   \n     \n   \n \n\n**MuJoCo** stands for **Mu**lti-**Jo**int dynamics with **Co**ntact. It is a\ngeneral purpose physics engine that aims to facilitate research and development\nin robotics, biomechanics, graphics and animation, machine learning, and other\nareas which demand fast and accurate simulation of articulated structures\ninteracting with their environment.\n\nThis repository is maintained b\n\n## Installation\n\n\n\n## Bug reports and feature requests\n\nGitHub [Issues](https://github.com/google-deepmind/mujoco/issues) are reserved\nfor bug reports, feature requests and other development-related subjects.\n\n\n\n## Documentation\n\nMuJoCo's documentation can be found at [mujoco.readthedocs.io]. Upcoming\nfeatures due for the next release can be found in the [changelog] in the\n\"latest\" branch.\n\n\n\n## Getting Started\n\n1. **Try MuJoCo in your browser.**\nVisit [mujoco.org](https://mujoco.org) to explore MuJoCo on desktop or mobile\nwith nothing to install, or open [live.mujoco.org](https://live.mujoco.org) to\ninspect and drag and drop your own models in the WebAssembly version of the\n[MuJoCo Studio] app (slower than native C, since it runs in WebAssembly).\n\n2. **Run a viewer on your machine.**\nFollow the [Getting Started] guide in the documentation to download a prebuilt\nrelease and run the [MuJoCo Studio] app or the classic `simulate` viewer "
+          },
+          {
+            "id": "S2",
+            "path": "wasm/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google-deepmind/mujoco/blob/a937a4f916dc586660145973b015e56e04043377/wasm/package.json",
+            "excerpt": "{\n  \"name\": \"mujoco\",\n  \"version\": \"1.0.0-alpha.1\",\n  \"description\": \"MuJoCo JavaScript Bindings\",\n  \"directories\": {\n    \"example\": \"examples\",\n    \"lib\": \"lib\",\n    \"test\": \"tests\"\n  },\n  \"files\": [\n    \"dist\"\n  ],\n  \"scripts\": {\n    \"test\": \"node --loader ts-node/esm --trace-warnings tests/run_tests.mjs\",\n    \"benchmark\": \"node --loader ts-node/esm --trace-warnings tests/run_benchmarks.mjs\",\n    \"dev:sandbox\": \"vite --config tests/sandbox/vite.sandbox.config.ts\",\n    \"build:sandbox\": \"vite build --config tests/sandbox/vite.sandbox.config.ts\",\n    \"dev:demo\": \"vite --config demo_app/vite.dem"
+          },
+          {
+            "id": "S3",
+            "path": "python/mujoco/usd/demo.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/google-deepmind/mujoco/blob/a937a4f916dc586660145973b015e56e04043377/python/mujoco/usd/demo.py",
+            "excerpt": "# Copyright 2024 DeepMind Technologies Limited\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n# ==============================================================================\n\"\"\"Demo script for USD exporter.\"\"\"\n\nimport argparse\nimport pathlib\n\nimport mujoco\nfrom mujoco.usd import exporter\n\n\ndef generate_usd_trajectory(local_args):\n  \"\"\"Generates a USD file given the user arguments.\"\"\"\n  # load a model to mujoco\n  model_path = local_args.model_path\n  m = mujoco.MjModel.from_xml_path(model_path)\n  "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "MuJoCo est un moteur de simulation de dynamique multi-articulée avec contacts, destiné aux chercheurs et développeurs en robotique, biomécanique, animation et apprentissage automatique. Il permet de modéliser des structures articulées et leurs interactions avec l'environnement.",
+      "business_idea": "• Cible : PME d'ingénierie ; Produit : Plateforme SaaS de simulation en ligne basée sur MuJoCo WebAssembly ; difference : Supprime l'installation locale, ajoute une interface multi‑utilisateur et des quotas de calcul configurables\n• Cible : Agences de création ; Produit : Plugin d'export USD pour outils 3D (Blender, Maya) utilisant les bindings JavaScript ; difference : Intègre directement la génération de scènes physiques dans les workflows existants"
+    },
+    {
+      "name": "anthropics/claude-quickstarts",
+      "url": "https://github.com/anthropics/claude-quickstarts",
+      "description": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API",
+      "language": "Python",
+      "stars": 20218,
+      "forks": 3372,
+      "gained": "551 stars today",
+      "gained_n": 551,
+      "lang_color": "#3572A5",
+      "category": "bibliothèque / exemples de démarrage",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Une collection de quickstarts Python et TypeScript montrant comment appeler l'API Claude pour créer des agents (ex. navigateur, ordinateur). Destinée aux développeurs qui souhaitent intégrer rapidement Claude dans leurs applications.",
+      "workflow": "Entrée : clé API Claude + paramètres d'agent → Traitement : driver CDP ou VNC lance le script du quickstart qui orchestre les appels Claude via HTTP → Résultat : démonstration fonctionnelle (exemple de navigation ou de contrôle d'ordinateur) – le code n’est pas prêt pour la production et ne gère pas la persistance ni la scalabilité. [S1]",
+      "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Prototyper un assistant support client basé sur Claude ; Résultat : Interface de chat fonctionnelle avec appels API, prête à être personnalisée\n• Utilisateur : Ingénieur R&D ; Tâche : Évaluer la faisabilité d’un outil d’automatisation de navigation web ; Résultat : Script démonstratif qui contrôle un onglet Chromium via CDP",
+      "products": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de ticketing enrichi par Claude (chat, suggestions de réponses) ; difference : Ajoute un moteur LLM natif à un système de tickets existant, contrairement au quickstart qui ne fournit qu’un squelette\n• Cible : Agences marketing ; Produit : Outil de génération de contenus web piloté par Claude (rédaction, SEO) ; difference : Intègre le quickstart navigateur pour extraire des données en temps réel, ce que le dépôt de base ne propose pas",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de productivité sur le support ou la création de contenu ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec tarif de base hypothétique 30 €/mois, justifié par le coût d’infrastructure (API Claude, hébergement) et la valeur perçue.",
+      "build_plan": "Périmètre : UI SaaS + backend FastAPI ; briques réutilisées : quickstart navigateur/computer, client HTTP Claude ; travail à ajouter : authentification, persistance PostgreSQL, tableau de bord admin ; exclusions : gestion multitenant avancée, facturation Stripe (à intégrer séparément) ; dépendances : fastapi, httpx, docker ; coût estimé : 150 h de dev (≈ 3 semaines à plein temps) ; délai conditionnel : 4‑5 semaines si aucune surprise technique.",
+      "limitations": "Le code fourni est uniquement une démonstration, pas de gestion d’erreurs, pas de scalabilité, licence non vérifiée, aucune garantie de conformité RGPD, maintenance à prévoir. [S1] [S2]",
+      "next_step": "Réaliser un test technique : déployer le quickstart navigateur sur Vercel et appeler l’API Claude avec une requête simple ; question à poser à un potentiel utilisateur : « Quels types de réponses automatiques attendez‑vous d’un assistant support alimenté par IA ? »",
+      "assessment": "Score 7 reflète la pertinence du dépôt pour créer rapidement des agents Claude, mais l’absence de fonctionnalités produit complètes et de licence claire limite l’attractivité. Le fit_score reste neutre (5) car le profil ne fournit pas de contraintes sectorielles précises.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4a4224bdf0e9cfb3332167b69c90457403813625",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/README.md",
+            "excerpt": "\n\n# Claude Quickstarts\n\nClaude Quickstarts is a collection of projects designed to help developers quickly get started with building  applications using the Claude API. Each quickstart provides a foundation that you can easily build upon and customize for your specific needs.\n\n\n\n## Available Quickstarts\n\n\n\n### Browser Toolset Quickstart\n\nThe minimal CDP example of Claude's browser toolset (`browser_toolset_20260801`), in Python and TypeScript. It has a small driver for one Chromium tab over the Chrome DevTools Protocol, a script that runs the driver with the tool runner, and a script that exercises it without a model. It shows the interface and is not production code.\n\n[Go to Browser Toolset Quickstart](./browser-toolset)\n\n\n\n### Computer Toolset Quickstart\n\nThe minimal VNC example of Claude's computer toolset (`computer_toolset_20260801`), in Python and TypeScript. It has a small driver for one desktop over VNC (the RFB protocol, no VNC library), a script that runs the driver with the tool runner, and a script that exercises it without a model. It shows the interface and is not production code.\n\n[Go to Computer Toolset Quickstart](./computer-toolset)\n\n\n\n## General Usage\n\nEach quickstart project comes with its own README and setup instructions. Generally, you'll follow these steps:\n\n1. Clone this repository\n2. Navigate to the specific quickstart directory\n3. Install the required dependencies\n4. Set up your Claude API key as an environment variable\n5. Run the quickstart application\n\n\n\n## Getting Started\n\nTo use these quickstarts, you'll need an Claude API key. If you don't have one yet, you can sign up for free at [console.anthropic.com](https://console.anthropic.com).\n\n\n\n### Customer Support Agent\n\nA customer support agent powered by Claude. This project demonstrates how"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/pyproject.toml",
+            "excerpt": "[tool.pyright]\nvenvPath = \"computer-use-demo\"\nvenv = \".venv\"\nuseLibraryCodeForTypes = false"
+          },
+          {
+            "id": "S3",
+            "path": "managed-agents/self-hosted-sandboxes/openshell-policy/src/agentpolicy/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/anthropics/claude-quickstarts/blob/4a4224bdf0e9cfb3332167b69c90457403813625/managed-agents/self-hosted-sandboxes/openshell-policy/src/agentpolicy/cli.py",
+            "excerpt": "\"\"\"The agentpolicy command.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport difflib\nimport json\nimport os\nimport sys\nimport time\nfrom pathlib import Path\nfrom typing import Any\n\nimport httpx\n\nfrom . import managed_agents, config, ocsf, policyfile, profilecheck, promote, shrink\nfrom .policyfile import Bindings, PolicyError\nfrom .prover import CliProver, Enforced\nfrom .store import Store\n\n\ndef _settings(args: argparse.Namespace) -> config.Settings:\n    return config.load(args.config)\n\n\ndef _prover(s: config.Settings) -> Enforced:\n    return Enforced(CliProver(s.prover, s.prover_timeout))\n\n\ndef _read_secret(path: str | None) -> str:\n    if path:\n        return Path(path).read_text().strip()\n    return sys.stdin.read().strip()\n\n\ndef _api_key_if_any(args: argparse.Namespace) -> str:\n    if getattr(args, \"api_key_file\", None):\n        return Path(args.api_key_file).read_text().strip()\n    return \"\"\n\n\ndef _control_plane(args: argparse.Namespace) -> Any:\n    \"\"\"A client for oper"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Une collection de quickstarts Python et TypeScript montrant comment appeler l'API Claude pour créer des agents (ex. navigateur, ordinateur). Destinée aux développeurs qui souhaitent intégrer rapidement Claude dans leurs applications.",
+      "business_idea": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de ticketing enrichi par Claude (chat, suggestions de réponses) ; difference : Ajoute un moteur LLM natif à un système de tickets existant, contrairement au quickstart qui ne fournit qu’un squelette\n• Cible : Agences marketing ; Produit : Outil de génération de contenus web piloté par Claude (rédaction, SEO) ; difference : Intègre le quickstart navigateur pour extraire des données en temps réel, ce que le dépôt de base ne propose pas"
+    },
+    {
+      "name": "garrytan/gbrain",
+      "url": "https://github.com/garrytan/gbrain",
+      "description": "Garry's Opinionated OpenClaw/Hermes Agent Brain",
+      "language": "TypeScript",
+      "stars": 32380,
+      "forks": 4817,
+      "gained": "216 stars today",
+      "gained_n": 216,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque / serveur de connaissances personnelles",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "GBrain est une couche native Postgres qui fournit une mémoire explicite pour les agents IA, permettant de stocker, corriger et retirer des faits avec leurs sources. Il cible les développeurs d’agents qui ont besoin d’un stockage fiable et d’une recherche hybride RAG.",
+      "workflow": "Entrée : faits structurés (texte, URL, métadonnées) via CLI ou API → Traitement : persistance dans Postgres via le moteur PGLite, indexation sémantique optionnelle, gestion des corrections et retraits → Résultat : réponses enrichies avec citations et possibilité de recherche par mots‑clés ou recherche sémantique. Limites : nécessite Bun ≥ 1.4.4, aucune distribution npm officielle, le support de la recherche sémantique dépend d’un module externe non fourni dans le dépôt. [S1][S2][S3]",
+      "use_cases": "• Utilisateur : Développeur d’assistant client IA ; Tâche : Enrichir les réponses du bot avec des faits vérifiables provenant de la base interne de l’entreprise ; Résultat : Le bot fournit des réponses accompagnées de citations précises, amélioration de la confiance utilisateur\n• Utilisateur : Consultant en conformité ; Tâche : Tracer l’origine de chaque donnée utilisée par un modèle génératif ; Résultat : GBrain consigne la source de chaque fait, permettant d’auditer et de retirer rapidement les informations obsolètes",
+      "products": "• Cible : PME souhaitant un assistant interne de documentation ; Produit : Plateforme SaaS « MémoIA » qui expose GBrain via une UI web et une API REST ; difference : Ajoute une interface graphique, gestion multi‑utilisateur et facturation Stripe, tout en conservant le moteur de mémoire open‑source\n• Cible : Agence de marketing automatisé ; Produit : Extension Chrome « BrainClip » qui utilise GBrain en local pour enrichir les snippets de texte avec des références internes ; difference : Intègre le moteur en tant que service local via WebAssembly, éliminant le besoin de serveur cloud",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de temps et conformité des réponses IA ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, prix justifié par coût d’infrastructure (Postgres, hébergement) et valeur ajoutée (audit de sources).",
+      "build_plan": "Périmètre : UI web + API wrapper autour du core GBrain ; briques réutilisées : moteur PGLite, CLI existante ; travail à ajouter : authentification, tableau de bord multi‑tenant, facturation Stripe ; exclusions : recherche sémantique avancée (requiert un service externe) ; dépendances : Bun, Postgres, Docker pour le déploiement ; coût estimé : 0 € (open‑source) + 20 €/mois d’hébergement cloud ; délai : 4‑6 semaines en sprint intensif.",
+      "limitations": "Contraintes établies : besoin de Bun ≥ 1.4.4, licence MIT non vérifiée dans le dépôt, aucune distribution npm officielle, recherche sémantique non incluse ; inconnues : performance à grande échelle, support multi‑langue, conformité RGPD (non établi dans les extraits).",
+      "next_step": "Réaliser un prototype d’API REST qui crée, met à jour et interroge un brain en mémoire ; question à poser à un potentiel utilisateur : « Quelle importance accordez‑vous à la traçabilité des sources dans les réponses générées par votre IA ? »",
+      "assessment": "Score 7 reflète la pertinence technique (mémoire IA, Postgres, extensibilité) et la disponibilité d’une CLI fonctionnelle. Fit_score 5 par défaut faute de profil détaillé. Les sources confirment les capacités de stockage, la licence MIT et le besoin de Bun, mais aucune donnée de marché ou de conformité n’est fournie.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "358e347650a2566d67fa443cc391dfbc850bb2db",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/garrytan/gbrain/blob/358e347650a2566d67fa443cc391dfbc850bb2db/README.md",
+            "excerpt": "      \n\n**Give the agent you already use a memory you control.** GBrain stores explicit facts with their sources, supports corrections and withdrawal, and makes the same memory available across your agents. Start with keyless memory and keyword retrieval; add semantic search, synthesis, and background enrichment when you need them.\n\nGBrain is MIT-licensed and free to self-host; gbrain.io is optional paid hosting.\n\n> [!TIP]\n> **Need hosted? First \n\n## Install\n\n> [!TIP]\n> **Fastest: hosted GBrain at [gbrain.io](https://gbrain.io/cli?ref=readme), for any harness.** One command launches a GBrain hosted on gbrain.io; Claude Code, Codex, ChatGPT, Cursor and every other AI you use connect to it, with nothing to keep online.\n>\n> ```bash\n> curl -sSL https://gbrainio.terminalwire.sh | bash\n> gbrainio terminal connect      # in a new terminal\n> gbrainio workspace new         # pick a plan in the browser\n> curl -fsSL https://bun.sh/install | bash   # skip if Bun 1.4.4+ is installed\n> export PATH=\"$HOME/.bun/bin:$PATH\"\n> bun install -g github:garrytan/gbrain#stable   # the gbrain CLI only; no local\n\n### Here's how to self-host it\n\nGBrain is MIT-licensed and free to self-host. It needs **Bun 1.4.4 or newer**; existing worker installs read the [authorization and queue upgrade guide](docs/guides/authorization-upgrade.md) before restarting on this version.\n\n> [!WARNING]\n> **GBrain is NOT distributed on npm.** The npm `gbrain` package is unrelated and\n> can shadow the real binary, so never run `npm install -g gbrain` or\n> `bun add -g gbrain`. Install only via `bun install -g github:garrytan/"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/garrytan/gbrain/blob/358e347650a2566d67fa443cc391dfbc850bb2db/package.json",
+            "excerpt": "{\n  \"name\": \"gbrain\",\n  \"description\": \"Postgres-native personal knowledge brain with hybrid RAG search\",\n  \"type\": \"module\",\n  \"imports\": {\n    \"#postgres\": {\n      \"types\": \"./vendor/postgres/types/index.d.ts\",\n      \"require\": \"./vendor/postgres/cjs/src/index.js\",\n      \"default\": \"./vendor/postgres/src/index.js\"\n    }\n  },\n  \"main\": \"src/core/index.ts\",\n  \"bin\": {\n    \"gbrain\": \"src/cli.ts\"\n  },\n  \"exports\": {\n    \".\": \"./src/core/index.ts\",\n    \"./engine\": \"./src/core/engine.ts\",\n    \"./types\": \"./src/core/types.ts\",\n    \"./operations\": \"./src/core/operations.ts\",\n    \"./minions\": \"./src/"
+          },
+          {
+            "id": "S3",
+            "path": "src/core/company-brain/demo.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/garrytan/gbrain/blob/358e347650a2566d67fa443cc391dfbc850bb2db/src/core/company-brain/demo.ts",
+            "excerpt": "import { PGLiteEngine } from '../pglite-engine.ts';\nimport { importFromContent } from '../import-file.ts';\nimport { loadResolvedPackByName } from '../schema-pack/load-active.ts';\nimport { reconcileSourceLinks } from '../link-reconciliation.ts';\nimport type { RegistryCode } from '../error-registry.ts';\nimport { opError, type OperationError } from '../ops/contract.ts';\nimport { COMPANY_BRAIN_SAMPLE } from './sample.ts';\n\nexport interface CompanyBrainDemoResult {\n  schema_version: 1;\n  status: 'complete';\n  fictional: true;\n  profile: 'company-brain';\n  pages: number;\n  types: Record<string, number>;\n  links: number;\n  answers: Array<{ question: string; answer: string; citations: string[] }>;\n}\n\nfunction demoFailure(code: RegistryCode, message: string): OperationError {\n  return opError(code, message,\n    'The bundled fictional sample failed in a throwaway in-memory brain, so this is a gbrain packaging or code fault, not a problem with your data. Report it to the user with gbrain --versio"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "GBrain est une couche native Postgres qui fournit une mémoire explicite pour les agents IA, permettant de stocker, corriger et retirer des faits avec leurs sources. Il cible les développeurs d’agents qui ont besoin d’un stockage fiable et d’une recherche hybride RAG.",
+      "business_idea": "• Cible : PME souhaitant un assistant interne de documentation ; Produit : Plateforme SaaS « MémoIA » qui expose GBrain via une UI web et une API REST ; difference : Ajoute une interface graphique, gestion multi‑utilisateur et facturation Stripe, tout en conservant le moteur de mémoire open‑source\n• Cible : Agence de marketing automatisé ; Produit : Extension Chrome « BrainClip » qui utilise GBrain en local pour enrichir les snippets de texte avec des références internes ; difference : Intègre le moteur en tant que service local via WebAssembly, éliminant le besoin de serveur cloud"
+    },
+    {
+      "name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "stars": 48837,
+      "forks": 3375,
+      "gained": "916 stars today",
+      "gained_n": 916,
+      "lang_color": "#dea584",
+      "category": "outil d'automatisation de navigateur (CLI)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑Browser est une CLI Rust qui permet à un agent d'IA d'ouvrir, de lire et d'interagir avec des pages web via le Chrome DevTools Protocol. Destiné aux développeurs d'agents IA qui ont besoin d'un navigateur contrôlable en ligne de commande.",
+      "workflow": "Entrée : URL ou commande (ex. `agent-browser open example.com`) → Traitement : le daemon démarre, contrôle Chrome, crée un snapshot textuel avec des références d'éléments [ S1 ] → Résultat : sortie texte du DOM et actions sur les références (click, get url, etc.) [ S1 ]. Limites : nécessite Chrome for Testing, fonctionne en mode headless et s'arrête après une heure d'inactivité.",
+      "use_cases": "• Utilisateur : Développeur d'agent conversationnel ; Tâche : Récupérer le texte d'une page produit et cliquer sur le bouton \"Ajouter au panier\" ; Résultat : Le bot obtient le contenu structuré et effectue l'action sans interface graphique\n• Utilisateur : Agence de scraping automatisé ; Tâche : Prendre un snapshot d'une page d'actualités et extraire les titres via les références ; Résultat : Export des titres sous forme de texte compact utilisable dans un pipeline d'analyse",
+      "products": "• Cible : PME e‑commerce ; Produit : Service SaaS de navigation IA pour automatiser la mise à jour des catalogues ; difference : Cache les snapshots et expose une API HTTP, évitant aux clients d'installer la CLI\n• Cible : Agences de marketing digital ; Produit : Extension navigateur low‑code qui intègre les références d'Agent‑Browser dans des workflows n8n ; difference : Permet de combiner actions de navigation avec d'autres automatisations sans écrire de code Rust",
+      "monetization": "Facturation à l'usage (nombre de snapshots ou d'actions) ; les clients paient par appel d'API ou par minute de session, hypothèse de 0,02 €/snapshot basée sur le coût d'infrastructure cloud et la valeur de gain de temps.",
+      "build_plan": "Réutiliser le daemon et le moteur CDP existants [ S1 ]; ajouter une couche HTTP (Node/TS) pour exposer les commandes ; développer un tableau de facturation simple ; exclure la recompilation du binaire Rust. Dépendances : Chrome for Testing, Node ≥22, Docker pour le déploiement. Coût estimé : 150 € de cloud mensuel. Délai : 3‑4 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence non vérifiée, dépendance à Chrome for Testing, besoin d'un serveur persistant pour les sessions longues, aucune preuve de conformité RGPD dans les extraits [ non établi dans les extraits ].",
+      "next_step": "Tester la création d'une session persistante via l'API et interroger un product manager d'agence sur la valeur d'un snapshot automatisé.",
+      "assessment": "Score 7 reflète la maturité du CLI et la pertinence pour les cas d'usage d'automatisation IA ; fit_score 5 par défaut car le profil ne précise pas de contrainte sectorielle. Les preuves proviennent des README et du package.json [ S1, S2 ].",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "e7519957b9067c541825afa21a792fbe1f483047",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/e7519957b9067c541825afa21a792fbe1f483047/README.md",
+            "excerpt": "\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/sele\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](h\n\n# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n \n     \n     \n     \n     \n     \n \n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads t"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/e7519957b9067c541825afa21a792fbe1f483047/package.json",
+            "excerpt": "{\n  \"name\": \"agent-browser\",\n  \"version\": \"0.42.0\",\n  \"description\": \"Browser automation CLI for AI agents\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.1.3\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"files\": [\n    \"bin\",\n    \"scripts\",\n    \"skill-data\",\n    \"skills\",\n    \"cli/src/native/a11y/LICENSE-axe-core.txt\",\n    \"cli/src/native/a11y/LICENSE-axe-core-THIRD-PARTY.txt\"\n  ],\n  \"bin\": {\n    \"agent-browser\": \"./bin/agent-browser.js\"\n  },\n  \"scripts\": {\n    \"mcp-tools:sync\": \"cd cli && AGENT_BROWSER_UPDATE_MCP_TOOLS=1 cargo test --bin agent-browser mcp_tool_catalog_snapshot\",\n    \"ver"
+          },
+          {
+            "id": "S3",
+            "path": "examples/eve/css.d.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/e7519957b9067c541825afa21a792fbe1f483047/examples/eve/css.d.ts",
+            "excerpt": "declare module \"*.css\";\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑Browser est une CLI Rust qui permet à un agent d'IA d'ouvrir, de lire et d'interagir avec des pages web via le Chrome DevTools Protocol. Destiné aux développeurs d'agents IA qui ont besoin d'un navigateur contrôlable en ligne de commande.",
+      "business_idea": "• Cible : PME e‑commerce ; Produit : Service SaaS de navigation IA pour automatiser la mise à jour des catalogues ; difference : Cache les snapshots et expose une API HTTP, évitant aux clients d'installer la CLI\n• Cible : Agences de marketing digital ; Produit : Extension navigateur low‑code qui intègre les références d'Agent‑Browser dans des workflows n8n ; difference : Permet de combiner actions de navigation avec d'autres automatisations sans écrire de code Rust"
+    },
+    {
+      "name": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView",
+      "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+      "language": "Rust",
+      "stars": 103761,
+      "forks": 13475,
+      "gained": "172 stars today",
+      "gained_n": 172,
+      "lang_color": "#dea584",
+      "category": "Plateforme de détection spatiale via WiFi",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "RuView transforme les signaux WiFi en intelligence spatiale en temps réel, permettant de détecter présence, respiration et fréquence cardiaque sans caméra. Destiné aux développeurs cherchant à exploiter le CSI WiFi pour des applications de santé ou de domotique.",
+      "workflow": "Entrée : flux CSI provenant de 4‑6 nœuds ESP32 (canaux 1/6/11) → Traitement : fusion multibande (168 sous‑porteuses virtuelles) + fusion multistatique avec attention → Sortie : métriques vitales (HR, BR, présence) affichées sur tableau de bord. Sources : S1 décrit la chaîne de traitement, S3 montre l’exemple de tableau de bord. Limites : dépend d’un matériel ESP32 dédié, aucune implémentation serveur REST n’est fournie (voir S2, sections commentées).",
+      "use_cases": "• Utilisateur : Clinique de télémédecine ; Tâche : Surveiller à distance la respiration et le rythme cardiaque de patients à domicile ; Résultat : Alertes en temps réel lorsqu’une anomalie vitale est détectée, sans besoin de capteurs portables\n• Utilisateur : Agence de sécurité des bâtiments ; Tâche : Détecter la présence d’individus dans des pièces non surveillées ; Résultat : Cartographie de l’occupation des espaces pour optimiser la consommation énergétique et la sécurité",
+      "products": "• Cible : PME de santé à domicile ; Produit : Service SaaS de monitoring vital sans caméra, intégré à un tableau de bord web ; difference : Utilise l’infrastructure WiFi existante, réduit le coût matériel et élimine les problèmes de confidentialité liés aux caméras\n• Cible : Gestionnaires d’immeubles ; Produit : Module d’occupation des pièces intégré à un système de gestion énergétique ; difference : Fournit des données d’occupation en temps réel via WiFi, évitant l’installation de capteurs PIR supplémentaires",
+      "monetization": "Acheteur : gestionnaires de bâtiments ou prestataires de télésurveillance ; raison de payer : accès à une API cloud qui agrège les données CSI et fournit des alertes ; unité facturée : abonnement mensuel par site ou par nombre de capteurs ; modèle : abonnement SaaS avec tarif de base hypothétique 50 €/mois + 0,10 €/heure de traitement (hypothèse à tester).",
+      "build_plan": "Périmètre : API REST pour ingestion CSI, tableau de bord web React, service de stockage PostgreSQL. Briques réutilisées : code Rust de ruview‑densepose‑core, scripts Python d’exemple (S3). Travail à ajouter : wrapper Rust→Python, interface web, gestion multi‑tenant, documentation. Exclusions : développement du firmware ESP32 (déjà fourni). Dépendances : Rust, Python, React, PostgreSQL, Docker. Coût estimé : 200 h de développement (≈ 4 semaines à plein temps).",
+      "limitations": "Contraintes établies : besoin de matériel ESP32, dépendance au CSI WiFi, licence non vérifiée (S2). Inconnues : performance en environnements très bruyés, conformité RGPD pour données biométriques, support de multiples modèles de routeurs. Maintenance : mise à jour du firmware ESP32 et du pipeline de fusion.",
+      "next_step": "Réaliser un prototype d’API qui accepte des fichiers CSI et renvoie les métriques vitales ; interroger un responsable d’une clinique de télémédecine sur les exigences de précision et de confidentialité.",
+      "assessment": "Score 7 reflète la nouveauté technique (détection vitale via WiFi) et la pertinence pour les secteurs ciblés (santé, bâtiment). Fit_score 5 par défaut faute de profil détaillé. Les preuves proviennent de S1 (description du fonctionnement) et S3 (exemples d’usage). De nombreuses incertitudes subsistent (licence, conformité, performance), d’où la mention « non établi dans les extraits » pour ces aspects.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "61150313dec90f6d093d9ee93643257938c603bc",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ruvnet/RuView/blob/61150313dec90f6d093d9ee93643257938c603bc/README.md",
+            "excerpt": "\n\n## 🔬 How It Works\n\n[ ](docs/user-guide.md)\n\nWiFi routers flood every room with radio waves. When a person moves — or even breathes — those waves scatter differently. WiFi DensePose reads that scattering pattern and reconstructs what happened:\n\n```\nWiFi Router → radio waves pass through room → hit human body → scatter\n    ↓\nESP32 mesh (4-6 nodes) captures CSI on channels 1/6/11 via TDM protocol\n    ↓\nMulti-Band Fusion: 3 channels × 56 subcarriers = 168 virtual subcarriers per link\n    ↓\nMultistatic Fusion: N×(N-1) links → attention-weighted cross-viewpoint embedding\n    ↓\nCoherence Gate: accept/reject measurements → \n\n# In Claude Code — add this repo as a plugin marketplace, then install:\n/plugin marketplace add ruvnet/RuView\n/plugin install ruview@ruview\n\n\n\n# Or try it for one session without installing (from a local clone of the repo):\nclaude --plugin-dir ./plugins/ruview\n\n\n\n# π RuView\n\n \n   \n     \n   \n \n\n[ ](docs/user-guide.md)\n\n \n \n      Start here  \n      Hardware  \n      Models  \n \n \n      AI toolkit  \n      Smart home  \n      Cognitum Seed  \n \n \n\n \n   \n     \n   \n \n\n\n\n\n## **See through walls with WiFi** ##\n\n**Turn ordinary WiFi into a spatial intelligence / sensing system.** Detect people, measure breathing and heart rate, track movement, and monitor rooms — through walls, in the dark, with no cameras or wearables. Just physics.\n\nWorks nat"
+          },
+          {
+            "id": "S2",
+            "path": "v2/Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/ruvnet/RuView/blob/61150313dec90f6d093d9ee93643257938c603bc/v2/Cargo.toml",
+            "excerpt": "[workspace]\nresolver = \"2\"\nmembers = [\n    # Checksum-verified dependency patches; keep their upstream tests in CI.\n    \"vendor/security/zip-0.6.6\",\n    \"vendor/security/wasmtime-internal-cache-36.0.19\",\n    \"crates/wifi-densepose-core\",\n    \"crates/wifi-densepose-physics\", # ADR-323 bounded pose assessment/correction\n    \"crates/wifi-densepose-signal\",\n    \"crates/wifi-densepose-nn\",\n    # wifi-densepose-api / -db / -config: removed in #578.\n    # The crate names were reserved early for an envisioned REST/database/config\n    # split, but no implementation followed and no code referenced them."
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ruvnet/RuView/blob/61150313dec90f6d093d9ee93643257938c603bc/examples/README.md",
+            "excerpt": "\n\n# Examples\n\nReal-time sensing applications built on the RuView platform.\n\n\n\n## Individual Examples\n\n| Example | Sensors | What It Does |\n|---------|---------|-------------|\n| [**ruview_live.py**](ruview_live.py) | CSI + mmWave + Light | Unified dashboard: HR, BR, BP, stress, presence, light, RSSI |\n| [Medical: Blood Pressure](medical/) | mmWave | Contactless BP estimation from HRV |\n| [Medical: Vitals Suite](medical/vitals_suite.py) | mmWave | 10-in-1: HR, BR, BP, HRV, sleep stages, apnea, cough, snoring, activity, meditation |\n| [Sleep: Apnea Screener](sleep/) | mmWave | Detects breathing cessation events, computes AHI |\n| [Stress: HRV Monitor](stress/) | mmWave | Real-time stress level from heart rate variability |\n\n## Quick Start\n\n```bash\npip install pyserial numpy\n\n\n\n## Unified Dashboard (start here)\n\n```bash\npip install pyserial numpy\npython examples/ruview_live.py --csi COM7 --mmwave COM4\n```\n\nThe live dashboard auto-detects available sensors and displays fused vitals, environm"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "RuView transforme les signaux WiFi en intelligence spatiale en temps réel, permettant de détecter présence, respiration et fréquence cardiaque sans caméra. Destiné aux développeurs cherchant à exploiter le CSI WiFi pour des applications de santé ou de domotique.",
+      "business_idea": "• Cible : PME de santé à domicile ; Produit : Service SaaS de monitoring vital sans caméra, intégré à un tableau de bord web ; difference : Utilise l’infrastructure WiFi existante, réduit le coût matériel et élimine les problèmes de confidentialité liés aux caméras\n• Cible : Gestionnaires d’immeubles ; Produit : Module d’occupation des pièces intégré à un système de gestion énergétique ; difference : Fournit des données d’occupation en temps réel via WiFi, évitant l’installation de capteurs PIR supplémentaires"
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+      "language": "Python",
+      "stars": 69424,
+      "forks": 56577,
+      "gained": "506 stars today",
+      "gained_n": 506,
+      "lang_color": "#3572A5",
+      "category": "Application d'analyse financière automatisée",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Système Python qui agrège des données boursières multi‑marchés, génère un rapport décisionnel via LLM et le pousse vers des canaux de messagerie d'entreprise. Destiné aux analystes ou PME souhaitant automatiser la veille financière.",
+      "workflow": "Entrée : code ou nom d'une action (ex. « AAPL »). → Traitement : le service interroge les APIs de marché, enrichit les données, invoque un LLM pour produire un rapport contenant score, tendance, points d'achat/vente et alertes. → Résultat : le rapport Markdown est envoyé à WeChat, Slack ou email. Limites : couverture des marchés décrite dans le README, dépendance à des sources externes non vérifiées. [S1]",
+      "use_cases": "• Utilisateur : Gestionnaire de portefeuille PME ; Tâche : Obtenir chaque matin un tableau de bord décisionnel pour les titres suivis ; Résultat : Rapport automatisé livré dans le canal Slack, réduisant le temps de veille de plusieurs heures\n• Utilisateur : Analyste freelance ; Tâche : Faire une analyse ponctuelle d'une action étrangère avant une réunion client ; Résultat : Analyse détaillée générée en quelques secondes, incluant indicateurs techniques et risques",
+      "products": "• Cible : PME du secteur financier ; Produit : Plateforme SaaS d'analyse multi‑marchés avec tableau de bord personnalisable ; difference : Ajoute une interface web configurable, facturation par abonnement et stockage sécurisé des historiques, contrairement au dépôt brut qui ne propose qu'une API\n• Cible : Développeurs d'outils internes ; Produit : Bibliothèque Python réutilisable pour intégrer l'analyse LLM dans des workflows internes ; difference : Expose uniquement les fonctions d'appel LLM et d'agrégation de données, sans les composants de notification",
+      "monetization": "Abonnement mensuel aux entreprises (10 €/utilisateur) pour accéder aux analyses illimitées, facturé par utilisateur actif ; modèle freemium avec 5 analyses gratuites par mois. Hypothèse basée sur la valeur perçue d'une veille automatisée et les coûts d'infrastructure cloud.",
+      "build_plan": "Réutiliser le code d'agrégation et le modèle LLM existants (brique réutilisée). Ajouter une UI web (React + Tailwind) et un système de facturation (Stripe). Exclure la création de nouvelles sources de données. Dépendances : FastAPI, Docker, services de données boursières. Coût estimé : 200 € de cloud mensuel + 150 € de licences API. Délai : 4‑6 semaines pour MVP, conditionnel à la disponibilité d'une clé API de marché.",
+      "limitations": "Couverture limitée aux marchés listés dans le README, sources de données non garanties, licence du dépôt non vérifiée, maintenance du modèle LLM à prévoir.",
+      "next_step": "Tester l'API d'analyse avec un titre réel et mesurer le temps de réponse ; demander à un analyste PME s'il trouve le format du rapport exploitable.",
+      "assessment": "Score 7 reflète la pertinence du produit pour les besoins de veille financière et la présence d'une architecture fonctionnelle. Fit_score 5 par défaut, le profil ne précise pas de contraintes sectorielles supplémentaires. Manque de preuves sur la fiabilité des sources de données et la licence du projet.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "15c7cdc0ca07bd71158e268fb8596f3ae356ad9b",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/15c7cdc0ca07bd71158e268fb8596f3ae356ad9b/README.md",
+            "excerpt": " \n\n\n\n# 📈 股票智能分析系统\n\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/stargazers)\n[ ](https://arxiv.org/abs/2608.26990)\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/actions/workflows/ci.yml)\n[ ](https://opensource.org/licenses/MIT)\n[ ](https://www.python.org/downloads/)\n[ ](https://github.com/features/actions)\n[ ](https://hub.docker.com/r/zhulinsen/daily_stock_analysis)\n\n \n   &nbsp;   \n \n\n> 🤖 基于 AI 大模型的 A股/港股/美股/日股/韩股/台股自选股智能分析系统，每日自动分析并推送「决策仪表盘」到企业微信/飞书/Telegram/Discord/Slack/邮箱\n\n[**产品预览**](#-产品预\n\n## 🖥️ 产品预览\n\n \n   \n \n\n\n\n## ✨ 功能特性\n\n| 能力 | 覆盖内容 |\n|------|------|\n| AI 决策报告 | 核心结论、评分、趋势、买卖点位、风险警报、催化因素、操作检查清单 |\n| 多市场数据聚合 | 覆盖 A股、港股、美股、日股、韩股、台股和 ETF，支持行情、K 线、技术指标、新闻、公告、基本面与报告辅助数据；不同市场的数据源和能力边界见 [市场支持边界](docs/market-support.md) |\n| Web / 桌面工作台 | 手动分析、任务进度、历史报告、完整 Markdown、回测、持仓、配置管理、浅色 / 深色主题 |\n| Agent 策略问股 | 多轮追问，支持均线\n\n### 技术栈与数据来源\n\n| 类型 | 支持 |\n|----"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/15c7cdc0ca07bd71158e268fb8596f3ae356ad9b/pyproject.toml",
+            "excerpt": "[tool.black]\nline-length = 120\ntarget-version = ['py310', 'py311', 'py312']\ninclude = '\\.pyi?$'\nexclude = '''\n/(\n    \\.git\n    | \\.hg\n    | \\.mypy_cache\n    | \\.tox\n    | \\.venv\n    | venv\n    | _build\n    | buck-out\n    | build\n    | dist\n    | __pycache__\n)/\n'''\n\n[tool.isort]\nprofile = \"black\"\nline_length = 120\nskip = [\".git\", \"__pycache__\", \".env\", \"venv\", \".venv\"]\n\n[tool.bandit]\nexclude_dirs = [\"tests\", \"test_*.py\"]\nskips = [\"B101\"]  # assert 语句在测试中是允许的\n"
+          },
+          {
+            "id": "S3",
+            "path": "docs/examples/grok_bot/SKILL.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/15c7cdc0ca07bd71158e268fb8596f3ae356ad9b/docs/examples/grok_bot/SKILL.md",
+            "excerpt": "---\nname: daily-stock-analysis\ndescription: 调用 daily_stock_analysis API 做股票分析。当用户说「分析茅台」「analyze AAPL」「帮我看看 600519」或要大盘复盘时使用。优先用股票代码。\n---\n\n\n\n# daily_stock_analysis\n\n本 Skill 供 Grok Bot（2026-08-11 AI teammate）使用。通过 HTTP 调用已部署的 DSA，不要把 Bot 配成 LiteLLM provider。\n\n需要环境变量 `DSA_BASE_URL`（DSA API 根地址，无尾斜杠）。\n\n\n\n## 何时使用\n\n- 分析单只或多只股票\n- 查询某股最新 DecisionSignal（早报 / 盯盘 Routine）\n- 大盘复盘\n\n\n\n## 工作流程\n\n1. 提取股票代码：A股 6 位（`600519`）、港股 `hk00700`、美股 `AAPL`、台股 `.TW` / `.TWO`。只有中文名时先提示用户给代码，或使用常见映射（茅台 → `600519`）。\n2. 需要完整分析时 POST `{DSA_BASE_URL}/api/v1/analysis/analyze`。**Routine 或预计超过 Bot HTTP 超时的分析，从一开始用异步**，不要先同步再改发异"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Système Python qui agrège des données boursières multi‑marchés, génère un rapport décisionnel via LLM et le pousse vers des canaux de messagerie d'entreprise. Destiné aux analystes ou PME souhaitant automatiser la veille financière.",
+      "business_idea": "• Cible : PME du secteur financier ; Produit : Plateforme SaaS d'analyse multi‑marchés avec tableau de bord personnalisable ; difference : Ajoute une interface web configurable, facturation par abonnement et stockage sécurisé des historiques, contrairement au dépôt brut qui ne propose qu'une API\n• Cible : Développeurs d'outils internes ; Produit : Bibliothèque Python réutilisable pour intégrer l'analyse LLM dans des workflows internes ; difference : Expose uniquement les fonctions d'appel LLM et d'agrégation de données, sans les composants de notification"
+    },
+    {
+      "name": "homeassistant-ai/ha-mcp",
+      "url": "https://github.com/homeassistant-ai/ha-mcp",
+      "description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+      "language": "Python",
+      "stars": 6289,
+      "forks": 340,
+      "gained": "31 stars today",
+      "gained_n": 31,
+      "lang_color": "#3572A5",
+      "category": "outil d'automatisation Home Assistant",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "HA‑MCP est une extension Python qui permet de piloter Home Assistant via des assistants IA comme Claude ou ChatGPT. Elle cible les utilisateurs de Home Assistant souhaitant automatiser la configuration et la gestion de leurs entités.",
+      "workflow": "Entrée : requête texte d'un utilisateur via l'interface IA → Traitement : le serveur FastMCP analyse la requête, mappe le texte à un outil ou une ressource déclarée (ex. @mcp_tool) et exécute l'action correspondante sur Home Assistant via son API → Résultat : état mis à jour, service déclenché ou configuration modifiée, renvoyé à l'utilisateur. Sources : description des capacités (S1) et exemple de mixin FastMCP (S3). Limites : dépend du token d'administration, certaines actions limitées aux tokens non‑admin, et la version actuelle nécessite Python 3.13/3.14 (S2).",
+      "use_cases": "• Utilisateur : Administrateur domotique ; Tâche : Créer une automatisation complexe en décrivant le scénario en langage naturel ; Résultat : L'outil génère et enregistre l'automatisation dans Home Assistant\n• Utilisateur : Technicien de support ; Tâche : Diagnostiquer un appareil défaillant via une recherche fuzzy d'entité ; Résultat : Affichage de l'historique et des états récents de l'entité, permettant une résolution rapide",
+      "products": "• Cible : PME disposant d'un site IoT interne ; Produit : Plateforme SaaS qui expose HA‑MCP via une API REST sécurisée ; difference : Abstraction du serveur Home Assistant local, offre un tableau de bord multi‑site et une facturation à l’usage\n• Cible : Freelance en automatisation ; Produit : Extension VS Code qui intègre les prompts HA‑MCP pour générer du code d’automatisation directement dans l'IDE ; difference : Réduction du temps de développement grâce à la génération instantanée de scripts, sans besoin de serveur dédié",
+      "monetization": "Acheteur : PME ou freelance ; reason to pay : Gain de productivité en automatisant la configuration et le contrôle de l’infrastructure domotique ; unit : abonnement mensuel par instance ou crédit d’appel API ; model : Abonnement de base + tarif à l’usage pour les appels IA ; price range : 15‑50 € /mois selon le volume d’appels, hypothèse à valider par test de valeur",
+      "build_plan": "scope : Déploiement d'un serveur FastAPI wrapper autour de HA‑MCP, conteneur Docker, UI minimaliste ; reused bricks : FastMCP, mixins d'exemple (S3), configuration Docker (S1) ; additional work : Gestion d'authentification OAuth, tableau de bord React, facturation Stripe ; exclusions : Intégration de voix, support multi‑langues ; dependencies : Home Assistant API, FastAPI, Docker, Stripe SDK ; Coûts estimés : Infrastructure cloud (≈10 €/mois), licences éventuelles, temps de développement (~200 h) ; timeline : 4‑6 semaines si le périmètre reste limité",
+      "limitations": "Licence non vérifiée, dépendance à un token admin, compatibilité Python 3.13/3.14 (S2), aucune preuve de conformité RGPD, maintenance du serveur requis.",
+      "next_step": "Réaliser un prototype d’appel API simple pour créer une automatisation et interroger un administrateur Home Assistant sur la pertinence du flux.",
+      "assessment": "Score 7 reflète la maturité du code (exemple fonctionnel, documentation) et la pertinence pour le profil (Full‑Stack, IA, automatisation). Fit_score 5 car aucune contrainte régionale ou de prix n’est fournie. Manque de preuves sur la licence et la conformité RGPD.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "ceb8bed203b1af9f7f70280d60b32f040802e215",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/ceb8bed203b1af9f7f70280d60b32f040802e215/README.md",
+            "excerpt": "> **Breaking change (v7.3.0):** `ha_config_set_yaml` has been moved to [beta](docs/beta.md).\n\n \n   \n\n  # HA-MCP — Manage Home Assistant with AI\n\n   \n\n   \n     \n       \n       \n       \n     \n       \n       \n     \n       \n       \n   \n\n   \n     Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants. \n   \n \n\n---\n\n \n\n---\n\n\n\n### Other install methods\n\nThese run the server outside Home Assistant — useful for **Container** / **Core** installs (which can't run apps) or a separate host. The [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) generates the exact client-specific config for each.\n\n- **Docker (HTTP server):** run `ghcr.io/homeassistant-ai/ha-mcp` in HTTP mode, pointed at your Home Assistant URL and a long-lived token (an administrator's is recommended; non-admin tokens work with limitations), and connect your client to its secret URL. See the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) for the full command and per-clie\n\n## ✨ Features\n\n| Category | Capabilities |\n|----------|--------------|\n| **🔍 Search** | Fuzzy entity search, deep config search, system overview |\n| **🏠 Control** | Any service, bulk device control, real-time states |\n| **🔧 Manage** | Automations, scripts, helpers, [dashboards](docs/dashboard-edits.md), areas, zones, groups, calendars, blueprints |\n| **📊 Monitor** | History, stat"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/ceb8bed203b1af9f7f70280d60b32f040802e215/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"uv_build>=0.12.17,<0.14\"]\nbuild-backend = \"uv_build\"\n\n[project]\nname = \"ha-mcp\"\nversion = \"9.1.2\"\ndescription = \"Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.\"\nreadme = \"README.md\"\n# Upper bound widened to <3.15 so the package installs on Home Assistant's\n# interpreter when run in-process by the ha_mcp_tools component (HA\n# core-2026.7 ships Python 3.14). ruff infers its target from this floor, so\n# it writes no 3.14-only syntax while 3.13 can still install; CI, mypy, the\n# images and the dev environment run 3.14.\nrequires-pyth"
+          },
+          {
+            "id": "S3",
+            "path": "src/ha_mcp/_vendor/fastmcp/contrib/mcp_mixin/example.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/ceb8bed203b1af9f7f70280d60b32f040802e215/src/ha_mcp/_vendor/fastmcp/contrib/mcp_mixin/example.py",
+            "excerpt": "\"\"\"Sample code for FastMCP using MCPMixin.\"\"\"\n\nimport asyncio\n\nfrom ha_mcp._vendor.fastmcp import FastMCP\nfrom ha_mcp._vendor.fastmcp.contrib.mcp_mixin import (\n    MCPMixin,\n    mcp_prompt,\n    mcp_resource,\n    mcp_tool,\n)\n\nmcp = FastMCP()\n\n\nclass Sample(MCPMixin):\n    def __init__(self, name):\n        self.name = name\n\n    @mcp_tool()\n    def first_tool(self):\n        \"\"\"First tool description.\"\"\"\n        return f\"Executed tool {self.name}.\"\n\n    @mcp_resource(uri=\"test://test\")\n    def first_resource(self):\n        \"\"\"First resource description.\"\"\"\n        return f\"Executed resource {self.name}.\"\n\n    @mcp_prompt()\n    def first_prompt(self):\n        \"\"\"First prompt description.\"\"\"\n        return f\"here's a prompt! {self.name}.\"\n\n\nfirst_sample = Sample(\"First\")\nsecond_sample = Sample(\"Second\")\n\nfirst_sample.register_all(mcp_server=mcp, prefix=\"first\")\nsecond_sample.register_all(mcp_server=mcp, prefix=\"second\")\n\n\nasync def list_components() -> None:\n    print(\"MCP Server running wit"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "HA‑MCP est une extension Python qui permet de piloter Home Assistant via des assistants IA comme Claude ou ChatGPT. Elle cible les utilisateurs de Home Assistant souhaitant automatiser la configuration et la gestion de leurs entités.",
+      "business_idea": "• Cible : PME disposant d'un site IoT interne ; Produit : Plateforme SaaS qui expose HA‑MCP via une API REST sécurisée ; difference : Abstraction du serveur Home Assistant local, offre un tableau de bord multi‑site et une facturation à l’usage\n• Cible : Freelance en automatisation ; Produit : Extension VS Code qui intègre les prompts HA‑MCP pour générer du code d’automatisation directement dans l'IDE ; difference : Réduction du temps de développement grâce à la génération instantanée de scripts, sans besoin de serveur dédié"
+    }
+  ]
+}
