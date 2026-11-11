@@ -34,3 +34,4 @@ date,time_utc,status,mode,model,repos,top_repo,note
 2026-11-09,10:13:18,ok,email,openai/gpt-oss-120b,9,sherlock-project/sherlock,email sent
 2026-11-10,10:24:08,ok,email,openai/gpt-oss-120b,10,anthropics/skills,email sent
 2026-11-11,09:50:24,error,email,,10,meta/astryx,explain: RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
+2026-11-11,11:25:19,ok,email,openai/gpt-oss-120b,10,meta/astryx,email sent
