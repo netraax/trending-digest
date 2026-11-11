@@ -386,6 +386,60 @@
       "estimated": false,
       "prompt_tokens": 2290,
       "completion_tokens": 1353
+    },
+    {
+      "at": 1794390234.6678061,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3585,
+      "estimated": false,
+      "prompt_tokens": 2571,
+      "completion_tokens": 1014
+    },
+    {
+      "at": 1794390299.6680672,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3473,
+      "estimated": false,
+      "prompt_tokens": 2430,
+      "completion_tokens": 1043
+    },
+    {
+      "at": 1794390364.66835,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3578,
+      "estimated": false,
+      "prompt_tokens": 2513,
+      "completion_tokens": 1065
+    },
+    {
+      "at": 1794390429.668815,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3608,
+      "estimated": false,
+      "prompt_tokens": 2558,
+      "completion_tokens": 1050
+    },
+    {
+      "at": 1794390494.6691906,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3598,
+      "estimated": false,
+      "prompt_tokens": 2658,
+      "completion_tokens": 940
+    },
+    {
+      "at": 1794390559.6695457,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3634,
+      "estimated": false,
+      "prompt_tokens": 2570,
+      "completion_tokens": 1064
     }
   ],
   "cache": {
@@ -1314,7 +1368,120 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "cab02e887b62168cc64a134ed636ab03aa61bf5fa4a8d5b94f7dc8e6466dc255": {
+      "at": 1794390238.0040014,
+      "data": {
+        "projects": [
+          {
+            "name": "meta/astryx",
+            "category": "Design System / Bibliothèque UI",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI intégré. Il cible les équipes produit qui souhaitent un UI cohérent et extensible, ainsi les agents IA qui peuvent consommer les mêmes composants.",
+            "workflow": "Entrée : code source TypeScript d’un composant ou thème → Traitement : compilation via le CLI @astryxdesign/cli qui génère du CSS StyleX et des artefacts JavaScript → Résultat : paquet npm prêt à être importé dans une application React. Limites : nécessite React 19+ et dépend de StyleX, aucune preuve d’intégration serveur ou mobile (non établi dans les extraits). [S1][S2]",
+            "use_cases": "• Utilisateur : Développeur front‑end d’une PME ; Tâche : Construire rapidement une interface admin avec des composants prêts à l’emploi ; Résultat : Déploiement en quelques jours grâce au CLI et aux thèmes pré‑configurés\n• Utilisateur : Assistant IA intégré à un IDE ; Tâche : Générer du code UI à la volée en réutilisant les composants Astryx ; Résultat : Production de snippets compatibles sans besoin d’ajouter de dépendances supplémentaires",
+            "products": "• Cible : Agences web ; Produit : Plateforme SaaS de création de sites internes utilisant Astryx comme moteur UI ; difference : Ajoute une couche de gestion de projets, de multitenancy et de facturation, alors que le dépôt brut ne fournit que la bibliothèque\n• Cible : Équipes IA internes ; Produit : Framework d’agent conversationnel qui rend les réponses sous forme de composants Astryx ; difference : Intègre le CLI pour transformer les réponses texte en UI interactive, fonctionnalité absente du dépôt d’origine",
+            "monetization": "Acheteur : PME ou agence payant pour l’hébergement de la plateforme SaaS ; raison : gain de temps sur le design UI ; unité facturée : abonnement mensuel par projet ; modèle : abonnement avec tarif de base 30 €/mois + frais d’usage pour le nombre de composants personnalisés. Hypothèse basée sur la valeur perçue d’un design system prêt à l’emploi et les coûts d’infrastructure (serveurs, CDN).",
+            "build_plan": "Périmètre : UI SaaS + multitenancy ; briques réutilisées : @astryxdesign/core, CLI, thèmes ; travail à ajouter : authentification, facturation Stripe, API de gestion de projets, hébergement Vercel/Fly.io ; exclusions : éditeur de code intégré, support mobile natif ; dépendances : React, StyleX, PostgreSQL, Docker ; coût estimé : 0 $ (open‑source) + 0,10 $/heure d’infrastructure cloud ; délai : 6‑8 semaines conditionnel selon disponibilité des développeurs.",
+            "limitations": "Licence MIT confirmée dans package.json, mais le README indique une licence non vérifiée (non établi dans les extraits) ; dépendance stricte à React 19+ ; aucune preuve de tests unitaires ou de CI (non établi dans les extraits) ; maintenance requise pour suivre les évolutions de StyleX.",
+            "next_step": "Réaliser un prototype d’une page admin en intégrant le CLI Astryx ; question à poser aux utilisateurs : « Quel niveau de personnalisation du thème attendez‑vous pour vos projets clients ? »",
+            "assessment": "Score 7 reflète la maturité du système (150+ composants, usage interne chez Meta) et la disponibilité d’un CLI. Le fit_score reste moyen (5) car le profil recherche des outils rapides mais ne précise pas de besoin UI spécifique. Les preuves proviennent des extraits README et package.json ; plusieurs aspects restent non établis (licence exacte, tests, support mobile).",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "e29967075d6d714e9779d2db4dd6b518d9869623897cbd38c5bc270b92a342c7": {
+      "at": 1794390302.278047,
+      "data": {
+        "projects": [
+          {
+            "name": "addyosmani/agent-skills",
+            "category": "Bibliothèque de compétences pour agents IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Un ensemble de 25 compétences codées en JavaScript destinées à être invoquées par des agents d'IA afin d'automatiser des tâches de développement logiciel. L'utilisateur cible est un développeur ou une équipe qui veut standardiser les revues de code, les interviews de spécifications, etc.",
+            "workflow": "Entrée : commande CLI `npx skills add <repo>` ou invocation d'une compétence via `/ideate …` ; Traitement : le skill lit son fichier SKILL.md, exécute le script associé (ex. lint, test) et renvoie un rapport ou une suggestion ; Résultat : texte structuré affiché dans le terminal ou l'interface de l'agent. Limites : les compétences sont décrites mais aucune implémentation réelle n’est fournie dans les extraits ; le CLI dépend d’un package externe non détaillé. [S1][S3]",
+            "use_cases": "• Utilisateur : Développeur senior ; Tâche : Lancer une revue de code automatisée avant merge ; Résultat : Rapport de qualité avec recommandations de refactorisation\n• Utilisateur : Product manager ; Tâche : Obtenir une idée de fonctionnalité via `/ideate adding real-time collaboration` ; Résultat : Proposition structurée de spécifications et d'étapes de mise en œuvre",
+            "products": "• cible : PME tech souhaitant externaliser la qualité du code ; produit : Plateforme SaaS qui orchestre les skills via API REST ; différence : Ajoute une interface web, gestion d’utilisateurs et facturation, alors que le dépôt ne fournit que des scripts CLI\n• cible : Agences de design produit ; produit : Extension VSCode qui expose les skills comme snippets contextuels ; différence : Intégration IDE native, pas de dépendance à un terminal externe",
+            "monetization": "Acheteur : équipes de développement payant pour un abonnement mensuel; raison : gain de temps sur les revues et la génération d’idées; unité facturée : utilisateur actif; modèle : abonnement SaaS avec forfait de 10 €/mois par utilisateur (hypothèse basée sur la valeur perçue d’une automatisation fiable).",
+            "build_plan": "Périmètre : API wrapper autour des skills existants, UI minimaliste, authentification JWT; Brique réutilisée : le répertoire skills et le CLI; Travail à ajouter : serveur FastAPI, tableau de bord React, persistance PostgreSQL; Exclusions : création de nouvelles compétences, hébergement multi‑région; Dépendances : FastAPI, React, Docker, Vercel; Coût estimé : 0 €/mois (cloud gratuit) + 50 €/mois pour CI/CD; Délai : 4‑6 semaines conditionnel à la disponibilité du développeur.",
+            "limitations": "Contraintes établies : les skills sont décrits mais leur exécution réelle n’est pas fournie; licence non vérifiée, il faut confirmer la conformité; maintenance du CLI et des dépendances non couverte; inconnues : performance sous charge, compatibilité avec d’autres agents IA.",
+            "next_step": "Réaliser un test technique : installer le CLI, invoquer la skill `code-review-and-quality` sur un petit projet et mesurer le temps d’exécution; Question à poser à un développeur : « Quel est le principal frein à l’adoption d’un outil de revue de code automatisé dans votre flux quotidien ? »",
+            "assessment": "Score 7 reflète la pertinence du dépôt pour créer des outils d’automatisation de développement, mais l’absence de code exécutable limite l’évaluation. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle ou régionale stricte. Les preuves proviennent des extraits README et exemples d’idées. Non établi dans les extraits : performances, coûts réels d’infrastructure, conformité licence.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "b9e29c5391c102cdf59869f72d8c593d9d1456eae1da877fec52201b55d372e6": {
+      "at": 1794390367.2548559,
+      "data": {
+        "projects": [
+          {
+            "name": "google-deepmind/mujoco",
+            "category": "Moteur de simulation physique",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "MuJoCo est un moteur de physique généraliste destiné à la robotique, la biomécanique, les graphiques et le machine‑learning ; il permet de simuler des structures articulées en contact avec leur environnement. L'utilisateur typique est un chercheur ou développeur qui a besoin de simulations rapides et précises.",
+            "workflow": "Entrée : fichier XML décrivant un modèle articulé → Traitement : le moteur charge le modèle via `MjModel.from_xml_path` puis exécute la dynamique en temps réel (C++ natif ou via les bindings WebAssembly) → Résultat : état du modèle, visualisation dans MuJoCo Studio ou export USD. Limites : la version WebAssembly est plus lente que le natif et aucune garantie de stabilité pour les modèles très complexes. [S1][S3]",
+            "use_cases": "• Utilisateur : Chercheur en robotique ; Tâche : Évaluer le contrôle d'un bras robotique avant implémentation hardware ; outcome : Simulation fiable du mouvement et des forces de contact, permettant d’ajuster les algorithmes de contrôle.\n• Utilisateur : Studio d'animation 3D ; Tâche : Générer des séquences de mouvements réalistes pour des personnages articulés ; outcome : Exportation du résultat en USD pour intégration dans le pipeline de rendu.",
+            "products": "• Cible : PME d’ingénierie ; Produit : Plateforme SaaS de simulation de prototypes mécaniques ; differentiation : Interface web simplifiée, hébergement du moteur MuJoCo en WASM, facturation à l’usage du temps de calcul.\n• Cible : Agences de création digitale ; Produit : Plugin d’animation physique pour outils de design (Figma, Webflow) ; differentiation : Intégration directe du rendu physique via le binding JavaScript, sans besoin d’installation locale.",
+            "monetization": "Acheteur : ingénieurs ou designers payant pour accéder à la simulation en ligne ; raison : gain de temps de prototypage et précision des résultats ; unité facturée : minutes de calcul CPU/GPU ; modèle : abonnement mensuel avec forfait de minutes incluses + tarif à la minute supplémentaire. Hypothèse de prix : 30 €/mois pour 500 min, 0,06 €/min supplémentaire, justifié par le coût d’infrastructure cloud et la valeur de la précision physique.",
+            "build_plan": "Périmètre : wrapper JavaScript (déjà présent dans `wasm/package.json` [S2]), interface React, backend Node.js pour gestion des jobs de simulation, stockage des modèles sur S3. Briques réutilisées : moteur C++ natif, bindings WASM, UI de MuJoCo Studio. Travail à ajouter : tableau de bord multi‑utilisateur, facturation Stripe, sandbox sécurisée. Exclusions : support de VR, extensions de robotique avancées. Dépendances : Docker, Vercel/Fly.io, Stripe, Supabase. Coût estimé : 2 k $ de cloud initial + 1 k $ de développement (≈ 200 h). Délai : 6‑8 semaines conditionnel à la disponibilité d’un développeur full‑stack.",
+            "limitations": "Licence du moteur non vérifiée dans les extraits, donc conformité juridique à confirmer ; le binding WASM est en version alpha et peut présenter des bugs ; performances limitées en WebAssembly ; maintenance du serveur de calcul requiert des ressources cloud continues.",
+            "next_step": "Réaliser un test technique de compilation du binding WASM avec un modèle simple et mesurer le temps de simulation ; interroger un chercheur en robotique sur les critères de précision attendus.",
+            "assessment": "Score 7 reflète la maturité du moteur et la disponibilité de bindings JavaScript, ce qui correspond bien aux compétences full‑stack du profil. Fit_score 5 car aucune contrainte régionale ou de délai n’est fournie. Le manque de licence claire et d’évaluations de performance en production constitue une incertitude majeure.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "62ecbc1d09463418543b8d5804dc0b4eccf1afa40b9ad8b6bf19efeae1c0488b": {
+      "at": 1794390496.9740222,
+      "data": {
+        "projects": [
+          {
+            "name": "we-promise/sure",
+            "category": "Application web de finance personnelle",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Sure est une application web open‑source de gestion de finances personnelles, destinée aux particuliers qui souhaitent suivre leurs dépenses, leurs revenus et leurs investissements. Elle propose des tableaux de bord, des catégorisations automatiques et une interface moderne basée sur Rails et TailwindCSS. [S1]",
+            "workflow": "Entrée : l'utilisateur crée un compte et importe ses relevés bancaires (CSV ou API). Traitement : le backend Ruby on Rails analyse les transactions, les catégorise via des règles configurables et stocke les données dans PostgreSQL. Résultat : l'utilisateur consulte des rapports graphiques et peut définir des objectifs budgétaires. Limites : aucune IA intégrée, dépendance à PostgreSQL et Redis, hébergement requis. [S1][S2]",
+            "use_cases": "• Un freelance veut centraliser ses factures et ses dépenses professionnelles pour préparer sa déclaration fiscale ; il importe ses relevés, ajuste les catégories et exporte un rapport PDF.\n• Une petite association gère ses cotisations et ses dépenses de projet ; elle utilise le tableau de bord pour suivre le solde du compte et planifier les prochains événements.",
+            "products": "• cible : PME souhaitant un tableau de bord financier interne ; produit : Version SaaS hébergée de Sure avec authentification SSO, tableau de bord multi‑utilisateurs et sauvegarde automatisée. ; différence : Ajout d’une couche multi‑tenant, facturation Stripe et monitoring, ce qui n’existe pas dans le dépôt brut.\n• cible : Développeurs qui veulent intégrer la logique financière dans leurs propres outils ; produit : Bibliothèque Ruby « sure‑core » exposant les fonctions de catégorisation et de reporting, distribuée via RubyGems. ; différence : Séparation du front‑end et du serveur, permettant l’usage dans des applications CLI ou API personnalisées.",
+            "monetization": "Acheteur : PME ou freelance. Raison de payer : gain de temps sur la consolidation financière et conformité fiscale. Unité facturée : abonnement mensuel par utilisateur. Modèle : abonnement SaaS (prix hypothétique 15 €/mois) ou licence annuelle pour la bibliothèque (prix hypothétique 300 €/an).",
+            "build_plan": "Périmètre limité : hébergement SaaS multi‑tenant, intégration Stripe, tableau de bord multi‑utilisateurs. Brique réutilisée : code existant de Sure (Rails, Tailwind, PostgreSQL). Travail à ajouter : gestion des comptes multi‑tenant, facturation, documentation API. Exclusions : support mobile natif, IA de recommandation. Dépendances : Rails 8.1, PostgreSQL, Redis, Stripe SDK. Coût estimé : 120 h de développement (≈ 3 semaines à 40 h/semaine).",
+            "limitations": "Licence non vérifiée, besoin de confirmation juridique ; aucune IA intégrée, aucune prise en charge native des API bancaires tierces, maintenance du serveur à prévoir. Certaines fonctionnalités (ex. import automatisé via API) ne sont pas présentes dans les extraits. [S1][S2]",
+            "next_step": "Réaliser un prototype d’import CSV avec validation des catégories et tester auprès d’un freelance intéressé par la gestion de ses dépenses.",
+            "assessment": "Score 6 reflète la solidité du code existant et la pertinence du domaine pour le profil, mais l’absence de SaaS prêt à l’emploi et la licence incertaine limitent l’attractivité. Fit_score 5 car le profil ne précise pas de contrainte régionale ou de délai strict, ce qui rend le projet compatible mais nécessitant des travaux supplémentaires.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1794330563.5817287
+  "next_call_at": 1794390624.6695457
 }

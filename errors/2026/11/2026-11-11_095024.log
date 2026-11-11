@@ -1,0 +1,24 @@
+time_utc: 2026-11-11T09:50:24.669967+00:00
+mode: email
+stage: explain
+error: RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
+run: https://github.com/netraax/trending-digest/actions/runs/42997592304
+
+Traceback (most recent call last):
+  File "/app/digest.py", line 137, in main
+    model = explain(repos, key)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/app/digest.py", line 91, in explain
+    return analyze_projects(repos, api_key, "trending", profile=load_profile())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/project_analysis.py", line 254, in analyze_projects
+    rows, model = client.analyze(retry_instructions, [item], "projects", batch_size=1,
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/groq_client.py", line 252, in analyze
+    process(items[start:start + batch_size])
+  File "/app/groq_client.py", line 239, in process
+    data, model = self.call(instructions + "\n\n" + json.dumps(batch, ensure_ascii=False),
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/groq_client.py", line 132, in call
+    raise RuntimeError("Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.")
+RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
