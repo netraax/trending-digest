@@ -1,0 +1,562 @@
+{
+  "date": "2026-11-12",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "stars": 25781,
+      "forks": 2003,
+      "gained": "2,776 stars today",
+      "gained_n": 2776,
+      "lang_color": "#3178c6",
+      "category": "Design System / Bibliothèque UI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI intégré. Il cible les équipes produit qui souhaitent un UI cohérent et extensible, y compris les agents IA qui utilisent les mêmes composants [S1].",
+      "workflow": "Entrée : code source TypeScript d’une application React → Traitement : le CLI compile les composants avec StyleX, génère le thème et le bundle CSS → Résultat : un package npm prêt à être importé, avec documentation et storybook. Limites : nécessite React 19, aucune preuve d’intégration serveur ou de rendu côté‑node dans les extraits fournis [S1].",
+      "use_cases": "1. Designer UI d’une agence crée rapidement un kit de composants thématisable pour un client e‑commerce. 2. Développeur d’une SaaS interne utilise le CLI pour générer un thème sombre compatible avec les agents IA qui consomment les composants via l’API du design system.",
+      "products": "1. Produit SaaS « Astryx Studio » : interface web permettant aux PME de composer des pages avec glisser‑déposer de composants Astryx, différant du dépôt brut par l’ajout d’un éditeur visuel et d’un hébergement multi‑tenant. 2. Wrapper CLI‑as‑Service : service cloud qui exécute le CLI Astryx à la demande, offrant aux indépendants un rendu instantané de thèmes sans installer Node.js localement.",
+      "monetization": "Acheteur : PME ou freelance cherchant à accélérer le prototypage UI. Raison de payer : gain de temps de développement et accès à des composants testés. Unité facturée : abonnement mensuel par utilisateur actif. Hypothèse de prix : 15 € / mois, justifiée par la valeur perçue du design system et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : créer une couche SaaS autour du CLI existant. Brique réutilisée : le package @astryxdesign/cli et les composants React. Travail à ajouter : interface web, authentification, facturation Stripe, déploiement Docker sur Fly.io. Exclusions : refonte du moteur StyleX. Dépendances : React, StyleX, Stripe, Supabase. Coût estimé : 120 h de développement (≈ 3 semaines à 40 h/sem).",
+      "limitations": "Contraintes établies : nécessite React 19+, licence MIT indiquée dans package.json, aucune preuve de conformité RGPD. Inconnues : support multilingue, performances en environnement serveur, coût de maintenance du SaaS. Licence à vérifier dans le dépôt (non fournie dans l’extrait).",
+      "next_step": "Réaliser un prototype fonctionnel du service CLI‑as‑Service et interroger un designer UI sur les besoins de personnalisation de thème.",
+      "assessment": "Score 7 reflète la maturité du design system (large catalogue, CLI, storybook) ; fit_score 5 car le profil recherche des outils rapides à prototyper, mais aucune preuve d’intégration SaaS n’est fournie. Le manque de données sur la licence et la conformité empêche une évaluation plus élevée.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "8caa06274ef216644ec35092d5e2ca810c2d93d7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/meta/astryx/blob/8caa06274ef216644ec35092d5e2ca810c2d93d7/README.md",
+            "excerpt": " \n\n \n\n \n\n\n\n## Architecture\n\n\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now:   by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[ ](https://www.npmjs.com/package/@astryxdesign/core)\n[ ](LICENSE)\n[ ](https://github.com/meta/astryx/wiki/Contributing)\n\n[ ](https://astryx.atmeta.com)\n[ ](https://astryx.atmeta.com/storybook/)\n[ ](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributi\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Componen\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n\n\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both "
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/meta/astryx/blob/8caa06274ef216644ec35092d5e2ca810c2d93d7/package.json",
+            "excerpt": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/native build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm "
+          },
+          {
+            "id": "S3",
+            "path": "scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/meta/astryx/blob/8caa06274ef216644ec35092d5e2ca810c2d93d7/scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "excerpt": "// Copyright (c) Meta Platforms, Inc. and affiliates.\n\n/** @param {string} name */\nfunction greet(name) {\n  return `hi ${name}`;\n}\n\nmodule.exports = {greet};\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, offrant plus de 150 composants accessibles et un CLI intégré. Il cible les équipes produit qui souhaitent un UI cohérent et extensible, y compris les agents IA qui utilisent les mêmes composants [S1].",
+      "business_idea": "1. Produit SaaS « Astryx Studio » : interface web permettant aux PME de composer des pages avec glisser‑déposer de composants Astryx, différant du dépôt brut par l’ajout d’un éditeur visuel et d’un hébergement multi‑tenant. 2. Wrapper CLI‑as‑Service : service cloud qui exécute le CLI Astryx à la demande, offrant aux indépendants un rendu instantané de thèmes sans installer Node.js localement."
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+      "language": "Python",
+      "stars": 70928,
+      "forks": 57055,
+      "gained": "278 stars today",
+      "gained_n": 278,
+      "lang_color": "#3572A5",
+      "category": "application web d'analyse financière",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Système d'analyse quotidienne des actions multi‑marchés alimenté par un LLM, accessible via une interface web ou des notifications (WeChat, Slack, email). Il cible les traders et analystes qui souhaitent automatiser la veille et la prise de décision. [S1]",
+      "workflow": "Entrée : code ou nom d’une action (ex. 600519). → Traitement : le service appelle les APIs de marché, agrège données (prix, news, indicateurs) puis génère un rapport LLM (conclusion, score, points d’achat/vente). → Résultat : tableau décision envoyé par webhook ou affiché dans le tableau de bord web. Limites : dépend des sources de données tierces et du modèle LLM, aucune garantie de précision. [S1][S3]",
+      "use_cases": "• Utilisateur : Trader indépendant ; Tâche : Obtenir chaque matin un résumé décisionnel d’un portefeuille de 10 titres. ; Résultat : Rapport PDF envoyé sur Slack avec scores de risque et recommandations d’achat/vente.\n• Utilisateur : Analyste d’une PME ; Tâche : Faire un back‑test mensuel des stratégies de moyenne mobile sur les actions chinoises. ; Résultat : Export CSV des performances historiques intégré au tableau de bord pour ajuster la stratégie.",
+      "products": "• Cible : PME du secteur financier ; Produit : Plateforme SaaS d’analyse multi‑marchés avec tableau de bord personnalisable et alertes automatisées. ; diff : Ajoute la gestion multi‑utilisateurs, facturation Stripe et conformité RGPD, absent du dépôt brut.\n• Cible : Développeurs d’outils de trading ; Produit : SDK Python + API REST pour intégrer les capacités d’analyse dans leurs propres applications. ; diff : Expose les fonctions d’agrégation et de génération LLM comme services réutilisables, alors que le dépôt original ne propose qu’une application monolithique.",
+      "monetization": "Acheteur : PME ou freelance du trading. Raison : gain de temps et accès à une veille décisionnelle fiable. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS (freemium avec 5 analyses gratuites, puis 20 €/mois). Hypothèse de prix basée sur la valeur perçue et les coûts d’infrastructure cloud (API market, LLM, stockage).",
+      "build_plan": "Périmètre limité : API d’analyse, tableau de bord multi‑tenant, système de facturation. Brique réutilisée : code d’agrégation et génération LLM du dépôt. Travail à ajouter : authentification OAuth, gestion des rôles, intégration Stripe, conformité RGPD, tests CI/CD. Exclusions : support de nouveaux marchés non listés, visualisations avancées. Dépendances : FastAPI, PostgreSQL, Docker, modèle LLM hébergé (ex. Ollama). Coût estimé : 150 € / mois d’infrastructure + 40 h de développement initial. Délai : 4‑6 semaines (prototype fonctionnel) sous condition de disponibilité du modèle LLM.",
+      "limitations": "Contraintes établies : dépendance aux APIs de données de marché, modèle LLM non open‑source, licence du dépôt non vérifiée. Inconnues : stabilité du modèle LLM sous charge, exigences légales exactes pour la diffusion de conseils financiers. Maintenance : mise à jour des connecteurs de marché et du modèle LLM requis régulièrement.",
+      "next_step": "Réaliser un test technique d’appel API d’analyse sur un jeu de 5 titres et mesurer le temps de réponse. Question à poser à un utilisateur potentiel : « Quel niveau de détail attendriez‑vous dans le rapport d’analyse quotidien ? »",
+      "assessment": "Score 7 reflète la pertinence du dépôt pour créer un produit SaaS d’analyse financière, la présence d’une architecture existante et d’un workflow complet. Le fit_score reste neutre (5) car le profil ne précise pas de contraintes temporelles ou géographiques strictes. Manque de preuves : aucune donnée de performance du LLM, aucune validation de licence, aucune étude de marché. Les hypothèses de prix et de délai sont donc à tester.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "93ce7476379c70d013cba115cbc4c1acdd5bf493",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/93ce7476379c70d013cba115cbc4c1acdd5bf493/README.md",
+            "excerpt": " \n\n\n\n# 📈 股票智能分析系统\n\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/stargazers)\n[ ](https://arxiv.org/abs/2608.26990)\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/actions/workflows/ci.yml)\n[ ](https://opensource.org/licenses/MIT)\n[ ](https://www.python.org/downloads/)\n[ ](https://github.com/features/actions)\n[ ](https://hub.docker.com/r/zhulinsen/daily_stock_analysis)\n\n \n     &nbsp;   \n \n\n> 🤖 基于 AI 大模型的 A股/港股/美股/日股/韩股/台股自选股智能分析系统，每日自动分析并推送「决策仪表盘」到企业微信/飞书/Telegram/Discord/Slack/邮箱\n\n[**产品预览**](#-产品\n\n## 🖥️ 产品预览\n\n \n   \n \n\n\n\n## ✨ 功能特性\n\n| 能力 | 覆盖内容 |\n|------|------|\n| AI 决策报告 | 核心结论、评分、趋势、买卖点位、风险警报、催化因素、操作检查清单 |\n| 多市场数据聚合 | 覆盖 A股、港股、美股、日股、韩股、台股和 ETF，支持行情、K 线、技术指标、新闻、公告、基本面与报告辅助数据；不同市场的数据源和能力边界见 [市场支持边界](docs/market-support.md) |\n| Web / 桌面工作台 | 手动分析、任务进度、历史报告、完整 Markdown、回测、持仓、配置管理、浅色 / 深色主题 |\n| Agent 策略问股 | 多轮追问，支持均线\n\n### 技术栈与数据来源\n\n| 类型 | 支持 |\n|----"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/93ce7476379c70d013cba115cbc4c1acdd5bf493/pyproject.toml",
+            "excerpt": "[tool.black]\nline-length = 120\ntarget-version = ['py310', 'py311', 'py312']\ninclude = '\\.pyi?$'\nexclude = '''\n/(\n    \\.git\n    | \\.hg\n    | \\.mypy_cache\n    | \\.tox\n    | \\.venv\n    | venv\n    | _build\n    | buck-out\n    | build\n    | dist\n    | __pycache__\n)/\n'''\n\n[tool.isort]\nprofile = \"black\"\nline_length = 120\nskip = [\".git\", \"__pycache__\", \".env\", \"venv\", \".venv\"]\n\n[tool.bandit]\nexclude_dirs = [\"tests\", \"test_*.py\"]\nskips = [\"B101\"]  # assert 语句在测试中是允许的\n"
+          },
+          {
+            "id": "S3",
+            "path": "docs/examples/grok_bot/SKILL.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/93ce7476379c70d013cba115cbc4c1acdd5bf493/docs/examples/grok_bot/SKILL.md",
+            "excerpt": "---\nname: daily-stock-analysis\ndescription: 调用 daily_stock_analysis API 做股票分析。当用户说「分析茅台」「analyze AAPL」「帮我看看 600519」或要大盘复盘时使用。优先用股票代码。\n---\n\n\n\n# daily_stock_analysis\n\n本 Skill 供 Grok Bot（2026-08-11 AI teammate）使用。通过 HTTP 调用已部署的 DSA，不要把 Bot 配成 LiteLLM provider。\n\n需要环境变量 `DSA_BASE_URL`（DSA API 根地址，无尾斜杠）。\n\n\n\n## 何时使用\n\n- 分析单只或多只股票\n- 查询某股最新 DecisionSignal（早报 / 盯盘 Routine）\n- 大盘复盘\n\n\n\n## 工作流程\n\n1. 提取股票代码：A股 6 位（`600519`）、港股 `hk00700`、美股 `AAPL`、台股 `.TW` / `.TWO`。只有中文名时先提示用户给代码，或使用常见映射（茅台 → `600519`）。\n2. 需要完整分析时 POST `{DSA_BASE_URL}/api/v1/analysis/analyze`。**Routine 或预计超过 Bot HTTP 超时的分析，从一开始用异步**，不要先同步再改发异"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Système d'analyse quotidienne des actions multi‑marchés alimenté par un LLM, accessible via une interface web ou des notifications (WeChat, Slack, email). Il cible les traders et analystes qui souhaitent automatiser la veille et la prise de décision. [S1]",
+      "business_idea": "• Cible : PME du secteur financier ; Produit : Plateforme SaaS d’analyse multi‑marchés avec tableau de bord personnalisable et alertes automatisées. ; diff : Ajoute la gestion multi‑utilisateurs, facturation Stripe et conformité RGPD, absent du dépôt brut.\n• Cible : Développeurs d’outils de trading ; Produit : SDK Python + API REST pour intégrer les capacités d’analyse dans leurs propres applications. ; diff : Expose les fonctions d’agrégation et de génération LLM comme services réutilisables, alors que le dépôt original ne propose qu’une application monolithique."
+    },
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "description": "",
+      "language": "TypeScript",
+      "stars": 2113,
+      "forks": 153,
+      "gained": "159 stars today",
+      "gained_n": 159,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque de guidance web",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un ensemble d'outils en TypeScript visant à guider les développeurs sur les meilleures pratiques modernes du web, destiné aux ingénieurs front‑end qui souhaitent appliquer rapidement les dernières fonctionnalités du navigateur.",
+      "workflow": "Entrée : exécution de `npx modern-web-guidance@latest install` (voir S1) → traitement : l’assistant interactif génère un projet pré‑configuré avec les dépendances et les guides sélectionnés → résultat : un répertoire contenant des fichiers de configuration, des scripts et une documentation locale. Limites : aucune installation réelle n’est testée dans les extraits, le script postinstall n’est pas détaillé (non établi dans les extraits).",
+      "use_cases": "• Utilisateur : Développeur front‑end freelance ; Tâche : Initialiser rapidement un nouveau projet conforme aux standards modernes (CSS, HTML, JS). ; Résultat : Projet scaffoldé avec les meilleures pratiques intégrées, réduisant le temps de configuration.\n• Utilisateur : Équipe d’ingénierie d’une PME ; Tâche : Auditer un code existant et appliquer les recommandations de modern‑web‑guidance. ; Résultat : Rapport de conformité et scripts de migration automatisés.",
+      "products": "• Cible : PME souhaitant standardiser leurs front‑ends ; Produit : Service SaaS d’audit et de génération de scaffolding basé sur modern‑web‑guidance. ; difference : Ajoute une interface web, stockage des résultats et planification de mises à jour automatiques, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Indépendants créant des sites vitrines ; Produit : CLI enrichi avec des templates spécifiques (e‑commerce, blog) et un mode « offline‑first ». ; difference : Propose des modèles prêts à l’emploi et une intégration avec des générateurs de sites statiques, alors que le dépôt original ne fournit que le moteur de guidance.",
+      "monetization": "Acheteur : PME ou freelance ; raison de payer : gain de productivité et conformité aux standards ; unité facturée : abonnement mensuel par projet ou paiement à l’usage pour chaque audit ; modèle économique : abonnement SaaS avec niveau freemium limité à 5 audits gratuits. Hypothèse de prix : 30 €/mois pour le forfait de base, justifié par le temps économisé (≈ 4 h de configuration) et les coûts d’infrastructure cloud (non détaillés dans les extraits).",
+      "build_plan": "Périmètre limité : wrapper CLI → API SaaS → tableau de bord. Brique réutilisée : le script `gd` et les guides existants (S2). Travail à ajouter : interface web (React/Next.js), service d’audit (Node/FastAPI), stockage (PostgreSQL via Supabase). Exclusions : support multi‑langues, génération de code back‑end. Dépendances : Node ≥ 22, Playwright pour tests (déjà présent), Docker pour déploiement. Coût estimé : 150 h de développement (≈ 3 semaines à plein temps). Délai : 3‑4 semaines conditionnellement à la disponibilité d’un développeur full‑stack.",
+      "limitations": "Contraintes établies : nécessite Node ≥ 22, dépend du script postinstall non décrit (non établi dans les extraits). Inconnues : licence exacte, coûts de maintenance du service SaaS, compatibilité avec d’autres environnements CI. Licence à vérifier dans le dépôt (non établi dans les extraits).",
+      "next_step": "Réaliser un test technique : exécuter le wizard `npx modern-web-guidance install` sur une VM propre et vérifier la génération du projet. Question à poser à un utilisateur potentiel : « Quel est le principal frein que vous rencontrez lors de la mise à jour de vos projets vers les dernières APIs web ? »",
+      "assessment": "Score 6 basé sur la présence d’un outil concret (wizard) et d’un script de build (S2) qui offrent une base exploitable. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle stricte. Manque de preuves sur la licence, la robustesse du postinstall et les coûts d’infrastructure, d’où les mentions « non établi dans les extraits ».",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "179dbc6fe830be1309f4d0b079a2442d71d983b9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/179dbc6fe830be1309f4d0b079a2442d71d983b9/README.md",
+            "excerpt": "\n\n##   Quickstart\n\n```shell\nnpx modern-web-guidance@latest install\n```\n\nThis command runs an interactive wizard to install Modern Web Guidance. See [Alternative Installation Methods](#-alternative-installation-methods) below.\n\n\n\n#### Try it out (without installing)\n\n```shell\n\n\n### CSS & Layout (140 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [::backdrop](https://web-platform-dx.github.io/web-features-explorer/features/backdrop/) | [content-visibility](https://web-platform-dx.github.io/web-features-explorer/features/content-visibility/) | [progress()](https://web-platform-dx.github.io/web-features-explorer/features/progress-function/) |\n| [::details-content](https://web-platform-dx.github.io/web-features-explorer/features/details-content/) | [contrast-color()](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/) | [reading-flow](https://web-platform-dx.github.io/web-features-explorer/fea\n\n### HTML & DOM (36 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [:autofill](https://web-platform-dx.github.io/web-features-explorer/features/autofill/) | [&lt;slot>](https://web-platform-dx.github.io/web-features-explorer/features/slot/) | [HTML streaming setters](https://web-platform-dx.github.io/web-features-explorer/features/html-streaming-setters/) |\n| [:indeterminate](https://web-platform-dx.github.io/web-features-explorer/features/indeterminate/) | [&lt;video>](https://web-platform-dx.github.io/web-features-explorer/features/video/) | [HTML-in-canvas](https://web-platform-dx.github.io/web-features-explorer/features/canvas-html/) |\n| [&lt\n\n### JavaScript & APIs (74 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [&lt;install>](https://web-platform-dx.github.io/web-features-explorer/features/install/) | [integrity() for url()](https://web-platform-dx.github.io/web-features-explorer/features/url-integrity/) | [Sanitizer API](https://web-platform-dx.github.io/web-features-explorer/features/sanitizer/) |\n| [&lt;meta name=\"text-scale\">](https://web-platform-dx.github.io/web-features-explorer/features/meta-text-scale/) | [Interaction contentful paint performance entries](https://web-platform-dx.github.io/web-features-explorer/features/interaction-contentfu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/179dbc6fe830be1309f4d0b079a2442d71d983b9/package.json",
+            "excerpt": "{\n  \"name\": \"modern-web-guidance-src\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=22.18.0\"\n  },\n  \"bin\": {\n    \"gd\": \"bin/gd.ts\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"node src/core/postinstall.ts\",\n    \"test\": \"node --test --test-reporter ${TEST_REPORTER:-dot} \\\"src/**/*.test.ts\\\"\",\n    \"test:e2e\": \"playwright test -c src/dashboard/playwright.config.js\",\n    \"build\": \"node src/build/build-guides.ts --target=skills-cli && pnpm run build-dist\",\n    \"build-dist\": \"node src/build/build-dist.ts\",\n    \"build"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble d'outils en TypeScript visant à guider les développeurs sur les meilleures pratiques modernes du web, destiné aux ingénieurs front‑end qui souhaitent appliquer rapidement les dernières fonctionnalités du navigateur.",
+      "business_idea": "• Cible : PME souhaitant standardiser leurs front‑ends ; Produit : Service SaaS d’audit et de génération de scaffolding basé sur modern‑web‑guidance. ; difference : Ajoute une interface web, stockage des résultats et planification de mises à jour automatiques, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Indépendants créant des sites vitrines ; Produit : CLI enrichi avec des templates spécifiques (e‑commerce, blog) et un mode « offline‑first ». ; difference : Propose des modèles prêts à l’emploi et une intégration avec des générateurs de sites statiques, alors que le dépôt original ne fournit que le moteur de guidance."
+    },
+    {
+      "name": "shadcn/improve",
+      "url": "https://github.com/shadcn/improve",
+      "description": "Use your most capable model to audit your codebase and write plans for cheaper models to execute.",
+      "language": "",
+      "stars": 11281,
+      "forks": 456,
+      "gained": "361 stars today",
+      "gained_n": 361,
+      "lang_color": "#8b8b8b",
+      "category": "outil d’audit et de génération de plans pour codebase",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "shadcn/improve est un agent compatible Agent Skills qui analyse un dépôt, produit un tableau de constats et génère des plans d’amélioration en markdown. Il cible les développeurs qui souhaitent automatiser l’audit de leurs projets et déléguer l’exécution à des modèles moins coûteux.",
+      "workflow": "Entrée : commande `/improve` (ou variantes) dans le dépôt → l’agent parcourt le repo, crée un tableau de findings et rédige des plans markdown (S1) → l’utilisateur sélectionne les plans, puis les exécute via `/improve execute` qui lance un modèle plus économique dans un worktree isolé et renvoie le diff (S1). Limite : les plans sont génériques, nécessitent une validation humaine avant exécution.",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Auditer rapidement un nouveau projet client pour identifier dettes techniques et performances ; Résultat : Rapport de findings avec priorisation et plans d’action prêts à être appliqués\n• Utilisateur : Équipe de produit SaaS ; Tâche : Intégrer un processus d’audit continu dans le CI/CD ; Résultat : Plans automatisés exécutés par des modèles moins chers, réduction du temps d’analyse manuelle",
+      "products": "• Cible : PME souhaitant réduire la dette technique ; Produit : Service SaaS d’audit continu basé sur shadcn/improve, avec tableau de bord et notifications ; difference : Interface web dédiée, planification récurrente et reporting consolidé, contrairement au dépôt brut qui nécessite un agent manuel\n• Cible : Agences de développement ; Produit : Plugin CI qui déclenche `/improve` à chaque merge et crée des tickets JIRA automatisés ; difference : Intégration native CI/JIRA, éliminant l’étape manuelle de copie des plans",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de temps sur la revue de code et réduction de dettes techniques ; unité facturée : abonnement mensuel par projet ou par nombre de scans ; modèle : abonnement SaaS avec tarif hypothétique 30‑80 €/mois selon volume, justifié par le coût évité d’un audit manuel.",
+      "build_plan": "Périmètre : wrapper web autour de l’agent, tableau de bord et API d’orchestration. Brique réutilisée : logique d’audit et génération de plans (shadcn/improve). Travail à ajouter : UI React/Next.js, intégration CI, facturation Stripe, hébergement Vercel. Exclusions : création du modèle d’IA (utilise modèles existants). Dépendances : agentskills.io, Git, Docker. Coût estimé : 0 $ (open‑source) + 20‑40 $/mois cloud. Délai : 3‑5 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence non vérifiée, donc risque de non‑conformité ; le dépôt ne fournit pas de tests automatisés (non établi dans les extraits) ; dépendance à un agent compatible Agent Skills, qui peut ne pas être disponible partout ; maintenance du wrapper nécessaire.",
+      "next_step": "Réaliser un test technique : déployer le wrapper sur un repo de test et exécuter `/improve quick` pour mesurer le temps d’audit. Question à poser à un utilisateur potentiel : « Quel niveau de détail attendez‑vous dans les plans d’amélioration ? »",
+      "assessment": "Score 7 reflète la pertinence du dépôt pour automatiser l’audit de code, aligné avec le profil Full‑Stack cherchant des outils B2B. Fit_score reste neutre (5) faute de critères de région ou de prix précis. Les preuves sont limitées aux extraits S1 et S2, d’où le manque de données sur la licence et la robustesse du modèle.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "cac56e1ebd3c279aa9153616cfeac7b174ab90f9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/shadcn/improve/blob/cac56e1ebd3c279aa9153616cfeac7b174ab90f9/README.md",
+            "excerpt": "\n\n## Install\n\n```bash\nnpx skills add shadcn/improve\n```\n\nWorks in any agent that supports [Agent Skills](https://agentskills.io) format. The plans it writes are plain markdown, so any agent (or human) can pick them up.\n\n\n\n## Usage\n\n```\n/improve                        full audit → prioritized findings → plans\n/improve quick                  cheap pass: hotspots, top findings only\n/improve deep                   exhaustive: every package, every category\n/improve security               focused audit (also: perf, tests, bugs, ...)\n/improve branch                 audit only what the current branch changes\n/improve next                   feature suggestions — where to take the project\n/improve plan       skip the audit, spec one thing\n/improve review-plan       critique and tighten an existing plan\n/improve execute           dispatch a cheaper executor, review\n\n## How to use\n\nA typical first run, start to finish:\n\n1. Open your agent in the repo and run `/improve` (or `/improve quick` to keep it cheap).\n2. It maps the repo, audits it, and comes back with a findings table. Reply with the ones you want planned — \"plan 1, 3 and 5\".\n3. Plans land in `plans/` — one file each, plus an index with the recommended order. Read them; they're meant to be reviewed.\n4. Hand a plan to any agent (\"implement plans/001-*.md\"), or let the skill run it: `/improve execute 001`. It dispatches a cheaper model in an isolated worktree, reviews the diff against the plan, and reports back with a verdict. Merging stays up t\n\n## Example\n\nA run against [shadcn/ui](https://github.com/shadcn-ui/ui) came back with findings like:\n\n```\n| # | Finding                                        | Category  | Effort | Confidence |\n|---|------------------------------------------------|-----------|--------|------------|\n| 1 | shadow-config duplicated in search.ts/view.ts, | tech-debt | M      | HIGH       |\n|   | copies already drifted (TODO at search.ts:31)  |           |        |            |\n| 2 | O(n²) icon migration (migrate-icons.ts:168)    | perf      | S      | HIGH       |\n```\n\n…and rejected a few, with reasons recorded so they don't come back next run:\n\n```\n- [SEC-01\n\n## How it works\n\n**Rec"
+          },
+          {
+            "id": "S2",
+            "path": "examples/001-extract-shadow-config-resolution.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/shadcn/improve/blob/cac56e1ebd3c279aa9153616cfeac7b174ab90f9/examples/001-extract-shadow-config-resolution.md",
+            "excerpt": "> **Sample output.** A real plan produced by `/improve` against\n> [shadcn/ui](https://github.com/shadcn-ui/ui) at commit `1994caba0`\n> (2026-06-10), kept here as an example of the format. The codebase has\n> moved on — don't execute this; run `/improve` on your own repo instead.\n\n\n\n# Plan 001: Extract shared shadow-config resolution used by search and view\n\n> **Executor instructions**: Follow this plan step by step. Run every\n> verification command and confirm the expected result before moving to the\n> next step. If anything in the \"STOP conditions\" section occurs, stop and\n> report — do not improvise. When done, update the status row for this plan\n> in `plans/README.md`.\n>\n> **Drift check (run first)**: `git diff --stat 1994caba0..HEAD -- packages/shadcn/src/commands/search.ts packages/shadcn/src/commands/view.ts packages/shadcn/src/registry/config.ts`\n> If any of these changed since this plan was written, compare th\n\n## Status\n\n- **Priority**: P2\n- **Effort**: M\n- **Risk**: MED\n- "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "shadcn/improve est un agent compatible Agent Skills qui analyse un dépôt, produit un tableau de constats et génère des plans d’amélioration en markdown. Il cible les développeurs qui souhaitent automatiser l’audit de leurs projets et déléguer l’exécution à des modèles moins coûteux.",
+      "business_idea": "• Cible : PME souhaitant réduire la dette technique ; Produit : Service SaaS d’audit continu basé sur shadcn/improve, avec tableau de bord et notifications ; difference : Interface web dédiée, planification récurrente et reporting consolidé, contrairement au dépôt brut qui nécessite un agent manuel\n• Cible : Agences de développement ; Produit : Plugin CI qui déclenche `/improve` à chaque merge et crée des tickets JIRA automatisés ; difference : Intégration native CI/JIRA, éliminant l’étape manuelle de copie des plans"
+    },
+    {
+      "name": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "description": "Production-grade engineering skills for AI coding agents.",
+      "language": "JavaScript",
+      "stars": 116263,
+      "forks": 12179,
+      "gained": "787 stars today",
+      "gained_n": 787,
+      "lang_color": "#f1e05a",
+      "category": "bibliothèque JavaScript pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑Skills propose des compétences réutilisables que les agents d’IA peuvent invoquer pour automatiser des tâches de développement, comme la revue de code ou la génération d’idées. L’utilisateur cible est un développeur ou une équipe cherchant à standardiser des bonnes pratiques dans leurs flux CI/CD.",
+      "workflow": "Entrée : l’utilisateur lance `npx skills add addyosmani/agent-skills --skill code-review-and-quality`. Traitement : le CLI télécharge le skill, le charge dans l’agent, exécute la séquence de vérifications définie dans le fichier SKILL.md. Résultat : l’agent renvoie un rapport de revue de code avec suggestions d’amélioration. Limite : le skill dépend d’un agent compatible et ne garantit pas la conformité aux standards internes ([S1]).",
+      "use_cases": "• Utilisateur : développeur freelance ; Tâche : exécuter une revue de code automatisée avant chaque merge ; Résultat : rapport structuré contenant les défauts détectés et les recommandations\n• Utilisateur : équipe produit ; Tâche : générer des idées de fonctionnalités via `/ideate` ; Résultat : liste d’idées classées par pertinence et faisabilité",
+      "products": "• Cible : PME tech ; Produit : plateforme SaaS qui expose les skills via une API REST ; difference : centralise la gestion des skills, ajoute l’authentification et la facturation à l’usage\n• Cible : agences créatives ; Produit : extension VS Code qui intègre les skills dans l’IDE ; difference : permet d’invoquer les skills directement depuis l’éditeur, sans passer par le terminal",
+      "monetization": "acheteur : PME ou agence; raison : gain de temps sur la revue de code et la génération d’idées; unité facturée : appels API ou licences mensuelles; modèle : abonnement à plusieurs niveaux, hypothèse de 30‑80 €/mois selon le volume d’appels, justifiée par la valeur du temps économisé (non mesurée dans les extraits).",
+      "build_plan": "périmètre : wrapper API autour du CLI existant; brique réutilisée : les fichiers SKILL.md et le CLI `skills`; travail à ajouter : serveur Node.js, authentification JWT, tableau de bord admin; exclusions : création de nouveaux skills, hébergement de modèles IA; dépendances : Vercel/Fly.io, PostgreSQL pour la facturation; coût estimé : 0 $ (plan gratuit) + 50‑100 $ / mois d’infrastructure; délai : 3‑5 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "connaissances établies : nécessite un agent compatible, licence non vérifiée; inconnues : stabilité du CLI sur Windows, support de langues autres que l’anglais; maintenance : mise à jour du CLI et des skills à chaque version du dépôt.",
+      "next_step": "tester l’installation du skill `code-review-and-quality` sur un projet local et recueillir le feedback d’un développeur senior sur la pertinence du rapport généré.",
+      "assessment": "score 7 reflète la pertinence technique (CLI fonctionnel, documentation claire) et l’adéquation avec le profil (full‑stack, besoin d’outils de productivité). Le fit_score reste neutre (5) faute de données de marché ou de validation d’usage. Les preuves proviennent des extraits README et des exemples d’usage ([S1], [S3]).",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "301b02b12bff98e4688e6984af6556802322bbde",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/README.md",
+            "excerpt": "\n\n## Quick Start\n\n**Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):\n\n```bash\nnpx skills add addyosmani/agent-skills            # install all 25 skills\nnpx skills add addyosmani/agent-skills --list     # browse before installing\n```\n\nOr grab individual skills:\n\n```bash\nnpx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge\nnpx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time\nnpx skills add \n\n## How Skills Work\n\nEvery skill follows a consistent anatomy:\n\n```\n┌─────────────────────────────────────────────────┐\n│  SKILL.md                                       │\n│                                                 │\n│  ┌─ Frontmatter ─────────────────────────────┐  │\n│  │ name: lowercase-hyphen-name               │  │\n│  │ description: Guides agents through [task].│  │\n│  │              Use when…                    │  │\n│  └──\n\n## How it compares\n\nWondering how this stacks up against [Superpowers](https://github.com/obra/superpowers) or [Matt Pocock's skills](https://github.com/mattpocock/skills)? See **[docs/comparison.md](docs/comparison.md)** for an honest, side-by-side look at how the three are shaped differently and when to reach for each — including a link to a controlled [head-to-head experiment](https://www.linkedin.com/pulse/superpowers-vs-agent-skills-faster-shipping-safer-reasoning-om-mishra-dzakf/).\n\n---\n\n\n\n# Agent Skills\n\n**Production-grade engineering skills for AI coding agents.**\n\nSkills encode the workflows, quality gates, and best practices that senior engineers use when building software"
+          },
+          {
+            "id": "S2",
+            "path": "evals/fixtures/ci-cd-and-automation/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/evals/fixtures/ci-cd-and-automation/package.json",
+            "excerpt": "{\n  \"name\": \"ci-fixture\",\n  \"private\": true,\n  \"scripts\": {\n    \"lint\": \"node --check src/slug.js\",\n    \"test\": \"node --test\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "skills/idea-refine/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/skills/idea-refine/examples.md",
+            "excerpt": "\n\n# Ideation Session Examples\n\nThese examples demonstrate what good ideation sessions look like across different kinds of ideas. Study the rhythm, tone, and structure — not just the content. The skill should feel equally at home with a vague startup concept, a feature for an existing product, or a process improvement.\n\n---\n\n\n\n## Example 1: Vague Early-Stage Concept (Full 3-Phase Session)\n\n**User invokes:** `/ideate I want to help small local restaurants compete with the big delivery platforms`\n\n\n\n## Example 2: Feature Idea Within an Existing Product (Codebase-Aware)\n\n**User invokes:** `/ideate adding real-time collaboration to our document editor`\n\n\n\n## Example 3: Process/Workflow Idea (Non-Product)\n\n**User invokes:** `/ideate a better way to run our weekly team retrospectives — they've gotten stale and people dread them`\n\n\n\n## What to Notice in These Examples\n\n1. **The restatement changes the frame.** \"Help restaurants compete\" becomes \"retain existing customers.\" \"Add real-time c"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑Skills propose des compétences réutilisables que les agents d’IA peuvent invoquer pour automatiser des tâches de développement, comme la revue de code ou la génération d’idées. L’utilisateur cible est un développeur ou une équipe cherchant à standardiser des bonnes pratiques dans leurs flux CI/CD.",
+      "business_idea": "• Cible : PME tech ; Produit : plateforme SaaS qui expose les skills via une API REST ; difference : centralise la gestion des skills, ajoute l’authentification et la facturation à l’usage\n• Cible : agences créatives ; Produit : extension VS Code qui intègre les skills dans l’IDE ; difference : permet d’invoquer les skills directement depuis l’éditeur, sans passer par le terminal"
+    },
+    {
+      "name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "stars": 50129,
+      "forks": 3495,
+      "gained": "708 stars today",
+      "gained_n": 708,
+      "lang_color": "#dea584",
+      "category": "outil d'automatisation de navigateur (CLI)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑browser est une CLI native Rust qui permet à un agent d'IA d'ouvrir, de lire et d'interagir avec des pages web via le Chrome DevTools Protocol. L'utilisateur cible est un développeur ou un service d'IA qui a besoin d'exécuter des actions de navigation automatisées.",
+      "workflow": "Entrée : commande CLI (ex. `agent-browser open example.com`). Traitement : le daemon démarre, contrôle Chrome, crée un snapshot texte avec des références d'éléments. Résultat : sortie texte contenant les refs et l'URL, ou action sur un ref (ex. `click @e1`). Limites : nécessite Chrome for Testing ou un Chrome déjà lancé, le daemon s'arrête après une heure d'inactivité [ S1 ].",
+      "use_cases": "• Utilisateur : Développeur d'agent conversationnel ; Tâche : Récupérer le texte d'une page produit et cliquer sur le bouton \"Ajouter au panier\" ; Résultat : Le bot obtient le contenu structuré et effectue l'action sans interface graphique\n• Utilisateur : Service de scraping IA ; Tâche : Prendre un snapshot d'une page d'authentification, extraire les champs et les remplir ; Résultat : Automatisation fiable même avec du JavaScript dynamique grâce au protocole CDP",
+      "products": "• cible : PME souhaitant automatiser la veille concurrentielle ; produit : SaaS web qui expose une API REST autour d'agent‑browser pour planifier des captures de pages et extraire des données ; différence : Abstraction de la CLI en service multi‑tenant, gestion des sessions et stockage des snapshots\n• cible : Agences marketing ; produit : Extension Chrome qui utilise le même moteur pour permettre aux marketeurs de déclencher des actions depuis le navigateur ; différence : Interface graphique légère, pas besoin de ligne de commande, intégration directe aux outils de reporting",
+      "monetization": "Facturation à l'usage (nombre de snapshots ou d'actions) auprès des équipes IA, modèle abonnement mensuel avec quota de sessions ; prix hypothétique 20‑50 €/mois selon le volume, justifié par le coût d'infrastructure cloud et de maintenance du daemon.",
+      "build_plan": "Réutiliser le binaire Rust existant et le daemon, ajouter une couche API Node/TS (FastAPI ou Next.js) pour exposer les endpoints, créer un tableau de bord minimal. Exclusions : refonte du moteur de rendu, gestion avancée des comptes. Dépendances : Chrome for Testing, Docker pour isolation. Coût estimé : 150‑250 h de développement, 3‑4 semaines en sprint intensif.",
+      "limitations": "Licence non vérifiée, dépendance à Chrome (installation lourde), aucune preuve de scalabilité multi‑tenant dans les extraits, maintenance du daemon non détaillée [ S1 ].",
+      "next_step": "Tester l'API de snapshot sur un serveur de staging et interroger un développeur d'agent IA sur les besoins de persistance de session.",
+      "assessment": "Score 7 reflète la maturité du CLI et son adéquation avec le besoin d'automatiser des flux IA ; fit_score 5 par défaut faute de contraintes de région ou de budget explicités. Les sources confirment les fonctionnalités de base mais ne prouvent pas la viabilité commerciale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "f88c40b7ed7c2344af54b804b440b11169f98906",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/f88c40b7ed7c2344af54b804b440b11169f98906/README.md",
+            "excerpt": "\n\n## Install\n\n```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).\n\n\n\n## Quick start\n\n```bash\nagent-browser open example.com\nagent-browser snapshot -i       # interactive elements, each with a ref\nagent-browser click @e1         # act on a ref from that snapshot\nagent-browser get url           # check the result\nagent-browser close\n```\n\nThe snapshot for `example.com`:\n\n```\n- link \"Learn more\" [ref=e1]\n```\n\n- Refs describe the page at the time of the snapshot. After navigation or a DOM change, take a new snapshot before using refs again.\n- CSS selectors, text, XPath, and semantic locators also work, for example `agent-browser find role button click --name \"Submit\"`. See [Selectors](https://agent-browser.dev/sele\n\n## How it works\n\nThe CLI sends each command to a background daemon that starts on the first command and controls the browser over the Chrome DevTools Protocol. Each `--session` gets its own daemon and browser. By default, the daemon closes a headless browser and exits after one hour without commands, saving state first when [session persistence](https://agent-browser.dev/sessions) is configured.\n\nChrome for Testing is the default browser. You can also attach to a running Chrome with `--cdp` or `--auto-connect` ([CDP mode](https://agent-browser.dev/cdp-mode)), select the [Lightpanda](https://agent-browser.dev/engines/lightpanda) or [Obscura](h\n\n# agent-browser\n\nBrowser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell.\n\n \n     \n     \n     \n     \n     \n \n\nagent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads t"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/f88c40b7ed7c2344af54b804b440b11169f98906/package.json",
+            "excerpt": "{\n  \"name\": \"agent-browser\",\n  \"version\": \"0.42.0\",\n  \"description\": \"Browser automation CLI for AI agents\",\n  \"type\": \"module\",\n  \"packageManager\": \"pnpm@11.1.3\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"files\": [\n    \"bin/agent-browser.js\",\n    \"scripts\",\n    \"skill-data\",\n    \"skills\",\n    \"cli/src/native/a11y/LICENSE-axe-core.txt\",\n    \"cli/src/native/a11y/LICENSE-axe-core-THIRD-PARTY.txt\"\n  ],\n  \"bin\": {\n    \"agent-browser\": \"./bin/agent-browser.js\"\n  },\n  \"scripts\": {\n    \"mcp-tools:sync\": \"cd cli && AGENT_BROWSER_UPDATE_MCP_TOOLS=1 cargo test --bin agent-browser mcp_tool_catalog_sn"
+          },
+          {
+            "id": "S3",
+            "path": "examples/eve/css.d.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/vercel-labs/agent-browser/blob/f88c40b7ed7c2344af54b804b440b11169f98906/examples/eve/css.d.ts",
+            "excerpt": "declare module \"*.css\";\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑browser est une CLI native Rust qui permet à un agent d'IA d'ouvrir, de lire et d'interagir avec des pages web via le Chrome DevTools Protocol. L'utilisateur cible est un développeur ou un service d'IA qui a besoin d'exécuter des actions de navigation automatisées.",
+      "business_idea": "• cible : PME souhaitant automatiser la veille concurrentielle ; produit : SaaS web qui expose une API REST autour d'agent‑browser pour planifier des captures de pages et extraire des données ; différence : Abstraction de la CLI en service multi‑tenant, gestion des sessions et stockage des snapshots\n• cible : Agences marketing ; produit : Extension Chrome qui utilise le même moteur pour permettre aux marketeurs de déclencher des actions depuis le navigateur ; différence : Interface graphique légère, pas besoin de ligne de commande, intégration directe aux outils de reporting"
+    },
+    {
+      "name": "we-promise/sure",
+      "url": "https://github.com/we-promise/sure",
+      "description": "The personal finance app for everyone (by everyone)",
+      "language": "Ruby",
+      "stars": 13358,
+      "forks": 984,
+      "gained": "1,078 stars today",
+      "gained_n": 1078,
+      "lang_color": "#701516",
+      "category": "Application web de finance personnelle",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Sure est une application web open‑source de gestion de finances personnelles, destinée aux particuliers qui souhaitent suivre leurs dépenses, revenus et investissements.",
+      "workflow": "L'utilisateur crée un compte → saisit ses comptes bancaires et transactions → le serveur Ruby on Rails calcule les soldes, catégories et prévisions → l'interface React/Turbo affiche les tableaux de bord. Limites : aucune IA intégrée, dépendance à PostgreSQL et Redis, hébergement Docker requis. [S1][S2]",
+      "use_cases": "1. Un freelance suit ses factures et ses dépenses professionnelles pour optimiser sa trésorerie. 2. Un couple planifie son budget familial en agrégeant comptes bancaires et cartes de crédit.",
+      "products": "1. Service SaaS hébergé : cible les PME qui veulent déléguer l’infrastructure, offre un tableau de bord partagé et un support. 2. Extension Tauri desktop : cible les utilisateurs soucieux de la confidentialité, transforme l’application web en client natif sans serveur distant.",
+      "monetization": "Abonnement mensuel pour le SaaS (ex. 15 €/mois) justifié par la maintenance, les backups et le support; facturation à l’usage pour l’extension (ex. 30 € licence unique) pour couvrir le packaging et les mises à jour.",
+      "build_plan": "Réutiliser le code Rails existant, ajouter une couche d’authentification OAuth, développer l’API de facturation Stripe, containeriser avec Docker, déployer sur Fly.io. Travail supplémentaire ≈ 200 h (développement) + 40 h tests. Dépendances : PostgreSQL, Redis, Stripe. Coût estimé ≈ 200 USD d’infrastructure mensuel. Délai ≈ 6‑8 semaines en sprint intensif.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à des services externes (Render, Docker Hub). Le code desktop Tauri n’est pas complet, aucune preuve d’intégration UI. [S1][S3]",
+      "next_step": "Tester le déploiement Docker sur un serveur de staging et interroger un comptable indépendant sur les besoins de reporting fiscal.",
+      "assessment": "Score 6 reflète la maturité du code (Rails, Docker) mais l’absence de documentation claire et de licence valide limite l’attractivité. Le fit_score 5 reste neutre faute de critères de profil détaillés. Les preuves proviennent des extraits README et Gemfile.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "70647cb11c47dac19fe2f1b055ebe6a612b248cb",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/we-promise/sure/blob/70647cb11c47dac19fe2f1b055ebe6a612b248cb/README.md",
+            "excerpt": "[ ](https://deepwiki.com/we-promise/sure)\n[ ](https://oss.skylight.io/app/applications/s6PEZSKwcklL)\n[ ](https://app.dosu.dev/a72bdcfd-15f5-4edc-bd85-ea0daa6c3adc/ask)\n[ ](https://github.com/we-promise/sure/actions/workflows/pipelock.yml)\n\n \n   \n   \n \n\n \n   \n   Deutsch  | \n   Español  | \n   Français  | \n   日本語  | \n   한국어  | \n   Português  | \n   Русский  | \n   中文 \n \n\n\n\n### One-click Install\n\nRender expects each button target branch to have a `render.yaml` at the repository root. The branch-ready Blueprint files live in `branches/ /render.yaml` in a separate repo and can be copied to each corresponding branch root.\n\n| Option | What it deploys | `latest` | `stable` |\n| --- | --- | --- | --- |\n| **Sure - No AI** | Sure web, Sidekiq worker, Render Postgres, and Render Key Value. AI tokens are intentionally blank. | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates/tree/sure-no-ai-latest) | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates\n\n# Sure: The personal finance app for everyone\n\n Get\ninvolved: [Discord](https://discord.gg/36ZGBsxYEK) • [Website](https://sure.am) • [Issues](https://github.com/we-promise/sure/issues) \n\n> [!IMPORTANT]\n> This repository is a community fork of the now-abandoned Maybe Finance project.  \n> Learn more in their [final release](https://github.com/maybe-finance/maybe/releases/tag/v0.6.0) doc.\n\n\n\n## Backstory\n\nThe [Maybe Finance](https://github.com/maybe-finance/maybe) (archived/abandoned repo) team spent most of 2021–2022 building a full-featured personal finance and wealth management app. It even included an “Ask an Advisor” feature that connected users with a real CFP/CFA — all included with your subscription.\n\nThe business end of things didn't work out, and so they stopped developing the app in mid-2023.\n\nAfter spending nearly $1 million on development (employees, contractors, data providers, infra, etc.), the team open-sourced the app. Their goal was to let users self-host it for free — and eventually launch a hosted ve\n\n## Hosting Sure\n\nSure is a fully working personal finance app that can be [self hosted with Docker](do"
+          },
+          {
+            "id": "S2",
+            "path": "Gemfile",
+            "kind": "dépendances",
+            "url": "https://github.com/we-promise/sure/blob/70647cb11c47dac19fe2f1b055ebe6a612b248cb/Gemfile",
+            "excerpt": "source \"https://rubygems.org\"\n\nruby file: \".ruby-version\"\n\n# Rails\ngem \"rails\", \"~> 8.1.0\"\n\n# Drivers\ngem \"pg\", \"~> 1.5\"\ngem \"redis\", \"~> 5.4\"\n\n# Bech32/Bech32m encoding for watch-only Bitcoin addresses.\ngem \"bech32\", \"1.5.1\"\n\n# Deployment\ngem \"puma\", \">= 7.2.1\"\ngem \"bootsnap\", require: false\n\n# Assets\ngem \"importmap-rails\"\ngem \"propshaft\"\ngem \"tailwindcss-rails\"\ngem \"lucide-rails\"\n\n# Hotwire + UI\ngem \"stimulus-rails\"\ngem \"turbo-rails\"\ngem \"view_component\"\n\n# https://github.com/lookbook-hq/lookbook/issues/712\n# TODO: Remove max version constraint when fixed\ngem \"lookbook\", \"2.3.11\"\n\ngem \"hotwi"
+          },
+          {
+            "id": "S3",
+            "path": "desktop/src-tauri/src/main.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/we-promise/sure/blob/70647cb11c47dac19fe2f1b055ebe6a612b248cb/desktop/src-tauri/src/main.rs",
+            "excerpt": "#![cfg_attr(not(debug_assertions), windows_subsystem = \"windows\")]\n\nfn main() {\n    sure_desktop_lib::run();\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sure est une application web open‑source de gestion de finances personnelles, destinée aux particuliers qui souhaitent suivre leurs dépenses, revenus et investissements.",
+      "business_idea": "1. Service SaaS hébergé : cible les PME qui veulent déléguer l’infrastructure, offre un tableau de bord partagé et un support. 2. Extension Tauri desktop : cible les utilisateurs soucieux de la confidentialité, transforme l’application web en client natif sans serveur distant."
+    },
+    {
+      "name": "homeassistant-ai/ha-mcp",
+      "url": "https://github.com/homeassistant-ai/ha-mcp",
+      "description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+      "language": "Python",
+      "stars": 7618,
+      "forks": 460,
+      "gained": "645 stars today",
+      "gained_n": 645,
+      "lang_color": "#3572A5",
+      "category": "outil d'automatisation Home Assistant",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "HA‑MCP permet de configurer et d'automatiser Home Assistant via des assistants IA comme Claude ou ChatGPT, ciblant les administrateurs de domotique qui souhaitent piloter leurs entités par langage naturel. Le logiciel expose un serveur HTTP et des mixins Python pour créer des outils, ressources et prompts IA.",
+      "workflow": "Entrée : requête texte d’un utilisateur via l’interface IA → Traitement : le serveur FastMCP analyse la requête, mappe le texte à un outil ou une ressource déclarée (ex. `first_tool` dans l’exemple) et exécute la fonction Python correspondante → Résultat : réponse texte ou action Home Assistant (ex. appel de service, mise à jour d’entité). Limites : dépend du token d’administration Home Assistant et de la version Python 3.14‑3.15, aucune exécution côté client n’est fournie dans les extraits [S1][S3].",
+      "use_cases": "• Utilisateur : Administrateur domotique ; Tâche : Activer toutes les lumières du salon via une commande texte « Allume le salon » ; Résultat : Le serveur FastMCP invoque le service Home Assistant `light.turn_on` pour chaque entité du salon, renvoie la confirmation à l’IA.\n• Utilisateur : Développeur d’intégration ; Tâche : Créer un nouveau tableau de bord en décrivant les widgets souhaités dans un prompt ; Résultat : Le mixin `first_prompt` génère le code YAML du tableau de bord, qui est appliqué via l’API Home Assistant.",
+      "products": "• Cible : PME de services de bâtiment ; Produit : Plateforme SaaS qui héberge HA‑MCP en mode multi‑tenant, offrant une UI web pour configurer les prompts IA sans toucher au code ; difference : Ajoute la gestion des comptes, la facturation Stripe et un tableau de bord no‑code, alors que le dépôt brut ne propose que le serveur et les mixins.\n• Cible : Indépendants en domotique ; Produit : Extension VS Code qui intègre les mixins HA‑MCP pour générer du code Home Assistant directement depuis l’IDE ; difference : Transforme le dépôt en outil de productivité local, sans besoin d’infrastructure serveur supplémentaire.",
+      "monetization": "Acheteur : PME ou freelance utilisant la plateforme SaaS ; reason to pay : Accès à une interface no‑code, hébergement sécurisé et support de mise à jour ; unit : abonnement mensuel par instance ; model : Abonnement récurrent, prix hypothétique 15‑30 € / mois selon le nombre d’entités gérées, justifié par la valeur du gain de temps et les coûts d’infrastructure cloud.",
+      "build_plan": "scope : Déploiement SaaS multi‑tenant basé sur le serveur Docker existant ; reused bricks : Docker image `ghcr.io/homeassistant-ai/ha-mcp`, FastMCP, mixins Python ; work to add : Gestion des comptes utilisateurs, facturation Stripe, UI React/Next.js, adaptation du token d’accès Home Assistant par client ; exclusions : Développement d’un nouveau moteur IA (utilise les assistants existants) ; dependencies : Docker, PostgreSQL pour la persistance, Stripe API, Vercel/Fly.io pour le front ; Coûts estimés : Coût d’hébergement estimé 0,10 €/heure de conteneur, frais Stripe 2,9 % + 0,30 €, licences open‑source déjà couvertes ; timeline : Prototype fonctionnel 4‑6 semaines (2 semaines d’intégration UI, 2‑4 semaines de tests et CI/CD).",
+      "limitations": "Licence MIT du code mais la licence du dépôt complet n’est pas confirmée ([S2] indique MIT, mais la licence du projet global reste non vérifiée) ; dépendance à un token admin Home Assistant, version Python strictement 3.14‑3.15, aucune preuve d’évolutivité multi‑tenant dans les extraits, maintenance du serveur IA externalisée.",
+      "next_step": "Réaliser un test technique d’intégration du serveur Docker avec un token Home Assistant réel et interroger un administrateur domotique sur la valeur perçue d’une UI no‑code pour créer des prompts.",
+      "assessment": "Score 7 reflète la présence d’une architecture serveur prête à être empaquetée et d’exemples de mixins fonctionnels, mais l’absence de preuves de multi‑tenant et de validation marché limite l’adéquation. Fit_score 5 par défaut car le profil ne précise pas de contraintes sectorielles spécifiques.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "59cec3e9faa54019fbf4ac6815826f6cdfc84208",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/59cec3e9faa54019fbf4ac6815826f6cdfc84208/README.md",
+            "excerpt": "> **Breaking change (v7.3.0):** `ha_config_set_yaml` has been moved to [beta](docs/beta.md).\n\n \n   \n\n  # HA-MCP — Manage Home Assistant with AI\n\n   \n\n   \n     \n       \n       \n       \n     \n       \n       \n     \n       \n       \n   \n\n   \n     Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants. \n   \n \n\n---\n\n \n\n---\n\n\n\n### Other install methods\n\nThese run the server outside Home Assistant — useful for **Container** / **Core** installs (which can't run apps) or a separate host. The [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) generates the exact client-specific config for each.\n\n- **Docker (HTTP server):** run `ghcr.io/homeassistant-ai/ha-mcp` in HTTP mode, pointed at your Home Assistant URL and a long-lived token (an administrator's is recommended; non-admin tokens work with limitations), and connect your client to its secret URL. See the [Setup Wizard](https://homeassistant-ai.github.io/ha-mcp/setup/) for the full command and per-clie\n\n## ✨ Features\n\n| Category | Capabilities |\n|----------|--------------|\n| **🔍 Search** | Fuzzy entity search, deep config search, system overview |\n| **🏠 Control** | Any service, bulk device control, real-time states |\n| **🔧 Manage** | Automations, scripts, helpers, [dashboards](docs/dashboard-edits.md), areas, zones, groups, calendars, blueprints |\n| **📊 Monitor** | History, stat"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/59cec3e9faa54019fbf4ac6815826f6cdfc84208/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"uv_build>=0.12.17,<0.14\"]\nbuild-backend = \"uv_build\"\n\n[project]\nname = \"ha-mcp\"\nversion = \"9.2.0\"\ndescription = \"Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.\"\nreadme = \"README.md\"\n# Upper bound widened to <3.15 so the package installs on Home Assistant's\n# interpreter when run in-process by the ha_mcp_tools component (HA\n# core-2026.7 ships Python 3.14).\nrequires-python = \">=3.14,<3.15\"\nlicense = \"MIT\"\nlicense-files = [\"LICENSE\"]\nauthors = [\n    {name = \"Julien\", email = \"github@qc-h.net\"}\n]\nkeywords = [\"mcp\", \"home-assistant\""
+          },
+          {
+            "id": "S3",
+            "path": "src/ha_mcp/_vendor/fastmcp/contrib/mcp_mixin/example.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/homeassistant-ai/ha-mcp/blob/59cec3e9faa54019fbf4ac6815826f6cdfc84208/src/ha_mcp/_vendor/fastmcp/contrib/mcp_mixin/example.py",
+            "excerpt": "\"\"\"Sample code for FastMCP using MCPMixin.\"\"\"\n\nimport asyncio\n\nfrom ha_mcp._vendor.fastmcp import FastMCP\nfrom ha_mcp._vendor.fastmcp.contrib.mcp_mixin import (\n    MCPMixin,\n    mcp_prompt,\n    mcp_resource,\n    mcp_tool,\n)\n\nmcp = FastMCP()\n\n\nclass Sample(MCPMixin):\n    def __init__(self, name):\n        self.name = name\n\n    @mcp_tool()\n    def first_tool(self):\n        \"\"\"First tool description.\"\"\"\n        return f\"Executed tool {self.name}.\"\n\n    @mcp_resource(uri=\"test://test\")\n    def first_resource(self):\n        \"\"\"First resource description.\"\"\"\n        return f\"Executed resource {self.name}.\"\n\n    @mcp_prompt()\n    def first_prompt(self):\n        \"\"\"First prompt description.\"\"\"\n        return f\"here's a prompt! {self.name}.\"\n\n\nfirst_sample = Sample(\"First\")\nsecond_sample = Sample(\"Second\")\n\nfirst_sample.register_all(mcp_server=mcp, prefix=\"first\")\nsecond_sample.register_all(mcp_server=mcp, prefix=\"second\")\n\n\nasync def list_components() -> None:\n    print(\"MCP Server running wit"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "HA‑MCP permet de configurer et d'automatiser Home Assistant via des assistants IA comme Claude ou ChatGPT, ciblant les administrateurs de domotique qui souhaitent piloter leurs entités par langage naturel. Le logiciel expose un serveur HTTP et des mixins Python pour créer des outils, ressources et prompts IA.",
+      "business_idea": "• Cible : PME de services de bâtiment ; Produit : Plateforme SaaS qui héberge HA‑MCP en mode multi‑tenant, offrant une UI web pour configurer les prompts IA sans toucher au code ; difference : Ajoute la gestion des comptes, la facturation Stripe et un tableau de bord no‑code, alors que le dépôt brut ne propose que le serveur et les mixins.\n• Cible : Indépendants en domotique ; Produit : Extension VS Code qui intègre les mixins HA‑MCP pour générer du code Home Assistant directement depuis l’IDE ; difference : Transforme le dépôt en outil de productivité local, sans besoin d’infrastructure serveur supplémentaire."
+    },
+    {
+      "name": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
+      "language": "TypeScript",
+      "stars": 12008,
+      "forks": 955,
+      "gained": "52 stars today",
+      "gained_n": 52,
+      "lang_color": "#3178c6",
+      "category": "outil de sécurité de code (CLI & SDK)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Codex Security est un CLI et SDK TypeScript permettant de scanner, valider et corriger des vulnérabilités dans des dépôts de code. Il cible les développeurs et équipes DevSecOps qui souhaitent automatiser la détection de failles.",
+      "workflow": "Entrée : répertoire de code ou pull‑request → Traitement : le CLI exécute un scan, déduplique les résultats, propose des patches et peut publier les rapports sur le cloud (extraits S1) → Résultat : fichier Markdown de rapport, éventuels correctifs appliqués, tickets créés dans Linear/Jira. Limites : nécessite Node 22+ et Python 3.10+, aucune preuve de prise en charge de langages autres que ceux scannés (non établi dans les extraits).",
+      "use_cases": "• Utilisateur : Équipe DevSecOps d’une PME SaaS ; Tâche : Intégrer le CLI dans le pipeline CI pour scanner chaque pull‑request ; Résultat : Détection précoce de vulnérabilités, création automatique de tickets Jira et proposition de correctifs.\n• Utilisateur : Développeur freelance ; Tâche : Analyser un projet open‑source local avant de le publier ; Résultat : Rapport de sécurité détaillé au format Markdown, avec suggestions de patches à appliquer manuellement.",
+      "products": "• Cible : PME cherchant à externaliser la gestion de la sécurité du code ; Produit : Service SaaS « Codex Security Cloud » qui héberge les scans, stocke les rapports et fournit une UI de suivi ; difference : Ajoute une couche d’hébergement, d’authentification et de tableau de bord, alors que le dépôt brut ne propose que le CLI/SDK.\n• Cible : Indépendants souhaitant un outil léger ; Produit : Version desktop autonome empaquetée avec Electron, sans dépendance cloud ; difference : Supprime la partie cloud, offre une interface graphique simple, tout en conservant les capacités de scan locales.",
+      "monetization": "Acheteur : PME ou freelance ; raison : conformité sécurité et gain de temps ; unité facturée : abonnement mensuel par utilisateur ou par scan ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajustable selon volume de scans.",
+      "build_plan": "Périmètre limité : créer l’interface web et l’API de stockage des rapports (réutiliser le SDK existant). Briques réutilisées : CLI, SDK TypeScript, logique de scan. Travail à ajouter : UI dashboard, système d’authentification, facturation Stripe, hébergement cloud (Vercel/Fly). Exclusions : support de langages supplémentaires, intégrations CI avancées. Dépendances : Node 22+, Python 3.10+, base de données PostgreSQL. Coût estimé : 2 k€ d’infrastructure cloud + 5 k€ de développement (4 semaines à temps plein).",
+      "limitations": "Licence non vérifiée (extrait S1, S2), aucune preuve de conformité RGPD, dépendance à Node 22+ et Python 3.10+, aucune donnée sur la scalabilité du cloud (non établi dans les extraits).",
+      "next_step": "Réaliser un test technique : exécuter `cs scan` sur un petit dépôt Python et vérifier la génération de patchs. Question à poser à un potentiel utilisateur : « Quel critère de sévérité utilisez‑vous pour prioriser les vulnérabilités ? »",
+      "assessment": "Score 7 reflète la richesse fonctionnelle décrite (scan, patch, intégration CI) et la pertinence pour le profil (Full‑Stack, automatisation). Fit_score 5 par défaut faute d’indications précises sur le budget ou la région. Le manque de licence claire et d’évaluations de performance est noté (non établi dans les extraits).",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2911786f243f08fd61ad854f5c527e7b0c404ccc",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/2911786f243f08fd61ad854f5c527e7b0c404ccc/README.md",
+            "excerpt": "\n\n## Features\n\n- Scan repositories, selected paths, or Git changes. Deep scans repeat Standard scans and return their deduplicated findings.\n- Validate candidate findings, generate patches, and verify existing fixes.\n- Draft `SECURITY.md` policies and save threat models for later review.\n- Browse saved scans and findings, identify duplicates, assess severity against\n  your own rubric, and suggest owners from source and Git history.\n- Preview third-party scanner findings, save them locally, or publish supported reports to Codex Security Cloud. [Scanner import guides](docs/scanner-imports/README.md).\n- Track findings in Linear, Jira, or GitHub, p\n\n## Quick start\n\nRequires Node.js 22.13.0+ within 22.x, or Node.js 24.x or 26.x, and Python 3.10+.\nPython 3.10 also requires `tomli`.\n\nInstall the CLI globally and sign in:\n\n```bash\nnpm install --global @openai/codex-security\ncs login\n```\n\nRun your first scan from the repository directory:\n\n```bash\ncs scan .\n```\n\nWhen the scan completes, open the Markdown file at the **REPORT** path in the\nterminal. Run `cs scans show` from the same repository to find its latest\ncompleted scan again. See [scan scope and follow-up work](sdk/typescript/docs/cli.md#understand-scan-scope-and-follow-up-work)\nfor how to interpret exclusions in the report.\n\n`cs` and \n\n# Codex Security\n\nCodex Security helps you find, investigate, and fix vulnerabilities in your code.\nUse its security workflows in Codex, or automate them with the\n`@openai/codex-security` CLI and TypeScript SDK.\n\n- **In Codex:** [choose a security workflow](docs/agent-workflows.md).\n- **In a terminal:** [install the CLI and scan your repository](#quick-start).\n- **In automation:** use the [TypeScript SDK](#typescript-sdk) or\n  [GitHub Action](#github-actions).\n\n\n\n## Use in Codex\n\nOpen your"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/openai/codex-security/blob/2911786f243f08fd61ad854f5c527e7b0c404ccc/package.json",
+            "excerpt": "{\n  \"private\": true,\n  \"packageManager\": \"pnpm@11.25.0+sha512.5cde925b4f075f725eb71fbae18a42ffe784524789f19b61c731cb8721ec28aaee160e01a8d5af4fedb2a42cdbf300efe23db356b0d4a17b4d63e11f8ab7c956\"\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/2911786f243f08fd61ad854f5c527e7b0c404ccc/examples/README.md",
+            "excerpt": "\n\n# Examples\n\n| Task | Example |\n| --- | --- |\n| Scan an app, inspect a finding, patch it and verify the repair | [Invoice Desk walkthrough](invoice-desk/walkthrough.md). Copy only the synthetic app into the scan target. |\n| Supply your own validation test | [Custom validation demo](custom-validation/README.md). Run the local HTTP test on its own or let a model-backed scan invoke it. |\n| Scan pull requests and repositories with GitHub Actions | [GitHub Actions with Amazon Bedrock](github-actions/README.md) uses AWS OIDC and saves SARIF and readable reports. |\n| Scan Azure Repos from a central pipeline | [Azure Pipelines with Amazon Bedrock](azu\n\n## Preview a findings CSV\n\nUse this CSV format with `publish scan --to cloud`. For reports exported by a scanner,\nfollow its [provider guide](../docs/scanner-imports/README.md). To try the Cloud CSV\npreview, copy the header-only [template](findings.csv) and append this synthetic row.\n\n```csv\nocc_e79cb19591e696572a1c22be,csf_852f90d6e1177502ff11"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Codex Security est un CLI et SDK TypeScript permettant de scanner, valider et corriger des vulnérabilités dans des dépôts de code. Il cible les développeurs et équipes DevSecOps qui souhaitent automatiser la détection de failles.",
+      "business_idea": "• Cible : PME cherchant à externaliser la gestion de la sécurité du code ; Produit : Service SaaS « Codex Security Cloud » qui héberge les scans, stocke les rapports et fournit une UI de suivi ; difference : Ajoute une couche d’hébergement, d’authentification et de tableau de bord, alors que le dépôt brut ne propose que le CLI/SDK.\n• Cible : Indépendants souhaitant un outil léger ; Produit : Version desktop autonome empaquetée avec Electron, sans dépendance cloud ; difference : Supprime la partie cloud, offre une interface graphique simple, tout en conservant les capacités de scan locales."
+    },
+    {
+      "name": "TheAlgorithms/Java",
+      "url": "https://github.com/TheAlgorithms/Java",
+      "description": "All Algorithms implemented in Java",
+      "language": "Java",
+      "stars": 67191,
+      "forks": 21523,
+      "gained": "51 stars today",
+      "gained_n": 51,
+      "lang_color": "#b07219",
+      "category": "Bibliothèque d'algorithmes éducatifs",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Une collection d'implémentations d'algorithmes en Java destinée à l'apprentissage, utilisable par des développeurs souhaitant réutiliser ou étudier des algorithmes classiques.",
+      "workflow": "Entrée : code source Java d'un algorithme choisi → Traitement : compilation et exécution via un IDE ou Gitpod (voir README) → Résultat : sortie fonctionnelle de l'algorithme, éventuellement affichage ou retour de valeur. Limites : aucune garantie d'efficacité optimale, usage éducatif uniquement. [S1]",
+      "use_cases": "• Utilisateur : Étudiant en informatique ; Tâche : Étudier le fonctionnement d'un algorithme de tri ; Résultat : Compréhension du code et possibilité de le modifier pour des expériences\n• Utilisateur : Développeur junior ; Tâche : Intégrer rapidement un algorithme de recherche dans un prototype ; Résultat : Gain de temps en copiant l'implémentation existante",
+      "products": "• Cible : PME souhaitant automatiser des traitements de données simples ; Produit : Service SaaS qui expose les algorithmes via une API REST (FastAPI) ; difference : Cache les résultats et fournit des métriques de performance, ce que le dépôt brut ne propose pas\n• Cible : Formateurs en ligne ; Produit : Plateforme d'exercices interactifs où les étudiants soumettent du code Java et reçoivent un feedback automatisé ; difference : Ajoute un moteur d'évaluation et un tableau de bord, absent du dépôt original",
+      "monetization": "Acheteur : PME ou formateur ; reason : Accès à une API prête à l'emploi évitant le développement interne d'algorithmes ; unit : appel d'API ; model : Abonnement mensuel avec un quota d'appels inclus, tarif supplémentaire à l'usage ; price range : 10 €–30 € par mois selon le volume, hypothèse basée sur la valeur perçue d'un composant réutilisable",
+      "build_plan": "scope : Créer une couche d'API autour des algorithmes existants ; reused bricks : Code Java du dépôt, Docker pour le conteneur, FastAPI (Python) ou Spring Boot (Java) pour l'API ; additional work : Écrire des wrappers, gérer la sérialisation, mettre en place l'authentification, tests unitaires ; exclusions : Optimisation profonde des algorithmes, support de langues autres que Java ; dependencies : JDK 17, Maven/Gradle, serveur d'application, base de données pour le suivi d'usage ; cost estimate : Temps de développement 2‑3 semaines (≈80 h) + hébergement cloud (≈20 €/mois) ; timeline : 2‑3 semaines conditionnelles, dépendant de la disponibilité du développeur",
+      "limitations": "established : Licence non vérifiée, implémentations éducatives et potentiellement inefficaces ; unknown : Conformité juridique, performances réelles sur gros volumes, support multilingue ; license check : À confirmer dans le dépôt ; maintenance : Responsabilité du créateur du produit SaaS, mise à jour du dépôt source nécessaire",
+      "next_step": "Réaliser un prototype d'API qui expose un algorithme de tri et mesurer le temps de réponse ; demander à un formateur s'il verrait un intérêt à intégrer cette API dans ses cours.",
+      "assessment": "Score 6 reflète la disponibilité d'un code réutilisable mais limité à l'usage éducatif ; fit_score 5 par défaut faute de critères de profil spécifiques. Les preuves proviennent uniquement du README, d'où de nombreuses incertitudes.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "07c7ea317f67fe27c6830fc2cea652c65f19f225",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/TheAlgorithms/Java/blob/07c7ea317f67fe27c6830fc2cea652c65f19f225/README.md",
+            "excerpt": "\n\n# The Algorithms - Java\n\n[ ](https://github.com/TheAlgorithms/Java/actions/workflows/build.yml)\n[ ](https://codecov.io/gh/TheAlgorithms/Java)\n[ ](https://discord.gg/c7MnfGFGa6)\n[ ](https://gitpod.io/#https://github.com/TheAlgorithms/Java)\n\n\nYou can run and edit the algorithms, or contribute to them using Gitpod.io (a free online development environment) with a single click.\n\n[ ](https://gitpod.io/#https://github.com/TheAlgorithms/Java)\n\n\n\n### All algorithms are implemented in Java (for educational purposes)\nThese implementations are intended for learning purposes. As such, they may be less efficient than the Java standard library.\n\n\n\n## Contribution Guidelines\nPlease read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute to this project.\n\n\n\n## Algorithms\nOur [directory](DIRECTORY.md) contains the full list of algorithms implemented in Java.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Une collection d'implémentations d'algorithmes en Java destinée à l'apprentissage, utilisable par des développeurs souhaitant réutiliser ou étudier des algorithmes classiques.",
+      "business_idea": "• Cible : PME souhaitant automatiser des traitements de données simples ; Produit : Service SaaS qui expose les algorithmes via une API REST (FastAPI) ; difference : Cache les résultats et fournit des métriques de performance, ce que le dépôt brut ne propose pas\n• Cible : Formateurs en ligne ; Produit : Plateforme d'exercices interactifs où les étudiants soumettent du code Java et reçoivent un feedback automatisé ; difference : Ajoute un moteur d'évaluation et un tableau de bord, absent du dépôt original"
+    }
+  ]
+}
