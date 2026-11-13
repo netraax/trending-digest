@@ -1,0 +1,561 @@
+{
+  "date": "2026-11-13",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "description": "Keep your coding agent up to date with the latest web best practices",
+      "language": "TypeScript",
+      "stars": 3940,
+      "forks": 235,
+      "gained": "739 stars today",
+      "gained_n": 739,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque de guidage web",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Une collection de meilleures pratiques web sous forme de guides interactifs, destinée aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards modernes.",
+      "workflow": "Entrée : développeur lance `npx modern-web-guidance@latest install` → le wizard télécharge les guides et crée des fichiers de configuration locale → sortie : un répertoire contenant des scripts TypeScript et des listes de fonctionnalités à activer. Limite : aucune installation automatisée de dépendances serveur n’est fournie, le projet reste un ensemble de références statiques. [S1]",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Intégrer rapidement les nouvelles APIs du navigateur dans un projet Next.js ; Résultat : Le code généré inclut les imports et les polyfills nécessaires, réduisant le temps de recherche documentaire.\n• Utilisateur : Équipe d’assurance qualité ; Tâche : Vérifier la conformité d’une application aux dernières recommandations de performance ; Résultat : Le tableau de bord produit un rapport listant les fonctionnalités manquantes ou obsolètes.",
+      "products": "• Cible : PME souhaitant standardiser leurs front‑ends ; Produit : SaaS de conformité web qui consomme les guides et propose un tableau de bord en ligne ; difference : Automatisation du suivi des mises à jour et génération de tickets d’amélioration, contrairement au dépôt brut qui ne fait qu’exposer les guides.\n• Cible : Agences de design UI ; Produit : Plugin VSCode qui injecte les snippets de meilleures pratiques directement dans l’éditeur ; difference : Intégration IDE pour un usage quotidien, alors que le dépôt original nécessite une exécution manuelle du wizard.",
+      "monetization": "Abonnement mensuel aux tableaux de bord SaaS, facturé par utilisateur actif ; hypothèse de 15 €/mois basée sur la valeur perçue d’une conformité continue et les coûts d’infrastructure cloud.",
+      "build_plan": "Réutiliser le script d’installation (`gd.ts`) comme base, ajouter un serveur Node (FastAPI équivalent) pour servir les guides, intégrer une base PostgreSQL pour stocker les états de conformité, exclure le support multi‑langue initial. Dépendances principales : TypeScript, Playwright pour les tests, Docker pour le déploiement. Coût estimé : 200 € de services cloud mensuels. Délai : 4‑6 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence non vérifiée, aucune garantie de mise à jour automatique, dépendance à Node ≥ 22.18.0 ; les coûts de maintenance restent à définir. [S2]",
+      "next_step": "Réaliser un test technique d’intégration du wizard dans un projet Next.js et interroger un développeur front‑end sur la pertinence des guides proposés.",
+      "assessment": "Score 6 reflète la pertinence du contenu pour les objectifs de productivité front‑end, mais l’absence de preuve d’une licence claire et d’un modèle SaaS existant limite l’évaluation. Le fit_score reste neutre (5) faute de correspondance explicite avec le profil fourni.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "3bb177a6de62b7fd8cd0432c33756e6f3c9ece9d",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/3bb177a6de62b7fd8cd0432c33756e6f3c9ece9d/README.md",
+            "excerpt": "\n\n##   Quickstart\n\n```shell\nnpx modern-web-guidance@latest install\n```\n\nThis command runs an interactive wizard to install Modern Web Guidance. See [Alternative Installation Methods](#-alternative-installation-methods) below.\n\n\n\n#### Try it out (without installing)\n\n```shell\n\n\n### CSS & Layout (140 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [::backdrop](https://web-platform-dx.github.io/web-features-explorer/features/backdrop/) | [content-visibility](https://web-platform-dx.github.io/web-features-explorer/features/content-visibility/) | [progress()](https://web-platform-dx.github.io/web-features-explorer/features/progress-function/) |\n| [::details-content](https://web-platform-dx.github.io/web-features-explorer/features/details-content/) | [contrast-color()](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/) | [reading-flow](https://web-platform-dx.github.io/web-features-explorer/fea\n\n### HTML & DOM (36 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [:autofill](https://web-platform-dx.github.io/web-features-explorer/features/autofill/) | [&lt;slot>](https://web-platform-dx.github.io/web-features-explorer/features/slot/) | [HTML streaming setters](https://web-platform-dx.github.io/web-features-explorer/features/html-streaming-setters/) |\n| [:indeterminate](https://web-platform-dx.github.io/web-features-explorer/features/indeterminate/) | [&lt;video>](https://web-platform-dx.github.io/web-features-explorer/features/video/) | [HTML-in-canvas](https://web-platform-dx.github.io/web-features-explorer/features/canvas-html/) |\n| [&lt\n\n### JavaScript & APIs (74 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [&lt;install>](https://web-platform-dx.github.io/web-features-explorer/features/install/) | [integrity() for url()](https://web-platform-dx.github.io/web-features-explorer/features/url-integrity/) | [Sanitizer API](https://web-platform-dx.github.io/web-features-explorer/features/sanitizer/) |\n| [&lt;meta name=\"text-scale\">](https://web-platform-dx.github.io/web-features-explorer/features/meta-text-scale/) | [Interaction contentful paint performance entries](https://web-platform-dx.github.io/web-features-explorer/features/interaction-contentfu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/3bb177a6de62b7fd8cd0432c33756e6f3c9ece9d/package.json",
+            "excerpt": "{\n  \"name\": \"modern-web-guidance-src\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=22.18.0\"\n  },\n  \"bin\": {\n    \"gd\": \"bin/gd.ts\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"node src/core/postinstall.ts\",\n    \"test\": \"node --test --test-reporter ${TEST_REPORTER:-dot} \\\"src/**/*.test.ts\\\"\",\n    \"test:e2e\": \"playwright test -c src/dashboard/playwright.config.js\",\n    \"build\": \"node src/build/build-guides.ts --target=skills-cli && pnpm run build-dist\",\n    \"build-dist\": \"node src/build/build-dist.ts\",\n    \"build"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Une collection de meilleures pratiques web sous forme de guides interactifs, destinée aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards modernes.",
+      "business_idea": "• Cible : PME souhaitant standardiser leurs front‑ends ; Produit : SaaS de conformité web qui consomme les guides et propose un tableau de bord en ligne ; difference : Automatisation du suivi des mises à jour et génération de tickets d’amélioration, contrairement au dépôt brut qui ne fait qu’exposer les guides.\n• Cible : Agences de design UI ; Produit : Plugin VSCode qui injecte les snippets de meilleures pratiques directement dans l’éditeur ; difference : Intégration IDE pour un usage quotidien, alors que le dépôt original nécessite une exécution manuelle du wizard."
+    },
+    {
+      "name": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
+      "language": "TypeScript",
+      "stars": 12750,
+      "forks": 997,
+      "gained": "643 stars today",
+      "gained_n": 643,
+      "lang_color": "#3178c6",
+      "category": "outil de sécurité de code (CLI & SDK)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Codex Security est un CLI et SDK TypeScript qui analyse les dépôts pour détecter, valider et corriger les vulnérabilités, destiné aux développeurs souhaitant automatiser leurs processus de sécurité.",
+      "workflow": "Entrée : chemin du dépôt ou changement Git → traitement : le CLI exécute un scan profond, déduplique les résultats, propose des patches et peut publier les rapports dans le cloud ou les intégrer à Linear/Jira → résultat : fichier Markdown contenant le rapport détaillé et éventuellement des patches appliqués. Limites : nécessite Node 22+ et Python 3.10+, aucune preuve de prise en charge de projets non‑JavaScript. [S1]",
+      "use_cases": "• Utilisateur : Équipe DevSecOps ; Tâche : Intégrer le scan de sécurité dans le pipeline CI/CD ; Résultat : Détection précoce des vulnérabilités avec génération automatique de correctifs.\n• Utilisateur : Freelance développeur ; Tâche : Auditer un projet open‑source avant de le reprendre ; Résultat : Rapport consolidé dans un fichier SECURITY.md avec recommandations de mitigation.",
+      "products": "• cible : PME tech ; produit : Plateforme SaaS de gestion de vulnérabilités basée sur Codex Security ; différence : Interface web centralisée, tableau de bord multi‑projets, facturation par scan.\n• cible : Agences de développement ; produit : Extension VS Code qui invoque le CLI en temps réel ; différence : Feedback immédiat dans l’IDE, sans besoin de serveur externe.",
+      "monetization": "Acheteur : équipes de développement ou consultants en sécurité ; raison de payer : automatisation fiable du cycle de vie de la sécurité ; unité facturée : nombre de scans ou abonnement mensuel ; modèle économique : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajusté selon volume de scans.",
+      "build_plan": "Périmètre : UI web et facturation, réutiliser le CLI existant comme moteur de scan ; brique réutilisée : @openai/codex-security CLI/SDK ; travail à ajouter : tableau de bord, authentification, facturation Stripe, hébergement cloud ; exclusions : développement du moteur d’analyse (déjà fourni) ; dépendances : Node, Python, base de données PostgreSQL ; coûts : hébergement (≈20 €/mois) + Stripe fees ; délai : 4‑6 semaines conditionnel selon disponibilité des ressources.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à Node 22+ et Python 3.10+, maintenance du CLI à la charge du mainteneur original, coût d’infrastructure non estimé précisément. [S1],[S2]",
+      "next_step": "Réaliser un test technique : exécuter `cs scan` sur un petit dépôt interne et vérifier la génération de patch ; question à poser à un responsable sécurité : « Quel niveau de détail attendez‑vous dans les rapports de vulnérabilité ? »",
+      "assessment": "Score 7 reflète la maturité du produit (CLI complet, SDK, intégrations) ; fit_score 5 car le profil indique un besoin général d’inspiration sans contrainte sectorielle précise. Les preuves proviennent du README et du package.json, mais la licence et la conformité restent non établies.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "f26b669b56a4423abd773c81f6c6c9c2ebadc42a",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/f26b669b56a4423abd773c81f6c6c9c2ebadc42a/README.md",
+            "excerpt": "\n\n## Features\n\n- Scan repositories, selected paths, or Git changes. Deep scans repeat Standard scans and return their deduplicated findings.\n- Validate candidate findings, generate patches, and verify existing fixes.\n- Draft `SECURITY.md` policies and save threat models for later review.\n- Browse saved scans and findings, identify duplicates, assess severity against\n  your own rubric, and suggest owners from source and Git history.\n- Preview third-party scanner findings, save them locally, or publish supported reports to Codex Security Cloud. [Scanner import guides](docs/scanner-imports/README.md).\n- Track findings in Linear, Jira, or GitHub, p\n\n## Quick start\n\nRequires Node.js 22.13.0+ within 22.x, or Node.js 24.x or 26.x, and Python 3.10+.\nPython 3.10 also requires `tomli`.\n\nInstall the CLI globally and sign in:\n\n```bash\nnpm install --global @openai/codex-security\ncs login\n```\n\nRun your first scan from the repository directory:\n\n```bash\ncs scan .\n```\n\nWhen the scan completes, open the Markdown file at the **REPORT** path in the\nterminal. Run `cs scans show` from the same repository to find its latest\ncompleted scan again. See [scan scope and follow-up work](sdk/typescript/docs/cli.md#understand-scan-scope-and-follow-up-work)\nfor how to interpret exclusions in the report.\n\n`cs` and \n\n# Codex Security\n\nCodex Security helps you find, investigate, and fix vulnerabilities in your code.\nUse its security workflows in Codex, or automate them with the\n`@openai/codex-security` CLI and TypeScript SDK.\n\n- **In Codex:** [choose a security workflow](docs/agent-workflows.md).\n- **In a terminal:** [install the CLI and scan your repository](#quick-start).\n- **In automation:** use the [TypeScript SDK](#typescript-sdk) or\n  [GitHub Action](#github-actions).\n\n\n\n## Use in Codex\n\nOpen your"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/openai/codex-security/blob/f26b669b56a4423abd773c81f6c6c9c2ebadc42a/package.json",
+            "excerpt": "{\n  \"private\": true,\n  \"packageManager\": \"pnpm@11.25.0+sha512.5cde925b4f075f725eb71fbae18a42ffe784524789f19b61c731cb8721ec28aaee160e01a8d5af4fedb2a42cdbf300efe23db356b0d4a17b4d63e11f8ab7c956\"\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/f26b669b56a4423abd773c81f6c6c9c2ebadc42a/examples/README.md",
+            "excerpt": "\n\n# Examples\n\n| Task | Example |\n| --- | --- |\n| Scan an app, inspect a finding, patch it and verify the repair | [Invoice Desk walkthrough](invoice-desk/walkthrough.md). Copy only the synthetic app into the scan target. |\n| Compare code findings with deployed VPC reachability | [Network reachability sample](network-reachability-sample/README.md) pairs identical vulnerable workers with different security-group and network ACL rules. |\n| Supply your own validation test | [Custom validation demo](custom-validation/README.md). Run the local HTTP test on its own or let a model-backed scan invoke it. |\n| Scan pull requests and repositories with GitH\n\n## Preview a findings CSV\n\nUse this CSV format with `publish scan --to cloud`. For reports exported by a scanner,\nfollow its [provider guide](../docs/scanner-imports/README.md). To try the Cloud CSV\npreview, copy the header-only [template](findings.csv) and append this synthetic row.\n\n```csv\nocc_e79cb19591e696572a1c22be,csf_852f90d6e1177502ff11"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Codex Security est un CLI et SDK TypeScript qui analyse les dépôts pour détecter, valider et corriger les vulnérabilités, destiné aux développeurs souhaitant automatiser leurs processus de sécurité.",
+      "business_idea": "• cible : PME tech ; produit : Plateforme SaaS de gestion de vulnérabilités basée sur Codex Security ; différence : Interface web centralisée, tableau de bord multi‑projets, facturation par scan.\n• cible : Agences de développement ; produit : Extension VS Code qui invoque le CLI en temps réel ; différence : Feedback immédiat dans l’IDE, sans besoin de serveur externe."
+    },
+    {
+      "name": "nvm-sh/nvm",
+      "url": "https://github.com/nvm-sh/nvm",
+      "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
+      "language": "Shell",
+      "stars": 96092,
+      "forks": 10762,
+      "gained": "63 stars today",
+      "gained_n": 63,
+      "lang_color": "#89e051",
+      "category": "outil de gestion d'environnement Node.js (script Bash)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "nvm est un script Bash POSIX‑compliant qui permet à un développeur de sélectionner et d’installer différentes versions de Node.js sur une même machine, résolvant le problème de compatibilité entre projets.",
+      "workflow": "Entrée : version souhaitée (ex. « 14.21.3 ») → traitement : le script télécharge le binaire, le compile et met à jour le répertoire ~/.nvm, puis ajuste les variables d’environnement → résultat : la version demandée devient active via la fonction shell nvm (source : [S1]). Limite : nécessite un shell interactif ou la définition de BASH_ENV dans les conteneurs, sinon la fonction n’est pas disponible.",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Passer rapidement d’un projet Node 12 à un projet Node 18 ; Résultat : Isolation des dépendances sans re‑installer le système\n• Utilisateur : Équipe CI/CD ; Tâche : Installer une version précise de Node dans un pipeline Docker ; Résultat : Construction reproductible d’images grâce aux instructions Docker du README ([S1])",
+      "products": "• Cible : PME avec plusieurs micro‑services Node ; Produit : Plateforme SaaS de gestion de versions Node centralisée, UI web pour sélectionner, installer et partager des versions via API ; difference : Abstraction du script Bash en service hébergé, éliminant la configuration manuelle et offrant un tableau de bord\n• Cible : Agences web ; Produit : Extension VS Code qui intègre nvm et propose des suggestions de version selon le package.json du projet ; difference : Intégration directe dans l’IDE, réduisant le temps de configuration locale",
+      "monetization": "Acheteur : agences ou équipes dev ; raison : gain de productivité et conformité des environnements ; unité facturée : abonnement mensuel par développeur ou par projet ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, justifié par le coût d’infrastructure et le support.",
+      "build_plan": "Périmètre limité : wrapper web autour du script nvm existant ; brique réutilisée : script Bash et logique d’installation ([S1]) ; travail à ajouter : API REST (FastAPI), UI React, authentification, persistance des versions ; exclusions : compilation native de Node, support Windows (hors scope) ; dépendances : Docker, FastAPI, PostgreSQL ; coût estimé : 120 h de dev (≈3 semaines) + 30 h d’infra.",
+      "limitations": "Contraintes établies : nécessite un shell Bash, ne fonctionne pas nativement sous Windows sans WSL ; inconnues : performance en environnement serverless, licence non vérifiée ([S2]) ; maintenance : mise à jour du script upstream et gestion des versions Node.",
+      "next_step": "Réaliser un prototype d’API qui exécute le script d’installation dans un conteneur et valider le retour d’un développeur senior sur la facilité d’usage.",
+      "assessment": "Score 7 reflète la maturité du projet (large adoption, documentation claire) et son adéquation avec le profil qui maîtrise Bash, Docker et recherche des wrappers SaaS (fit_score 5 par défaut). Manque de preuve sur la licence et la compatibilité Windows, d’où la mention « non établi dans les extraits ».",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "09e620c401382f4b3d3147333dd64c1e09188fdb",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/nvm-sh/nvm/blob/09e620c401382f4b3d3147333dd64c1e09188fdb/README.md",
+            "excerpt": " \n   \n     \n     \n   \n \n\n\n\n\n## Installing and Updating\n\n\n\n### Install & Update Script\n\nTo **install** or **update** nvm, you should run the [install script][2]. To do that, you may either download and run the script manually, or use the following [cURL](https://curl.se) or [Wget](https://www.gnu.org/software/wget/) command:\n```sh\ncurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n```\n```sh\nwget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n```\n\nRunning either of the above commands downloads a script and runs it. The script clones the nvm repository to `~/.nvm`, and attempts to add the source lines from the snippet below to the correct profil\n\n#### Installing in Docker\n\nWhen invoking bash as a non-interactive shell, like in a [Docker](https://www.docker.com) container, none of the regular profile files are sourced. In order to use `nvm`, `node`, and [`npm`](https://www.npmjs.com) like normal, you can instead specify the special `BASH_ENV` variable, which bash sources when invoked non-interactively.\n\n```Dockerfile\n\n\n# Download and install nvm\nRUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | PROFILE=\"${BASH_ENV}\" bash\nRUN echo node > .nvmrc\nRUN nvm install\n```\n\n##### Installing in Docker for CICD-Jobs\n\nMore robust, works in CI/CD-Jobs. Can be run in interactive and non-interactive containers.\nSee https://github.com/nvm-sh/nvm/issues/3531.\n\n```Dockerfile\nFROM ubuntu:latest\nARG NODE_VERSION=20\n\n\n\n# install curl\nRUN apt update && apt install curl -y\n\n\n\n# install nvm\nRUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n\n\n\n# install node\nRUN bash -c \"source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION\"\n\n\n\n### Verify Installation\n\nTo verify that nvm has been installed, do:\n\n```sh\ncommand -v nvm\n```\n\nwhich should output `nvm` if the installation was successful. Please note that `which nvm` will not work, since `nvm` is a sourced shell function, not an executable binary.\n\n**Note:** On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/nvm-sh/nvm/blob/09e620c401382f4b3d3147333dd64c1e09188fdb/package.json",
+            "excerpt": "{\n  \"name\": \"nvm\",\n  \"version\": \"0.41.0\",\n  \"description\": \"Node Version Manager - Simple bash script to manage multiple active node.js versions\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"test\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); make test-$shell\",\n    \"test/fast\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); env -i TERM=\\\"$TERM\\\" bash -lc \\\"make TEST_SUITE=fast test-$shell\\\"\",\n    \"test/slow\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); make TEST_SUITE=slow test-$sh"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "nvm est un script Bash POSIX‑compliant qui permet à un développeur de sélectionner et d’installer différentes versions de Node.js sur une même machine, résolvant le problème de compatibilité entre projets.",
+      "business_idea": "• Cible : PME avec plusieurs micro‑services Node ; Produit : Plateforme SaaS de gestion de versions Node centralisée, UI web pour sélectionner, installer et partager des versions via API ; difference : Abstraction du script Bash en service hébergé, éliminant la configuration manuelle et offrant un tableau de bord\n• Cible : Agences web ; Produit : Extension VS Code qui intègre nvm et propose des suggestions de version selon le package.json du projet ; difference : Intégration directe dans l’IDE, réduisant le temps de configuration locale"
+    },
+    {
+      "name": "pookjw/HermesEnabler",
+      "url": "https://github.com/pookjw/HermesEnabler",
+      "description": "Enable Hermès Watch Faces on any Apple Watch devices",
+      "language": "Objective-C",
+      "stars": 1682,
+      "forks": 147,
+      "gained": "218 stars today",
+      "gained_n": 218,
+      "lang_color": "#438eff",
+      "category": "outil mobile / extension watchOS",
+      "eligible": true,
+      "score": 5,
+      "fit_score": 5,
+      "summary": "HermesEnabler permet d’activer des cadrans Hermès sur n’importe quelle Apple Watch. Il cible les utilisateurs d’Apple Watch souhaitant personnaliser leur montre avec des designs tiers.",
+      "workflow": "Entrée : fichier IPA du projet téléchargé → Traitement : installation via Sideloadly ou Xcode, nécessite iPhone appairé à la montre et watchOS 27.0‑27.3 beta 1 → Résultat : le cadran Hermès apparaît sur la montre. Limites : dépendance à des outils tiers (Sideloadly, WatchBridge) et version beta de watchOS, problème connu avec Sideloadly 0.72 [S1].",
+      "use_cases": "• Utilisateur : Indépendant du design horloger ; Tâche : Distribuer des cadrans personnalisés à ses clients ; Résultat : Les clients installent le cadran via l’IPA fournie, sans besoin de jailbreak\n• Utilisateur : Agence de marketing digital ; Tâche : Créer une campagne de branding avec un cadran dédié ; Résultat : La campagne utilise le cadran installé sur les montres des participants, renforçant la visibilité de la marque",
+      "products": "• Cible : PME souhaitant un branding mobile ; Produit : Service SaaS qui génère et signe automatiquement des IPA personnalisés ; difference : Automatisation du processus de build et de signature, éliminant la dépendance manuelle à Sideloadly/Xcode\n• Cible : Créateurs de contenus vidéo ; Produit : Extension web qui transforme des vidéos en cadrans animés synchronisés ; difference : Ajoute une couche créative (animation vidéo) non prévue dans le dépôt d’origine",
+      "monetization": "Acheteur : PME ou créateur de contenu ; raison : gain de temps et accès à un branding exclusif ; unité facturée : abonnement mensuel par montre ou pack de 100 cadrans ; modèle : abonnement SaaS avec tarif hypothétique 15‑30 €/mois selon le volume, justifié par le coût d’infrastructure cloud et de licences de signature.",
+      "build_plan": "Périmètre : API de génération d’IPA, service de signature, UI web. Brique réutilisée : code source d’HermesEnabler (Objective‑C). Travail à ajouter : wrapper Node.js/TS, CI/CD Docker, gestion des clés de signature. Exclusions : support multi‑watch simultané, UI native iOS. Dépendances : Apple Developer Program, serveur de build macOS. Coût estimé : 200 € / mois pour MacStadium + 50 € / mois pour stockage. Délai : 4‑6 semaines conditionnel selon disponibilité d’un Mac de build.",
+      "limitations": "Contraintes établies : nécessite watchOS 27.0‑27.3 beta, iPhone appairé, outils tiers non officiels. Inconnues : stabilité sur watchOS final, conformité RGPD du service de signature. Licence non vérifiée, donc risque de restrictions légales. Maintenance requise pour suivre les évolutions d’iOS/watchOS.",
+      "next_step": "Réaliser un test d’intégration automatisé qui génère une IPA à partir d’un modèle et la signe via l’API Apple; question à poser à un designer horloger : « Quel niveau de personnalisation attendez‑vous d’un cadran généré ? »",
+      "assessment": "Score 5 reflète la disponibilité d’un code fonctionnel mais limité à une version beta et à des outils tiers. Fit_score 5 car le profil recherche des wrappers SaaS et des outils B2B, ce dépôt offre une base technique exploitable. Manque de preuves : aucune donnée sur la viabilité commerciale, aucune licence claire, aucune métrique d’usage.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "a0101c41d37f880f236450eb99baf9d5b5f5b900",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/pookjw/HermesEnabler/blob/a0101c41d37f880f236450eb99baf9d5b5f5b900/README.md",
+            "excerpt": "\n\n## Installation\n\n\n\n#### Install the IPA\n\n> **Known issue with Sideloadly 0.72:** [Issue #43](https://github.com/pookjw/HermesEnabler/issues/43) reports that this version may remove the embedded Watch app while signing. If the iPhone app installs but HermesEnabler2 is missing from the Watch, use Xcode instead. This report is specific to version 0.72; compatibility with other versions has not been confirmed.\n\n1. Download the IPA from [Releases](https://github.com/pookjw/HermesEnabler/releases).\n2. Install [Sideloadly](https://sideloadly.io) on your Mac, connect your iPhone with a cable, and select it in Sideloadly.\n3. Drag the IPA into Sideloadly and enter your A\n\n# HermesEnabler 2\n\n[English](README.md) · [Tiếng Việt](README.vi.md) · [한국어](README.ko.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [Español](README.es.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · [Português](README.pt.md)\n\n \n\n> Supported only on watchOS 27.0 through 27.3 beta 1.\n\n\n\n### macOS\n\nOn macOS you can install the prebuilt IPA with Sideloadly or build the app directly with Xcode. Either way, the iPhone must be paired with the target Apple Watch, and the Watch must run a supported watchOS version.\n\n\n\n#### Build with Xcode\n\n1. Open [HermesEnabler2.xcodeproj](HermesEnabler2.xcodeproj) in Xcode.\n2. Select your Apple Watch as the run destination and click **Run**.\n3. Open **HermesEnabler2** on your Apple Watch and follow the steps in the app.\n\n\n\n### Windows\n\nWindows uses [WatchBridge](https://github.com/AdminZachary/iloader-for-windows), a community tool that prepares Developer Mode and installs an IPA containing both an iPhone host app and a Watch app. It is not affiliated with Apple or with this project.\n\n1. Install **Apple Mobile Device Service** by installing [iTunes](https://www.apple.com/itunes/) or the **Apple Devices** app from the Microsoft Store. WatchBridge needs it for USB and Wi-Fi communication. WebView2 is built into Windows 11.\n2. Make sure your iPhone is paired with the target Apple Watch. WatchBridge supports only one paired Watch at a time; if more than one is pair\n\n## Cautions\n\n- In Sidel"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "HermesEnabler permet d’activer des cadrans Hermès sur n’importe quelle Apple Watch. Il cible les utilisateurs d’Apple Watch souhaitant personnaliser leur montre avec des designs tiers.",
+      "business_idea": "• Cible : PME souhaitant un branding mobile ; Produit : Service SaaS qui génère et signe automatiquement des IPA personnalisés ; difference : Automatisation du processus de build et de signature, éliminant la dépendance manuelle à Sideloadly/Xcode\n• Cible : Créateurs de contenus vidéo ; Produit : Extension web qui transforme des vidéos en cadrans animés synchronisés ; difference : Ajoute une couche créative (animation vidéo) non prévue dans le dépôt d’origine"
+    },
+    {
+      "name": "we-promise/sure",
+      "url": "https://github.com/we-promise/sure",
+      "description": "The personal finance app for everyone (by everyone)",
+      "language": "Ruby",
+      "stars": 14285,
+      "forks": 1077,
+      "gained": "967 stars today",
+      "gained_n": 967,
+      "lang_color": "#701516",
+      "category": "application web de finance personnelle",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Sure est une application web de gestion de finances personnelles, construite avec Ruby on Rails et TailwindCSS, destinée aux particuliers qui souhaitent suivre leurs dépenses et leurs investissements.",
+      "workflow": "Entrée : l'utilisateur crée un compte et importe ses relevés bancaires (CSV ou API). Traitement : le backend Rails parse les données, les stocke dans PostgreSQL, applique des règles de catégorisation et calcule des indicateurs (solde, cash‑flow, ratios). Résultat : le tableau de bord affiche graphiques et rapports interactifs. Sources : description du déploiement et des dépendances dans le README [S1] et le Gemfile [S2]; limitation : aucune implémentation d’IA n’est fournie, le code Tauri ne montre qu’un wrapper desktop sans logique métier [S3].",
+      "use_cases": "• Utilisateur : Indépendant freelance ; Tâche : Importer les relevés de son compte professionnel et visualiser le cash‑flow mensuel ; Résultat : Tableau de bord synthétique avec alertes de dépassement de budget\n• Utilisateur : Petite PME ; Tâche : Suivre les dépenses par projet et générer des rapports fiscaux trimestriels ; Résultat : Export PDF des dépenses catégorisées, prêts à être transmis à l’expert‑comptable",
+      "products": "• Cible : Freelances francophones ; Produit : Version SaaS hébergée avec authentification OAuth et facturation Stripe ; difference : Supprime la contrainte d’auto‑hébergement Docker et ajoute un tableau de bord multilingue\n• Cible : Agences de comptabilité ; Produit : Module d’extension API REST permettant l’intégration avec les ERP existants ; difference : Expose les données de Sure via des endpoints sécurisés, facilitant l’automatisation des flux comptables",
+      "monetization": "Acheteur : PME ou freelance cherchant à externaliser la gestion financière. Raison de payer : gain de temps sur la catégorisation et la production de rapports. Unité facturée : abonnement mensuel par utilisateur. Modèle : abonnement SaaS (hypothèse de 9 €/mois) justifié par la valeur perçue d’un tableau de bord complet et le coût d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : mise en place d’un service d’authentification (Devise) et d’un module de facturation Stripe. Brique réutilisée : code existant de Rails, PostgreSQL, Tailwind. Travail à ajouter : intégration OAuth, UI multilingue, tests automatisés. Exclusions : fonctionnalité « Ask an Advisor » et support de crypto‑actifs. Dépendances : Ruby 3.x, Rails 8.1, PostgreSQL, Redis, Stripe API. Coût estimé : 150 € / mois d’infrastructure cloud (Vercel/Render) + 30 € / mois pour Stripe. Délai : 4‑6 semaines de développement intensif (conditionnel à la disponibilité d’un développeur Rails).",
+      "limitations": "Licence non vérifiée [S1]; aucune preuve d’audit de sécurité; dépendance à PostgreSQL et Redis non containerisés dans les extraits; le code desktop Tauri ne fournit aucune logique métier [S3]; besoin d’ajouter des tests unitaires et d’assurer la conformité RGPD (non établi dans les extraits).",
+      "next_step": "Réaliser un prototype d’authentification OAuth et vérifier la capacité du backend à importer un CSV de relevé bancaire; question à poser à un freelance : « Quel niveau de détail attendiez‑vous dans les rapports de dépenses ? ».",
+      "assessment": "Score 6 reflète la présence d’une base fonctionnelle (Rails, UI, Docker) mais l’absence de preuves de sécurité, de licence claire et de fonctionnalités IA limite l’adéquation immédiate. Fit_score 5 par défaut (profil fourni sans contraintes spécifiques). Les preuves proviennent des extraits README [S1], Gemfile [S2] et code Tauri [S3]; tout le reste reste non établi.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "d74ee9f284d293709a99056c32b5ec534ff9f4d7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/we-promise/sure/blob/d74ee9f284d293709a99056c32b5ec534ff9f4d7/README.md",
+            "excerpt": "[ ](https://deepwiki.com/we-promise/sure)\n[ ](https://oss.skylight.io/app/applications/s6PEZSKwcklL)\n[ ](https://app.dosu.dev/a72bdcfd-15f5-4edc-bd85-ea0daa6c3adc/ask)\n[ ](https://github.com/we-promise/sure/actions/workflows/pipelock.yml)\n\n \n   \n   \n \n\n \n   \n   Deutsch  | \n   Español  | \n   Français  | \n   日本語  | \n   한국어  | \n   Português  | \n   Русский  | \n   中文 \n \n\n\n\n### One-click Install\n\nRender expects each button target branch to have a `render.yaml` at the repository root. The branch-ready Blueprint files live in `branches/ /render.yaml` in a separate repo and can be copied to each corresponding branch root.\n\n| Option | What it deploys | `latest` | `stable` |\n| --- | --- | --- | --- |\n| **Sure - No AI** | Sure web, Sidekiq worker, Render Postgres, and Render Key Value. AI tokens are intentionally blank. | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates/tree/sure-no-ai-latest) | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates\n\n# Sure: The personal finance app for everyone\n\n Get\ninvolved: [Discord](https://discord.gg/36ZGBsxYEK) • [Website](https://sure.am) • [Issues](https://github.com/we-promise/sure/issues) \n\n> [!IMPORTANT]\n> This repository is a community fork of the now-abandoned Maybe Finance project.  \n> Learn more in their [final release](https://github.com/maybe-finance/maybe/releases/tag/v0.6.0) doc.\n\n\n\n## Backstory\n\nThe [Maybe Finance](https://github.com/maybe-finance/maybe) (archived/abandoned repo) team spent most of 2021–2022 building a full-featured personal finance and wealth management app. It even included an “Ask an Advisor” feature that connected users with a real CFP/CFA — all included with your subscription.\n\nThe business end of things didn't work out, and so they stopped developing the app in mid-2023.\n\nAfter spending nearly $1 million on development (employees, contractors, data providers, infra, etc.), the team open-sourced the app. Their goal was to let users self-host it for free — and eventually launch a hosted ve\n\n## Hosting Sure\n\nSure is a fully working personal finance app that can be [self hosted with Docker](do"
+          },
+          {
+            "id": "S2",
+            "path": "Gemfile",
+            "kind": "dépendances",
+            "url": "https://github.com/we-promise/sure/blob/d74ee9f284d293709a99056c32b5ec534ff9f4d7/Gemfile",
+            "excerpt": "source \"https://rubygems.org\"\n\nruby file: \".ruby-version\"\n\n# Rails\ngem \"rails\", \"~> 8.1.0\"\n\n# Drivers\ngem \"pg\", \"~> 1.5\"\ngem \"redis\", \"~> 5.4\"\n\n# Bech32/Bech32m encoding for watch-only Bitcoin addresses.\ngem \"bech32\", \"1.5.1\"\n\n# Deployment\ngem \"puma\", \">= 7.2.1\"\ngem \"bootsnap\", require: false\n\n# Assets\ngem \"importmap-rails\"\ngem \"propshaft\"\ngem \"tailwindcss-rails\"\ngem \"lucide-rails\"\n\n# Hotwire + UI\ngem \"stimulus-rails\"\ngem \"turbo-rails\"\ngem \"view_component\"\n\n# https://github.com/lookbook-hq/lookbook/issues/712\n# TODO: Remove max version constraint when fixed\ngem \"lookbook\", \"2.3.11\"\n\ngem \"hotwi"
+          },
+          {
+            "id": "S3",
+            "path": "desktop/src-tauri/src/main.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/we-promise/sure/blob/d74ee9f284d293709a99056c32b5ec534ff9f4d7/desktop/src-tauri/src/main.rs",
+            "excerpt": "#![cfg_attr(not(debug_assertions), windows_subsystem = \"windows\")]\n\nfn main() {\n    sure_desktop_lib::run();\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sure est une application web de gestion de finances personnelles, construite avec Ruby on Rails et TailwindCSS, destinée aux particuliers qui souhaitent suivre leurs dépenses et leurs investissements.",
+      "business_idea": "• Cible : Freelances francophones ; Produit : Version SaaS hébergée avec authentification OAuth et facturation Stripe ; difference : Supprime la contrainte d’auto‑hébergement Docker et ajoute un tableau de bord multilingue\n• Cible : Agences de comptabilité ; Produit : Module d’extension API REST permettant l’intégration avec les ERP existants ; difference : Expose les données de Sure via des endpoints sécurisés, facilitant l’automatisation des flux comptables"
+    },
+    {
+      "name": "QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code",
+      "description": "An open-source AI coding agent that lives in your terminal.",
+      "language": "TypeScript",
+      "stars": 30055,
+      "forks": 3414,
+      "gained": "151 stars today",
+      "gained_n": 151,
+      "lang_color": "#3178c6",
+      "category": "outil de développement (agent IA pour terminal)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Qwen Code est un agent IA open‑source qui s’exécute dans le terminal et propose de l’assistance à la programmation. Il cible les développeurs qui souhaitent accélérer la rédaction, la correction ou la génération de code directement depuis leur console.",
+      "workflow": "Entrée : l’utilisateur lance `qwen` dans le répertoire du projet et s’authentifie via `/auth` ([S1]). Traitement : l’agent interroge le modèle Qwen, analyse le contexte du répertoire et génère des suggestions de code ou des commandes. Résultat : le terminal affiche le code proposé ou exécute la commande, que l’utilisateur accepte ou modifie. Limites : nécessite Node 22+, dépend d’une connexion internet et d’un abonnement Qwen pour le modèle ([S1]); aucune preuve de fonctionnement hors ligne ([S2]).",
+      "use_cases": "• acteur : développeur full‑stack ; tâche : générer rapidement des squelettes d’API FastAPI à partir d’une description ; résultat : code de base créé en quelques secondes, prêt à être ajusté\n• acteur : consultant en automatisation ; tâche : convertir un script Python de scraping en commande CLI optimisée ; résultat : script empaqueté et exécutable via le terminal, réduction du temps de mise en place",
+      "products": "• cible : PME développeuses d’applications internes ; produit : extension VS Code qui intègre Qwen Code pour suggestions en temps réel ; différence : offre une interface graphique et un historique de suggestions, contrairement au simple agent CLI\n• cible : agences web ; produit : service SaaS hébergé qui expose Qwen Code via une API REST ; différence : permet d’appeler l’assistant depuis n’importe quel IDE ou CI, sans installer Node localement",
+      "monetization": "acheteur : agence ou freelance; raison : gain de productivité sur le développement; unité facturée : abonnement mensuel par utilisateur; modèle : abonnement avec tarif de base hypothétique 15 €/mois, ajustable selon nombre d’utilisateurs et volume d’appels API.",
+      "build_plan": "Périmètre : wrapper API autour du binaire Qwen Code existant; brique réutilisée : le package npm @qwen-code/qwen-code ([S2]); travail à ajouter : API FastAPI, authentification JWT, tableau de bord admin; exclusions : création du modèle IA sous‑jacent; dépendances : Node 22, OpenAI‑compatible endpoint; coût : hébergement cloud (≈30 €/mois) + licences éventuelles; délai : 3‑4 semaines en sprint intensif.",
+      "limitations": "Contrainte : nécessite un abonnement Qwen pour le modèle; licence du projet non vérifiée ([S2]); maintenance du wrapper API à prévoir; aucune preuve de scalabilité au-delà de quelques dizaines d’utilisateurs simultanés.",
+      "next_step": "Réaliser un prototype d’API qui invoque `qwen` et mesurer le temps de réponse; interroger un développeur senior sur l’utilité d’un tel assistant dans son flux quotidien.",
+      "assessment": "Score 7 reflète la pertinence du projet pour des outils de productivité IA et la disponibilité d’un package npm complet ([S2]). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques. Les preuves proviennent des extraits README et package.json; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0eb27d3b0758b4215ec0d1c5dab7aff9a18d3ab8",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/QwenLM/qwen-code/blob/0eb27d3b0758b4215ec0d1c5dab7aff9a18d3ab8/README.md",
+            "excerpt": " \n\n[ ](https://www.npmjs.com/package/@qwen-code/qwen-code)\n[ ](./LICENSE)\n[ ](https://nodejs.org/)\n[ ](https://www.npmjs.com/package/@qwen-code/qwen-code)\n\n   \n\n**The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.**\n\n 中文  |\n Deutsch  |\n français  |\n 日本語  |\n Русский  |\n Português (Brasil)  |\n 한국어 \n\n \n\n \n\n| **Qwen Code 1.0 Preview**                                                         \n\n## Installation\n\nLooking for **Qwen Code 1.0 Preview**? [Get started here](https://github.com/QwenLM/qwen-code/tree/v1.0.0-preview). The instructions below are for the main version.\n\n**Linux / macOS:**\n\n```bash\ncurl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash\n```\n\n**Windows:**\n\n```powershell\nirm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex\n```\n\n> Restart your terminal after installation to ensure environment variables take effect.\n\n \n NPM / Homebrew \n\n**NPM** (requires [Node.js 22+](https://nodejs.org/)):\n\n```bash\nnpm install\n\n## Quick Start\n\nOpen a terminal in your project and start Qwen Code:\n\n```bash\ncd /path/to/your-project\nqwen\n```\n\nInside the session, run `/auth` and choose [**Qwen Account with Subscription**](https://chat.qwen.ai/?memberPlan=qwen_code&entry=qwen_code&paywallScene=cli) to sign in with your **Plu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/QwenLM/qwen-code/blob/0eb27d3b0758b4215ec0d1c5dab7aff9a18d3ab8/package.json",
+            "excerpt": "{\n  \"name\": \"@qwen-code/qwen-code\",\n  \"private\": true,\n  \"version\": \"0.27.2\",\n  \"packageManager\": \"pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"type\": \"module\",\n  \"workspaces\": [\n    \"packages/*\",\n    \"packages/cua-driver/typescript\",\n    \"packages/channels/base\",\n    \"packages/channels/telegram\",\n    \"packages/channels/weixin\",\n    \"packages/channels/dingtalk\",\n    \"packages/channels/wecom\",\n    \"packages/channels/feishu\",\n    \"packages/channe"
+          },
+          {
+            "id": "S3",
+            "path": "docs/users/quickstart.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/QwenLM/qwen-code/blob/0eb27d3b0758b4215ec0d1c5dab7aff9a18d3ab8/docs/users/quickstart.md",
+            "excerpt": "\n\n# Quickstart\n\n> 👏 Welcome to Qwen Code!\n\nThis quickstart guide will have you using AI-powered coding assistance in just a few minutes. By the end, you'll understand how to use Qwen Code for common development tasks.\n\n\n\n## Step 1: Install Qwen Code\n\nTo install Qwen Code, use one of the following methods:\n\n\n\n### Quick Install (Recommended)\n\n**Linux / macOS**\n\n```sh\ncurl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash\n```\n\n**Windows**\n\n```powershell\nirm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex\n```\n\n> [!note]\n>\n> It's recommended to restart your terminal after installation to ensure environment variables take effect.\n\n\n\n### Manual Installation\n\n**Prerequisites**\n\nMake sure you have Node.js 22 or later installed. Download it from [nodejs.org](https://nodejs.org/en/download).\n\n**NPM**\n\n```bash\nnpm install -g @qwen-code/qwen-code@latest\n```\n\n**Homebrew (macOS, Linux)**\n\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Qwen Code est un agent IA open‑source qui s’exécute dans le terminal et propose de l’assistance à la programmation. Il cible les développeurs qui souhaitent accélérer la rédaction, la correction ou la génération de code directement depuis leur console.",
+      "business_idea": "• cible : PME développeuses d’applications internes ; produit : extension VS Code qui intègre Qwen Code pour suggestions en temps réel ; différence : offre une interface graphique et un historique de suggestions, contrairement au simple agent CLI\n• cible : agences web ; produit : service SaaS hébergé qui expose Qwen Code via une API REST ; différence : permet d’appeler l’assistant depuis n’importe quel IDE ou CI, sans installer Node localement"
+    },
+    {
+      "name": "ashhart/TensorFold",
+      "url": "https://github.com/ashhart/TensorFold",
+      "description": "LLM Inference Engine for Metal, CUDA and Vulkan.",
+      "language": "Zig",
+      "stars": 2043,
+      "forks": 398,
+      "gained": "54 stars today",
+      "gained_n": 54,
+      "lang_color": "#ec915c",
+      "category": "Moteur d'inférence LLM / Application desktop",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "TensorFold est un moteur d’inférence LLM écrit en Zig qui sert des modèles sur Apple Silicon (Metal) et GPU NVIDIA (CUDA) sans dépendance Python [ S1 ]. Il cible les développeurs et chercheurs souhaitant exécuter localement des modèles volumineux.",
+      "workflow": "Entrée : fichier de checkpoint (ex. Qwen3.5‑2B 4‑bit) → le binaire Zig lit le checkpoint, tokenise la requête et exécute des kernels Metal ou CUDA → Résultat : réponse texte renvoyée via une API locale ou l’interface web fournie [ S1 ]. Limite : les poids du modèle sont soumis à leurs licences propres et le projet ne fournit pas de benchmarking complet [ S1 ].",
+      "use_cases": "• Utilisateur : Développeur IA ; Tâche : Tester rapidement un nouveau modèle LLM sur son Mac M1 sans installer Python ; Résultat : Obtention de réponses en temps réel via l’interface web intégrée\n• Utilisateur : Recherche académique ; Tâche : Comparer les performances de différents checkpoints sur GPU NVIDIA ; Résultat : Mesures de latence et consommation GPU grâce aux logs du moteur",
+      "products": "• Cible : PME souhaitant un service de transcription interne ; Produit : Plateforme SaaS qui encapsule TensorFold via un wrapper API REST ; difference : Fournit une facturation à l’usage et une UI simplifiée, alors que le dépôt brut reste un binaire local\n• Cible : Indépendants créant des agents conversationnels ; Produit : Bibliothèque Python thin wrapper autour du binaire Zig pour appeler le moteur depuis des scripts ; difference : Permet l’intégration dans des pipelines existants sans réécrire le moteur en Python",
+      "monetization": "Acheteur : PME ou freelance ; raison : besoin d’inférence locale rapide et sécurisée ; unité facturée : appels API ou minutes d’utilisation ; modèle : abonnement mensuel avec forfait de minutes, hypothèse de 30 €/mois pour 10 000 appels (valeur estimée selon coût d’infrastructure cloud).",
+      "build_plan": "Périmètre : wrapper API + UI minimaliste. Réutiliser le binaire Zig existant (TensorFold) [ S1 ]. Travail à ajouter : serveur FastAPI (Python) qui invoque le binaire, authentification JWT, tableau de bord React. Exclusions : compilation multi‑plateforme, support CUDA sur Windows. Dépendances : Zig, Node.js (pour le UI), FastAPI, Docker. Coût estimé : 150 h de dev (≈ 2 semaines à plein temps).",
+      "limitations": "Contraintes établies : nécessite macOS ≥ 12 ou GPU NVIDIA ; licence des modèles non fournie [ S1 ]. Inconnues : stabilité sous charge, support Windows, coût exact d’hébergement. Licence du dépôt non vérifiée [ S2 ].",
+      "next_step": "Réaliser un test technique : appeler le binaire depuis un script Python et mesurer le temps de réponse. Question utilisateur : « Quel volume d’appels d’inférence effectuez‑vous quotidiennement ? »",
+      "assessment": "Score 7 basé sur la disponibilité d’un moteur fonctionnel et d’une UI web, mais l’absence de documentation d’API et de licence claire limite l’adoption rapide. Fit_score 5 par défaut (profil fourni sans critères spécifiques).",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0591c4e85dca440749063d171d4305d65a6edb50",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ashhart/TensorFold/blob/0591c4e85dca440749063d171d4305d65a6edb50/README.md",
+            "excerpt": "\n\n## Quick start\n\nStart with Qwen3.5-2B, the small 4-bit checkpoint checked on Metal and a GB10. The commands below download its\npinned revision, then serve it as `local-model`. Model weights have their own licenses.\nReviewing or benchmarking TensorFold? [Evaluating TensorFold](docs/evaluating.md) covers pinning, signature checks,\na container and the tests that need no GPU.\n\n\n\n# TensorFold\n\nTensorFold serves language models from a Zig binary on Apple Silicon and NVIDIA GPUs.\nThe engine reads checkpoints, tokenizes requests and runs Metal or CUDA kernels directly.\nServing needs no Python or MLX installation.\n\nBuilding with a coding agent? Have it load the [contributor skill](docs/recipes/SKILL.md) before it writes any code.\n\n\n\n## Contributing with agents\n\nPlease use [Agent Traffic Control](https://github.com/ashhart/ATC) before editing TensorFold so contributors and agents can avoid duplicate work and conflicting changes.\nCheck the [live agent radar](https://tensorfold.dev/atc) before choosing an issue and follow [CONTRIBUTING.md](CONTRIBUTING.md) and the [ATC contributor instructions](docs/atc/SKILL.md).\n\nInstall or upgrade ATC to 0.9.4 or later, then run from an updated TensorFold clone:\n\n```sh\nnpm install -g github:ashhart/ATC\natc check ISSUE --json\natc claim ISSUE --json\n```\n\nReplace `ISSUE` with the issue number and claim only after a complete check says the w\n\n### Mac with"
+          },
+          {
+            "id": "S2",
+            "path": "app/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ashhart/TensorFold/blob/0591c4e85dca440749063d171d4305d65a6edb50/app/package.json",
+            "excerpt": "{\n  \"name\": \"tensorfold-studio\",\n  \"version\": \"1.0.0-beta.9\",\n  \"private\": true,\n  \"packageManager\": \"npm@10.9.8\",\n  \"engines\": {\n    \"node\": \">=22 <23\",\n    \"npm\": \"10.9.8\"\n  },\n  \"devEngines\": {\n    \"runtime\": {\n      \"name\": \"node\",\n      \"version\": \">=22 <23\",\n      \"onFail\": \"error\"\n    },\n    \"packageManager\": {\n      \"name\": \"npm\",\n      \"version\": \"10.9.8\",\n      \"onFail\": \"error\"\n    }\n  },\n  \"description\": \"TensorFold, an agentic desktop workspace for local and cloud models\",\n  \"author\": \"TensorFold\",\n  \"main\": \"dist-electron/main.js\",\n  \"scripts\": {\n    \"preinstall\": \"node scripts/c"
+          },
+          {
+            "id": "S3",
+            "path": "web/tensorfold_web/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/ashhart/TensorFold/blob/0591c4e85dca440749063d171d4305d65a6edb50/web/tensorfold_web/cli.py",
+            "excerpt": "\"\"\"`tensorfold-web`: start the local server and open the page.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport os\nimport sys\nimport threading\nimport webbrowser\nfrom pathlib import Path\n\nimport uvicorn\n\nfrom . import __version__\nfrom . import settings as settings_mod\nfrom .engine import Engine\nfrom .server import create_app\n\n\ndef main(argv: list[str] | None = None) -> int:\n    argv = sys.argv[1:] if argv is None else argv\n    if argv[:1] == [\"service\"]:                    # `tensorfold-web service install|uninstall|status`\n        from . import service\n\n        return service.main(argv[1:])\n    if argv[:1] == [\"token\"]:                      # `tensorfold-web token [--copy] [--new]`\n        from . import access\n\n        return access.main(argv[1:])\n    p = argparse.ArgumentParser(prog=\"tensorfold-web\", description=\"A local web interface for TensorFold\",\n                                epilog=\"`tensorfold-web service install` keeps it running: at login on macOS, \"\n         "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "TensorFold est un moteur d’inférence LLM écrit en Zig qui sert des modèles sur Apple Silicon (Metal) et GPU NVIDIA (CUDA) sans dépendance Python [ S1 ]. Il cible les développeurs et chercheurs souhaitant exécuter localement des modèles volumineux.",
+      "business_idea": "• Cible : PME souhaitant un service de transcription interne ; Produit : Plateforme SaaS qui encapsule TensorFold via un wrapper API REST ; difference : Fournit une facturation à l’usage et une UI simplifiée, alors que le dépôt brut reste un binaire local\n• Cible : Indépendants créant des agents conversationnels ; Produit : Bibliothèque Python thin wrapper autour du binaire Zig pour appeler le moteur depuis des scripts ; difference : Permet l’intégration dans des pipelines existants sans réécrire le moteur en Python"
+    },
+    {
+      "name": "nodejs/node",
+      "url": "https://github.com/nodejs/node",
+      "description": "Node.js JavaScript runtime ✨🐢🚀✨",
+      "language": "JavaScript",
+      "stars": 123682,
+      "forks": 38060,
+      "gained": "62 stars today",
+      "gained_n": 62,
+      "lang_color": "#f1e05a",
+      "category": "runtime JavaScript",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Node.js est un environnement d'exécution JavaScript open‑source et multiplateforme, destiné aux développeurs backend qui souhaitent créer des serveurs, des outils CLI ou des micro‑services. Il résout le problème d'exécuter du JavaScript hors du navigateur avec accès aux API système.",
+      "workflow": "Entrée : script JavaScript (ex. serveur HTTP). Traitement : le moteur V8 exécute le code, le runtime fournit les modules d'E/S non bloquants, la boucle d'événements gère les callbacks. Résultat : réponses réseau, fichiers écrits ou données renvoyées à un client. Limites : dépend du système d'exploitation, nécessite une compilation native pour certaines extensions C/C++ (voir S3 pour les bibliothèques natives).",
+      "use_cases": "• Utilisateur : Développeur d'API ; Tâche : Construire un service REST avec Fastify ; Résultat : API disponible 24/7, scalabilité horizontale via clustering\n• Utilisateur : Équipe DevOps ; Tâche : Automatiser des pipelines CI/CD avec des scripts Node ; Résultat : Déploiements rapides, logs centralisés grâce aux modules intégrés",
+      "products": "• Cible : PME souhaitant un tableau de bord interne ; Produit : SaaS de monitoring des logs basé sur Node.js + WebSocket ; difference : Utilise le runtime natif pour un faible temps de latence, contrairement à une solution hébergée générique\n• Cible : Agences créatives ; Produit : Outil de génération d'assets graphiques via Node.js + Canvas ; difference : Exploite les capacités d'E/S asynchrones pour traiter de gros volumes d'images en parallèle",
+      "monetization": "Acheteur : agence ou PME. Raison de payer : gain de productivité et réduction du temps de développement. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajustable selon nombre d'instances.",
+      "build_plan": "Périmètre : API REST + interface admin. Brique réutilisée : core Node.js, Express/Fastify. Travail à ajouter : authentification JWT, persistance PostgreSQL, UI React. Exclusions : services de paiement (Stripe) et IA avancée. Dépendances : node_modules, Docker pour déploiement. Coût estimé : 0 $ (open‑source) + hébergement cloud (≈15 €/mois). Délai : 3‑5 semaines en sprint intensif.",
+      "limitations": "Contraintes établies : besoin de compilation native pour modules C (ex. zstd, S3). Inconnues : performances exactes sous charge élevée, compatibilité avec futures versions de V8. Licence : non vérifiée dans les extraits, à confirmer. Maintenance : mise à jour régulière du runtime et des dépendances.",
+      "next_step": "Réaliser un prototype d'endpoint GET/POST et mesurer le temps de réponse sous charge; demander à un développeur backend s'il estime que le runtime répond à ses exigences de latence.",
+      "assessment": "Score 7 reflète la maturité du projet, la documentation disponible (S1) et la présence de modules natifs utiles (S3). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques. Les preuves proviennent des extraits S1 et S3 ; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "11d74515f2b571a3a6d70a5ff77ff8f143021e1d",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/nodejs/node/blob/11d74515f2b571a3a6d70a5ff77ff8f143021e1d/README.md",
+            "excerpt": "\n\n# Node.js\n\nNode.js is an open-source, cross-platform JavaScript runtime environment.\n\nFor information on using Node.js, see the [Node.js website][].\n\nThe Node.js project uses an [open governance model](./GOVERNANCE.md). The\n[OpenJS Foundation][] provides support for the project.\n\nContributors are expected to act in a collaborative manner to move\nthe project forward. We encourage the constructive exchange of contrary\nopinions and compromise. The [TSC](./GOVERNANCE.md#technical-steering-committee)\nreserves the right to limit or block contributors who repeatedly act in ways\nthat discourage, exhaust, or otherwise negatively affect other participa\n\n## Table of contents\n\n* [Support](#support)\n* [Release types](#release-types)\n  * [Download](#download)\n    * [Current and LTS releases](#current-and-lts-releases)\n    * [Nightly releases](#nightly-releases)\n    * [API documentation](#api-documentation)\n  * [Verifying binaries](#verifying-binaries)\n* [Building Node.js](#building-nodejs)\n* [Security](#security)\n* [Contributing to Node.js](#contributing-to-nodejs)\n* [Current project team members](#current-project-team-members)\n  * [TSC (Technical Steering Committee)](#tsc-technical-steering-committee)\n  * [Collaborators](#collaborators)\n  * [Triagers](#triagers)\n  * [Release keys](#release-keys\n\n## Support\n\nLooking for help? Check out the\n[instructions for getting support](.github/SUPPORT.md).\n\n\n\n## Release types\n\nNode.js follows [semantic versioning](https://semver.org).\n\n* **Alpha**: Under active development where semver-major changes are allowed.\n  Each October, a new release line "
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/nodejs/node/blob/11d74515f2b571a3a6d70a5ff77ff8f143021e1d/pyproject.toml",
+            "excerpt": "[tool.ruff]\nexclude = [\n  \"deps\",\n  \"tools/cpplint.py\",\n  \"tools/gyp\",\n  \"tools/inspector_protocol\",\n  \"tools/eslint/node_modules\"\n]\nline-length = 172\ntarget-version = \"py310\"\n\n[tool.ruff.lint]\nselect = [\n  \"ASYNC\",  # flake8-async\n  \"C90\",    # McCabe cyclomatic complexity\n  \"E\",      # pycodestyle\n  \"F\",      # Pyflakes\n  \"ICN\",    # flake8-import-conventions\n  \"INT\",    # flake8-gettext\n  \"PERF\",   # flake8-performance\n  \"PLC\",    # Pylint conventions\n  \"PLE\",    # Pylint errors\n  \"PLR09\",  # Pylint refactoring: max-args, max-branches, max returns, max-statements\n  \"PYI\",    # flake8-pyi\n  "
+          },
+          {
+            "id": "S3",
+            "path": "deps/zstd/lib/dll/example/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/nodejs/node/blob/11d74515f2b571a3a6d70a5ff77ff8f143021e1d/deps/zstd/lib/dll/example/README.md",
+            "excerpt": "\n\n## Usage of Command Line Interface\n\nCommand Line Interface (CLI) supports gzip-like arguments.\nBy default CLI takes an input file and compresses it to an output file:\n\n    Usage: zstd [arg] [input] [output]\n\nThe full list of commands for CLI can be obtained with `-h` or `-H`. The ratio can\nbe improved with commands from `-3` to `-16` but higher levels also have slower\ncompression. CLI includes in-memory compression benchmark module with compression\nlevels starting from `-b` and ending with `-e` with iteration time of `-i` seconds.\nCLI supports aggregation of parameters i.e. `-b1`, `-e18`, and `-i1` can be joined\ninto `-b1e18i1`.\n\n\n\n## The example of usage of static and dynamic ZSTD libraries with gcc/MinGW\n\nUse `cd example` and `make` to build `fullbench-dll` and `fullbench-lib`.\n`fullbench-dll` uses a dynamic ZSTD library from the `dll` directory.\n`fullbench-lib` uses a static ZSTD library from the `lib` directory.\n\n\n\n## The example of usage of static and dynamic ZSTD libraries with"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Node.js est un environnement d'exécution JavaScript open‑source et multiplateforme, destiné aux développeurs backend qui souhaitent créer des serveurs, des outils CLI ou des micro‑services. Il résout le problème d'exécuter du JavaScript hors du navigateur avec accès aux API système.",
+      "business_idea": "• Cible : PME souhaitant un tableau de bord interne ; Produit : SaaS de monitoring des logs basé sur Node.js + WebSocket ; difference : Utilise le runtime natif pour un faible temps de latence, contrairement à une solution hébergée générique\n• Cible : Agences créatives ; Produit : Outil de génération d'assets graphiques via Node.js + Canvas ; difference : Exploite les capacités d'E/S asynchrones pour traiter de gros volumes d'images en parallèle"
+    },
+    {
+      "name": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "description": "Production-grade engineering skills for AI coding agents.",
+      "language": "JavaScript",
+      "stars": 116941,
+      "forks": 12222,
+      "gained": "816 stars today",
+      "gained_n": 816,
+      "lang_color": "#f1e05a",
+      "category": "bibliothèque JavaScript pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Agent‑Skills propose des compétences réutilisables que les agents d’IA peuvent invoquer pour automatiser des tâches de développement, comme la revue de code ou la génération d’idées. L’utilisateur cible est un développeur ou une équipe cherchant à standardiser des bonnes pratiques dans leurs flux CI/CD.",
+      "workflow": "Entrée : l’utilisateur lance `npx skills add addyosmani/agent-skills --skill code-review-and-quality`. Traitement : le CLI télécharge le skill, le charge dans l’agent, exécute la séquence de vérifications définie dans le fichier SKILL.md. Résultat : l’agent renvoie un rapport de revue de code avec suggestions d’amélioration. Limite : le skill dépend d’un agent compatible et ne garantit pas la conformité aux standards internes ([S1]).",
+      "use_cases": "• Utilisateur : développeur freelance ; Tâche : exécuter une revue de code automatisée avant chaque merge ; Résultat : rapport structuré contenant les défauts détectés et les recommandations\n• Utilisateur : équipe produit ; Tâche : générer des idées de fonctionnalités via `/ideate` ; Résultat : liste d’idées classées par pertinence et faisabilité",
+      "products": "• Cible : PME tech ; Produit : plateforme SaaS qui expose les skills via une API REST ; difference : centralise la gestion des skills, ajoute l’authentification et la facturation à l’usage\n• Cible : agences créatives ; Produit : extension VS Code qui intègre les skills dans l’IDE ; difference : permet d’invoquer les skills directement depuis l’éditeur, sans passer par le terminal",
+      "monetization": "acheteur : PME ou agence; raison : gain de temps sur la revue de code et la génération d’idées; unité facturée : appels API ou licences mensuelles; modèle : abonnement à plusieurs niveaux, hypothèse de 30‑80 €/mois selon le volume d’appels, justifiée par la valeur du temps économisé (non mesurée dans les extraits).",
+      "build_plan": "périmètre : wrapper API autour du CLI existant; brique réutilisée : les fichiers SKILL.md et le CLI `skills`; travail à ajouter : serveur Node.js, authentification JWT, tableau de bord admin; exclusions : création de nouveaux skills, hébergement de modèles IA; dépendances : Vercel/Fly.io, PostgreSQL pour la facturation; coût estimé : 0 $ (plan gratuit) + 50‑100 $ / mois d’infrastructure; délai : 3‑5 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "connaissances établies : nécessite un agent compatible, licence non vérifiée; inconnues : stabilité du CLI sur Windows, support de langues autres que l’anglais; maintenance : mise à jour du CLI et des skills à chaque version du dépôt.",
+      "next_step": "tester l’installation du skill `code-review-and-quality` sur un projet local et recueillir le feedback d’un développeur senior sur la pertinence du rapport généré.",
+      "assessment": "score 7 reflète la pertinence technique (CLI fonctionnel, documentation claire) et l’adéquation avec le profil (full‑stack, besoin d’outils de productivité). Le fit_score reste neutre (5) faute de données de marché ou de validation d’usage. Les preuves proviennent des extraits README et des exemples d’usage ([S1], [S3]).",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "301b02b12bff98e4688e6984af6556802322bbde",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/README.md",
+            "excerpt": "\n\n## Quick Start\n\n**Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):\n\n```bash\nnpx skills add addyosmani/agent-skills            # install all 25 skills\nnpx skills add addyosmani/agent-skills --list     # browse before installing\n```\n\nOr grab individual skills:\n\n```bash\nnpx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge\nnpx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time\nnpx skills add \n\n## How Skills Work\n\nEvery skill follows a consistent anatomy:\n\n```\n┌─────────────────────────────────────────────────┐\n│  SKILL.md                                       │\n│                                                 │\n│  ┌─ Frontmatter ─────────────────────────────┐  │\n│  │ name: lowercase-hyphen-name               │  │\n│  │ description: Guides agents through [task].│  │\n│  │              Use when…                    │  │\n│  └──\n\n## How it compares\n\nWondering how this stacks up against [Superpowers](https://github.com/obra/superpowers) or [Matt Pocock's skills](https://github.com/mattpocock/skills)? See **[docs/comparison.md](docs/comparison.md)** for an honest, side-by-side look at how the three are shaped differently and when to reach for each — including a link to a controlled [head-to-head experiment](https://www.linkedin.com/pulse/superpowers-vs-agent-skills-faster-shipping-safer-reasoning-om-mishra-dzakf/).\n\n---\n\n\n\n# Agent Skills\n\n**Production-grade engineering skills for AI coding agents.**\n\nSkills encode the workflows, quality gates, and best practices that senior engineers use when building software"
+          },
+          {
+            "id": "S2",
+            "path": "evals/fixtures/ci-cd-and-automation/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/evals/fixtures/ci-cd-and-automation/package.json",
+            "excerpt": "{\n  \"name\": \"ci-fixture\",\n  \"private\": true,\n  \"scripts\": {\n    \"lint\": \"node --check src/slug.js\",\n    \"test\": \"node --test\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "skills/idea-refine/examples.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/addyosmani/agent-skills/blob/301b02b12bff98e4688e6984af6556802322bbde/skills/idea-refine/examples.md",
+            "excerpt": "\n\n# Ideation Session Examples\n\nThese examples demonstrate what good ideation sessions look like across different kinds of ideas. Study the rhythm, tone, and structure — not just the content. The skill should feel equally at home with a vague startup concept, a feature for an existing product, or a process improvement.\n\n---\n\n\n\n## Example 1: Vague Early-Stage Concept (Full 3-Phase Session)\n\n**User invokes:** `/ideate I want to help small local restaurants compete with the big delivery platforms`\n\n\n\n## Example 2: Feature Idea Within an Existing Product (Codebase-Aware)\n\n**User invokes:** `/ideate adding real-time collaboration to our document editor`\n\n\n\n## Example 3: Process/Workflow Idea (Non-Product)\n\n**User invokes:** `/ideate a better way to run our weekly team retrospectives — they've gotten stale and people dread them`\n\n\n\n## What to Notice in These Examples\n\n1. **The restatement changes the frame.** \"Help restaurants compete\" becomes \"retain existing customers.\" \"Add real-time c"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Agent‑Skills propose des compétences réutilisables que les agents d’IA peuvent invoquer pour automatiser des tâches de développement, comme la revue de code ou la génération d’idées. L’utilisateur cible est un développeur ou une équipe cherchant à standardiser des bonnes pratiques dans leurs flux CI/CD.",
+      "business_idea": "• Cible : PME tech ; Produit : plateforme SaaS qui expose les skills via une API REST ; difference : centralise la gestion des skills, ajoute l’authentification et la facturation à l’usage\n• Cible : agences créatives ; Produit : extension VS Code qui intègre les skills dans l’IDE ; difference : permet d’invoquer les skills directement depuis l’éditeur, sans passer par le terminal"
+    },
+    {
+      "name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "description": "An open source design system that's fully customizable and agent ready",
+      "language": "TypeScript",
+      "stars": 27034,
+      "forks": 2089,
+      "gained": "1,830 stars today",
+      "gained_n": 1830,
+      "lang_color": "#3178c6",
+      "category": "Design System / Bibliothèque UI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, proposant plus de 150 composants accessibles et un CLI. Il cible les équipes produit qui souhaitent un UI cohérent et extensible, y compris les agents IA qui utilisent les mêmes composants.",
+      "workflow": "Entrée : fichier de configuration (theme, composants) → Traitement : le CLI compile les composants avec StyleX, génère le CSS et crée les artefacts Storybook → Résultat : package NPM prêt à être importé dans une application React. Limites : nécessite React 19+, aucune prise en charge de frameworks non‑React, la licence n’est pas clairement indiquée dans les extraits ([S1], [S2]).",
+      "use_cases": "• Utilisateur : Développeur front‑end d’une PME ; Tâche : Construire rapidement une interface interne avec thème sombre et branding personnalisé ; Résultat : Application prête en quelques heures grâce aux composants pré‑stylés et au CLI\n• Utilisateur : Agent IA intégré à un IDE ; Tâche : Générer du code UI en se basant sur les composants Astryx ; Résultat : Code cohérent avec le design system sans besoin de réglages manuels",
+      "products": "• Cible : Agences web ; Produit : Plateforme SaaS de création de sites d’entreprise utilisant Astryx comme moteur UI ; diff : Ajoute un éditeur visuel, gestion multi‑tenant et facturation, alors que le dépôt brut ne fournit que la bibliothèque\n• Cible : Équipes IA internes ; Produit : Framework d’orchestration d’agents qui consomme les composants Astryx via le CLI ; diff : Intègre des agents autonomes pour produire des interfaces dynamiques, fonctionnalité absente du dépôt original",
+      "monetization": "Acheteur : PME ou agence ; raison de payer : gain de productivité et conformité UI ; unité facturée : abonnement mensuel par projet ; modèle : SaaS avec tarif de base hypothétique 49 €/mois (justifié par le coût d’hébergement, du support et du développement du layer éditeur).",
+      "build_plan": "Périmètre limité : wrapper SaaS autour d’Astryx (auth, multi‑tenant, facturation). Briques réutilisées : composants UI, CLI, thème. Travail à ajouter : back‑end Node/TS, intégration Stripe, UI d’administration. Exclusions : refonte du design system, support de frameworks non‑React. Dépendances : React, StyleX, Supabase/PostgreSQL, Docker. Coût estimé : 200 h de dev (≈ 4 semaines à plein temps). Délai : 4‑6 semaines conditionnel selon disponibilité des ressources.",
+      "limitations": "Licence MIT indiquée dans package.json mais non confirmée dans README ([S2]); aucune preuve de conformité RGPD ou de support multilingue ; dépendance forte à React 19+ ; maintenance du système de thèmes à prévoir.",
+      "next_step": "Réaliser un prototype d’authentification multi‑tenant avec le CLI et vérifier la compatibilité du thème neutral ; question à poser : « Quel niveau de personnalisation du thème attendez‑vous pour vos clients ? »",
+      "assessment": "Score 7 reflète la maturité du design system (large catalogue, usage interne chez Meta) et la pertinence pour le profil (full‑stack, UI/UX, IA). Fit_score 5 reste neutre car aucune contrainte régionale ou de conformité n’est prouvée. Les preuves proviennent des extraits README et package.json ([S1], [S2]).",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "22cb7e4055d6973110612a633eab6053f5613847",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/meta/astryx/blob/22cb7e4055d6973110612a633eab6053f5613847/README.md",
+            "excerpt": " \n\n \n\n \n\n\n\n## Architecture\n\n\n\n# Astryx\n\nAn open source design system that's fully customizable and built for how we build now:   by people and the agents working alongside them.\n\n**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)\n\n[ ](https://www.npmjs.com/package/@astryxdesign/core)\n[ ](LICENSE)\n[ ](https://github.com/meta/astryx/wiki/Contributing)\n\n[ ](https://astryx.atmeta.com)\n[ ](https://astryx.atmeta.com/storybook/)\n[ ](https://astryx.atmeta.com/sandbox/)\n\n**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://astryx.atmeta.com/storybook/)** · **[Sandbox](https://astryx.atmeta.com/sandbox/)** · **[Contributi\n\n## Overview\n\nAstryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.\n\nIt ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.\n\n**What makes Astryx different:**\n\n- **Open internals.** Componen\n\n## Getting Started\n\nAstryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).\n\nInstall Astryx, a theme, and its peer dependencies:\n\n```bash\n\n\n# npm\nnpm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli\n\n\n\n# pnpm\npnpm add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\npnpm add -D @astryxdesign/cli\n\n\n\n# yarn\nyarn add @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nyarn add -D @astryxdesign/cli\n```\n\nYou can also install the CLI once for your computer, so `astryx` works in any folder and every coding agent knows Astryx; in a project, it still runs that project's own version:\n\n```bash\nnpm i -g @astryxdesign/cli\n```\n\nProject install, global install, or both? `astryx docs global/project-global-or-both` compares them (both "
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/meta/astryx/blob/22cb7e4055d6973110612a633eab6053f5613847/package.json",
+            "excerpt": "{\n  \"name\": \"astryx\",\n  \"version\": \"0.0.0\",\n  \"private\": true,\n  \"license\": \"MIT\",\n  \"scripts\": {\n    \"build\": \"pnpm -F @astryxdesign/build build && pnpm -F @astryxdesign/core build && pnpm -F @astryxdesign/lab build && pnpm -F @astryxdesign/charts build && pnpm -F @astryxdesign/richtext build && pnpm -F @astryxdesign/vega build && pnpm -F @astryxdesign/native build && pnpm -F @astryxdesign/theme-neutral build && pnpm -F @astryxdesign/theme-matcha build && pnpm -F @astryxdesign/theme-stone build && pnpm -F @astryxdesign/theme-gothic build && pnpm -F @astryxdesign/theme-chocolate build && pnpm "
+          },
+          {
+            "id": "S3",
+            "path": "scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/meta/astryx/blob/22cb7e4055d6973110612a633eab6053f5613847/scripts/api-report/__fixtures__/repo/packages/demo/lib/cjs.js",
+            "excerpt": "// Copyright (c) Meta Platforms, Inc. and affiliates.\n\n/** @param {string} name */\nfunction greet(name) {\n  return `hi ${name}`;\n}\n\nmodule.exports = {greet};\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Astryx est un système de design open‑source basé sur React 19+ et StyleX, proposant plus de 150 composants accessibles et un CLI. Il cible les équipes produit qui souhaitent un UI cohérent et extensible, y compris les agents IA qui utilisent les mêmes composants.",
+      "business_idea": "• Cible : Agences web ; Produit : Plateforme SaaS de création de sites d’entreprise utilisant Astryx comme moteur UI ; diff : Ajoute un éditeur visuel, gestion multi‑tenant et facturation, alors que le dépôt brut ne fournit que la bibliothèque\n• Cible : Équipes IA internes ; Produit : Framework d’orchestration d’agents qui consomme les composants Astryx via le CLI ; diff : Intègre des agents autonomes pour produire des interfaces dynamiques, fonctionnalité absente du dépôt original"
+    }
+  ]
+}
