@@ -1,0 +1,578 @@
+{
+  "date": "2026-11-14",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "language": "Go",
+      "stars": 50929,
+      "forks": 3794,
+      "gained": "215 stars today",
+      "gained_n": 215,
+      "lang_color": "#00ADD8",
+      "category": "outil CLI d'analyse de code assisté par IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Open Code Review est un outil en ligne de commande qui utilise un LLM pour analyser du code source, fournir des commentaires ligne par ligne et appliquer des règles de sécurité. Il cible les développeurs qui souhaitent automatiser les revues de code et réduire les défauts avant le merge.",
+      "workflow": "Entrée : dépôt Git ou plage de commits → traitement : le CLI invoque le modèle LLM configuré, applique les règles intégrées (NPE, thread‑safety, XSS, injection SQL) et génère des commentaires structurés [S1] → résultat : rapport de revue affiché dans le terminal ou exporté en JSON. Limite : nécessite la configuration d’un endpoint LLM et ne supporte pas encore les revues interactives dans l’IDE.",
+      "use_cases": "• Utilisateur : Équipe DevOps ; Tâche : Intégrer la revue automatisée dans le pipeline CI/CD ; Résultat : Les pull‑requests sont annotées automatiquement, les défauts critiques sont bloqués avant le merge\n• Utilisateur : Développeur freelance ; Tâche : Analyser rapidement un projet open‑source avant de contribuer ; Résultat : Un rapport détaillé indique les vulnérabilités et les mauvaises pratiques, permettant de corriger avant soumission",
+      "products": "• Cible : PME avec équipes de 5‑20 développeurs ; Produit : Service SaaS de revue de code en ligne basé sur Open Code Review ; difference : Interface web multi‑tenant, facturation par revue, gestion des clés API LLM intégrée\n• Cible : Indépendants souhaitant un outil local ; Produit : Version desktop empaquetée avec un modèle LLM open‑source (ex. Ollama) ; difference : Pas de dépendance cloud, confidentialité des sources, paiement unique pour le binaire",
+      "monetization": "Acheteur : équipes de développement ; raison : réduire les coûts de bugs en production ; unité facturée : nombre de revues ou abonnement mensuel ; modèle : abonnement SaaS ou licence perpétuelle pour la version locale, fourchette hypothétique 20‑80 €/mois selon volume, justifiée par le gain de productivité et les frais d’infrastructure LLM.",
+      "build_plan": "Périmètre : wrapper web autour du CLI existant, UI React, gestion des comptes et facturation Stripe ; briques réutilisées : code Go du CLI, SDK OpenAI/Anthropic déjà présents [S2] ; travail à ajouter : API REST, tableau de bord, intégration OAuth, tests e2e ; exclusions : support de tous les langages, CI/CD avancé ; dépendances : Docker, Vercel, bases PostgreSQL ; coût estimé : 150‑250 h de développement, 3‑5 semaines conditionnelles.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à un LLM externe (coût et latence), besoin de configurer les clés API, maintenance du wrapper web non fournie dans les sources.",
+      "next_step": "Réaliser un prototype d’API qui invoque le CLI sur un dépôt test et mesurer le temps de réponse ; question à poser aux utilisateurs : « Quel niveau de détail de commentaire attendez‑vous d’une revue automatisée ? »",
+      "assessment": "Score 7 reflète la maturité du code (outil battle‑tested chez Alibaba, dépendances clairement listées) et la pertinence pour le profil (full‑stack, besoin d’outils B2B). Le fit_score reste neutre (5) faute d’indications précises sur le budget ou la région. Les preuves proviennent des extraits README et go.mod ; aucune donnée supplémentaire n’est établie dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "abd6416e6faec64e00af170a74633e34d56ab467",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/abd6416e6faec64e00af170a74633e34d56ab467/README.md",
+            "excerpt": " \n   \n     \n   \n   OpenCodeReview \n \n\n \n   \n     \n   \n \n \n   \n     \n   \n   \n     \n   \n \n \n     \n     \n     \n     \n     \n \n \n     \n     \n     \n     \n     \n     \n     \n \n \n  English |  简体中文  |  日本語  |  한국어  |  Русский \n \n\n---\n\n\n\n## How to Use\n\n\n\n#### Install\n\n```bash\nnpm install -g @alibaba-group/open-code-review\n```\n\nAfter installation, the `ocr` command is available globally.\n\nFor other installation methods (install script, GitHub Release binary, from source), see [Installation](https://open-codereview.ai/docs/installation).\n\n\n\n#### Quick Start\n\n**1. Configure LLM**\n\nYou must configure an LLM before reviewing code, unless you use [Delegation Mode](https://open-codereview.ai/docs/delegate).\n\n- **OCR calls the model:** `ocr review`, the `/open-code-review:review` command, and the `open-code-review` skill use OCR's own provider configuration, not your Claude Code Team/Pro subscription login. Authentication requirements depend on the provider; see [Configuration](https://open-codereview.ai/docs/configuration).\n- **The host agent calls the model:** the `/open-code-review:delegate-review` command and the `open-code-review-delegate` skill use the host agent's configured mo\n\n# Branch range — reviews feature-branch's changes since it diverged from main (merge-base mode)\nocr review --from main --to feature-branch\n\n\n\n## What is Open Code Review?\n\nOpen Code Review is an AI-powered code review CLI tool. It originated as Alibaba Group's internal official AI code review assistant — over the past two years, it has served tens of thousands of developers and identified millions of code defects. After thorough validation at massive scale, we incubated it into an open source project for the community. Simply configure a model endpoint to get started.\n\nIt read"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/alibaba/open-code-review/blob/abd6416e6faec64e00af170a74633e34d56ab467/go.mod",
+            "excerpt": "module github.com/alibaba/open-code-review\n\ngo 1.26.10\n\nrequire (\n\tcharm.land/bubbles/v2 v2.1.1\n\tcharm.land/bubbletea/v2 v2.0.8\n\tcharm.land/lipgloss/v2 v2.0.6\n\tgithub.com/anthropics/anthropic-sdk-go v1.63.1\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.35\n\tgithub.com/bmatcuk/doublestar/v4 v4.10.0\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/modelcontextprotocol/go-sdk v1.7.0\n\tgithub.com/openai/openai-go/v3 v3.51.0\n\tgithub.com/pkoukk/tiktoken-go v0.1.8\n\tgithub.com/spf13/cobra v1.10.2\n\tgithub.com/spf13/pflag v1.0.10\n\tgithub.com/tidwall/sjson v1.2.5\n\tgo.opentele"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/abd6416e6faec64e00af170a74633e34d56ab467/examples/README.md",
+            "excerpt": "\n\n# CI/CD Integration Examples\n\nThis directory contains examples for integrating OpenCodeReview (OCR) into various CI/CD pipelines.\n\n\n\n## Contents\n\n- **[github_actions/](./github_actions/)** - GitHub Actions integration example\n- **[gitlab_ci/](./gitlab_ci/)** - GitLab CI integration example\n- **[bitbucket_pipelines/](./bitbucket_pipelines/)** - Bitbucket Pipelines integration example\n- **[gitflic_ci/](./gitflic_ci/)** - GitFlic CI integration example\n- **[gerrit_ci/](./gerrit_ci/)** - Gerrit (Jenkins / Gerrit Trigger) integration example\n\nEach subdirectory contains its own README with detailed setup instructions.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Open Code Review est un outil en ligne de commande qui utilise un LLM pour analyser du code source, fournir des commentaires ligne par ligne et appliquer des règles de sécurité. Il cible les développeurs qui souhaitent automatiser les revues de code et réduire les défauts avant le merge.",
+      "business_idea": "• Cible : PME avec équipes de 5‑20 développeurs ; Produit : Service SaaS de revue de code en ligne basé sur Open Code Review ; difference : Interface web multi‑tenant, facturation par revue, gestion des clés API LLM intégrée\n• Cible : Indépendants souhaitant un outil local ; Produit : Version desktop empaquetée avec un modèle LLM open‑source (ex. Ollama) ; difference : Pas de dépendance cloud, confidentialité des sources, paiement unique pour le binaire"
+    },
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "description": "Keep your coding agent up to date with the latest web best practices",
+      "language": "TypeScript",
+      "stars": 5185,
+      "forks": 283,
+      "gained": "1,925 stars today",
+      "gained_n": 1925,
+      "lang_color": "#3178c6",
+      "category": "outil de ligne de commande / bibliothèque TypeScript",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un ensemble d'outils CLI permettant d'installer et de consulter des guides de bonnes pratiques web. Destiné aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards modernes.",
+      "workflow": "Entrée : exécution de `npx modern-web-guidance@latest install` (S1). Traitement : le wizard télécharge les guides, crée des fichiers de configuration et expose une interface CLI (`gd`). Résultat : un répertoire de guides consultables localement, sans besoin d'installation globale. Limite : aucune preuve d'intégration automatisée dans des pipelines CI/CD (non établi dans les extraits).",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Mettre à jour rapidement les pratiques CSS d'un nouveau projet ; Résultat : Accès instantané à la liste des 140 fonctionnalités CSS via le CLI, réduction du temps de recherche documentaire.\n• Utilisateur : Équipe produit d'une PME ; Tâche : Auditer la conformité d'une application existante aux standards HTML/DOM ; Résultat : Génération d'un rapport listant les 36 fonctionnalités HTML manquantes, facilitant la planification de refactorings.",
+      "products": "• Cible : PME souhaitant un audit automatisé ; Produit : Service SaaS qui consomme le CLI en arrière‑plan, analyse le code source et délivre un tableau de bord de conformité ; difference : Ajoute une couche serveur, stockage des historiques et notifications, alors que le dépôt brut reste purement local.\n• Cible : Indépendants créant des sites vitrines ; Produit : Extension VS Code qui intègre les guides et propose des snippets contextuels ; difference : Transforme le CLI en assistance en‑temps‑réel dans l'IDE, augmentant l'adoption sans infrastructure serveur.",
+      "monetization": "Acheteur : PME ou freelance payant pour le service d’audit ou l’extension premium ; reason to pay : Gain de temps sur la mise en conformité et réduction du risque de dette technique ; unit : abonnement mensuel par projet analysé ; model : freemium : accès limité aux 10 premières vérifications, puis tarif hypothétique 15‑30 €/mois selon le nombre de projets",
+      "build_plan": "scope : Développer une API wrapper autour du CLI et un tableau de bord web minimal ; reused bricks : Code existant du CLI (`gd`), scripts de post‑install (S2) ; work to add : API Node.js, stockage PostgreSQL (Supabase), UI React/Next.js, authentification OAuth ; exclusions : Gestion avancée des licences, support multilingue complet ; dependencies : Node >=22, Playwright pour les tests, Docker pour le déploiement ; Coûts estimés : Coût d’infrastructure cloud estimé 10‑20 €/mois (hébergement Vercel ou Fly.io) ; timeline : 4‑6 semaines de développement initial, conditionnel à la disponibilité d’un développeur full‑stack",
+      "limitations": "Licence du dépôt non vérifiée, aucune garantie de stabilité des scripts postinstall (S2). Le CLI ne gère pas d’intégration CI/CD native, et les guides sont statiques ; mise à jour dépend du mainteneur. Maintenance future à prévoir.",
+      "next_step": "Réaliser un test technique : appeler le CLI depuis un script Node pour récupérer la liste des fonctionnalités CSS et vérifier le format JSON. Question utilisateur : « Quel critère de conformité (ex. accessibilité, performance) est le plus prioritaire pour votre projet ? »",
+      "assessment": "Score 6 basé sur la présence d’un CLI fonctionnel (S1) et d’un script d’installation automatisé (S2). Le projet correspond aux priorités B2B/outil de productivité, mais l'absence de preuve d'API ou de modèle SaaS le maintient à un fit_score moyen (5). Manque de preuves sur la licence et la viabilité commerciale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "5e5cd33a7738f21281e3027732bcbd58cfa82bf1",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/README.md",
+            "excerpt": "\n\n##   Quickstart\n\n```shell\nnpx modern-web-guidance@latest install\n```\n\nThis command runs an interactive wizard to install Modern Web Guidance. See [Alternative Installation Methods](#-alternative-installation-methods) below.\n\n\n\n#### Try it out (without installing)\n\n```shell\n\n\n### CSS & Layout (140 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [::backdrop](https://web-platform-dx.github.io/web-features-explorer/features/backdrop/) | [content-visibility](https://web-platform-dx.github.io/web-features-explorer/features/content-visibility/) | [progress()](https://web-platform-dx.github.io/web-features-explorer/features/progress-function/) |\n| [::details-content](https://web-platform-dx.github.io/web-features-explorer/features/details-content/) | [contrast-color()](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/) | [reading-flow](https://web-platform-dx.github.io/web-features-explorer/fea\n\n### HTML & DOM (36 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [:autofill](https://web-platform-dx.github.io/web-features-explorer/features/autofill/) | [&lt;slot>](https://web-platform-dx.github.io/web-features-explorer/features/slot/) | [HTML streaming setters](https://web-platform-dx.github.io/web-features-explorer/features/html-streaming-setters/) |\n| [:indeterminate](https://web-platform-dx.github.io/web-features-explorer/features/indeterminate/) | [&lt;video>](https://web-platform-dx.github.io/web-features-explorer/features/video/) | [HTML-in-canvas](https://web-platform-dx.github.io/web-features-explorer/features/canvas-html/) |\n| [&lt\n\n### JavaScript & APIs (74 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [&lt;install>](https://web-platform-dx.github.io/web-features-explorer/features/install/) | [integrity() for url()](https://web-platform-dx.github.io/web-features-explorer/features/url-integrity/) | [Sanitizer API](https://web-platform-dx.github.io/web-features-explorer/features/sanitizer/) |\n| [&lt;meta name=\"text-scale\">](https://web-platform-dx.github.io/web-features-explorer/features/meta-text-scale/) | [Interaction contentful paint performance entries](https://web-platform-dx.github.io/web-features-explorer/features/interaction-contentfu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/package.json",
+            "excerpt": "{\n  \"name\": \"modern-web-guidance-src\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=22.18.0\"\n  },\n  \"bin\": {\n    \"gd\": \"bin/gd.ts\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"node src/core/postinstall.ts\",\n    \"test\": \"node --test --test-reporter ${TEST_REPORTER:-dot} \\\"src/**/*.test.ts\\\"\",\n    \"test:e2e\": \"playwright test -c src/dashboard/playwright.config.js\",\n    \"build\": \"node src/build/build-guides.ts --target=skills-cli && pnpm run build-dist\",\n    \"build-dist\": \"node src/build/build-dist.ts\",\n    \"build"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble d'outils CLI permettant d'installer et de consulter des guides de bonnes pratiques web. Destiné aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards modernes.",
+      "business_idea": "• Cible : PME souhaitant un audit automatisé ; Produit : Service SaaS qui consomme le CLI en arrière‑plan, analyse le code source et délivre un tableau de bord de conformité ; difference : Ajoute une couche serveur, stockage des historiques et notifications, alors que le dépôt brut reste purement local.\n• Cible : Indépendants créant des sites vitrines ; Produit : Extension VS Code qui intègre les guides et propose des snippets contextuels ; difference : Transforme le CLI en assistance en‑temps‑réel dans l'IDE, augmentant l'adoption sans infrastructure serveur."
+    },
+    {
+      "name": "openai/codex-security",
+      "url": "https://github.com/openai/codex-security",
+      "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm: https://www.npmjs.com/package/@openai/codex-security",
+      "language": "TypeScript",
+      "stars": 13328,
+      "forks": 1032,
+      "gained": "751 stars today",
+      "gained_n": 751,
+      "lang_color": "#3178c6",
+      "category": "outil de sécurité code (CLI & SDK)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Codex Security est un CLI et SDK TypeScript qui analyse les dépôts pour détecter, valider et corriger des vulnérabilités, destiné aux développeurs souhaitant automatiser la sécurité de leurs projets.",
+      "workflow": "Entrée : chemin du dépôt ou changement Git → traitement : le CLI exécute un scan profond, déduplique les résultats, propose des patches et peut publier les rapports sur le cloud → sortie : fichier Markdown de rapport, éventuellement tickets dans Linear/Jira. Limites : nécessite Node 22+ et Python 3.10+, aucune preuve d’intégration CI/CD complète dans les extraits. [S1]",
+      "use_cases": "• acteur : Développeur freelance ; tâche : Scanner le code d’une application SaaS avant le déploiement ; résultat : Rapport de vulnérabilités avec suggestions de correctifs automatisés\n• acteur : Équipe DevSecOps ; tâche : Intégrer le scan dans les pipelines GitHub Actions ; résultat : Détection précoce des failles et création automatique de tickets de suivi",
+      "products": "• cible : PME tech ; produit : Plateforme SaaS de gestion de sécurité code basée sur Codex Security ; différence : Interface web centralisée, tableau de bord multi‑projets, facturation par scan\n• cible : Agences de développement ; produit : Extension VS Code qui invoque le CLI et propose des patches en‑ligne ; différence : Intégration IDE, workflow instantané, modèle freemium avec crédits",
+      "monetization": "Acheteur : équipes de développement payant pour chaque scan ou abonnement mensuel ; raison : garantir la conformité sécurité et réduire le temps de correction ; unité facturée : scan complet ou nombre de patches appliqués ; modèle : abonnement tiered (ex. 50 €/mois pour 100 scans, tarif à l’usage au‑delà). Hypothèse de prix basée sur la valeur de prévention des incidents et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : UI web + API wrapper autour du CLI existant ; briques réutilisées : CLI et SDK open‑source ; travail à ajouter : tableau de bord, facturation Stripe, authentification OAuth, documentation client ; exclusions : scanner interne de code propriétaire, intégrations CI avancées ; dépendances : Node 22, Python 3.10, base de données PostgreSQL ; coût estimé : 150 h de dev (≈ 3 semaines) + 0,10 €/scan cloud. Délai : 3‑4 semaines conditionnel selon disponibilité des ressources.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à Node 22+ et Python 3.10, maintenance du CLI non couverte par le dépôt, besoin d’héberger le service cloud. Non établi dans les extraits pour la scalabilité en production.",
+      "next_step": "Réaliser un test technique : exécuter `cs scan` sur un petit projet interne et mesurer le temps de génération du rapport ; question à poser à un responsable DevSecOps : « Quel critère de sévérité utilisez‑vous pour prioriser les correctifs ? »",
+      "assessment": "Score 7 reflète la maturité du produit (CLI fonctionnel, documentation claire) et son adéquation avec le profil (full‑stack, besoin d’outils B2B). Fit_score reste neutre (5) faute de preuves sur la demande du marché ou la conformité légale. Les preuves proviennent des extraits README et exemples. Absence de données sur la licence et la viabilité commerciale limite l’évaluation.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "173483d7c658be7a512c93d9559bf01a05d5b196",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/173483d7c658be7a512c93d9559bf01a05d5b196/README.md",
+            "excerpt": "\n\n## Features\n\n- Scan repositories, selected paths, or Git changes. Deep scans repeat Standard scans and return their deduplicated findings.\n- Validate candidate findings, generate patches, and verify existing fixes.\n- Draft `SECURITY.md` policies and save threat models for later review.\n- Browse saved scans and findings, identify duplicates, assess severity against\n  your own rubric, and suggest owners from source and Git history.\n- Preview third-party scanner findings, save them locally, or publish supported reports to Codex Security Cloud. [Scanner import guides](docs/scanner-imports/README.md).\n- Track findings in Linear, Jira, or GitHub, p\n\n## Quick start\n\nRequires Node.js 22.13.0+ within 22.x, or Node.js 24.x or 26.x, and Python 3.10+.\nPython 3.10 also requires `tomli`.\n\nInstall the CLI globally and sign in:\n\n```bash\nnpm install --global @openai/codex-security\ncs login\n```\n\nRun your first scan from the repository directory:\n\n```bash\ncs scan .\n```\n\nWhen the scan completes, open the Markdown file at the **REPORT** path in the\nterminal. Run `cs scans show` from the same repository to find its latest\ncompleted scan again. See [scan scope and follow-up work](sdk/typescript/docs/cli.md#understand-scan-scope-and-follow-up-work)\nfor how to interpret exclusions in the report.\n\n`cs` and \n\n# Codex Security\n\nCodex Security helps you find, investigate, and fix vulnerabilities in your code.\nUse its security workflows in Codex, or automate them with the\n`@openai/codex-security` CLI and TypeScript SDK.\n\n- **In Codex:** [choose a security workflow](docs/agent-workflows.md).\n- **In a terminal:** [install the CLI and scan your repository](#quick-start).\n- **In automation:** use the [TypeScript SDK](#typescript-sdk) or\n  [GitHub Action](#github-actions).\n\n\n\n## Use in Codex\n\nOpen your"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/openai/codex-security/blob/173483d7c658be7a512c93d9559bf01a05d5b196/package.json",
+            "excerpt": "{\n  \"private\": true,\n  \"packageManager\": \"pnpm@11.25.0+sha512.5cde925b4f075f725eb71fbae18a42ffe784524789f19b61c731cb8721ec28aaee160e01a8d5af4fedb2a42cdbf300efe23db356b0d4a17b4d63e11f8ab7c956\"\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openai/codex-security/blob/173483d7c658be7a512c93d9559bf01a05d5b196/examples/README.md",
+            "excerpt": "\n\n# Examples\n\n| Task | Example |\n| --- | --- |\n| Scan an app, inspect a finding, patch it and verify the repair | [Invoice Desk walkthrough](invoice-desk/walkthrough.md). Copy only the synthetic app into the scan target. |\n| Compare code findings with deployed VPC reachability | [Network reachability sample](network-reachability-sample/README.md) pairs identical vulnerable workers with different security-group and network ACL rules. |\n| Supply your own validation test | [Custom validation demo](custom-validation/README.md). Run the local HTTP test on its own or let a model-backed scan invoke it. |\n| Scan pull requests and repositories with GitH\n\n## Preview a findings CSV\n\nUse this CSV format with `publish scan --to cloud`. For reports exported by a scanner,\nfollow its [provider guide](../docs/scanner-imports/README.md). To try the Cloud CSV\npreview, copy the header-only [template](findings.csv) and append this synthetic row.\n\n```csv\nocc_e79cb19591e696572a1c22be,csf_852f90d6e1177502ff11"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Codex Security est un CLI et SDK TypeScript qui analyse les dépôts pour détecter, valider et corriger des vulnérabilités, destiné aux développeurs souhaitant automatiser la sécurité de leurs projets.",
+      "business_idea": "• cible : PME tech ; produit : Plateforme SaaS de gestion de sécurité code basée sur Codex Security ; différence : Interface web centralisée, tableau de bord multi‑projets, facturation par scan\n• cible : Agences de développement ; produit : Extension VS Code qui invoque le CLI et propose des patches en‑ligne ; différence : Intégration IDE, workflow instantané, modèle freemium avec crédits"
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+      "language": "Python",
+      "stars": 71968,
+      "forks": 57386,
+      "gained": "256 stars today",
+      "gained_n": 256,
+      "lang_color": "#3572A5",
+      "category": "Application d'analyse financière automatisée",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un système Python qui agrège des données boursières multi‑marchés, génère des rapports décisionnels via LLM et les pousse vers des canaux de messagerie. Destiné aux analystes ou PME souhaitant automatiser la veille financière.",
+      "workflow": "Entrée : code ticker (ex. 600519) ou nom d'action → traitement : appel API `/api/v1/analysis/analyze` qui récupère cours, indicateurs, news, applique un LLM pour produire un rapport structuré → résultat : tableau décisionnel envoyé à WeChat, Slack ou email. Limites : dépendance aux sources de marché listées dans le README et aucune garantie de couverture exhaustive [S1].",
+      "use_cases": "• Utilisateur : Gestionnaire de portefeuille PME ; Tâche : Obtenir chaque matin un résumé des signaux d’achat/vente pour les titres suivis ; Résultat : Rapport PDF automatisé livré dans le canal Slack, réduisant le temps de veille de 2 h à quelques minutes\n• Utilisateur : Développeur d'outil SaaS ; Tâche : Intégrer l'API d'analyse dans une plateforme de reporting client ; Résultat : Fonctionnalité « Analyse de titre » disponible en self‑service, augmentant l'offre produit",
+      "products": "• Cible : Indépendants en finance ; Produit : Dashboard web SaaS qui centralise les analyses quotidiennes de plusieurs marchés ; difference : Interface prête à l’emploi, facturation par utilisateur, alors que le dépôt brut ne fournit que l’API et le CLI\n• Cible : Agences de marketing financier ; Produit : Service d’enrichissement de newsletters avec des insights boursiers générés par LLM ; difference : Ajoute un module de génération de contenu texte, absent du dépôt original",
+      "monetization": "Facturation par abonnement mensuel (ex. 15 €/mois) à l’entreprise cliente pour l’accès à l’API et au tableau de bord, modèle basé sur la valeur de gain de temps et de décision automatisée.",
+      "build_plan": "Réutiliser le code d’agrégation et le modèle LLM existants (brique principale). Ajouter une UI Next.js, gestion d’utilisateurs (Supabase) et facturation Stripe. Exclure le support de tous les marchés non‑couverts (ex. bourse de crypto). Dépendances : Python 3.11, FastAPI, Docker, Stripe SDK. Coût estimé : 200 € de cloud initial, 2 semaines de dev intensif.",
+      "limitations": "Couverture limitée aux marchés listés dans le README ; licence non vérifiée, donc risque juridique ; aucune preuve de scalabilité ou de conformité RGPD dans les extraits [S1].",
+      "next_step": "Tester l’endpoint `/api/v1/analysis/analyze` avec un ticker réel et interroger un analyste financier sur la pertinence du rapport généré.",
+      "assessment": "Score 7 reflète la présence d’une base fonctionnelle solide (LLM, agrégation multi‑marché) mais l’absence de preuves de licence et de scalabilité limite l’attractivité. Fit_score 5 par défaut faute de profil détaillé.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "ac9c33dfcf4cb84974d7bfee9c8661d88b8cfbff",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/ac9c33dfcf4cb84974d7bfee9c8661d88b8cfbff/README.md",
+            "excerpt": " \n\n\n\n# 📈 股票智能分析系统\n\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/stargazers)\n[ ](https://arxiv.org/abs/2608.26990)\n[ ](https://github.com/ZhuLinsen/daily_stock_analysis/actions/workflows/ci.yml)\n[ ](https://opensource.org/licenses/MIT)\n[ ](https://www.python.org/downloads/)\n[ ](https://github.com/features/actions)\n[ ](https://hub.docker.com/r/zhulinsen/daily_stock_analysis)\n\n \n     &nbsp;   \n \n\n> 🤖 基于 AI 大模型的 A股/港股/美股/日股/韩股/台股自选股智能分析系统，每日自动分析并推送「决策仪表盘」到企业微信/飞书/Telegram/Discord/Slack/邮箱\n\n[**产品预览**](#-产品\n\n## 🖥️ 产品预览\n\n \n      \n   点击动图查看完整演示 \n \n\n\n\n## ✨ 功能特性\n\n| 能力 | 覆盖内容 |\n|------|------|\n| AI 决策报告 | 核心结论、评分、趋势、买卖点位、风险警报、催化因素、操作检查清单 |\n| 多市场数据聚合 | 覆盖 A股、港股、美股、日股、韩股、台股和 ETF，支持行情、K 线、技术指标、新闻、公告、基本面与报告辅助数据；不同市场的数据源和能力边界见 [市场支持边界](docs/market-support.md) |\n| Web / 桌面工作台 | 手动分析、任务进度、历史报告、完整 Markdown、回测、持仓、配置管理、浅色 / 深色主题 |\n| Agent 策略问股 | 多轮追问，支持均线\n\n### 技术栈与数"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/ac9c33dfcf4cb84974d7bfee9c8661d88b8cfbff/pyproject.toml",
+            "excerpt": "[tool.black]\nline-length = 120\ntarget-version = ['py310', 'py311', 'py312']\ninclude = '\\.pyi?$'\nexclude = '''\n/(\n    \\.git\n    | \\.hg\n    | \\.mypy_cache\n    | \\.tox\n    | \\.venv\n    | venv\n    | _build\n    | buck-out\n    | build\n    | dist\n    | __pycache__\n)/\n'''\n\n[tool.isort]\nprofile = \"black\"\nline_length = 120\nskip = [\".git\", \"__pycache__\", \".env\", \"venv\", \".venv\"]\n\n[tool.bandit]\nexclude_dirs = [\"tests\", \"test_*.py\"]\nskips = [\"B101\"]  # assert 语句在测试中是允许的\n"
+          },
+          {
+            "id": "S3",
+            "path": "docs/examples/grok_bot/SKILL.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ZhuLinsen/daily_stock_analysis/blob/ac9c33dfcf4cb84974d7bfee9c8661d88b8cfbff/docs/examples/grok_bot/SKILL.md",
+            "excerpt": "---\nname: daily-stock-analysis\ndescription: 调用 daily_stock_analysis API 做股票分析。当用户说「分析茅台」「analyze AAPL」「帮我看看 600519」或要大盘复盘时使用。优先用股票代码。\n---\n\n\n\n# daily_stock_analysis\n\n本 Skill 供 Grok Bot（2026-08-11 AI teammate）使用。通过 HTTP 调用已部署的 DSA，不要把 Bot 配成 LiteLLM provider。\n\n需要环境变量 `DSA_BASE_URL`（DSA API 根地址，无尾斜杠）。\n\n\n\n## 何时使用\n\n- 分析单只或多只股票\n- 查询某股最新 DecisionSignal（早报 / 盯盘 Routine）\n- 大盘复盘\n\n\n\n## 工作流程\n\n1. 提取股票代码：A股 6 位（`600519`）、港股 `hk00700`、美股 `AAPL`、台股 `.TW` / `.TWO`。只有中文名时先提示用户给代码，或使用常见映射（茅台 → `600519`）。\n2. 需要完整分析时 POST `{DSA_BASE_URL}/api/v1/analysis/analyze`。**Routine 或预计超过 Bot HTTP 超时的分析，从一开始用异步**，不要先同步再改发异"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un système Python qui agrège des données boursières multi‑marchés, génère des rapports décisionnels via LLM et les pousse vers des canaux de messagerie. Destiné aux analystes ou PME souhaitant automatiser la veille financière.",
+      "business_idea": "• Cible : Indépendants en finance ; Produit : Dashboard web SaaS qui centralise les analyses quotidiennes de plusieurs marchés ; difference : Interface prête à l’emploi, facturation par utilisateur, alors que le dépôt brut ne fournit que l’API et le CLI\n• Cible : Agences de marketing financier ; Produit : Service d’enrichissement de newsletters avec des insights boursiers générés par LLM ; difference : Ajoute un module de génération de contenu texte, absent du dépôt original"
+    },
+    {
+      "name": "we-promise/sure",
+      "url": "https://github.com/we-promise/sure",
+      "description": "The personal finance app for everyone (by everyone)",
+      "language": "Ruby",
+      "stars": 14940,
+      "forks": 1136,
+      "gained": "925 stars today",
+      "gained_n": 925,
+      "lang_color": "#701516",
+      "category": "Application web de finance personnelle",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Sure est une application web complète de gestion financière et patrimoniale, destinée aux particuliers qui souhaitent suivre leurs dépenses, leurs revenus et leurs investissements. Elle propose notamment un tableau de bord, la catégorisation automatique des transactions et une fonctionnalité « Ask an Advisor » (source [S1]).",
+      "workflow": "Entrée : fichier CSV ou connexion à une banque via API → Traitement : importation dans la base PostgreSQL, agrégation via Rails, affichage dynamique avec Hotwire/Turbo (source [S2]) → Résultat : tableau de bord interactif affichant solde, budget et prévisions. Limites : aucune intégration bancaire native n’est fournie, le déploiement nécessite Docker ou Render et l’authentification n’est pas détaillée (source [S1]).",
+      "use_cases": "• Utilisateur : Indépendant ; Tâche : Suivre les dépenses professionnelles et personnelles séparément ; Résultat : Rapports mensuels exportables en CSV, visibilité sur la trésorerie\n• Utilisateur : PME ; Tâche : Offrir à ses employés un outil de suivi budgétaire ; Résultat : Gestion centralisée des comptes salariés, alertes de dépassement de budget",
+      "products": "• Cible : Freelances francophones ; Produit : Version SaaS hébergée avec authentification OAuth et connexion aux banques européennes ; difference : Supprime la complexité d’auto‑hébergement, ajoute des flux bancaires automatisés\n• Cible : Agences de conseil financier ; Produit : Plateforme white‑label intégrant le module « Ask an Advisor » avec IA de recommandation ; difference : Permet de proposer un service de conseil automatisé sans développer de zéro",
+      "monetization": "Acheteur : PME ou freelance ; raison : gain de temps et conformité financière; unité facturée : abonnement mensuel par utilisateur; modèle : abonnement SaaS avec période d’essai gratuit. Hypothèse de prix : 12‑25 €/mois selon le nombre d’utilisateurs, justifiée par la valeur d’un tableau de bord complet et le coût d’infrastructure (Docker, PostgreSQL, Redis).",
+      "build_plan": "Périmètre limité : hébergement SaaS du backend Rails et du front Hotwire, ajout d’OAuth et d’un connecteur bancaire (ex. Plaid). Briques réutilisées : code existant (Rails, Tailwind, Turbo), Dockerfile déjà présent. Travail à ajouter : implémentation OAuth, intégration API bancaire, UI multilingue, tests CI. Exclusions : version desktop Tauri (source [S3]) et fonctionnalités avancées de conseil IA. Dépendances : PostgreSQL, Redis, Render ou Vercel, éventuel service bancaire. Coût estimé : 0 € (déploiement gratuit sur Render) + 20‑50 $/mois d’infrastructure. Délai : 4‑6 semaines conditionnel selon disponibilité des API bancaires.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à Render/Render.yaml (source [S1]), aucune preuve d’intégration bancaire (non établi dans les extraits), maintenance du code Ruby/Rails à assurer, besoin de vérifier la compatibilité avec les dernières versions de Rails (source [S2]).",
+      "next_step": "Réaliser un prototype d’intégration OAuth avec un fournisseur bancaire test et interroger un freelance sur ses besoins exacts en suivi budgétaire.",
+      "assessment": "Score 6 reflète la maturité du code (Rails complet, UI prête) mais l’absence de preuves d’intégration bancaire et de licence claire limite l’attractivité. Fit_score 5 car le profil recherche un prototype rapide et le projet offre déjà une base solide, toutefois les incertitudes légales et fonctionnelles restent à combler.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "c9cc6d24c7aa29d5ecbddd99b7fe44c4004375c6",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/we-promise/sure/blob/c9cc6d24c7aa29d5ecbddd99b7fe44c4004375c6/README.md",
+            "excerpt": "[ ](https://deepwiki.com/we-promise/sure)\n[ ](https://oss.skylight.io/app/applications/s6PEZSKwcklL)\n[ ](https://app.dosu.dev/a72bdcfd-15f5-4edc-bd85-ea0daa6c3adc/ask)\n[ ](https://github.com/we-promise/sure/actions/workflows/pipelock.yml)\n\n \n   \n   \n \n\n \n   \n   Deutsch  | \n   Español  | \n   Français  | \n   日本語  | \n   한국어  | \n   Português  | \n   Русский  | \n   中文 \n \n\n\n\n### One-click Install\n\nRender expects each button target branch to have a `render.yaml` at the repository root. The branch-ready Blueprint files live in `branches/ /render.yaml` in a separate repo and can be copied to each corresponding branch root.\n\n| Option | What it deploys | `latest` | `stable` |\n| --- | --- | --- | --- |\n| **Sure - No AI** | Sure web, Sidekiq worker, Render Postgres, and Render Key Value. AI tokens are intentionally blank. | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates/tree/sure-no-ai-latest) | [ ](https://render.com/deploy?repo=https://github.com/we-promise/sure-render-templates\n\n# Sure: The personal finance app for everyone\n\n Get\ninvolved: [Discord](https://discord.gg/36ZGBsxYEK) • [Website](https://sure.am) • [Issues](https://github.com/we-promise/sure/issues) \n\n> [!IMPORTANT]\n> This repository is a community fork of the now-abandoned Maybe Finance project.  \n> Learn more in their [final release](https://github.com/maybe-finance/maybe/releases/tag/v0.6.0) doc.\n\n\n\n## Backstory\n\nThe [Maybe Finance](https://github.com/maybe-finance/maybe) (archived/abandoned repo) team spent most of 2021–2022 building a full-featured personal finance and wealth management app. It even included an “Ask an Advisor” feature that connected users with a real CFP/CFA — all included with your subscription.\n\nThe business end of things didn't work out, and so they stopped developing the app in mid-2023.\n\nAfter spending nearly $1 million on development (employees, contractors, data providers, infra, etc.), the team open-sourced the app. Their goal was to let users self-host it for free — and eventually launch a hosted ve\n\n## Hosting Sure\n\nSure is a fully working personal finance app that can be [self hosted with Docker](do"
+          },
+          {
+            "id": "S2",
+            "path": "Gemfile",
+            "kind": "dépendances",
+            "url": "https://github.com/we-promise/sure/blob/c9cc6d24c7aa29d5ecbddd99b7fe44c4004375c6/Gemfile",
+            "excerpt": "source \"https://rubygems.org\"\n\nruby file: \".ruby-version\"\n\n# Rails\ngem \"rails\", \"~> 8.1.0\"\n\n# Drivers\ngem \"pg\", \"~> 1.5\"\ngem \"redis\", \"~> 5.4\"\n\n# Bech32/Bech32m encoding for watch-only Bitcoin addresses.\ngem \"bech32\", \"1.5.1\"\n\n# Deployment\ngem \"puma\", \">= 7.2.1\"\ngem \"bootsnap\", require: false\n\n# Assets\ngem \"importmap-rails\"\ngem \"propshaft\"\ngem \"tailwindcss-rails\"\ngem \"lucide-rails\"\n\n# Hotwire + UI\ngem \"stimulus-rails\"\ngem \"turbo-rails\"\ngem \"view_component\"\n\n# https://github.com/lookbook-hq/lookbook/issues/712\n# TODO: Remove max version constraint when fixed\ngem \"lookbook\", \"2.3.11\"\n\ngem \"hotwi"
+          },
+          {
+            "id": "S3",
+            "path": "desktop/src-tauri/src/main.rs",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/we-promise/sure/blob/c9cc6d24c7aa29d5ecbddd99b7fe44c4004375c6/desktop/src-tauri/src/main.rs",
+            "excerpt": "#![cfg_attr(not(debug_assertions), windows_subsystem = \"windows\")]\n\nfn main() {\n    sure_desktop_lib::run();\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Sure est une application web complète de gestion financière et patrimoniale, destinée aux particuliers qui souhaitent suivre leurs dépenses, leurs revenus et leurs investissements. Elle propose notamment un tableau de bord, la catégorisation automatique des transactions et une fonctionnalité « Ask an Advisor » (source [S1]).",
+      "business_idea": "• Cible : Freelances francophones ; Produit : Version SaaS hébergée avec authentification OAuth et connexion aux banques européennes ; difference : Supprime la complexité d’auto‑hébergement, ajoute des flux bancaires automatisés\n• Cible : Agences de conseil financier ; Produit : Plateforme white‑label intégrant le module « Ask an Advisor » avec IA de recommandation ; difference : Permet de proposer un service de conseil automatisé sans développer de zéro"
+    },
+    {
+      "name": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
+      "language": "TypeScript",
+      "stars": 10607,
+      "forks": 793,
+      "gained": "108 stars today",
+      "gained_n": 108,
+      "lang_color": "#3178c6",
+      "category": "outil de collaboration / interface d'annotation pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Plannotator est une interface TypeScript qui permet d'annoter des plans, spécifications, markdown ou HTML et d’envoyer du feedback aux agents IA, destiné aux équipes de développement qui souhaitent garder la trace des révisions de code.",
+      "workflow": "Entrée : fichier de plan ou diff de PR → traitement : l'outil charge le contenu, le rend interactif, permet d’ajouter des annotations et de les transmettre via un hook à l'agent → résultat : feedback structuré envoyé à l'agent et visualisation des changements. Sources : description de la fonctionnalité d’annotation et d’envoi de feedback [S1]; installation du binaire et configuration automatique des hooks [S1]. Limites : les données restent locales, aucune persistance serveur n’est fournie, le support de formats est limité aux artefacts listés.",
+      "use_cases": "• Utilisateur : Développeur senior ; Tâche : Revoir le diff d’une PR et ajouter des commentaires contextuels ; Résultat : Le développeur envoie directement les annotations à l’agent Claude, qui propose des améliorations de code.\n• Utilisateur : Chef de projet produit ; Tâche : Valider un plan de fonctionnalité partagé avec l’équipe ; Résultat : Le plan annoté est stocké localement et partagé via le lien d’inbox, facilitant la prise de décision collective.",
+      "products": "• Cible : PME développant des IA internes ; Produit : Version SaaS hébergée de Plannotator avec stockage cloud des annotations ; difference : Ajoute la persistance multi‑utilisateur, l’authentification SSO et l’intégration Stripe pour la facturation.\n• Cible : Freelances créant des agents personnalisés ; Produit : Kit de composants React + API Node.js pour intégrer l’annotation directement dans leurs propres dashboards ; difference : Permet une personnalisation du UI et l’extension des hooks vers des pipelines CI/CD spécifiques.",
+      "monetization": "Acheteur : PME ou freelance qui veut centraliser les revues de code IA ; raison de payer : gain de temps et traçabilité des feedbacks ; unité facturée : abonnement mensuel par utilisateur ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, frais additionnels pour stockage >5 GB.",
+      "build_plan": "Périmètre limité : hébergement du front React et du backend Node.js, réutilisation du binaire plannotator existant ; travail à ajouter : persistance DB (PostgreSQL), auth (Supabase), facturation Stripe ; exclusions : refonte du moteur d’annotation visuelle ; dépendances : FastAPI pour les endpoints IA, Docker pour le déploiement ; coût estimé : 200 $ de services cloud mensuels ; délai : 4‑6 semaines (prototype fonctionnel).",
+      "limitations": "Contraintes établies : stockage local uniquement, licence MIT/Apache‑2.0 à vérifier pour usage commercial, aucune garantie de scalabilité ; inconnues : performances sous forte charge, conformité RGPD du stockage cloud hypothétique.",
+      "next_step": "Réaliser un test d’intégration du binaire avec un webhook Slack et interroger un développeur senior sur la pertinence du feedback automatisé.",
+      "assessment": "Score 7 reflète la pertinence technique (annotation + feedback IA) et la compatibilité avec les compétences du profil (TypeScript, intégrations SaaS). Fit_score reste neutre (5) faute de données sur le marché cible ou la demande confirmée.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "6f8dde3809f869c811ecc76579e2117ffb6074b8",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/backnotprop/plannotator/blob/6f8dde3809f869c811ecc76579e2117ffb6074b8/README.md",
+            "excerpt": " \n   \n \n\n\n\n \n   Everything you need to annotate and stay in the loop with your agents  \n   Inbox Surface • Artifacts • Code Review  \n   Annotate plans, specs, markdown, HTML, and other interactive artifacts. Review diffs and PRs. Send feedback to your agent. \n \n\n \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   \n     \n     \n   \n \n\n## Install\n\nOne installer covers almost every agent. It installs the `plannotator` binary, auto-detects your installed agents, and configures hooks, skills, and slash commands for each:\n\n```bash\n\n\n### Uninstall\n\nThe safe default removes recognized Plannotator-installed components and keeps\nyour local plans, history, drafts, guides, and settings:\n\n```bash\nplannotator uninstall\n```\n\nUse `--purge` for a full removal of known local Plannotator data as well:\n\n```bash\nplannotator uninstall --purge\n```\n\nPurge requires typing `purge` at the prompt and explains that the data is\nlocal-only: it is not stored on a Plannotator server and cannot be recovered.\nFor automation, pass `--yes` (or `-y`); non-interactive removal refuses to run\nwithout it. Use `--dry-run` to preview recognized work without making changes.\nHost integrations are always part o\n\n## How it works\n\n\n\n# Plannotator\n\n**⭐️ NEW:** [Plannotator Inbox](https://plannotator.ai/inbox/"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/backnotprop/plannotator/blob/6f8dde3809f869c811ecc76579e2117ffb6074b8/package.json",
+            "excerpt": "{\n  \"name\": \"plannotator\",\n  \"version\": \"0.28.64\",\n  \"private\": true,\n  \"description\": \"Interactive Plan Review for Claude Code - annotate plans visually, share with team, automatically send feedback\",\n  \"author\": \"backnotprop\",\n  \"license\": \"MIT OR Apache-2.0\",\n  \"bin\": {\n    \"plannotator\": \"bin/plannotator.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/backnotprop/plannotator.git\"\n  },\n  \"homepage\": \"https://github.com/backnotprop/plannotator\",\n  \"bugs\": {\n    \"url\": \"https://github.com/backnotprop/plannotator/issues\"\n  },\n  \"workspaces\": [\n    \"apps/*\",\n   "
+          },
+          {
+            "id": "S3",
+            "path": "packages/system/demo/serve.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/backnotprop/plannotator/blob/6f8dde3809f869c811ecc76579e2117ffb6074b8/packages/system/demo/serve.ts",
+            "excerpt": "// A page for screenshots of the drawing at rest: plannotator's own drawing\n// (the test fixture in test/fixtures/plannotator), drawn by SystemThumb and\n// SystemView in the Inbox's tokens. Not shipped; run it with `bun run demo` and open the printed address.\n//\n//   ?shot=thumb                       the card picture in a message card\n//   ?shot=view&sheet=C-001&reading=simple&layout=window|pane\n//   ?shot=card&pr=2543|2563           the review card with the change picture (&gate=1: the gate only; &open=1: PR 2563 open)\n//   ?shot=change&pr=2543&view=before|after|steps   the full System view of a PR (&gate=1, &open=1 as above)\n//   ?shot=plan                        a plan drawn dashed, as Shape's System (plan) tab\n//   ?shot=touches&layout=pane|window  three open PRs on the drawing at rest, each touched part labelled (&lead=1: a \"‹ Reviews\" control leads the bar)\n//   &mode=light|dark                  the theme mode (dark by default)\n//   &keys=off                         the single-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Plannotator est une interface TypeScript qui permet d'annoter des plans, spécifications, markdown ou HTML et d’envoyer du feedback aux agents IA, destiné aux équipes de développement qui souhaitent garder la trace des révisions de code.",
+      "business_idea": "• Cible : PME développant des IA internes ; Produit : Version SaaS hébergée de Plannotator avec stockage cloud des annotations ; difference : Ajoute la persistance multi‑utilisateur, l’authentification SSO et l’intégration Stripe pour la facturation.\n• Cible : Freelances créant des agents personnalisés ; Produit : Kit de composants React + API Node.js pour intégrer l’annotation directement dans leurs propres dashboards ; difference : Permet une personnalisation du UI et l’extension des hooks vers des pipelines CI/CD spécifiques."
+    },
+    {
+      "name": "louislam/uptime-kuma",
+      "url": "https://github.com/louislam/uptime-kuma",
+      "description": "A fancy self-hosted monitoring tool",
+      "language": "JavaScript",
+      "stars": 93990,
+      "forks": 8729,
+      "gained": "71 stars today",
+      "gained_n": 71,
+      "lang_color": "#f1e05a",
+      "category": "outil de surveillance auto‑hébergé",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Uptime Kuma est une application web permettant de surveiller la disponibilité de services HTTP(s), TCP, DNS, WebSocket, etc. Elle s’adresse aux administrateurs système ou aux petites équipes qui souhaitent un tableau de bord réactif et des alertes multicanaux.",
+      "workflow": "Entrée : URL ou adresse IP du service à monitorer → Traitement : le serveur exécute des requêtes toutes les 20 s (voir [S1]) et enregistre les réponses, les temps de latence et les certificats → Résultat : tableau de bord affichant l’état, graphiques et notifications via Telegram, Slack, email, etc. Limite : les intervalles sont fixes à 20 s et la charge augmente linéairement avec le nombre de moniteurs, aucune preuve de scalabilité au-delà de quelques centaines de cibles.",
+      "use_cases": "1️⃣ Administrateur d’une PME : configure un monitor HTTP pour le site vitrine, reçoit une alerte Slack dès qu’une panne survient. 2️⃣ Fournisseur d’hébergement : déploie un container Docker pour chaque client, utilise la fonction « Push » pour que les services internes signalent leur état sans sondage actif.",
+      "products": "1️⃣ Service SaaS « Uptime Pro » : cible les PME, propose une interface hébergée, facturation mensuelle, ajout de rapports PDF et d’API d’export. Différence : prise en charge du multi‑tenant et SLA. 2️⃣ Wrapper CLI → Web : cible les développeurs qui veulent transformer leurs scripts de vérification en tableau de bord partagé, ajoute une couche d’authentification OAuth et un module de facturation à l’usage.",
+      "monetization": "Acheteur : PME ou freelance qui veut éviter les interruptions de service. Raison de payer : garantie d’alerte rapide et tableau de bord centralisé. Unité facturée : abonnement mensuel par instance ou par nombre de moniteurs actifs. Modèle : abonnement de base 15 €/mois + 2 €/moniteur supplémentaire (hypothèse à tester).",
+      "build_plan": "Périmètre limité : hébergement du backend Node.js et de la UI Vue, réutilisation du code existant de monitoring. Travail à ajouter : implémentation du multi‑tenant, facturation Stripe, tableau de bord admin, documentation API. Exclusions : refonte du moteur de sondage, support de protocoles non listés. Dépendances : Node ≥ 26.2, PM2, base PostgreSQL ou SQLite. Coût estimé : 30 h de développement initial, 1 semaine de tests, hébergement cloud à partir de 10 €/mois.",
+      "limitations": "Contrainte établie : intervalles fixes de 20 s, notifications limitées aux services listés ([S1]). Inconnues : performance à grande échelle, conformité RGPD du stockage des logs. Licence : MIT (voir package.json [S2]), donc réutilisable commercialement. Maintenance : mise à jour régulière du dépôt open‑source, support interne requis.",
+      "next_step": "Réaliser un prototype de facturation multi‑tenant avec Stripe en mode test, puis interroger un responsable IT d’une PME sur le prix acceptable pour un tableau de bord de monitoring.",
+      "assessment": "Score 7 reflète la maturité du code (beta 3.0, UI réactive, nombreuses notifications) et la pertinence pour le profil (full‑stack, besoin d’outils B2B). Fit_score 5 car aucune contrainte régionale ou de délai n’est fournie. Manque de preuves sur la scalabilité et la conformité légale, d’où la mention « non établi dans les extraits » pour ces aspects.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4f6661cfa83a06be0353d5536ef3d9ee0064f534",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/louislam/uptime-kuma/blob/4f6661cfa83a06be0353d5536ef3d9ee0064f534/README.md",
+            "excerpt": " \n     \n \n\n\n\n## ⭐ Features\n\n- Monitoring uptime for HTTP(s) / TCP / HTTP(s) Keyword / HTTP(s) Json Query / Websocket / Ping / DNS Record / Push / Steam Game Server / Docker Containers\n- Fancy, Reactive, Fast UI/UX\n- Notifications via Telegram, Discord, Gotify, Slack, Pushover, Email (SMTP), and [90+ notification services, click here for the full list](https://github.com/louislam/uptime-kuma/tree/master/src/components/notifications)\n- 20-second intervals\n- [Multi Languages](https://github.com/louislam/uptime-kuma/tree/master/src/lang)\n- Multiple status pages\n- Map status pages to specific domains\n- Ping chart\n- Certificate info\n- Proxy support\n- 2FA supp\n\n## 🔧 How to Install\n\n\n\n# Install PM2 if you don't have it:\nnpm install pm2 -g && pm2 install pm2-logrotate\n\n\n\n### Advanced Installation\n\nIf you need more options or need to browse via a reverse proxy, please read:\n\n \n\n\n\n## 🆙 How to Update\n\nPlease read:\n\n \n\n\n\n### Bug Reports / Feature Requests\n\nIf you want to report a bug or request a new feature, feel free to open a [new issue](https://github.com/louislam/uptime-kuma/issues).\n\n\n\n# Uptime Kuma\n\nUptime Kuma is an easy-to-use self-hosted monitoring tool.\n\n                   \n[ ](https://github.com/sponsors/louislam)\n\n \n\n\n\n## 🥔 Live Demo\n\nTry it!\n\nDemo Server (Location: Frankfurt - Germany):  \n\nIt is a temporary live demo, all data will be deleted after 10 minutes. Spons"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/louislam/uptime-kuma/blob/4f6661cfa83a06be0353d5536ef3d9ee0064f534/package.json",
+            "excerpt": "{\n    \"name\": \"uptime-kuma\",\n    \"version\": \"3.0.0-beta.0\",\n    \"license\": \"MIT\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/louislam/uptime-kuma.git\"\n    },\n    \"engines\": {\n        \"node\": \">= 26.2.0\"\n    },\n    \"scripts\": {\n        \"lint:js\": \"eslint --ext \\\".js,.vue\\\" --ignore-path .gitignore .\",\n        \"lint:js-prod\": \"node --run lint:js\",\n        \"lint-fix:js\": \"eslint --ext \\\".js,.vue\\\" --fix --ignore-path .gitignore .\",\n        \"lint:style\": \"stylelint \\\"**/*.{vue,css,scss}\\\" --ignore-path .gitignore\",\n        \"lint-fix:style\": \"stylelint \\\"**/*.{vue"
+          },
+          {
+            "id": "S3",
+            "path": "test/e2e/specs/example.spec.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/louislam/uptime-kuma/blob/4f6661cfa83a06be0353d5536ef3d9ee0064f534/test/e2e/specs/example.spec.js",
+            "excerpt": "import { expect, test } from \"../fixtures\";\nimport { login, restoreSqliteSnapshot, screenshot } from \"../util-test\";\n\ntest.describe(\"Example Spec\", () => {\n    test.beforeEach(async ({ page }) => {\n        await restoreSqliteSnapshot(page);\n    });\n\n    test(\"dashboard\", async ({ page }, testInfo) => {\n        await page.goto(\"./dashboard\");\n        await login(page);\n        await screenshot(testInfo, page);\n    });\n\n    test(\"set up monitor\", async ({ page }, testInfo) => {\n        await page.goto(\"./add\");\n        await login(page);\n\n        await expect(page.getByTestId(\"monitor-type-select\")).toBeVisible();\n        await page.getByTestId(\"monitor-type-select\").selectOption(\"http\");\n        await page.getByTestId(\"friendly-name-input\").fill(\"example.com\");\n        await page.getByTestId(\"url-input\").fill(\"https://www.example.com/\");\n        await page.getByTestId(\"save-button\").click();\n        await page.waitForURL(\"/dashboard/*\"); // wait for the monitor to be created\n\n        aw"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Uptime Kuma est une application web permettant de surveiller la disponibilité de services HTTP(s), TCP, DNS, WebSocket, etc. Elle s’adresse aux administrateurs système ou aux petites équipes qui souhaitent un tableau de bord réactif et des alertes multicanaux.",
+      "business_idea": "1️⃣ Service SaaS « Uptime Pro » : cible les PME, propose une interface hébergée, facturation mensuelle, ajout de rapports PDF et d’API d’export. Différence : prise en charge du multi‑tenant et SLA. 2️⃣ Wrapper CLI → Web : cible les développeurs qui veulent transformer leurs scripts de vérification en tableau de bord partagé, ajoute une couche d’authentification OAuth et un module de facturation à l’usage."
+    },
+    {
+      "name": "block/buzz",
+      "url": "https://github.com/block/buzz",
+      "description": "A hive mind communication platform",
+      "language": "Rust",
+      "stars": 37386,
+      "forks": 4945,
+      "gained": "97 stars today",
+      "gained_n": 97,
+      "lang_color": "#dea584",
+      "category": "Plateforme collaborative auto‑hébergeable (serveur + clients)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Buzz est un espace de travail où humains et agents IA cohabitent dans des salles partagées, accessible via desktop, mobile ou CLI. Il cible les équipes techniques qui souhaitent combiner interaction humaine et automatisation IA dans un environnement souverain.",
+      "workflow": "Entrée : un utilisateur ou un bot se connecte au relay via WebSocket en s’authentifiant (NIP‑42) [S3]. Traitement : le relay orchestre les messages, les stocke et les distribue aux agents et aux clients via le module buzz‑pubsub [S2]. Résultat : chaque participant reçoit les réponses ou actions déclenchées, visible dans la même salle [S1]. Limites : nécessite Docker, Hermit ou Rust ≥ 1.88, aucune interface web prête à l’emploi fournie.",
+      "use_cases": "• Utilisateur : Développeur d’équipe ; Tâche : Déployer un relay local pour coordonner des scripts d’automatisation et des revues de code en temps réel ; Résultat : Tous les membres voient les actions des bots et peuvent intervenir immédiatement\n• Utilisateur : Agence marketing ; Tâche : Intégrer un bot de génération de contenus IA qui publie des drafts dans la salle Buzz ; Résultat : Les créateurs éditent les drafts directement dans l’interface collaborative",
+      "products": "• Cible : PME tech ; Produit : Service SaaS « Buzz Cloud » qui héberge le relay, fournit UI web et gestion d’utilisateurs ; difference : Supprime l’étape d’auto‑hébergement et ajoute facturation à l’usage, tout en conservant l’architecture open‑source\n• Cible : Freelance IA ; Produit : Kit de développement « Buzz Agent SDK » pour créer rapidement des agents personnalisés en Python/TS ; difference : Enveloppe les crates Rust existantes avec des bindings simples, réduisant le temps de mise en œuvre",
+      "monetization": "Acheteur : PME ou freelance cherchant à automatiser des workflows collaboratifs ; reason to pay : Accès à une infrastructure gérée, support, et UI prête à l’emploi ; unit : abonnement mensuel par relay actif ; model : Tarif de base 30 €/mois + 0,01 €/message au‑delà de 10 000 messages (hypothèse à tester) ; price range explanation : Le prix reflète les coûts d’infrastructure cloud, de stockage et de support, tout en restant compétitif face aux solutions de messagerie d’entreprise",
+      "build_plan": "scope : Créer le service SaaS en réutilisant les crates buzz‑relay, buzz‑core et buzz‑pubsub ; reused bricks : crates/buzz‑relay, buzz‑core, buzz‑pubsub, buzz‑auth ; additional work : Développer UI web (React + Tailwind), système de facturation, tableau de bord admin ; exclusions : Applications desktop/mobile natives, extensions de bots avancés ; dependencies : Docker, PostgreSQL, Redis, service d’authentification OAuth ; Coûts estimés : Infrastructure cloud estimée 150 €/mois, licences éventuelles pour services tiers ; timeline : 4‑6 semaines pour MVP (déploiement relay, UI basique, facturation) – conditionnel à la disponibilité d’un développeur full‑stack",
+      "limitations": "Licence non vérifiée, documentation limitée, dépendance à Docker et à Rust ≥ 1.88 [S1]; inconnues sur scalabilité multi‑relay et conformité RGPD [non établi dans les extraits].",
+      "next_step": "Déployer un relay local et tester l’intégration d’un bot simple via l’exemple countdown‑bot [S3]; demander à un responsable d’équipe s’il verrait un intérêt à centraliser bots et humains dans une même salle.",
+      "assessment": "Score 7 basé sur la présence d’une architecture complète et d’exemples d’agents [S3]; le projet correspond aux priorités B2B SaaS et IA collaborative du profil, mais l’absence de licence claire et de UI prête à l’emploi réduit la certitude. Fit_score reste neutre (5) faute de preuves de marché.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "5780bd7d94098150a6ff4dc5bc4e8c84f20634e7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/block/buzz/blob/5780bd7d94098150a6ff4dc5bc4e8c84f20634e7/README.md",
+            "excerpt": " Buzz 🐝 \n\n \n   A workspace where humans and agents build together, on a relay you own. \n \n\n \n   Vision  ·\n   Sovereign  ·\n   Forge  ·\n   Agents  ·\n   Architecture  ·\n   Releasing  ·\n   Apache 2.0 \n \n\n \n   \n \n\n \n    People and agents building together in the same room.  \n \n\n---\n\n\n\n## Quick start\n\nThis stands up the relay locally. For the desktop app, see [block/buzz-app](https://github.com/block/buzz-app); for the mobile app, see [mobile/README.md](mobile/README.md).\n\nYou'll need [Docker](https://docs.docker.com/get-docker/) and [Hermit](https://cashapp.github.io/hermit/) (or Rust 1.88+, Node 24+, pnpm 10+, `just`).\n\n**Once:**\n```bash\ngit clone https://github.com/block/buzz.git && cd buzz\n. ./bin/activate-hermit   # pinned toolchain (tools auto-download on first use)\njust setup && just build\n```\n\n`just setup` runs `just bootstrap` automatically — it copies `.env.example` to `.env` if needed, downloads all required to\n\n## Architecture\n\n```\n┌─────────────────────────────────────────────────────────────────────────┐\n│                             Clients                                     │\n│  Human client         AI agent              CLI / scripts               │\n│  (desktop, mobile)    (Goose, Codex, ...)   (buzz-cli, agents)          │\n│       │               ┌──────────────┐               │                  │\n│       │               │  buzz-acp  │ \n\n## What is this, really?\n\nBuzz is a self-hostable workspace where humans and AI agents share the same rooms.\n\nA Buzz **community** is the workspace a user reaches by URL. In the single-relay\nsetup that ship"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/block/buzz/blob/5780bd7d94098150a6ff4dc5bc4e8c84f20634e7/Cargo.toml",
+            "excerpt": "[workspace]\nmembers = [\n    \"crates/buzz-relay\",\n    \"crates/buzz-core\",\n    \"crates/ifc-core\",\n    \"crates/buzz-conformance\",\n    \"crates/buzz-push-gateway\",\n    \"crates/buzz-db\",\n    \"crates/buzz-pubsub\",\n    \"crates/buzz-auth\",\n    \"crates/buzz-search\",\n    \"crates/buzz-audit\",\n    \"crates/buzz-acp\",\n    \"crates/buzz-agent\",\n    \"crates/sprig\",\n    \"crates/buzz-test-client\",\n    \"crates/buzz-ws-client\",\n    \"crates/buzz-admin\",\n    \"crates/buzz-deletion\",\n    \"crates/buzz-feature-flags\",\n    \"crates/buzz-workflow\",\n    \"crates/buzz-media\",\n    \"crates/buzz-cli\",\n    \"crates/buzz-pairing-cli"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/block/buzz/blob/5780bd7d94098150a6ff4dc5bc4e8c84f20634e7/examples/README.md",
+            "excerpt": "\n\n# Examples\n\nThis directory contains reference material for building on Buzz beyond the desktop app and AI agents.\n\n\n\n## `countdown-bot/`\n\nA small non-AI bot that connects directly to the Buzz relay over WebSocket, authenticates with NIP-42, subscribes to one channel, and replies to deterministic commands like `!countdown 5` and `!fib 8`.\n\nIt demonstrates two identity paths:\n\n1. **Standalone bot identity** — the bot authenticates with its own key and must be explicitly admitted to closed/allowlisted relays.\n2. **Owner-attested / agent OAuth path** — the bot authenticates with its own key while presenting the same `BUZZ_AUTH_TAG` NIP-OA credential that Buzz agents receive from the owner/agent OAuth flow, so a relay can admit it because its owner is alread\n\n## `meadow-core/`\n\nA persona-pack example for Buzz agents.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Buzz est un espace de travail où humains et agents IA cohabitent dans des salles partagées, accessible via desktop, mobile ou CLI. Il cible les équipes techniques qui souhaitent combiner interaction humaine et automatisation IA dans un environnement souverain.",
+      "business_idea": "• Cible : PME tech ; Produit : Service SaaS « Buzz Cloud » qui héberge le relay, fournit UI web et gestion d’utilisateurs ; difference : Supprime l’étape d’auto‑hébergement et ajoute facturation à l’usage, tout en conservant l’architecture open‑source\n• Cible : Freelance IA ; Produit : Kit de développement « Buzz Agent SDK » pour créer rapidement des agents personnalisés en Python/TS ; difference : Enveloppe les crates Rust existantes avec des bindings simples, réduisant le temps de mise en œuvre"
+    },
+    {
+      "name": "tradermonty/claude-trading-skills",
+      "url": "https://github.com/tradermonty/claude-trading-skills",
+      "description": "Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.",
+      "language": "Python",
+      "stars": 4356,
+      "forks": 883,
+      "gained": "69 stars today",
+      "gained_n": 69,
+      "lang_color": "#3572A5",
+      "category": "outil d'automatisation de workflow financier",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Toolkit de workflows Claude Skills pour investisseurs individuels, permettant de structurer revue de marché, gestion du risque et planification de trades. Destiné aux traders à temps limité qui utilisent une approche long‑term + swing.",
+      "workflow": "Entrée : objectifs de l'utilisateur (ex. « analyse du régime de marché quotidien ») → traitement : exécution du workflow YAML (ex. market-regime-daily.yaml) qui orchestre plusieurs skills d'analyse et génère un rapport d'exposition → résultat : artefact texte/SVG illustrant le régime et les recommandations, limité à des données fictives et non à des instructions de trading. [S1][S3]",
+      "use_cases": "• Utilisateur : Investisseur indépendant ; Tâche : Obtenir chaque matin un résumé du régime de marché et des indicateurs de tendance ; Résultat : Rapport synthétique avec recommandations de positionnement, basé sur des données simulées\n• Utilisateur : Gestionnaire de portefeuille PME ; Tâche : Documenter les décisions de swing trading après chaque session ; Résultat : Journal automatisé incluant analyse de risque et métriques de performance, généré par le workflow",
+      "products": "• Cible : PME et indépendants francophones ; Produit : Plateforme SaaS de revue de marché automatisée ; difference : Interface web multilingue, intégration de données réelles via API tierces, contraste avec le dépôt brut qui ne fournit que des exemples fictifs\n• Cible : Agences de conseil financier ; Produit : Module de génération de rapports de conformité réglementaire ; difference : Ajout de contrôles de conformité (RGPD, MiFID) et export PDF, alors que le dépôt original ne gère que la visualisation",
+      "monetization": "Abonnement mensuel aux entreprises (ex. 49 €/mois) pour accès aux flux de données réelles, facturé par utilisateur actif ; modèle freemium avec 10 analyses gratuites par mois.",
+      "build_plan": "Réutiliser les workflows YAML et le moteur de skills existants ; développer une UI Next.js, ajouter un connecteur API marché (ex. Alpha Vantage) ; exclure la partie documentation Jekyll ; dépendances : FastAPI, Docker, PostgreSQL ; coût estimé 2 k€ d'infrastructure cloud, 3 semaines de développement front‑end.",
+      "limitations": "Les exemples fournis sont fictifs et ne constituent pas un conseil d'investissement ; licence non vérifiée, il faut confirmer les droits d'utilisation ; aucune validation de conformité RGPD ni de performances en production.",
+      "next_step": "Tester l'intégration d'une API de données de marché réelle sur un workflow simple ; interroger un trader indépendant sur la pertinence du format de rapport.",
+      "assessment": "Score 6 reflète la pertinence du concept de workflow automatisé pour le profil Full‑Stack/AI, mais l'absence de données réelles et de licence claire limite l'adoption immédiate. Fit_score reste neutre (5) faute de critères de région ou de budget spécifiques.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "3bd4b7a2c7329ffb5efef95db2e53d1125b3dc40",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/3bd4b7a2c7329ffb5efef95db2e53d1125b3dc40/README.md",
+            "excerpt": "\n\n### See Example Outputs\n\nThese visual excerpts use fictional data to show the kinds of results you can review before setting up a skill. They are illustrations, not live market readings or trading instructions.\n\nSelect a preview to open the full-size SVG; on a phone, zoom after opening.\n\n[ ](docs/assets/previews/navigator-recommendation.svg)\n\n**Choose a workflow:** [Trading Skills Navigator](docs/en/skills/trading-skills-navigator.md) recommends a starting path from your goal.\n\n[ ](docs/assets/previews/market-posture.svg)\n\n**Review market risk:** The [market-regime-daily workflow](workflows/market-regime-daily.yaml) ends with an Exposure Coac\n\n## Additional Workflow Examples\n\nThe main Core + Satellite starting path is described above. The examples below show additional ways to compose skills, including advanced satellite and contributor workflows.\n\n\n\n# Claude Trading Skills\n\nClaude Trading Skills started as a personal project to use AI to improve my own trading process.\n\nClaude Trading Skills is a Claude Skills-based trading workflow toolkit for time-constrained individual investors.\n\nIt is designed for investors who use long-term investing, ETFs, and dividend stocks as their core, while using disciplined swing trading as a satellite strategy when market conditions are favorable.\n\nThe goal is not to outsource buy/sell decisions to AI. The goal is to structure market review, risk management, trade planning, journaling, and continuous improvement. It is open source because the workflows, ch\n\n## Disclaimer\n\nThis repository is for educational, research, and process-improvement purposes only. It is not financial advice, investment advisory service, tax advice, legal advice, a signal service, or a broker execution platform. Trading and investing involve risk, including loss"
+          },
+          {
+            "id": "S2",
+            "path": "docs/Gemfile",
+            "kind": "dépendances",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/3bd4b7a2c7329ffb5efef95db2e53d1125b3dc40/docs/Gemfile",
+            "excerpt": "source \"https://rubygems.org\"\n\ngem \"github-pages\", \"~> 233\", group: :jekyll_plugins\ngem \"just-the-docs\", \"~> 0.12.0\"\ngem \"jekyll-include-cache\", \"~> 0.2\", group: :jekyll_plugins\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/workflows/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/3bd4b7a2c7329ffb5efef95db2e53d1125b3dc40/examples/workflows/README.md",
+            "excerpt": "\n\n# Workflow Examples\n\nCanonical **sample runs** for the multi-skill workflows defined in\n[`workflows/*.yaml`](../../workflows/). Each sub-directory shows the prompt,\nthe artifacts contributed to the workflow data flow, and a machine-readable\n`manifest.yaml`. Most historical examples are hand-authored; replay-covered\nexamples are generated by `scripts/workflow_replay.py`.\n\n> ⚠️ **Illustrative only — not investment advice.** Every artifact here uses\n> **fictional data** (the trade example uses the fictional\n> ticker `EXMPL`; the market-regime example uses a fictional market snapshot\n> with **no individual tickers**). These files are teachi\n\n## Available examples\n\n| Example | Workflow | Cadence | Sample variant | Skills |\n|---|---|---|---|---|\n| [`market-regime-daily/sample-run/`](market-regime-daily/sample-run/) | [`market-regime-daily.yaml`](../../workflows/market-regime-daily.yaml) | daily | required-only | market-breadth-analyzer → uptrend-analyzer → exposure-coach |\n| [`ma"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Toolkit de workflows Claude Skills pour investisseurs individuels, permettant de structurer revue de marché, gestion du risque et planification de trades. Destiné aux traders à temps limité qui utilisent une approche long‑term + swing.",
+      "business_idea": "• Cible : PME et indépendants francophones ; Produit : Plateforme SaaS de revue de marché automatisée ; difference : Interface web multilingue, intégration de données réelles via API tierces, contraste avec le dépôt brut qui ne fournit que des exemples fictifs\n• Cible : Agences de conseil financier ; Produit : Module de génération de rapports de conformité réglementaire ; difference : Ajout de contrôles de conformité (RGPD, MiFID) et export PDF, alors que le dépôt original ne gère que la visualisation"
+    },
+    {
+      "name": "tailscale/tailcat",
+      "url": "https://github.com/tailscale/tailcat",
+      "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
+      "language": "Go",
+      "stars": 9622,
+      "forks": 439,
+      "gained": "256 stars today",
+      "gained_n": 256,
+      "lang_color": "#00ADD8",
+      "category": "outil réseau / CLI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Tailcat est un client en ligne de commande qui reproduit les fonctions de netcat en utilisant le plan de données WireGuard® de Tailscale, sans passer par le plan de contrôle de Tailscale. Il cible les administrateurs systèmes ou développeurs qui ont besoin d’établir rapidement des tunnels chiffrés point‑à‑point.",
+      "workflow": "Entrée : adresse ou nom d’hôte et port (ex. `tailcat example.com 8080`). Traitement : le binaire génère une adresse éphémère, échange les métadonnées via le plan de données WireGuard, crée un tunnel chiffré et redirige stdin/stdout. Résultat : flux bidirectionnel sécurisé entre les deux machines. Limites : la confidentialité de l’adresse dépend d’une authentification supplémentaire (clé publique ou filtre d’autorisation) ; le plan de données doit être accessible et les ports doivent être ouverts ([S1]).",
+      "use_cases": "• Utilisateur : Ingénieur DevOps ; Tâche : Transférer rapidement un fichier de configuration entre deux serveurs isolés derrière NAT ; Résultat : Le fichier est envoyé via un tunnel WireGuard chiffré sans configuration VPN supplémentaire\n• Utilisateur : Développeur backend ; Tâche : Déboguer un service en ouvrant un port TCP temporaire sur un conteneur distant ; Résultat : Le développeur se connecte avec `tailcat` et interagit en temps réel avec le service",
+      "products": "• Cible : PME disposant d’infrastructures hybrides ; Produit : Interface web simplifiée qui encapsule tailcat et propose des profils d’accès pré‑configurés ; difference : Supprime la ligne de commande, ajoute une gestion d’utilisateurs et des logs d’audit\n• Cible : Agences de cybersécurité ; Produit : Module d’automatisation intégré à des playbooks Ansible pour établir des tunnels temporaires lors de tests d’intrusion ; difference : Oriente l’usage de tailcat vers des scénarios automatisés, avec des paramètres de sécurité renforcés",
+      "monetization": "Facturation à l’usage pour chaque tunnel créé (ex. 0,05 € par heure de connexion) auprès d’équipes techniques qui ont besoin d’accès ponctuels sécurisés ; modèle freemium offrant 5 h de tunnel gratuit par mois.",
+      "build_plan": "Réutiliser la bibliothèque Go `tailcat` (déjà disponible) ; ajouter une couche API REST (FastAPI) pour déclencher les tunnels, UI React/Next.js, stockage PostgreSQL pour les logs. Exclusions : implémentation du plan de données WireGuard (déjà fourni). Dépendances : `github.com/tailscale/wireguard-go`, `github.com/tailscale/gliderssh`. Coût estimé : 150 h de développement, hébergement cloud (VPS) ≈ 80 €/mois. Délai : 4‑6 semaines conditionnel selon disponibilité des développeurs.",
+      "limitations": "Licence du dépôt non vérifiée, nécessite vérification de conformité ; dépendance au réseau Tailscale (DERP, NAT‑hole‑punching) ; aucune garantie de scalabilité au-delà de quelques tunnels simultanés. Coûts de maintenance liés aux mises à jour de WireGuard et des bibliothèques Go.",
+      "next_step": "Réaliser un prototype minimal qui lance un tunnel entre deux VM locales via l’API ; interroger un administrateur système sur la valeur perçue d’un tableau de bord web pour la gestion des tunnels.",
+      "assessment": "Score 7 reflète la maturité du code (CLI fonctionnel, documentation claire) et la pertinence pour les secteurs ciblés (outils B2B, automatisation). Fit_score 5 par défaut, le profil ne précise pas de contraintes sectorielles supplémentaires. Les preuves proviennent du README et du go.mod ([S1],[S2]); d’autres aspects restent non établis dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "e00cdde6ff787f801361ff85ed085775c775d4c5",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/tailscale/tailcat/blob/e00cdde6ff787f801361ff85ed085775c775d4c5/README.md",
+            "excerpt": " \n   \n \n\n  \"Tailscale without Tailscale, by Tailscale\"  \n\n \n     \n     \n \n\n\n\n## Install\n\nSee [INSTALL.md](./INSTALL.md) for details on each, including notes\nfor packagers building from source:\n\n| Method | Linux | macOS | Windows | FreeBSD, OpenBSD | Browser (js/wasm) |\n|--------|:-----:|:-----:|:-------:|:-------------------:|:--------------------:|\n| [Static binaries](INSTALL.md#prebuilt-binaries) | ✅ | | ✅ | | |\n| [.deb packages](INSTALL.md#prebuilt-binaries) | Debian, Ubuntu, ... | | | | |\n| [.rpm packages](INSTALL.md#prebuilt-binaries) | Red Hat, Fedora, ... | | | | |\n| [Homebrew](INSTALL.md#homebrew-macos) | | ✅ | | | |\n| [Scoop](INSTALL.md#scoop-windows) | | | ✅ | | |\n| [Snap](INSTALL.md#snap-linux) | \n\n## Usage\n\n\n\n# If example.com has a TXT record \"tailcat=tc...\"\n$ tailcat example.com 8080\n$ tailcat ssh example.com\n$ tailcat ping example.com\n```\n\n> [!WARNING]\n> A tailcat address is normally a secret: knowing it is what lets a\n> client connect. A DNS TXT record is **not** secret. It is public,\n> world-readable, and actively scanned. Publishing an address in DNS\n> hands it to everyone on the internet, so the server behind it must\n> authenticate clients by something other than knowledge of the\n> address: restrict the tunnel to known client keys with `tailcat\n> serve --allow=...`, or, for SSH, require public keys with `tailcat\n> serve --ssh-authorized-keys\n\n## Examples\n\n\n\n## How it works\n\n\n\n# Tailcat\n\nTailcat is a remix of Tailscale open source pieces to act like\n[netcat](https://en.wikipedia.org/wiki/Netcat), but over Tailscale's data plane,\nwithout Tailscale's control plane. Tailscale's data plane (`magicsock`,\ninternally) gives you point-to-point WireGuard®-encrypted tunnels between two\nmachines with DERP as the NAT-hole-punching communication side channel and the\nultimate relay-of-last-resort if NAT traversal fails. Instead of using the\nTailscale control plane, all `tailcat` connection metadata is exchanged out of\nband, however you want.\n\nThe `tailcat` CLI (in `cmd/tailcat`) is built on the `tailcat` Go library\n(importable \n\n### Pipe stdin/stdout between two machines\n\nServer starts, printing out its ephemeral address:\n```sh\n$ tailcat\n\n\n# Selected"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/tailscale/tailcat/blob/e00cdde6ff787f801361ff85ed085775c775d4c5/go.mod",
+            "excerpt": "module github.com/tailscale/tailcat\n\ngo 1.27.2\n\nrequire (\n\tgithub.com/chromedp/cdproto v0.0.0-20260714215040-dc233986426f\n\tgithub.com/chromedp/chromedp v0.16.0\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/fxamacker/cbor/v2 v2.9.3\n\tgithub.com/google/go-cmp v0.7.0\n\tgithub.com/klauspost/compress v1.20.0\n\tgithub.com/peterbourgon/ff/v4 v4.0.0-beta.1\n\tgithub.com/pkg/sftp v1.13.11\n\tgithub.com/tailscale/gliderssh v0.3.4-0.20260716005906-1a0f895faf28\n\tgithub.com/tailscale/wireguard-go v0.0.0-20260928213353-e61b6b78110b\n\tgithub.com/toqueteos/webbrowser v1.2.1\n\tgithub.com/u-root/u-root v0.16.0\n\tgo4.org/mem"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Tailcat est un client en ligne de commande qui reproduit les fonctions de netcat en utilisant le plan de données WireGuard® de Tailscale, sans passer par le plan de contrôle de Tailscale. Il cible les administrateurs systèmes ou développeurs qui ont besoin d’établir rapidement des tunnels chiffrés point‑à‑point.",
+      "business_idea": "• Cible : PME disposant d’infrastructures hybrides ; Produit : Interface web simplifiée qui encapsule tailcat et propose des profils d’accès pré‑configurés ; difference : Supprime la ligne de commande, ajoute une gestion d’utilisateurs et des logs d’audit\n• Cible : Agences de cybersécurité ; Produit : Module d’automatisation intégré à des playbooks Ansible pour établir des tunnels temporaires lors de tests d’intrusion ; difference : Oriente l’usage de tailcat vers des scénarios automatisés, avec des paramètres de sécurité renforcés"
+    }
+  ]
+}
