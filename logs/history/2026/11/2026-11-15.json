@@ -1,0 +1,578 @@
+{
+  "date": "2026-11-15",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
+      "language": "TypeScript",
+      "stars": 11449,
+      "forks": 1002,
+      "gained": "408 stars today",
+      "gained_n": 408,
+      "lang_color": "#3178c6",
+      "category": "outil de collaboration et d'annotation de code",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Plannotator est une interface TypeScript permettant d'annoter plans, spécifications, markdown et artefacts de code, puis de partager le feedback avec des agents IA. Il cible les équipes de développement qui souhaitent garder la trace des revues et des décisions d'architecture.",
+      "workflow": "Entrée : fichiers de plan ou diff de PR → traitement : le binaire `plannotator` analyse le texte, génère une vue interactive et envoie le feedback via hooks configurés → résultat : artefacts annotés visibles dans l'Inbox et synchronisés avec l'agent. Limites : les données restent locales, aucune persistance serveur n'est fournie [S1].",
+      "use_cases": "• Utilisateur : Développeur senior ; Tâche : Annoter un plan d'architecture avant revue ; outcome : Commentaires intégrés dans le plan, partageable avec l'équipe via l'Inbox\n• Utilisateur : Chef de projet ; Tâche : Collecter les retours d'une PR multi‑développeurs ; outcome : Vue consolidée des diff avec annotations, exportable pour documentation",
+      "products": "• Cible : PME de services logiciels ; Produit : Plateforme SaaS d'annotation collaborative avec stockage cloud ; difference : Ajoute persistance, gestion des utilisateurs et API de synchronisation, contrairement au dépôt brut qui ne stocke que localement\n• Cible : Freelance IA ; Produit : Extension VS Code qui intègre Plannotator pour annoter des prompts d'agent ; difference : Intégration directe dans l'IDE, éliminant le besoin de lancer un binaire séparé",
+      "monetization": "Facturation par abonnement mensuel aux équipes (ex. 15 €/utilisateur) pour l'accès au stockage cloud, aux contrôles d'accès et aux mises à jour automatiques ; modèle freemium avec quota d'annotations limitées.",
+      "build_plan": "Réutiliser le binaire et les workspaces existants (S2). Ajouter un service backend Node.js pour la persistance, une base PostgreSQL et une UI Next.js. Exclure la réécriture du moteur d'annotation. Dépendances : Docker, Vercel, Supabase. Coût estimé : 200 € de services cloud mensuels, 80 h de développement (4‑5 semaines).",
+      "limitations": "Licence MIT/Apache‑2.0 à vérifier pour chaque workspace, aucune persistance serveur dans le dépôt source, maintenance du binaire non couverte, besoin d'intégrer l'authentification (non présent dans les extraits) [S1][S2].",
+      "next_step": "Lancer un prototype de serveur de stockage et tester l'import/export d'annotations avec une équipe de 3 développeurs ; demander leur avis sur la fluidité du feedback.",
+      "assessment": "Score 7 reflète la maturité du code et la clarté du README, mais l'absence de persistance et de tests automatisés limite l'adoption immédiate. Fit_score 5 par défaut faute de critères de profil détaillés. Les preuves proviennent des extraits S1, S2 et S3.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "d04b6753cbd544cec388c821a78247c74dff374f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/backnotprop/plannotator/blob/d04b6753cbd544cec388c821a78247c74dff374f/README.md",
+            "excerpt": " \n   \n \n\n\n\n \n   Everything you need to annotate and stay in the loop with your agents  \n   Inbox Surface • Artifacts • Code Review  \n   Annotate plans, specs, markdown, HTML, and other interactive artifacts. Review diffs and PRs. Send feedback to your agent. \n \n\n \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   \n     \n     \n   \n \n\n## Install\n\nOne installer covers almost every agent. It installs the `plannotator` binary, auto-detects your installed agents, and configures hooks, skills, and slash commands for each:\n\n```bash\n\n\n### Uninstall\n\nThe safe default removes recognized Plannotator-installed components and keeps\nyour local plans, history, drafts, guides, and settings:\n\n```bash\nplannotator uninstall\n```\n\nUse `--purge` for a full removal of known local Plannotator data as well:\n\n```bash\nplannotator uninstall --purge\n```\n\nPurge requires typing `purge` at the prompt and explains that the data is\nlocal-only: it is not stored on a Plannotator server and cannot be recovered.\nFor automation, pass `--yes` (or `-y`); non-interactive removal refuses to run\nwithout it. Use `--dry-run` to preview recognized work without making changes.\nHost integrations are always part o\n\n## How it works\n\n\n\n# Plannotator\n\n**⭐️ NEW:** [Plannotator Inbox](https://plannotator.ai/inbox/"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/backnotprop/plannotator/blob/d04b6753cbd544cec388c821a78247c74dff374f/package.json",
+            "excerpt": "{\n  \"name\": \"plannotator\",\n  \"version\": \"0.28.65\",\n  \"private\": true,\n  \"description\": \"Interactive Plan Review for Claude Code - annotate plans visually, share with team, automatically send feedback\",\n  \"author\": \"backnotprop\",\n  \"license\": \"MIT OR Apache-2.0\",\n  \"bin\": {\n    \"plannotator\": \"bin/plannotator.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/backnotprop/plannotator.git\"\n  },\n  \"homepage\": \"https://github.com/backnotprop/plannotator\",\n  \"bugs\": {\n    \"url\": \"https://github.com/backnotprop/plannotator/issues\"\n  },\n  \"workspaces\": [\n    \"apps/*\",\n   "
+          },
+          {
+            "id": "S3",
+            "path": "packages/system/demo/serve.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/backnotprop/plannotator/blob/d04b6753cbd544cec388c821a78247c74dff374f/packages/system/demo/serve.ts",
+            "excerpt": "// A page for screenshots of the drawing at rest: plannotator's own drawing\n// (the test fixture in test/fixtures/plannotator), drawn by SystemThumb and\n// SystemView in the Inbox's tokens. Not shipped; run it with `bun run demo` and open the printed address.\n//\n//   ?shot=thumb                       the card picture in a message card\n//   ?shot=view&sheet=C-001&reading=simple&layout=window|pane\n//   ?shot=card&pr=2543|2563           the review card with the change picture (&gate=1: the gate only; &open=1: PR 2563 open)\n//   ?shot=change&pr=2543&view=before|after|steps   the full System view of a PR (&gate=1, &open=1 as above)\n//   ?shot=plan                        a plan drawn dashed, as Shape's System (plan) tab\n//   ?shot=touches&layout=pane|window  three open PRs on the drawing at rest, each touched part labelled (&lead=1: a \"‹ Reviews\" control leads the bar)\n//   &mode=light|dark                  the theme mode (dark by default)\n//   &keys=off                         the single-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Plannotator est une interface TypeScript permettant d'annoter plans, spécifications, markdown et artefacts de code, puis de partager le feedback avec des agents IA. Il cible les équipes de développement qui souhaitent garder la trace des revues et des décisions d'architecture.",
+      "business_idea": "• Cible : PME de services logiciels ; Produit : Plateforme SaaS d'annotation collaborative avec stockage cloud ; difference : Ajoute persistance, gestion des utilisateurs et API de synchronisation, contrairement au dépôt brut qui ne stocke que localement\n• Cible : Freelance IA ; Produit : Extension VS Code qui intègre Plannotator pour annoter des prompts d'agent ; difference : Intégration directe dans l'IDE, éliminant le besoin de lancer un binaire séparé"
+    },
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "description": "Keep your coding agent up to date with the latest web best practices",
+      "language": "TypeScript",
+      "stars": 6424,
+      "forks": 501,
+      "gained": "1,231 stars today",
+      "gained_n": 1231,
+      "lang_color": "#3178c6",
+      "category": "outil de guidance web (CLI / bibliothèque)",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un ensemble de scripts TypeScript qui propose un assistant en ligne de commande pour installer et explorer les meilleures pratiques du Web moderne. Destiné aux développeurs front‑end qui souhaitent vérifier la conformité de leurs projets aux standards actuels.",
+      "workflow": "Entrée : développeur lance `npx modern-web-guidance@latest install` → le wizard télécharge les guides, crée un fichier de configuration et expose une liste de fonctionnalités (CSS, HTML, JS) via la console. Sortie : un répertoire de guides locaux et un affichage interactif des 140+ fonctionnalités CSS, 36 HTML, 74 JavaScript. Limites : aucune installation réelle n’est requise, mais le projet ne fournit pas d’API serveur ni de UI graphique ; les fonctionnalités sont limitées aux listes statiques du dépôt. [S1]",
+      "use_cases": "• Utilisateur : Développeur front‑end freelance ; Tâche : Vérifier rapidement la compatibilité d’un nouveau composant avec les standards du Web moderne ; Résultat : Obtient un rapport console listant les APIs et propriétés à adopter ou à éviter\n• Utilisateur : Équipe d’assurance qualité d’une agence ; Tâche : Intégrer le wizard dans un pipeline CI pour valider les pratiques CSS/HTML ; Résultat : Le pipeline échoue si des fonctionnalités désuètes sont détectées",
+      "products": "• Cible : PME développant des sites vitrines ; Produit : SaaS de validation automatisée des standards Web ; difference : Enveloppe le CLI dans une API REST qui accepte un bundle HTML/CSS et renvoie un score de conformité, ajoutant une couche serveur inexistante dans le dépôt\n• Cible : Indépendants créant des templates ; Produit : Extension VS Code qui expose les listes de fonctionnalités en temps réel ; difference : Transforme les listes statiques du dépôt en suggestions contextuelles directement dans l’IDE",
+      "monetization": "Acheteur : Agences web et développeurs indépendants ; reason to pay : Accès à une API de validation continue et à des mises à jour automatiques du catalogue de fonctionnalités ; unit : abonnement mensuel par projet ; model : freemium : 5 €/mois pour 100 validations, tarif dégressif au volume ; price hypothesis : Le prix reflète le coût d’infrastructure (hébergement serveur Node, stockage des guides) et la valeur d’éviter des refontes coûteuses",
+      "build_plan": "scope : Créer une API wrapper autour du CLI, ajouter un serveur Express, persister les résultats dans une base PostgreSQL légère ; reused bricks : Code du wizard, listes de fonctionnalités, scripts de post‑install ; work to add : API REST, interface d’administration, CI/CD, hébergement Docker sur Fly.io ; exclusions : Pas de UI graphique complète, pas de support multilingue ; dependencies : express, pg, swagger‑ui, node >=22.18.0 ; estimated costs : ≈ 30 USD/mois d’hébergement + 10 USD/mois de base de données ; timeline : 4 à 6 semaines (2 semaines de prototypage API, 2 semaines d’intégration CI, 1‑2 semaines de tests)",
+      "limitations": "Licence non vérifiée, aucune garantie de mise à jour des listes de fonctionnalités, dépendance à Node 22+ ; le projet ne fournit pas de UI, les coûts d’infrastructure restent à estimer. [S2]",
+      "next_step": "Réaliser un proof‑of‑concept d’une endpoint `/validate` qui invoque le CLI et renvoie le rapport ; interroger un développeur front‑end sur la valeur d’une validation automatisée dans son workflow CI.",
+      "assessment": "Score 6 /10 reflète la pertinence du contenu pour le profil (focus B2B SaaS, besoin d’automatiser la conformité web) mais l’absence de licence claire et d’UI limite l’adoption immédiate. Fit_score 5 car aucune contrainte de région ou de délai n’est fournie dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "5e5cd33a7738f21281e3027732bcbd58cfa82bf1",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/README.md",
+            "excerpt": "\n\n##   Quickstart\n\n```shell\nnpx modern-web-guidance@latest install\n```\n\nThis command runs an interactive wizard to install Modern Web Guidance. See [Alternative Installation Methods](#-alternative-installation-methods) below.\n\n\n\n#### Try it out (without installing)\n\n```shell\n\n\n### CSS & Layout (140 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [::backdrop](https://web-platform-dx.github.io/web-features-explorer/features/backdrop/) | [content-visibility](https://web-platform-dx.github.io/web-features-explorer/features/content-visibility/) | [progress()](https://web-platform-dx.github.io/web-features-explorer/features/progress-function/) |\n| [::details-content](https://web-platform-dx.github.io/web-features-explorer/features/details-content/) | [contrast-color()](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/) | [reading-flow](https://web-platform-dx.github.io/web-features-explorer/fea\n\n### HTML & DOM (36 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [:autofill](https://web-platform-dx.github.io/web-features-explorer/features/autofill/) | [&lt;slot>](https://web-platform-dx.github.io/web-features-explorer/features/slot/) | [HTML streaming setters](https://web-platform-dx.github.io/web-features-explorer/features/html-streaming-setters/) |\n| [:indeterminate](https://web-platform-dx.github.io/web-features-explorer/features/indeterminate/) | [&lt;video>](https://web-platform-dx.github.io/web-features-explorer/features/video/) | [HTML-in-canvas](https://web-platform-dx.github.io/web-features-explorer/features/canvas-html/) |\n| [&lt\n\n### JavaScript & APIs (74 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [&lt;install>](https://web-platform-dx.github.io/web-features-explorer/features/install/) | [integrity() for url()](https://web-platform-dx.github.io/web-features-explorer/features/url-integrity/) | [Sanitizer API](https://web-platform-dx.github.io/web-features-explorer/features/sanitizer/) |\n| [&lt;meta name=\"text-scale\">](https://web-platform-dx.github.io/web-features-explorer/features/meta-text-scale/) | [Interaction contentful paint performance entries](https://web-platform-dx.github.io/web-features-explorer/features/interaction-contentfu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/package.json",
+            "excerpt": "{\n  \"name\": \"modern-web-guidance-src\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=22.18.0\"\n  },\n  \"bin\": {\n    \"gd\": \"bin/gd.ts\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"node src/core/postinstall.ts\",\n    \"test\": \"node --test --test-reporter ${TEST_REPORTER:-dot} \\\"src/**/*.test.ts\\\"\",\n    \"test:e2e\": \"playwright test -c src/dashboard/playwright.config.js\",\n    \"build\": \"node src/build/build-guides.ts --target=skills-cli && pnpm run build-dist\",\n    \"build-dist\": \"node src/build/build-dist.ts\",\n    \"build"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble de scripts TypeScript qui propose un assistant en ligne de commande pour installer et explorer les meilleures pratiques du Web moderne. Destiné aux développeurs front‑end qui souhaitent vérifier la conformité de leurs projets aux standards actuels.",
+      "business_idea": "• Cible : PME développant des sites vitrines ; Produit : SaaS de validation automatisée des standards Web ; difference : Enveloppe le CLI dans une API REST qui accepte un bundle HTML/CSS et renvoie un score de conformité, ajoutant une couche serveur inexistante dans le dépôt\n• Cible : Indépendants créant des templates ; Produit : Extension VS Code qui expose les listes de fonctionnalités en temps réel ; difference : Transforme les listes statiques du dépôt en suggestions contextuelles directement dans l’IDE"
+    },
+    {
+      "name": "tradermonty/claude-trading-skills",
+      "url": "https://github.com/tradermonty/claude-trading-skills",
+      "description": "Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.",
+      "language": "Python",
+      "stars": 5077,
+      "forks": 1074,
+      "gained": "553 stars today",
+      "gained_n": 553,
+      "lang_color": "#3572A5",
+      "category": "outil de workflow IA pour trading",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Claude Trading Skills est un ensemble de workflows basés sur Claude Skills destiné aux investisseurs individuels qui souhaitent structurer leur revue de marché, gestion du risque et planification de trades. Le logiciel s’adresse aux traders à temps limité, principalement en mode long‑term / swing.",
+      "workflow": "Entrée : objectifs de l’investisseur (ex. « revoir le régime de marché quotidien ») → Traitement : exécution du workflow YAML (ex. market-regime-daily.yaml) qui orchestre plusieurs skills (analyse de breadth, up‑trend, exposure) et génère des artefacts illustrés (SVG, rapports) → Résultat : tableau de bord synthétique et recommandations de positionnement. Sources : S1, S3. Limites : les données sont fictives, aucune donnée de marché réelle n’est fournie.",
+      "use_cases": "• Utilisateur : Investisseur indépendant ; Tâche : Obtenir chaque matin un résumé du régime de marché et des indicateurs de tendance ; Résultat : Rapport visuel et texte indiquant la posture recommandée, sans décision automatisée\n• Utilisateur : Gestionnaire de portefeuille PME ; Tâche : Structurer le processus de revue hebdomadaire incluant screening d’ETF et analyse de risque ; Résultat : Workflow documenté qui produit un journal de revue et des points d’action pour le comité",
+      "products": "• Cible : PME souhaitant externaliser la partie analyse de marché ; Produit : SaaS de revue de marché automatisée basé sur les workflows Claude ; difference : Interface web multitenant, stockage persistant des historiques et tableau de bord partagé\n• Cible : Freelance trader ; Produit : Extension VS Code qui lance les workflows en local et exporte les rapports PDF ; difference : Pas d’infrastructure serveur, utilisation locale du modèle Claude via API",
+      "monetization": "Acheteur : PME ou freelance ; raison : gain de temps sur la revue quotidienne et réduction d’erreurs humaines ; unité facturée : abonnement mensuel par utilisateur ou forfait par exécution de workflow ; modèle : abonnement SaaS ou licence perpétuelle pour l’extension. Hypothèse de prix : 30‑50 €/mois par utilisateur, justifiée par le coût d’un analyste temps plein (~3000 €/mois).",
+      "build_plan": "Périmètre limité : interface web + API d’orchestration des workflows existants. Brique réutilisée : les fichiers YAML et scripts Python du dépôt. Travail à ajouter : UI React, authentification, facturation Stripe, déploiement Docker sur Fly.io. Exclusions : création de modèles IA, génération de données de marché réelles. Dépendances : FastAPI, PostgreSQL, Stripe SDK. Coût estimé : 200‑300 h de développement (≈4‑5 semaines à plein temps).",
+      "limitations": "Contraintes établies : les workflows utilisent uniquement des données fictives (S1, S3) ; licence non vérifiée, il faut confirmer la conformité ; aucune intégration de flux de données réelles, donc besoin d’un fournisseur de données de marché. Coûts de maintenance : mise à jour des dépendances Python et du modèle Claude.",
+      "next_step": "Réaliser un test technique en exécutant le workflow market-regime-daily.yaml avec des données réelles via une API de marché ; poser à un investisseur potentiel la question « Quel niveau de détail attendriez‑vous dans le rapport quotidien ? ».",
+      "assessment": "Score 6 reflète la pertinence du dépôt pour créer un produit SaaS de revue de marché, mais l’absence de données réelles et de licence claire limite l’évaluation. Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles supplémentaires. Preuve : S1, S3.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "fdfff010e1efe181ebe9c11a0109ef5f8b736147",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/fdfff010e1efe181ebe9c11a0109ef5f8b736147/README.md",
+            "excerpt": "\n\n### See Example Outputs\n\nThese visual excerpts use fictional data to show the kinds of results you can review before setting up a skill. They are illustrations, not live market readings or trading instructions.\n\nSelect a preview to open the full-size SVG; on a phone, zoom after opening.\n\n[ ](docs/assets/previews/navigator-recommendation.svg)\n\n**Choose a workflow:** [Trading Skills Navigator](docs/en/skills/trading-skills-navigator.md) recommends a starting path from your goal.\n\n[ ](docs/assets/previews/market-posture.svg)\n\n**Review market risk:** The [market-regime-daily workflow](workflows/market-regime-daily.yaml) ends with an Exposure Coac\n\n## Additional Workflow Examples\n\nThe main Core + Satellite starting path is described above. The examples below show additional ways to compose skills, including advanced satellite and contributor workflows.\n\n\n\n# Claude Trading Skills\n\nClaude Trading Skills started as a personal project to use AI to improve my own trading process.\n\nClaude Trading Skills is a Claude Skills-based trading workflow toolkit for time-constrained individual investors.\n\nIt is designed for investors who use long-term investing, ETFs, and dividend stocks as their core, while using disciplined swing trading as a satellite strategy when market conditions are favorable.\n\nThe goal is not to outsource buy/sell decisions to AI. The goal is to structure market review, risk management, trade planning, journaling, and continuous improvement. It is open source because the workflows, ch\n\n## Disclaimer\n\nThis repository is for educational, research, and process-improvement purposes only. It is not financial advice, investment advisory service, tax advice, legal advice, a signal service, or a broker execution platform. Trading and investing involve risk, including loss"
+          },
+          {
+            "id": "S2",
+            "path": "docs/Gemfile",
+            "kind": "dépendances",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/fdfff010e1efe181ebe9c11a0109ef5f8b736147/docs/Gemfile",
+            "excerpt": "source \"https://rubygems.org\"\n\ngem \"github-pages\", \"~> 233\", group: :jekyll_plugins\ngem \"just-the-docs\", \"~> 0.12.0\"\ngem \"jekyll-include-cache\", \"~> 0.2\", group: :jekyll_plugins\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/workflows/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/tradermonty/claude-trading-skills/blob/fdfff010e1efe181ebe9c11a0109ef5f8b736147/examples/workflows/README.md",
+            "excerpt": "\n\n# Workflow Examples\n\nCanonical **sample runs** for the multi-skill workflows defined in\n[`workflows/*.yaml`](../../workflows/). Each sub-directory shows the prompt,\nthe artifacts contributed to the workflow data flow, and a machine-readable\n`manifest.yaml`. Most historical examples are hand-authored; replay-covered\nexamples are generated by `scripts/workflow_replay.py`.\n\n> ⚠️ **Illustrative only — not investment advice.** Every artifact here uses\n> **fictional data** (the trade example uses the fictional\n> ticker `EXMPL`; the market-regime example uses a fictional market snapshot\n> with **no individual tickers**). These files are teachi\n\n## Available examples\n\n| Example | Workflow | Cadence | Sample variant | Skills |\n|---|---|---|---|---|\n| [`market-regime-daily/sample-run/`](market-regime-daily/sample-run/) | [`market-regime-daily.yaml`](../../workflows/market-regime-daily.yaml) | daily | required-only | market-breadth-analyzer → uptrend-analyzer → exposure-coach |\n| [`ma"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Claude Trading Skills est un ensemble de workflows basés sur Claude Skills destiné aux investisseurs individuels qui souhaitent structurer leur revue de marché, gestion du risque et planification de trades. Le logiciel s’adresse aux traders à temps limité, principalement en mode long‑term / swing.",
+      "business_idea": "• Cible : PME souhaitant externaliser la partie analyse de marché ; Produit : SaaS de revue de marché automatisée basé sur les workflows Claude ; difference : Interface web multitenant, stockage persistant des historiques et tableau de bord partagé\n• Cible : Freelance trader ; Produit : Extension VS Code qui lance les workflows en local et exporte les rapports PDF ; difference : Pas d’infrastructure serveur, utilisation locale du modèle Claude via API"
+    },
+    {
+      "name": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "description": "Chrome DevTools for coding agents",
+      "language": "TypeScript",
+      "stars": 56534,
+      "forks": 4785,
+      "gained": "664 stars today",
+      "gained_n": 664,
+      "lang_color": "#3178c6",
+      "category": "outil de debugging et d'automatisation navigateur",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "MCP (Multi‑Channel Platform) expose les capacités de Chrome DevTools via une API Node/TypeScript, destiné aux développeurs qui souhaitent automatiser l'analyse de performances, le débogage réseau et la capture d’écran.",
+      "workflow": "Entrée : requête HTTP contenant un scénario de navigation → Traitement : le serveur lance Puppeteer, utilise les bibliothèques internes de Chrome DevTools pour enregistrer un trace et extraire les métriques de performance → Résultat : JSON structuré avec temps de chargement, erreurs réseau et captures d’écran. Limite : la collecte de statistiques est activée par défaut et nécessite l’opt‑out explicite ([S1]).",
+      "use_cases": "• Utilisateur : Ingénieur Front‑end ; Tâche : Mesurer le temps de rendu d’une page après chaque déploiement ; Résultat : Rapport automatisé contenant les métriques clés et les captures d’écran pour validation continue\n• Utilisateur : Consultant SEO ; Tâche : Analyser les requêtes réseau d’un site client pour identifier les goulots d’étranglement ; Résultat : Export CSV des timings et des tailles de réponses, utilisable dans des rapports clients",
+      "products": "• Cible : PME disposant d’équipes front‑end ; Produit : SaaS de monitoring de performance web basé sur chrome‑devtools‑mcp ; difference : Interface web simplifiée, facturation à l’usage (par trace) et tableau de bord multi‑projets\n• Cible : Agences de développement ; Produit : Plugin VS Code qui invoque le serveur MCP en arrière‑plan ; difference : Intégration directe dans l’IDE, aucune configuration serveur séparée",
+      "monetization": "Facturation à l’usage : chaque trace générée est facturée (ex. 0,05 € / trace) ; modèle d’abonnement mensuel (ex. 30 € / mois) pour un quota illimité, justifié par le gain de temps d’analyse et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : wrapper UI + API de facturation ; réutiliser le serveur MCP existant (S2) ; ajouter un tableau de bord React, un module de facturation Stripe et un job de nettoyage des traces ; exclure le développement de nouvelles métriques Chrome (déjà couvertes) ; dépendances principales : Puppeteer, FastAPI (pour API interne) ; coût estimé : 150 € / mois d’infrastructure cloud, 20 h de développement initial.",
+      "limitations": "Licence non vérifiée (source indique « non vérifiée ») → risque juridique ; collecte de données utilisateur activée par défaut ([S1]) ; performances limitées aux capacités de Puppeteer et du serveur Chrome ; maintenance requise pour suivre les mises à jour de Chrome DevTools.",
+      "next_step": "Réaliser un test technique : générer une trace d’une page publique et mesurer le temps de réponse du serveur MCP ; question à poser à un développeur front‑end : « Quel critère de performance vous empêche actuellement de livrer rapidement ? »",
+      "assessment": "Score 7 reflète la pertinence du projet pour le profil (expert full‑stack, intérêt pour outils B2B) et la disponibilité d’une base fonctionnelle ; fit_score reste neutre (5) faute de données de marché ou de conformité explicitement prouvées.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "8ba2ac945ebaf1adb92208c29f3a30e73a920956",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/8ba2ac945ebaf1adb92208c29f3a30e73a920956/README.md",
+            "excerpt": "\n\n## Key features\n\n- **Get performance insights**: Uses [Chrome\n  DevTools](https://github.com/ChromeDevTools/devtools-frontend) to record\n  traces and extract actionable performance insights.\n- **Advanced browser debugging**: Analyze network requests, take screenshots and\n  check browser console messages (with source-mapped stack traces).\n- **Reliable automation**. Uses\n  [puppeteer](https://github.com/puppeteer/puppeteer) to automate actions in\n  Chrome and automatically wait for action results.\n\n\n\n## **Usage statistics**\n\nGoogle collects usage statistics (such as tool invocation success rates, latency, and environment information) to improve the reliability and performance of Chrome DevTools MCP.\n\nData collection is **enabled by default**. You can opt-out by passing the `--no-usage-statistics` flag when starting the server:\n\n```json\n\"args\": [\"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"]\n```\n\nGoogle handles this data in accordance with the [Google Privacy Policy](https://policies.google.com/privacy).\n\nGoogle's collection of usage statistics for Chrome DevTools MCP is independent from the Chrome browser's usage statistics.\n\n### Install skills as a plugin\n\nA plugin installs the MCP server and all skills, including the CLI skill:\n\n- **Claude Code:** Run `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp`, then `/plugin install chrome-devtools-mcp@chrome-devtools-plugins`.\n- **Copilot / VS Code:** Run **Chat: Install Plugin From Source** and enter `ChromeDevTools/chrome-devtools-mcp`.\n- **Gemini CLI:** Run `gemini extensions install --auto-update https://github.com/ChromeDevTools/chrome-devtools-mcp`.\n\nSee the [Client Configurations Guide][client-configurations-guide] for more information.\n\n\n\n### Install skills manually\n\nIf your agent does not support plugins, copy the skill folders into the skills directory of your agent. The npm package contains the skills:\n\n```sh\nnpm i chrome-devtools-mcp@latest -g\n\n\n# Example for Claude Code. Use the skills directory of your agent.\nmkdir -p ~/.claude/skills\ncp -R \"$(npm root -g)/chrome-devtools-mcp/skills/chrome-devtools-cli\" ~/.claude/skills/\n```\n\n> [!IMPORTANT]\n> The `chrome-devtools-cli` skill requir"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/8ba2ac945ebaf1adb92208c29f3a30e73a920956/package.json",
+            "excerpt": "{\n  \"name\": \"chrome-devtools-mcp\",\n  \"version\": \"1.13.0\",\n  \"description\": \"MCP server for Chrome DevTools\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"chrome-devtools-mcp\": \"./out/Default/gen/src/bin/chrome-devtools-mcp.js\",\n    \"chrome-devtools\": \"./out/Default/gen/src/bin/chrome-devtools.js\"\n  },\n  \"main\": \"./out/Default/gen/src/index.js\",\n  \"scripts\": {\n    \"cli:generate\": \"node scripts/generate-cli.ts\",\n    \"clean\": \"node scripts/clean.ts\",\n    \"clean:submodules\": \"node scripts/clean-submodules.ts\",\n    \"build\": \"node scripts/ninja.ts\",\n    \"build:release\": \"node scripts/gn-gen.ts --args=is_debu"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "MCP (Multi‑Channel Platform) expose les capacités de Chrome DevTools via une API Node/TypeScript, destiné aux développeurs qui souhaitent automatiser l'analyse de performances, le débogage réseau et la capture d’écran.",
+      "business_idea": "• Cible : PME disposant d’équipes front‑end ; Produit : SaaS de monitoring de performance web basé sur chrome‑devtools‑mcp ; difference : Interface web simplifiée, facturation à l’usage (par trace) et tableau de bord multi‑projets\n• Cible : Agences de développement ; Produit : Plugin VS Code qui invoque le serveur MCP en arrière‑plan ; difference : Intégration directe dans l’IDE, aucune configuration serveur séparée"
+    },
+    {
+      "name": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "language": "Go",
+      "stars": 51638,
+      "forks": 4008,
+      "gained": "893 stars today",
+      "gained_n": 893,
+      "lang_color": "#00ADD8",
+      "category": "outil de révision de code IA (CLI)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Open Code Review est un outil en ligne de commande qui utilise des LLM pour analyser du code source, détecter des défauts (ex. NPE, injection SQL) et générer des commentaires ligne par ligne. Il s’adresse aux développeurs qui souhaitent automatiser les revues de code dans leurs pipelines CI/CD.",
+      "workflow": "Entrée : dépôt Git ou plage de commits → traitement : le CLI invoque un modèle LLM configuré (OpenAI, Anthropic, etc.) via l’agent OCR ou le mode délégation, applique les règles intégrées et produit des commentaires structurés → résultat : rapport de revue affiché dans le terminal ou exporté en JSON. Limites : nécessite la configuration d’un LLM, aucune interface graphique native, dépend des quotas du modèle utilisé. [S1][S2]",
+      "use_cases": "• Utilisateur : Développeur backend ; Tâche : Exécuter `ocr review --from main --to feature-branch` avant de pousser une branche ; Résultat : Rapport de défauts détectés et suggestions de correction, intégré au pull request\n• Utilisateur : Équipe DevOps ; Tâche : Intégrer le répertoire `examples/github_actions` dans le pipeline GitHub Actions ; Résultat : Revue automatisée à chaque push, échec du job si des critiques critiques sont générées",
+      "products": "• Cible : PME développeuses d’applications web ; Produit : SaaS hébergé qui expose l’API d’Open Code Review via un tableau de bord web ; difference : Supprime la ligne de commande, ajoute la gestion multi‑utilisateurs, facturation à l’usage\n• Cible : Agences de développement ; Produit : Plugin VS Code qui invoque le CLI en arrière‑plan et montre les commentaires en temps réel ; difference : Intégration IDE, expérience interactive, aucune infrastructure serveur supplémentaire",
+      "monetization": "Acheteur : équipes de développement payant pour un accès à un modèle LLM dédié ; raison : réduire le temps de revue manuelle et les bugs en production ; unité facturée : nombre de revues ou minutes de modèle consommées ; modèle : abonnement mensuel avec forfait de crédits, prix hypothétique 30‑80 €/mois selon volume. Hypothèse basée sur la valeur perçue d’une automatisation fiable et les coûts d’API LLM.",
+      "build_plan": "Périmètre : créer une API wrapper autour du CLI, UI web basique, authentification JWT. Brique réutilisée : le binaire OCR existant. Travail à ajouter : serveur Node/Go, UI React, gestion des quotas, facturation Stripe. Exclusions : création d’un nouveau modèle LLM. Dépendances : Go runtime, SDK OpenAI/Anthropic (déjà dans go.mod). Coût estimé : 150 h de développement (≈ 3 semaines à plein temps). Délai : 3‑4 semaines conditionnel selon disponibilité des API LLM.",
+      "limitations": "Contraintes établies : besoin d’un LLM externe, licence du projet non vérifiée, dépendance aux quotas API. Inconnues : compatibilité avec d’autres langages que Go, support multi‑tenant. Licence à confirmer dans le dépôt. Maintenance : mise à jour du CLI et des dépendances Go.",
+      "next_step": "Réaliser un test technique : appeler `ocr review` sur un petit repo JavaScript avec un modèle OpenAI gratuit et mesurer le temps de réponse. Question utilisateur : « Quel type de défauts de sécurité vous aimeriez que l’outil détecte en priorité ? »",
+      "assessment": "Score 7 reflète la maturité du projet (usage interne chez Alibaba, CI/CD intégrations) et la pertinence pour le profil (full‑stack, IA, automatisation). Fit_score reste 5 car aucune contrainte régionale ou budget spécifique n’est fournie. Les preuves proviennent des extraits README et go.mod. Non établi dans les extraits : licence exacte, modèle de facturation détaillé, validation de conformité RGPD.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "7e5ce06c88de5ce81df5dc4f24e2e485b517fae8",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/7e5ce06c88de5ce81df5dc4f24e2e485b517fae8/README.md",
+            "excerpt": " \n   \n     \n   \n   OpenCodeReview \n \n\n \n   \n     \n   \n \n \n   \n     \n   \n   \n     \n   \n \n \n     \n     \n     \n     \n     \n \n \n     \n     \n     \n     \n     \n     \n     \n \n \n  English |  简体中文  |  日本語  |  한국어  |  Русский \n \n\n---\n\n\n\n## How to Use\n\n\n\n#### Install\n\n```bash\nnpm install -g @alibaba-group/open-code-review\n```\n\nAfter installation, the `ocr` command is available globally.\n\nFor other installation methods (install script, GitHub Release binary, from source), see [Installation](https://open-codereview.ai/docs/installation).\n\n\n\n#### Quick Start\n\n**1. Configure LLM**\n\nYou must configure an LLM before reviewing code, unless you use [Delegation Mode](https://open-codereview.ai/docs/delegate).\n\n- **OCR calls the model:** `ocr review`, the `/open-code-review:review` command, and the `open-code-review` skill use OCR's own provider configuration, not your Claude Code Team/Pro subscription login. Authentication requirements depend on the provider; see [Configuration](https://open-codereview.ai/docs/configuration).\n- **The host agent calls the model:** the `/open-code-review:delegate-review` command and the `open-code-review-delegate` skill use the host agent's configured mo\n\n# Branch range — reviews feature-branch's changes since it diverged from main (merge-base mode)\nocr review --from main --to feature-branch\n\n\n\n## What is Open Code Review?\n\nOpen Code Review is an AI-powered code review CLI tool. It originated as Alibaba Group's internal official AI code review assistant — over the past two years, it has served tens of thousands of developers and identified millions of code defects. After thorough validation at massive scale, we incubated it into an open source project for the community. Simply configure a model endpoint to get started.\n\nIt read"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/alibaba/open-code-review/blob/7e5ce06c88de5ce81df5dc4f24e2e485b517fae8/go.mod",
+            "excerpt": "module github.com/alibaba/open-code-review\n\ngo 1.26.10\n\nrequire (\n\tcharm.land/bubbles/v2 v2.1.1\n\tcharm.land/bubbletea/v2 v2.0.8\n\tcharm.land/glamour/v2 v2.0.1\n\tcharm.land/lipgloss/v2 v2.0.6\n\tgithub.com/anthropics/anthropic-sdk-go v1.63.1\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.35\n\tgithub.com/bmatcuk/doublestar/v4 v4.10.0\n\tgithub.com/charmbracelet/x/ansi v0.11.8\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/modelcontextprotocol/go-sdk v1.7.0\n\tgithub.com/openai/openai-go/v3 v3.51.0\n\tgithub.com/pkoukk/tiktoken-go v0.1.8\n\tgithub.com/spf13/cobra v1.10.2\n\tgithu"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/7e5ce06c88de5ce81df5dc4f24e2e485b517fae8/examples/README.md",
+            "excerpt": "\n\n# CI/CD Integration Examples\n\nThis directory contains examples for integrating OpenCodeReview (OCR) into various CI/CD pipelines.\n\n\n\n## Contents\n\n- **[github_actions/](./github_actions/)** - GitHub Actions integration example\n- **[gitlab_ci/](./gitlab_ci/)** - GitLab CI integration example\n- **[bitbucket_pipelines/](./bitbucket_pipelines/)** - Bitbucket Pipelines integration example\n- **[gitflic_ci/](./gitflic_ci/)** - GitFlic CI integration example\n- **[gerrit_ci/](./gerrit_ci/)** - Gerrit (Jenkins / Gerrit Trigger) integration example\n\nEach subdirectory contains its own README with detailed setup instructions.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Open Code Review est un outil en ligne de commande qui utilise des LLM pour analyser du code source, détecter des défauts (ex. NPE, injection SQL) et générer des commentaires ligne par ligne. Il s’adresse aux développeurs qui souhaitent automatiser les revues de code dans leurs pipelines CI/CD.",
+      "business_idea": "• Cible : PME développeuses d’applications web ; Produit : SaaS hébergé qui expose l’API d’Open Code Review via un tableau de bord web ; difference : Supprime la ligne de commande, ajoute la gestion multi‑utilisateurs, facturation à l’usage\n• Cible : Agences de développement ; Produit : Plugin VS Code qui invoque le CLI en arrière‑plan et montre les commentaires en temps réel ; difference : Intégration IDE, expérience interactive, aucune infrastructure serveur supplémentaire"
+    },
+    {
+      "name": "QwenLM/qwen-code",
+      "url": "https://github.com/QwenLM/qwen-code",
+      "description": "An open-source AI coding agent that lives in your terminal.",
+      "language": "TypeScript",
+      "stars": 30456,
+      "forks": 3524,
+      "gained": "64 stars today",
+      "gained_n": 64,
+      "lang_color": "#3178c6",
+      "category": "Agent IA de codage en ligne de commande",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Qwen Code est un agent IA open‑source qui s’exécute dans le terminal et aide les développeurs à générer, compléter ou corriger du code directement depuis la ligne de commande [S1].",
+      "workflow": "Entrée : l'utilisateur lance `qwen` dans le répertoire du projet et saisit une requête de génération de fonction ; Traitement : le client envoie la requête à l'API Qwen, récupère la réponse et l'affiche dans le terminal ; Résultat : le code proposé est copié ou inséré automatiquement, avec la possibilité de réitérer ou d'annuler – le processus dépend de la disponibilité du compte Qwen et de la connexion internet [S1][S3].",
+      "use_cases": "Développeur front‑end qui veut créer rapidement un composant React : il décrit le rendu souhaité et reçoit le code complet ; Ingénieur DevOps qui doit écrire un script de déploiement : il décrit la cible et obtient un script Bash prêt à l’emploi.",
+      "products": "Produit 1 : un plugin VS Code basé sur Qwen Code ciblant les freelancers qui souhaitent une assistance IA intégrée à leur IDE, différant du dépôt brut par l’interface graphique et la gestion des licences ; Produit 2 : un service SaaS hébergé qui expose Qwen Code via une API REST, destiné aux petites agences qui veulent automatiser la génération de code sans installer d’outil local, ajoutant la facturation à l’usage et le monitoring.",
+      "monetization": "L'acheteur est une agence de développement qui paie pour chaque appel API afin de contrôler les coûts ; le modèle est paiement à l’usage (par requête) avec un tarif hypothétique de 0,02 € par appel, justifié par la valeur de gain de temps et les frais d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : exposer les fonctions de génération via une API Node ; brique réutilisée : le moteur Qwen déjà présent dans le dépôt ; travail à ajouter : wrapper HTTP, authentification, tableau de bord de suivi, tests unitaires ; exclusions : interface terminale native, support multilingue complet ; dépendances : Node 22, serveur Express, base de données SQLite pour le suivi des requêtes ; coût estimé : 150 € de services cloud mensuels, 20 h de développement réparties sur 2 semaines.",
+      "limitations": "Le dépôt ne précise pas de licence claire, il faut vérifier la conformité avant redistribution ; le modèle nécessite un compte Qwen avec abonnement, ce qui impose un coût récurrent ; performances limitées par la bande passante et la latence de l’API ; aucune preuve de scalabilité fournie dans les extraits.",
+      "next_step": "Réaliser un test technique en appelant l'API Qwen depuis un script Node et mesurer le temps de réponse ; demander à un développeur freelance s'il trouve l'outil utile pour accélérer la rédaction de fonctions simples.",
+      "assessment": "Score 7 reflète la maturité du code et la documentation disponible, mais l'absence de licence claire et de métriques de performance réduit la certitude ; le fit_score reste neutre (5) car le profil ne fournit pas de contraintes spécifiques à ce type d'outil.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "64c9447ca16351f31789db53ac9b5b5dbfddf2d8",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/QwenLM/qwen-code/blob/64c9447ca16351f31789db53ac9b5b5dbfddf2d8/README.md",
+            "excerpt": " \n\n[ ](https://www.npmjs.com/package/@qwen-code/qwen-code)\n[ ](./LICENSE)\n[ ](https://nodejs.org/)\n[ ](https://www.npmjs.com/package/@qwen-code/qwen-code)\n\n   \n\n**The open-source AI coding agent for your terminal, editor, desktop, browser, and chat.**\n\n 中文  |\n Deutsch  |\n français  |\n 日本語  |\n Русский  |\n Português (Brasil)  |\n 한국어 \n\n \n\n \n\n| **Qwen Code 1.0 Preview**                                                         \n\n## Installation\n\nLooking for **Qwen Code 1.0 Preview**? [Get started here](https://github.com/QwenLM/qwen-code/tree/v1.0.0-preview). The instructions below are for the main version.\n\n**Linux / macOS:**\n\n```bash\ncurl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash\n```\n\n**Windows:**\n\n```powershell\nirm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex\n```\n\n> Restart your terminal after installation to ensure environment variables take effect.\n\n \n NPM / Homebrew \n\n**NPM** (requires [Node.js 22+](https://nodejs.org/)):\n\n```bash\nnpm install\n\n## Quick Start\n\nOpen a terminal in your project and start Qwen Code:\n\n```bash\ncd /path/to/your-project\nqwen\n```\n\nInside the session, run `/auth` and choose [**Qwen Account with Subscription**](https://chat.qwen.ai/?memberPlan=qwen_code&entry=qwen_code&paywallScene=cli) to sign in with your **Plu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/QwenLM/qwen-code/blob/64c9447ca16351f31789db53ac9b5b5dbfddf2d8/package.json",
+            "excerpt": "{\n  \"name\": \"@qwen-code/qwen-code\",\n  \"private\": true,\n  \"version\": \"0.27.3\",\n  \"packageManager\": \"pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000\",\n  \"engines\": {\n    \"node\": \">=22.0.0\"\n  },\n  \"type\": \"module\",\n  \"workspaces\": [\n    \"packages/*\",\n    \"packages/cua-driver/typescript\",\n    \"packages/channels/base\",\n    \"packages/channels/telegram\",\n    \"packages/channels/weixin\",\n    \"packages/channels/dingtalk\",\n    \"packages/channels/wecom\",\n    \"packages/channels/feishu\",\n    \"packages/channe"
+          },
+          {
+            "id": "S3",
+            "path": "docs/users/quickstart.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/QwenLM/qwen-code/blob/64c9447ca16351f31789db53ac9b5b5dbfddf2d8/docs/users/quickstart.md",
+            "excerpt": "\n\n# Quickstart\n\n> 👏 Welcome to Qwen Code!\n\nThis quickstart guide will have you using AI-powered coding assistance in just a few minutes. By the end, you'll understand how to use Qwen Code for common development tasks.\n\n\n\n## Step 1: Install Qwen Code\n\nTo install Qwen Code, use one of the following methods:\n\n\n\n### Quick Install (Recommended)\n\n**Linux / macOS**\n\n```sh\ncurl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.sh | bash\n```\n\n**Windows**\n\n```powershell\nirm https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen-standalone.ps1 | iex\n```\n\n> [!note]\n>\n> It's recommended to restart your terminal after installation to ensure environment variables take effect.\n\n\n\n### Manual Installation\n\n**Prerequisites**\n\nMake sure you have Node.js 22 or later installed. Download it from [nodejs.org](https://nodejs.org/en/download).\n\n**NPM**\n\n```bash\nnpm install -g @qwen-code/qwen-code@latest\n```\n\n**Homebrew (macOS, Linux)**\n\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Qwen Code est un agent IA open‑source qui s’exécute dans le terminal et aide les développeurs à générer, compléter ou corriger du code directement depuis la ligne de commande [S1].",
+      "business_idea": "Produit 1 : un plugin VS Code basé sur Qwen Code ciblant les freelancers qui souhaitent une assistance IA intégrée à leur IDE, différant du dépôt brut par l’interface graphique et la gestion des licences ; Produit 2 : un service SaaS hébergé qui expose Qwen Code via une API REST, destiné aux petites agences qui veulent automatiser la génération de code sans installer d’outil local, ajoutant la facturation à l’usage et le monitoring."
+    },
+    {
+      "name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "description": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
+      "language": "TypeScript",
+      "stars": 25151,
+      "forks": 2303,
+      "gained": "495 stars today",
+      "gained_n": 495,
+      "lang_color": "#3178c6",
+      "category": "framework d'édition de documents web",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Univer est un SDK open‑source permettant d’intégrer des éditeurs de feuilles et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des capacités de création, calcul et collaboration à leurs utilisateurs ou à des agents IA.",
+      "workflow": "Entrée : fichier ou données JSON fournis par l’application cliente → Traitement : le SDK charge les plugins de feuilles ou de texte, applique les règles métier via les plugins de contenu, met à jour le modèle de document → Résultat : interface interactive affichée dans le navigateur, export possible en formats courants. Limites : la documentation indique que les plugins UI et logique sont séparés, mais aucune preuve de prise en charge native de l’authentification ou du stockage persistant n’est fournie (non établi dans les extraits). [S1]",
+      "use_cases": "• Utilisateur : Développeur SaaS B2B ; Tâche : Intégrer un tableur collaboratif dans son tableau de bord client ; Résultat : Les clients peuvent créer, partager et calculer des données en temps réel sans quitter l’application.\n• Utilisateur : Équipe IA ; Tâche : Exposer des documents structurés à un agent conversationnel ; Résultat : L’agent lit et modifie les feuilles via l’API du SDK, facilitant la génération de rapports automatisés.",
+      "products": "• Cible : PME souhaitant un outil de facturation interne ; Produit : Application web de devis/factures intégrant le module Sheets d’Univer ; difference : Utilise le SDK pour offrir des calculs personnalisés et la collaboration en temps réel, évitant le développement d’un tableur propriétaire.\n• Cible : Agence de création de contenus ; Produit : Plateforme de co‑édition de briefs créatifs avec le module Docs d’Univer ; difference : Permet aux équipes de travailler simultanément sur des documents enrichis, sans recourir à des suites tierces coûteuses.",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de productivité grâce à la co‑édition intégrée ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, ajusté selon le nombre d’utilisateurs et le volume de stockage. Le prix repose sur la valeur perçue du temps économisé et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : intégrer les plugins Sheets et Docs, ajouter l’authentification OAuth et le stockage PostgreSQL via Supabase. Brique réutilisée : SDK Univer (plugins UI et logique). Travail à ajouter : UI personnalisée, API backend FastAPI, facturation Stripe. Exclusions : génération de graphiques avancés, édition vidéo. Dépendances : @univerjs/*, Supabase, Stripe SDK. Coût estimé : 120 h de développement (≈ 3 semaines à plein temps).",
+      "limitations": "Licence Apache‑2.0 confirmée dans le package.json, mais la licence du dépôt principal reste non vérifiée ; aucune preuve de support multilingue complet au-delà de l’interface (non établi dans les extraits). Maintenance du SDK et mise à jour des plugins sont à prévoir.",
+      "next_step": "Réaliser un prototype d’intégration du module Sheets dans une application Next.js et mesurer le temps de chargement; interroger un responsable produit d’une PME sur les besoins de co‑édition de documents.",
+      "assessment": "Score 7 reflète la maturité du SDK (documentation, exemples) et son adéquation avec le profil orienté outils B2B et IA. Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité n’est démontrée dans les extraits. Les preuves proviennent des README et du package.json.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0d7923dd7a26e6bea56f1bc791a03618235a4618",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/dream-num/univer/blob/0d7923dd7a26e6bea56f1bc791a03618235a4618/README.md",
+            "excerpt": "  \n\n   \n\n Build your own AI office with Univer Office SDK. \n\n Start with open-source Sheets and Docs, then connect your own application or agent. \n\n  🚀 Quick start  ·  📚 Documentation  ·  ⚖️ Feature comparison  ·  🌐 Website  ·  🎮 Showcase  ·  🔧 API Reference  ·  📝 Blog  \n\n  English  ·  Français  ·  Deutsch  ·  Español  ·  简体中文  ·  繁體中文  ·  日本語  ·  한국어  \n\n \n     \n     \n     \n     \n  \n\n### Quick start: an open-source spreadsheet editor\n\nIn a browser application using a bundler such as Vite:\n\n```bash\npnpm add @univerjs/presets @univerjs/preset-sheets-core\n```\n\nCreate the container before initializing Univer:\n\n```html\n  \n```\n\n```ts\nimport { UniverSheetsCorePreset } from '@univerjs/preset-sheets-core'\nimport UniverPresetSheetsCoreEnUS from '@univerjs/preset-sheets-core/locales/en-US'\nimport { createUniver, LocaleType, mergeLocales } from '@univerjs/presets'\nimport '@univerjs/preset-sheets-core/lib/index.css'\n\nconst { univerAPI } = createUniver({\n  locale: LocaleType.EN_US,\n  locales: {\n    [LocaleType.EN_US]: mergeLocales(Univ\n\n## 🏗️ Explore the open-source architecture\n\n   \n\n  \n\n\n\n### Give custom features clear boundaries\n\nUniver organizes content logic and UI interaction in separate plugins. Feature plugins manage rules and content changes; UI plugins provide the interface and user interactions. For example, `sh"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/dream-num/univer/blob/0d7923dd7a26e6bea56f1bc791a03618235a4618/package.json",
+            "excerpt": "{\n    \"name\": \"univer\",\n    \"type\": \"module\",\n    \"version\": \"1.5.0\",\n    \"private\": true,\n    \"packageManager\": \"pnpm@12.16.1\",\n    \"author\": \"DreamNum Co., Ltd. <developer@univer.ai>\",\n    \"license\": \"Apache-2.0\",\n    \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/univer\"\n    },\n    \"homepage\": \"https://univer.ai\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/dream-num/univer\"\n    },\n    \"bugs\": {\n        \"url\": \"https://github.com/dream-num/univer/issues\"\n    },\n    \"devEngines\": {\n        \"runtime\": {\n            \""
+          },
+          {
+            "id": "S3",
+            "path": "examples/src/main.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/dream-num/univer/blob/0d7923dd7a26e6bea56f1bc791a03618235a4618/examples/src/main.ts",
+            "excerpt": "import type { ExampleLoader } from './mount-example';\nimport type {\n    WorkbenchDevice,\n    WorkbenchDirection,\n    WorkbenchLocale,\n    WorkbenchRegion,\n    WorkbenchRibbonType,\n    WorkbenchTheme,\n    WorkbenchUIChromeMode,\n    WorkbenchZoomRatio,\n} from './workbench-settings';\nimport { createExampleSwitcher } from './mount-example';\nimport {\n    clearWorkbenchSettings,\n    getDefaultWorkbenchSettings,\n    getWorkbenchTheme,\n    readWorkbenchSettings,\n    WORKBENCH_LOCALE_META,\n    writeWorkbenchSettings,\n} from './workbench-settings';\nimport { renderWorkbenchSettingsControl, unmountWorkbenchSettingsControl } from './workbench-settings-control';\nimport './global.css';\n\nconst loaders = {\n    docs: () => import('./docs/mount'),\n    sheets: () => import('./sheets/mount'),\n} satisfies Record<string, ExampleLoader>;\n\ntype ExampleName = keyof typeof loaders;\n\nfunction getRequiredElement<T extends HTMLElement>(selector: string): T {\n    const element = document.querySelector<T>(selector);\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Univer est un SDK open‑source permettant d’intégrer des éditeurs de feuilles et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des capacités de création, calcul et collaboration à leurs utilisateurs ou à des agents IA.",
+      "business_idea": "• Cible : PME souhaitant un outil de facturation interne ; Produit : Application web de devis/factures intégrant le module Sheets d’Univer ; difference : Utilise le SDK pour offrir des calculs personnalisés et la collaboration en temps réel, évitant le développement d’un tableur propriétaire.\n• Cible : Agence de création de contenus ; Produit : Plateforme de co‑édition de briefs créatifs avec le module Docs d’Univer ; difference : Permet aux équipes de travailler simultanément sur des documents enrichis, sans recourir à des suites tierces coûteuses."
+    },
+    {
+      "name": "ag-ui-protocol/ag-ui",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "description": "AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.",
+      "language": "TypeScript",
+      "stars": 17498,
+      "forks": 1738,
+      "gained": "9 stars today",
+      "gained_n": 9,
+      "lang_color": "#3178c6",
+      "category": "Framework / protocole d'intégration d'agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "AG-UI est un protocole léger en TypeScript qui normalise les échanges entre agents IA et interfaces front‑end, destiné aux développeurs web souhaitant ajouter du chat agentique en temps réel.",
+      "workflow": "Entrée : requête d'un utilisateur via un composant UI → Traitement : le SDK AG-UI transmet l'événement au backend agent (ex. OpenAI) en streaming, synchronise l'état bidirectionnel et enrichit le contexte en temps réel → Résultat : mise à jour dynamique du DOM avec messages structurés et UI générative. Sources : S1 (description des fonctionnalités et du flux) ; limites : aucune implémentation serveur fournie, dépendance à un backend IA externe – non établi dans les extraits.",
+      "use_cases": "• Utilisateur : Consultant SaaS ; Tâche : Intégrer un assistant de support client dans son tableau de bord React ; Résultat : L'utilisateur obtient des réponses instantanées et le contexte de session est conservé entre les pages.\n• Utilisateur : Agence de marketing ; Tâche : Créer un générateur de contenus publicitaires piloté par IA ; Résultat : Le créateur saisit un brief, l'agent propose des variantes et le UI se met à jour en temps réel.",
+      "products": "• Cible : PME souhaitant automatiser le support ; Produit : Plateforme SaaS de chat IA intégrable via un widget AG-UI ; difference : Utilise le protocole standardisé d'AG-UI pour réduire le temps d'intégration comparé à des SDK propriétaires.\n• Cible : Développeurs d'outils internes ; Produit : Kit de développement interne (SDK + exemples) pour créer des workflows IA personnalisés ; difference : Fournit des exemples multi‑langage (Dart, Go) et une architecture événementielle prête à l'emploi, contrairement à un simple wrapper API.",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de productivité via assistance IA ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajustable selon volume d'appels IA.",
+      "build_plan": "Périmètre limité : UI widget + serveur de relais minimal (Node.js) ; brique réutilisée : SDK AG-UI (S1) ; travail à ajouter : implémentation du backend agent, gestion des clés API, tableau de bord admin ; exclusions : gestion avancée de la facturation, conformité RGPD (non établi dans les extraits) ; dépendances : OpenAI API, Vercel/Fly.io pour le déploiement ; coût estimé : 0 € (plan gratuit) + dépenses cloud variables ; délai : 3‑4 semaines en mode prototype.",
+      "limitations": "Contraintes établies : protocole open‑source, nécessite un backend IA externe, licence non vérifiée (S2) ; inconnues : couverture juridique, support long terme, performance sous charge élevée.",
+      "next_step": "Réaliser un test technique d'intégration du SDK avec un backend OpenAI et interroger un product manager d'agence sur les besoins de synchronisation d'état en temps réel.",
+      "assessment": "Score 7 reflète la pertinence du protocole pour les objectifs du profil (intégration IA rapide, stack TypeScript) ; fit_score 5 par défaut faute de critères régionaux ou de délai précis. Les preuves proviennent de S1 et S2, le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2330368a2a74573902858867072406638ba3073d",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/README.md",
+            "excerpt": "\n\n\n## 🚀 Features\n\n- 💬 Real-time agentic chat with streaming\n- 🔄 Bi-directional state synchronization\n- 🧩 Generative UI and structured messages\n- 🧠 Real-time context enrichment\n- 🛠️ Frontend tool integration\n- 🧑‍💻 Human-in-the-loop collaboration\n\n\n\n\n## Examples\n\n\n#   AG-UI: The Agent-User Interaction Protocol\n\n\nAG-UI is an open, lightweight, event-based protocol that standardizes how AI agents connect to user-facing applications.\nBuilt for simplicity and flexibility, it enables seamless integration between AI agents, real time user context, and user interfaces.\n\n---\n\n \n   \n   \n \n\n \n\n\n[ ](https://www.npmjs.com/package/@ag-ui/core)\n \n \n\n  Join our Discord →   &nbsp;&nbsp;&nbsp;   Read the Docs →   &nbsp;&nbsp;&nbsp;   Go to the AG-UI Dojo →   &nbsp;&nbsp;&nbsp;   Follow us →  \n\n \n\n\n\n\n\n## 🚀 Getting Started\nCreate a new AG-UI application in seconds:\n```bash\nnpx create-ag-ui-app my-agent-app\n```\n\n  Useful Links: \n\n- [The AG-UI Dojo](https://dojo.ag-ui.com/)\n- [Build AG-UI-powered applications(Quickstart)](https://docs.ag-ui.com/quickstart/applications)\n- [Build new AG-UI framework integrations (Quickstart)](https://go.copilotkit.ai/agui-contribute)\n- [Book a call to discuss an AG-UI integration with a new framework](https://calendly.com/markus-copilotkit/ag-ui)\n- [Join the Discord Community](https://discord.gg/Jd3FzfdJa8)\n\n\n\n## What is AG-UI?\n\nA"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/package.json",
+            "excerpt": "{\n  \"name\": \"ag-ui\",\n  \"author\": \"Markus Ecker <markus.ecker@gmail.com>\",\n  \"private\": true,\n  \"scripts\": {\n    \"build\": \"nx run-many -t build\",\n    \"clean\": \"git clean -fdX --exclude=\\\".env\\\"\",\n    \"build:clean\": \"pnpm run clean && pnpm install && pnpm run build\",\n    \"dev\": \"pnpm run build --projects=sdks/** && nx watch --projects=sdks/** -- pnpm run build --projects=sdks/**\",\n    \"dev:integrations\": \"pnpm run build --projects=integrations/** && nx watch --projects=integrations/** -- pnpm run build --projects=integrations/**\",\n    \"dev:middlewares\": \"pnpm run build --projects=middlewares/** "
+          },
+          {
+            "id": "S3",
+            "path": "sdks/community/dart/example/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/sdks/community/dart/example/README.md",
+            "excerpt": "\n\n## Toolchain and installation\n\nUse Flutter **3.47.1** (Dart **3.13.1**) and Git LFS. The application requires Dart >=3.9 and Flutter >=3.35; the parent SDK retains its own independent SDK floor.\n\n```bash\n\n\n# AG-UI Flutter Dojo\n\nA Flutter example using the parent Dart SDK and the paired [Go example server](../../../go/example/server). The application replaces the previous CLI example. This first import preserves the source features; the following integration slices repair lifecycle, protocol reconciliation, and deterministic verification.\n\n\n\n# From the repository root:\ngit lfs pull\ncd sdks/community/dart/example\nflutter pub get\n```\n\nThe `ag_ui` dependency resolves to `../`. No sibling checkout, Python backend, pnpm, or private module is needed.\n\n\n\n## Run the pair\n\nIn terminal 1, with a valid `OPENAI_API_KEY` already set in that terminal:\n\n```bash\n\n\n# From the repository root:\ncd sdks/community/go/example/server\ngo run ./cmd\n```\n\nIn terminal 2:\n\n```bash\n\n\n# From the repository root:\ncd"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "AG-UI est un protocole léger en TypeScript qui normalise les échanges entre agents IA et interfaces front‑end, destiné aux développeurs web souhaitant ajouter du chat agentique en temps réel.",
+      "business_idea": "• Cible : PME souhaitant automatiser le support ; Produit : Plateforme SaaS de chat IA intégrable via un widget AG-UI ; difference : Utilise le protocole standardisé d'AG-UI pour réduire le temps d'intégration comparé à des SDK propriétaires.\n• Cible : Développeurs d'outils internes ; Produit : Kit de développement interne (SDK + exemples) pour créer des workflows IA personnalisés ; difference : Fournit des exemples multi‑langage (Dart, Go) et une architecture événementielle prête à l'emploi, contrairement à un simple wrapper API."
+    },
+    {
+      "name": "ashhart/TensorFold",
+      "url": "https://github.com/ashhart/TensorFold",
+      "description": "LLM Inference Engine for Metal, CUDA and Vulkan.",
+      "language": "Zig",
+      "stars": 2216,
+      "forks": 520,
+      "gained": "37 stars today",
+      "gained_n": 37,
+      "lang_color": "#ec915c",
+      "category": "Moteur d'inférence LLM / Application desktop",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "TensorFold est un moteur d’inférence LLM écrit en Zig qui sert des modèles sur Apple Silicon (Metal) et GPU NVIDIA (CUDA) sans dépendance Python [ S1 ]. Il cible les développeurs et chercheurs souhaitant exécuter localement des modèles quantifiés.",
+      "workflow": "Entrée : fichier de checkpoint LLM (ex. Qwen3.5‑2B 4‑bit) → Traitement : le binaire Zig lit le checkpoint, tokenise la requête, exécute des kernels Metal ou CUDA via le moteur TensorFold → Résultat : réponse texte renvoyée via une API locale ou l’interface web fournie [ S1 ][ S3 ]. Limites : nécessite du matériel compatible Metal ou CUDA, licences des poids externes non inclus.",
+      "use_cases": "• Utilisateur : Développeur IA freelance ; Tâche : Tester rapidement un petit modèle quantifié en local ; outcome : Obtenir des réponses en quelques secondes sans installer de stack Python lourde\n• Utilisateur : Équipe R&D d’une PME ; Tâche : Intégrer un modèle LLM dans une application interne via l’API web ; outcome : Déployer un service d’inférence autonome sur serveurs macOS ou Linux GPU",
+      "products": "• Cible : Indépendants créant des assistants de rédaction ; Produit : Interface SaaS légère qui encapsule TensorFold via un conteneur Docker ; difference : Supprime la complexité de compilation Zig et offre une facturation à l’usage\n• Cible : Agences de marketing digital ; Produit : Plugin Chrome qui interroge un serveur TensorFold auto‑hébergé pour générer des textes publicitaires ; difference : Utilise le moteur local pour éviter les coûts d’API cloud et garantit la confidentialité",
+      "monetization": "Facturation à l’usage (nombre de tokens traités) aux PME et agences qui souhaitent garder leurs données en interne ; modèle de paiement par millier de tokens, hypothèse de 0,01 €/kTokens basée sur la valeur perçue d’une alternative cloud.",
+      "build_plan": "Périmètre : conteneuriser le binaire Zig existant et exposer l’API REST déjà fournie [ S3 ]; réutiliser le code du serveur web (uvicorn) ; ajouter un module de facturation simple et un tableau de bord minimal. Travail supplémentaire : UI de gestion des clés, monitoring des quotas. Exclusions : recompilation du moteur pour d’autres GPU. Dépendances : Zig, uvicorn, Docker. Coût estimé : 8 h de développement + 4 h de tests, soit ~12 h.",
+      "limitations": "Licence des poids LLM non fournie, compatibilité matérielle limitée à Metal/CUDA, documentation fragmentaire, licence du projet non vérifiée [ S1 ]. Maintenance du binaire Zig requiert des compétences bas‑niveau.",
+      "next_step": "Réaliser un test technique : lancer le serveur local avec un petit checkpoint et mesurer le temps de réponse; questionner un développeur IA sur l’importance de l’absence de dépendance Python.",
+      "assessment": "Score 7 reflète la pertinence du moteur pour des projets IA locaux et la disponibilité d’une API web, mais l’absence de licence claire et de documentation détaillée réduit la confiance. Fit_score 5 par défaut faute de critères de profil supplémentaires.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "41a72fd2578dfbdd73b25663da78d5fc0047bd95",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ashhart/TensorFold/blob/41a72fd2578dfbdd73b25663da78d5fc0047bd95/README.md",
+            "excerpt": "\n\n## Quick start\n\nStart with Qwen3.5-2B, the small 4-bit checkpoint checked on Metal and a GB10. The commands below download its\npinned revision, then serve it as `local-model`. Model weights have their own licenses.\nReviewing or benchmarking TensorFold? [Evaluating TensorFold](docs/evaluating.md) covers pinning, signature checks,\na container and the tests that need no GPU.\n\n\n\n# TensorFold\n\nTensorFold serves language models from a Zig binary on Apple Silicon and NVIDIA GPUs.\nThe engine reads checkpoints, tokenizes requests and runs Metal or CUDA kernels directly.\nServing needs no Python or MLX installation.\n\nBuilding with a coding agent? Have it load the [contributor skill](docs/recipes/SKILL.md) before it writes any code.\n\n\n\n## Contributing with agents\n\nPlease use [Agent Traffic Control](https://github.com/ashhart/ATC) before editing TensorFold so contributors and agents can avoid duplicate work and conflicting changes.\nCheck the [live agent radar](https://tensorfold.dev/atc) before choosing an issue and follow [CONTRIBUTING.md](CONTRIBUTING.md) and the [ATC contributor instructions](docs/atc/SKILL.md).\n\nInstall or upgrade ATC to 0.9.4 or later, then run from an updated TensorFold clone:\n\n```sh\nnpm install -g github:ashhart/ATC\natc check ISSUE --json\natc claim ISSUE --json\n```\n\nReplace `ISSUE` with the issue number and claim only after a complete check says the w\n\n### Mac with"
+          },
+          {
+            "id": "S2",
+            "path": "app/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ashhart/TensorFold/blob/41a72fd2578dfbdd73b25663da78d5fc0047bd95/app/package.json",
+            "excerpt": "{\n  \"name\": \"tensorfold-studio\",\n  \"version\": \"1.0.0-beta.9\",\n  \"private\": true,\n  \"packageManager\": \"npm@10.9.8\",\n  \"engines\": {\n    \"node\": \">=22 <23\",\n    \"npm\": \"10.9.8\"\n  },\n  \"devEngines\": {\n    \"runtime\": {\n      \"name\": \"node\",\n      \"version\": \">=22 <23\",\n      \"onFail\": \"error\"\n    },\n    \"packageManager\": {\n      \"name\": \"npm\",\n      \"version\": \"10.9.8\",\n      \"onFail\": \"error\"\n    }\n  },\n  \"description\": \"TensorFold, an agentic desktop workspace for local and cloud models\",\n  \"author\": \"TensorFold\",\n  \"main\": \"dist-electron/main.js\",\n  \"scripts\": {\n    \"preinstall\": \"node scripts/c"
+          },
+          {
+            "id": "S3",
+            "path": "web/tensorfold_web/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/ashhart/TensorFold/blob/41a72fd2578dfbdd73b25663da78d5fc0047bd95/web/tensorfold_web/cli.py",
+            "excerpt": "\"\"\"`tensorfold-web`: start the local server and open the page.\"\"\"\n\nfrom __future__ import annotations\n\nimport argparse\nimport os\nimport sys\nimport threading\nimport webbrowser\nfrom pathlib import Path\n\nimport uvicorn\n\nfrom . import __version__\nfrom . import settings as settings_mod\nfrom .engine import Engine\nfrom .server import create_app\n\n\ndef main(argv: list[str] | None = None) -> int:\n    argv = sys.argv[1:] if argv is None else argv\n    if argv[:1] == [\"service\"]:                    # `tensorfold-web service install|uninstall|status`\n        from . import service\n\n        return service.main(argv[1:])\n    if argv[:1] == [\"token\"]:                      # `tensorfold-web token [--copy] [--new]`\n        from . import access\n\n        return access.main(argv[1:])\n    p = argparse.ArgumentParser(prog=\"tensorfold-web\", description=\"A local web interface for TensorFold\",\n                                epilog=\"`tensorfold-web service install` keeps it running: at login on macOS, \"\n         "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "TensorFold est un moteur d’inférence LLM écrit en Zig qui sert des modèles sur Apple Silicon (Metal) et GPU NVIDIA (CUDA) sans dépendance Python [ S1 ]. Il cible les développeurs et chercheurs souhaitant exécuter localement des modèles quantifiés.",
+      "business_idea": "• Cible : Indépendants créant des assistants de rédaction ; Produit : Interface SaaS légère qui encapsule TensorFold via un conteneur Docker ; difference : Supprime la complexité de compilation Zig et offre une facturation à l’usage\n• Cible : Agences de marketing digital ; Produit : Plugin Chrome qui interroge un serveur TensorFold auto‑hébergé pour générer des textes publicitaires ; difference : Utilise le moteur local pour éviter les coûts d’API cloud et garantit la confidentialité"
+    },
+    {
+      "name": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman",
+      "description": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
+      "language": "Go",
+      "stars": 120248,
+      "forks": 7009,
+      "gained": "227 stars today",
+      "gained_n": 227,
+      "lang_color": "#00ADD8",
+      "category": "outil de ligne de commande pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "caveman est un CLI Go qui enveloppe des agents IA (Claude, Codex, Gemini…) afin de réduire le nombre de tokens consommés tout en conservant le résultat attendu. Il s’adresse aux développeurs qui souhaitent optimiser leurs coûts d’API IA.",
+      "workflow": "Entrée : fichier ou requête texte via `caveman <filepath>` ; Traitement : le script Python/Go compresse le texte, sélectionne le modèle optimal et envoie la requête à l’API IA ; Résultat : réponse raccourcie et facturation réduite. Limites : dépend de la disponibilité des clés API et ne fonctionne que localement sur Node 22+ ([S1]).",
+      "use_cases": "• Développeur front‑end : utilise caveman pour réduire le prompt envoyé à Claude lors de la génération de composants React, économisant ainsi des tokens.\n• Agence SEO : compresse les rapports JSON avant de les soumettre à un modèle d’analyse, diminuant le volume de données traitées.",
+      "products": "• cible : freelance tech ; produit : extension VS Code qui intègre caveman pour reformuler les prompts en temps réel ; différence : ajoute une UI graphique et un stockage local des historiques, ce qui n’existe pas dans le dépôt brut.\n• cible : PME SaaS ; produit : service cloud qui expose caveman via une API REST multi‑tenant ; différence : centralise la gestion des clés API et propose une facturation à l’usage, alors que le projet original reste purement local.",
+      "monetization": "Facturation à l’usage : chaque appel API est facturé en fonction du nombre de tokens économisés, tarif hypothétique 0,001 €/token économisé, à tester selon la valeur perçue par le client.",
+      "build_plan": "Réutiliser le CLI Go et le script Python existants (briques : compression, sélection de modèle) ; ajouter une couche API (Node/Express) ; exclure la création d’un UI web complet ; dépendances : chromedp, tiktoken‑go, sqlite ; coût estimé 120 h de développement (≈3 semaines à 40 h/semaine).",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance aux clés API externes, performances limitées aux capacités locales du terminal.",
+      "next_step": "Tester la compression de prompts sur un projet réel et interroger un développeur senior sur la pertinence du gain de tokens.",
+      "assessment": "Score 7 reflète la pertinence technique et le potentiel de réduction de coûts, mais l’absence de validation marché et de licence claire limite l’adéquation. Fit_score reste neutre (5) faute de critères de profil détaillés.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "b4ee71d557d96e3cbc14f88fa6e953a1362865f5",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/JuliusBrussee/caveman/blob/b4ee71d557d96e3cbc14f88fa6e953a1362865f5/README.md",
+            "excerpt": " \n\n\n\n## Install\n\n```bash\nnpx @caveman-ai/cli@latest\n```\n\nOne command. Mac, Linux, Windows. Caveman find your agents and your logins, show what it change. Press Enter. Done. Needs Node.js 22.13+.\n\nAfter that, plain `claude` stays caveman'd. So do Codex, Gemini CLI, OpenCode, and [30+ more](./INSTALL.md). It runs on your machine, with your keys and your Claude Pro/Max login. One rock. That it.\n\n Had caveman before 4.0? Say  @latest , or the old copy on your machine wins. Already set up?  caveman setup  opens the screen again. Only want shorter answers?  Get just the skill . \n\n\n\n## Six rocks, one install\n\nNew in 4.0: caveman is six parts. All on after install. Each has its own switch.\n\n| Rock | What it does | Measured |\n|---|---|---|\n| **[Say less](#say-less-the-caveman-voice)** | Agent answers short. Code stays exact | 63 → 20 tokens, same fix |\n| **[Read less](#read-less-332-fewer-input-tokens)** | Logs, JSON, CSV, test output shrink before the model reads them | **33.2%** fewer input tokens per session |\n| **[Auto](#auto-54-cheaper-same-score)** · new | Picks the model and the effort for each ask | **54%** cheaper than Opus at xhigh, same score |\n| **[Blocks](#blocks-code-mode-script-written-once)** · new | Co\n\n## New: Caveman Code. Free.\n\n**The most efficient coding agent.** Same model, same work, smaller bill.\n\n \n \n  21% cheaper than Codex  Terminal-Bench 4, per solved ta"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/JuliusBrussee/caveman/blob/b4ee71d557d96e3cbc14f88fa6e953a1362865f5/go.mod",
+            "excerpt": "module github.com/JuliusBrussee/caveman\n\ngo 1.26.11\n\nrequire (\n\tgithub.com/Microsoft/go-winio v0.6.2\n\tgithub.com/chromedp/cdproto v0.0.0-20260714215040-dc233986426f\n\tgithub.com/chromedp/chromedp v0.16.0\n\tgithub.com/go-json-experiment/json v0.0.0-20260623181947-01eb4420fa68\n\tgithub.com/jackc/pgx/v5 v5.11.0\n\tgithub.com/klauspost/compress v1.20.3\n\tgithub.com/smacker/go-tree-sitter v0.0.0-20240827094217-dd81d9e9be82\n\tgithub.com/tiktoken-go/tokenizer v0.8.1\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/sys v0.49.0\n\tgopkg.in/yaml.v3 v3.0.1\n\tmodernc.org/sqlite v1.59.0\n)\n\nrequire (\n\tgithub.com/chromedp/sysu"
+          },
+          {
+            "id": "S3",
+            "path": "skills/caveman-compress/scripts/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/JuliusBrussee/caveman/blob/b4ee71d557d96e3cbc14f88fa6e953a1362865f5/skills/caveman-compress/scripts/cli.py",
+            "excerpt": "#!/usr/bin/env python3\n\"\"\"\nCaveman Compress CLI\n\nUsage:\n    caveman <filepath>\n\"\"\"\n\nimport argparse\nimport sys\n\n# Force UTF-8 on stdout/stderr before any code can print. Windows consoles\n# default to cp1252 and crash on the ❌ glyphs in error/validation branches,\n# masking the real error and leaving the user with a half-compressed file.\nfor _stream in (sys.stdout, sys.stderr):\n    reconfigure = getattr(_stream, \"reconfigure\", None)\n    if callable(reconfigure):\n        try:\n            reconfigure(encoding=\"utf-8\", errors=\"replace\")\n        except Exception:\n            pass\n\nfrom pathlib import Path\n\n# Direct script execution has no package context. Resolve imports relative to\n# this installed skill, independent of the caller's working directory.\nif __package__ in (None, \"\"):\n    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))\n    __package__ = \"scripts\"\n\nfrom .compress import backup_dir_for, compress_file, is_sensitive_path\nfrom .detect import detect_file_type, shoul"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "caveman est un CLI Go qui enveloppe des agents IA (Claude, Codex, Gemini…) afin de réduire le nombre de tokens consommés tout en conservant le résultat attendu. Il s’adresse aux développeurs qui souhaitent optimiser leurs coûts d’API IA.",
+      "business_idea": "• cible : freelance tech ; produit : extension VS Code qui intègre caveman pour reformuler les prompts en temps réel ; différence : ajoute une UI graphique et un stockage local des historiques, ce qui n’existe pas dans le dépôt brut.\n• cible : PME SaaS ; produit : service cloud qui expose caveman via une API REST multi‑tenant ; différence : centralise la gestion des clés API et propose une facturation à l’usage, alors que le projet original reste purement local."
+    }
+  ]
+}
