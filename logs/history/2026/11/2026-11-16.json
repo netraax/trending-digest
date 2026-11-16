@@ -1,0 +1,576 @@
+{
+  "date": "2026-11-16",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "description": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
+      "language": "TypeScript",
+      "stars": 26767,
+      "forks": 2434,
+      "gained": "988 stars today",
+      "gained_n": 988,
+      "lang_color": "#3178c6",
+      "category": "Framework d'édition de documents web (sheets, docs) extensible",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Univer est un SDK open‑source permettant d’intégrer des éditeurs de feuilles de calcul et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des fonctionnalités de bureautique collaborative à leurs utilisateurs ou à des agents IA.",
+      "workflow": "Entrée : fichier ou données JSON fournis par l’application cliente → Traitement : le SDK charge les plugins de feuilles ou de documents, applique les règles métier via les plugins de contenu, synchronise les modifications en temps réel → Résultat : interface interactive affichée dans le navigateur, export possible en XLSX/CSV ou PDF. Limites : la documentation indique que les plugins UI et logique sont séparés, mais aucune preuve de persistance serveur ou de gestion multi‑utilisateur n’est fournie (non établi dans les extraits). [S1]",
+      "use_cases": "• Utilisateur : Agence de marketing ; Tâche : Créer des rapports de performance personnalisés en ligne ; outcome : Les équipes remplissent un modèle de feuille de calcul partagé, les données sont exportées automatiquement en PDF pour les clients.\n• Utilisateur : Développeur d’assistant IA ; Tâche : Permettre à un agent conversationnel de générer et modifier des documents texte ; outcome : L’agent utilise l’API du SDK pour insérer du texte, le client voit les changements en temps réel dans l’interface web.",
+      "products": "• Cible : PME souhaitant un outil de facturation interne ; Produit : Plateforme SaaS de facturation basée sur le module Sheets d’Univer ; difference : Utilise le moteur de calcul d’Univer pour automatiser les totaux et les taxes, évitant le développement d’un tableur propriétaire.\n• Cible : Créateur de contenu éducatif ; Produit : Éditeur collaboratif de cours en ligne intégrant Docs d’Univer ; difference : Offre une interface riche de rédaction et de mise en forme, avec la possibilité d’ajouter des plugins d’évaluation personnalisés.",
+      "monetization": "Acheteur : PME ou créateur de contenu ; raison : gain de productivité et réduction du temps de développement d’un éditeur sur mesure ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, ajustable selon nombre d’utilisateurs et de plugins. Le prix repose sur la valeur perçue de l’édition collaborative et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : intégrer le preset Sheets d’Univer dans une application Next.js, ajouter l’authentification Supabase et un backend FastAPI pour la persistance. Brique réutilisée : @univerjs/preset-sheets-core (voir S1). Travail à ajouter : UI personnalisée, logique de facturation, API de sauvegarde. Exclusions : développement de plugins UI avancés non fournis par le SDK. Dépendances : Vite, React, Supabase, Docker. Coût estimé : hébergement Vercel (0 €/mois pour le plan gratuit) + Supabase (0‑25 €/mois selon usage). Délai : 3‑5 semaines en mode prototype, conditionnel à la disponibilité du développeur à plein temps.",
+      "limitations": "Contraintes établies : le SDK sépare logique et UI, nécessite un bundler moderne (Vite) ; licence Apache‑2.0 confirmée dans le package.json, mais la licence exacte du dépôt n’est pas vérifiée (non établi dans les extraits). Inconnues : performances en environnement multi‑utilisateur, support officiel pour le stockage serveur, coûts de maintenance à long terme.",
+      "next_step": "Réaliser un proof‑of‑concept qui charge un classeur Sheets via le preset et sauvegarde les données dans Supabase ; poser à un potentiel utilisateur (ex. responsable comptable) la question : « Quel problème rencontrez‑vous aujourd’hui avec vos outils de tableur ? ».",
+      "assessment": "Score 7 basé sur la maturité du SDK (version 1.5.2, documentation fournie) et la pertinence pour les secteurs ciblés (bureautique SaaS, IA appliquée). Fit_score 5 car le profil ne précise pas de contraintes géographiques ou de délai strictes. Le manque de preuves concrètes sur la persistance serveur et la gestion multi‑utilisateur est noté (non établi dans les extraits).",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2c4a5dcce257e0bb6e30322b51001efa14838fee",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/dream-num/univer/blob/2c4a5dcce257e0bb6e30322b51001efa14838fee/README.md",
+            "excerpt": "  \n\n   \n\n Build your own AI office with Univer Office SDK. \n\n Start with open-source Sheets and Docs, then connect your own application or agent. \n\n  🚀 Quick start  ·  💼 Workspace  ·  📚 Documentation  ·  ⚖️ Feature comparison  ·  🌐 Website  ·  🎮 Showcase  ·  🔧 API Reference  ·  📝 Blog  \n\n  English  ·  Français  ·  Deutsch  ·  Español  ·  简体中文  ·  繁體中文  ·  日本語  ·  한국어  \n\n \n     \n\n\n### Quick start: an open-source spreadsheet editor\n\nIn a browser application using a bundler such as Vite:\n\n```bash\npnpm add @univerjs/presets @univerjs/preset-sheets-core\n```\n\nCreate the container before initializing Univer:\n\n```html\n  \n```\n\n```ts\nimport { UniverSheetsCorePreset } from '@univerjs/preset-sheets-core'\nimport UniverPresetSheetsCoreEnUS from '@univerjs/preset-sheets-core/locales/en-US'\nimport { createUniver, LocaleType, mergeLocales } from '@univerjs/presets'\nimport '@univerjs/preset-sheets-core/lib/index.css'\n\nconst { univerAPI } = createUniver({\n  locale: LocaleType.EN_US,\n  locales: {\n    [LocaleType.EN_US]: mergeLocales(Univ\n\n## 🏗️ Explore the open-source architecture\n\n   \n\n  \n\n\n\n### Give custom features clear boundaries\n\nUniver organizes content logic and UI interaction in separate plugins. Feature plugins manage rules and content changes; UI plugins provide the interface and user interactions. For example, `sh"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/dream-num/univer/blob/2c4a5dcce257e0bb6e30322b51001efa14838fee/package.json",
+            "excerpt": "{\n    \"name\": \"univer\",\n    \"type\": \"module\",\n    \"version\": \"1.5.2\",\n    \"private\": true,\n    \"packageManager\": \"pnpm@12.16.1\",\n    \"author\": \"DreamNum Co., Ltd. <developer@univer.ai>\",\n    \"license\": \"Apache-2.0\",\n    \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/univer\"\n    },\n    \"homepage\": \"https://univer.ai\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/dream-num/univer\"\n    },\n    \"bugs\": {\n        \"url\": \"https://github.com/dream-num/univer/issues\"\n    },\n    \"devEngines\": {\n        \"runtime\": {\n            \""
+          },
+          {
+            "id": "S3",
+            "path": "examples/src/main.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/dream-num/univer/blob/2c4a5dcce257e0bb6e30322b51001efa14838fee/examples/src/main.ts",
+            "excerpt": "import type { ExampleLoader } from './mount-example';\nimport type {\n    WorkbenchDevice,\n    WorkbenchDirection,\n    WorkbenchLocale,\n    WorkbenchRegion,\n    WorkbenchRibbonType,\n    WorkbenchTheme,\n    WorkbenchUIChromeMode,\n    WorkbenchZoomRatio,\n} from './workbench-settings';\nimport { createExampleSwitcher } from './mount-example';\nimport {\n    clearWorkbenchSettings,\n    getDefaultWorkbenchSettings,\n    getWorkbenchTheme,\n    readWorkbenchSettings,\n    WORKBENCH_LOCALE_META,\n    writeWorkbenchSettings,\n} from './workbench-settings';\nimport { renderWorkbenchSettingsControl, unmountWorkbenchSettingsControl } from './workbench-settings-control';\nimport './global.css';\n\nconst loaders = {\n    docs: () => import('./docs/mount'),\n    sheets: () => import('./sheets/mount'),\n} satisfies Record<string, ExampleLoader>;\n\ntype ExampleName = keyof typeof loaders;\n\nfunction getRequiredElement<T extends HTMLElement>(selector: string): T {\n    const element = document.querySelector<T>(selector);\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Univer est un SDK open‑source permettant d’intégrer des éditeurs de feuilles de calcul et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des fonctionnalités de bureautique collaborative à leurs utilisateurs ou à des agents IA.",
+      "business_idea": "• Cible : PME souhaitant un outil de facturation interne ; Produit : Plateforme SaaS de facturation basée sur le module Sheets d’Univer ; difference : Utilise le moteur de calcul d’Univer pour automatiser les totaux et les taxes, évitant le développement d’un tableur propriétaire.\n• Cible : Créateur de contenu éducatif ; Produit : Éditeur collaboratif de cours en ligne intégrant Docs d’Univer ; difference : Offre une interface riche de rédaction et de mise en forme, avec la possibilité d’ajouter des plugins d’évaluation personnalisés."
+    },
+    {
+      "name": "ag-ui-protocol/ag-ui",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "description": "AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.",
+      "language": "TypeScript",
+      "stars": 18273,
+      "forks": 1888,
+      "gained": "355 stars today",
+      "gained_n": 355,
+      "lang_color": "#3178c6",
+      "category": "Framework / protocole d'interaction agent‑utilisateur",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "AG‑UI est un protocole léger et événementiel qui normalise la connexion entre agents IA et interfaces front‑end. Il cible les développeurs front‑end souhaitant intégrer des agents conversationnels en temps réel.",
+      "workflow": "Entrée : requête d'un utilisateur via UI → Traitement : le client AG‑UI transmet l'événement à un agent IA (ex. OpenAI) via le protocole, synchronise l'état bidirectionnel et enrichit le contexte en temps réel → Résultat : flux de messages structurés affichés dans l'interface. Limites : le README décrit les fonctionnalités mais ne précise pas la gestion d’erreurs ni les exigences d’infrastructure (ex. serveur de synchronisation). [S1]",
+      "use_cases": "• Utilisateur : Développeur SaaS B2B ; Tâche : Intégrer un assistant de support client dans une application React ; Résultat : L’assistant répond en temps réel, conserve le contexte de la session et permet à l’opérateur humain d’intervenir via le même canal.\n• Utilisateur : Agence de création de contenu ; Tâche : Proposer un générateur d’idées de campagne directement dans l’outil de design ; Résultat : Le designer saisit un brief, l’agent propose des concepts, l’interface met à jour la maquette en continu.",
+      "products": "• Cible : PME souhaitant automatiser le support ; Produit : Plateforme SaaS de chat support intégrant AG‑UI comme couche de protocole ; difference : Utilise le protocole standardisé d’AG‑UI pour offrir une intégration rapide avec n’importe quel front‑end, réduisant le temps de développement comparé à une solution propriétaire.\n• Cible : Développeurs d’applications mobiles ; Produit : SDK Flutter/Dart (déjà présent) empaqueté avec un backend Go minimal ; difference : Permet de déployer des agents IA sur mobile sans réécrire le protocole, tirant parti du support multi‑langage d’AG‑UI.",
+      "monetization": "Acheteur : PME ou agence payant pour l’accès à la plateforme SaaS ou au SDK premium. Raison : gain de productivité et réduction du coût de support. Unité facturée : abonnement mensuel par utilisateur actif ou paiement à l’usage (messages traités). Modèle : abonnement tiered (starter, pro) avec tarif hypothétique 30‑150 €/mois selon volume. Hypothèse basée sur la valeur perçue d’un agent IA temps réel et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : implémenter le serveur de synchronisation et le tableau de bord admin. Brique réutilisée : protocole AG‑UI (SDK TypeScript, Flutter). Travail à ajouter : UI de gestion, facturation Stripe, monitoring. Exclusions : création de modèles IA (utilisation d’API externes). Dépendances : Node.js, Go, Flutter, OpenAI API. Coût estimé : 2 000 $ de services cloud pour un MVP, 40 h de développement initial. Délai : 4‑6 semaines (prototype fonctionnel) sous condition de disponibilité des API tierces.",
+      "limitations": "Licence non vérifiée dans les extraits, donc conformité juridique incertaine. Le README ne fournit pas de tests automatisés ni de métriques de performance. Le protocole nécessite un serveur de synchronisation non fourni. Maintenance du serveur et des clés API restent à définir.",
+      "next_step": "Réaliser un test technique : connecter un petit front‑end React à un agent OpenAI via le protocole AG‑UI et mesurer la latence du flux de messages. Question à poser à un potentiel utilisateur : « Quel niveau de contrôle sur le contexte de la conversation attendez‑vous d’un agent intégré à votre interface ? »",
+      "assessment": "Score 7 reflète la pertinence du protocole pour les projets d’interaction IA en temps réel décrits dans le profil (frameworks modernes, IA locale ou API). Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité n’est prouvée dans les extraits. Les preuves proviennent du README (S1) et du package.json (S2) qui confirment l’existence du SDK et des scripts de build.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2330368a2a74573902858867072406638ba3073d",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/README.md",
+            "excerpt": "\n\n\n## 🚀 Features\n\n- 💬 Real-time agentic chat with streaming\n- 🔄 Bi-directional state synchronization\n- 🧩 Generative UI and structured messages\n- 🧠 Real-time context enrichment\n- 🛠️ Frontend tool integration\n- 🧑‍💻 Human-in-the-loop collaboration\n\n\n\n\n## Examples\n\n\n#   AG-UI: The Agent-User Interaction Protocol\n\n\nAG-UI is an open, lightweight, event-based protocol that standardizes how AI agents connect to user-facing applications.\nBuilt for simplicity and flexibility, it enables seamless integration between AI agents, real time user context, and user interfaces.\n\n---\n\n \n   \n   \n \n\n \n\n\n[ ](https://www.npmjs.com/package/@ag-ui/core)\n \n \n\n  Join our Discord →   &nbsp;&nbsp;&nbsp;   Read the Docs →   &nbsp;&nbsp;&nbsp;   Go to the AG-UI Dojo →   &nbsp;&nbsp;&nbsp;   Follow us →  \n\n \n\n\n\n\n\n## 🚀 Getting Started\nCreate a new AG-UI application in seconds:\n```bash\nnpx create-ag-ui-app my-agent-app\n```\n\n  Useful Links: \n\n- [The AG-UI Dojo](https://dojo.ag-ui.com/)\n- [Build AG-UI-powered applications(Quickstart)](https://docs.ag-ui.com/quickstart/applications)\n- [Build new AG-UI framework integrations (Quickstart)](https://go.copilotkit.ai/agui-contribute)\n- [Book a call to discuss an AG-UI integration with a new framework](https://calendly.com/markus-copilotkit/ag-ui)\n- [Join the Discord Community](https://discord.gg/Jd3FzfdJa8)\n\n\n\n## What is AG-UI?\n\nA"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/package.json",
+            "excerpt": "{\n  \"name\": \"ag-ui\",\n  \"author\": \"Markus Ecker <markus.ecker@gmail.com>\",\n  \"private\": true,\n  \"scripts\": {\n    \"build\": \"nx run-many -t build\",\n    \"clean\": \"git clean -fdX --exclude=\\\".env\\\"\",\n    \"build:clean\": \"pnpm run clean && pnpm install && pnpm run build\",\n    \"dev\": \"pnpm run build --projects=sdks/** && nx watch --projects=sdks/** -- pnpm run build --projects=sdks/**\",\n    \"dev:integrations\": \"pnpm run build --projects=integrations/** && nx watch --projects=integrations/** -- pnpm run build --projects=integrations/**\",\n    \"dev:middlewares\": \"pnpm run build --projects=middlewares/** "
+          },
+          {
+            "id": "S3",
+            "path": "sdks/community/dart/example/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/2330368a2a74573902858867072406638ba3073d/sdks/community/dart/example/README.md",
+            "excerpt": "\n\n## Toolchain and installation\n\nUse Flutter **3.47.1** (Dart **3.13.1**) and Git LFS. The application requires Dart >=3.9 and Flutter >=3.35; the parent SDK retains its own independent SDK floor.\n\n```bash\n\n\n# AG-UI Flutter Dojo\n\nA Flutter example using the parent Dart SDK and the paired [Go example server](../../../go/example/server). The application replaces the previous CLI example. This first import preserves the source features; the following integration slices repair lifecycle, protocol reconciliation, and deterministic verification.\n\n\n\n# From the repository root:\ngit lfs pull\ncd sdks/community/dart/example\nflutter pub get\n```\n\nThe `ag_ui` dependency resolves to `../`. No sibling checkout, Python backend, pnpm, or private module is needed.\n\n\n\n## Run the pair\n\nIn terminal 1, with a valid `OPENAI_API_KEY` already set in that terminal:\n\n```bash\n\n\n# From the repository root:\ncd sdks/community/go/example/server\ngo run ./cmd\n```\n\nIn terminal 2:\n\n```bash\n\n\n# From the repository root:\ncd"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "AG‑UI est un protocole léger et événementiel qui normalise la connexion entre agents IA et interfaces front‑end. Il cible les développeurs front‑end souhaitant intégrer des agents conversationnels en temps réel.",
+      "business_idea": "• Cible : PME souhaitant automatiser le support ; Produit : Plateforme SaaS de chat support intégrant AG‑UI comme couche de protocole ; difference : Utilise le protocole standardisé d’AG‑UI pour offrir une intégration rapide avec n’importe quel front‑end, réduisant le temps de développement comparé à une solution propriétaire.\n• Cible : Développeurs d’applications mobiles ; Produit : SDK Flutter/Dart (déjà présent) empaqueté avec un backend Go minimal ; difference : Permet de déployer des agents IA sur mobile sans réécrire le protocole, tirant parti du support multi‑langage d’AG‑UI."
+    },
+    {
+      "name": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
+      "language": "TypeScript",
+      "stars": 9529,
+      "forks": 1193,
+      "gained": "247 stars today",
+      "gained_n": 247,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque de compétences d'agents",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Une collection TypeScript de compétences compatibles avec le serveur Stitch MCP et divers agents de code (Claude, Cursor, etc.). Elle cible les développeurs qui souhaitent enrichir leurs agents avec des actions de design et de génération de code.",
+      "workflow": "Entrée : un développeur invoque une compétence via la CLI `npx skills add …` ; Traitement : le plugin charge le module TypeScript, exécute le script associé (ex. `fetch` ou `validate`) et interagit avec l'API Stitch ; Résultat : l'agent reçoit le code ou le composant généré, prêt à être intégré. Limites : dépendances explicites (Node ≥ 18, @swc/core) et inter‑dépendances entre compétences indiquées dans le README [S1].",
+      "use_cases": "• Utilisateur : Développeur full‑stack ; Tâche : Générer rapidement un composant React Native à partir d'une description de design ; Résultat : Le skill `react-native-components` produit le code source prêt à être importé dans le projet\n• Utilisateur : Équipe produit ; Tâche : Standardiser la création de maquettes design‑to‑code via un agent automatisé ; Résultat : Les compétences Stitch automatisent la conversion de maquettes Markdown en composants UI, réduisant le temps de prototypage",
+      "products": "• Cible : PME développant des applications mobiles internes ; Produit : Service SaaS qui expose les compétences Stitch via une API REST ; difference : Abstraction du CLI ; les clients envoient des requêtes HTTP et reçoivent du code sans installer Node\n• Cible : Agences de design UX ; Produit : Extension VS Code qui intègre les compétences Stitch pour transformer des maquettes en code directement dans l'IDE ; difference : Interface graphique intégrée, éliminant le besoin de ligne de commande",
+      "monetization": "Facturation à l'usage (nombre de générations de code) auprès des développeurs/agences, modèle pay‑per‑call avec tarif hypothétique 0,02 €/génération, justifié par le gain de productivité estimé et les coûts d'infrastructure cloud.",
+      "build_plan": "Réutiliser le package `react-native-components` (S2) comme brique centrale ; ajouter une couche API (FastAPI) pour exposer les compétences ; exclure la partie CLI native ; dépendances : Node ≥ 18, @swc/core, FastAPI, Docker. Coût estimé : 150 € / mois pour hébergement cloud minimal. Délai : 3‑4 semaines (prototype fonctionnel).",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à Stitch MCP non fournie, besoin d'un serveur Node pour les scripts, maintenance des dépendances npm. Certaines compétences requièrent des assets de design non inclus dans le dépôt.",
+      "next_step": "Tester l'installation du skill `react-native-components` dans un projet local et vérifier la génération de code; questionner un développeur senior s'il estime que l'intégration d'une API SaaS simplifierait son workflow.",
+      "assessment": "Score 7 reflète la pertinence technique (TypeScript, compatibilité agents) et la disponibilité d'exemples concrets (S1, S2). Fit_score 5 par défaut faute de profil détaillé. Les preuves sont limitées aux extraits fournis ; plusieurs aspects (licence, conformité) restent non établis.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0337446dadde6f8c94210444e2aa9d546126480f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/0337446dadde6f8c94210444e2aa9d546126480f/README.md",
+            "excerpt": "\n\n## Quick Start\n\n\n\n### 1. Install Plugins (Recommended)\nThe fastest way to set up the full Stitch plugin suite globally.\n\n\n\n# Claude Code — installs into the current project\nnpx plugins add google-labs-code/stitch-skills --scope project --target claude-code\n```\n\n```bash\n\n\n# Cursor — installs into the current workspace\nnpx plugins add google-labs-code/stitch-skills --scope workspace --target cursor\n```\n\n\n\n### 2. Install Skills Selectively\nChoose only the specific skills you need.\n\n> [!IMPORTANT]\n> Stitch Design Skills often have inter-dependencies. If you choose to install skills selectively, ensure you include all required dependencies.\n\n```bash\nnpx skills add google-labs-code/stitch-skills\n```\n\nYou can run the following commands to see the help documentation for plugins and skills:\n\n```bash\nnpx plugins --help\n\nnpx skills --help\n```\n\n\n\n# Stitch Design Skills\n\nA collection of agent skills and plugins for [Google Stitch](https://stitch.withgoogle.com), following the [Agent Skills](https://agentskills.io) open standard. Compatible with coding agents such as Codex, Antigravity, Gemini CLI, Claude Code, Cursor, and OpenCode (manual install).\n\n\n\n#### Codex\n\nAdd the Stitch Skills marketplace, then install the plugins you need.\n\n \n  Via CLI  (recommended) \n\n```bash\ncodex plugin marketplace add google-labs-code/stitch-skills --ref main \\\n  --sparse .agents/plugins \\\n  --sparse plug"
+          },
+          {
+            "id": "S2",
+            "path": "plugins/stitch-build/skills/react-native/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/0337446dadde6f8c94210444e2aa9d546126480f/plugins/stitch-build/skills/react-native/package.json",
+            "excerpt": "{\n  \"name\": \"react-native-components\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Design-to-code prompt to React Native components for Stitch MCP\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"validate\": \"node scripts/validate.js\",\n    \"fetch\": \"bash scripts/fetch-stitch.sh\"\n  },\n  \"dependencies\": {\n    \"@swc/core\": \"^1.3.100\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/0337446dadde6f8c94210444e2aa9d546126480f/plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "excerpt": "\n\n# Design System: Furniture Collections List\n**Project ID:** 13534454087919359824\n\n\n\n## 1. Visual Theme & Atmosphere\n\nThe Furniture Collections List embodies a **sophisticated, minimalist sanctuary** that marries the pristine simplicity of Scandinavian design with the refined visual language of luxury editorial presentation. The interface feels **spacious and tranquil**, prioritizing breathing room and visual clarity above all else. The design philosophy is gallery-like and photography-first, allowing each furniture piece to command attention as an individual art object.\n\nThe overall mood is **airy yet grounded**, creating an aspirational aesthetic that remains approachable and welcoming. The interface feels **utilitarian in \n\n## 2. Color Palette & Roles\n\n\n\n### Primary Foundation\n- **Warm Barely-There Cream** (#FCFAFA) – Primary background color. Creates an almost imperceptible warmth that feels more inviting than pure white, serving as the serene canvas for the entire experience.\n-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Une collection TypeScript de compétences compatibles avec le serveur Stitch MCP et divers agents de code (Claude, Cursor, etc.). Elle cible les développeurs qui souhaitent enrichir leurs agents avec des actions de design et de génération de code.",
+      "business_idea": "• Cible : PME développant des applications mobiles internes ; Produit : Service SaaS qui expose les compétences Stitch via une API REST ; difference : Abstraction du CLI ; les clients envoient des requêtes HTTP et reçoivent du code sans installer Node\n• Cible : Agences de design UX ; Produit : Extension VS Code qui intègre les compétences Stitch pour transformer des maquettes en code directement dans l'IDE ; difference : Interface graphique intégrée, éliminant le besoin de ligne de commande"
+    },
+    {
+      "name": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
+      "language": "TypeScript",
+      "stars": 12153,
+      "forks": 1143,
+      "gained": "866 stars today",
+      "gained_n": 866,
+      "lang_color": "#3178c6",
+      "category": "outil de collaboration et d'annotation de code",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Plannotator est une interface TypeScript permettant d'annoter plans, spécifications, markdown et artefacts de code, destiné aux équipes de développement qui souhaitent réviser et envoyer des retours aux agents IA. Il centralise les commentaires, les revues de PR et les artefacts dans une boîte de réception unifiée.",
+      "workflow": "Entrée : fichier de plan ou diff de code → traitement : le binaire `plannotator` analyse le texte, génère une vue interactive et crée des annotations liées aux agents → résultat : interface web affichant les annotations, possibilité d’envoyer le feedback à l’agent via un clic. Sources : description de la fonctionnalité dans le README [S1] et le script de démonstration montrant les paramètres d’affichage [S3]. Limites : les données restent locales, aucune persistance serveur n’est fournie.",
+      "use_cases": "• Utilisateur : Développeur senior ; Tâche : Revoir le diff d’une pull request et ajouter des commentaires contextuels ; Résultat : Annotations visibles dans l’Inbox, feedback envoyé automatiquement à l’agent de revue\n• Utilisateur : Chef de projet IA ; Tâche : Partager un plan de déploiement avec l’équipe et recueillir des validations ; Résultat : Plan annoté disponible pour tous les membres, suivi des validations dans l’interface",
+      "products": "• Cible : PME développeuses d’applications internes ; Produit : Plateforme SaaS d’annotation de code avec stockage cloud ; difference : Ajoute une couche de persistance et de partage multi‑utilisateur, contrairement au dépôt brut qui reste local\n• Cible : Agences de création digitale ; Produit : Extension navigateur pour annoter des maquettes HTML en temps réel ; difference : Transforme le binaire en plugin léger, permettant d’utiliser les mêmes vues sans installer Node.js",
+      "monetization": "Acheteur : PME ou agence ; reason to pay : Gain de temps sur les revues de code et centralisation des retours IA ; unit : abonnement mensuel par utilisateur ; model : freemium avec 10 plans annotés gratuits, puis tarif hypothétique 15 €/mois/utilisateur basé sur la valeur de productivité",
+      "build_plan": "scope : Ajouter une API REST pour stocker les annotations et un tableau de bord multi‑user ; reused bricks : binaire `plannotator`, logique d’analyse de plans ; work to add : développement du backend (FastAPI), UI React, intégration OAuth ; exclusions : gestion avancée des permissions, IA de génération de commentaires ; dependencies : PostgreSQL, Docker, Vercel pour le front, Supabase pour l’auth ; cost estimate : ≈ 200 € de services cloud mensuels + 80 h de développement ; timeline : 4 à 6 semaines conditionnelles (développement backend 2 semaines, front 2 semaines, tests 1 semaine)",
+      "limitations": "Licence MIT/Apache‑2.0 non vérifiée dans le dépôt, stockage uniquement local, aucune conformité RGPD assurée, maintenance du binaire dépend de l’auteur.",
+      "next_step": "Tester l’installation du binaire et l’envoi de feedback à un agent local ; interroger un développeur senior sur la pertinence d’une version cloud partagée.",
+      "assessment": "Score 7 reflète la maturité du code (binaire fonctionnel, documentation claire) et la pertinence pour le profil (full‑stack, besoin d’outils de revue). Fit_score reste neutre (5) faute de données sur le marché ou la demande confirmée. Les preuves proviennent des extraits README [S1] et du script de démonstration [S3]; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "e18c7c8cdd52fd979bf59c66c8d60273e50ed126",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/backnotprop/plannotator/blob/e18c7c8cdd52fd979bf59c66c8d60273e50ed126/README.md",
+            "excerpt": " \n   \n \n\n\n\n \n   Everything you need to annotate and stay in the loop with your agents  \n   Inbox Surface • Artifacts • Code Review  \n   Annotate plans, specs, markdown, HTML, and other interactive artifacts. Review diffs and PRs. Send feedback to your agent. \n \n\n \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   \n     \n     \n   \n \n\n## Install\n\nOne installer covers almost every agent. It installs the `plannotator` binary, auto-detects your installed agents, and configures hooks, skills, and slash commands for each:\n\n```bash\n\n\n### Uninstall\n\nThe safe default removes recognized Plannotator-installed components and keeps\nyour local plans, history, drafts, guides, and settings:\n\n```bash\nplannotator uninstall\n```\n\nUse `--purge` for a full removal of known local Plannotator data as well:\n\n```bash\nplannotator uninstall --purge\n```\n\n \n What uninstall removes, what it keeps, and when it stops \n\nPurge requires typing `purge` at the prompt and explains that the data is\nlocal-only: it is not stored on a Plannotator server and cannot be recovered.\nFor automation, pass `--yes` (or `-y`); non-interactive removal refuses to run\nwithout it. Use `--dry-run` to preview recognized wo\n\n## How it works\n\n\n\n# Plannotator\n\n**⭐️ NEW:** [Plannotator Inbox](https://plannotator.ai/inbox/"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/backnotprop/plannotator/blob/e18c7c8cdd52fd979bf59c66c8d60273e50ed126/package.json",
+            "excerpt": "{\n  \"name\": \"plannotator\",\n  \"version\": \"0.28.66\",\n  \"private\": true,\n  \"description\": \"Interactive Plan Review for Claude Code - annotate plans visually, share with team, automatically send feedback\",\n  \"author\": \"backnotprop\",\n  \"license\": \"MIT OR Apache-2.0\",\n  \"bin\": {\n    \"plannotator\": \"bin/plannotator.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/backnotprop/plannotator.git\"\n  },\n  \"homepage\": \"https://github.com/backnotprop/plannotator\",\n  \"bugs\": {\n    \"url\": \"https://github.com/backnotprop/plannotator/issues\"\n  },\n  \"workspaces\": [\n    \"apps/*\",\n   "
+          },
+          {
+            "id": "S3",
+            "path": "packages/system/demo/serve.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/backnotprop/plannotator/blob/e18c7c8cdd52fd979bf59c66c8d60273e50ed126/packages/system/demo/serve.ts",
+            "excerpt": "// A page for screenshots of the drawing at rest: plannotator's own drawing\n// (the test fixture in test/fixtures/plannotator), drawn by SystemThumb and\n// SystemView in the Inbox's tokens. Not shipped; run it with `bun run demo` and open the printed address.\n//\n//   ?shot=thumb                       the card picture in a message card\n//   ?shot=view&sheet=C-001&reading=simple&layout=window|pane\n//   ?shot=card&pr=2543|2563           the review card with the change picture (&gate=1: the gate only; &open=1: PR 2563 open)\n//   ?shot=change&pr=2543&view=before|after|steps   the full System view of a PR (&gate=1, &open=1 as above)\n//   ?shot=plan                        a plan drawn dashed, as Shape's System (plan) tab\n//   ?shot=touches&layout=pane|window  three open PRs on the drawing at rest, each touched part labelled (&lead=1: a \"‹ Reviews\" control leads the bar)\n//   &mode=light|dark                  the theme mode (dark by default)\n//   &keys=off                         the single-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Plannotator est une interface TypeScript permettant d'annoter plans, spécifications, markdown et artefacts de code, destiné aux équipes de développement qui souhaitent réviser et envoyer des retours aux agents IA. Il centralise les commentaires, les revues de PR et les artefacts dans une boîte de réception unifiée.",
+      "business_idea": "• Cible : PME développeuses d’applications internes ; Produit : Plateforme SaaS d’annotation de code avec stockage cloud ; difference : Ajoute une couche de persistance et de partage multi‑utilisateur, contrairement au dépôt brut qui reste local\n• Cible : Agences de création digitale ; Produit : Extension navigateur pour annoter des maquettes HTML en temps réel ; difference : Transforme le binaire en plugin léger, permettant d’utiliser les mêmes vues sans installer Node.js"
+    },
+    {
+      "name": "ChromeDevTools/chrome-devtools-mcp",
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "description": "Chrome DevTools for coding agents",
+      "language": "TypeScript",
+      "stars": 57338,
+      "forks": 4834,
+      "gained": "717 stars today",
+      "gained_n": 717,
+      "lang_color": "#3178c6",
+      "category": "outil de debugging et d'automatisation navigateur",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "MCP (Multi‑Client Protocol) expose les capacités de Chrome DevTools via une API Node / TypeScript, destiné aux développeurs qui souhaitent automatiser le profiling et le débogage de pages web.",
+      "workflow": "Entrée : URL ou script de navigation → le serveur MCP lance Chrome via Puppeteer, capture trace, analyse réseau et console, extrait métriques de performance → sortie : JSON structuré contenant temps de chargement, erreurs, captures d’écran. Limites : dépend de Chrome installé, collecte de statistiques activée par défaut (voir S1).",
+      "use_cases": "• Utilisateur : Ingénieur front‑end ; Tâche : Mesurer le temps de rendu d’une page critique avant chaque déploiement ; Résultat : Rapport automatisé avec recommandations d’optimisation\n• Utilisateur : Équipe QA ; Tâche : Vérifier la conformité des requêtes réseau d’une application SPA ; Résultat : Log détaillé des appels, codes HTTP et payloads pour audit",
+      "products": "• Cible : PME développant des SaaS web ; Produit : Service SaaS de monitoring de performance front‑end basé sur MCP ; difference : Interface web multi‑tenant, tableau de bord et alertes, alors que le dépôt ne fournit qu’une CLI\n• Cible : Agences créatives ; Produit : Plugin VS Code qui lance MCP en arrière‑plan et injecte les métriques dans l’IDE ; difference : Intégration directe dans l’environnement de développement, alors que le dépôt nécessite une installation manuelle",
+      "monetization": "Abonnement mensuel par site surveillé, facturé par nombre de pages analysées (ex. 0,10 €/page), justification : coût d’infrastructure cloud et support continu.",
+      "build_plan": "Réutiliser le serveur MCP et les scripts de génération (S2), ajouter une couche API REST (FastAPI) et un tableau de bord React, exclure le développement du moteur de capture (déjà fourni). Dépendances : Puppeteer, Chrome, PostgreSQL pour stockage. Coût estimé : 150 € / mois d’hébergement cloud, 2 semaines de travail pour le MVP.",
+      "limitations": "Licence non vérifiée, collecte de données activée par défaut (S1), nécessite Chrome installé, aucune preuve de scalabilité en production.",
+      "next_step": "Tester l’intégration de MCP avec un script de capture de trace sur une page réelle ; demander à un développeur front‑end s’il trouve utile d’obtenir un rapport automatisé.",
+      "assessment": "Score 7 reflète la pertinence technique (automatisation, debugging) et la disponibilité d’une base fonctionnelle (S1, S2). Fit_score 5 par défaut faute de contraintes de région ou de budget explicités. Manque de preuves sur la licence et la conformité RGPD.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "ebb2ba07fe6da19a9ada98a2e80ca69fdb73d917",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/ebb2ba07fe6da19a9ada98a2e80ca69fdb73d917/README.md",
+            "excerpt": "\n\n## Key features\n\n- **Get performance insights**: Uses [Chrome\n  DevTools](https://github.com/ChromeDevTools/devtools-frontend) to record\n  traces and extract actionable performance insights.\n- **Advanced browser debugging**: Analyze network requests, take screenshots and\n  check browser console messages (with source-mapped stack traces).\n- **Reliable automation**. Uses\n  [puppeteer](https://github.com/puppeteer/puppeteer) to automate actions in\n  Chrome and automatically wait for action results.\n\n\n\n## **Usage statistics**\n\nGoogle collects usage statistics (such as tool invocation success rates, latency, and environment information) to improve the reliability and performance of Chrome DevTools MCP.\n\nData collection is **enabled by default**. You can opt-out by passing the `--no-usage-statistics` flag when starting the server:\n\n```json\n\"args\": [\"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"]\n```\n\nGoogle handles this data in accordance with the [Google Privacy Policy](https://policies.google.com/privacy).\n\nGoogle's collection of usage statistics for Chrome DevTools MCP is independent from the Chrome browser's usage statistics.\n\n### Install skills as a plugin\n\nA plugin installs the MCP server and all skills, including the CLI skill:\n\n- **Claude Code:** Run `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp`, then `/plugin install chrome-devtools-mcp@chrome-devtools-plugins`.\n- **Copilot / VS Code:** Run **Chat: Install Plugin From Source** and enter `ChromeDevTools/chrome-devtools-mcp`.\n- **Gemini CLI:** Run `gemini extensions install --auto-update https://github.com/ChromeDevTools/chrome-devtools-mcp`.\n\nSee the [Client Configurations Guide][client-configurations-guide] for more information.\n\n\n\n### Install skills manually\n\nIf your agent does not support plugins, copy the skill folders into the skills directory of your agent. The npm package contains the skills:\n\n```sh\nnpm i chrome-devtools-mcp@latest -g\n\n\n# Example for Claude Code. Use the skills directory of your agent.\nmkdir -p ~/.claude/skills\ncp -R \"$(npm root -g)/chrome-devtools-mcp/skills/chrome-devtools-cli\" ~/.claude/skills/\n```\n\n> [!IMPORTANT]\n> The `chrome-devtools-cli` skill requir"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/ebb2ba07fe6da19a9ada98a2e80ca69fdb73d917/package.json",
+            "excerpt": "{\n  \"name\": \"chrome-devtools-mcp\",\n  \"version\": \"1.13.0\",\n  \"description\": \"MCP server for Chrome DevTools\",\n  \"type\": \"module\",\n  \"bin\": {\n    \"chrome-devtools-mcp\": \"./out/Default/gen/src/bin/chrome-devtools-mcp.js\",\n    \"chrome-devtools\": \"./out/Default/gen/src/bin/chrome-devtools.js\"\n  },\n  \"main\": \"./out/Default/gen/src/index.js\",\n  \"scripts\": {\n    \"cli:generate\": \"node scripts/generate-cli.ts\",\n    \"clean\": \"node scripts/clean.ts\",\n    \"clean:submodules\": \"node scripts/clean-submodules.ts\",\n    \"build\": \"node scripts/ninja.ts\",\n    \"build:release\": \"node scripts/gn-gen.ts --args=is_debu"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "MCP (Multi‑Client Protocol) expose les capacités de Chrome DevTools via une API Node / TypeScript, destiné aux développeurs qui souhaitent automatiser le profiling et le débogage de pages web.",
+      "business_idea": "• Cible : PME développant des SaaS web ; Produit : Service SaaS de monitoring de performance front‑end basé sur MCP ; difference : Interface web multi‑tenant, tableau de bord et alertes, alors que le dépôt ne fournit qu’une CLI\n• Cible : Agences créatives ; Produit : Plugin VS Code qui lance MCP en arrière‑plan et injecte les métriques dans l’IDE ; difference : Intégration directe dans l’environnement de développement, alors que le dépôt nécessite une installation manuelle"
+    },
+    {
+      "name": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "language": "Go",
+      "stars": 52552,
+      "forks": 4220,
+      "gained": "691 stars today",
+      "gained_n": 691,
+      "lang_color": "#00ADD8",
+      "category": "outil de revue de code IA (CLI)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Open Code Review est un outil en ligne de commande qui utilise un LLM pour analyser du code source, détecter des défauts (ex. NPE, injection SQL) et générer des commentaires ligne par ligne. Il cible les développeurs qui souhaitent automatiser la première passe de revue dans leurs pipelines CI/CD.",
+      "workflow": "Entrée : dépôt Git ou plage de commits → traitement : le CLI invoque le modèle LLM configuré (OpenAI, Anthropic ou autre) via l'agent OCR, applique les règles intégrées et produit des annotations de code → résultat : fichiers de commentaires structurés affichés dans le terminal ou exportés vers des plateformes CI. Limites : nécessite la configuration d’un endpoint LLM et ne fournit pas de vérification de conformité juridique. [S1][S2]",
+      "use_cases": "• Utilisateur : Développeur backend ; Tâche : Lancer `ocr review --from main --to feature-branch` avant de créer une pull‑request ; Résultat : Rapport de défauts détectés, suggestions de corrections et liens vers la documentation des règles\n• Utilisateur : Équipe DevOps ; Tâche : Intégrer le répertoire `examples/github_actions` dans le workflow GitHub Actions ; Résultat : Échec du job si le nombre de défauts dépasse un seuil, garantissant une qualité minimale avant le merge",
+      "products": "• Cible : PME développant des micro‑services ; Produit : Plateforme SaaS qui expose l’API d’Open Code Review via un tableau de bord web multi‑projets ; difference : Ajoute une interface graphique, la gestion des équipes et la facturation, alors que le dépôt d’origine reste un CLI sans UI\n• Cible : Agences de développement ; Produit : Extension VS Code qui invoque localement le CLI et affiche les commentaires directement dans l’éditeur ; difference : Permet une utilisation instantanée sans passer par le terminal, augmentant l’adoption en environnement IDE",
+      "monetization": "Acheteur : équipes de développement payant pour un abonnement mensuel. Raison : gain de temps sur la première passe de revue et réduction des bugs en production. Unité facturée : utilisateur actif ou nombre de revues exécutées. Modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, majoré selon le volume de revues. Cette fourchette repose sur la valeur perçue d’une automatisation de revue et les coûts d’infrastructure cloud (API LLM, stockage).",
+      "build_plan": "Périmètre limité : création d’une API wrapper autour du CLI et d’un tableau de bord minimal. Brique réutilisée : le binaire `ocr` et les règles intégrées. Travail à ajouter : UI React, gestion des comptes, facturation Stripe, orchestration Docker. Exclusions : support multilingue avancé, IA fine‑tuned. Dépendances : Go (module du projet), OpenAI/Anthropic API, base de données PostgreSQL pour les logs. Coût estimé : 150 h de développement (≈ 3 semaines à plein temps).",
+      "limitations": "Contraintes établies : dépendance à un LLM externe, licence du dépôt non vérifiée, besoin de configurer des clés API. Inconnues : conformité RGPD du traitement des snippets de code, support officiel de langages hors ceux listés. Maintenance : mise à jour des dépendances Go et adaptation aux évolutions des fournisseurs LLM.",
+      "next_step": "Réaliser un test technique : déployer le CLI sur un serveur CI et exécuter `ocr review` sur un petit projet open‑source. Question à poser à un utilisateur potentiel : « Quel critère de qualité (nombre de défauts, type de règle) vous ferait accepter automatiquement le résultat du CLI dans votre pipeline ? »",
+      "assessment": "Score 7 reflète la maturité du projet (utilisé en interne par Alibaba, documentation claire) et son adéquation avec le profil (full‑stack, besoin d’outils IA rapides). Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité n’est prouvée dans les extraits. Les preuves proviennent des README et du go.mod. Non établi dans les extraits : licence exacte, conformité juridique, volume d’utilisateurs réels.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "9b3e6a56d33dab8b6b17458d310286b472eefc63",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/9b3e6a56d33dab8b6b17458d310286b472eefc63/README.md",
+            "excerpt": " \n   \n     \n   \n   OpenCodeReview \n \n\n \n   \n     \n   \n \n \n   \n     \n   \n   \n     \n   \n \n \n     \n     \n     \n     \n     \n \n \n     \n     \n     \n     \n     \n     \n     \n \n \n  English |  简体中文  |  日本語  |  한국어  |  Русский \n \n\n---\n\n\n\n## How to Use\n\n\n\n#### Install\n\n```bash\nnpm install -g @alibaba-group/open-code-review\n```\n\nAfter installation, the `ocr` command is available globally.\n\nFor other installation methods (install script, GitHub Release binary, from source), see [Installation](https://open-codereview.ai/docs/installation).\n\n\n\n#### Quick Start\n\n**1. Configure LLM**\n\nYou must configure an LLM before reviewing code, unless you use [Delegation Mode](https://open-codereview.ai/docs/delegate).\n\n- **OCR calls the model:** `ocr review`, the `/open-code-review:review` command, and the `open-code-review` skill use OCR's own provider configuration, not your Claude Code Team/Pro subscription login. Authentication requirements depend on the provider; see [Configuration](https://open-codereview.ai/docs/configuration).\n- **The host agent calls the model:** the `/open-code-review:delegate-review` command and the `open-code-review-delegate` skill use the host agent's configured mo\n\n# Branch range — reviews feature-branch's changes since it diverged from main (merge-base mode)\nocr review --from main --to feature-branch\n\n\n\n## What is Open Code Review?\n\nOpen Code Review is an AI-powered code review CLI tool. It originated as Alibaba Group's internal official AI code review assistant — over the past two years, it has served tens of thousands of developers and identified millions of code defects. After thorough validation at massive scale, we incubated it into an open source project for the community. Simply configure a model endpoint to get started.\n\nIt read"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/alibaba/open-code-review/blob/9b3e6a56d33dab8b6b17458d310286b472eefc63/go.mod",
+            "excerpt": "module github.com/alibaba/open-code-review\n\ngo 1.26.10\n\nrequire (\n\tcharm.land/bubbles/v2 v2.1.1\n\tcharm.land/bubbletea/v2 v2.0.8\n\tcharm.land/glamour/v2 v2.0.1\n\tcharm.land/lipgloss/v2 v2.0.6\n\tgithub.com/anthropics/anthropic-sdk-go v1.63.1\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.35\n\tgithub.com/bmatcuk/doublestar/v4 v4.10.0\n\tgithub.com/charmbracelet/x/ansi v0.11.8\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/modelcontextprotocol/go-sdk v1.7.0\n\tgithub.com/openai/openai-go/v3 v3.51.0\n\tgithub.com/pkoukk/tiktoken-go v0.1.8\n\tgithub.com/spf13/cobra v1.10.2\n\tgithu"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/9b3e6a56d33dab8b6b17458d310286b472eefc63/examples/README.md",
+            "excerpt": "\n\n# CI/CD Integration Examples\n\nThis directory contains examples for integrating OpenCodeReview (OCR) into various CI/CD pipelines.\n\n\n\n## Contents\n\n- **[github_actions/](./github_actions/)** - GitHub Actions integration example\n- **[gitlab_ci/](./gitlab_ci/)** - GitLab CI integration example\n- **[bitbucket_pipelines/](./bitbucket_pipelines/)** - Bitbucket Pipelines integration example\n- **[gitflic_ci/](./gitflic_ci/)** - GitFlic CI integration example\n- **[gerrit_ci/](./gerrit_ci/)** - Gerrit (Jenkins / Gerrit Trigger) integration example\n\nEach subdirectory contains its own README with detailed setup instructions.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Open Code Review est un outil en ligne de commande qui utilise un LLM pour analyser du code source, détecter des défauts (ex. NPE, injection SQL) et générer des commentaires ligne par ligne. Il cible les développeurs qui souhaitent automatiser la première passe de revue dans leurs pipelines CI/CD.",
+      "business_idea": "• Cible : PME développant des micro‑services ; Produit : Plateforme SaaS qui expose l’API d’Open Code Review via un tableau de bord web multi‑projets ; difference : Ajoute une interface graphique, la gestion des équipes et la facturation, alors que le dépôt d’origine reste un CLI sans UI\n• Cible : Agences de développement ; Produit : Extension VS Code qui invoque localement le CLI et affiche les commentaires directement dans l’éditeur ; difference : Permet une utilisation instantanée sans passer par le terminal, augmentant l’adoption en environnement IDE"
+    },
+    {
+      "name": "Tencent/LoopForge",
+      "url": "https://github.com/Tencent/LoopForge",
+      "description": "Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.",
+      "language": "Go",
+      "stars": 2084,
+      "forks": 329,
+      "gained": "423 stars today",
+      "gained_n": 423,
+      "lang_color": "#00ADD8",
+      "category": "Plateforme d'orchestration de workflows auto‑hébergés",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "LoopForge propose un espace auto‑hébergé où des agents de codage (CodeBuddy, Codex, Claude) exécutent des SOP (Standard Operating Procedures) combinant scripts, IA et validation humaine, destiné aux équipes de développement qui souhaitent automatiser le déploiement de code.",
+      "workflow": "Entrée : dépôt Git contenant le code à livrer + configuration SOP (fichier YAML). Traitement : le moteur LoopForge orchestre les agents, exécute les scripts, interroge les modèles IA et attend les validations humaines via des portes d’approbation. Résultat : artefacts construits, logs détaillés et tableau de bord d’observabilité. Sources : description du Quick start et du fonctionnement des SOP dans le README [S1]; dépendances Go indiquant l’usage de Gin, WebSocket et GORM pour le serveur [S2]. Limites : nécessite Docker, Python 3 et accès internet pour télécharger les images [S1]; aucune preuve d’interface UI ou de gestion multi‑tenant [non établi dans les extraits].",
+      "use_cases": "• Utilisateur : Équipe DevOps d’une PME ; Tâche : Automatiser la revue et le déploiement d’une fonctionnalité backend ; Résultat : Le code passe par un SOP qui lance les tests, génère le build, sollicite un agent IA pour la revue et attend l’accord d’un développeur avant le déploiement en production.\n• Utilisateur : Consultant freelance en intégration d’outils IA ; Tâche : Prototyper un pipeline d’analyse de code avec Claude et CodeBuddy ; Résultat : Le consultant décrit le pipeline dans un fichier SOP, LoopForge orchestre les appels aux modèles et produit un rapport d’analyse exploitable.",
+      "products": "• Cible : PME cherchant à internaliser leurs pipelines CI/CD ; Produit : Solution SaaS interne basée sur LoopForge, avec UI simplifiée et tableau de bord dédié ; difference : Ajoute une couche frontale low‑code, des templates de SOP prêts à l’emploi et une facturation à l’usage des agents IA.\n• Cible : Agences de développement proposant des services d’audit de code ; Produit : Service d’audit à la demande où chaque audit est un SOP exécuté sur l’infrastructure du client ; difference : Utilise la capacité native de LoopForge à combiner IA et validation humaine, facturé par audit plutôt que par abonnement.",
+      "monetization": "Acheteur : PME ou agence qui paie pour chaque exécution de SOP ou pour un forfait mensuel d’accès aux agents IA. Raison : gain de temps sur les revues et déploiements. Unité facturée : exécution SOP ou minutes d’usage IA. Modèle : abonnement mensuel + tarif à l’usage (pay‑per‑run). Hypothèse de prix : 30 €/mois pour 100 exécutions + 0,10 €/minute d’IA, à tester selon valeur perçue et coûts d’infrastructure.",
+      "build_plan": "Périmètre : conserver le moteur Go existant, ajouter une UI React/Next.js (re‑utilisable) et un module de facturation Stripe. Travail à ajouter : conception UI, wrapper API pour exposer les SOP, intégration Stripe, documentation client. Exclusions : refonte du moteur d’orchestration, support multi‑tenant avancé. Dépendances : Docker, Go, Gin, WebSocket, GORM, Stripe SDK, Vercel/Fly.io pour le front. Coût estimé : 2 k€ d’infrastructure cloud + 8 k€ de dev (≈ 4 semaines à 200 €/h). Délai : 4‑6 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Contraintes connues : besoin de Docker, Python 3, accès internet pour les images [S1]; dépendances Go listées [S2]. Inconnues : stabilité du système de validation humaine, licence du projet non vérifiée, support officiel limité. Licence à vérifier dans le dépôt. Maintenance : mise à jour des agents IA et des images Docker, coût opérationnel non estimé.",
+      "next_step": "Réaliser un test technique : déployer LoopForge en local, créer un SOP simple qui lance un script Python et un appel Claude, vérifier les logs. Question à poser à un potentiel utilisateur : « Quel niveau d’automatisation et de contrôle humain attendez‑vous d’un pipeline d’orchestration de code ? »",
+      "assessment": "Score 6 reflète la présence d’une architecture fonctionnelle (SOP, agents IA) et de dépendances claires [S2], mais l’absence de UI prête à l’emploi et de licence claire limite l’attractivité. Fit_score 5 car le profil indique un besoin de prototypes rapides et de capacités IA, ce qui correspond partiellement à LoopForge, toutefois aucune preuve d’intégration directe avec les stacks du profil (FastAPI, Next.js) n’est fournie.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "00d4f17bc18f7ca8a4b4924c1b4c4e0a84daab45",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/Tencent/LoopForge/blob/00d4f17bc18f7ca8a4b4924c1b4c4e0a84daab45/README.md",
+            "excerpt": " \n   \n     \n     \n   \n \n\n \n     \n     \n     \n   \n     \n \n\n \n     \n \n\n \n   English  ·  简体中文 \n \n\n \n   Two ways to work  ·\n   Quick start  ·\n   SOPs  ·\n   Features  ·\n   Local  ·\n   FAQ  ·\n   Docs \n \n\nhttps://github.com/user-attachments/assets/8af401d9-1aae-427c-b4bc-455c12d17beb\n\n  80-second product tour (1080p, with sound).  \n\n**LoopForge** is a self-hosted workspace where your team ships software with coding agents. Describe what y\n\n## Quick start\n\nInstall **Git** and clone the repository first. The installer checks Docker, Compose, Python 3 and curl and offers to install missing components. Python/curl installation supports apt, dnf and yum on Linux; the Compose plugin supports x86_64/arm64 and verifies the official release SHA-256. macOS needs a working Python 3 and Docker Desktop; Homebrew can install missing components. Ordinary Linux users are supported through Docker group access or sudo. Set `LOOPFORGE_YES=1` to accept installation prompts. Package and image downloads require internet access.\n\n```bash\ngit clone https://github.com/Tencent/LoopForge.git\ncd LoopForge\n\n## How SOPs work\n\nAn **SOP** is the workflow a delivery follows. Agents, scripts and people take part in the same run:\n\n \n   \n     \n     \n   \n \n\n \n   \n \n\n  The SOP designer with the built-in bug-fix SOP. Each step picks a role; failed checks can send the work back to an earlier step.  \n\n| Node |"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/Tencent/LoopForge/blob/00d4f17bc18f7ca8a4b4924c1b4c4e0a84daab45/go.mod",
+            "excerpt": "module agentflow\n\ngo 1.26.11\n\nrequire (\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/gin-gonic/gin v1.12.0\n\tgithub.com/glebarez/sqlite v1.11.0\n\tgithub.com/go-sql-driver/mysql v1.10.1\n\tgithub.com/goccy/go-yaml v1.19.2\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/klauspost/compress v1.20.3\n\tgolang.org/x/crypto v0.58.0\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/sys v0.49.0\n\tgorm.io/driver/mysql v1.6.0\n\tgorm.io/gorm v1.31.2\n)\n\nrequire (\n\tfilippo.io/edwards25519 v1.2.0 // indirect\n\tgithub.com/bytedance/gopkg v0.1.3 // indirect\n\tgithub.com/bytedance/sonic v1.15.0 // indirect\n\tgithub.com/bytedance/son"
+          },
+          {
+            "id": "S3",
+            "path": "local/.claude/skills/agent-observability/references/quickstart.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/Tencent/LoopForge/blob/00d4f17bc18f7ca8a4b4924c1b4c4e0a84daab45/local/.claude/skills/agent-observability/references/quickstart.md",
+            "excerpt": "\n\n## Quickstart\n\n\n\n### 安装\n\n将 `templates/settings-hook.json` 合并到 `~/.claude/settings.json` 或 ` /.claude/settings.json`。\n\n必须启用 hooks：`SessionStart`、`UserPromptSubmit`、`PreToolUse`、`PostToolUse`、`Stop`。\n\n\n\n### 查看输出\n\n完成一次正常会话后检查：\n- `.claude/skills/agent-observability/logs/metrics.ndjson`\n- `.claude/skills/agent-observability/logs/.state.json`\n\n\n\n### 指定数据源路径（可选）\n\n`build_dashboard_data.py` 默认从 ` /logs/metrics.ndjson` 与 ` /logs/.state.json` 读取，**不传参数时行为完全不变**。\n\n如需从其它位置读取，可用 `--metrics-path` / `--state-path` 覆盖：\n\n```bash\npython3 scripts/build_dashboard_data.py \\\n  --metrics-path ~/Downloads/metrics.ndjson \\\n  --state-path  ~/Downloads/.state.json \\\n  --out dashboard/dashboard-data.json\n```\n\n注意：\n\n- 两个参数都留空（或省略）时回退到 ` /logs/` 下的默认文件。\n- 路径支持 `~` 展开（如上例的 `~/Downloads/.."
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "LoopForge propose un espace auto‑hébergé où des agents de codage (CodeBuddy, Codex, Claude) exécutent des SOP (Standard Operating Procedures) combinant scripts, IA et validation humaine, destiné aux équipes de développement qui souhaitent automatiser le déploiement de code.",
+      "business_idea": "• Cible : PME cherchant à internaliser leurs pipelines CI/CD ; Produit : Solution SaaS interne basée sur LoopForge, avec UI simplifiée et tableau de bord dédié ; difference : Ajoute une couche frontale low‑code, des templates de SOP prêts à l’emploi et une facturation à l’usage des agents IA.\n• Cible : Agences de développement proposant des services d’audit de code ; Produit : Service d’audit à la demande où chaque audit est un SOP exécuté sur l’infrastructure du client ; difference : Utilise la capacité native de LoopForge à combiner IA et validation humaine, facturé par audit plutôt que par abonnement."
+    },
+    {
+      "name": "ggml-org/ggml",
+      "url": "https://github.com/ggml-org/ggml",
+      "description": "Tensor library for machine learning",
+      "language": "C++",
+      "stars": 16042,
+      "forks": 2065,
+      "gained": "43 stars today",
+      "gained_n": 43,
+      "lang_color": "#f34b7d",
+      "category": "Bibliothèque de calcul tensoriel (C/C++)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "ggml est une bibliothèque C/C++ portable et sans dépendance qui fournit des tenseurs et des kernels SIMD optimisés pour le machine learning. Elle cible les développeurs qui ont besoin d’une couche d’inférence légère sur CPU, GPU, NPU ou WebAssembly.",
+      "workflow": "Entrée : modèle de réseau (ex. ggml‑model‑f16.bin) et données d’image ; Traitement : chargement du modèle, pré‑traitement, exécution des kernels SIMD via ggml ; Résultat : masque de segmentation ou prédiction tensorielle. Limites : aucune allocation mémoire dynamique pendant l’exécution, mais dépend de la disponibilité de SIMD sur la plateforme et de la compatibilité du modèle [S1].",
+      "use_cases": "1. Développeur d’application SaaS d’analyse d’image : charge une image, utilise le modèle SAM via ggml pour obtenir un masque, renvoie le résultat à l’interface web. 2. Startup d’IA embarquée : compile ggml pour ARM/RISC‑V, intègre le binaire dans un dispositif IoT afin de réaliser de l’inférence locale sans connexion cloud.",
+      "products": "1. Service de segmentation d’image en ligne pour agences marketing : cible les marketeurs qui veulent automatiser le découpage d’assets visuels, produit une API REST qui encapsule ggml et facture à l’usage. 2. Outil de conversion de modèles PyTorch vers le format GGUF + runtime ggml : cible les ingénieurs ML qui souhaitent déployer leurs modèles sur des appareils edge, différencie le dépôt brut en offrant un pipeline de conversion et un wrapper Python simple.",
+      "monetization": "Acheteur : agence ou développeur indépendant ; Raison de payer : gain de temps d’intégration et capacité d’inférence locale ; Unité facturée : appel API ou licence mensuelle du wrapper ; Modèle : abonnement mensuel (hypothèse 30‑80 €/mois selon volume) justifié par le coût d’infrastructure et de support.",
+      "build_plan": "Périmètre : wrapper Python + API FastAPI autour de ggml, hébergement Docker sur Vercel/Fly.io. Brique réutilisée : ggml (source compile). Travail à ajouter : écriture du binding CFFI, gestion des modèles, UI minimaliste. Exclusions : entraînement de modèles, UI avancée. Dépendances : Python 3.12, FastAPI, CMake, gcc/clang. Coût estimé : 0 € (cloud free tier) + 5 h de développement initial, soit environ 40 h sur 1‑2 semaines.",
+      "limitations": "Contraintes établies : nécessite compilation CMake, dépend de SIMD et du format GGUF [S1]; licence non vérifiée dans le dépôt, il faut confirmer MIT ou autre [S1]; aucune preuve de support commercial ou de conformité RGPD. Inconnues : stabilité du binding Python, support multi‑GPU.",
+      "next_step": "Réaliser un test technique : compiler ggml et exécuter l’exemple SAM avec un petit jeu d’images; Question utilisateur : « Quel niveau de précision et de latence attendez‑vous pour la segmentation d’image dans votre workflow ? »",
+      "assessment": "Score 7 reflète la maturité du code (build script, exemples) et la pertinence pour les secteurs ciblés (IA appliquée, outils B2B). Fit_score 5 par défaut faute de critères de profil détaillés. Les preuves proviennent du README et des exemples fournis [S1][S3].",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "d9fe7bff3d2bf4d077e25c654486d02c321734aa",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ggml-org/ggml/blob/d9fe7bff3d2bf4d077e25c654486d02c321734aa/README.md",
+            "excerpt": "\n\n## Quick start\n\nBuild from source:\n\n```bash\ngit clone https://github.com/ggml-org/ggml\ncd ggml\n\nmkdir build && cd build\ncmake ..\ncmake --build . --config Release -j 8\n```\n\nFor a minimal, fully commented example (matrix multiplication), see [examples/simple](examples/simple).\n\n\n\n# ggml\n\n \n\n \n\n Tensor library for machine learning \n\n[ ](https://opensource.org/licenses/MIT)\n[ ](https://github.com/ggml-org/ggml/releases)\n[ ](https://github.com/ggml-org/ggml/actions/workflows/build-cpu.yml)\n\n \n\n\n\n## Description\n\nThe main goal of `ggml` is to be a simple, portable, and efficient tensor library for machine learning with minimal setup.\n\n- Plain C/C++ implementation without any dependencies\n- Cross-platform - x86, ARM, RISC-V, LoongArch, PowerPC, s390x, and WebAssembly\n- SIMD-optimized kernels for x86, ARM, and RISC-V\n- Broad backend support - CPU, GPU, NPU, and browser\n- 2- to 8-bit integer quantization, plus MXFP4 and NVFP4 microscaling formats\n- Zero memory allocations during runtime\n\n\n\n## Documentation\n\n- [The GGUF file format](docs/gguf.md)\n- [Introduction to ggml](https://huggingface.co/blog/introduction-to-ggml)\n- [GGML tips & tricks](https://github.com/ggml-org/llama.cpp/wiki/GGML-Tips-&-Tricks)\n\n\n\n## Contributing\n\n- For changes to the core `ggml` library (including to the CMake build system), please open a PR in [llama.cpp](https://github.com/ggml-org/llama.cpp) - doing so will make your PR more visible, better tested, and more likely to be reviewed\n"
+          },
+          {
+            "id": "S2",
+            "path": "requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/ggml-org/ggml/blob/d9fe7bff3d2bf4d077e25c654486d02c321734aa/requirements.txt",
+            "excerpt": "accelerate==0.19.0\nnumpy~=2.2.6; python_version < \"3.14\"\nnumpy~=2.4.6; python_version >= \"3.14\"\nsentencepiece>=0.1.98,<0.3.0\ntorchvision~=0.26.0\ntransformers==5.5.1\ngguf>=0.1.0\nkeras==3.10.0\ntensorflow==2.20.0; python_version < \"3.14\"\n\n--extra-index-url https://download.pytorch.org/whl/cpu\ntorch~=2.11.0\n"
+          },
+          {
+            "id": "S3",
+            "path": "examples/sam/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ggml-org/ggml/blob/d9fe7bff3d2bf4d077e25c654486d02c321734aa/examples/sam/README.md",
+            "excerpt": "\n\n## Quick start\nSetup Python and build examples according to main README.\n\n```bash\n\n\n## Example output on M2 Ultra\n```\n $ ▶ make -j sam && time ./bin/sam -t 8 -i img.jpg\n[ 28%] Built target common\n[ 71%] Built target ggml\n[100%] Built target sam\nmain: seed = 1693224265\nmain: loaded image 'img.jpg' (680 x 453)\nsam_image_preprocess: scale = 0.664062\nmain: preprocessed image (1024 x 1024)\nsam_model_load: loading model from 'models/sam-vit-b/ggml-model-f16.bin' - please wait ...\nsam_model_load: n_enc_state      = 768\nsam_model_load: n_enc_layer      = 12\nsam_model_load: n_enc_head       = 12\nsam_model_load: n_enc_out_chans  = 256\nsam_model_load: n_pt_embd        = 4\nsam_model_load: ftype            = 1\nsam_model_load: qntvr    \n\n# SAM.cpp\n\nInference of Meta's [Segment Anything Model](https://github.com/facebookresearch/segment-anything/) in pure C/C++\n\n\n\n## Description\n\nThe example currently supports only the [ViT-B SAM model checkpoint](https://huggingface.co/facebook/sam-vit-base).\n\n\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "ggml est une bibliothèque C/C++ portable et sans dépendance qui fournit des tenseurs et des kernels SIMD optimisés pour le machine learning. Elle cible les développeurs qui ont besoin d’une couche d’inférence légère sur CPU, GPU, NPU ou WebAssembly.",
+      "business_idea": "1. Service de segmentation d’image en ligne pour agences marketing : cible les marketeurs qui veulent automatiser le découpage d’assets visuels, produit une API REST qui encapsule ggml et facture à l’usage. 2. Outil de conversion de modèles PyTorch vers le format GGUF + runtime ggml : cible les ingénieurs ML qui souhaitent déployer leurs modèles sur des appareils edge, différencie le dépôt brut en offrant un pipeline de conversion et un wrapper Python simple."
+    },
+    {
+      "name": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "description": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+      "language": "Python",
+      "stars": 6928,
+      "forks": 1062,
+      "gained": "98 stars today",
+      "gained_n": 98,
+      "lang_color": "#3572A5",
+      "category": "outil de sécurité / CLI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Claude-BugHunter est un bundle de compétences Claude destiné aux tests d’intrusion et à la chasse aux bugs, utilisable via une interface CLI ou comme plugin Claude Code. Il cible les pentesteurs qui souhaitent automatiser le flux recon → map & rank → hunt → validate → report. [S1][S2]",
+      "workflow": "Entrée : cible (nom de domaine ou URL) → traitement : commande `cbh recon` collecte sous‑domaines, teste la disponibilité, génère un manifest.json ; `cbh classify` compare les URLs aux 681 modèles de rapports et classe les vecteurs d’attaque ; `cbh triage` applique le gate à 7 questions et produit PASS ou DOWNGRADE. → résultat : artefacts structurés (recon/, manifest, rapports classés) prêts à être intégrés dans un rapport final. Limites : dépend de l’accès réseau, aucune intégration native à des scanners externes, et aucune garantie de couverture exhaustive. [S1][S3]",
+      "use_cases": "1. Pentesteur freelance : utilise `cbh recon` pour cartographier rapidement la surface d’attaque d’un client et gagner du temps de collecte. 2. Équipe Red‑Team interne : orchestre des engagements multiples via le répertoire `engagements/` et applique le 7‑Question Gate pour uniformiser la validation des findings. [S1][S3]",
+      "products": "1. Service SaaS « BugHunter » : interface web qui expose les mêmes commandes via API, cible les PME qui n’ont pas d’expertise interne. Différence : hébergement, tableau de bord et facturation intégrés. 2. Bibliothèque Python « cbh‑core » : package réutilisable pour intégrer les compétences dans des pipelines CI/CD, destiné aux développeurs d’outils de sécurité. Différence : aucune UI, uniquement des fonctions importables. [S2][S3]",
+      "monetization": "Acheteur : équipes de sécurité ou consultants indépendants. Raison de payer : gain de productivité et standardisation du reporting. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS (≈ 15 €/mois) ou licence perpétuelle pour la bibliothèque (≈ 300 €). Hypothèse basée sur la valeur perçue du gain de temps et les coûts d’infrastructure cloud. [S1]",
+      "build_plan": "Périmètre limité : wrapper web autour du CLI existant, stockage des artefacts sur Supabase, authentification OAuth. Brique réutilisée : code `cbh` et les 83 compétences. Travail à ajouter : UI React, API FastAPI, CI/CD Docker. Exclusions : implémentation de scanners réseau avancés. Dépendances : FastAPI, Supabase client, Docker. Coût estimé : 120 h de développement (≈ 3 semaines à 40 h/semaine). [S2][S3]",
+      "limitations": "Contraintes établies : nécessite Python ≥ 3.9, fonctionne en ligne de commande, aucune interface graphique native. Inconnues : performance sur très grands périmètres, conformité RGPD non vérifiée, licence MIT à confirmer. Maintenance : dépend du mainteneur original, aucune garantie de support. [S2]",
+      "next_step": "Réaliser un test technique : déployer le wrapper SaaS en local et exécuter `cbh recon example.com` pour valider le flux de données. Question à poser à un utilisateur potentiel : « Quel niveau de détail attendez‑vous dans le rapport de validation ? ».",
+      "assessment": "Score 7 reflète la richesse fonctionnelle (83 compétences, 681 modèles) et la documentation claire. Fit_score 5 car le profil indique un besoin de prototypes rapides mais aucune preuve de demande spécifique pour un outil de bug‑hunting. Manque de preuves : aucune donnée d’usage réel, aucune validation de marché, aucune indication de conformité légale. [S1][S2][S3]",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2cfe533df8efa2ced87c91299e1f62b88cb26108",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/2cfe533df8efa2ced87c91299e1f62b88cb26108/README.md",
+            "excerpt": " \n\n\n\n## Quickstart\n\n**Option A — install as a Claude Code plugin (recommended).** From inside Claude Code:\n\n```text\n/plugin marketplace add elementalsouls/Claude-BugHunter\n/plugin install claude-bughunter@elementalsouls\n```\n\nAll 83 skills + 15 commands load namespaced under `claude-bughunter:` and update when you bump the plugin version — no files copied into `~/.claude/`.\n\n**Option B — copy install (no plugin system / pin to a clone):**\n\n```bash\ngit clone https://github.com/elementalsouls/Claude-BugHunter.git\ncd Claude-BugHunter\n```\n\n```bash\n\n\n## How it works\n\nA 6-phase, non-linear workflow — **recon → map & rank → hunt → validate → report** — with scope enforced in code and a **7-Question Gate** before anything is submitted. Two ways to drive it:\n\n- **Plain English** — describe what you're testing and the relevant skill loads automatically.\n- **`/hunt` scaffold + `cbh` CLI** — engagement-folder structure, state, and orchestration.\n\n→ [Usage guide & worked example](USAGE.md) · [6-phase architecture & skill-to-phase map](docs/architecture.md) · [`cbh` CLI](docs/cbh-cli.md)\n\n---\n\n\n# claude-bughunter\n\n> A self-contained Claude skill bundle for bug hunting and external red-team work · **83 skills** · 15 slash commands · **681 disclosed-report patterns** (433 now individually cited & auditable) across 24 core vulnerability classes · enterprise identity"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/2cfe533df8efa2ced87c91299e1f62b88cb26108/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"setuptools>=61\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"claude-bughunter\"\nversion = \"2.1.0\"\ndescription = \"cbh — terminal-native recon/classify/triage/report runner for the Claude-BugHunter skill bundle\"\nreadme = \"README.md\"\nrequires-python = \">=3.9\"\nlicense = { text = \"MIT\" }\nauthors = [{ name = \"Sachin Sharma\" }]\nkeywords = [\"security\", \"bug-bounty\", \"recon\", \"claude\", \"pentest\"]\ndependencies = []\n\n[project.optional-dependencies]\n# `requests` is optional — cbh falls back to urllib when it's absent.\nhttp = [\"requests\"]\n\n[project.urls]\nHomepa"
+          },
+          {
+            "id": "S3",
+            "path": "cbh/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/2cfe533df8efa2ced87c91299e1f62b88cb26108/cbh/cli.py",
+            "excerpt": "#!/usr/bin/env python3\n\"\"\"\ncbh — claude-bughunter CLI.\n\nBridges the repo's skill content into a real runner. Five subcommands compose\nthe engagement loop:\n\n  cbh recon <target>           passive subdomain enum + live-host probe + URL\n                               classification. Writes recon/<target>/ including\n                               manifest.json (the recon→hunt handoff contract).\n  cbh surface <target>         read recon/<target>/manifest.json and print the\n                               ranked P1/P2/Kill attack surface. See\n                               docs/recon-manifest.md.\n  cbh classify <url>           pattern-match a single URL against hunt-* skill\n                               descriptions; print the matched skills + ranked\n                               attack candidates from docs/disclosed-reports/.\n  cbh triage <finding.md>      run the triage-validation 7-Question Gate\n                               against a finding file. Output: PASS / DOWNGRADE\n         "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Claude-BugHunter est un bundle de compétences Claude destiné aux tests d’intrusion et à la chasse aux bugs, utilisable via une interface CLI ou comme plugin Claude Code. Il cible les pentesteurs qui souhaitent automatiser le flux recon → map & rank → hunt → validate → report. [S1][S2]",
+      "business_idea": "1. Service SaaS « BugHunter » : interface web qui expose les mêmes commandes via API, cible les PME qui n’ont pas d’expertise interne. Différence : hébergement, tableau de bord et facturation intégrés. 2. Bibliothèque Python « cbh‑core » : package réutilisable pour intégrer les compétences dans des pipelines CI/CD, destiné aux développeurs d’outils de sécurité. Différence : aucune UI, uniquement des fonctions importables. [S2][S3]"
+    },
+    {
+      "name": "GoogleChrome/modern-web-guidance-src",
+      "url": "https://github.com/GoogleChrome/modern-web-guidance-src",
+      "description": "Keep your coding agent up to date with the latest web best practices",
+      "language": "TypeScript",
+      "stars": 7636,
+      "forks": 676,
+      "gained": "1,219 stars today",
+      "gained_n": 1219,
+      "lang_color": "#3178c6",
+      "category": "Bibliothèque de bonnes pratiques web",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un ensemble d’extraits de code et de documentation qui recense les dernières fonctionnalités CSS, HTML et JavaScript. Destiné aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards du Web moderne.",
+      "workflow": "Entrée : développeur lance `npx modern-web-guidance@latest install` ; Traitement : l’assistant interactif télécharge les guides, génère un fichier de configuration et propose des snippets ; Résultat : un répertoire contenant des listes de fonctionnalités et des scripts d’installation prêts à être intégrés. Limites : aucune automatisation d’audit de code, dépend du réseau pour le téléchargement [S1].",
+      "use_cases": "1. Un freelance crée un nouveau site e‑commerce et utilise la liste CSS & Layout pour activer les propriétés `content-visibility` et `::backdrop` afin d’optimiser le rendu ; 2. Une agence intègre le script `gd` dans son pipeline CI pour vérifier la présence d’APIs récentes comme `Sanitizer API` avant le déploiement.",
+      "products": "1. Outil SaaS « WebFeature Checker » : cible les PME qui veulent valider la compatibilité de leurs pages avec les dernières specs, différence : interface web et reporting automatisé ; 2. Extension VSCode « Modern Web Snippets » : cible les développeurs individuels, différence : insertion directe de snippets dans l’IDE sans besoin de CLI.",
+      "monetization": "Acheteur : PME ou freelance ; Raison de payer : gain de temps sur la conformité aux standards ; Unité facturée : abonnement mensuel par projet ; Modèle : abonnement SaaS avec période d’essai gratuite limitée à 5 sites.",
+      "build_plan": "Périmètre limité à la génération de rapports de compatibilité ; Brique réutilisée : le script `gd` et les listes de fonctionnalités du dépôt ; Travail à ajouter : interface web, moteur de comparaison avec les navigateurs cibles, stockage des rapports ; Exclusions : audit de performance, génération de code ; Dépendances : Node ≥22, Playwright pour les tests ; Coût estimé : 150 € de services cloud mensuels ; Délai : 3 à 5 semaines pour un MVP fonctionnel.",
+      "limitations": "Licence non vérifiée, donc risque de non‑conformité ; les listes de fonctionnalités sont statiques et peuvent devenir obsolètes ; aucune preuve d’intégration CI/CD dans les extraits [S2]; maintenance requise pour suivre les évolutions du Web.",
+      "next_step": "Réaliser un test technique en exécutant le wizard `npx modern-web-guidance@latest install` sur un projet de démonstration ; Question à poser à un développeur front‑end : « Quel est le principal frein à l’adoption des nouvelles APIs dans vos projets actuels ? ».",
+      "assessment": "Score 7 reflète la richesse du catalogue de fonctionnalités et la présence d’un CLI opérationnel, mais l’absence de licence claire et de tests d’intégration limite la viabilité immédiate. Fit_score 5 par défaut faute de critères de profil supplémentaires. Les preuves proviennent des extraits README et package.json [S1, S2].",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "5e5cd33a7738f21281e3027732bcbd58cfa82bf1",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/README.md",
+            "excerpt": "\n\n##   Quickstart\n\n```shell\nnpx modern-web-guidance@latest install\n```\n\nThis command runs an interactive wizard to install Modern Web Guidance. See [Alternative Installation Methods](#-alternative-installation-methods) below.\n\n\n\n#### Try it out (without installing)\n\n```shell\n\n\n### CSS & Layout (140 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [::backdrop](https://web-platform-dx.github.io/web-features-explorer/features/backdrop/) | [content-visibility](https://web-platform-dx.github.io/web-features-explorer/features/content-visibility/) | [progress()](https://web-platform-dx.github.io/web-features-explorer/features/progress-function/) |\n| [::details-content](https://web-platform-dx.github.io/web-features-explorer/features/details-content/) | [contrast-color()](https://web-platform-dx.github.io/web-features-explorer/features/contrast-color/) | [reading-flow](https://web-platform-dx.github.io/web-features-explorer/fea\n\n### HTML & DOM (36 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [:autofill](https://web-platform-dx.github.io/web-features-explorer/features/autofill/) | [&lt;slot>](https://web-platform-dx.github.io/web-features-explorer/features/slot/) | [HTML streaming setters](https://web-platform-dx.github.io/web-features-explorer/features/html-streaming-setters/) |\n| [:indeterminate](https://web-platform-dx.github.io/web-features-explorer/features/indeterminate/) | [&lt;video>](https://web-platform-dx.github.io/web-features-explorer/features/video/) | [HTML-in-canvas](https://web-platform-dx.github.io/web-features-explorer/features/canvas-html/) |\n| [&lt\n\n### JavaScript & APIs (74 features)\n\n| | | |\n| :--- | :--- | :--- |\n| [&lt;install>](https://web-platform-dx.github.io/web-features-explorer/features/install/) | [integrity() for url()](https://web-platform-dx.github.io/web-features-explorer/features/url-integrity/) | [Sanitizer API](https://web-platform-dx.github.io/web-features-explorer/features/sanitizer/) |\n| [&lt;meta name=\"text-scale\">](https://web-platform-dx.github.io/web-features-explorer/features/meta-text-scale/) | [Interaction contentful paint performance entries](https://web-platform-dx.github.io/web-features-explorer/features/interaction-contentfu"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/5e5cd33a7738f21281e3027732bcbd58cfa82bf1/package.json",
+            "excerpt": "{\n  \"name\": \"modern-web-guidance-src\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"private\": true,\n  \"engines\": {\n    \"node\": \">=22.18.0\"\n  },\n  \"bin\": {\n    \"gd\": \"bin/gd.ts\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"node src/core/postinstall.ts\",\n    \"test\": \"node --test --test-reporter ${TEST_REPORTER:-dot} \\\"src/**/*.test.ts\\\"\",\n    \"test:e2e\": \"playwright test -c src/dashboard/playwright.config.js\",\n    \"build\": \"node src/build/build-guides.ts --target=skills-cli && pnpm run build-dist\",\n    \"build-dist\": \"node src/build/build-dist.ts\",\n    \"build"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un ensemble d’extraits de code et de documentation qui recense les dernières fonctionnalités CSS, HTML et JavaScript. Destiné aux développeurs front‑end qui souhaitent aligner leurs projets sur les standards du Web moderne.",
+      "business_idea": "1. Outil SaaS « WebFeature Checker » : cible les PME qui veulent valider la compatibilité de leurs pages avec les dernières specs, différence : interface web et reporting automatisé ; 2. Extension VSCode « Modern Web Snippets » : cible les développeurs individuels, différence : insertion directe de snippets dans l’IDE sans besoin de CLI."
+    }
+  ]
+}
