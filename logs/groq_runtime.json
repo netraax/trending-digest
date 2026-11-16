@@ -1,213 +1,6 @@
 {
   "calls": [
     {
-      "at": 1794750421.8732042,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3591,
-      "estimated": false,
-      "prompt_tokens": 2254,
-      "completion_tokens": 1337
-    },
-    {
-      "at": 1794750486.8735492,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3592,
-      "estimated": false,
-      "prompt_tokens": 2232,
-      "completion_tokens": 1360
-    },
-    {
-      "at": 1794750551.8738966,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3644,
-      "estimated": false,
-      "prompt_tokens": 2386,
-      "completion_tokens": 1258
-    },
-    {
-      "at": 1794750616.8741496,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3715,
-      "estimated": false,
-      "prompt_tokens": 2231,
-      "completion_tokens": 1484
-    },
-    {
-      "at": 1794750681.8745127,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3470,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1139
-    },
-    {
-      "at": 1794750746.8748405,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3500,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1169
-    },
-    {
-      "at": 1794750811.8751664,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3629,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1298
-    },
-    {
-      "at": 1794750876.8755577,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3554,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1223
-    },
-    {
-      "at": 1794750941.8759053,
-      "stream": "business",
-      "model": "qwen/qwen3.8-27b",
-      "tokens": 3506,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1175
-    },
-    {
-      "at": 1794751006.8762996,
-      "stream": "business",
-      "model": "qwen/qwen3.8-27b",
-      "tokens": 3401,
-      "estimated": false,
-      "prompt_tokens": 2331,
-      "completion_tokens": 1070
-    },
-    {
-      "at": 1794751071.8766632,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3730,
-      "estimated": false,
-      "prompt_tokens": 2254,
-      "completion_tokens": 1476
-    },
-    {
-      "at": 1794751136.8770154,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3576,
-      "estimated": false,
-      "prompt_tokens": 2294,
-      "completion_tokens": 1282
-    },
-    {
-      "at": 1794751201.877359,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3591,
-      "estimated": false,
-      "prompt_tokens": 2320,
-      "completion_tokens": 1271
-    },
-    {
-      "at": 1794751266.8777728,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3805,
-      "estimated": false,
-      "prompt_tokens": 2332,
-      "completion_tokens": 1473
-    },
-    {
-      "at": 1794751331.8780313,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3700,
-      "estimated": false,
-      "prompt_tokens": 2360,
-      "completion_tokens": 1340
-    },
-    {
-      "at": 1794751396.8782756,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3743,
-      "estimated": false,
-      "prompt_tokens": 2275,
-      "completion_tokens": 1468
-    },
-    {
-      "at": 1794751461.8787003,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3527,
-      "estimated": false,
-      "prompt_tokens": 2169,
-      "completion_tokens": 1358
-    },
-    {
-      "at": 1794751526.8791015,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3430,
-      "estimated": false,
-      "prompt_tokens": 2269,
-      "completion_tokens": 1161
-    },
-    {
-      "at": 1794751591.8794882,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3423,
-      "estimated": false,
-      "prompt_tokens": 2269,
-      "completion_tokens": 1154
-    },
-    {
-      "at": 1794751656.8798099,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3483,
-      "estimated": false,
-      "prompt_tokens": 2019,
-      "completion_tokens": 1464
-    },
-    {
-      "at": 1794751721.8800628,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3455,
-      "estimated": false,
-      "prompt_tokens": 2089,
-      "completion_tokens": 1366
-    },
-    {
-      "at": 1794751786.880313,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3493,
-      "estimated": false,
-      "prompt_tokens": 2298,
-      "completion_tokens": 1195
-    },
-    {
-      "at": 1794751851.8806846,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3394,
-      "estimated": false,
-      "prompt_tokens": 2058,
-      "completion_tokens": 1336
-    },
-    {
       "at": 1794823249.8112335,
       "stream": "trending",
       "model": "openai/gpt-oss-120b",
@@ -323,427 +116,180 @@
       "estimated": false,
       "prompt_tokens": 2480,
       "completion_tokens": 888
+    },
+    {
+      "at": 1794842847.6209743,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3599,
+      "estimated": false,
+      "prompt_tokens": 2351,
+      "completion_tokens": 1248
+    },
+    {
+      "at": 1794842912.6212783,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3449,
+      "estimated": false,
+      "prompt_tokens": 2228,
+      "completion_tokens": 1221
+    },
+    {
+      "at": 1794842977.6215043,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3793,
+      "estimated": false,
+      "prompt_tokens": 2347,
+      "completion_tokens": 1446
+    },
+    {
+      "at": 1794843042.6217275,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3760,
+      "estimated": false,
+      "prompt_tokens": 2301,
+      "completion_tokens": 1459
+    },
+    {
+      "at": 1794843107.6220284,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3378,
+      "estimated": false,
+      "prompt_tokens": 2401,
+      "completion_tokens": 977
+    },
+    {
+      "at": 1794843172.6223965,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3559,
+      "estimated": false,
+      "prompt_tokens": 2401,
+      "completion_tokens": 1158
+    },
+    {
+      "at": 1794843237.6226265,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3583,
+      "estimated": false,
+      "prompt_tokens": 2327,
+      "completion_tokens": 1256
+    },
+    {
+      "at": 1794843302.6229362,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3603,
+      "estimated": false,
+      "prompt_tokens": 2427,
+      "completion_tokens": 1176
+    },
+    {
+      "at": 1794843367.623311,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3824,
+      "estimated": false,
+      "prompt_tokens": 2376,
+      "completion_tokens": 1448
+    },
+    {
+      "at": 1794843432.623632,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3636,
+      "estimated": false,
+      "prompt_tokens": 2285,
+      "completion_tokens": 1351
+    },
+    {
+      "at": 1794843497.623853,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3745,
+      "estimated": false,
+      "prompt_tokens": 2326,
+      "completion_tokens": 1419
+    },
+    {
+      "at": 1794843562.6242151,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3440,
+      "estimated": false,
+      "prompt_tokens": 2426,
+      "completion_tokens": 1014
+    },
+    {
+      "at": 1794843627.6245818,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3718,
+      "estimated": false,
+      "prompt_tokens": 2378,
+      "completion_tokens": 1340
+    },
+    {
+      "at": 1794843692.6249726,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3687,
+      "estimated": false,
+      "prompt_tokens": 2291,
+      "completion_tokens": 1396
+    },
+    {
+      "at": 1794843757.625245,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 4030,
+      "estimated": false,
+      "prompt_tokens": 2490,
+      "completion_tokens": 1540
+    },
+    {
+      "at": 1794843822.6254807,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3682,
+      "estimated": false,
+      "prompt_tokens": 2317,
+      "completion_tokens": 1365
+    },
+    {
+      "at": 1794843887.6258924,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3197,
+      "estimated": false,
+      "prompt_tokens": 1975,
+      "completion_tokens": 1222
+    },
+    {
+      "at": 1794843952.6260917,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3775,
+      "estimated": false,
+      "prompt_tokens": 2395,
+      "completion_tokens": 1380
+    },
+    {
+      "at": 1794844017.6264703,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3571,
+      "estimated": false,
+      "prompt_tokens": 2388,
+      "completion_tokens": 1183
     }
   ],
   "cache": {
-    "cb851760004928d8da9831726b92b2ec96c5b0ba25ba9dafc956f2e9201f67a2": {
-      "at": 1794750425.1675475,
-      "data": {
-        "projects": [
-          {
-            "name": "thesysdev/opendashboards",
-            "category": "application web SaaS (dashboard generation)",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "OpenDashboards est une application web qui permet à un utilisateur de connecter ses bases de données et outils, de poser une question en langage naturel et d'obtenir un tableau de bord interactif mis à jour en temps réel. Le problème résolu est la création rapide de visualisations consolidées sans écriture de requêtes SQL manuelles.",
-            "workflow": "Entrée : l'utilisateur fournit ses identifiants de bases (Postgres, Stripe, HubSpot, etc.) via l'interface. Traitement : le Build agent analyse les schémas, génère un plan de requêtes et interroge les sources via l'API OpenUI Dashboards, puis assemble les visualisations. Résultat : un tableau de bord affiché dans le navigateur, rafraîchissable à chaque ouverture. Sources : description du processus en 4 étapes dans le README [S1]. Limites : les credentials restent sur le serveur de l'utilisateur, aucune garantie de scalabilité ou de conformité RGPD indiquée dans les extraits.",
-            "use_cases": "• Utilisateur : Responsable commercial d'une PME ; Tâche : Obtenir en une minute un aperçu du chiffre d'affaires mensuel en combinant Stripe et la base client PostgreSQL ; Résultat : Tableau de bord affichant MRR, revenu net et churn, actualisé à chaque ouverture\n• Utilisateur : Analyste marketing d'une agence ; Tâche : Comparer le pipeline de ventes HubSpot avec les performances publicitaires stockées dans une base BigQuery ; Résultat : Dashboard interactif montrant les étapes du pipeline, les coûts publicitaires et le ROI, modifiable via chat",
-            "products": "• Cible : PME souhaitant un tableau de bord auto‑service ; Produit : Service hébergé OpenDashboards SaaS avec abonnement mensuel ; difference : Supprime l'installation et la gestion du serveur, offre un tableau de bord clé en main avec support et SLA\n• Cible : Développeurs indépendants ; Produit : Kit de composants React + API OpenUI pour intégrer la génération de dashboards dans leurs propres produits ; difference : Permet de réutiliser la logique de création de dashboards tout en conservant le contrôle de l'infrastructure et de la donnée",
-            "monetization": "Acheteur : PME, agences ou développeurs payant pour l'hébergement ou le SDK ; reason to pay : Accès à une infrastructure sécurisée, support, mises à jour et capacité à gérer des volumes de données supérieurs à ceux d'une installation locale ; unit : abonnement mensuel par instance ou licence annuelle du SDK ; model : Abonnement SaaS (10 €/mois pour 5 tableaux) ou licence SDK (500 €/an) – hypothèses à tester selon valeur perçue et coûts d'infrastructure",
-            "build_plan": "scope : Déploiement d'une version hébergée du tableau de bord avec authentification OAuth et stockage des credentials chiffrés ; reused bricks : Code existant du front Next.js, scripts de migration de base (drizzle-kit) et API OpenUI déjà intégrée ; work to add : Implémentation d'un système de facturation Stripe, mise en place d'un monitoring des requêtes, rédaction de la documentation d'onboarding ; exclusions : Intégrations de nouvelles sources de données non listées dans le README, conformité complète RGPD, UI/UX avancée ; dependencies : Next.js, Drizzle ORM, Docker, OpenUI Dashboards API (déjà référencé), Stripe SDK ; Coûts estimés : Coût d'hébergement cloud estimé à 30‑50 €/mois, frais Stripe (~2,9 % + 0,30 € par transaction), temps de développement estimé 200‑250 heures (≈ 4‑5 semaines à plein temps) ; timeline : 4‑6 semaines conditionnelles selon disponibilité des ressources internes",
-            "limitations": "established : Le dépôt ne fournit pas de tests unitaires complets, la licence MIT doit être vérifiée pour usage commercial, aucune mention de conformité RGPD ou de gestion des données sensibles ; unknown : Scalabilité du Build agent, performances sur gros volumes de données, coûts exacts d'utilisation de l'API OpenUI ; license : MIT (à confirmer pour usage commercial) ; maintenance : Responsabilité du développeur pour les mises à jour de dépendances et la sécurité du serveur",
-            "next_step": "technical test : Déployer localement le projet avec Docker Compose, connecter une base PostgreSQL factice et appeler l'API OpenUI pour générer un tableau de bord simple ; user question : Quel type de visualisation (graphique, tableau, KPI) vous serait le plus utile pour suivre vos indicateurs de performance au quotidien ?",
-            "assessment": "Score 7 reflète la pertinence du produit pour les secteurs ciblés (B2B SaaS, outils de productivité) et la présence d'une architecture prête à être commercialisée. Le fit_score reste neutre (5) car le profil ne spécifie pas de contrainte régionale ou de délai strict. Les preuves proviennent du README (S1) et du package.json (S2); plusieurs aspects restent non établis dans les extraits, notamment la conformité RGPD et les performances à grande échelle.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "48e540fd8591b69588406dc9fca97b02756616318bf0cf1605a0961d4f5408b2": {
-      "at": 1794750490.0329375,
-      "data": {
-        "projects": [
-          {
-            "name": "CKopoer/BiliSail",
-            "category": "Application desktop/mobile (client vidéo)",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "BiliSail est un client tiers multiplateforme pour la plateforme Bilibili, développé avec Flutter/Dart. Il cible les utilisateurs qui souhaitent une expérience de lecture vidéo enrichie (multi‑tags, lecture native, danmaku, historique cloud).",
-            "workflow": "Entrée : URL ou identifiant d’une vidéo Bilibili saisie dans l’interface. → Traitement : le client utilise les API publiques de Bilibili pour récupérer les métadonnées, les flux DASH et les commentaires (danmaku), puis les décodage via le moteur vidéo Flutter. → Résultat : lecture en temps réel avec options de mise en pause, ajout à la liste \"plus tard\" et sauvegarde de l’historique sur le cloud. Limites : dépendance aux API non officielles de Bilibili, aucune garantie de stabilité si celles‑ci changent. Source : extrait du README décrivant les capacités de navigation, recherche et lecture (S1).",
-            "use_cases": "• Utilisateur : Créateur de contenu indépendant ; Tâche : Visionner rapidement les vidéos de référence et les analyser grâce aux prévisualisations silencieuses et aux commentaires en temps réel. ; Résultat : Gain de temps dans la veille concurrentielle et amélioration de la qualité du contenu produit.\n• Utilisateur : Agence de marketing digital ; Tâche : Suivre les tendances vidéo sur Bilibili en utilisant les filtres de recherche avancés et les listes multi‑tags. ; Résultat : Production de rapports de tendance plus précis et livrables plus rapidement.",
-            "products": "• Cible : PME du secteur du divertissement en ligne ; Produit : Plateforme SaaS de curation vidéo Bilibili avec tableau de bord analytics intégré. ; difference : Ajoute une couche d’analyse (statistiques de vues, engagement) au client brut, transformant le simple lecteur en outil décisionnel.\n• Cible : Freelance créateur de cours en ligne ; Produit : Extension navigateur qui synchronise l’historique BiliSail avec un LMS (Learning Management System). ; difference : Automatise la collecte de ressources vidéo pertinentes et leur importation dans le parcours de formation, fonctionnalité absente du dépôt original.",
-            "monetization": "Acheteur : Agences marketing et créateurs de contenu payant pour la curation vidéo. ; reason to pay : Accès à des fonctionnalités d’analyse, de reporting et d’intégration LMS non disponibles dans la version open‑source. ; unit : Abonnement mensuel par utilisateur actif. ; model : Tarification SaaS tiered (ex. 15 €/mois pour ≤5 utilisateurs, 45 €/mois pour ≤20 utilisateurs). ; price hypothesis : Le prix est hypothétique, basé sur la valeur perçue d’une analyse vidéo automatisée et les coûts d’infrastructure cloud (hébergement, stockage d’historique).",
-            "build_plan": "scope : Créer un service web qui consomme les mêmes API que BiliSail, ajoute un backend analytics et expose une API REST. ; reused bricks : Code Flutter/Dart de récupération des flux vidéo (extrait du dépôt), logique de pagination et de recherche. ; work to add : Développement d’un backend Python (FastAPI) pour agrégation des métriques, tableau de bord React, système d’authentification OAuth, stockage PostgreSQL, déploiement Docker. ; exclusions : Pas de refonte du lecteur vidéo natif, pas de support de nouvelles plateformes (ex. TV). ; dependencies : Flutter SDK, FastAPI, PostgreSQL, Docker, Vercel/Fly.io pour le front, Supabase pour l’auth. ; estimated costs : Coût d’infrastructure estimé à 30‑50 €/mois (cloud + base de données). ; timeline : Prototype fonctionnel 4‑6 semaines (2 semaines d’intégration du client existant, 2‑3 semaines de backend, 1 semaine de tests).",
-            "limitations": "established constraints : Utilise les API publiques non officielles de Bilibili ; aucune licence clairement définie dans le dépôt (licence « aucune »). ; unknowns : Stabilité juridique de l’usage des API tierces, coût de maintenance du lecteur Flutter sur chaque OS, évolutions futures de Bilibili. ; license to check : Le dépôt ne précise pas de licence open‑source, il faut clarifier les droits d’utilisation commerciale. ; maintenance costs : Mises à jour Flutter/Dart, suivi des changements d’API Bilibili.",
-            "next_step": "technical test : Construire un petit service qui interroge les mêmes endpoints que BiliSail et stocke les métadonnées dans une base de données de test. ; user question : « Quel type de métriques ou de rapports vous serait le plus utile pour optimiser votre stratégie de contenu sur Bilibili ? »",
-            "assessment": "Score 6 reflète la solidité technique du client existant (Flutter multiplateforme, fonctions avancées de recherche et de lecture) mais l’absence de licence claire et de preuves de viabilité commerciale limite l’attractivité. Le fit_score reste à 5 car le profil indique un intérêt pour des wrappers SaaS de technologies complexes, ce projet correspond à ce besoin, mais les données manquent pour confirmer la demande ou la conformité RGPD. Evidence IDs : [S1].",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "4364e942a4ddc2dd59d60cf138e102627f884b5168e3560522e9314b20342584": {
-      "at": 1794750555.0189657,
-      "data": {
-        "projects": [
-          {
-            "name": "runboubou/boubou",
-            "category": "Application de voix IA locale (exécutable Rust)",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Boubou est une application Rust qui permet de dialoguer oralement avec des modèles d'IA vocaux en local, sans compte ni service cloud. Elle cible les utilisateurs qui souhaitent garder leurs données audio sur leur machine et disposer d'une interface simple en une commande.",
-            "workflow": "Entrée : l'utilisateur lance `npx boubou@beta` depuis le terminal, autorise l'accès micro. \nTraitement : Boubou détecte le chipset, la mémoire et le disque disponible, télécharge (ou charge) le modèle vocal choisi, puis utilise les modules `audio`, `realtime` et `voice` pour capturer la parole, la convertir en texte, la transmettre au modèle et synthétiser la réponse. \nRésultat : la réponse synthétisée est jouée via les haut-parleurs et affichée dans le terminal. \nSources : description du fonctionnement dans le README [S1] et le code de compilation conditionnelle qui limite la prise en charge à macOS et Linux [S3]. Limites : uniquement macOS ≥ 13.3 et Linux, dépend de la disponibilité d’un modèle compatible, aucune interface graphique, aucune persistance de conversation.",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Faire une revue de code à voix haute pendant le codage ; Résultat : Le développeur dicte ses commentaires, Boubou les transforme en texte et les enregistre, accélérant la documentation.\n• Utilisateur : Petite agence de support client ; Tâche : Proposer un assistant vocal interne pour répondre à des questions fréquentes sur les produits ; Résultat : Les agents utilisent Boubou sur leurs postes pour obtenir des réponses instantanées sans exposer les données clients à un service cloud.",
-            "products": "• Cible : PME souhaitant internaliser la transcription audio ; Produit : Boubou‑Enterprise, version empaquetée avec un serveur HTTP léger et une API REST ; difference : Ajoute une couche API, authentification JWT et stockage des transcriptions, tout en conservant l’exécution locale du modèle.\n• Cible : Indépendants créateurs de podcasts ; Produit : Boubou‑Studio, interface graphique Electron autour du moteur Rust ; difference : Fournit une UI drag‑and‑drop, gestion de playlists et export audio, rendant l’outil accessible aux non‑développeurs.",
-            "monetization": "Acheteur : PME ou créateur individuel ; reason to pay : Accès à une version supportée, mises à jour de modèles, intégration API et SLA de maintenance ; unit : abonnement mensuel par instance serveur ; model : Abonnement SaaS (30 € / mois) + frais d’installation ponctuels (≈ 200 €) – hypothèse à tester selon valeur perçue et coûts d’infrastructure cloud.",
-            "build_plan": "scope : Création d’une API REST autour du binaire existant, ajout d’un serveur HTTP (Actix‑Web) et d’un module d’authentification simple. ; reused bricks : Moteur vocal Rust déjà présent, logique de modèle et de streaming audio. ; work to add : Wrapper HTTP, persistance PostgreSQL pour les transcriptions, tableau de bord admin, CI/CD Docker. ; exclusions : Développement d’une UI native complète, support Windows (non prévu dans le code actuel). ; dependencies : actix‑web, jsonwebtoken, sqlx, Docker, Vercel/Fly.io pour le déploiement. ; Coûts estimés : Temps de développement estimé 4‑6 semaines (≈ 200 h), hébergement cloud ~ 15 €/mois, licences éventuelles pour modèles propriétaires. ; timeline : 4 semaines si l’équipe travaille 40 h/semaine, sinon 6‑8 semaines.",
-            "limitations": "Support limité à macOS ≥ 13.3 et Linux – Windows non compilable (voir compile_error [S3]). Le dépôt ne fournit pas de licence serveur ni de tests d’API (non établi dans les extraits). Licence MIT du code source, mais la redistribution sous forme SaaS doit être vérifiée. Maintenance du modèle vocal dépend du fournisseur de modèles open‑source.",
-            "next_step": "Réaliser un prototype d’API REST qui expose la fonction `talk::run` et tester avec un développeur de support client pour valider le besoin de persistance de transcription.",
-            "assessment": "Score 7 reflète la maturité du code (Rust stable, dépendances déclarées [S2]) et la pertinence pour les objectifs du profil (outil IA local, productivité). Le fit_score reste neutre (5) car aucune contrainte de région, prix ou délai n’est fournie dans les sources. Les preuves proviennent des extraits README [S1], Cargo.toml [S2] et du code source [S3]; tout le reste est hypothétique.",
-            "evidence_ids": [
-              "S1",
-              "S2",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "75d547a29e8d8b53ccccd035e88506b68eab262aaf20f408977372aaf2936f3c": {
-      "at": 1794751009.6887708,
-      "data": {
-        "projects": [
-          {
-            "name": "bicho-fyi/bicho",
-            "category": "Infrastructure d'observabilité / Error Tracking",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 6,
-            "summary": "Bicho est un tracker d'erreurs auto-hébergé fonctionnant sur Cloudflare Workers, ingérant des logs via OTLP/HTTP ou des enveloppes Sentry [S1]. Il stocke les données dans D1 et R2, offrant une alternative légère aux solutions SaaS classiques pour les développeurs souhaitant garder la main sur leurs données. L'outil cible les équipes techniques cherchant à réduire la complexité de l'observabilité sans sacrifier la compatibilité des SDK existants.",
-            "workflow": "Entrée : Envois de logs d'erreurs au format OTLP JSON/protobuf ou via les SDK JavaScript/PHP/Rust [S1]. Traitement : Le Worker Cloudflare valide le token d'administration, décode la charge utile et groupe les erreurs similaires [S1]. Résultat : Les incidents sont persistés dans la base D1 et les artefacts dans R2, accessibles via API ou MCP [S1]. Limite : La capacité de stockage et le débit sont soumis aux quotas Cloudflare Workers, non détaillés dans les extraits.",
-            "use_cases": "1. Acteur : Développeur backend. Tâche : Capturer les exceptions Node.js via le SDK @bicho-fyi/javascript. Résultat : Les erreurs sont regroupées et inspectables via l'API sans configuration d'un collecteur OpenTelemetry [S1]. 2. Acteur : Admin système. Tâche : Configurer l'ingestion de logs legacy Sentry. Résultat : Les enveloppes Sentry sont acceptées et stockées localement dans D1/R2 [S1].",
-            "products": "1. Cible : Agences web. Produit : Module d'audit d'erreurs pour clients. Différence : Intégration de Bicho dans un dashboard client pour fournir un rapport d'erreurs transparent, contrairement au dépôt brut qui est un backend nu. 2. Cible : Développeurs indépendants. Produit : Service de monitoring léger pour micro-services. Différence : Packaging de Bicho avec des alertes e-mail automatisées et une interface de tri simplifiée, ajoutant une couche de productivité absente du code source.",
-            "monetization": "Acheteur : PME techniques ou agences. Raison de payer : Éviter les coûts de licences Sentry/LogRocket tout en gardant la souveraineté des données. Unité facturée : Abonnement mensuel par projet ou par volume de logs. Modèle : Freemium (limité en volume) puis payant. Hypothèse de prix : 20-50€/mois par projet, basé sur la valeur de la réduction des coûts d'infra et non sur une mesure de marché.",
-            "build_plan": "Périmètre : Déploiement de Bicho sur un compte Cloudflare existant. Brique réutilisée : Le code source complet et les migrations SQL [S2]. Travail à ajouter : Création d'une interface web de consultation (Next.js) et d'un système d'alerting. Exclusions : Développement de nouveaux SDK. Dépendances : Compte Cloudflare avec D1/R2 activés [S1]. Coûts : Coûts Cloudflare (stockage/réseau) + temps de dev. Délai : 2-3 semaines pour un MVP avec dashboard, conditionné à la maîtrise de l'API Bicho.",
-            "limitations": "Contraintes : Dépendance stricte à l'écosystème Cloudflare Workers [S1]. Inconnues : Performance sous charge élevée, limites de taille de payload D1. Licence Apache-2.0 à vérifier pour usage commercial. Maintenance : Suivi des mises à jour du core et des SDK. Coût d'infra non estimable sans volume de trafic défini.",
-            "next_step": "Test technique : Déployer le dépôt sur un compte Cloudflare test et envoyer un faux log OTLP pour vérifier la persistance en D1. Question utilisateur : « Préféreriez-vous un outil d'erreur auto-hébergé si cela nécessitait de gérer vous-même les mises à jour de sécurité ? »",
-            "assessment": "Score 7 : L'architecture est solide et moderne (Workers, D1, R2) [S1], pertinente pour un profil full-stack. Fit 6 : Bien que technique, le profil cherche des outils B2B/SaaS ; Bicho est une infrastructure, pas un produit fini. Il inspire la création d'un wrapper SaaS de monitoring, mais nécessite un travail de packaging important. Aucune preuve de demande de marché n'est fournie.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "qwen/qwen3.8-27b"
-    },
-    "3439fb24348ae82cae109307ca88a339f4a9be686e28b9c9543feb215227c801": {
-      "at": 1794751075.348706,
-      "data": {
-        "projects": [
-          {
-            "name": "pedrocatalao/github-cool-readme",
-            "category": "outil de génération de cartes SVG animées",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Le dépôt génère des cartes SVG animées affichant des statistiques GitHub (commits, PR, issues, étoiles, langues, rythme hebdomadaire). Il s'adresse aux développeurs qui souhaitent enrichir leur profil README avec des visualisations dynamiques.",
-            "workflow": "Entrée : fichier de configuration YAML (ex. examples/cool-readme.yml) et snapshot JSON contenant les métriques GitHub. Traitement : le script CLI lit le snapshot, calcule les agrégats (totaux, part des jours actifs, répartition des langues) via la fonction compute, puis rend chaque carte avec renderAll en SVG animé. Sortie : fichiers SVG placés dans le répertoire de sortie, prêts à être commités sur la branche `cards` du dépôt du profil. Sources : description du processus dans le README [S1] et le script d'exemple montrant l’utilisation de compute et renderAll [S3]. Limites : ne fonctionne que sur des dépôts GitHub publics ou privés accessibles via le token d’action, dépend du format du snapshot et ne supporte pas de personnalisation avancée hors du YAML fourni.",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Afficher ses contributions mensuelles et la répartition des langues sur son profil GitHub pour attirer des clients. ; Résultat : Un ensemble de cartes SVG animées intégrées au README, visibles immédiatement par les visiteurs du profil.\n• Utilisateur : Responsable d'équipe technique ; Tâche : Publier des statistiques agrégées de l'équipe (commits, PR, revues) sur une page interne de documentation. ; Résultat : Des cartes SVG personnalisées reflétant les performances collectives, mises à jour automatiquement via l’action GitHub.",
-            "products": "• Cible : PME tech souhaitant visualiser l'activité de leurs développeurs ; Produit : SaaS hébergé qui consomme les API GitHub, génère les cartes et les expose via un tableau de bord web. ; difference : Le dépôt original nécessite une action GitHub et un dépôt dédié ; le SaaS propose une interface centralisée, des filtres multi‑organisation et un abonnement mensuel.\n• Cible : Agences de création de contenu numérique ; Produit : Plugin WordPress qui intègre les cartes SVG dans les pages de portfolio. ; difference : Transformation du générateur CLI en composant serveur‑side, ajout d’un shortcode WordPress et d’un tableau de configuration UI, alors que le dépôt source ne fournit qu’un outil en ligne de commande.",
-            "monetization": "Acheteur : PME, agences ou développeurs individuels ; reason to pay : Gain de visibilité professionnelle, automatisation du reporting d'activité, réduction du temps de création manuelle de graphiques. ; unit : abonnement mensuel par compte GitHub ou par organisation ; model : Abonnement SaaS (tiers basés sur nombre d'organisations et fréquence de mise à jour). Hypothèse de prix : 15 €/mois pour 1 organisation, 40 €/mois pour jusqu’à 5 organisations, justifié par le coût d’infrastructure (hébergement statique, appels API GitHub) et la valeur perçue de la visibilité. ; note : Les fourchettes sont des hypothèses à tester, aucune donnée de marché n’est fournie.",
-            "build_plan": "scope : Créer un service web minimal qui expose une API REST acceptant un token GitHub et un fichier de config, puis renvoie les SVG générés. ; reused bricks : Code de calcul et de rendu du dépôt (compute, renderAll, config parser). ; additional work : Implémenter un serveur FastAPI (Python) ou Express (Node) pour orchestrer les appels, ajouter la gestion d’authentification OAuth GitHub, mettre en place un stockage temporaire des snapshots, créer une UI de configuration simple. ; exclusions : Gestion avancée de multi‑tenant, facturation Stripe, tableau de bord analytique complet. ; dependencies : Node.js ≥22, bibliothèques du dépôt, serveur d’hébergement (Vercel/Fly.io), compte GitHub OAuth. ; cost estimate : Infrastructure cloud (≈5 €/mois), frais de domaine et certificats (≈1 €/mois). ; timeline : Estimation conditionnelle : 2 semaines de développement backend + 1 semaine d’intégration UI + 1 semaine de tests = 4 semaines à temps plein.",
-            "limitations": "established constraints : Nécessite un token GitHub avec accès aux repos ciblés, dépend du format du snapshot JSON, licence MIT du code source à vérifier pour usage commercial. ; unknowns : Performance à grande échelle (nombre d’organisations simultanées), conformité RGPD des logs d’accès GitHub, coût exact des appels API au-delà du quota gratuit. ; license : MIT (à confirmer pour le produit dérivé). ; maintenance : Mises à jour du moteur de rendu SVG et adaptation aux évolutions de l’API GitHub.",
-            "next_step": "technical test : Déployer une version prototype sur Fly.io, appeler l’API avec un token de test et vérifier la génération des SVG pour un dépôt réel. ; user question : « Quel type de métrique GitHub vous serait le plus utile à visualiser dans votre profil ou tableau de bord ? »",
-            "assessment": "Score 7 reflète la clarté du code source, la pertinence du problème (visualisation d’activité) et la réutilisabilité du moteur de rendu. Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques, mais le projet correspond aux priorités B2B SaaS et d’outils de productivité. Les preuves proviennent du README et du script d’exemple [S1, S3]; d’autres aspects (licence, coûts) restent non établis dans les extraits.",
-            "evidence_ids": [
-              "S1",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "78495f194ca565ea4d76612ee1671a90d482f2a775bc317afb01977c59a3f606": {
-      "at": 1794751140.5760477,
-      "data": {
-        "projects": [
-          {
-            "name": "BenchUp3D/benchup",
-            "category": "Logiciel de modélisation 3D / CAO bois",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "BenchUp est une application open‑source de modélisation 3D spécialisée dans la menuiserie. Elle permet aux artisans, designers et petites entreprises de créer des pièces de mobilier avec des mesures précises et de visualiser les assemblages en temps réel.",
-            "workflow": "Entrée : fichier de projet (ou création interactive) contenant les dimensions des pièces → Traitement : le moteur Rust calcule les géométries, applique les contraintes d’assemblage, génère les vues 3D via WebGPU et WebAssembly ; le système de groupes, composants réutilisables et tags organise la hiérarchie du modèle [ S1 ] → Résultat : visualisation interactive dans le navigateur ou application desktop, export possible en formats courants (OBJ, STL) et génération d’annotations dimensionnelles. Limites : aucune prise en charge native du rendu photoréaliste, dépendance à un navigateur compatible WebGPU et aucune fonctionnalité de simulation mécanique.",
-            "use_cases": "• Utilisateur : Artisan menuisier ; Tâche : Concevoir un nouveau plan de table en définissant chaque planche, ses découpes et ses assemblages ; Résultat : Obtenir un modèle 3D exploitable, des mesures exactes et un fichier d'export prêt à être découpé sur CNC\n• Utilisateur : Agence de design d'intérieur ; Tâche : Présenter à un client un aménagement de cuisine avec meubles sur mesure ; Résultat : Fournir des rendus interactifs accessibles via un lien web, permettant au client de visualiser le projet sous tous les angles",
-            "products": "• Cible : PME du secteur du mobilier sur mesure ; Produit : Plateforme SaaS de configuration de meubles avec stockage cloud des projets BenchUp et génération de devis automatisés ; difference : Ajoute une couche de gestion de clients, facturation Stripe et API de devis, tout en réutilisant le moteur 3D existant\n• Cible : Indépendants souhaitant automatiser la découpe CNC ; Produit : Extension desktop qui exporte directement les géométries BenchUp vers les formats G‑code compatibles avec les machines CNC, avec un module de validation des tolérances ; difference : Intègre un convertisseur G‑code et un tableau de bord de suivi de production, fonctionnalité absente du dépôt brut",
-            "monetization": "Acheteur : Artisans, designers et petites entreprises ; reason to pay : Accès à l’hébergement cloud des projets, génération de devis automatisée et support premium ; unit : abonnement mensuel par utilisateur actif ; model : Freemium : version de base gratuite, fonctionnalités avancées (stockage illimité, export G‑code, API de devis) facturées ; price range hypothesis : 5 € – 15 € par mois selon le niveau de service, justifié par la valeur de réduction du temps de conception et l’évitement d’erreurs de coupe",
-            "build_plan": "scope : Création d’une couche SaaS autour du moteur 3D existant : authentification, stockage de projets, API de devis et facturation ; reused bricks : Moteur Rust/wasm, UI egui, logique de groupes et tags déjà implémentés ; additional work : Développement backend (FastAPI ou Node.js) pour la persistance, intégration Stripe, UI web (React/Next.js) pour la configuration, tests d’intégration ; exclusions : Refonte du moteur de rendu, ajout de simulation physique ; dependencies : Supabase/PostgreSQL pour la base, Stripe SDK, Docker pour le déploiement, Vercel ou Fly.io pour le front ; estimated costs : Infrastructure cloud (≈ 10 €/mois), licences éventuelles d’outils CI, temps de développement estimé à 200 h ; timeline : 4 – 6 semaines de MVP si le développeur consacre 8 h/jour, sous condition d’accès aux APIs Stripe et Supabase",
-            "limitations": "Licence MIT du dépôt, donc aucune contrainte de redistribution ; cependant la compatibilité WebGPU n’est pas garantie sur tous les navigateurs (limite technique) [ S2 ]. Le projet ne fournit pas de tests automatisés (absence de preuve de stabilité) [ S3 ]. Coûts d’hébergement et de maintenance du SaaS restent à préciser.",
-            "next_step": "Réaliser un prototype d’export G‑code à partir d’un projet BenchUp et le tester avec une machine CNC locale ; interroger un menuisier sur la valeur perçue d’un devis automatisé basé sur le modèle 3D.",
-            "assessment": "Score 7 reflète la maturité du moteur 3D et la pertinence pour les secteurs ciblés. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte régionale ou de délai strict. Les sources confirment les fonctionnalités de modélisation et la structure du workspace, mais aucune donnée ne prouve l’existence d’un marché ou d’une demande validée.",
-            "evidence_ids": [
-              "S1",
-              "S2",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "eac8ccac25a4b1a18c6186b51dff03aa682fcdfcc5d8026a7163f5067e22ca21": {
-      "at": 1794751205.1549919,
-      "data": {
-        "projects": [
-          {
-            "name": "OpenFisherCommunity/rf4_server_simulator",
-            "category": "simulateur de serveur local (outil de recherche et de développement)",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "Le dépôt propose un simulateur en Go du serveur d'une version du jeu de pêche \"client 4.0.25034\". Il cible les développeurs et les passionnés qui souhaitent étudier le protocole du jeu ou créer des environnements de test sans dépendre du serveur officiel.",
-            "workflow": "Entrée : fichier de configuration YAML ou paramètres via l’interface web du launcher → Traitement : le launcher démarre deux processus (gateway et game‑server), charge les données SQLite locales, applique la logique du jeu et expose une API HTTP pour le client → Résultat : le client de jeu se connecte au serveur simulé et fonctionne comme avec le serveur officiel. Limites : le projet n’est pas une réplique complète, aucune persistance multi‑instance, aucune garantie de stabilité à long terme. (Sources : S1)",
-            "use_cases": "• Utilisateur : Développeur d’outils de triche ou d’analyse réseau ; Tâche : Intercepter les paquets du client, les rediriger vers le simulateur pour observer les réponses du serveur ; Résultat : Possibilité d’étudier le protocole sans enfreindre les conditions d’utilisation du serveur officiel\n• Utilisateur : Créateur de contenu vidéo sur les jeux de pêche ; Tâche : Lancer rapidement une partie en local pour enregistrer des démonstrations ; Résultat : Production de vidéos sans dépendre d’un serveur distant, réduction des temps d’attente",
-            "products": "• Cible : PME de formation aux jeux vidéo ou studios indie ; Produit : Plateforme de test automatisée pour scénarios de jeu de pêche ; difference : Utilise le simulateur existant comme moteur de jeu, ajoute une couche d’orchestration (Docker, CI) et des rapports de performance, ce qui n’est pas fourni dans le dépôt brut\n• Cible : Agences de marketing digital spécialisées jeux ; Produit : Service SaaS de démonstration interactive du gameplay de pêche ; difference : Expose le simulateur via une interface web multijoueur, intègre un système de facturation à l’usage, alors que le dépôt ne propose qu’une exécution locale",
-            "monetization": "Acheteur : Studios indie ou agences marketing souhaitant présenter le gameplay à des clients ; reason to pay : Accès à une instance hébergée, mise à jour automatisée, support technique et tableau de bord d’analyse ; unit : abonnement mensuel par instance ; model : Abonnement SaaS avec tarif de base hypothétique 49 € / mois, ajusté selon le nombre d’utilisateurs simultanés",
-            "build_plan": "scope : Adapter le simulateur pour une exécution conteneurisée en production, ajouter une API REST d’administration et un tableau de bord front‑end ; reused bricks : Code du simulateur (gateway, game‑server, SQLite), Docker compose fourni (S1) ; work to add : Implémentation d’une couche d’authentification, métriques d’usage, système de facturation Stripe, documentation d’API ; exclusions : Refonte du moteur de jeu, support multi‑serveur, localisation du jeu ; dependencies : Go 1.27, SQLite, Prometheus client (déjà dans go.mod S2), Stripe SDK, framework front‑end (React/Next.js) ; Coûts estimés : Coût d’infrastructure cloud (≈ 10 €/mois pour un petit VM), licences éventuelles pour outils de monitoring, temps de développement estimé 200 h ; timeline : 4 à 6 semaines de développement intensif (conditionnel à la disponibilité d’un développeur full‑stack)",
-            "limitations": "established constraints : Fonctionne uniquement avec le client version 4.0.25034, nécessite SQLite local, aucune persistance distribuée, licence MIT (à vérifier pour usage commercial) (S1, S2) ; unknowns : Performance sous charge élevée, compatibilité avec d’autres versions du client, exigences légales liées à la reproduction partielle du protocole du jeu ; maintenance costs : Mises à jour du simulateur upstream, surveillance des dépendances Go, gestion des conteneurs Docker",
-            "next_step": "technical test : Déployer le compose Docker fourni, connecter le client de jeu et vérifier la latence des réponses du serveur simulé ; user question : Quel type de métriques ou de rapports d’usage serait le plus utile pour votre équipe lors de tests de gameplay ?",
-            "assessment": "Score 6 reflète la présence d’un code fonctionnel et d’une architecture prête à être conteneurisée, mais l’absence de fonctionnalités SaaS prêtes à l’emploi et le manque de preuves de marché limitent l’adéquation. Fit_score 5 par défaut car le profil ne précise pas de secteur ciblé spécifique. Les sources confirment les capacités techniques (S1, S2) mais ne fournissent aucune donnée sur la demande ou la viabilité commerciale.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "174398f16b9f706cd6b80fd929bc46af67de909f60a4b16c045e4d631eec1984": {
-      "at": 1794751271.0358222,
-      "data": {
-        "projects": [
-          {
-            "name": "OpenSenseNova/SenseNova-RoboRSI",
-            "category": "Framework d'agents incarnés",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "SenseNova‑RoboRSI est un framework Python permettant de créer, évaluer et améliorer de façon récursive des agents incarnés. Il cible les chercheurs et développeurs qui souhaitent tester des modèles d'IA dans des environnements physiques simulés.",
-            "workflow": "Entrée : code Python d'un agent (ex. classe implémentant l'interface RoboRSI) → Traitement : le runtime exécute l'agent dans un benchmark (ex. LIBERO) via la commande `bench eval` qui orchestre le scénario, les capteurs et les actions → Résultat : fichiers de logs et métriques d'évaluation (temps d'exécution, score de réussite) [S3]. Limites : le benchmark fourni ne résout pas les tâches, il ne fait qu’une vérification d’intégration ; aucune interface UI n’est fournie, le framework nécessite Python 3.10‑3.12 et dépend de bibliothèques non listées dans l’extrait [S2].",
-            "use_cases": "• Utilisateur : Chercheur en robotique ; Tâche : Comparer plusieurs architectures de contrôleurs d'bras robotique sur le benchmark LIBERO ; Résultat : Rapports automatisés contenant les scores de stabilité et de précision pour chaque version d'agent\n• Utilisateur : Startup IA proposant des simulateurs d'objets physiques ; Tâche : Intégrer rapidement un nouveau modèle de langage large dans le pipeline d’évaluation RoboRSI ; Résultat : Déploiement d’une version testable en moins de deux heures grâce au script d’installation `pip install -e '.[runtime,test]'`",
-            "products": "• Cible : PME du secteur logistique souhaitant automatiser la planification de robots de picking ; Produit : Plateforme SaaS qui expose les capacités d’évaluation de RoboRSI via une API REST, permettant aux clients de soumettre leurs modèles et d’obtenir des scores de performance ; difference : Le dépôt brut ne propose qu’un framework local ; le produit ajoute une couche API, gestion multi‑tenant et tableau de bord visualisation\n• Cible : Équipe de développement de jeux vidéo cherchant à tester des comportements d’IA non‑joueur ; Produit : Bibliothèque plug‑in Unity qui encapsule RoboRSI et fournit des callbacks Unity‑compatible pour synchroniser les actions de l’agent avec le moteur de jeu ; difference : Transformation du framework Python en composant natif Unity, avec bindings C# et support de la boucle de rendu temps réel",
-            "monetization": "Acheteur : Entreprises ou équipes de R&D qui ont besoin d’évaluer rapidement des agents IA ; reason to pay : Accès à une infrastructure d’évaluation prête à l’emploi, support technique et mise à jour continue du benchmark ; unit : abonnement mensuel par instance d’évaluation ; model : Tarification basée sur le nombre d’évaluations mensuelles (ex. 0‑100 eval = 199 €, 101‑500 eval = 449 €) – hypothèse à tester selon la valeur perçue et le coût d’infrastructure cloud",
-            "build_plan": "scope : Création d’une API wrapper autour du runtime existant, ajout d’un tableau de bord web minimal et mise en place d’un service d’orchestration Docker ; reused bricks : Package Python `roborsi`, scripts d’installation, logique de benchmark déjà fournie [S2][S3] ; work to add : Développement de l’API FastAPI, UI React/Next.js, système d’authentification, persistance des résultats dans PostgreSQL, CI/CD Docker ; exclusions : Développement de nouveaux benchmarks, support de simulateurs physiques autres que LIBERO ; dependencies : FastAPI, SQLAlchemy, React, Docker, hébergement Vercel/Fly.io ; estimated cost : Coût d’infrastructure cloud estimé à 50‑100 €/mois pour un petit cluster; licences open‑source uniquement ; timeline : Prototype fonctionnel 4‑6 semaines (2 semaines d’intégration API, 2 semaines UI, 1‑2 semaines de tests) – délai conditionnel à la disponibilité du développeur à plein temps",
-            "limitations": "established : Fonctionne uniquement sous Python 3.10‑3.12, nécessite un environnement Linux/Unix pour le benchmark; licence Apache‑2.0 autorise usage commercial ; unknown : Performance réelle sur du matériel réel non testée, aucune métrique de charge CPU/GPU fournie, support de Windows limité ; license to check : Apache‑2.0 confirmée dans le dépôt, mais il faut vérifier les licences des dépendances listées dans `pyproject.toml` ; maintenance costs : Mises à jour du benchmark et compatibilité avec nouvelles versions de LLM devront être assurées par l’équipe",
-            "next_step": "technical test : Déployer le package dans un conteneur Docker et exécuter `bench eval` avec le benchmark `libero` pour valider le flux end‑to‑end ; user question : Quel critère de performance (latence, précision, consommation énergie) est le plus critique pour votre usage d’agents incarnés ?",
-            "assessment": "Score 6 reflète la maturité du code (framework fonctionnel, documentation de démarrage) mais l’absence de produit fini limite l’attractivité immédiate. Fit_score 5 car le profil recherche des outils B2B/SaaS et le dépôt offre une base technique exploitable, même si aucune preuve de marché n’est fournie. Les points forts sont la réutilisation du runtime et la licence permissive ; les points faibles sont le manque d’interface utilisateur et de métriques de coût opérationnel. Non établi dans les extraits : validation de la scalabilité cloud, exigences de conformité RGPD, et intérêt commercial réel.",
-            "evidence_ids": [
-              "S1",
-              "S2",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "e551b99b941d14acc4f2c5079c00b877a74f1a209ca9d24091bc0bb993679774": {
-      "at": 1794751335.1129375,
-      "data": {
-        "projects": [
-          {
-            "name": "OpenTodoApp/OpenTodo",
-            "category": "Gestion de tâches / Application web",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "OpenTodo est une application de gestion de tâches auto‑hébergée, écrite en TypeScript avec un backend Go. Elle cible les utilisateurs individuels, les familles ou les petites équipes qui souhaitent conserver leurs données en local et éviter les abonnements SaaS.",
-            "workflow": "Entrée : l'utilisateur crée ou importe une liste de tâches via l'interface web ou mobile. Traitement : le front‑end TypeScript envoie les requêtes à l'API Go qui persiste les données dans SQLite (modernc.org/sqlite) et applique la logique de partage et de synchronisation hors‑ligne. Résultat : la liste est stockée sur le serveur de l'utilisateur, accessible depuis tous ses appareils, même sans connexion. Limites : aucune fonctionnalité de collaboration en temps réel n’est décrite dans les extraits, la sécurité dépend de l’infrastructure d’hébergement choisie et la licence AGPL‑3.0 impose la mise à disposition du code source modifié. [S1][S2]",
-            "use_cases": "• Utilisateur : Freelance en design graphique ; Tâche : Organiser les livrables de chaque client et suivre les échéances ; Résultat : Une vue consolidée des tâches par client, accessible depuis le laptop et le smartphone, sans dépendre d’un service tiers.\n• Utilisateur : Petite équipe de marketing ; Tâche : Partager un tableau de bord de campagnes publicitaires avec des dates de lancement ; Résultat : Tous les membres voient la même liste, les modifications sont synchronisées dès la reconnexion, aucune donnée n’est stockée sur des serveurs externes.",
-            "products": "• Cible : PME souhaitant un outil de suivi interne sans abonnement ; Produit : Version hébergée sur un serveur dédié avec authentification SSO et sauvegarde chiffrée ; difference : Contrairement à la version brute, le service inclut la gestion des utilisateurs d’entreprise, le monitoring et le support technique.\n• Cible : Agences créatives qui ont besoin d’un espace de travail partagé temporaire ; Produit : Package « demo‑mode » pré‑configuré sur Vercel avec durée de vie limitée à 30 jours ; difference : Le dépôt original propose déjà un mode démo, mais le package ajoute un processus d’onboarding automatisé et un tableau de bord d’utilisation.",
-            "monetization": "Acheteur : PME ou agence qui veut éviter les coûts récurrents d’un SaaS ; reason to pay : Hébergement sécurisé, support dédié, SLA de disponibilité et extensions propriétaires (ex. SSO, chiffrement au repos) ; unit : abonnement mensuel par utilisateur actif ; model : Abonnement SaaS (freemium avec 5 utilisateurs gratuits, puis 8 €/utilisateur/mois) – hypothèse à tester en fonction de la valeur perçue et des coûts d’infrastructure. ; price range hypothesis : 8 €–12 €/utilisateur/mois, justifié par le coût d’un serveur VPS (~5 €/mois) + support (~3 €/mois) + marge.",
-            "build_plan": "scope : Déploiement d’une version SaaS multi‑tenant basée sur le code existant. ; reused bricks : Frontend TypeScript, API Go, persistance SQLite, logique de partage déjà implémentée. ; additional work : Implémenter la gestion multi‑tenant, SSO (OAuth2), chiffrement des bases, tableau de bord admin, CI/CD, monitoring (Prometheus/Grafana). ; exclusions : Développement d’app mobiles natives, IA intégrée, migration vers une base de données relationnelle différente. ; dependencies : Docker, PostgreSQL (optionnel), fournisseur d’identité (Keycloak ou Azure AD), service d’hébergement (Vercel/Fly.io). ; estimated costs : Infrastructure cloud ~10 €/mois, licences éventuelles (Keycloak gratuit), temps de développement estimé 200 h. ; timeline : 4 à 6 semaines de travail intensif (8‑10 h/jour) si l’équipe possède déjà les compétences Go/TS et l’infrastructure CI/CD.",
-            "limitations": "Licence AGPL‑3.0 nécessite la diffusion du code source modifié (non vérifiée pour usage commercial), aucune preuve de tests de charge ou de conformité RGPD dans les extraits, dépendance à SQLite qui peut limiter l’évolutivité, aucune indication de gestion des sauvegardes automatisées. [S1][S2]",
-            "next_step": "Réaliser un prototype de multi‑tenant sur un serveur de test et mesurer la latence des opérations CRUD ; interroger un responsable d’une PME sur son besoin de contrôle des données et son budget mensuel pour un tel outil.",
-            "assessment": "Score 7 reflète la maturité du code (frontend complet, backend fonctionnel) et la pertinence pour les secteurs ciblés (outils B2B, productivité). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles ou géographiques spécifiques. Les preuves proviennent des README et du fichier go.mod ; les autres champs sont des hypothèses basées sur la description du dépôt. Absence de données sur la scalabilité, la sécurité et la conformité constitue un manque de preuves.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "00f7a2c6826a0b263ee7e40c2b7eaddc9deaae803ed771eea7456f5adc27965a": {
-      "at": 1794751400.2920482,
-      "data": {
-        "projects": [
-          {
-            "name": "typecraft-dev/oma-cast",
-            "category": "Launcher / Extension pour environnement de bureau Linux",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Omacast est un lanceur de type Raycast destiné à la plateforme Omarchy (Hyprland). Il cible les utilisateurs Linux qui souhaitent un accès rapide à leurs applications, actions Omarchy et recherches web depuis un seul champ de saisie.",
-            "workflow": "Entrée : l'utilisateur presse Alt+Space, tape une requête (ex. « ff »). Traitement : le moteur omacast interroge le catalogue d’applications, les ~400 actions Omarchy et les moteurs de recherche web, applique un algorithme de ranking basé sur la fréquence d’utilisation et le frecency (voir description du fonctionnement dans le README) [ S1 ]. Résultat : la liste des correspondances les plus pertinentes s’affiche, l'utilisateur peut sélectionner une action ou lancer un alias. Limites : le projet dépend de la version 4 d’Omarchy et de Hyprland ≥ 0.56 ; aucune interface graphique native n’est fournie, tout repose sur le terminal et le plugin Omarchy [ S1 ].",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Lancer rapidement un navigateur ou un éditeur sans quitter le terminal ; Résultat : Gain de temps grâce à la recherche instantanée et au classement des outils les plus utilisés\n• Utilisateur : Équipe d’agence web ; Tâche : Accéder à des actions Omarchy spécifiques (ex. ouvrir un projet, exécuter un script de build) depuis le même lanceur ; Résultat : Uniformisation du workflow et réduction du nombre de raccourcis clavier à mémoriser",
-            "products": "• Cible : PME et indépendants utilisant Linux pour la productivité ; Produit : Omacast Cloud – version SaaS qui expose les mêmes capacités via une interface web, synchronisation des préférences et des alias entre plusieurs machines ; difference : Supprime la dépendance à Omarchy local, ajoute la persistance cloud et un tableau de bord d’administration\n• Cible : Développeurs d’extensions Omarchy ; Produit : Kit de développement Omacast – bibliothèque Rust/JS permettant d’intégrer le moteur de recherche et le ranking dans d’autres outils (ex. IDE, gestionnaire de tickets) ; difference : Expose les API internes (backend, engine, protocol) comme modules réutilisables, au lieu d’un seul exécutable CLI",
-            "monetization": "Acheteur : PME ou freelance cherchant à centraliser leurs raccourcis et actions Linux ; reason to pay : Accès à la synchronisation cloud, support premium et mises à jour automatisées ; unit : abonnement mensuel par utilisateur ; model : Freemium : 5 € / mois pour 5 utilisateurs, 12 € / mois au-delà, avec période d’essai de 14 jours ; price hypothesis explanation : Le prix reflète la valeur perçue d’un gain de productivité estimé à quelques minutes par jour, tout en couvrant les coûts d’infrastructure (stockage de préférences, serveur d’authentification) et le temps de maintenance du service",
-            "build_plan": "scope : Développer la version cloud (frontend React + backend FastAPI) et le SDK Rust/JS ; reused bricks : Moteur de recherche et algorithme de ranking déjà implémentés dans le dépôt (modules backend, engine, protocol) [ S3 ] ; work to add : Interface web (Next.js), API d’authentification (Supabase), persistance des données (PostgreSQL), tableau de bord d’administration, packaging npm pour le SDK ; exclusions : Support natif pour d’autres environnements de bureau que Omarchy, refonte du moteur de recherche ; dependencies : FastAPI, React, TailwindCSS, Supabase, Docker, PostgreSQL, éventuellement Stripe pour la facturation ; estimated costs : Infrastructure cloud (≈ 15 €/mois en dev), licences éventuelles pour CI, temps de développement estimé à 200 h ; timeline : 4 à 6 semaines de développement initial (prototype fonctionnel) si l’équipe travaille à plein temps (8‑10 h/jour) – délai conditionnel à la disponibilité du développeur principal",
-            "limitations": "established constraints : Nécessite Omarchy 4 et Hyprland ≥ 0.56 ; le code source actuel ne fournit que le CLI, aucune UI web native [ S1 ] ; unknowns : Performance du moteur de recherche à grande échelle, compatibilité avec d’autres gestionnaires de fenêtres, exigences de conformité RGPD pour la synchronisation cloud (non établi dans les extraits) ; license to check : MIT (déclaré dans le dépôt) – compatible avec une commercialisation SaaS, mais vérifier les obligations de redistribution ; maintenance costs : Mise à jour du moteur en fonction des évolutions d’Omarchy, support utilisateur, hébergement cloud",
-            "next_step": "technical test : Déployer un prototype FastAPI qui expose l’API `search` du module Rust via PyO3 et vérifier la latence sur 10 000 requêtes simultanées ; user question : Quel serait votre critère principal pour choisir un lanceur cloud plutôt que le client local ? (ex. synchronisation, UI, support multi‑plateforme)",
-            "assessment": "Score 7 reflète la présence d’un moteur de recherche fonctionnel et d’une proposition de valeur claire pour les utilisateurs Linux. Le fit_score reste neutre (5) car le profil indique une préférence pour les prototypes rapides, mais aucune contrainte régionale ou de conformité n’est prouvée dans les extraits. Les sources confirment les fonctionnalités de base (README [ S1 ], code Rust [ S3 ]), mais les aspects de monétisation, de cloud et de SDK restent hypothétiques.",
-            "evidence_ids": [
-              "S1",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "cd9f2ca3a0a570febfc4bb1b0688ca7e7d79331a4ae781f95e582cfce97aa909": {
-      "at": 1794751594.5225801,
-      "data": {
-        "projects": [
-          {
-            "name": "Magnvs7/Promethevs",
-            "category": "serveur d'inférence IA local",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Promethevs est un serveur compatible OpenAI qui exécute le modèle DeepSeek‑V4.1‑Flash‑1017 (510 GB) sur un PC de jeu classique. Il cible les développeurs et chercheurs qui souhaitent disposer d’un modèle de grande taille en local, sans dépendre d’un service cloud.",
-            "workflow": "Entrée : requête JSON compatible OpenAI (prompt texte). Traitement : le moteur PROMETHEVS charge les poids compressés en 2‑bit, identifie les tokens dont la confiance est faible, les marque, puis les reconstruit en FP4 exacte avant de générer la suite. Résultat : réponse texte renvoyée via HTTP. Limites : aucune comparaison officielle avec l’implémentation de référence DeepSeek, vitesse variable (≤ 8 tokens/s) et temps de latence initiale élevé (≈ 126 s pour 1 163 tokens) [S1].",
-            "use_cases": "1. Analyste de données : envoie de longs prompts pour extraire des résumés de documents volumineux, obtient une réponse locale sans fuite de données. 2. Développeur d’applications IA : intègre le serveur via l’API OpenAI‑compatible pour fournir des fonctionnalités de génération de texte dans une SaaS interne, garantissant souveraineté des modèles.",
-            "products": "1. « DeepLocal » – service d’inférence sur site pour PME du secteur juridique, offrant un modèle de rédaction contractuelle pré‑entraîné, différencié par la capacité à fonctionner hors ligne et à respecter les exigences de confidentialité. 2. « AI‑Boost » – wrapper web qui expose le moteur PROMETHEVS via une interface low‑code (no‑code) pour agences créatives, ajoutant des templates de génération de contenus marketing, différence principale : interface prête à l’emploi sans besoin de script Python.",
-            "monetization": "Acheteur : PME ou agence cherchant une IA locale. Raison de payer : souveraineté des données et absence de coûts récurrents d’API cloud. Unité facturée : abonnement mensuel par instance serveur (ex. 1 instance = 1 CPU + 16 GB RAM). Modèle : abonnement SaaS avec tarif hypothétique 120 € / mois, justifié par le coût d’infrastructure cloud (≈ 30 € / mois) et la valeur ajoutée de la confidentialité.",
-            "build_plan": "Périmètre limité : déploiement d’une instance Docker contenant le serveur PROMETHEVS et une API de gestion d’utilisateurs. Brique réutilisée : moteur PROMETHEVS (code existant). Travail à ajouter : interface d’authentification (OAuth2), tableau de facturation, monitoring des ressources. Exclusions : formation du modèle, optimisation GPU avancée. Dépendances : Docker, Python 3.11, FastAPI, PostgreSQL pour la facturation. Coût estimé : 0 € de licence (CC‑BY‑4.0), ≈ 200 € de services cloud pour tests (instance t3.medium). Délai : 3 à 4 semaines (≈ 200 h) pour MVP, conditionnel à la disponibilité du développeur à temps plein (8‑10 h/j).",
-            "limitations": "Contraintes établies : nécessite 64 GB RAM, GPU 12 GB, vitesse de génération limitée (< 8 tokens/s) et latence initiale élevée [S1]. Inconnues : compatibilité avec d’autres GPU, stabilité à long terme, support officiel. Licence : CC‑BY‑4.0 (à vérifier pour usage commercial). Coûts de maintenance : mise à jour des poids, surveillance du disque, support technique éventuel.",
-            "next_step": "Réaliser un test technique : déployer le serveur sur une instance cloud (ex. AWS t3.large) et mesurer le temps moyen de première token pour un prompt de 1 000 tokens. Question à poser à un utilisateur potentiel : « Quel niveau de latence est acceptable pour vos flux de travail de génération de texte ? »",
-            "assessment": "Score 7 reflète la maturité du code (serveur fonctionnel, documentation claire) et la pertinence pour le profil (full‑stack, IA locale). Fit_score 5 par défaut, le projet correspond aux priorités (IA locale, wrapper SaaS) mais manque de preuves de performance comparée et de validation marché. Les preuves proviennent uniquement du README fourni, d’où le manque de données chiffrées supplémentaires.",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "a58004b89e6cd2b6094b7fbe8f7d539775f82a44cefd0ceae7f0e41308e03323": {
-      "at": 1794751661.0933113,
-      "data": {
-        "projects": [
-          {
-            "name": "Gulfzurangular/ai--manus",
-            "category": "Agent autonome / Automatisation IA",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Manus est un agent IA autonome capable d’exécuter du code et de contrôler un navigateur. Il cible les utilisateurs qui souhaitent automatiser des tâches répétitives sans écrire de scripts complexes, notamment les indépendants et les petites équipes qui ont besoin d’assistance pour la recherche web, la génération de rapports ou la planification d’événements.",
-            "workflow": "Entrée : description textuelle d’une tâche (ex. « Vérifier le prix du produit X sur le site Y et l’enregistrer dans un CSV »). → Traitement : le moteur Manus interprète la consigne, génère le script Python/JS nécessaire, lance l’exécution dans un sandbox et pilote le navigateur pour remplir les formulaires, récupérer les données et les écrire dans le fichier. → Résultat : fichier CSV produit, logs d’exécution et état de la tâche. Sources : le README décrit l’exécution autonome du code et le contrôle du navigateur (S1). Limites : le sandbox ne garantit pas l’isolation totale, aucune mention de gestion de quotas API ou de conformité RGPD, et aucune preuve d’évolutivité pour un grand nombre d’utilisateurs simultanés.",
-            "use_cases": "• Utilisateur : Consultant SEO freelance ; Tâche : Collecter quotidiennement les positions de mots‑clés sur plusieurs SERP et les consolider dans un tableau partagé. ; Résultat : Rapport automatisé mis à jour chaque matin, réduction du temps de collecte de plusieurs heures à quelques minutes.\n• Utilisateur : Petite agence de marketing ; Tâche : Programmer la création de campagnes publicitaires en remplissant automatiquement les formulaires de plusieurs plateformes (Google Ads, Facebook). ; Résultat : Campagnes lancées sans intervention manuelle, diminution des erreurs de saisie et gain de productivité.",
-            "products": "• Cible : PME souhaitant automatiser la veille concurrentielle ; Produit : Plateforme SaaS « Manus Insight » qui expose une UI simple pour définir des scénarios de scraping et de reporting, reposant sur le moteur Manus en backend. ; difference : Ajoute une couche de gestion multi‑utilisateurs, stockage sécurisé des résultats et tableau de bord visualisation, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Indépendants qui veulent un assistant personnel de tâches quotidiennes ; Produit : Extension de bureau « Manus Assistant » qui intègre le moteur dans un client léger, permettant de déclencher des actions via raccourcis clavier ou voix. ; difference : Transforme le projet en application native légère, ajoute une interface locale et un système de cache, alors que le dépôt original ne propose qu’un agent serveur.",
-            "monetization": "Acheteur : PME, indépendants, agences digitales ; reason to pay : Gain de temps sur des processus répétitifs, réduction d’erreurs humaines et accès à une IA capable d’exécuter du code sans compétences de développement. ; unit : Abonnement mensuel par utilisateur actif ; model : Tarification tiered : 0‑5 utilisateurs = 15 €/mois, 6‑20 = 12 €/mois/utilisateur, >20 = 10 €/mois/utilisateur. Hypothèse basée sur la valeur perçue d’une automatisation qui remplace plusieurs heures de travail manuel. ; price range hypothesis : 15‑30 €/mois selon le niveau de support et les fonctionnalités avancées (ex. orchestration multi‑agents).",
-            "build_plan": "scope : MVP limité à l’exécution de scripts Python et au contrôle basique du navigateur (clics, remplissage de formulaires). ; reused bricks : Moteur Manus existant (sandbox, orchestrateur d’agents). ; additional work : Développement d’une API REST (FastAPI) pour déclencher les tâches, UI React/Next.js, système d’authentification (Supabase), stockage des résultats (PostgreSQL), et tableau de bord visualisation. ; exclusions : Gestion avancée des quotas API externes, conformité RGPD complète, support multilingue. ; dependencies : FastAPI, React, Supabase, Docker, Vercel (déploiement). ; estimated costs : Infrastructure cloud ≈ 30 €/mois (PostgreSQL, stockage), licences éventuelles pour le sandbox (non spécifiées). ; timeline : 4‑6 semaines conditionnelles : 2 semaines pour l’API, 2 semaines pour le front, 1‑2 semaines d’intégration et tests.",
-            "limitations": "established constraints : Exécution de code en sandbox, contrôle de navigateur décrit dans le README (S1). ; unknowns : Sécurité du sandbox, scalabilité, conformité RGPD, licence exacte des dépendances tierces. ; license to check : Apache‑2.0 du dépôt principal, vérifier compatibilité avec les bibliothèques ajoutées. ; maintenance costs : Mises à jour du sandbox, suivi des dépendances, support utilisateur.",
-            "next_step": "technical test : Déployer une instance de test du moteur Manus et appeler l’API pour exécuter un script de scraping simple, vérifier les logs et la sortie CSV. ; user question : « Quel type de tâche répétitive aimeriez‑vous automatiser aujourd’hui et quels critères de fiabilité sont essentiels pour vous ? »",
-            "assessment": "Score 7 reflète la pertinence du concept d’automatisation IA pour les cibles décrites, la présence d’un moteur fonctionnel (S1) et la possibilité de le transformer en produit SaaS. Le fit_score reste neutre (5) car le profil ne précise pas de secteur ou de contrainte régionale stricte. Le manque de preuves concrètes sur la robustesse du sandbox et la conformité légale est explicitement indiqué (« non établi dans les extraits »).",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "e51632e01bfc98ad138709d1007a0e2b710c0bf17e46102f36d70f5111937a4c": {
-      "at": 1794751725.2502775,
-      "data": {
-        "projects": [
-          {
-            "name": "bbfp/egress-workbench-app",
-            "category": "Environnement d'exécution / Outil de développement",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "Egress Workbench est une application macOS qui fournit un environnement d'exécution Linux contenant Claude Code, Codex et Chromium, partagé via Docker Desktop. Elle cible les développeurs qui souhaitent un point de sortie réseau unique, un fuseau horaire contrôlé et des espaces de travail persistants.",
-            "workflow": "Entrée : l'utilisateur sélectionne un répertoire de projet macOS → Traitement : Docker Desktop lance un conteneur Linux pré‑configuré contenant les outils (Claude Code, Codex, Chromium) avec un routage réseau dédié, affichage de l'IP de sortie, région et fuseau horaire → Résultat : l'utilisateur peut exécuter des commandes dans le conteneur, accéder aux fichiers du projet et utiliser les outils comme s'ils étaient natifs. Limites : nécessite un Mac Apple Silicon sous macOS 14+, Docker Desktop uniquement (OrbStack/Colima non supportés) et un nœud de connexion pré‑configuré. [S1]",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Tester du code généré par Claude Code dans un environnement isolé sans impacter son système local ; Résultat : Le code s'exécute dans le conteneur avec un réseau contrôlé, garantissant la reproductibilité et la sécurité des credentials\n• Utilisateur : Agence web ; Tâche : Faire collaborer plusieurs développeurs sur le même projet en partageant le même espace de travail Linux via Docker ; Résultat : Tous les membres accèdent aux mêmes versions d'outils et aux mêmes fichiers, réduisant les divergences d'environnement",
-            "products": "• Cible : PME de développement logiciel ; Produit : Plateforme SaaS de workbench cloud qui reproduit les fonctionnalités d'Egress Workbench sans dépendre de Docker Desktop local ; difference : Hébergement complet du conteneur, accès depuis n'importe quel OS, facturation à l'usage du temps d'exécution\n• Cible : Indépendants en IA générative ; Produit : Wrapper web qui expose Claude Code et Codex via une API REST sécurisée, avec gestion du routage réseau et du stockage de projets ; difference : Supprime la contrainte macOS/Apple Silicon, ajoute une interface UI légère et un modèle d'abonnement mensuel",
-            "monetization": "Acheteur : Développeurs et petites agences ; reason to pay : Accès à un environnement isolé, contrôle du réseau et persistance des espaces de travail sans gérer Docker localement ; unit : heure d'exécution du conteneur ; model : Abonnement mensuel incluant X heures d'exécution + tarif à l'usage au-delà ; price range hypothesis : 10 € / mois pour 20 h inclus, puis 0,50 € / heure supplémentaire – hypothèse basée sur la valeur perçue d'un environnement sécurisé et la charge d'infrastructure cloud",
-            "build_plan": "scope : MVP SaaS hébergeant le conteneur Linux avec les outils intégrés ; reused bricks : Docker image fournie par le projet original, scripts d'initialisation, logique de routage réseau ; work to add : Interface web multi‑tenant, gestion des comptes utilisateurs, facturation Stripe, monitoring des ressources ; exclusions : Support des nœuds de connexion personnalisés, compatibilité avec OrbStack/Colima ; dependencies : Docker, Cloud provider (ex. Fly.io ou Vercel Serverless), Stripe API, base de données PostgreSQL ; estimated costs : Infrastructure cloud ≈ 30 €/mois, licences éventuelles pour images Docker, frais Stripe (2,9 % + 0,30 €) ; timeline : 4‑6 semaines de développement (prototype fonctionnel) sous condition d'accès aux images Docker et aux clés API",
-            "limitations": "established constraints : Fonctionne uniquement sur Apple Silicon macOS 14+, nécessite Docker Desktop, taille du DMG ≈ 1,2 GB, nœuds de sortie fixes ; unknowns : Performance du routage réseau sous charge, compatibilité future avec macOS 15, coût exact d'hébergement cloud pour le conteneur persistant ; license : Aucune licence déclarée dans le dépôt – à vérifier avant réutilisation ; maintenance costs : Mises à jour du conteneur Linux, suivi des dépendances Docker, support utilisateur",
-            "next_step": "technical test : Déployer la Docker image sur un serveur cloud et valider le routage réseau contrôlé via un script de vérification d'IP ; user question : Quel problème rencontrez‑vous actuellement avec vos environnements de développement locaux (ex. conflits de versions, sécurité du réseau) ?",
-            "assessment": "Score 6 reflète la présence d'un produit fonctionnel avec une proposition de valeur claire (environnement contrôlé). Le fit_score reste neutre (5) car le profil indique une préférence pour des prototypes rapides, mais aucune preuve ne montre que ce type d'environnement répond directement à un besoin identifié du public cible. Les informations proviennent uniquement du README (S1) ; de nombreuses dimensions (licence, coûts réels, adoption) restent non établies.",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "4d5def3b5db32bf0318b7a670a71ea85a546097ea67571cbc0ad91c7a171b073": {
-      "at": 1794751789.6639874,
-      "data": {
-        "projects": [
-          {
-            "name": "USAREUR-AF/goatcore",
-            "category": "Infrastructure / Data Fabric",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "goatcore est un tissu de données auto‑hébergé qui relie personnes, machines et services via un maillage WireGuard et un système de publication/abonnement Zenoh. Il cible les équipes techniques qui ont besoin d’un réseau résilient aux pannes de connexion.",
-            "workflow": "Entrée : un nœud (machine ou conteneur) démarre le binaire `goat-relay` avec une configuration d’identité et de clé WireGuard. Traitement : le nœud rejoint le maillage, établit des tunnels sécurisés, expose des topics Zenoh et applique la politique d’accès zero‑trust. Résultat : les applications connectées peuvent publier/consommer des flux de données même si la liaison réseau principale tombe, grâce à la réplication locale et au routage peer‑to‑peer. Limites : le projet est en pré‑1.0, les interfaces peuvent changer ([S1]); aucune preuve d’évolutivité au-delà de quelques nœuds n’est fournie dans les extraits.",
-            "use_cases": "• Utilisateur : Opérateur d’usine industrielle ; Tâche : Collecter des télémesures de capteurs OT sur plusieurs sites isolés ; Résultat : Les données restent disponibles et synchronisées même lors de coupures de réseau, grâce au maillage résilient\n• Utilisateur : Équipe de réponse à une catastrophe ; Tâche : Déployer rapidement un réseau de capteurs mobiles pour suivre les conditions environnementales ; Résultat : Le maillage auto‑formé continue de transmettre les mesures malgré des connexions intermittentes",
-            "products": "• Cible : PME industrielles ; Produit : Plateforme SaaS de supervision OT basée sur goatcore, avec tableau de bord web ; difference : Fournit une couche UI et des connecteurs prêts à l’emploi (Grafana, alerting) au‑dessus du tissu de données brut\n• Cible : Agences de secours ; Produit : Kit de déploiement rapide (Docker + scripts) pour créer un maillage de capteurs d’urgence ; difference : Simplifie l’installation et la configuration, ajoute des modèles de données spécifiques aux scénarios de crise",
-            "monetization": "Acheteur : PME, agences de secours, fournisseurs de services OT ; reason to pay : Accès à une infrastructure résiliente, support dédié, tableau de bord et intégrations pré‑configurées ; unit : abonnement mensuel par instance déployée ; model : Abonnement SaaS avec tarif de base hypothétique 120 € / mois, plus frais d’usage pour le volume de messages au‑delà de 10 k msg/mois",
-            "build_plan": "scope : Développer une UI web (React + Tailwind) et des connecteurs Grafana/InfluxDB autour du noyau goatcore existant ; reused bricks : goat‑relay, protocole Zenoh, logique d’identité zero‑trust ; work to add : Interface utilisateur, authentification OAuth, facturation Stripe, CI/CD Docker, documentation utilisateur ; exclusions : Gestion de la facturation multi‑région, conformité RGPD (non prouvée dans les sources) ; dependencies : Rust (actuel), Node.js/TypeScript pour le front, PostgreSQL pour la persistance des configs ; Coûts estimés : Coût d’infrastructure cloud (VPS ou Kubernetes) estimé 30‑50 €/mois, licences open‑source nulles, temps de développement ~200 h ; timeline : Prototype fonctionnel 6‑8 semaines (conditionnel à la disponibilité d’un développeur full‑stack)",
-            "limitations": "Le projet est en version pré‑1.0 ; les API peuvent changer ([S1]), aucune métrique de performance ou d’évolutivité n’est fournie (non établi dans les extraits). Licence Apache‑2.0, donc réutilisable, mais il faut vérifier la compatibilité avec les dépendances internes. Maintenance du maillage nécessite des compétences Rust et réseau.",
-            "next_step": "Réaliser un test technique : déployer un petit maillage de 3 nœuds sur un cloud gratuit et publier un flux de données simple. Question à poser à un potentiel utilisateur : « Quel niveau de tolérance aux pannes réseau est requis pour votre flux de données ? »",
-            "assessment": "Score 7 reflète la pertinence du tissu de données pour les secteurs ciblés (OT, secours) et la disponibilité d’une base technique solide. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle stricte ni de budget dédié. Les preuves proviennent des extraits README et Cargo.toml ([S1], [S2]), aucune donnée supplémentaire n’est disponible.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "81116dad34b9f70496eb2ea1c819b71c39fa406f36ca57c0f797b26d03b5b72e": {
-      "at": 1794751854.9565504,
-      "data": {
-        "projects": [
-          {
-            "name": "omacom/omarchy-local-ai",
-            "category": "bibliothèque / moteur local d'IA",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "omarchy-local-ai est un moteur Python qui fournit un catalogue de modèles locaux, des recettes de déploiement et un wrapper d'agent. Il cible les développeurs ou équipes qui souhaitent exécuter des modèles LLM en local, sans dépendre d'API cloud, et qui ont besoin d'un contrôle fin sur l'environnement d'exécution.",
-            "workflow": "Entrée : un fichier de configuration de recette (ex. `best.toml`).\nTraitement : le moteur résout la recette, télécharge les poids pinés depuis Hugging Face, génère un service Podman root‑less avec les capacités limitées, expose une API locale authentifiée.\nRésultat : le modèle est disponible via le point d’entrée `omarchy-agent-local` pour des appels de génération ou d’inférence. Limites : nécessite Podman, crun et les helpers matériels d’Omarchy ; le catalogue est statique et ne se met pas à jour à l’exécution. [S1]",
-            "use_cases": "• Utilisateur : Développeur d'application SaaS B2B ; Tâche : Intégrer un LLM local pour la génération de réponses client sans envoyer de données à des services externes. ; Résultat : Réduction du risque de fuite de données sensibles et contrôle total des coûts d’inférence.\n• Utilisateur : Agence de conformité GDPR ; Tâche : Déployer un modèle de classification de texte sur site pour analyser des documents internes. ; Résultat : Conformité aux exigences de localisation des données, aucune transmission hors‑UE.",
-            "products": "• Cible : PME souhaitant automatiser la rédaction de courriels ; Produit : Interface web minimaliste qui utilise le moteur omarchy‑local‑ai pour proposer des suggestions de texte en temps réel. ; difference : Contrairement à un SaaS cloud, le modèle tourne sur le serveur de l’entreprise, éliminant les frais d’API et les contraintes de confidentialité.\n• Cible : Freelance créateur de contenus vidéo ; Produit : Plugin d’édition vidéo qui invoque le modèle local pour générer des sous‑titres automatiques et des résumés de scènes. ; difference : Le plugin exploite le catalogue de recettes pour choisir le modèle optimal selon la capacité GPU du poste, alors que les solutions existantes utilisent des services externes payants.",
-            "monetization": "Acheteur : PME ou freelance ; reason to pay : Accès à une interface prête à l’emploi, support technique et mises à jour du catalogue de recettes. ; unit : abonnement mensuel par instance déployée ; model : abonnement SaaS auto‑hébergé (licence d’utilisation du wrapper + support) ; price range hypothesis : 15 € – 45 € par mois selon le nombre de modèles actifs et le niveau de support, justifié par les coûts d’infrastructure (GPU, stockage) et le gain de productivité estimé.",
-            "build_plan": "scope : Développer une UI web (Next.js + Tailwind) qui consomme l’API locale fournie par omarchy‑local‑ai. ; reused bricks : Moteur omarchy‑local‑ai, scripts de validation, catalogue de recettes. ; work to add : Création du front, authentification JWT, tableau de bord de sélection de modèle, documentation utilisateur. ; exclusions : Gestion de l’orchestration multi‑GPU, formation de nouveaux modèles, interface mobile native. ; dependencies : Podman, crun, Python 3.11+, Node.js, Vercel/Fly.io pour le front, base de données PostgreSQL pour les logs d’usage. ; estimated costs : Coût d’infrastructure cloud (GPU ≈ 0,5 €/heure), stockage ≈ 0,02 €/GB, licences éventuelles de bibliothèques tierces. ; timeline : 4 – 6 semaines (prototype fonctionnel) sous condition de disponibilité du développeur à plein temps.",
-            "limitations": "established constraints : Nécessite Podman et crun, catalogue figé, aucune mise à jour dynamique des modèles, licence MIT à vérifier pour usage commercial selon les dépendances tierces. ; unknowns : Performance exacte sur différents GPU, compatibilité avec Windows/macOS, support de modèles non‑Hugging Face. ; license verification : MIT pour le code, mais les images Docker et modèles sous licence tierce peuvent imposer des restrictions. ; maintenance costs : Mise à jour du catalogue, suivi des vulnérabilités des images, support utilisateur.",
-            "next_step": "technical test : Déployer le moteur sur une VM avec GPU, exécuter `omarchy-local-ai use best` et mesurer le temps de réponse pour une requête de génération de texte. ; user question : Quel niveau de confidentialité attendez‑vous d’un modèle local comparé à une solution cloud ?",
-            "assessment": "Score 7 reflète la pertinence du moteur pour les priorités du profil (IA locale, automatisation, B2B SaaS). Le fit_score reste à 5 faute de preuves concrètes sur la demande du marché et la conformité RGPD, qui ne sont pas établies dans les extraits. Le projet offre une base technique solide mais requiert des travaux d’intégration UI et de validation de licence.",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
     "2e461b6f7e36c62101d0d872f1fa36dd7ca3a5b391a4d2895a2f602e2095b7eb": {
       "at": 1794823252.5679696,
       "data": {
@@ -1025,7 +571,428 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "d1666dd25b1f92846366d79c12650331cfc97d46ea1f4dcb5e86fd57a319ec1c": {
+      "at": 1794842850.72464,
+      "data": {
+        "projects": [
+          {
+            "name": "paimonsoror/telltaledns",
+            "category": "outil réseau / résolveur DNS",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "TelltaleDNS est un résolveur DNS rapide écrit en Rust, capable de bloquer les publicités et d'expliquer chaque réponse. Il s'adresse aux administrateurs de réseaux ou aux utilisateurs avancés qui souhaitent contrôler le trafic DNS de leurs appareils.",
+            "workflow": "Entrée : requête DNS d'un client (ex. A, AAAA, MX). → Traitement : le serveur TelltaleDNS interroge les upstreams configurés, applique les règles par appareil, chiffre les requêtes si configuré, et génère une explication textuelle de la réponse (ex. « blocked by rule », « served from cache »). → Résultat : réponse DNS enrichie renvoyée au client et journal détaillé disponible via l'interface web. Limites : le projet est en version pré‑1.0, certaines fonctionnalités (ex. clustering Kubernetes) sont décrites mais pas encore stabilisées. Sources : S1 (déploiement rapide, statut pré‑1.0), S2 (licence, version, interdiction d'unsafe).",
+            "use_cases": "• Utilisateur : Petite agence web ; Tâche : Bloquer les publicités et le suivi sur les sites clients tout en conservant la visibilité sur les requêtes DNS résolues. ; Résultat : Réduction du trafic publicitaire, amélioration de la confidentialité et capacité à expliquer chaque blocage aux clients.\n• Utilisateur : Développeur freelance travaillant sur des micro‑services Kubernetes ; Tâche : Déployer un résolveur DNS partagé entre plusieurs pods pour centraliser la résolution et le filtrage. ; Résultat : Gestion cohérente du DNS dans le cluster, avec possibilité de migrer depuis Pi‑hole ou Technitium sans perte de configuration.",
+            "products": "• Cible : PME souhaitant un contrôle DNS interne ; Produit : Service SaaS hébergé (Docker/VPS) offrant TelltaleDNS avec UI multi‑tenant, facturation mensuelle. ; difference : Le dépôt brut nécessite une auto‑gestion du déploiement ; le produit ajoute la gestion des comptes, la facturation et le support.\n• Cible : Indépendants qui veulent un outil local ; Produit : Package « TelltaleDNS‑Desktop » avec installateur simplifié (Docker‑Compose ou systemd) et tableau de bord local. ; difference : Transforme le code source en solution prête‑à‑installer, sans dépendance à un service cloud.",
+            "monetization": "Acheteur : PME ou freelance ; reason to pay : Accès à une infrastructure DNS sécurisée, filtrage publicitaire et traçabilité des réponses, sans devoir gérer le code source. ; unit : abonnement mensuel par instance ; model : Abonnement SaaS (prix hypothétique 15‑30 €/mois selon le nombre d’appareils) ; version desktop vendue en licence unique (≈ 50 €).",
+            "build_plan": "scope : Déploiement SaaS multi‑tenant ; reused bricks : Code Rust existant, Docker‑Compose fourni (S1), configuration Helm pour Kubernetes. ; work to add : Gestion des comptes utilisateurs, facturation Stripe, tableau de bord multi‑tenant, monitoring (Prometheus), documentation d’onboarding. ; exclusions : Développement d’un moteur de filtrage publicitaire propriétaire – on utilise les règles déjà présentes. ; dependencies : Docker, PostgreSQL (pour les comptes), Stripe API, Vercel/Fly.io pour le front, Rust toolchain. ; Coûts estimés : Infrastructure cloud (≈ 20 €/mois), licences éventuelles (ex. Grafana), temps de développement estimé 200 h. ; timeline : 4‑6 semaines (prototype fonctionnel) si le développeur consacre 8‑10 h/j.",
+            "limitations": "Licence Apache‑2.0 / MIT (à vérifier selon l’usage commercial). Le projet est en version pré‑1.0 ; la stabilité du clustering Kubernetes n’est pas confirmée (S1). Aucun test d’intégration fourni dans les extraits (S3 est un stub non exécuté). Maintenance du code Rust et des dépendances non couverte par le dépôt.",
+            "next_step": "Réaliser un test technique : déployer le Docker‑Compose sur un VPS, configurer une règle de blocage et vérifier l’explication renvoyée. Question à poser à un potentiel utilisateur : « Quel niveau de détail d’explication DNS vous serait utile pour justifier les blocages auprès de vos clients ? »",
+            "assessment": "Score 7 reflète la pertinence technique (Rust performant, support Docker/K8s) et l’adéquation avec le profil (full‑stack, besoin d’outils B2B). Fit_score 5 par défaut car aucune contrainte régionale ou de conformité n’est prouvée dans les extraits. Le manque de preuves de stabilité (pré‑1.0) et d’évaluations de charge limite l’évaluation.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "3990b360d0880327285230b09d08c77c219bd8c4b355769a97d9a14ee433ec9a": {
+      "at": 1794842915.7155359,
+      "data": {
+        "projects": [
+          {
+            "name": "starman-tech/mousepods",
+            "category": "outil de périphérique / bibliothèque d'interfaçage matériel",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "MousePods transforme les AirPods 3 ou AirPods Pro en dispositif de pointage pour Linux en exploitant le protocole RemoteHID. L'utilisateur cible est un développeur ou un professionnel qui souhaite réutiliser ses écouteurs comme souris sans matériel supplémentaire.",
+            "workflow": "Entrée : AirPods 3/Pro appairés à un PC Linux via BlueZ → Traitement : le client AAP lit les paquets L2CAP (RemoteHID), les transmet à MotionEngine qui calcule yaw/pitch/roll → Résultat : les mouvements sont injectés dans /dev/uinput, contrôlant le curseur sous Wayland/X11. Limites : nécessite Linux avec BlueZ, accès en écriture à /dev/uinput, ne fonctionne pas sous Windows/macOS, dépend du support du protocole RemoteHID (extrait S1).",
+            "use_cases": "• Utilisateur : Designer freelance ; Tâche : Naviguer dans des logiciels de création graphique sans toucher la table ; Résultat : Contrôle du curseur fluide à 60 fps grâce aux capteurs de l'AirPod, libérant les mains pour le stylet\n• Utilisateur : Développeur en télétravail ; Tâche : Passer rapidement entre fenêtres et terminaux ; Résultat : Utilisation du suivi de tête pour déplacer le pointeur, réduisant le besoin de souris physique",
+            "products": "• Cible : PME de design UX ; Produit : Application web SaaS qui expose le suivi de tête comme API WebSocket ; difference : Abstraction du driver local en service cloud, permettant l'intégration directe dans des outils web sans installation locale\n• Cible : Agences de marketing ; Produit : Extension Chrome qui consomme l'API du serveur précédent pour contrôler le curseur dans le navigateur ; difference : Supprime la dépendance au système d'exploitation, ne nécessite que le navigateur et un token d'accès",
+            "monetization": "Acheteur : Agences ou indépendants qui souhaitent intégrer le contrôle gestuel dans leurs outils internes ; reason to pay : Accès à une API hébergée, support, mises à jour de sécurité et hébergement fiable ; unit : abonnement mensuel par utilisateur actif ; model : SaaS avec tarif de base hypothétique 9 € / mois, majoré à 15 € / mois pour le plan entreprise incluant SLA",
+            "build_plan": "scope : Créer un service backend (FastAPI) qui reçoit les données de suivi depuis le client Python existant et les redistribue via WebSocket ; reused bricks : Code de lecture RemoteHID et MotionEngine (Python) ; logique de calibration déjà fournie ; work to add : Wrapper FastAPI, authentification JWT, tableau de bord admin, conteneurisation Docker, CI/CD ; exclusions : Développement d'un client natif pour Windows/macOS, support de matériel autre que AirPods ; dependencies : • FastAPI\n• uvicorn\n• Docker\n• PostgreSQL (pour la facturation)\n• Redis (pour le streaming WebSocket) ; cost estimate : Infrastructure cloud (VPS) ≈ 30 €/mois, licences éventuelles pour monitoring ; timeline : 4 à 6 semaines (prototype fonctionnel) – dépend de la disponibilité du développeur",
+            "limitations": "established constraints : Nécessite Linux, BlueZ, accès /dev/uinput, protocole RemoteHID documenté uniquement pour AirPods 3/Pro (S1) ; unknowns : Stabilité du protocole sur futures mises à jour d'Apple, performances sous charge réseau, compatibilité avec Wayland compositors variés ; license : Apache‑2.0 (à vérifier pour usage commercial sans modification) ; maintenance costs : Mises à jour du driver Python, surveillance du service backend, support client",
+            "next_step": "technical test : Déployer le client Python sur une machine Linux, capturer les flux de capteurs et les publier sur un endpoint WebSocket local ; user question : Quel problème de productivité cherchez‑vous à résoudre en remplaçant la souris traditionnelle par le suivi de tête ?",
+            "assessment": "Score 7 reflète la nouveauté technique (première documentation RemoteHID) et la pertinence pour les outils B2B de productivité. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle stricte. Les preuves proviennent du README (S1) et du fichier de dépendances (S2). De nombreuses hypothèses (tarification, modèle SaaS) restent non vérifiées – « non établi dans les extraits » pour tout élément non présent dans les sources.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "3d15d436dc0b3e15b507e358589129d0c662a1cf471b221a0c470ecd0eb3acd7": {
+      "at": 1794842981.0182185,
+      "data": {
+        "projects": [
+          {
+            "name": "TixXin/Fuyu",
+            "category": "Application desktop (outil de productivité)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Fuyu est une île flottante légère, sans bordure et toujours au‑premier plan, disponible sur Windows et macOS. Elle agrège notifications (QQ, WeChat, mail), historique du presse‑papiers, traduction rapide, musique, agenda et état d’outils IA comme Claude Code, offrant un point d’accès unique pour les utilisateurs individuels et les petites équipes.",
+            "workflow": "Entrée : l’utilisateur active l’icône de l’île ou déclenche un raccourci clavier → Traitement : le client TypeScript/Node.js interroge les APIs locales (notifications système, clipboard, services de traduction, API Claude) et rend les données dans une fenêtre Electron‑like sans cadre → Résultat : les informations sont affichées en temps réel sur la barre supérieure, avec possibilité d’interaction (approbation d’une tâche IA, lancement d’une traduction) [S1]. Limites : dépendance à Node.js 20+, aucune prise en charge native Linux, plugins requis pour étendre les fonctionnalités, et la licence AGPL‑3.0 impose la diffusion du code source modifié [S2].",
+            "use_cases": "• Utilisateur : Freelance en communication ; Tâche : Consulter rapidement les messages entrants (QQ, WeChat, mail) et copier‑coller du texte sans changer de fenêtre ; Résultat : Gain de temps grâce à la visibilité permanente et à l’historique du presse‑papiers intégré\n• Utilisateur : Développeur IA ; Tâche : Surveiller l’état d’une exécution Claude Code et approuver les suggestions directement depuis l’île ; Résultat : Itération plus fluide sans basculer entre IDE et console",
+            "products": "• Cible : PME souhaitant centraliser leurs notifications et tâches quotidiennes ; Produit : Version SaaS de Fuyu hébergée sur Vercel avec authentification SSO et stockage des préférences utilisateur ; difference : Passage du modèle desktop à un service web multi‑utilisateur, ajout d’une API REST pour la synchronisation des données entre appareils\n• Cible : Agences créatives qui utilisent plusieurs outils de traduction ; Produit : Plugin marketplace dédié aux traducteurs, incluant des connecteurs API vers DeepL, Google Translate et un module de mémorisation de glossaire ; difference : Extension du système de plugins natif avec des modules payants, facturés à l’usage (nombre de traductions) plutôt que via un abonnement global",
+            "monetization": "Acheteur : PME, indépendants et agences créatives ; reason to pay : Accès à une interface unifiée, synchronisation cloud et plugins premium qui éliminent le besoin de multiples applications séparées ; unit : abonnement mensuel par utilisateur ou crédit de traduction selon le produit ; model : Abonnement SaaS (10‑15 €/mois) ou paiement à l’usage (0,01 €/ traduction) – hypothèse à tester en fonction de la valeur perçue et des coûts d’infrastructure ; price range hypothesis : 10‑30 €/mois selon le nombre de plugins actifs et le volume de données synchronisées",
+            "build_plan": "scope : MVP SaaS – interface web, authentification, stockage PostgreSQL (Supabase), API de synchronisation, packaging des plugins existants ; reused bricks : Code TypeScript du client, système de plugins, scripts de build (vite, tsc) [S2] ; work to add : Backend FastAPI (Python) pour API REST, conteneur Docker, UI React/Next.js, intégration Stripe pour facturation, tests unitaires et CI/CD ; exclusions : Support Linux natif, version desktop autonome, fonctionnalités avancées de IA locale ; dependencies : Node.js 20+, FastAPI, PostgreSQL, Stripe SDK, Vercel/Fly.io pour déploiement, Docker ; estimated costs : Infrastructure cloud (Supabase, Vercel) ≈ 30‑50 €/mois, licences éventuelles pour services IA, temps de développement ≈ 200‑250 heures ; timeline : 4‑6 semaines de développement intensif (8‑10 h/j) si l’équipe possède déjà les compétences en TypeScript et FastAPI",
+            "limitations": "established constraints : Licence AGPL‑3.0 (obligation de publier les modifications), uniquement Windows/macOS, nécessite Node.js 20+, dépendance à des services externes pour la traduction et l’IA ; unknowns : Performance sur machines à faible ressources, adoption réelle des plugins, coût exact des APIs tierces, conformité RGPD du stockage des notifications ; license to check : AGPL‑3.0‑only – vérifier compatibilité avec modèle commercial SaaS ; maintenance costs : Mises à jour de Node, gestion des plugins tiers, support multi‑plateforme",
+            "next_step": "technical test : Déployer une version serveur minimale (FastAPI) qui consomme le plugin \"local interface\" et expose les données d’état via une API REST ; user question : Quel serait le gain de productivité quotidien si toutes vos notifications et traductions étaient accessibles depuis une seule barre en haut de l’écran ?",
+            "assessment": "Le score 7 reflète la maturité du code (README complet, système de plugins, scripts de build) et la pertinence pour le profil (full‑stack, besoin d’outils B2B micro‑SaaS). Le fit_score reste neutre (5) car aucune donnée de marché ou contrainte régionale n’est fournie. Les principales incertitudes portent sur la monétisation (prix hypothétique) et la conformité légale (AGPL).",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "3db77872d95e616a73c3e0199c1138b729043d05550d1355381f2c81efbf75bb": {
+      "at": 1794843175.499094,
+      "data": {
+        "projects": [
+          {
+            "name": "open-net-worth-ai/open-net-worth",
+            "category": "application de finance personnelle IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Open Net Worth est une application auto‑hébergée qui combine un registre multi‑devise, des budgets et la gestion d’investissements avec un agent IA capable de lire et de modifier les données financières. Elle cible les particuliers ou petites structures souhaitant automatiser le suivi budgétaire et l’exécution de transactions tout en conservant le contrôle des données.",
+            "workflow": "Entrée : l'utilisateur importe ses comptes bancaires et ses portefeuilles via des API ou des fichiers CSV. Traitement : le backend Python (FastAPI) maintient un livre de comptes, calcule les budgets et, grâce à l'agent IA, propose ou exécute des transactions après validation. Résultat : un tableau de bord actualisé, des rapports budgétaires et, si autorisé, des ordres de trade exécutés via le courtier. Limites : l’agent agit uniquement sur des comptes configurés et nécessite une validation manuelle par défaut ; le mode démo impose des quotas de tours et de tokens ([S3]).",
+            "use_cases": "1. Un freelance importe ses revenus et dépenses, l'IA ajuste automatiquement le budget mensuel et propose des économies ; résultat : tableau de bord de trésorerie à jour. 2. Une petite PME relie son compte de courtage, l'agent analyse les performances et place des ordres d’achat/vente pré‑approuvés ; résultat : exécution automatisée des stratégies d’investissement.",
+            "products": "1. Service SaaS « FinAssist » : cible les indépendants, offre une interface web hébergée, prise en charge de la conformité GDPR et facturation mensuelle, différant du dépôt brut qui nécessite auto‑hébergement et configuration manuelle. 2. Bibliothèque Python « networth‑core » : cible les développeurs, fournit les modules de ledger et d’agent IA en tant que package réutilisable, permettant d’intégrer la logique financière dans d’autres applications sans l’interface frontale complète.",
+            "monetization": "Acheteur : indépendants, PME ou agences de conseil financier. Raison de payer : gain de temps, automatisation sécurisée des transactions et conformité des données. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement SaaS avec tarif de base hypothétique 15 €/mois, ajustable selon nombre d’utilisateurs et volume de transactions (hypothèse à tester).",
+            "build_plan": "Périmètre limité : conserver le backend FastAPI et le frontend React existants, ajouter une couche d’authentification OAuth et un tableau de bord de facturation. Brique réutilisée : le ledger multi‑devise et l’agent IA du dépôt. Travail à ajouter : intégration Stripe, conformité GDPR (logs, consentement), documentation API. Exclusions : refonte du moteur d’IA, support de multiples courtiers. Dépendances : FastAPI, PostgreSQL, Stripe SDK, Docker. Coût estimé : 120 h de développement (≈15 jours à 8 h/j). Délai : 3‑4 semaines conditionnel selon disponibilité des API tierces.",
+            "limitations": "Contraintes établies : licence AGPL‑3.0 exige la diffusion du code source modifié, besoin d’infrastructure serveur pour le backend, quotas de démo limités ([S3]). Inconnues : performances de l’agent IA sur gros volumes de données, exigences de conformité locale au-delà de la simple GDPR. Licence à vérifier pour usage commercial selon AGPL. Coûts de maintenance : hébergement cloud (≈30 €/mois) et éventuels frais d’API de courtage.",
+            "next_step": "Réaliser un test technique d’intégration du module d’authentification OAuth avec le backend existant, puis interroger un potentiel utilisateur (freelance en gestion de projet) sur son besoin de validation manuelle des ordres de trade avant d’automatiser le processus.",
+            "assessment": "Score 7 reflète la présence d’une architecture fonctionnelle (backend FastAPI, frontend React) et d’un agent IA capable d’agir sur les comptes, ce qui correspond aux priorités du profil (IA appliquée, outils B2B). Le fit_score reste moyen (5) car aucune preuve de marché n’est fournie et les exigences de conformité restent à valider. Les sources citées soutiennent les capacités d’action de l’agent ([S1]), le script de démarrage du backend ([S2]) et les limites du mode démo ([S3]).",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "97f3b8eb97d4d9cf1fbcee4eb73bdbd9f428e2a38b3db29b224f47d45afd4104": {
+      "at": 1794843307.069648,
+      "data": {
+        "projects": [
+          {
+            "name": "wici-ai/inferssd",
+            "category": "bibliothèque d'inférence de modèles IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "inferssd permet d'exécuter des modèles de type mixture‑of‑experts (MoE) qui dépassent la capacité de RAM ou de VRAM en les streamant depuis le SSD. Le logiciel cible les développeurs IA qui ont besoin d'inférer de gros modèles sur du matériel limité.",
+            "workflow": "Entrée : fichier GGUF d'un modèle MoE stocké sur le SSD → Traitement : le moteur inferssd lit les poids en flux, les charge partiellement en mémoire GPU/CPU selon les besoins, utilise les primitives de llama.cpp pour le calcul → Résultat : prédiction ou embedding renvoyé au processus appelant. Limite : la vitesse dépend du débit du SSD et de la disponibilité d'un GPU compatible CUDA ou Metal ; aucune garantie de performance sur Windows (en cours) [S1].",
+            "use_cases": "1. Analyste de données : charge un modèle de classification volumineux depuis le SSD, envoie des batches de texte et obtient des scores de probabilité en temps réel. 2. Développeur d'application SaaS : intègre inferssd dans un service de génération de texte où chaque requête utilise le même modèle MoE sans dépasser la RAM du serveur, réduisant ainsi le coût d'infrastructure.",
+            "products": "1. Service de transcription audio haute précision pour PME : cible les agences de marketing qui souhaitent transcrire de longues vidéos sans investir dans des serveurs GPU haut de gamme; le produit se différencie en exploitant le streaming SSD pour supporter des modèles de transcription très grands. 2. Outil de génération de rapports financiers automatisés : destiné aux cabinets comptables; il utilise un modèle MoE spécialisé dans la synthèse de données financières, offrant une meilleure couverture de vocabulaire que les petits modèles embarqués.",
+            "monetization": "Acheteur : PME ou agence qui paie pour un accès mensuel à l'API de génération/transcription. Raison de paiement : réduction du temps de traitement et élimination de l'achat de GPU supplémentaires. Unité facturée : nombre de requêtes ou minutes de traitement. Modèle économique : abonnement mensuel avec un palier de base (ex. 200 €/mois) et tarif à l'usage au-delà du quota. Le prix est une hypothèse à tester, justifiée par la valeur ajoutée de pouvoir exploiter des modèles plus grands sans infrastructure coûteuse.",
+            "build_plan": "Périmètre limité : créer une API REST (FastAPI) qui encapsule inferssd, exposer les endpoints /infer et /health. Brique réutilisée : le moteur C++ d'inferssd et les scripts Python fournis dans le dépôt. Travail à ajouter : wrapper Python, gestion des files d'attente, authentification JWT, tableau de bord minimal. Exclusions : interface UI complète, support Windows complet. Dépendances : Python ≥ 3.9, numpy, sentencepiece, transformers (déclarés dans pyproject.toml) [S2]. Coût estimé : 10 h de développement initial + 5 h de tests, soit environ 1 semaine à temps plein. Hébergement : serveur cloud avec SSD NVMe (ex. 100 €/mois) et GPU basique (ex. 150 €/mois) – coût à valider.",
+            "limitations": "Contraintes établies : nécessite un SSD rapide, GPU CUDA ou Metal, modèles au format GGUF uniquement. Inconnues : performance sur Windows, stabilité du streaming sous forte charge, licence Apache‑2.0 compatible avec usage commercial mais doit être vérifiée pour les dépendances Python (MIT). Maintenance : mise à jour du moteur llama.cpp et des wrappers Python requis régulièrement.",
+            "next_step": "Réaliser un test technique : charger un modèle MoE de 30 GB depuis SSD et mesurer le temps d'inférence d'un batch de 8 tokens. Question à poser à un utilisateur potentiel : « Quel est le volume mensuel de données que vous devez traiter avec un modèle IA, et quelles sont vos contraintes matérielles ? »",
+            "assessment": "Le score 7 reflète la pertinence technique du projet pour le profil (expertise C++, Python, IA) et la possibilité de créer rapidement un service SaaS autour du streaming SSD. Le fit_score 5 reste neutre car aucune donnée de préférence régionale ou de délai précis n'est fournie. Les sources disponibles permettent de confirmer les capacités de streaming et les dépendances, mais aucune preuve de performance ou de modèle économique n'est fournie – d'où l'absence de chiffres chiffrés.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "40841774c64e59436adce6fdec5dda0c0e476f9822ad4053fef2d1d067a53483": {
+      "at": 1794843372.9279323,
+      "data": {
+        "projects": [
+          {
+            "name": "davidondrej/superbot",
+            "category": "serveur d'agents IA auto‑hébergé",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "SuperBot est une plateforme Rust qui orchestre plusieurs bots IA (développeur, chercheur, boîte de réception) sur un même serveur Linux. L'utilisateur cible est un développeur ou une petite équipe qui veut disposer d’assistants IA privés, sans dépendre d’un service SaaS externe.",
+            "workflow": "Entrée : l'utilisateur envoie un message via l'interface web ou l'API. → Traitement : le serveur (botd) reçoit le texte, le transmet au bot principal (SuperBot) qui décide du bot spécialisé à invoquer, charge le modèle choisi (Claude, Codex ou Pi) via le runner, exécute la tâche et persiste les fichiers et sessions dans la base locale. → Résultat : le bot spécialisé renvoie une réponse SSE au client, affichée dans le web‑app. Limites : les bots partagent un unique ordinateur Linux, donc les ressources CPU/GPU sont limitées à ce VPS; aucune preuve d’intégration multi‑GPU ou de scalabilité horizontale. [S1][S3]",
+            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Générer du code à partir de spécifications textuelles et le tester automatiquement. ; Résultat : Le bot Developer produit le code, le compile via le runner et renvoie le résultat ou les erreurs, le tout stocké dans le répertoire du projet.\n• Utilisateur : Responsable de recherche ; Tâche : Collecter et résumer des articles scientifiques sur un sujet donné. ; Résultat : Le bot Researcher interroge le modèle Claude, agrège les réponses, crée un fichier markdown persistant et le partage via l'interface.",
+            "products": "• Cible : PME souhaitant internaliser l’assistance IA ; Produit : Plateforme SaaS interne « SuperBot‑Enterprise » avec tableau de bord multi‑tenant, authentification SSO et quotas de requêtes. ; difference : Ajoute la gestion de plusieurs locataires, facturation par utilisateur et isolation des données, alors que le dépôt brut ne propose qu’un seul espace partagé.\n• Cible : Agences créatives ; Produit : Extension « SuperBot‑Creative » qui intègre des modèles de génération d’images (Stable Diffusion) et de texte publicitaire via des wrappers Python. ; difference : Enrichit le serveur de pipelines multimodaux (texte + image) et expose des endpoints REST dédiés, fonctionnalité absente du dépôt d’origine.",
+            "monetization": "Acheteur : PME ou agence payant pour l’accès à un environnement IA privé et sécurisé ; reason to pay : Confidentialité des données, contrôle total de l’infrastructure, absence de dépendance à un tiers commercial ; unit : abonnement mensuel par utilisateur actif ; model : Tarif de base 30 €/mois + 0,02 €/requête d’inférence au‑delà du quota gratuit (hypothèse à valider selon coût du modèle hébergé) ; price range hypothesis : 30‑150 €/mois selon nombre d’utilisateurs et volume d’inférences, justifié par les coûts d’hébergement VPS, stockage et licences de modèles IA.",
+            "build_plan": "scope : Mise en place d’une version multi‑tenant avec authentification JWT et facturation Stripe. ; reused bricks : Code serveur Rust (axum, runner, db), modèle de bot orchestrateur, Dockerfile existant. ; work to add : Implémenter la couche multi‑tenant, ajouter le module Stripe, créer UI de gestion des comptes, écrire tests d’intégration, documenter le processus de déploiement CI/CD. ; exclusions : Développement de nouveaux modèles IA, support de GPU dédié, UI mobile native. ; dependencies : Rust 1.70+, PostgreSQL, Redis (pour le broadcast), Stripe SDK, Docker, Vercel/Fly.io pour le front. ; cost estimate : VPS 20 €/mois, PostgreSQL géré 15 €/mois, frais Stripe 2 % + 0,30 €, temps développeur estimé 200 h (≈ 8 semaines à temps plein). ; timeline : 4‑6 semaines pour MVP fonctionnel, sous réserve de disponibilité du développeur à temps plein.",
+            "limitations": "established constraints : Le dépôt ne fournit qu’un seul serveur Linux partagé, aucune isolation multi‑tenant, aucune facturation intégrée, licence MIT (à vérifier pour usage commercial). ; unknowns : Performance sous charge, compatibilité avec modèles IA propriétaires, exigences légales RGPD pour stockage de données utilisateurs. ; license : MIT (permet usage commercial, mais nécessite attribution). ; maintenance costs : Mises à jour Rust, gestion des dépendances Cargo, surveillance du serveur et des modèles IA.",
+            "next_step": "technical test : Déployer le serveur sur un VPS de test, créer deux bots (Developer, Researcher) et mesurer latence d’inférence avec un modèle gratuit (e.g., Ollama). ; user question : « Quels types de tâches IA aimeriez‑vous automatiser dans votre quotidien professionnel, et quel niveau de confidentialité attendez‑vous de la solution ? »",
+            "assessment": "Score 7 reflète la pertinence du dépôt pour un développeur Full‑Stack cherchant à créer un produit IA interne : le code Rust est complet, l’architecture modulaire correspond aux compétences listées, et le concept répond aux besoins de productivité B2B. Le fit_score reste neutre (5) car le profil ne spécifie pas de contrainte régionale ou de délai strict, et aucune preuve de conformité RGPD n’est fournie. Les principales incertitudes portent sur la scalabilité et la facturation, d’où la mention « non établi dans les extraits » pour ces aspects.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "55caa6db8496447f4129c512d122cf10d00f2687ba335cdf40945339accf7025": {
+      "at": 1794843435.8422408,
+      "data": {
+        "projects": [
+          {
+            "name": "bc160201983/GoW-Ascension-Recomp",
+            "category": "outil de recompilation statique / portage de jeu",
+            "eligible": false,
+            "score": 4,
+            "fit_score": 5,
+            "summary": "Le dépôt propose le code source d'un port Windows du jeu God of War: Ascension (PS3) via recompilation statique. L'utilisateur cible est un développeur ou un passionné possédant déjà une copie du jeu et souhaitant le faire tourner nativement sous Windows.",
+            "workflow": "Entrée : fichier ISO ou répertoire du jeu PS3 + environnement de compilation (Visual Studio, CMake, Ninja, Python, FFmpeg, SDL2). → Traitement : les outils Python du répertoire *ps3kit* désassemblent le code PowerPC, le traduisent en C/C++, puis CMake génère les projets natifs qui sont compilés avec clang-cl. → Résultat : un exécutable Windows natif du jeu, accompagné d'un lanceur qui charge les sauvegardes existantes. Sources : S1 décrit l'installation et le processus de compilation, S2 liste les dépendances Python utilisées pour la désassemblage et le décodage. Limites : nécessite la possession légale du jeu, dépend d'outils Windows spécifiques, aucune mise à jour prévue par l'auteur.",
+            "use_cases": "• Utilisateur : Développeur hobbyiste ; Tâche : Porter le jeu sur son PC Windows pour le jouer sans émulateur ; Résultat : Exécutable natif fonctionnant plus rapidement que les solutions d'émulation, avec sauvegardes migrées\n• Utilisateur : Étudiant en rétro‑ingénierie ; Tâche : Analyser le code machine PowerPC du jeu en le convertissant en C ; Résultat : Accès au code source traduisible, facilitant l’étude des mécanismes du jeu",
+            "products": "• Cible : Communauté de joueurs rétro ; Produit : Service SaaS hébergeant le port compilé et offrant un accès via streaming ; difference : Élimine la nécessité d'une compilation locale et d'une copie du disque, tout en respectant les licences du jeu via un modèle d'abonnement\n• Cible : Écoles d'informatique ; Produit : Kit pédagogique contenant le pipeline de recompilation automatisé ; difference : Fournit un environnement d'apprentissage clé en main pour la rétro‑ingénierie, avec documentation et scripts simplifiés",
+            "monetization": "Acheteur : Joueurs rétro et institutions éducatives ; reason to pay : Accès simplifié à un port natif sans compilation, ou à un kit d'enseignement complet ; unit : abonnement mensuel ou licence académique ; model : Abonnement SaaS ou licence perpétuelle avec support technique ; price range hypothesis : 10‑30 € / mois pour le service de streaming, 100‑300 € pour le kit pédagogique (coût estimé en fonction du support et de l'hébergement)",
+            "build_plan": "scope : Création d'une interface web de lancement et d'un service de streaming du jeu recompilé ; reused bricks : Code de recompilation existant (ps3kit, CMake scripts), conteneur Docker pour l'environnement de build ; additional work : Développement du backend de streaming (WebRTC ou similar), UI React/Next.js, gestion des licences du jeu, intégration paiement Stripe ; exclusions : Développement d'un émulateur complet, support multi‑plateforme (Linux/macOS) ; dependencies : • Docker, Node.js, React, Stripe API, service de cloud GPU (ex. AWS G4)\n• Licence du jeu à acquérir ou modèle de DRM ; estimated costs : Infrastructure cloud ≈ 150 €/mois, développement initial 200‑300 h ; timeline : 4‑6 semaines pour MVP (backend + UI), sous condition d’accès aux builds du jeu",
+            "limitations": "established constraints : Nécessite le disque original du jeu, dépend de Visual Studio/clang‑cl sous Windows, aucune garantie de mise à jour future (S1). ; unknowns : Compatibilité avec différentes versions du jeu, exigences légales autour du DRM, performances du streaming sur divers réseaux. ; license : Licence du dépôt indiquée comme « autre/inconnue » – à vérifier avant toute utilisation commerciale. ; maintenance costs : Mises à jour du pipeline de recompilation et du service de streaming, support utilisateur",
+            "next_step": "technical test : Compiler le projet avec les outils listés (VS2022, CMake, Ninja) sur une machine Windows propre et vérifier l'exécution du binaire généré. ; user question : Seriez‑vous prêt à payer un abonnement mensuel pour jouer à God of War: Ascension en streaming sans installer quoi que ce soit sur votre PC ?",
+            "assessment": "Score 4 reflète la forte spécificité du dépôt (portage d’un seul titre) et la faible adéquation avec les priorités du profil (micro‑SaaS B2B, IA, productivité). Le fit_score reste neutre (5) car le profil possède les compétences nécessaires (C++, Docker, déploiement) mais le produit final ne correspond pas clairement aux secteurs ciblés (outil en ligne B2B, IA appliquée). Les preuves proviennent uniquement des extraits S1 et S2 ; aucune donnée supplémentaire n’est disponible, d’où plusieurs champs marqués « non établi dans les extraits ».",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "c96d8b3e951cbd608721451e0c199539201b4146a6aba5ef45220c3de0dc7623": {
+      "at": 1794843565.2197287,
+      "data": {
+        "projects": [
+          {
+            "name": "Seagey/couch-tv",
+            "category": "Application TV personnalisée (interface utilisateur)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "couch-tv propose un écran d'accueil personnalisable pour les téléviseurs compatibles et une télécommande mobile. L'utilisateur cible est le foyer qui veut centraliser ses applications TV sans publicités.",
+            "workflow": "Entrée : sélection du modèle de TV et des applications via l'interface web ou l'agent IA. Traitement : le serveur Python génère la configuration JSON, compile les cartes personnalisées et les envoie au TV via le protocole du fabricant. Résultat : écran d'accueil affiché sur le TV et télécommande fonctionnelle sur le smartphone. Limites : dépendance aux API propriétaires des TV (Android TV, LG, Samsung) et aucune garantie de prise en charge de tous les modèles [S1].",
+            "use_cases": "1. Famille : le parent configure un profil « Enfants » qui ne montre que les apps éducatives, la télécommande bloque l’accès aux chaînes adultes. 2. Professionnel du home‑cinéma : l’ingénieur crée une carte « Bluey » qui allume le TV, lance la playlist Netflix et ajuste le volume via le smartphone.",
+            "products": "1. Service SaaS « CouchTV Pro » : cible les PME d’hôtellerie qui veulent offrir un écran d’accueil TV brandé à leurs clients, différence = gestion multi‑site et tableau de bord d’usage. 2. Bibliothèque open‑source « couch-tv‑lite » : cible les développeurs indépendants qui intègrent le moteur d’écran dans leurs propres projets, différence = API simplifiée et absence de composant Roku.",
+            "monetization": "Acheteur : hôtel ou propriétaire de location courte durée. Raison de payer = gain de temps de configuration et image de marque. Unité facturée = abonnement mensuel par site. Modèle = abonnement récurrent, fourchette hypothétique 15‑30 €/mois selon le nombre de TV gérées, justifiée par le coût d’une configuration manuelle estimée à plusieurs heures.",
+            "build_plan": "Périmètre limité : conserver le serveur Python existant et l’interface web, ajouter un module de gestion multi‑site et un tableau de bord admin. Brique réutilisée = code de génération d’écran et télécommande. Travail à ajouter = authentification, facturation Stripe, documentation SaaS. Exclusions = développement de drivers TV propriétaires. Dépendances = FastAPI, PostgreSQL, Docker. Coût = temps de développement estimé à 120 heures (≈ 3 semaines à 40 h/semaine).",
+            "limitations": "Contraintes établies = fonctionne uniquement avec les TV listées dans la documentation, nécessite un serveur toujours actif. Inconnues = compatibilité future avec nouveaux modèles TV. Licence = MIT (à vérifier dans le dépôt). Coûts de maintenance = mise à jour des drivers TV et hébergement du serveur.",
+            "next_step": "Réaliser un test technique : déployer le serveur sur un VPS gratuit et connecter une TV Android TV pour valider le flux de configuration. Question à poser à un hôtelier : « Quel serait le prix acceptable pour offrir à chaque chambre un écran d’accueil TV personnalisé ? »",
+            "assessment": "Score 7 reflète la maturité du code (README complet, releases récentes) et la pertinence pour le profil (full‑stack, besoin d’outil B2B). Fit_score 5 par défaut car aucune contrainte régionale ou de délai n’est fournie. Le manque de preuves sur la scalabilité multi‑site et la tarification reste à confirmer.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "79b2555512720d106fade279e99a7555bf85e8baae0e1b82c97b30fd93a514c7": {
+      "at": 1794843630.9088573,
+      "data": {
+        "projects": [
+          {
+            "name": "Agent-Field/CodeAF",
+            "category": "outil de développement / framework de génération de code",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "CodeAF est une usine logicielle open‑source écrite en Go qui fournit un harness de codage pour les modèles ouverts, visant à réduire le coût de génération de code. Son utilisateur cible est le développeur qui veut exploiter des LLMs locaux ou hébergés sans multiplier les terminaux d’agents.",
+            "workflow": "Entrée : fichier de configuration (ex. prompt, paramètres du modèle) → Traitement : le harness orchestre un modèle ouvert via l’SDK agentfield, exécute le prompt, récupère le code généré, le passe à un sous‑processus de validation (ex. gofmt, tests unitaires) → Résultat : code source formaté et éventuellement un rapport d’erreurs. Limites : aucune preuve d’intégration CI/CD ni de gestion de secrets dans les extraits ; le script d’installation fourni (S1) ne décrit pas la phase de validation, et le code de pipeline présenté (S3) montre uniquement une logique de ligne de commande pour un autre outil, donc les étapes de validation restent « non établi dans les extraits ».",
+            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Générer rapidement des squelettes d’API REST en Go à partir de spécifications OpenAPI ; Résultat : Code source complet, formaté et prêt à être intégré dans un projet existant\n• Utilisateur : Équipe d’ingénierie d’une PME ; Tâche : Automatiser la création de scripts de traitement de données internes en utilisant un modèle local ; Résultat : Scripts Python ou Go générés, validés et exécutables, réduisant le temps de prototypage de plusieurs jours",
+            "products": "• Cible : PME souhaitant internaliser la génération de code IA ; Produit : Plateforme SaaS « CodeAF Cloud » qui expose l’harness via une API REST sécurisée, avec gestion multi‑tenant et facturation à l’usage ; difference : Ajoute une couche d’authentification, de quota et de monitoring qui n’existe pas dans le dépôt brut\n• Cible : Indépendants qui veulent un outil desktop sans dépendance cloud ; Produit : Application native Electron/Go qui embarque le modèle open‑source et le harness, offrant une UI unique pour créer, valider et exporter du code ; difference : Transforme le projet CLI en produit hors‑ligne, éliminant les coûts d’API externes",
+            "monetization": "Acheteur : PME ou freelance ; reason to pay : Accès à une génération de code fiable, support technique et quotas d’usage garantis ; unit : appel d’API ou minute de calcul IA ; model : Tarification à l’usage (ex. 0,02 €/ appel) avec forfait mensuel de base (ex. 15 €/mois) pour couvrir l’infrastructure ; price hypothesis : Le prix est hypothétique, basé sur le coût estimé d’un GPU dédié (~0,01 €/heure) et la valeur perçue d’un gain de productivité de plusieurs heures par jour",
+            "build_plan": "scope : MVP SaaS – API d’orchestration, authentification JWT, tableau de bord minimal ; reused bricks : harness CodeAF (S1), SDK agentfield (S2), bubbletea UI pour CLI (S2) ; work to add : API REST (FastAPI ou Go Fiber), gestion des comptes, facturation Stripe, monitoring Prometheus ; exclusions : Intégration de modèles propriétaires, UI riche multi‑langage ; dependencies : Docker, PostgreSQL, Stripe SDK, hébergement Vercel/Fly.io ; cost estimate : Infrastructure cloud ~30 €/mois, licences open‑source gratuites, temps de développement estimé 4‑6 semaines à plein temps ; timeline : 4 semaines (prototype) + 2 semaines (tests et itérations) – estimation conditionnelle selon disponibilité des développeurs",
+            "limitations": "established constraints : Le dépôt ne fournit que le harness et des dépendances Go (S2) ; aucune preuve d’interface web ou de gestion d’utilisateurs ; unknowns : Performance réelle du modèle sous charge, conformité RGPD du traitement des prompts, support multi‑langage ; license : Apache‑2.0 (à vérifier pour les dépendances tierces) ; maintenance costs : Mises à jour du modèle, surveillance des quotas, support client – non quantifiés dans les extraits",
+            "next_step": "technical test : Déployer le harness sur un serveur de test, appeler l’API avec un prompt simple et mesurer le temps de réponse et la qualité du code généré ; user question : Quel type de code (API, script data, UI) souhaiteriez‑vous générer le plus souvent avec un tel outil ?",
+            "assessment": "Score 7 reflète la pertinence du projet pour le profil (expert full‑stack, intérêt pour les wrappers IA). Le fit_score reste à 5 faute de preuves concrètes sur la viabilité commerciale, la conformité ou la demande du marché. Les sources S1 et S2 confirment l’existence du harness et de ses dépendances, mais aucune preuve d’interface produit ou de modèle économique n’est fournie – d’où les mentions « non établi dans les extraits » pour plusieurs aspects.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "492bbae42474eb54eb6810b69353369c22af5425e3b86ea11947fa3baa9fe14f": {
+      "at": 1794843697.114093,
+      "data": {
+        "projects": [
+          {
+            "name": "MarchelloBruckman875170/virtual-card-usdt-cross-border-ai-ecommerce-saas-applepay",
+            "category": "outil SaaS de paiement et anti-fraude",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Solution SaaS qui propose une carte virtuelle USDT (VCC) couplée à Apple Pay pour les boutiques e‑commerce transfrontalières. Elle cible les équipes qui gèrent plusieurs stores Shopify/Stripe et utilisent des outils IA pour le marketing, afin d’éviter la mise en relation des comptes de paiement.",
+            "workflow": "Entrée : informations de paiement du marchand (identité, pays, devise) + sélection du magasin Shopify/Stripe. Traitement : génération d’une carte virtuelle CoreGold VCC, association à un token Apple Pay, isolation cryptographique du fingerprint de la carte pour chaque boutique. Résultat : chaque boutique possède une VCC distincte utilisable via Apple Pay, réduisant le risque de blocage par les systèmes de contrôle de fraude. Limites : le texte ne précise pas d’API publique, ni les exigences d’intégration côté Shopify/Stripe. [S1]",
+            "use_cases": "• Utilisateur : Agence de marketing IA gérant 12 boutiques Shopify ; Tâche : Attribuer une carte virtuelle distincte à chaque boutique pour payer les abonnements d’outils de génération d’images et de copywriting. ; Résultat : Aucun compte n’est suspendu pour cause de « multiple‑card fingerprint », les facturations sont séparées et traçables.\n• Utilisateur : Vendeur indépendant de produits électroniques exportés depuis la France ; Tâche : Utiliser Apple Pay avec une VCC pour régler les frais de publicité sur une plateforme d’ads AI basée aux États‑Unis. ; Résultat : Le paiement est accepté instantanément grâce au BIN Tier‑1 et le vendeur évite les refus de paiement liés aux contrôles de change.",
+            "products": "• Cible : PME e‑commerce multi‑store ; Produit : Plateforme SaaS qui automatise la création et la gestion de VCC par boutique, avec tableau de bord de suivi des dépenses. ; difference : Le dépôt fournit uniquement la description du concept ; le produit ajoute une interface utilisateur, des API d’intégration et des rapports de conformité.\n• Cible : Agences de publicité IA ; Produit : Service d’abonnement qui délivre des VCC pré‑configurées prêtes à être intégrées aux outils de création de contenu vidéo et d’emailing. ; difference : Le dépôt ne propose pas de mécanisme de provisioning automatisé ni de facturation récurrente ; le produit introduit ces éléments ainsi qu’un support client dédié.",
+            "monetization": "Acheteur : PME, agences de marketing IA, vendeurs indépendants ; reason to pay : Réduction du risque de blocage de compte, conformité aux exigences de paiement transfrontalier, gain de temps sur la gestion manuelle des cartes. ; unit : abonnement mensuel par VCC active ; model : Abonnement SaaS (prix hypothétique 30‑70 € / mois selon le volume de transactions). La fourchette est justifiée par le coût potentiel d’une carte bancaire traditionnelle + frais de refus, mais reste à tester.",
+            "build_plan": "scope : Développer le service de génération de VCC, l’intégration Apple Pay, et un tableau de bord minimal. ; reused bricks : API CoreGold (si disponible), SDK Apple Pay, framework FastAPI (Python) pour le backend, Next.js pour le front. ; work to add : Création d’une couche d’abstraction pour gérer plusieurs boutiques, mise en place d’un système de facturation Stripe, tests de conformité AVS/PCI‑DSS. ; exclusions : Gestion des litiges bancaires, support multilingue complet, hébergement multi‑région. ; dependencies : • CoreGold VCC API (non documentée dans l’extrait)\n• Apple Pay SDK\n• Stripe (pour la facturation)\n• Docker pour le déploiement ; cost estimate : Infrastructure cloud (VPS ou conteneur) ≈ 30 €/mois, licences API éventuelles non précisées. ; timeline : Prototype fonctionnel 4‑6 semaines (développement backend 2 semaines, UI 1‑2 semaines, intégrations 1‑2 semaines).",
+            "limitations": "established constraints : Le dépôt ne fournit que la description du concept, aucune implémentation ni code source n’est présent. Licence non spécifiée (\"aucune\"). ; unknowns : Disponibilité d’une API publique CoreGold, exigences de conformité PCI‑DSS, coûts réels des VCC, support Apple Pay hors iOS. ; license to verify : non établi dans les extraits ; maintenance costs : non établi dans les extraits",
+            "next_step": "technical test : Appeler l’API CoreGold (si accessible) pour créer une VCC de test et vérifier la réponse Apple Pay. ; user question : « Quel impact avez‑vous constaté sur le taux de suspension de vos comptes lorsque vous utilisez une carte distincte par boutique ? »",
+            "assessment": "Score 6 reflète la pertinence du sujet (paiement anti‑association pour e‑commerce IA) par rapport aux priorités du profil (outils B2B SaaS, IA appliquée, automatisation). Le fit_score reste neutre (5) car aucune donnée de profil temporel ou budgétaire n’est fournie. Le manque de preuves techniques (API, code) limite fortement l’évaluation, d’où la mention explicite de nombreuses inconnues.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "9136af7ddbc10f1c59b37965a126d97a5a49b4d0960b90c65018333f747e495f": {
+      "at": 1794843762.2298455,
+      "data": {
+        "projects": [
+          {
+            "name": "codepawl/crucible",
+            "category": "Moteur 3D / Bibliothèque JavaScript",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Crucible est un moteur 3D JavaScript qui expose un serveur MCP destiné à être piloté par des agents d'IA. Il propose un rasteriseur WebGL2, un path‑tracer CPU/WebGL2 et des exportations PNG, MP4 et GLB. L'utilisateur cible est un développeur souhaitant intégrer rapidement de la 3D interactive ou des rendus photoréalistes dans une application web pilotée par IA.",
+            "workflow": "Entrée : script JavaScript décrivant une scène (géométrie, matériaux, matrices). → Traitement : le moteur compile la scène, le serveur MCP reçoit les commandes d’un agent IA (ex. Claude Code) qui peut ajouter, modifier ou supprimer des objets en temps réel. → Résultat : rendu WebGL2 affiché dans le navigateur ou export PNG/MP4/GLB. Limites : le path‑tracer CPU reste limité en performances sur des scènes complexes, le support WebGPU est optionnel et nécessite un package supplémentaire. Sources : S1 (description du moteur et du serveur MCP), S2 (liste des fonctionnalités dans le package.json).",
+            "use_cases": "• Utilisateur : Développeur d'application SaaS de visualisation produit ; Tâche : Générer des vues 3D interactives de modèles produits à la volée via un agent IA qui ajuste la caméra et les matériaux selon les préférences du client. ; Résultat : Interface web où le client explore le produit en temps réel, avec export possible d'images ou de courtes vidéos pour le marketing.\n• Utilisateur : Chercheur en robotique simulée ; Tâche : Faire évoluer un environnement 3D en réponse aux actions d’un agent d’apprentissage par renforcement, en utilisant le serveur MCP pour envoyer des commandes de déplacement d’obstacles. ; Résultat : Simulation rapide d’un laboratoire virtuel, avec export de séquences vidéo pour l’analyse des politiques d’apprentissage.",
+            "products": "• Cible : PME de design produit ; Produit : Plateforme SaaS de configuration 3D en ligne, intégrant Crucible comme moteur de rendu et un wrapper API pour que les équipes marketing créent des scènes sans coder. ; difference : Le dépôt brut ne fournit qu’une bibliothèque et un serveur MCP ; le produit ajoute une UI low‑code, la gestion multi‑utilisateur et la facturation.\n• Cible : Agences de création de contenu vidéo ; Produit : Service de génération automatisée de clips 3D (MP4) à partir de prompts texte, utilisant l’agent IA pour orchestrer la scène et le path‑tracer CPU pour le rendu final. ; difference : Le dépôt ne propose que le rendu ; le service ajoute la couche de prompt‑to‑scene, la file d’attente de rendu et la facturation à l’usage.",
+            "monetization": "Acheteur : Agences ou équipes marketing ; reason to pay : Gain de temps sur la création de visuels 3D personnalisés et réduction du besoin de compétences 3D internes. ; unit : Rendu export (image ou vidéo) ou abonnement mensuel pour accès à l’interface low‑code. ; model : Freemium : 10 rendus gratuits par mois, puis paiement à l’usage (ex. 0,05 € / image, 0,30 € / minute vidéo) ou abonnement Pro (15 €/mois) incluant rendus illimités et support. ; price hypothesis : Les tarifs sont hypothétiques, basés sur la valeur perçue d’un rendu 3D instantané et les coûts d’infrastructure (CPU, stockage).",
+            "build_plan": "scope : Créer une couche d’application (frontend React + API Node) qui consomme la bibliothèque Crucible et expose des endpoints REST pour créer/modifier des scènes. ; reused bricks : Crucible (rasteriseur, serveur MCP), Next.js/React pour UI, Supabase pour stockage des scènes. ; additional work : Développement UI low‑code, gestion multi‑utilisateur, système de facturation, CI/CD, monitoring des jobs de rendu. ; exclusions : Optimisation avancée du path‑tracer GPU, support WebGPU complet, traduction multilingue de l’interface. ; dependencies : Node.js, React, Supabase, Stripe (optionnel), Docker pour déploiement. ; cost estimate : Infrastructure cloud (CPU ≈ 30 €/mois, stockage ≈ 10 €/mois), licences (aucune licence payante, MIT), heures de dev ≈ 200 h. ; timeline : Prototype fonctionnel 4‑6 semaines (développement UI + intégration MCP), version beta 8‑10 semaines.",
+            "limitations": "established : Moteur limité à WebGL2 et CPU path‑tracer, licence MIT, dépendance à Node.js pour le serveur MCP. ; unknown : Performance du path‑tracer sur scènes très complexes, stabilité du serveur MCP sous charge élevée, conformité RGPD des données d’utilisateur (non établi dans les extraits). ; license check : MIT, compatible avec usage commercial, mais vérifier les dépendances du package.json. ; maintenance : Mises à jour du moteur, gestion des versions de WebGPU, support client.",
+            "next_step": "technical test : Déployer une instance locale du serveur MCP, créer une scène simple via le SDK et mesurer le temps de rendu CPU vs WebGL2. ; user question : « Quel type de rendu (image statique, vidéo courte, export GLB) vous serait le plus utile dans votre flux de travail quotidien ? »",
+            "assessment": "Score 6 reflète la pertinence du moteur 3D pour les secteurs ciblés (visualisation produit, génération de contenu) et la disponibilité d’une API MCP exploitable. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte régionale ou de délai strict, mais le projet correspond aux priorités de création d’outils SaaS B2B et d’automatisation IA. Les preuves sont limitées aux extraits S1 et S2 ; de nombreuses hypothèses (coûts, performances, conformité) restent à valider.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "9ea717a83f2763e0e6760f9b37e152f9aafd0d77d4b42e884558cf86ffcde829": {
+      "at": 1794843825.797964,
+      "data": {
+        "projects": [
+          {
+            "name": "RustXNG/RustXNG",
+            "category": "Moteur de métarecherche auto‑hébergé",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "RustXNG est un moteur de métarecherche réécrit en Rust à partir de SearXNG. Il expose une API JSON permettant à des agents IA d’interroger plusieurs sources et de récupérer le texte des pages. Le logiciel s’adresse aux développeurs d’agents autonomes qui ont besoin d’un service de recherche privé et contrôlable.",
+            "workflow": "Entrée : requête JSON contenant les mots‑clés et les moteurs cibles → Traitement : le serveur Axum reçoit la requête, lance des appels HTTP parallèles via reqwest vers les instances SearXNG configurées, agrège les résultats et, si demandé, récupère le texte complet de chaque URL → Résultat : réponse JSON contenant les titres, URLs, snippets et, optionnellement, le texte complet. Limites : le serveur nécessite Rust 1.89+, un outil de compilation C et ne fournit pas de mécanisme de mise en cache interne (S1, S2).",
+            "use_cases": "• Utilisateur : Équipe IA d’une PME ; Tâche : Intégrer un composant de recherche privé dans un agent conversationnel interne ; Résultat : L’agent peut interroger le moteur RustXNG pour obtenir des réponses actualisées sans exposer les requêtes à des services publics.\n• Utilisateur : Développeur freelance ; Tâche : Construire un tableau de bord de veille technologique agrégant plusieurs flux RSS et sites d’actualités ; Résultat : Le tableau de bord interroge RustXNG via son API, récupère les résumés et affiche les articles pertinents en temps réel.",
+            "products": "• Cible : Start‑ups IA B2B ; Produit : Service SaaS de recherche privée hébergé sur Vercel/Fly.io, basé sur RustXNG ; differentiation : Offre une conformité RGPD grâce à l’auto‑hébergement, des temps de latence mesurés (benchmark S3) et la possibilité d’ajouter des connecteurs personnalisés.\n• Cible : Agences de contenu ; Produit : Extension Chrome qui consomme l’API RustXNG pour enrichir les pages avec des sources vérifiées ; differentiation : Utilise le moteur RustXNG comme backend, évitant les limites d’APIs tierces et garantissant la confidentialité des requêtes.",
+            "monetization": "Acheteur : PME ou agence souhaitant un moteur de recherche interne ; reason to pay : Confidentialité, contrôle des sources, latence optimisée et support dédié ; unit : abonnement mensuel par instance ; model : Tarif forfaitaire (ex. 49 €/mois) + frais d’usage pour le volume d’appels API au‑delà d’un quota de base ; price hypothesis : Le prix est hypothétique, basé sur le coût d’infrastructure (serveur 2 vCPU, 4 Go RAM) et la valeur perçue d’une recherche privée.",
+            "build_plan": "scope : Déploiement d’une instance Docker de RustXNG avec configuration SearXNG personnalisée ; reused bricks : Code source RustXNG (axum, tokio, reqwest) et image Docker officielle (S1) ; additional work : Création d’un tableau de bord UI (React/Next.js), mise en place d’un système d’authentification (Supabase) et d’un module de facturation Stripe ; exclusions : Développement de nouveaux moteurs de recherche, implémentation de cache distribué ; dependencies : Rust 1.89+, Docker, PostgreSQL (pour la persistance des logs), Stripe API ; estimated costs : Infrastructure cloud ≈ 30 €/mois, licences éventuelles pour le stockage, temps de développement ≈ 120 h ; timeline : 4 à 6 semaines (prototype fonctionnel) sous condition de disponibilité du développeur à plein temps.",
+            "limitations": "established : Nécessite Rust 1.89+, compilation C, configuration manuelle des sources SearXNG (S1, S2) ; unknown : Scalabilité horizontale, support de la persistance des résultats, conformité légale exacte de la licence AGPL‑3.0 ; license : AGPL‑3.0‑or‑later – nécessite de publier les modifications si le service est offert en SaaS ; maintenance costs : Mises à jour Rust, suivi des dépendances (axum, tokio, reqwest) et gestion des images Docker",
+            "next_step": "technical test : Lancer le benchmark example (S3) sur une instance Docker pour mesurer latence avec 100 requêtes simultanées ; user question : Quel niveau de confidentialité attendez‑vous d’un moteur de recherche interne et quelles sources devez‑vous absolument couvrir ?",
+            "assessment": "Score 7 reflète la maturité du code (exemple de benchmark, CI Docker, dépendances à jour) et la pertinence pour le profil (full‑stack, IA, besoin d’un moteur de recherche privé). Fit_score 5 par défaut car aucune contrainte régionale ou de délai n’est explicitée dans les extraits. Les preuves proviennent de S1 (installation, Docker), S2 (dépendances, licence) et S3 (benchmark). D’autres aspects (auth, facturation) restent non établis dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "3435851de04a787bad4f44106d9a5e5a009a50db1f794035dcae5a8461ddc84b": {
+      "at": 1794843890.5202136,
+      "data": {
+        "projects": [
+          {
+            "name": "yxzeroo/openadjust",
+            "category": "client Java pour Minecraft",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "OpenAdjust est une réimplémentation Java complète du client Adjust pour Minecraft 1.8.9. Il cible les joueurs qui souhaitent disposer d’un client autonome, hors‑ligne, avec l’ensemble des 100 modules et 29 commandes du client original.",
+            "workflow": "Entrée : l’utilisateur lance le script `launch_client.bat` ou exécute `gradlew runClient`. Traitement : le client charge les natives LWJGL 3.3.3, initialise le moteur Java 21 et exécute les modules Adjust (logique de jeu, commandes, UI). Résultat : le jeu démarre en mode solo avec toutes les fonctionnalités Adjust disponibles sans connexion internet. Sources : S1 décrit le processus de lancement et les prérequis. Limites : uniquement Windows x64, dépend de JDK 21 et des natives LWJGL fournis ; aucune preuve d’une version Linux ou macOS.",
+            "use_cases": "• Utilisateur : Joueur Minecraft indépendant ; Tâche : Jouer à des serveurs qui requièrent le client Adjust sans payer de licence ; Résultat : Accès complet aux 100 modules et 29 commandes du client, en mode hors‑ligne\n• Utilisateur : Développeur de mods ; Tâche : Tester des fonctionnalités Adjust dans un environnement contrôlé ; Résultat : Possibilité de déboguer et d’expérimenter sans dépendre du serveur officiel",
+            "products": "• Cible : PME de formation en ligne de jeux vidéo ; Produit : Plateforme d’apprentissage qui intègre OpenAdjust comme sandbox de modding ; difference : Fournit un environnement complet, prêt à l’emploi, alors que le dépôt ne propose qu’un client brut\n• Cible : Agences de création de contenus Minecraft ; Produit : Service de génération de vidéos Minecraft avec les effets Adjust pré‑configurés ; difference : Ajoute une couche d’automatisation (script de capture, rendu) au client fourni",
+            "monetization": "Acheteur : Studios indépendants ou créateurs de contenus ; reason to pay : Accès à un client complet sans frais de licence, support technique et mises à jour garanties ; unit : abonnement mensuel par instance déployée ; model : Abonnement SaaS (hébergement cloud du client) avec tarif hypothétique 15 € / mois, justifié par le coût d’infrastructure (serveur Windows, licences JDK) et la valeur de gain de temps",
+            "build_plan": "scope : Créer une version Dockerisée du client pour Linux, ajouter une API REST légère (FastAPI) permettant de déclencher des commandes Adjust à distance ; reused bricks : Code source Java existant, scripts Gradle, logique des 100 modules ; work to add : Conteneur Docker, wrapper FastAPI en Python, documentation d’API, CI/CD ; exclusions : Développement d’une UI graphique supplémentaire, portage complet vers macOS ; dependencies : • JDK 21\n• LWJGL 3.3.3\n• Docker\n• FastAPI (Python 3.11)\n• Supabase/PostgreSQL pour la persistance des sessions ; cost estimate : Environ 200 € de services cloud mensuels (VM Windows + stockage) + 50 € de licences éventuelles ; timeframe : 4 à 6 semaines de travail à temps plein (incluant tests d’intégration et documentation)",
+            "limitations": "established constraints : Fonctionne uniquement sous Windows x64, nécessite JDK 21, dépend des natives LWJGL fournis ; unknowns : Compatibilité Linux/macOS, performance sous charge, support multijoueur, licence exacte (le README indique « aucune ») ; license to verify : Le dépôt ne précise pas de licence open‑source standard ; il faut clarifier les droits d’utilisation ; maintenance costs : Mises à jour de LWJGL, JDK et des modules Adjust devront être gérées manuellement",
+            "next_step": "technical test : Construire l’image Docker et lancer le client en mode headless pour vérifier le démarrage sous Linux ; user question : Quel problème rencontrez‑vous actuellement avec les clients Adjust existants (coût, disponibilité, fonctionnalités) ?",
+            "assessment": "Score 6 reflète la disponibilité d’un code complet et fonctionnel, mais la portée limitée (Windows‑only) et l’absence de licence claire réduisent l’attractivité. Le fit_score reste à 5 car le profil indique une capacité à prototyper rapidement et un intérêt pour les wrappers SaaS, ce qui correspond à la proposition d’ajouter une API et un hébergement cloud. Les preuves proviennent uniquement de S1 ; aucune donnée supplémentaire n’est disponible.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "143f62e480fd0ef4ab38042842464545ee20d12d2aaccd0e13ca3d7c1e769a13": {
+      "at": 1794843957.1631703,
+      "data": {
+        "projects": [
+          {
+            "name": "Goldi5/Raumklima-2",
+            "category": "Intégration Home Assistant (module de contrôle climatique)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Raumklima-2 est une intégration JavaScript/Python pour Home Assistant qui permet de piloter le chauffage, la ventilation et la climatisation depuis un tableau de bord enrichi. Elle cible les utilisateurs de Home Assistant souhaitant automatiser le confort thermique de leurs locaux.",
+            "workflow": "Entrée : configuration d’un thermostat et de capteurs via l’interface Home Assistant (ajout d’une intégration, sélection du dispositif, saisie des paramètres de pièce) [ S1 ]. Traitement : le composant Python récupère les mesures (température, humidité, état des fenêtres) et applique un modèle d’apprentissage pour ajuster la consigne de chauffage ou de refroidissement. Le frontend JavaScript rend les cartes de statut (heating, idle, setback, window) avec icônes et couleurs [ S3 ]. Résultat : l’utilisateur voit en temps réel la température actuelle, la cible, le statut et peut déclencher manuellement des actions ou laisser le système optimiser la consommation. Limites : aucune suite de tests automatisés n’est fournie dans le dépôt [ S2 ]; le modèle d’apprentissage n’est pas décrit, donc sa fiabilité reste non établie.",
+            "use_cases": "• Utilisateur : Gestionnaire de bureaux ; Tâche : Configurer le chauffage de plusieurs pièces selon les horaires de présence et les ouvertures de fenêtres ; Résultat : Réduction de la consommation énergétique grâce à l’ajustement automatique du chauffage lorsque les fenêtres sont ouvertes\n• Utilisateur : Propriétaire d’un appartement ; Tâche : Surveiller la température et l’humidité de chaque pièce depuis le tableau de bord Home Assistant ; Résultat : Amélioration du confort quotidien et prévention de la condensation grâce à des alertes de fenêtre ouverte",
+            "products": "• Cible : PME disposant de locaux multiples ; Produit : Plateforme SaaS de gestion énergétique basée sur l’API de Raumklima-2, avec tableau de bord multi‑site et reporting de consommation ; difference : Ajoute la consolidation de données de plusieurs installations, des rapports PDF automatisés et une facturation à l’usage, ce qui n’est pas présent dans le dépôt brut\n• Cible : Indépendants du secteur du bâtiment ; Produit : Extension mobile native (iOS/Android) qui consomme l’API de Raumklima-2 pour offrir des notifications push en temps réel et un contrôle hors‑ligne limité ; difference : Transforme le composant serveur en service consommable via une application mobile, élargissant la portée au-delà de Home Assistant",
+            "monetization": "Acheteur : PME ou agence de gestion de bâtiments ; reason to pay : Accès à des tableaux de bord consolidés, rapports de conformité énergétique et support dédié ; unit billed : abonnement mensuel par site actif ; model : Abonnement SaaS avec tarif de base hypothétique 30 €/mois par site, ajustable selon le volume de données et le niveau de support",
+            "build_plan": "scope : Développer une API REST autour du composant existant, ajouter un module de reporting et créer un front‑end multi‑site ; reused bricks : Composant Python de collecte de données, cartes UI JavaScript déjà présentes ; work to add : API Flask/FastAPI, stockage PostgreSQL, génération de PDF, authentification OAuth, tests unitaires et d’intégration ; exclusions : Refonte du modèle d’apprentissage, support de protocoles propriétaires non documentés ; dependencies : Home Assistant, Python 3.13, FastAPI, PostgreSQL, Docker, bibliothèque de génération PDF (ex. WeasyPrint) ; estimated costs : Infrastructure cloud (Docker + PostgreSQL) ≈ 30 €/mois, développement initial ≈ 120 h ; timeline : 4‑6 semaines de développement intensif (40 h/semaine) si les exigences restent limitées",
+            "limitations": "established constraints : Licence MIT du dépôt, dépendance à Home Assistant, besoin de capteurs compatibles ; unknowns : Qualité du modèle d’apprentissage, couverture de tests, performance sous charge élevée ; license to check : MIT confirmée dans le dépôt, compatible avec une commercialisation SaaS ; maintenance costs : Mises à jour de Home Assistant, suivi des dépendances Python, support client",
+            "next_step": "technical test : Déployer l’intégration sur une instance Home Assistant de test, appeler l’API interne et vérifier la génération de la carte de statut avec des données simulées ; user question : Quel niveau de granularité de reporting énergétique (par pièce, par zone, par jour) serait le plus utile pour votre activité ?",
+            "assessment": "Le score 7 reflète la présence d’un composant fonctionnel déjà intégré à Home Assistant, la documentation d’installation et des cartes UI prêtes à l’emploi. Le fit_score reste neutre (5) car le profil ne fournit pas de contraintes géographiques ou de délai strictes. Les preuves proviennent des extraits d’installation (S1), de la configuration de lint et de tests (S2) et du code UI (S3). De nombreuses incertitudes subsistent : le modèle d’apprentissage n’est pas décrit, aucun test automatisé n’est fourni, et la viabilité commerciale dépendra de la capacité à ajouter des fonctionnalités de reporting et d’authentification.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "28066e687ba55ad307095492a131e9f8897a1ebe0d8aac50afec0635fd3217a0": {
+      "at": 1794844022.0514417,
+      "data": {
+        "projects": [
+          {
+            "name": "hajimehoshi/ekuma",
+            "category": "Moteur d'exécution JavaScript (bibliothèque)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Ekuma est un moteur JavaScript implémenté en Go pur, sans utilisation de `unsafe`. Il cible les développeurs Go qui souhaitent exécuter du code JavaScript côté serveur ou embarqué, en offrant une API d’interprétation compatible avec les spécifications ES2026.",
+            "workflow": "Entrée : script JavaScript sous forme de chaîne ou de fichier → Traitement : le VM d’Ekuma parse le script (ParseScript) puis l’évalue dans un contexte Go (Evaluate) ; les appels d’API sont exposés via une interface similaire à `syscall/js` → Résultat : valeur retournée (string, number, object) ou erreur d’exécution. Limites : pas de JIT, performances inférieures aux moteurs natifs (voir tableau comparatif) et API encore instable [S1].",
+            "use_cases": "• Utilisateur : Développeur d’applications SaaS Go ; Tâche : Intégrer un moteur de templating JavaScript pour permettre aux utilisateurs de personnaliser des rapports via du code JS ; Résultat : Génération dynamique de contenu côté serveur sans dépendance à V8 ou Node.js\n• Utilisateur : Équipe d’IoT embarqué ; Tâche : Exécuter des scripts de configuration JavaScript sur des appareils Go‑based sans accès à des bibliothèques natives ; Résultat : Mise à jour de la logique métier à distance avec un moteur léger et sans `unsafe`",
+            "products": "• Cible : PME proposant des formulaires dynamiques ; Produit : Service SaaS qui expose une API REST où les clients soumettent du code JS à exécuter dans un sandbox Ekuma ; difference : Utilise un moteur Go natif, réduisant les coûts d’infrastructure comparé à un service Node.js dédié\n• Cible : Agences de marketing automatisé ; Produit : Plateforme de génération de landing pages où les templates sont écrits en JS et rendus par Ekuma ; difference : Permet de garder toute la stack en Go, simplifiant le déploiement Docker et la scalabilité",
+            "monetization": "Acheteur : PME ou agence qui paie pour chaque exécution de script (pay‑per‑run) ou via abonnement mensuel incluant un quota de scripts. Unité facturée : appel d’exécution (API request). Modèle : abonnement tiered (ex. 0‑10 k runs = gratuit, 10‑100 k = €199/mois, >100 k = prix sur devis). Hypothèse de prix basée sur la valeur de l’automatisation et les coûts d’infrastructure Go (CPU, mémoire).",
+            "build_plan": "Périmètre limité : wrapper HTTP autour d’Ekuma, gestion du sandbox, facturation. Brique réutilisée : le moteur Ekuma (bibliothèque). Travail à ajouter : API REST (FastAPI ou Go Fiber), système de quotas, tableau de bord admin, Dockerfile, CI/CD. Exclusions : UI frontale avancée, intégrations tierces (CRM, paiement) non incluses. Dépendances : Go 1.27, golang.org/x/text v0.43.0 (déjà déclaré) [S2]. Coût estimé : heures de développement 120‑160 h (≈4‑5 semaines à plein temps).",
+            "limitations": "Contraintes établies : moteur sans JIT, performances inférieures aux moteurs natifs, API instable, licence 0BSD (permissive). Inconnues : stabilité à long terme, support multithread, compatibilité complète avec toutes les extensions Node.js. Licence à vérifier pour usage commercial (0BSD autorise). Maintenance : dépend du contributeur principal, aucune garantie de mise à jour.",
+            "next_step": "Réaliser un test technique : créer un petit service Go qui reçoit un script via HTTP, l’évalue avec Ekuma et renvoie le résultat. Question à poser à un utilisateur potentiel : « Quel type de logique JavaScript avez‑vous besoin d’exécuter côté serveur et quels sont vos critères de performance ? »",
+            "assessment": "Score 7 reflète la pertinence du moteur pour les projets Go‑centric du profil et la possibilité de créer rapidement un service SaaS. Le fit_score reste à 5 car le profil ne précise pas de contrainte sectorielle précise. Les preuves proviennent du README (description, comparatif, API) et du go.mod (dépendance) ; aucune donnée de marché n’est fournie, d’où l’absence de validation de demande ou de conformité RGPD.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1794824094.8160784
+  "next_call_at": 1794844082.6264703
 }
