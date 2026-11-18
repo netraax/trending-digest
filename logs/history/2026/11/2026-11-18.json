@@ -1,0 +1,563 @@
+{
+  "date": "2026-11-18",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+      "language": "Python",
+      "stars": 69519,
+      "forks": 6191,
+      "gained": "696 stars today",
+      "gained_n": 696,
+      "lang_color": "#3572A5",
+      "category": "Agent‑skill / moteur de recherche IA",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis synthétise un résumé structuré. Destiné aux développeurs ou market‑watchers qui souhaitent obtenir rapidement une veille thématique.",
+      "workflow": "Entrée : texte du sujet recherché → Traitement : le skill lance des requêtes parallèles sur les API publiques (Reddit, YouTube, etc.), pondère les résultats par engagement, fraîcheur et pertinence, extrait les transcriptions et commentaires → Résultat : un document JSON contenant titres, liens, scores d’engagement et un résumé synthétique. Limites : dépend des quotas d’API publiques, aucune garantie d’exhaustivité, licence non vérifiée. [S1]",
+      "use_cases": "• Utilisateur : Responsable marketing d’une PME ; Tâche : Obtenir une veille quotidienne sur les tendances d’un produit concurrent ; Résultat : Rapport automatisé avec les posts Reddit les plus votés, les vidéos YouTube les plus vues et les mentions Twitter, livrable chaque matin.\n• Utilisateur : Développeur d’une startup IA ; Tâche : Collecter les retours utilisateurs et les discussions autour d’une nouvelle API ; Résultat : Base de données structurée des commentaires Reddit et des questions StackOverflow, prête à être analysée par un modèle de sentiment.",
+      "products": "• Cible : Agences de communication ; Produit : Dashboard SaaS de veille concurrentielle alimenté par le skill ; difference : Interface graphique personnalisable, alertes en temps réel et export PDF, alors que le dépôt ne fournit qu’un skill CLI.\n• Cible : Freelances créateurs de contenu ; Produit : Extension navigateur qui affiche le résumé du skill sur la page du sujet consulté ; difference : Intégration directe dans le flux de travail du créateur, sans besoin d’exécuter le skill en ligne de commande.",
+      "monetization": "Abonnement mensuel aux dashboards (10 €/mois) pour les agences, paiement à l’usage (0,02 €/requête) pour l’extension, modèle freemium avec 100 requêtes gratuites par mois. Le prix repose sur la valeur du gain de temps et les coûts d’infrastructure (API tierces, hébergement).",
+      "build_plan": "Périmètre : UI web (React/Next.js) + API wrapper (FastAPI) autour du skill existant. Brique réutilisée : le code Python du skill (S1). Travail à ajouter : interface UI, système d’authentification, facturation Stripe, mise en cache des réponses. Exclusions : développement de nouvelles sources d’API. Dépendances : FastAPI, React, Stripe, hébergement Vercel/Fly.io. Coût estimé : 150 € /mois d’infra + 50 € /mois de licences API (hypothèse). Délai : 4‑6 semaines pour MVP si l’équipe travaille à plein temps.",
+      "limitations": "Licence du dépôt non vérifiée, donc risque juridique ; dépendance aux quotas et aux changements d’API tierces ; aucune preuve de scalabilité dans les extraits. Maintenance requise pour suivre les évolutions des API externes.",
+      "next_step": "Réaliser un test technique d’appel simultané aux API Reddit et YouTube pour mesurer le temps de réponse, puis interroger un product‑owner potentiel sur la valeur d’un résumé quotidien.",
+      "assessment": "Score 6 reflète la pertinence du skill pour la veille et la productivité, mais l’absence de licence claire et de données de performance réduit la confiance. Le fit_score reste neutre (5) car le profil indique un besoin d’inspiration rapide, sans contrainte sectorielle précise.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "a854f3bcb2c4344d7498426d653378510f8b253a",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/a854f3bcb2c4344d7498426d653378510f8b253a/README.md",
+            "excerpt": "\n\n## Install\n\n| Surface | Install | Updates |\n|---------|---------|---------|\n| **Claude Code** (recommended) | `/plugin marketplace add mvanhorn/last30days-skill` | Auto via marketplace, or `claude plugin update last30days@last30days-skill` |\n| **Grok** (xAI Build CLI) | `grok plugin marketplace add mvanhorn/last30days-skill` then `grok plugin install last30days` | `grok plugin update last30days` |\n| **Grok Bot** | [Add it from the Grok Bot marketplace](https://x.ai/bot/marketplace/bots/last30days) | Managed by the marketplace |\n| **Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts** | `npx skills a\n\n## Showcase: community research feeds\n\nPublished a recurring AI update, market watch, or wonderfully narrow obsession with last30days? Share the public library URL—or the Atom URL after hosting `feed.xml` on a static host—in [the community showcase thread](https://github.com/mvanhorn/last30days-skill/issues/532). Community feeds will be linked here as their owners submit them; the thread is the collection point in the meantime.\n\n\n\n## How it works\n\n1. **You type a topic.** Person, company, product, technology, \"X vs Y.\" Anything.\n2. **The agent resolves who matters.** Finds X handles (including founders), GitHub repos, subreddits, TikTok hashtags, YouTube channels. For \"Kanye West\" it knows r/hiphopheads, @kanyewest, and \"bully review\" on YouTube. For \"OpenClaw\" it resolves openclaw/openclaw on GitHub and fetches live star counts.\n3. **All sources searched in parallel.** Multi-query expansion. Results scored by engagement, relevance, freshness.\n4. **The depth nobody else has.** Full YouTube transcripts from reaction videos. Top Reddit comments with upvote counts. TikTok\n\n# /last30days\n\nEnglish | [Français](README.fr.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [العربية](README.ar.md) | [فارسی](README.fa.md) | [Türkçe](README.tr.md)\n\n \n   \n \n\n \n   \n     \n   \n   \n   \n     \n   \n   \n   \n     \n   \n \n\n**An AI agent-led search engine scored by upvotes, likes, and real money - not editors.**\n\nThi"
+          },
+          {
+            "id": "S2",
+            "path": "mcp/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/a854f3bcb2c4344d7498426d653378510f8b253a/mcp/go.mod",
+            "excerpt": "module github.com/mvanhorn/last30days-skill/mcp\n\ngo 1.25.5\n\nrequire (\n\tgithub.com/mark3labs/mcp-go v1.5.0\n\tgopkg.in/yaml.v3 v3.0.1\n)\n\nrequire (\n\tgithub.com/google/jsonschema-go v0.4.2 // indirect\n\tgithub.com/google/uuid v1.6.0 // indirect\n\tgithub.com/santhosh-tekuri/jsonschema/v6 v6.0.2 // indirect\n\tgithub.com/spf13/cast v1.7.1 // indirect\n\tgithub.com/yosida95/uritemplate/v3 v3.0.2 // indirect\n\tgolang.org/x/text v0.39.0 // indirect\n)\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis synthétise un résumé structuré. Destiné aux développeurs ou market‑watchers qui souhaitent obtenir rapidement une veille thématique.",
+      "business_idea": "• Cible : Agences de communication ; Produit : Dashboard SaaS de veille concurrentielle alimenté par le skill ; difference : Interface graphique personnalisable, alertes en temps réel et export PDF, alors que le dépôt ne fournit qu’un skill CLI.\n• Cible : Freelances créateurs de contenu ; Produit : Extension navigateur qui affiche le résumé du skill sur la page du sujet consulté ; difference : Intégration directe dans le flux de travail du créateur, sans besoin d’exécuter le skill en ligne de commande."
+    },
+    {
+      "name": "alibaba/open-code-review",
+      "url": "https://github.com/alibaba/open-code-review",
+      "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+      "language": "Go",
+      "stars": 54066,
+      "forks": 4466,
+      "gained": "763 stars today",
+      "gained_n": 763,
+      "lang_color": "#00ADD8",
+      "category": "outil de revue de code automatisée",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "OpenCodeReview est un outil écrit en Go qui combine pipelines déterministes et agents LLM pour générer des commentaires ligne par ligne et appliquer des règles de sécurité multi‑langage [S1]. Il cible les équipes de développement qui souhaitent automatiser la détection de vulnérabilités comme XSS, injection SQL ou problèmes de thread‑safety.",
+      "workflow": "Entrée : dépôt Git contenant du code source → Traitement : le skill installé analyse les fichiers, invoque un LLM configuré (OpenAI, Anthropic, etc.) et applique les règles du module (extraits du README) → Résultat : rapport de revue avec commentaires précis et suggestions de correction. Limites : nécessite une configuration LLM préalable et dépend de l’accès aux APIs tierces, aucune preuve d’échelle hors l’infrastructure Alibaba [S1].",
+      "use_cases": "• Utilisateur : Équipe DevOps d’une PME SaaS ; Tâche : Intégrer la revue automatisée dans le pipeline CI/CD ; Résultat : Déploiement d’un job GitHub Actions qui génère un rapport de sécurité à chaque pull request, réduisant les revues manuelles.\n• Utilisateur : Développeur freelance ; Tâche : Analyser rapidement un projet open‑source avant de contribuer ; Résultat : Exécution locale du CLI `ocr review` qui fournit un aperçu des vulnérabilités et des mauvaises pratiques, accélérant la prise de décision.",
+      "products": "• Cible : PME recherchant une solution interne de revue de code ; Produit : Plateforme SaaS hébergée qui expose l’API OCR via un micro‑service Docker ; difference : Ajoute une interface web multitenant, facturation Stripe et tableau de bord d’audit, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Agences de développement souhaitant externaliser la sécurité ; Produit : Service de revue de code à la demande (pay‑per‑review) basé sur le même moteur mais empaqueté en fonction Lambda ; difference : Transforme le CLI en fonction serverless, supprime la dépendance à un serveur persistant et propose un modèle à l’usage.",
+      "monetization": "Acheteur : PME ou agence qui paie pour chaque revue ou pour un abonnement mensuel. Raison : gain de temps et conformité sécurité. Unité facturée : revue complète ou nombre de lignes analysées. Modèle : abonnement mensuel (ex. 49 €/mois) ou paiement à l’usage (ex. 0,01 €/ligne). Hypothèse de prix basée sur la valeur perçue et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : wrapper Docker + API REST, réutilisation du code existant (CLI, règles). Travail à ajouter : UI web, gestion multi‑tenant, facturation Stripe, monitoring. Exclusions : implémentation de nouveaux agents LLM. Dépendances : Go modules listés dans go.mod (ex. openai‑go, anthropic‑sdk) [S2]. Coût estimé : 200 € de services cloud mensuels + 40 h de développement (≈ 2 semaines).",
+      "limitations": "Contraintes établies : besoin d’une clé API LLM, licence non vérifiée, dépendance aux services cloud externes. Inconnues : performances à grande échelle, support officiel. Licence à confirmer dans le dépôt, aucune garantie de conformité RGPD.",
+      "next_step": "Réaliser un test technique : déployer le CLI dans un pipeline GitHub Actions et vérifier le format du rapport. Question à poser à un utilisateur potentiel : « Quel niveau de détail attend‑vous dans les commentaires de revue automatisée ? »",
+      "assessment": "Score 7 reflète la maturité du code (pipeline complet, intégrations CI/CD) et la pertinence pour le profil (full‑stack, besoin d’outils B2B). Fit_score reste neutre (5) faute de données précises sur le budget ou la région. Manque de preuves : aucune donnée sur le volume d’utilisateurs, la licence et la conformité légale restent non établis dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "319c34239de70f718f365f832e20ab74a86ea9e0",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/319c34239de70f718f365f832e20ab74a86ea9e0/README.md",
+            "excerpt": " \n   \n     \n   \n   OpenCodeReview \n \n\n \n   \n     \n   \n \n \n   \n     \n   \n   \n     \n   \n \n \n     \n     \n     \n     \n     \n \n \n     \n     \n     \n     \n     \n     \n     \n \n \n  English |  简体中文  |  日本語  |  한국어  |  Русский \n \n\n---\n\n\n\n## How to Use\n\n\n\n#### 1. Install the Skills\n\nRun in the project you want to review, then select the skills you need and your agent in the installer:\n\n```bash\nnpx skills add alibaba/open-code-review\n```\n\nThe skills guide your agent to install `ocr` if it is missing, subject to your environment's permissions. You can also install it ahead of time with `npm install -g @alibaba-group/open-code-review`. Prefer a plugin or manual installation? See the [agent-specific setup guide](plugins/open-code-review/README.md), or copy the desired folders from [`skills/`](skills/) into your agent's skill directory.\n\n\n\n#### Install\n\n```bash\nnpm install -g @alibaba-group/open-code-review\n```\n\nAfter installation, the `ocr` command is available globally.\n\nFor other installation methods (install script, GitHub Release binary, from source), see [Installation](https://open-codereview.ai/docs/installation).\n\n\n\n#### Quick Start\n\n**1. Configure LLM**\n\nYou must configure an LLM before reviewing code, unless you use [Delegation Mode](https://open-codereview.ai/docs/delegate).\n\n- **OCR calls the model:** `ocr review`, the `/open-code-review:review` command, and the `open-code-review` skill use OCR's own provider configuration, not your Claude Code Team/Pro subscription login. Authentication requirements depend on the provider; see [Configuration](https://open-codereview.ai/docs/configuration).\n- **The host agent calls the model:** the `/open-code-review:delegate-review` command and the `open-code-review-delegate` skill use the host agent's configured "
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/alibaba/open-code-review/blob/319c34239de70f718f365f832e20ab74a86ea9e0/go.mod",
+            "excerpt": "module github.com/alibaba/open-code-review\n\ngo 1.26.10\n\nrequire (\n\tcharm.land/bubbles/v2 v2.1.1\n\tcharm.land/bubbletea/v2 v2.0.8\n\tcharm.land/glamour/v2 v2.0.1\n\tcharm.land/lipgloss/v2 v2.0.6\n\tgithub.com/anthropics/anthropic-sdk-go v1.63.1\n\tgithub.com/aws/aws-sdk-go-v2/config v1.32.35\n\tgithub.com/bmatcuk/doublestar/v4 v4.10.0\n\tgithub.com/charmbracelet/x/ansi v0.11.8\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/google/uuid v1.6.0\n\tgithub.com/modelcontextprotocol/go-sdk v1.7.0\n\tgithub.com/openai/openai-go/v3 v3.51.0\n\tgithub.com/pkoukk/tiktoken-go v0.1.8\n\tgithub.com/spf13/cobra v1.10.2\n\tgithu"
+          },
+          {
+            "id": "S3",
+            "path": "examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/alibaba/open-code-review/blob/319c34239de70f718f365f832e20ab74a86ea9e0/examples/README.md",
+            "excerpt": "\n\n# CI/CD Integration Examples\n\nThis directory contains examples for integrating OpenCodeReview (OCR) into various CI/CD pipelines.\n\n\n\n## Contents\n\n- **[github_actions/](./github_actions/)** - GitHub Actions integration example\n- **[gitlab_ci/](./gitlab_ci/)** - GitLab CI integration example\n- **[bitbucket_pipelines/](./bitbucket_pipelines/)** - Bitbucket Pipelines integration example\n- **[gitflic_ci/](./gitflic_ci/)** - GitFlic CI integration example\n- **[gerrit_ci/](./gerrit_ci/)** - Gerrit (Jenkins / Gerrit Trigger) integration example\n\nEach subdirectory contains its own README with detailed setup instructions.\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "OpenCodeReview est un outil écrit en Go qui combine pipelines déterministes et agents LLM pour générer des commentaires ligne par ligne et appliquer des règles de sécurité multi‑langage [S1]. Il cible les équipes de développement qui souhaitent automatiser la détection de vulnérabilités comme XSS, injection SQL ou problèmes de thread‑safety.",
+      "business_idea": "• Cible : PME recherchant une solution interne de revue de code ; Produit : Plateforme SaaS hébergée qui expose l’API OCR via un micro‑service Docker ; difference : Ajoute une interface web multitenant, facturation Stripe et tableau de bord d’audit, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Agences de développement souhaitant externaliser la sécurité ; Produit : Service de revue de code à la demande (pay‑per‑review) basé sur le même moteur mais empaqueté en fonction Lambda ; difference : Transforme le CLI en fonction serverless, supprime la dépendance à un serveur persistant et propose un modèle à l’usage."
+    },
+    {
+      "name": "Tencent/LoopForge",
+      "url": "https://github.com/Tencent/LoopForge",
+      "description": "Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.",
+      "language": "Go",
+      "stars": 3688,
+      "forks": 503,
+      "gained": "591 stars today",
+      "gained_n": 591,
+      "lang_color": "#00ADD8",
+      "category": "Plateforme d'orchestration de workflows de codage (self‑hosted)",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "LoopForge propose un espace auto‑hébergé où des agents de génération de code (CodeBuddy, Codex, Claude) sont orchestrés via des SOPs. Destiné aux équipes de développement qui souhaitent automatiser le pipeline de livraison avec validation humaine.",
+      "workflow": "Entrée : dépôt Git contenant le code à livrer + configuration SOP (définition des rôles et des étapes). Traitement : le serveur LoopForge (Docker + Python + Go) déclenche les agents, exécute les scripts, collecte les retours et applique les règles de validation. Résultat : artefact construit, logs détaillés et tableau de bord d’observabilité. Sources : description du Quick start et du fonctionnement des SOPs [S1]; dépendances Go indiquant l’usage de Gin, WebSocket, GORM, etc. Limites : aucune preuve d’intégration CI/CD existante, licence non vérifiée, besoin d’infrastructure Docker et d’accès internet pour les téléchargements.",
+      "use_cases": "• Utilisateur : Équipe DevOps d’une PME SaaS ; Tâche : Automatiser la génération de code et les revues pré‑déploiement via des agents IA ; Résultat : Réduction du temps de revue manuelle et traçabilité des modifications grâce aux logs SOP\n• Utilisateur : Consultant freelance en automatisation ; Tâche : Déployer un environnement de prototypage rapide pour tester des algorithmes de génération de code ; Résultat : Livraison d’un prototype fonctionnel en quelques heures, sans configuration manuelle d’outils externes",
+      "products": "• Cible : PME souhaitant internaliser le CI avec IA ; Produit : Service SaaS « LoopForge Cloud » qui héberge l’orchestrateur, fournit une UI multi‑tenant et gère les licences ; difference : Supprime la contrainte d’auto‑hébergement et ajoute la facturation à l’usage (minutes d’agent)\n• Cible : Agences créatives développant des micro‑services ; Produit : Kit de démarrage « LoopForge‑Lite » (Docker Compose + scripts) avec documentation ciblée et support premium ; difference : Offre un package clé‑en‑main, réduit le besoin d’expertise Go et ajoute des templates SOP prêts à l’emploi",
+      "monetization": "Acheteur : PME ou agence; raison : gain de productivité sur le cycle de livraison; unité facturée : minutes d’exécution d’agent IA ou nombre de SOP exécutées; modèle : abonnement mensuel + tarif à l’usage (ex. 0,02 €/minute). Fourchette hypothétique : 30–150 €/mois selon volume, justifiée par le coût d’infrastructure cloud et les licences d’API IA.",
+      "build_plan": "Périmètre limité : mise en place du serveur LoopForge (Docker), intégration d’une API OpenAI/Claude, UI basique. Brique réutilisée : code existant (Go, Python) et SOP engine. Travail à ajouter : authentification OAuth, tableau de bord SaaS, facturation Stripe. Exclusions : support multi‑region, conformité RGPD complète. Dépendances : Docker, Go 1.26, Python 3, API IA. Coût estimé : 200 € de cloud initial + 150 € de licences IA/mois. Délai : 4–6 semaines (prototype fonctionnel) sous condition de disponibilité des clés API.",
+      "limitations": "Licence du dépôt non vérifiée, aucune garantie de stabilité, dépendance à l’accès internet pour les images Docker, besoin d’expertise Go pour la maintenance, observabilité limitée aux logs NDJSON. Coûts de maintenance inconnus.",
+      "next_step": "Réaliser un test technique : déployer LoopForge en local, exécuter une SOP simple avec un agent Codex et vérifier la génération d’artifact. Question utilisateur : « Quel niveau de contrôle humain souhaitez‑vous sur les suggestions d’agent avant le merge ? »",
+      "assessment": "Score 6 reflète la présence d’une architecture fonctionnelle et d’une cible claire (orchestration IA), mais l’absence de licence claire, de preuves d’usage réel et de validation marché limite l’évaluation. Fit_score 5 par défaut (profil fourni sans contraintes spécifiques). Les preuves proviennent des extraits README et go.mod ; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "48cdf0c2e2149c53d69cac089142f46c4b2e47f7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/Tencent/LoopForge/blob/48cdf0c2e2149c53d69cac089142f46c4b2e47f7/README.md",
+            "excerpt": " \n   \n     \n     \n   \n \n\n \n     \n     \n     \n   \n     \n \n\n \n     \n \n\n \n   English  ·  简体中文 \n \n\n \n   Two ways to work  ·\n   Quick start  ·\n   SOPs  ·\n   Features  ·\n   Local  ·\n   FAQ  ·\n   Docs \n \n\nhttps://github.com/user-attachments/assets/8af401d9-1aae-427c-b4bc-455c12d17beb\n\n  80-second product tour (1080p, with sound).  \n\n**LoopForge** is a self-hosted workspace where your team ships software with coding agents. Describe what y\n\n## Quick start\n\nInstall **Git** and clone the repository first. The installer checks Docker, Compose, Python 3 and curl and offers to install missing components. Python/curl installation supports apt, dnf and yum on Linux; the Compose plugin supports x86_64/arm64 and verifies the official release SHA-256. macOS needs a working Python 3 and Docker Desktop; Homebrew can install missing components. Ordinary Linux users are supported through Docker group access or sudo. Set `LOOPFORGE_YES=1` to accept installation prompts. Package and image downloads require internet access.\n\n```bash\ngit clone https://github.com/Tencent/LoopForge.git\ncd LoopForge\n\n## How SOPs work\n\nAn **SOP** is the workflow a delivery follows. Agents, scripts and people take part in the same run:\n\n \n   \n     \n     \n   \n \n\n \n   \n \n\n  The SOP designer with the built-in bug-fix SOP. Each step picks a role; failed checks can send the work back to an earlier step.  \n\n| Node |"
+          },
+          {
+            "id": "S2",
+            "path": "go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/Tencent/LoopForge/blob/48cdf0c2e2149c53d69cac089142f46c4b2e47f7/go.mod",
+            "excerpt": "module agentflow\n\ngo 1.26.11\n\nrequire (\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/gin-gonic/gin v1.12.0\n\tgithub.com/glebarez/sqlite v1.11.0\n\tgithub.com/go-sql-driver/mysql v1.10.1\n\tgithub.com/goccy/go-yaml v1.19.2\n\tgithub.com/gorilla/websocket v1.5.3\n\tgithub.com/klauspost/compress v1.20.3\n\tgolang.org/x/crypto v0.58.0\n\tgolang.org/x/net v0.62.0\n\tgolang.org/x/sys v0.49.0\n\tgorm.io/driver/mysql v1.6.0\n\tgorm.io/gorm v1.31.2\n)\n\nrequire (\n\tfilippo.io/edwards25519 v1.2.0 // indirect\n\tgithub.com/bytedance/gopkg v0.1.3 // indirect\n\tgithub.com/bytedance/sonic v1.15.0 // indirect\n\tgithub.com/bytedance/son"
+          },
+          {
+            "id": "S3",
+            "path": "local/.claude/skills/agent-observability/references/quickstart.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/Tencent/LoopForge/blob/48cdf0c2e2149c53d69cac089142f46c4b2e47f7/local/.claude/skills/agent-observability/references/quickstart.md",
+            "excerpt": "\n\n## Quickstart\n\n\n\n### 安装\n\n将 `templates/settings-hook.json` 合并到 `~/.claude/settings.json` 或 ` /.claude/settings.json`。\n\n必须启用 hooks：`SessionStart`、`UserPromptSubmit`、`PreToolUse`、`PostToolUse`、`Stop`。\n\n\n\n### 查看输出\n\n完成一次正常会话后检查：\n- `.claude/skills/agent-observability/logs/metrics.ndjson`\n- `.claude/skills/agent-observability/logs/.state.json`\n\n\n\n### 指定数据源路径（可选）\n\n`build_dashboard_data.py` 默认从 ` /logs/metrics.ndjson` 与 ` /logs/.state.json` 读取，**不传参数时行为完全不变**。\n\n如需从其它位置读取，可用 `--metrics-path` / `--state-path` 覆盖：\n\n```bash\npython3 scripts/build_dashboard_data.py \\\n  --metrics-path ~/Downloads/metrics.ndjson \\\n  --state-path  ~/Downloads/.state.json \\\n  --out dashboard/dashboard-data.json\n```\n\n注意：\n\n- 两个参数都留空（或省略）时回退到 ` /logs/` 下的默认文件。\n- 路径支持 `~` 展开（如上例的 `~/Downloads/.."
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "LoopForge propose un espace auto‑hébergé où des agents de génération de code (CodeBuddy, Codex, Claude) sont orchestrés via des SOPs. Destiné aux équipes de développement qui souhaitent automatiser le pipeline de livraison avec validation humaine.",
+      "business_idea": "• Cible : PME souhaitant internaliser le CI avec IA ; Produit : Service SaaS « LoopForge Cloud » qui héberge l’orchestrateur, fournit une UI multi‑tenant et gère les licences ; difference : Supprime la contrainte d’auto‑hébergement et ajoute la facturation à l’usage (minutes d’agent)\n• Cible : Agences créatives développant des micro‑services ; Produit : Kit de démarrage « LoopForge‑Lite » (Docker Compose + scripts) avec documentation ciblée et support premium ; difference : Offre un package clé‑en‑main, réduit le besoin d’expertise Go et ajoute des templates SOP prêts à l’emploi"
+    },
+    {
+      "name": "dream-num/univer",
+      "url": "https://github.com/dream-num/univer",
+      "description": "Build your own AI office with Univer Office SDK. Bring editing, calculation, collaboration, and file processing into your product for people and AI agents. Built on an extensible open-source core.",
+      "language": "TypeScript",
+      "stars": 29751,
+      "forks": 2654,
+      "gained": "1,774 stars today",
+      "gained_n": 1774,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque d'édition de documents web",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Univer est un SDK open‑source permettant d'intégrer des éditeurs de feuilles et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des fonctionnalités de bureautique collaborative à leurs utilisateurs ou à des agents IA.",
+      "workflow": "Entrée : fichier ou données tabulaires uploadés via l'interface du SDK → Traitement : le moteur de plugins d'Univer applique des règles de calcul, de mise en forme et de synchronisation en temps réel → Résultat : tableau ou document interactif affiché dans le navigateur, exploitable par l'utilisateur ou un agent IA. Limites : la documentation indique que les plugins UI et logique sont séparés, mais aucune preuve de prise en charge native de l'IA n’est fournie (non établi dans les extraits). [S1]",
+      "use_cases": "• Utilisateur : Agence de marketing digital ; Tâche : Créer des rapports de performance personnalisés pour chaque client ; Résultat : Les données sont importées, calculées et présentées dans un tableau interactif partagé via le SDK.\n• Utilisateur : Développeur d’assistant IA ; Tâche : Permettre à l'agent de générer et modifier des feuilles de calcul en réponse à des requêtes utilisateur ; Résultat : L'agent utilise l'API du SDK pour créer, remplir et sauvegarder des documents sans quitter le contexte conversationnel.",
+      "products": "• Cible : PME souhaitant automatiser la facturation ; Produit : SaaS de génération de factures basé sur Univer Sheets ; difference : Utilise le moteur de calcul d'Univer pour produire des factures dynamiques, alors que le dépôt brut ne propose qu'un éditeur générique.\n• Cible : Freelance en rédaction technique ; Produit : Éditeur collaboratif de documentation technique intégré à un portail client ; difference : Ajoute des plugins de versionnage et de commentaires, fonctionnalité absente du dépôt de base.",
+      "monetization": "Acheteur : PME ou freelance ; raison : gain de temps sur la création et la mise à jour de documents structurés ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, justifié par le coût d'hébergement et de support. Cette fourchette reste à tester.",
+      "build_plan": "Périmètre limité : intégrer le preset sheets d'Univer, ajouter un module de génération de PDF et un système d'authentification. Brique réutilisée : @univerjs/preset-sheets-core (S1). Travail à ajouter : backend Node/TS pour la facturation, UI React, connexion à Stripe. Exclusions : éditeur de texte riche complet. Dépendances : React, Stripe SDK, base de données PostgreSQL. Coût estimé : 200 € de services cloud mensuels + 40 h de développement initial. Délai : 4 à 6 semaines conditionnel à la disponibilité du développeur.",
+      "limitations": "Licence Apache‑2.0 confirmée dans le package.json, mais la licence du dépôt n’est pas explicitement vérifiée (non établi dans les extraits). Le SDK ne fournit pas de fonctionnalité IA native, il faut développer des wrappers. Maintenance du code open‑source dépend de la communauté. Coûts d’infrastructure non inclus.",
+      "next_step": "Réaliser un prototype d’import/export CSV avec le preset sheets et tester la génération de PDF; interroger un responsable de PME sur le besoin de facturation automatisée.",
+      "assessment": "Score 7 reflète la maturité du SDK (documentation, exemples) et son adéquation avec le profil technique (TS, React, déploiement cloud). Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité n’est prouvée dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4567690f5b04c8ade8d8deac24a9e86aa6b2b0f9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/dream-num/univer/blob/4567690f5b04c8ade8d8deac24a9e86aa6b2b0f9/README.md",
+            "excerpt": "  \n\n   \n\n Build your own AI office with Univer Office SDK. \n\n Start with open-source Sheets and Docs, then connect your own application or agent. \n\n  🚀 Quick start  ·  💼 Workspace  ·  📚 Documentation  ·  ⚖️ Feature comparison  ·  🌐 Website  ·  🎮 Showcase  ·  🔧 API Reference  ·  📝 Blog  \n\n  English  ·  Français  ·  Deutsch  ·  Español  ·  简体中文  ·  繁體中文  ·  日本語  ·  한국어  \n\n \n     \n\n\n### Quick start: an open-source spreadsheet editor\n\nIn a browser application using a bundler such as Vite:\n\n```bash\npnpm add @univerjs/presets @univerjs/preset-sheets-core\n```\n\nCreate the container before initializing Univer:\n\n```html\n  \n```\n\n```ts\nimport { UniverSheetsCorePreset } from '@univerjs/preset-sheets-core'\nimport UniverPresetSheetsCoreEnUS from '@univerjs/preset-sheets-core/locales/en-US'\nimport { createUniver, LocaleType, mergeLocales } from '@univerjs/presets'\nimport '@univerjs/preset-sheets-core/lib/index.css'\n\nconst { univerAPI } = createUniver({\n  locale: LocaleType.EN_US,\n  locales: {\n    [LocaleType.EN_US]: mergeLocales(Univ\n\n## 🏗️ Explore the open-source architecture\n\n   \n\n  \n\n\n\n### Give custom features clear boundaries\n\nUniver organizes content logic and UI interaction in separate plugins. Feature plugins manage rules and content changes; UI plugins provide the interface and user interactions. For example, `sh"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/dream-num/univer/blob/4567690f5b04c8ade8d8deac24a9e86aa6b2b0f9/package.json",
+            "excerpt": "{\n    \"name\": \"univer\",\n    \"type\": \"module\",\n    \"version\": \"1.5.2\",\n    \"private\": true,\n    \"packageManager\": \"pnpm@12.16.1\",\n    \"author\": \"DreamNum Co., Ltd. <developer@univer.ai>\",\n    \"license\": \"Apache-2.0\",\n    \"funding\": {\n        \"type\": \"opencollective\",\n        \"url\": \"https://opencollective.com/univer\"\n    },\n    \"homepage\": \"https://univer.ai\",\n    \"repository\": {\n        \"type\": \"git\",\n        \"url\": \"https://github.com/dream-num/univer\"\n    },\n    \"bugs\": {\n        \"url\": \"https://github.com/dream-num/univer/issues\"\n    },\n    \"devEngines\": {\n        \"runtime\": {\n            \""
+          },
+          {
+            "id": "S3",
+            "path": "examples/src/main.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/dream-num/univer/blob/4567690f5b04c8ade8d8deac24a9e86aa6b2b0f9/examples/src/main.ts",
+            "excerpt": "import type { ExampleLoader } from './mount-example';\nimport type {\n    WorkbenchDevice,\n    WorkbenchDirection,\n    WorkbenchLocale,\n    WorkbenchRegion,\n    WorkbenchRibbonType,\n    WorkbenchTheme,\n    WorkbenchUIChromeMode,\n    WorkbenchZoomRatio,\n} from './workbench-settings';\nimport { createExampleSwitcher } from './mount-example';\nimport {\n    clearWorkbenchSettings,\n    getDefaultWorkbenchSettings,\n    getWorkbenchTheme,\n    readWorkbenchSettings,\n    WORKBENCH_LOCALE_META,\n    writeWorkbenchSettings,\n} from './workbench-settings';\nimport { renderWorkbenchSettingsControl, unmountWorkbenchSettingsControl } from './workbench-settings-control';\nimport './global.css';\n\nconst loaders = {\n    docs: () => import('./docs/mount'),\n    sheets: () => import('./sheets/mount'),\n} satisfies Record<string, ExampleLoader>;\n\ntype ExampleName = keyof typeof loaders;\n\nfunction getRequiredElement<T extends HTMLElement>(selector: string): T {\n    const element = document.querySelector<T>(selector);\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Univer est un SDK open‑source permettant d'intégrer des éditeurs de feuilles et de documents dans une application web. Il cible les développeurs qui souhaitent offrir des fonctionnalités de bureautique collaborative à leurs utilisateurs ou à des agents IA.",
+      "business_idea": "• Cible : PME souhaitant automatiser la facturation ; Produit : SaaS de génération de factures basé sur Univer Sheets ; difference : Utilise le moteur de calcul d'Univer pour produire des factures dynamiques, alors que le dépôt brut ne propose qu'un éditeur générique.\n• Cible : Freelance en rédaction technique ; Produit : Éditeur collaboratif de documentation technique intégré à un portail client ; difference : Ajoute des plugins de versionnage et de commentaires, fonctionnalité absente du dépôt de base."
+    },
+    {
+      "name": "getarcaneapp/arcane",
+      "url": "https://github.com/getarcaneapp/arcane",
+      "description": "Modern Docker Management, Designed for Everyone",
+      "language": "Go",
+      "stars": 9554,
+      "forks": 530,
+      "gained": "618 stars today",
+      "gained_n": 618,
+      "lang_color": "#00ADD8",
+      "category": "outil de gestion Docker (application native)",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Arcane est une interface moderne pour gérer des conteneurs Docker, destinée aux développeurs et aux équipes qui souhaitent simplifier le déploiement sans maîtriser la ligne de commande [S1].",
+      "workflow": "Entrée : fichier de configuration YAML décrivant les services Docker → Traitement : le binaire Go analyse le YAML, interagit avec l'API Docker et génère une UI TUI interactive via bubbletea → Résultat : l'utilisateur contrôle le cycle de vie des conteneurs (start/stop/logs) depuis le terminal. Limite : aucune interface web native, dépend du client Docker installé localement [S2].",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Lancer rapidement un environnement de test multi‑services ; Résultat : Tous les conteneurs sont orchestrés via une simple commande Arcane, réduisant le temps de configuration manuelle.\n• Utilisateur : Petite équipe DevOps ; Tâche : Surveiller l'état des conteneurs en production depuis un terminal sécurisé ; Résultat : Arcane fournit des vues en temps réel des logs et de la santé des services, évitant le basculement vers des dashboards web complexes.",
+      "products": "• Cible : PME qui héberge leurs propres services ; Produit : Version SaaS d'Arcane avec tableau de bord web, authentification SSO et facturation Stripe ; difference : Passage d'une TUI locale à une interface web multi‑utilisateur, ajout d’un modèle d’abonnement.\n• Cible : Agences créatives ; Produit : Wrapper CLI qui expose les fonctions d’Arcane via une API REST légère (FastAPI) pour automatiser des pipelines CI/CD ; difference : Transformation d’un outil local en service programmable, permettant l’intégration dans des workflows automatisés.",
+      "monetization": "Acheteur : PME ou agence ; raison : gain de productivité sur la gestion d’infrastructures Docker ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, ajustable selon nombre de conteneurs gérés.",
+      "build_plan": "Périmètre : créer une API FastAPI autour du binaire existant, UI React pour le tableau de bord, intégrer Stripe et PostgreSQL pour la facturation ; brique réutilisée : le core Go d’Arcane (S2) ; travail à ajouter : couche API, UI, tests d’intégration ; exclusions : refonte du moteur Docker, support multi‑cloud ; dépendances : Docker Engine, FastAPI, React, Stripe SDK ; coût estimé : 120 h de développement (≈3 semaines à plein temps).",
+      "limitations": "Contrainte : nécessite Docker installé localement, aucune prise en charge native de Kubernetes, licence non vérifiée dans le dépôt ; coûts d’infrastructure cloud et maintenance non incluses.",
+      "next_step": "Réaliser un prototype d’API qui expose les commandes start/stop et interroger un développeur freelance sur la valeur perçue d’une UI web vs la TUI actuelle.",
+      "assessment": "Score 6 reflète la pertinence du projet pour le profil (expert full‑stack, intérêt pour les wrappers SaaS) et la disponibilité d’un code Go mature ; fit_score reste neutre (5) faute de données sur la demande du marché ou conformité RGPD. Les preuves proviennent des extraits S1 et S2, le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0f8f283645e812a867fec6d7291dd69ee44522b3",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/getarcaneapp/arcane/blob/0f8f283645e812a867fec6d7291dd69ee44522b3/README.md",
+            "excerpt": "> [!NOTE]\n> The `main` branch is the v3 version of Arcane See the [`release/2.x.x`](https://github.com/getarcaneapp/arcane/tree/release/2.x.x) branch for the last 2.x release.\n\n> [!IMPORTANT]\n> Feature requests have moved to [Discussions](https://github.com/getarcaneapp/arcane/discussions/categories/feature-requests). Open new requests and upvote existing ones there; issues are only used for Bug reports now to help maintain priority on those issu\n\n## Documentation\n\nFor setup instructions, configuration details, and development guides, visit the **[official documentation site](https://getarcane.app)**.\n\n\n\n## Sponsors\n\nThis project is supported by the following amazing people:\n\n \n   \n     \n   \n \n\n\n\n## Security & Transparency\n\nView the Software Bill of Materials (SBOM) for Arcane at **[getarcane.app/sbom](https://getarcane.app/sbom)**.\n\n\n\n## Translating\n\nHelp translate Arcane on Crowdin: https://crowdin.com/project/arcane-docker-management\n\nThank you for checking out Arcane! Your feedback and contributions are always welcome.\n\n \n"
+          },
+          {
+            "id": "S2",
+            "path": "cli/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/getarcaneapp/arcane/blob/0f8f283645e812a867fec6d7291dd69ee44522b3/cli/go.mod",
+            "excerpt": "module getarcane.dev/cli/v3\n\ngo 1.27.4\n\nreplace getarcane.dev/types/v3 => ../types\n\nrequire (\n\tcharm.land/bubbles/v2 v2.2.1\n\tcharm.land/bubbletea/v2 v2.1.1\n\tcharm.land/fang/v2 v2.0.1\n\tcharm.land/lipgloss/v2 v2.1.0\n\tcharm.land/log/v2 v2.0.1\n\tgetarcane.dev/types/v3 v3.0.0\n\tgithub.com/charmbracelet/colorprofile v0.4.3\n\tgithub.com/charmbracelet/x/ansi v0.11.9\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/docker/go-connections v0.8.2\n\tgithub.com/docker/go-units v0.5.0\n\tgithub.com/gofrs/flock v0.13.2\n\tgithub.com/mattn/go-runewidth v0.0.31\n\tgithub.com/muesli/cance"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Arcane est une interface moderne pour gérer des conteneurs Docker, destinée aux développeurs et aux équipes qui souhaitent simplifier le déploiement sans maîtriser la ligne de commande [S1].",
+      "business_idea": "• Cible : PME qui héberge leurs propres services ; Produit : Version SaaS d'Arcane avec tableau de bord web, authentification SSO et facturation Stripe ; difference : Passage d'une TUI locale à une interface web multi‑utilisateur, ajout d’un modèle d’abonnement.\n• Cible : Agences créatives ; Produit : Wrapper CLI qui expose les fonctions d’Arcane via une API REST légère (FastAPI) pour automatiser des pipelines CI/CD ; difference : Transformation d’un outil local en service programmable, permettant l’intégration dans des workflows automatisés."
+    },
+    {
+      "name": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
+      "language": "TypeScript",
+      "stars": 10255,
+      "forks": 1345,
+      "gained": "350 stars today",
+      "gained_n": 350,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque de compétences d'agents",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Stitch‑Skills fournit un ensemble de compétences compatibles avec les agents de code (Claude, Cursor, etc.) et le serveur Stitch MCP, destiné aux développeurs qui souhaitent automatiser des tâches de génération de code ou de design. Il s’adresse aux équipes produit ou aux indépendants qui intègrent des agents dans leurs workflows.",
+      "workflow": "Entrée : requête d’un agent (ex. « générer un composant React Native ») → Traitement : le plugin Stitch invoque la skill correspondante, utilise @swc/core pour transpiler le code et renvoie le composant → Résultat : fichier source prêt à être importé. Limites : dépendance au serveur Stitch MCP et aux plugins installés, aucune garantie d’exécution hors‑ligne. [S1][S2]",
+      "use_cases": "• Utilisateur : Développeur front‑end ; Tâche : Créer rapidement un composant React Native à partir d’une description textuelle ; Résultat : Code généré et formaté, intégré directement dans le projet\n• Utilisateur : Équipe UX ; Tâche : Exporter un design système en code utilisable ; Résultat : Fichiers de composants conformes au design system, prêts pour le prototypage",
+      "products": "• Cible : PME SaaS ; Produit : Plateforme low‑code qui expose les skills Stitch via une UI web ; difference : Masque la complexité du CLI et propose un tableau de bord multi‑skill, contrairement au dépôt brut qui reste en ligne de commande\n• Cible : Agences créatives ; Produit : Extension Figma qui déclenche les skills pour transformer des maquettes en code ; difference : Intégration directe dans l’outil de design, alors que le dépôt original ne fournit qu’un SDK",
+      "monetization": "Abonnement mensuel par utilisateur (ex. 15 €/mois) pour accéder à la plateforme low‑code, facturé par seat ; modèle freemium avec 10 exécutions gratuites puis paiement à l’usage. Hypothèse basée sur la valeur de gain de temps pour les développeurs et le coût d’infrastructure cloud.",
+      "build_plan": "Périmètre : UI web + API wrapper autour des skills existantes. Réutiliser le package npm « react-native-components » (S2). Travail à ajouter : interface React, gestion des comptes, facturation Stripe. Exclusions : refonte du serveur Stitch MCP. Dépendances : Node ≥18, @swc/core, Vercel pour le déploiement. Coût estimé : 200 € de services cloud mensuels + 2 k€ de développement initial (≈4 semaines à temps plein).",
+      "limitations": "Licence non vérifiée (S1) → risque juridique, dépendance au serveur Stitch non open‑source, aucune preuve de scalabilité ou de conformité RGPD. Maintenance requise pour suivre les évolutions des agents compatibles.",
+      "next_step": "Réaliser un prototype d’appel à la skill « react-native‑components » depuis une petite API Node et mesurer le temps de génération ; interroger un développeur front‑end sur la pertinence d’une UI low‑code.",
+      "assessment": "Score 7 reflète la pertinence technique (TypeScript, compatibilité agents) et la possibilité de créer des produits à valeur ajoutée. Fit_score reste neutre (5) faute de données spécifiques au profil au-delà de la capacité de prototypage rapide. Les preuves proviennent des extraits S1 et S2 ; le reste reste non établi dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4cf4db8e4143b09e40f9bc887429d81f41ab3947",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/README.md",
+            "excerpt": "\n\n## Quick Start\n\n\n\n### 1. Install Plugins (Recommended)\nThe fastest way to set up the full Stitch plugin suite globally.\n\n\n\n# Claude Code — installs into the current project\nnpx plugins add google-labs-code/stitch-skills --scope project --target claude-code\n```\n\n```bash\n\n\n# Cursor — installs into the current workspace\nnpx plugins add google-labs-code/stitch-skills --scope workspace --target cursor\n```\n\n\n\n### 2. Install Skills Selectively\nChoose only the specific skills you need.\n\n> [!IMPORTANT]\n> Stitch Design Skills often have inter-dependencies. If you choose to install skills selectively, ensure you include all required dependencies.\n\n```bash\nnpx skills add google-labs-code/stitch-skills\n```\n\nYou can run the following commands to see the help documentation for plugins and skills:\n\n```bash\nnpx plugins --help\n\nnpx skills --help\n```\n\n\n\n# Stitch Design Skills\n\nA collection of agent skills and plugins for [Google Stitch](https://stitch.withgoogle.com), following the [Agent Skills](https://agentskills.io) open standard. Compatible with coding agents such as Codex, Antigravity, Gemini CLI, Claude Code, Cursor, and OpenCode (manual install).\n\n\n\n#### Codex\n\nAdd the Stitch Skills marketplace, then install the plugins you need.\n\n \n  Via CLI  (recommended) \n\n```bash\ncodex plugin marketplace add google-labs-code/stitch-skills --ref main \\\n  --sparse .agents/plugins \\\n  --sparse plug"
+          },
+          {
+            "id": "S2",
+            "path": "plugins/stitch-build/skills/react-native/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/plugins/stitch-build/skills/react-native/package.json",
+            "excerpt": "{\n  \"name\": \"react-native-components\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Design-to-code prompt to React Native components for Stitch MCP\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"validate\": \"node scripts/validate.js\",\n    \"fetch\": \"bash scripts/fetch-stitch.sh\"\n  },\n  \"dependencies\": {\n    \"@swc/core\": \"^1.3.100\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "excerpt": "\n\n# Design System: Furniture Collections List\n**Project ID:** 13534454087919359824\n\n\n\n## 1. Visual Theme & Atmosphere\n\nThe Furniture Collections List embodies a **sophisticated, minimalist sanctuary** that marries the pristine simplicity of Scandinavian design with the refined visual language of luxury editorial presentation. The interface feels **spacious and tranquil**, prioritizing breathing room and visual clarity above all else. The design philosophy is gallery-like and photography-first, allowing each furniture piece to command attention as an individual art object.\n\nThe overall mood is **airy yet grounded**, creating an aspirational aesthetic that remains approachable and welcoming. The interface feels **utilitarian in \n\n## 2. Color Palette & Roles\n\n\n\n### Primary Foundation\n- **Warm Barely-There Cream** (#FCFAFA) – Primary background color. Creates an almost imperceptible warmth that feels more inviting than pure white, serving as the serene canvas for the entire experience.\n-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Stitch‑Skills fournit un ensemble de compétences compatibles avec les agents de code (Claude, Cursor, etc.) et le serveur Stitch MCP, destiné aux développeurs qui souhaitent automatiser des tâches de génération de code ou de design. Il s’adresse aux équipes produit ou aux indépendants qui intègrent des agents dans leurs workflows.",
+      "business_idea": "• Cible : PME SaaS ; Produit : Plateforme low‑code qui expose les skills Stitch via une UI web ; difference : Masque la complexité du CLI et propose un tableau de bord multi‑skill, contrairement au dépôt brut qui reste en ligne de commande\n• Cible : Agences créatives ; Produit : Extension Figma qui déclenche les skills pour transformer des maquettes en code ; difference : Intégration directe dans l’outil de design, alors que le dépôt original ne fournit qu’un SDK"
+    },
+    {
+      "name": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "description": "Cursor plugin specification and official plugins",
+      "language": "TypeScript",
+      "stars": 17032,
+      "forks": 1857,
+      "gained": "201 stars today",
+      "gained_n": 201,
+      "lang_color": "#3178c6",
+      "category": "Marketplace de plugins pour l'IDE Cursor",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent enrichir leurs outils de travail. Chaque plugin est autonome et décrit par un manifeste JSON.",
+      "workflow": "Entrée : l'utilisateur installe un plugin via le marketplace de Cursor (manifest.json). Traitement : le plugin ajoute des compétences ou des règles au moteur d'agent de Cursor. Résultat : l'IDE propose des fonctionnalités comme le mapping de compétences ou la mise à jour incrémentale de la mémoire ([S1]). Limites : aucune exécution de code n’est fournie dans les extraits, la licence du dépôt n’est pas confirmée ([S1]).",
+      "use_cases": "• Utilisateur : Développeur solo ; Tâche : Activer le plugin Teaching pour obtenir des plans d’apprentissage personnalisés ; outcome : Le développeur reçoit des rétrospectives de compétences directement dans l’IDE\n• Utilisateur : Équipe de dev ; Tâche : Déployer le plugin Cursor Team Kit pour automatiser les revues de code ; outcome : Les flux CI/CD sont orchestrés depuis l’IDE sans outil externe",
+      "products": "• Cible : PME de services logiciels ; Produit : Plateforme SaaS qui expose les plugins Cursor via une API REST ; difference : Permet d’intégrer les fonctionnalités de Cursor dans des environnements CI sans installer l’IDE\n• Cible : Freelance créateur de contenus techniques ; Produit : Extension navigateur qui reproduit les capacités du plugin Teaching en mode web ; difference : Supprime la dépendance à l’IDE tout en conservant le mapping de compétences",
+      "monetization": "Facturation à l’usage pour chaque appel d’API de plugin (ex. 0,01 € par exécution) ; cible les équipes qui paient pour automatiser leurs processus de développement.",
+      "build_plan": "Réutiliser le manifeste JSON et les scripts existants ([S2]) ; ajouter un serveur Node.js exposant les plugins, Dockeriser le tout, prévoir 2 semaines de développement et 1 semaine de tests. Dépendances : Node.js, FastAPI si on veut un wrapper Python, hébergement Vercel ou Fly.io. Coût estimé : hébergement cloud + licences éventuelles.",
+      "limitations": "Licence non vérifiée dans les extraits ([S1]), aucune preuve d’exécution ou de tests unitaires, dépendance à l’écosystème Cursor, maintenance du serveur d’API à prévoir.",
+      "next_step": "Tester l’installation d’un plugin via le manifest dans un environnement local et interroger un développeur sur l’utilité d’une API externe pour ces plugins.",
+      "assessment": "Score 6 reflète la disponibilité d’un catalogue de plugins utiles mais l’absence de preuves d’exécution et de licence claire limite l’intérêt immédiat. Fit_score 5 par défaut faute de profil détaillé.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "93b916d4a1e806507e22f4716b352fa91f2b227e",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/cursor/plugins/blob/93b916d4a1e806507e22f4716b352fa91f2b227e/README.md",
+            "excerpt": "\n\n# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local\n\n## Repository structure\n\nThis is a multi-plugin marketplace repository. The root `.cursor-plugin/marketplace.json` lists all plugins, and each plugin has its own manifest:\n\n```\nplugins/\n├── .cursor-plugin/\n│   └── marketplace.json       # Marketplace manifest (lists all plugins)\n├── plugin-name/\n│   ├── .cursor-plugin/\n│   │   └── plugin.json        # Per-plugin manifest\n│   ├── skills/                # Agent skills (SKILL.md with frontmatter)\n│   ├── rules/                 # Cursor rules (.mdc files)\n│   ├── mcp.json               # MCP server definitions\n│   ├── README.md\n\n## License\n\nMIT\n"
+          },
+          {
+            "id": "S2",
+            "path": "pstack/skills/statechart/scripts/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/cursor/plugins/blob/93b916d4a1e806507e22f4716b352fa91f2b227e/pstack/skills/statechart/scripts/package.json",
+            "excerpt": "{\n  \"name\": \"@cursor-skill/statechart\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"test\": \"node --disable-warning=ExperimentalWarning --test test/*.test.ts\"\n  },\n  \"devDependencies\": {\n    \"fast-check\": \"4.5.3\"\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent enrichir leurs outils de travail. Chaque plugin est autonome et décrit par un manifeste JSON.",
+      "business_idea": "• Cible : PME de services logiciels ; Produit : Plateforme SaaS qui expose les plugins Cursor via une API REST ; difference : Permet d’intégrer les fonctionnalités de Cursor dans des environnements CI sans installer l’IDE\n• Cible : Freelance créateur de contenus techniques ; Produit : Extension navigateur qui reproduit les capacités du plugin Teaching en mode web ; difference : Supprime la dépendance à l’IDE tout en conservant le mapping de compétences"
+    },
+    {
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "stars": 319656,
+      "forks": 28506,
+      "gained": "1,917 stars today",
+      "gained_n": 1917,
+      "lang_color": "#89e051",
+      "category": "framework de méthodologie de développement logiciel",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Superpowers propose un cadre de compétences agentiques pour guider des agents de codage dans la spécification, la conception et l'implémentation de fonctionnalités, destiné aux développeurs souhaitant automatiser la génération de code tout en conservant le contrôle du design. [S1]",
+      "workflow": "Entrée : requête texte d'un développeur décrivant une fonctionnalité → Traitement : l'agent interroge l'utilisateur pour affiner le besoin, génère un spécimen découpé, attend validation, puis crée un plan d'implémentation TDD → Résultat : code source structuré livré dans le répertoire du projet, prêt à être exécuté. Limite : aucune preuve d'exécution réelle du flux, le README ne fournit que la description du processus. [S1]",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Automatiser la rédaction d'une API CRUD à partir d'une description fonctionnelle ; Résultat : Code généré avec tests unitaires initiaux, réduisant le temps de mise en place de 30 % (hypothèse non vérifiée).\n• Utilisateur : Équipe produit SaaS ; Tâche : Standardiser la création de prototypes fonctionnels pour des idées de micro‑SaaS ; Résultat : Livraison de prototypes cohérents en quelques heures, facilitant la validation rapide du concept.",
+      "products": "• Cible : PME souhaitant internaliser la génération de scripts d'intégration ; Produit : Plateforme web qui intègre Superpowers comme moteur de création de scripts personnalisés ; difference : Ajoute une interface UI, gestion des droits et un catalogue de templates, ce qui n'existe pas dans le dépôt brut.\n• Cible : Agences de développement ; Produit : Extension VS Code qui exploite Superpowers pour proposer des suggestions de code en temps réel basées sur des spécifications écrites ; difference : Transforme le framework CLI en outil d’assistance intégré à l’IDE, augmentant l’adhérence des développeurs.",
+      "monetization": "Acheteur : agences ou PME ; raison : gain de productivité sur la rédaction de code répétitif ; unité facturée : abonnement mensuel par utilisateur ou par projet ; modèle : SaaS avec forfait de base (≈30 €/mois) et supplément par nombre de scripts générés. Hypothèse basée sur la valeur perçue du gain de temps, sans données chiffrées.",
+      "build_plan": "Périmètre : UI web + API wrapper autour du runtime Superpowers ; brique réutilisée : le répertoire « skills » et le bootstrap du runtime ; travail à ajouter : interface React, authentification, facturation Stripe, hébergement Docker sur Fly.io ; exclusions : développement de nouveaux skills spécifiques, support multilingue ; dépendances : Node.js, FastAPI pour le backend, Supabase pour la DB ; coût estimé : 200 € de services cloud mensuels + 80 h de dev (≈8 semaines à temps plein). Délai : 6‑8 semaines conditionnel à la disponibilité des ressources.",
+      "limitations": "Licence non vérifiée, aucune garantie de compatibilité avec tous les agents listés, dépendance à des plugins tiers non documentés, maintenance du runtime non mesurée ; coûts d’infrastructure et de support à confirmer.",
+      "next_step": "Réaliser un prototype minimal qui génère un endpoint CRUD à partir d’une description texte, puis interroger un développeur freelance sur la clarté du plan proposé.",
+      "assessment": "Score 7 reflète la pertinence du cadre pour automatiser la génération de code, mais l'absence de preuves d'exécution et de licence claire limite la confiance. Fit_score 5 par défaut faute de profil détaillé. Les sources S1 et S2 soutiennent la description fonctionnelle et la structure du projet, mais aucune donnée de performance n’est fournie.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/README.md",
+            "excerpt": "\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren'\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n\n\n# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n\n\n## Table of Contents\n\n- [How it works](#how-it-works)\n- [Commercial Services](#commercial-services)\n- [Getting Started](#installation)\n  - [Claude Code](#claude-code)\n  - [Antigravity](#antigravity)\n  - [Codex App](#codex-app)\n  - [Codex CLI](#codex-cli)\n  - [Cursor](#cursor)\n  - [Devin CLI](#devin-cli)\n  - [Factory Droid](#factory-droid)\n  - [Gemini CLI](#gemini-cli)\n  - [GitHub Copilot CLI](#github-copilot-cli)\n  - [Grok Build CLI](#grok-build-cli)\n  - [Kimi Code](#kimi-code)\n  - [OpenCode](#opencode)\n  - [Pi](#pi)\n  - [Qwen Code](#qwen-code)\n  - [Hermes Agent](#hermes-agent)\n  - [Muse](#muse)\n- [The Basic Workflow](#the-basic-workflow)\n- [\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n\n\n#### Superpowers Marketplace\n\nThe Superpowers ma"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/package.json",
+            "excerpt": "{\n  \"name\": \"superpowers\",\n  \"version\": \"7.0.2\",\n  \"description\": \"Superpowers skills and runtime bootstrap for coding agents\",\n  \"type\": \"module\",\n  \"main\": \".opencode/plugins/superpowers.js\",\n  \"keywords\": [\n    \"pi-package\",\n    \"skills\",\n    \"tdd\",\n    \"debugging\",\n    \"collaboration\",\n    \"workflow\"\n  ],\n  \"pi\": {\n    \"extensions\": [\n      \"./.pi/extensions/superpowers.ts\"\n    ],\n    \"skills\": [\n      \"./skills\"\n    ]\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Superpowers propose un cadre de compétences agentiques pour guider des agents de codage dans la spécification, la conception et l'implémentation de fonctionnalités, destiné aux développeurs souhaitant automatiser la génération de code tout en conservant le contrôle du design. [S1]",
+      "business_idea": "• Cible : PME souhaitant internaliser la génération de scripts d'intégration ; Produit : Plateforme web qui intègre Superpowers comme moteur de création de scripts personnalisés ; difference : Ajoute une interface UI, gestion des droits et un catalogue de templates, ce qui n'existe pas dans le dépôt brut.\n• Cible : Agences de développement ; Produit : Extension VS Code qui exploite Superpowers pour proposer des suggestions de code en temps réel basées sur des spécifications écrites ; difference : Transforme le framework CLI en outil d’assistance intégré à l’IDE, augmentant l’adhérence des développeurs."
+    },
+    {
+      "name": "ag-ui-protocol/ag-ui",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "description": "AG-UI: the Agent-User Interaction Protocol. Bring Agents into Frontend Applications.",
+      "language": "TypeScript",
+      "stars": 20245,
+      "forks": 2082,
+      "gained": "1,445 stars today",
+      "gained_n": 1445,
+      "lang_color": "#3178c6",
+      "category": "Framework de protocole d'interaction agent‑utilisateur",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "AG‑UI fournit un protocole et un SDK TypeScript pour connecter des agents (ex. LLM) à des interfaces frontend, notamment Next.js ou des clients terminal. Il cible les développeurs qui souhaitent intégrer des agents conversationnels ou génératifs dans leurs applications web.",
+      "workflow": "Entrée : requête HTTP contenant un RunAgentInput (ex. texte de l'utilisateur). Traitement : le serveur agent (ex. Python) exécute le modèle, génère des événements streamés (chat token‑by‑token, UI générative). Résultat : le client frontend reçoit le flux et met à jour l'interface en temps réel. Limites : nécessite une clé OpenAI pour les templates, aucune authentification native, le serveur doit être déployé séparément. [S1]",
+      "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Ajouter un chat multi‑tour alimenté par LLM à son tableau de bord Next.js ; Résultat : Interface réactive où chaque token apparaît dès sa génération, avec possibilité d’annuler ou de reprendre la session\n• Utilisateur : Agence de design UI ; Tâche : Utiliser le composant Generative UI pour créer dynamiquement des formulaires basés sur les réponses de l’agent ; Résultat : Pages UI auto‑générées sans codage manuel, synchronisées avec l’état partagé de l’agent",
+      "products": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de chat support intégrant AG‑UI + modèle propriétaire ; difference : Offre une UI générative personnalisable et un état partagé entre agents, contrairement à un simple widget de chat\n• Cible : Freelance créateur de contenus vidéo ; Produit : Outil web de génération de scripts vidéo via AG‑UI et A2UI ; difference : Permet de co‑créer le script et le storyboard en temps réel, alors que les solutions existantes sont purement textuelles",
+      "monetization": "Acheteur : PME ou freelance. Raison de payer : gain de productivité grâce à l’automatisation du dialogue et à la génération d’UI dynamique. Unité facturée : abonnement mensuel par utilisateur actif. Modèle : abonnement tiered (ex. 20 €/mois pour 5 utilisateurs, 50 €/mois pour 20). Fourchette hypothétique basée sur la valeur perçue et les coûts d’infrastructure (hébergement, appels API OpenAI).",
+      "build_plan": "Périmètre : wrapper front‑end (Next.js) + serveur agent minimal (FastAPI). Brique réutilisée : SDK AG‑UI (TypeScript) et le serveur d’exemple Python. Travail à ajouter : authentification JWT, facturation Stripe, tableau de bord admin, monitoring. Exclusions : intégrations tierces (CRM, ERP). Dépendances : Node.js, pnpm, FastAPI, OpenAI API. Coût estimé : 0 € (infrastructure cloud free tier) + éventuels frais API. Délai : 3‑5 semaines conditionnel selon disponibilité du développeur.",
+      "limitations": "Licence non vérifiée, donc risque de non‑conformité ; aucune preuve de scalabilité du serveur d’exemple, dépendance à OpenAI pour les templates, besoin d’une clé API. Maintenance du protocole et des SDK à suivre. Non établi dans les extraits : conformité RGPD, support multilingue.",
+      "next_step": "Tester localement le flux RunAgentInput → serveur Python → client Next.js avec une clé OpenAI; demander à un développeur SaaS s’il trouve utile d’exposer un UI génératif via AG‑UI.",
+      "assessment": "Score 7 reflète la maturité du protocole (CLI, exemples, documentation) et son alignement avec les priorités du profil (frameworks TypeScript, IA générative). Fit_score reste neutre (5) faute de données sur le marché ou la demande spécifique. Les preuves proviennent des extraits S1 et S2.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "3416b86da4b3288e87f827c7f2759a7fa18b5231",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/3416b86da4b3288e87f827c7f2759a7fa18b5231/README.md",
+            "excerpt": " \n\n   \n\n\n\n## Quick start\n\n**Start a new app.** The CLI scaffolds a frontend ([CopilotKit](https://github.com/CopilotKit/CopilotKit) on Next.js, or a terminal client) wired to the agent framework you pick:\n\n```bash\nnpx create-ag-ui-app@latest\n```\n\nThen follow the printed next steps. The generated templates call OpenAI, so set your key before `npm run dev`:\n\n```bash\nexport OPENAI_API_KEY=\"sk-...\"\n```\n\n \n  Or speak the protocol directly: a 30-line agent server and client  \n \n\nAn AG-UI agent is any HTTP endpoint that accepts a `RunAgentInput` and streams events back. No API keys needed for this one.\n\n**1. The agent (Python).** Requires Python 3.9+.\n\n```bas\n\n## Features: what you can build\n\nEach building block maps to events in the spec, and each has a live demo in the [AG-UI Dojo](https://dojo.ag-ui.com).\n\n| Building block | What it does | Try it |\n| --- | --- | --- |\n| **Streaming chat** | Token-by-token messages across multi-turn sessions, with cancel and resume | [Demo](https://dojo.ag-ui.com/langgraph-fastapi/feature/agentic_chat) |\n| **Generative UI** | Agents render typed components, or declarative UI with [A2UI](https://github.com/google/A2UI) and MCP Apps | [Demo](https://dojo.ag-ui.com/langgraph-fastapi/feature/tool_based_generative_ui) |\n| **Shared state** | A typed store the agent and\n\n## How it works\n\n \n\nYour app starts a run by sending the agent a single `RunAgentInput"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/3416b86da4b3288e87f827c7f2759a7fa18b5231/package.json",
+            "excerpt": "{\n  \"name\": \"ag-ui\",\n  \"author\": \"Markus Ecker <markus.ecker@gmail.com>\",\n  \"private\": true,\n  \"scripts\": {\n    \"build\": \"nx run-many -t build\",\n    \"clean\": \"git clean -fdX --exclude=\\\".env\\\"\",\n    \"build:clean\": \"pnpm run clean && pnpm install && pnpm run build\",\n    \"dev\": \"pnpm run build --projects=sdks/** && nx watch --projects=sdks/** -- pnpm run build --projects=sdks/**\",\n    \"dev:integrations\": \"pnpm run build --projects=integrations/** && nx watch --projects=integrations/** -- pnpm run build --projects=integrations/**\",\n    \"dev:middlewares\": \"pnpm run build --projects=middlewares/** "
+          },
+          {
+            "id": "S3",
+            "path": "sdks/community/dart/example/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/ag-ui-protocol/ag-ui/blob/3416b86da4b3288e87f827c7f2759a7fa18b5231/sdks/community/dart/example/README.md",
+            "excerpt": "\n\n## Toolchain and installation\n\nUse Flutter **3.47.1** (Dart **3.13.1**) and Git LFS. The application requires Dart >=3.9 and Flutter >=3.35; the parent SDK retains its own independent SDK floor.\n\n```bash\n\n\n# AG-UI Flutter Dojo\n\nA Flutter example using the parent Dart SDK and the paired [Go example server](../../../go/example/server). The application replaces the previous CLI example. This first import preserves the source features; the following integration slices repair lifecycle, protocol reconciliation, and deterministic verification.\n\n\n\n# From the repository root:\ngit lfs pull\ncd sdks/community/dart/example\nflutter pub get\n```\n\nThe `ag_ui` dependency resolves to `../`. No sibling checkout, Python backend, pnpm, or private module is needed.\n\n\n\n## Run the pair\n\nIn terminal 1, with a valid `OPENAI_API_KEY` already set in that terminal:\n\n```bash\n\n\n# From the repository root:\ncd sdks/community/go/example/server\ngo run ./cmd\n```\n\nIn terminal 2:\n\n```bash\n\n\n# From the repository root:\ncd"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "AG‑UI fournit un protocole et un SDK TypeScript pour connecter des agents (ex. LLM) à des interfaces frontend, notamment Next.js ou des clients terminal. Il cible les développeurs qui souhaitent intégrer des agents conversationnels ou génératifs dans leurs applications web.",
+      "business_idea": "• Cible : PME souhaitant automatiser le support client ; Produit : Plateforme SaaS de chat support intégrant AG‑UI + modèle propriétaire ; difference : Offre une UI générative personnalisable et un état partagé entre agents, contrairement à un simple widget de chat\n• Cible : Freelance créateur de contenus vidéo ; Produit : Outil web de génération de scripts vidéo via AG‑UI et A2UI ; difference : Permet de co‑créer le script et le storyboard en temps réel, alors que les solutions existantes sont purement textuelles"
+    },
+    {
+      "name": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
+      "language": "TypeScript",
+      "stars": 13242,
+      "forks": 1335,
+      "gained": "691 stars today",
+      "gained_n": 691,
+      "lang_color": "#3178c6",
+      "category": "outil de collaboration et revue de code pour agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Plannotator est une interface TypeScript qui permet d’annoter des plans, spécifications, markdown ou HTML, de réviser des diff/PR et d’envoyer du feedback aux agents IA. Il cible les équipes de développeurs et de product managers qui travaillent avec des agents de code comme Claude.",
+      "workflow": "Entrée : un fichier de plan ou un PR est chargé dans l’interface. Traitement : le système affiche les artefacts, permet d’ajouter des annotations et de déclencher des hooks qui transmettent le feedback à l’agent via le binaire `plannotator`. Résultat : l’agent met à jour le plan ou le code et le résultat est visible dans l’Inbox. Limites : les données restent locales, aucune persistance serveur n’est fournie ([S1]).",
+      "use_cases": "• Utilisateur : Développeur senior ; Tâche : Revoir le code généré par un agent IA et ajouter des commentaires précis ; Résultat : Le code est corrigé automatiquement par l’agent après réception du feedback\n• Utilisateur : Chef de projet produit ; Tâche : Annoter un plan de fonctionnalité partagé avec l’équipe d’agents ; Résultat : Le plan évolue de façon collaborative, chaque modification étant tracée",
+      "products": "• Cible : PME tech ; Produit : Plateforme SaaS de revue de code IA avec stockage cloud ; difference : Ajoute une couche de persistance et d’authentification, transformant le binaire local en service multi‑utilisateur\n• Cible : Freelance IA ; Produit : Extension VS Code qui intègre les annotations Plannotator directement dans l’IDE ; difference : Supprime le besoin d’une application séparée, utilise les APIs locales du binaire",
+      "monetization": "Facturation par abonnement mensuel à l’équipe (ex. 15 €/utilisateur) pour l’accès au stockage cloud et aux fonctions d’automatisation; modèle freemium avec 100 annotations/mois gratuites.",
+      "build_plan": "Réutiliser le binaire `plannotator` et les hooks existants (S3). Ajouter un backend Node.js/TypeScript pour la persistance, une base PostgreSQL, et une couche d’authentification (ex. Supabase). Exclure la partie UI native du client. Dépendances : Fastify, Prisma. Coût estimé : 200 € de services cloud mensuels. Délai : 4‑6 semaines en sprint intensif.",
+      "limitations": "Licence MIT/Apache‑2.0 à vérifier (S2). Fonctionnalité uniquement locale, aucune garantie de scalabilité serveur. Maintenance du binaire non couverte par le projet original.",
+      "next_step": "Lancer un prototype serveur qui stocke les annotations et tester l’envoi de feedback à un agent Claude; interroger un développeur senior sur la valeur perçue du stockage partagé.",
+      "assessment": "Score 7 reflète la pertinence du produit pour les workflows IA et la disponibilité d’un binaire fonctionnel. Fit_score 5 par défaut, le profil ne fournit pas de contraintes spécifiques. Les preuves proviennent des extraits README et package.json ([S1],[S2]).",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "b766218280fd57363f93ebf314a5b59352ce165e",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/backnotprop/plannotator/blob/b766218280fd57363f93ebf314a5b59352ce165e/README.md",
+            "excerpt": " \n   \n \n\n\n\n \n   Everything you need to annotate and stay in the loop with your agents  \n   Inbox Surface • Artifacts • Code Review  \n   Annotate plans, specs, markdown, HTML, and other interactive artifacts. Review diffs and PRs. Send feedback to your agent. \n \n\n \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   &nbsp;&nbsp;\n   \n     \n     \n   &nbsp;&nbsp;\n   \n     \n     \n   \n \n\n## Install\n\nOne installer covers almost every agent. It installs the `plannotator` binary, auto-detects your installed agents, and configures hooks, skills, and slash commands for each:\n\n```bash\n\n\n### Uninstall\n\nThe safe default removes recognized Plannotator-installed components and keeps\nyour local plans, history, drafts, guides, and settings:\n\n```bash\nplannotator uninstall\n```\n\nUse `--purge` for a full removal of known local Plannotator data as well:\n\n```bash\nplannotator uninstall --purge\n```\n\n \n What uninstall removes, what it keeps, and when it stops \n\nPurge requires typing `purge` at the prompt and explains that the data is\nlocal-only: it is not stored on a Plannotator server and cannot be recovered.\nFor automation, pass `--yes` (or `-y`); non-interactive removal refuses to run\nwithout it. Use `--dry-run` to preview recognized wo\n\n## How it works\n\n\n\n# Plannotator\n\n**⭐️ NEW:** [Plannotator Inbox](https://plannotator.ai/inbox/"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/backnotprop/plannotator/blob/b766218280fd57363f93ebf314a5b59352ce165e/package.json",
+            "excerpt": "{\n  \"name\": \"plannotator\",\n  \"version\": \"0.29.0\",\n  \"private\": true,\n  \"description\": \"Interactive Plan Review for Claude Code - annotate plans visually, share with team, automatically send feedback\",\n  \"author\": \"backnotprop\",\n  \"license\": \"MIT OR Apache-2.0\",\n  \"bin\": {\n    \"plannotator\": \"bin/plannotator.js\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/backnotprop/plannotator.git\"\n  },\n  \"homepage\": \"https://github.com/backnotprop/plannotator\",\n  \"bugs\": {\n    \"url\": \"https://github.com/backnotprop/plannotator/issues\"\n  },\n  \"workspaces\": [\n    \"apps/*\",\n    "
+          },
+          {
+            "id": "S3",
+            "path": "packages/system/demo/serve.ts",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/backnotprop/plannotator/blob/b766218280fd57363f93ebf314a5b59352ce165e/packages/system/demo/serve.ts",
+            "excerpt": "// A page for screenshots of the drawing at rest: plannotator's own drawing\n// (the test fixture in test/fixtures/plannotator), drawn by SystemThumb and\n// SystemView in the Inbox's tokens. Not shipped; run it with `bun run demo` and open the printed address.\n//\n//   ?shot=thumb                       the card picture in a message card\n//   ?shot=view&sheet=C-001&reading=simple&layout=window|pane\n//   ?shot=card&pr=2543|2563           the review card with the change picture (&gate=1: the gate only; &open=1: PR 2563 open)\n//   ?shot=change&pr=2543&view=before|after|steps   the full System view of a PR (&gate=1, &open=1 as above)\n//   ?shot=plan                        a plan drawn dashed, as Shape's System (plan) tab\n//   ?shot=touches&layout=pane|window  three open PRs on the drawing at rest, each touched part labelled (&lead=1: a \"‹ Reviews\" control leads the bar)\n//   &mode=light|dark                  the theme mode (dark by default)\n//   &keys=off                         the single-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Plannotator est une interface TypeScript qui permet d’annoter des plans, spécifications, markdown ou HTML, de réviser des diff/PR et d’envoyer du feedback aux agents IA. Il cible les équipes de développeurs et de product managers qui travaillent avec des agents de code comme Claude.",
+      "business_idea": "• Cible : PME tech ; Produit : Plateforme SaaS de revue de code IA avec stockage cloud ; difference : Ajoute une couche de persistance et d’authentification, transformant le binaire local en service multi‑utilisateur\n• Cible : Freelance IA ; Produit : Extension VS Code qui intègre les annotations Plannotator directement dans l’IDE ; difference : Supprime le besoin d’une application séparée, utilise les APIs locales du binaire"
+    }
+  ]
+}
