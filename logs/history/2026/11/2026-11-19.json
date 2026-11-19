@@ -1,0 +1,547 @@
+{
+  "date": "2026-11-19",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "description": "Cursor plugin specification and official plugins",
+      "language": "TypeScript",
+      "stars": 17401,
+      "forks": 1919,
+      "gained": "314 stars today",
+      "gained_n": 314,
+      "lang_color": "#3178c6",
+      "category": "Marketplace de plugins pour IDE",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent enrichir leur environnement de travail avec des outils spécialisés [S1].",
+      "workflow": "Entrée : l'utilisateur installe un plugin via le manifeste `.cursor-plugin/plugin.json`. Traitement : le plugin s'intègre à Cursor, expose des compétences ou règles définies dans les dossiers `skills/` ou `rules/`. Résultat : fonctionnalités supplémentaires (ex. plan d’apprentissage, mise à jour incrémentale de mémoire) disponibles dans l'IDE. Limites : chaque plugin est autonome et dépend du support de Cursor ; aucune exécution de tests automatisés n’est fournie dans le dépôt [S2].",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Activer le plugin Teaching pour obtenir des plans d’apprentissage personnalisés. ; Résultat : Le développeur reçoit des rétrospectives de compétences directement dans l’IDE.\n• Utilisateur : Équipe de dev interne ; Tâche : Déployer le plugin Cursor Team Kit pour automatiser les flux CI/CD. ; Résultat : Les membres de l’équipe peuvent lancer des revues de code et des déploiements depuis l’interface Cursor.",
+      "products": "• Cible : PME tech ; Produit : Plateforme SaaS qui agrège les plugins Cursor et les expose via un catalogue web. ; difference : Permet aux équipes sans installation locale de profiter des plugins via un navigateur, contrairement au dépôt brut qui nécessite l’IDE Cursor.\n• Cible : Agences créatives ; Produit : Extension Chrome qui traduit les compétences des plugins en assistants de rédaction de contenu. ; difference : Transforme les compétences de type « Teaching » en suggestions de texte dans les éditeurs web, élargissant l’usage au-delà du code.",
+      "monetization": "Abonnement mensuel par utilisateur (ex. 12 €/mois) pour l’accès au catalogue SaaS, facturé par seat ; modèle freemium avec 5 plugins gratuits puis paiement à l’usage pour les plugins premium.",
+      "build_plan": "Périmètre : créer un backend Node.js (FastAPI ou Nest) qui lit les manifests et sert une UI React. Réutiliser les manifests existants comme brique de données. Ajouter l’authentification, le paiement Stripe et le déploiement Docker. Exclure le développement de nouveaux plugins natifs. Dépendances : React, Stripe SDK, Docker, Vercel/Fly.io. Coût estimé : 150 € de cloud + 200 € de licences tierces, délai 4‑6 semaines (prototype fonctionnel).",
+      "limitations": "Licence MIT mentionnée mais non vérifiée dans le README ; aucune garantie de compatibilité future avec Cursor. Le dépôt ne fournit pas de tests automatisés pour les plugins (voir S2). Maintenance requise pour suivre les évolutions de l’IDE.",
+      "next_step": "Tester l’installation d’un plugin (ex. Teaching) dans une instance locale de Cursor et recueillir le retour d’un développeur senior sur la valeur ajoutée.",
+      "assessment": "Score 7 reflète la pertinence du dépôt pour créer des outils B2B SaaS autour de plugins IDE, mais l’absence de tests et de licence claire limite la confiance. Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles spécifiques.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "e58dd043600587dbaf58ba315e7f2b38373eeb43",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/cursor/plugins/blob/e58dd043600587dbaf58ba315e7f2b38373eeb43/README.md",
+            "excerpt": "\n\n# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local\n\n## Repository structure\n\nThis is a multi-plugin marketplace repository. The root `.cursor-plugin/marketplace.json` lists all plugins, and each plugin has its own manifest:\n\n```\nplugins/\n├── .cursor-plugin/\n│   └── marketplace.json       # Marketplace manifest (lists all plugins)\n├── plugin-name/\n│   ├── .cursor-plugin/\n│   │   └── plugin.json        # Per-plugin manifest\n│   ├── skills/                # Agent skills (SKILL.md with frontmatter)\n│   ├── rules/                 # Cursor rules (.mdc files)\n│   ├── mcp.json               # MCP server definitions\n│   ├── README.md\n\n## License\n\nMIT\n"
+          },
+          {
+            "id": "S2",
+            "path": "pstack/skills/statechart/scripts/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/cursor/plugins/blob/e58dd043600587dbaf58ba315e7f2b38373eeb43/pstack/skills/statechart/scripts/package.json",
+            "excerpt": "{\n  \"name\": \"@cursor-skill/statechart\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"test\": \"node --disable-warning=ExperimentalWarning --test test/*.test.ts\"\n  },\n  \"devDependencies\": {\n    \"fast-check\": \"4.5.3\"\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent enrichir leur environnement de travail avec des outils spécialisés [S1].",
+      "business_idea": "• Cible : PME tech ; Produit : Plateforme SaaS qui agrège les plugins Cursor et les expose via un catalogue web. ; difference : Permet aux équipes sans installation locale de profiter des plugins via un navigateur, contrairement au dépôt brut qui nécessite l’IDE Cursor.\n• Cible : Agences créatives ; Produit : Extension Chrome qui traduit les compétences des plugins en assistants de rédaction de contenu. ; difference : Transforme les compétences de type « Teaching » en suggestions de texte dans les éditeurs web, élargissant l’usage au-delà du code."
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "language": "Python",
+      "stars": 60161,
+      "forks": 5459,
+      "gained": "389 stars today",
+      "gained_n": 389,
+      "lang_color": "#3572A5",
+      "category": "Framework de création et d'exécution de CLI agent‑native",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "CLI-Anything propose un hub de gestion de lignes de commande transformables en agents IA, destiné aux développeurs qui souhaitent automatiser des outils existants ou créer de nouveaux agents. Il cible les ingénieurs et les équipes produit qui ont besoin d’intégrer rapidement des CLI dans des workflows automatisés.",
+      "workflow": "Entrée : nom d’un CLI ou script (ex. gimp) → le hub télécharge le paquet via `cli-hub install` puis génère un harness en 7 phases [ S1 ]. Traitement : le harness expose une API compatible agent, orchestre les appels système et les dépendances externes. Résultat : l’agent peut invoquer le CLI via des prompts texte ou des appels API, avec la contrainte que les outils sous‑jacents (ex. GIMP, Blender) doivent être installés séparément [ S1 ].",
+      "use_cases": "• Développeur SaaS : utilise le harness n8n pour automatiser la création de tickets support à partir d’e‑mails, l’agent déclenche `cli-hub launch n8n` et transmet les données via l’API n8n [ S2 ].\n• Agence créative : crée un agent qui lance GIMP pour appliquer un lot de filtres sur des images, l’utilisateur décrit la transformation en texte et l’agent orchestre le CLI GIMP via le harness [ S1 ].",
+      "products": "• cible : PME de services numériques ; produit : Plateforme SaaS qui expose les harness CLI‑Anything comme services REST ; différence : Le dépôt brut fournit uniquement le générateur de harness ; la plateforme ajoute l’hébergement, la facturation et la gestion multi‑tenant.\n• cible : Freelance en automatisation ; produit : CLI‑Anything + module n8n packagé comme image Docker prête à déployer ; différence : Le dépôt propose le code source ; le pack Docker inclut toutes les dépendances et un tableau de bord simplifié, réduisant le temps d’intégration.",
+      "monetization": "Acheteur : équipes produit ou consultants IA. Raison de payer : gain de productivité en réutilisant des CLI existants sans développement lourd. Unité facturée : abonnement mensuel par instance hébergée. Modèle : abonnement de base + tarif à l’usage pour les appels d’API externes. Hypothèse de fourchette : 30 €–80 € / mois selon le nombre de harness actifs, justifiée par le coût d’infrastructure cloud et le support.",
+      "build_plan": "Périmètre limité : créer une API REST autour du harness n8n, empaqueter dans Docker, ajouter authentification JWT. Briques réutilisées : code du hub, harness n8n, Dockerfile existant. Travail à ajouter : UI de gestion, facturation Stripe, monitoring. Exclusions : support des CLI graphiques lourds (ex. GIMP) qui nécessitent un serveur X. Dépendances : Python ≥ 3.10, FastAPI, Docker, Stripe SDK. Coût estimé : 10 h de développement initial + 5 h de tests, soit environ 1 semaine à temps plein.",
+      "limitations": "Licence du dépôt non vérifiée [ S1 ]; dépendance à des outils externes non empaquetés (ex. GIMP) [ S1 ]; aucune preuve de scalabilité ou de conformité RGPD dans les extraits. Maintenance du hub et des wrappers reste à définir.",
+      "next_step": "Réaliser un prototype d’API qui lance un harness n8n et mesurer le temps de réponse; interroger un product manager d’une PME sur l’intérêt d’un tel service pour automatiser leurs flux internes.",
+      "assessment": "Score 7 reflète la pertinence du concept pour les priorités B2B et IA du profil, mais l’absence de licence claire et de preuves de scalabilité limite l’évaluation. Fit_score 5 par défaut car aucune donnée de région ou de délai n’est fournie dans les sources.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "34f519533bc175d2fe287ab8316b0dd99bb9cc43",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/README.md",
+            "excerpt": "  &nbsp; CLI-Anything: Making ALL Software Agent-Native \n\n \n       &#32;   &#32;       \n \n\n \n   Today's Software Serves Humans👨‍💻. Tomorrow's Users will be Agents🤖. \nCLI-Anything: Bridging the Gap Between AI Agents and the World's Software  \n \n\n**🌐 [CLI-Hub](https://hkuds.github.io/CLI-Anything/)**: `pip install cli-anything-hub` then `cli-hub install  ` — browse, install, and manage all community-built CLIs. Want to add your own?\n\n## 🚀 Quick Start\n\nCLI-Anything has two equally useful starting points:\n\n| Goal | Start Here |\n|------|------------|\n| **Use the existing CLI ecosystem now** | Install `cli-anything-hub`, browse the registry, and install ready-made CLIs. |\n| **Build a new agent-native CLI** | Install the CLI-Anything plugin/skill for your agent, then run the 7-phase harness generator. |\n\n \n  Phase 1: Empower yourself — your CLI toolkit  \n\nInstall the CLI-Hub package manager first. It lets you browse, search, inspect, install, update, uninstall, and launch CLI-Anything harnesses plus public third-party CLIs from one command.\n\n**PIP**\n\n```bash\npip install c\n\n# Install and try a CLI immediately\ncli-hub install gimp\ncli-hub info gimp\ncli-hub launch gimp\n```\n\n> Some CLIs wrap real desktop or backend software. If a selected CLI needs GIMP, Blender, LibreOffice, or another upstream tool, install that upstream application too.\n\n \n\n \n  Phase 1.5: Empower y"
+          },
+          {
+            "id": "S2",
+            "path": "n8n/agent-harness/pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/n8n/agent-harness/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"setuptools>=68.0,<76.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"cli-anything-n8n\"\nversion = \"2.4.7\"\ndescription = \"CLI harness for n8n workflow automation — CLI-Anything pattern (n8n API v1.1.1)\"\nreadme = \"cli_anything/n8n/README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.10\"\nauthors = [\n    {name = \"Juan Jose Sanchez Bernal\", email = \"info@webcomunica.solutions\"},\n]\nmaintainers = [\n    {name = \"Webcomunica Soluciones Informaticas\", email = \"info@webcomunica.solutions\"},\n]\nkeywords = [\"n8n\", \"cli\", \"workflow\", \"automation\", \"c"
+          },
+          {
+            "id": "S3",
+            "path": "macrocli/agent-harness/DEMO.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/macrocli/agent-harness/DEMO.md",
+            "excerpt": "\n\n# 等价于: pip install mss Pillow numpy pynput\n```\n\n---\n\n\n\n# MacroCLI Demo — gedit 完整测试方案\n\n本文档记录 MacroCLI 在 **Linux 无头服务器 + Xvfb + noVNC** 环境下的完整测试过程，\n包括虚拟桌面搭建、VNC 远程查看、宏执行和录制回放的全链路验证。\n\n---\n\n\n\n## 环境架构\n\n```\n本地浏览器\n    │  SSH 隧道 (16080 → 16080)\n    ▼\n远程 Linux 服务器\n    │\n    ├─ Xvfb :99         虚拟显示器 1920x1080\n    ├─ openbox          窗口管理器\n    ├─ x11vnc           VNC 服务 (只监听 localhost:5900)\n    ├─ websockify       WebSocket → VNC 代理 (16080)\n    └─ gedit            被操控的 GUI 应用\n```\n\n---\n\n\n\n## 第一步：安装依赖\n\n```bash\n\n\n# 虚拟显示器和 VNC\nsudo apt install xvfb x11vnc openbox xdotool wmctrl\n\n\n\n# GUI 应用（demo 目标）\nsudo apt install gedit\n\n\n\n# noVNC（浏览器查看桌面）\nsudo apt install novnc websockify\n\n\n\n# AT-SPI 语义控制（可选，GTK "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "CLI-Anything propose un hub de gestion de lignes de commande transformables en agents IA, destiné aux développeurs qui souhaitent automatiser des outils existants ou créer de nouveaux agents. Il cible les ingénieurs et les équipes produit qui ont besoin d’intégrer rapidement des CLI dans des workflows automatisés.",
+      "business_idea": "• cible : PME de services numériques ; produit : Plateforme SaaS qui expose les harness CLI‑Anything comme services REST ; différence : Le dépôt brut fournit uniquement le générateur de harness ; la plateforme ajoute l’hébergement, la facturation et la gestion multi‑tenant.\n• cible : Freelance en automatisation ; produit : CLI‑Anything + module n8n packagé comme image Docker prête à déployer ; différence : Le dépôt propose le code source ; le pack Docker inclut toutes les dépendances et un tableau de bord simplifié, réduisant le temps d’intégration."
+    },
+    {
+      "name": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+      "language": "Python",
+      "stars": 70451,
+      "forks": 6272,
+      "gained": "1,059 stars today",
+      "gained_n": 1059,
+      "lang_color": "#3572A5",
+      "category": "agent‑skill / recherche automatisée",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis génère un résumé synthétique. Destiné aux développeurs ou marketeurs qui ont besoin d’une veille rapide sur un sujet donné.",
+      "workflow": "Entrée : texte du sujet recherché → Traitement : le skill lance des requêtes parallèles sur les sources listées, pondère les résultats par engagement, fraîcheur et pertinence, agrège les extraits (transcriptions YouTube, commentaires Reddit, etc.) → Résultat : résumé structuré présenté à l’utilisateur. Limites : dépend de la disponibilité des APIs publiques et ne garantit pas l’exhaustivité des données (source : S1).",
+      "use_cases": "• Utilisateur : Product manager ; Tâche : Obtenir un aperçu des tendances du marché pour un nouveau produit ; Résultat : Rapport de veille contenant les mentions clés, scores d’engagement et liens vers les sources\n• Utilisateur : Créateur de contenu ; Tâche : Collecter les points de vue les plus populaires sur un sujet d’actualité ; Résultat : Script de vidéo ou article enrichi de citations Reddit, tweets et extraits YouTube",
+      "products": "• Cible : PME souhaitant automatiser leur veille concurrentielle ; Produit : SaaS web qui expose l’API du skill avec tableau de bord personnalisable ; difference : Interface graphique et planification périodique, alors que le dépôt ne fournit qu’un skill CLI\n• Cible : Agences de communication ; Produit : Extension Chrome qui déclenche le skill depuis le navigateur et injecte le résumé dans la page active ; difference : Intégration frontale immédiate, alors que le dépôt nécessite une invocation via un agent externe",
+      "monetization": "Facturation par abonnement mensuel aux agences (ex. 49 €/mois) pour un nombre limité de requêtes, avec tarif à l’usage (0,02 €/requête) au‑delà du quota gratuit. Le modèle repose sur la valeur du gain de temps de veille.",
+      "build_plan": "Réutiliser le skill existant (code Python + Go) comme micro‑service Docker ; ajouter une API REST (FastAPI) et un tableau de bord React. Travail supplémentaire : authentification, facturation Stripe, monitoring. Exclusions : création de nouvelles sources de données. Dépendances : mcp‑go (S2), FastAPI, PostgreSQL. Coût estimé : 150 h de développement, hébergement cloud (~30 €/mois). Délai : 4‑6 semaines en mode itératif.",
+      "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance aux APIs tierces, maintenance des scrapers. Coûts d’infrastructure variables selon le volume de requêtes.",
+      "next_step": "Tester l’appel du skill sur un sujet réel via l’API Groq gratuite et recueillir le feedback d’un product manager sur la pertinence du résumé.",
+      "assessment": "Le projet obtient un score moyen (6) grâce à la pertinence du problème résolu et à la disponibilité d’un code fonctionnel (S1, S2). Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle stricte. Les preuves sont limitées aux extraits fournis ; aucune donnée de performance chiffrée n’est disponible.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "262391603f3c2807606bffa0170547273fc273e5",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/262391603f3c2807606bffa0170547273fc273e5/README.md",
+            "excerpt": "\n\n## Install\n\n| Surface | Install | Updates |\n|---------|---------|---------|\n| **Claude Code** (recommended) | `/plugin marketplace add mvanhorn/last30days-skill` | Auto via marketplace, or `claude plugin update last30days@last30days-skill` |\n| **Grok** (xAI Build CLI) | `grok plugin marketplace add mvanhorn/last30days-skill` then `grok plugin install last30days` | `grok plugin update last30days` |\n| **Grok Bot** | [Add it from the Grok Bot marketplace](https://x.ai/bot/marketplace/bots/last30days) | Managed by the marketplace |\n| **Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts** | `npx skills a\n\n## Showcase: community research feeds\n\nPublished a recurring AI update, market watch, or wonderfully narrow obsession with last30days? Share the public library URL—or the Atom URL after hosting `feed.xml` on a static host—in [the community showcase thread](https://github.com/mvanhorn/last30days-skill/issues/532). Community feeds will be linked here as their owners submit them; the thread is the collection point in the meantime.\n\n\n\n## How it works\n\n1. **You type a topic.** Person, company, product, technology, \"X vs Y.\" Anything.\n2. **The agent resolves who matters.** Finds X handles (including founders), GitHub repos, subreddits, TikTok hashtags, YouTube channels. For \"Kanye West\" it knows r/hiphopheads, @kanyewest, and \"bully review\" on YouTube. For \"OpenClaw\" it resolves openclaw/openclaw on GitHub and fetches live star counts.\n3. **All sources searched in parallel.** Multi-query expansion. Results scored by engagement, relevance, freshness.\n4. **The depth nobody else has.** Full YouTube transcripts from reaction videos. Top Reddit comments with upvote counts. TikTok\n\n# /last30days\n\nEnglish | [Français](README.fr.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [العربية](README.ar.md) | [فارسی](README.fa.md) | [Türkçe](README.tr.md)\n\n \n   \n \n\n \n   \n     \n   \n   \n   \n     \n   \n   \n   \n     \n   \n \n\n**An AI agent-led search engine scored by upvotes, likes, and real money - not editors.**\n\nThi"
+          },
+          {
+            "id": "S2",
+            "path": "mcp/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/262391603f3c2807606bffa0170547273fc273e5/mcp/go.mod",
+            "excerpt": "module github.com/mvanhorn/last30days-skill/mcp\n\ngo 1.25.5\n\nrequire (\n\tgithub.com/mark3labs/mcp-go v1.5.0\n\tgopkg.in/yaml.v3 v3.0.1\n)\n\nrequire (\n\tgithub.com/google/jsonschema-go v0.4.2 // indirect\n\tgithub.com/google/uuid v1.6.0 // indirect\n\tgithub.com/santhosh-tekuri/jsonschema/v6 v6.0.2 // indirect\n\tgithub.com/spf13/cast v1.7.1 // indirect\n\tgithub.com/yosida95/uritemplate/v3 v3.0.2 // indirect\n\tgolang.org/x/text v0.39.0 // indirect\n)\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis génère un résumé synthétique. Destiné aux développeurs ou marketeurs qui ont besoin d’une veille rapide sur un sujet donné.",
+      "business_idea": "• Cible : PME souhaitant automatiser leur veille concurrentielle ; Produit : SaaS web qui expose l’API du skill avec tableau de bord personnalisable ; difference : Interface graphique et planification périodique, alors que le dépôt ne fournit qu’un skill CLI\n• Cible : Agences de communication ; Produit : Extension Chrome qui déclenche le skill depuis le navigateur et injecte le résumé dans la page active ; difference : Intégration frontale immédiate, alors que le dépôt nécessite une invocation via un agent externe"
+    },
+    {
+      "name": "getarcaneapp/arcane",
+      "url": "https://github.com/getarcaneapp/arcane",
+      "description": "Modern Docker Management, Designed for Everyone",
+      "language": "Go",
+      "stars": 10038,
+      "forks": 571,
+      "gained": "547 stars today",
+      "gained_n": 547,
+      "lang_color": "#00ADD8",
+      "category": "outil de gestion Docker (application native)",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "Arcane est une interface moderne pour gérer des conteneurs Docker, destinée aux développeurs et aux équipes qui souhaitent simplifier le déploiement sans maîtriser la ligne de commande.",
+      "workflow": "Entrée : fichier de configuration YAML fourni par l'utilisateur → Traitement : le CLI Go lit le YAML, utilise les bibliothèques Docker (github.com/docker/go-connections) pour créer, démarrer ou arrêter des conteneurs → Résultat : état du conteneur affiché dans le terminal avec une UI TUI (bubbles, bubbletea). Limites : aucune interface web, dépendance à Docker installé localement, aucune preuve de persistance de configuration [S1][S2].",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Lancer rapidement un environnement de test pour une API REST ; Résultat : Conteneur démarré en une minute via la commande `arcane up`\n• Utilisateur : Petite équipe DevOps ; Tâche : Standardiser le démarrage de services de base (db, cache) sur les postes de travail ; Résultat : Tous les membres utilisent le même fichier de configuration, réduisant les écarts de version",
+      "products": "• Cible : PME qui héberge leurs services en interne ; Produit : Version web d’Arcane avec tableau de bord SaaS ; difference : Ajoute une UI graphique, multi‑utilisateur et stockage centralisé des configurations\n• Cible : Agences créatives ; Produit : Wrapper CLI intégré à un outil de génération de sites statiques ; difference : Automatise le build Docker après chaque export, éliminant l’étape manuelle",
+      "monetization": "Facturation par abonnement mensuel aux équipes (ex. 15 €/mois) pour l’accès à la version web, incluant hébergement, mises à jour et support; modèle freemium avec 5 projets limités en version gratuite.",
+      "build_plan": "Réutiliser le CLI existant (module getarcane.dev/cli/v3) comme backend, ajouter une API REST (FastAPI) et une UI React/Next.js; exclure la réécriture du moteur Docker, dépendances Docker restent inchangées; coût estimé 3 k€ de développement, 1 k€ d’infrastructure cloud, délai 6‑8 semaines conditionnel à la disponibilité d’un développeur full‑stack.",
+      "limitations": "Licence non vérifiée, aucune preuve de conformité RGPD, dépendance à Docker local, maintenance du CLI à charge du contributeur original; coûts d’infrastructure non établis [S1][S2].",
+      "next_step": "Réaliser un prototype d’API qui expose la commande `arcane up` puis interroger un responsable technique d’une PME sur la valeur d’une UI web centralisée.",
+      "assessment": "Score 6 reflète la maturité du code Go et la documentation disponible, mais l’absence de preuves d’usage réel et de licence claire limite l’attractivité; fit_score 5 par défaut faute de profil détaillé.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "26cefebba1b20f59b872bf2a2b0a05df99de11b6",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/getarcaneapp/arcane/blob/26cefebba1b20f59b872bf2a2b0a05df99de11b6/README.md",
+            "excerpt": "> [!NOTE]\n> The `main` branch is the v3 version of Arcane See the [`release/2.x.x`](https://github.com/getarcaneapp/arcane/tree/release/2.x.x) branch for the last 2.x release.\n\n> [!IMPORTANT]\n> Feature requests have moved to [Discussions](https://github.com/getarcaneapp/arcane/discussions/categories/feature-requests). Open new requests and upvote existing ones there; issues are only used for Bug reports now to help maintain priority on those issu\n\n## Documentation\n\nFor setup instructions, configuration details, and development guides, visit the **[official documentation site](https://getarcane.app)**.\n\n\n\n## Sponsors\n\nThis project is supported by the following amazing people:\n\n \n   \n     \n   \n \n\n\n\n## Security & Transparency\n\nView the Software Bill of Materials (SBOM) for Arcane at **[getarcane.app/sbom](https://getarcane.app/sbom)**.\n\n\n\n## Translating\n\nHelp translate Arcane on Crowdin: https://crowdin.com/project/arcane-docker-management\n\nThank you for checking out Arcane! Your feedback and contributions are always welcome.\n\n \n"
+          },
+          {
+            "id": "S2",
+            "path": "cli/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/getarcaneapp/arcane/blob/26cefebba1b20f59b872bf2a2b0a05df99de11b6/cli/go.mod",
+            "excerpt": "module getarcane.dev/cli/v3\n\ngo 1.27.4\n\nreplace getarcane.dev/types/v3 => ../types\n\nrequire (\n\tcharm.land/bubbles/v2 v2.2.1\n\tcharm.land/bubbletea/v2 v2.1.2\n\tcharm.land/fang/v2 v2.0.1\n\tcharm.land/lipgloss/v2 v2.1.1\n\tcharm.land/log/v2 v2.0.1\n\tgetarcane.dev/types/v3 v3.0.0\n\tgithub.com/charmbracelet/colorprofile v0.4.3\n\tgithub.com/charmbracelet/x/ansi v0.11.10\n\tgithub.com/charmbracelet/x/term v0.2.2\n\tgithub.com/creack/pty v1.1.24\n\tgithub.com/docker/go-connections v0.8.2\n\tgithub.com/docker/go-units v0.5.0\n\tgithub.com/gofrs/flock v0.13.2\n\tgithub.com/mattn/go-runewidth v0.0.31\n\tgithub.com/muesli/canc"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Arcane est une interface moderne pour gérer des conteneurs Docker, destinée aux développeurs et aux équipes qui souhaitent simplifier le déploiement sans maîtriser la ligne de commande.",
+      "business_idea": "• Cible : PME qui héberge leurs services en interne ; Produit : Version web d’Arcane avec tableau de bord SaaS ; difference : Ajoute une UI graphique, multi‑utilisateur et stockage centralisé des configurations\n• Cible : Agences créatives ; Produit : Wrapper CLI intégré à un outil de génération de sites statiques ; difference : Automatise le build Docker après chaque export, éliminant l’étape manuelle"
+    },
+    {
+      "name": "NVIDIA/SkillEvaluator",
+      "url": "https://github.com/NVIDIA/SkillEvaluator",
+      "description": "Multi-tier framework for evaluating AI agent skills and plugins with quality gates, security scanning, harness compatibility checks, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior. Ships reusable CI templates that bring every check to any repository.",
+      "language": "Python",
+      "stars": 3981,
+      "forks": 534,
+      "gained": "312 stars today",
+      "gained_n": 312,
+      "lang_color": "#3572A5",
+      "category": "Framework d'évaluation de compétences d'agents IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "SkillEvaluator est une bibliothèque Python qui permet d'évaluer la qualité, la sécurité et la compatibilité des compétences d'agents IA. Elle cible les développeurs d'agents IA souhaitant automatiser les tests de leurs plugins.",
+      "workflow": "Entrée : dépôt contenant des compétences d'agent IA → Traitement : le CLI exécute des scans de qualité, de sécurité, de chevauchement sémantique et génère un jeu de données synthétique → Résultat : rapport détaillé avec scores et verdicts (ex. 98.2/100) [S3]; le processus repose sur des templates CI réutilisables [S1]. Limites : nécessite Python 3.12‑3.14, dépend de tiers non vérifiés, aucune preuve d'intégration cloud native.",
+      "use_cases": "• Utilisateur : Équipe de R&D IA ; Tâche : Intégrer un nouveau skill dans un agent conversationnel ; Résultat : Le skill passe les portes de qualité (≥100) ou est rejeté avec diagnostics précis\n• Utilisateur : Fournisseur SaaS d'agents IA ; Tâche : Automatiser la validation de plugins tiers avant publication ; Résultat : Pipeline CI génère un rapport de conformité et bloque les versions non conformes",
+      "products": "• Cible : PME développant des assistants virtuels ; Produit : Service SaaS d'évaluation continue des skills via API ; difference : Abstraction du CLI en service hébergé, facturation à l'évaluation\n• Cible : Indépendants créant des agents open‑source ; Produit : Extension VS Code pour lancer les scans localement ; difference : Intégration IDE, supprime le besoin de CI externe",
+      "monetization": "Acheteur : entreprises SaaS d'agents IA ; raison : garantir la fiabilité avant mise en production ; unité facturée : évaluation de skill (par run) ; modèle : paiement à l’usage avec forfait mensuel de base (hypothèse 50 €/mois) justifié par le coût d'automatisation des tests.",
+      "build_plan": "Périmètre : API wrapper autour du CLI existant, UI minimaliste, hébergement Docker sur Vercel/Fly.io. Brique réutilisée : core Python de SkillEvaluator. Travail à ajouter : couche HTTP, authentification, facturation Stripe, tableau de bord. Exclusions : génération de jeux de données synthétiques avancés. Dépendances : Python, FastAPI, Docker, Stripe SDK. Coût estimé : 0 $ (cloud gratuit) + 0 $ (licence Apache‑2.0). Délai : 3‑4 semaines (prototype fonctionnel).",
+      "limitations": "Contraintes établies : licence Apache‑2.0 du projet, besoin de Python 3.12‑3.14, dépendances tierces non auditées [S1]; inconnues : performance à grande échelle, conformité RGPD non vérifiée, support multilingue. Maintenance : mise à jour des scans de sécurité à chaque version du framework.",
+      "next_step": "Réaliser un test technique : appeler l'API du CLI sur un skill simple et vérifier le format du rapport; Question utilisateur : « Quels critères de qualité sont les plus critiques pour votre pipeline CI ? »",
+      "assessment": "Score 7 reflète la maturité du framework (CI templates, rapports détaillés) mais l'absence de produit SaaS prêt à l'emploi limite l'adéquation immédiate (fit_score 5). Le projet correspond aux priorités B2B/Wrapper SaaS du profil, toutefois les preuves d'intégration cloud et de monétisation restent non établies dans les extraits.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "798031f63be4f829be343a8d43c91ec2cca0909e",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/NVIDIA/SkillEvaluator/blob/798031f63be4f829be343a8d43c91ec2cca0909e/README.md",
+            "excerpt": " \n\n\n\n## Quickstart\n\n\n\n## Installation and third-party software\n\nThis project will download and install additional third-party open source\nsoftware projects. Review the license terms of these open source projects before\nuse.\n\n\n\n#  \n\n Evaluate and improve AI agent skills and plugins: quality, security, overlap, compatibility, and real impact across agents \n\n[ ](LICENSE)\n[ ](https://www.python.org/)\n[ ](https://pypi.org/project/skillevaluator/)\n[ ](https://docs.nvidia.com/skills/skillevaluator/repository-integration#copy-a-template)\n[ ](https://docs.nvidia.com/skills/skillevaluator/)\n[ ](https://arxiv.org/abs/2608.20614)\n[ ](https://developer.nvidia.com/blog/evaluating-ai-agent-skill-performance-with-nvidia-skillevaluator/)\n[ ](https://github.com/NVIDIA/SkillEvaluator/stargazers)\n[ ](https://github.com/NVIDIA/SkillEvaluator/forks)\n\n \n\n> 📺 **Livestream:** [Ask the E\n\n## Get started\n\nInstall the CLI in a Python 3.12–3.14 environment:\n\n```bash\npip install skillevaluator\n```\n\n  Or use uv \n\n```bash\nuv tool install --python 3.13 skillevaluator\n```\n\n \n\nFor uv setup or direct GitHub source installation, see\n[Installation](https://docs.nvidia.com/skills/skillevaluator/installation).\n\nThen"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/NVIDIA/SkillEvaluator/blob/798031f63be4f829be343a8d43c91ec2cca0909e/pyproject.toml",
+            "excerpt": "# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n# SPDX-License-Identifier: Apache-2.0\n\n[build-system]\nbuild-backend = \"setuptools.build_meta\"\nrequires = [\"setuptools >= 77\", \"wheel\"]\n\n[project]\nname = \"skillevaluator\"\nversion = \"1.0.1\"\ndescription = \"Multi-tier framework for evaluating AI agent skills with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation.\"\nauthors = [{ name = \"NVIDIA Corporation\" }]\nreadme = \"README.md\"\nkeywords = [\n    \"skills-evaluation\",\n    \"skills\",\n    \"skill-u"
+          },
+          {
+            "id": "S3",
+            "path": "ci/examples/README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/NVIDIA/SkillEvaluator/blob/798031f63be4f829be343a8d43c91ec2cca0909e/ci/examples/README.md",
+            "excerpt": "\n\n# SkillEvaluator CI examples\n\nThese examples live in the public NVIDIA/SkillEvaluator repository. You do not\nneed access to a personal demo repository, private pipeline or hosted report to\nview them. For setup, [copy a template](../templates/README.md).\n\n\n\n## Report preview\n\n \n\nThis captured example shows a skill scoring **98.2/100** against a **100-point**\nthreshold. The scan fails because it is below the configured threshold. Quality\nscore and scan verdict are separate; security and other required checks also\naffect the verdict. This preview is an example, not a result for your repository.\n\nGitHub and GitLab retain the HTML report as a job artifact. Open `index.html` in\nthe downloaded artifact, then select a skill for its detailed findings.\n\n\n\n## GitHub Actions summary\n\nA shortened illustrative example:\n\n```text\nTier 1 scan result: FAILED\n1 skill · 0 passed · 1 failed\nProblem: Quality score 98.2/100 is below the required 100/100\n```\n\nThe full report identifies the quality checks "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "SkillEvaluator est une bibliothèque Python qui permet d'évaluer la qualité, la sécurité et la compatibilité des compétences d'agents IA. Elle cible les développeurs d'agents IA souhaitant automatiser les tests de leurs plugins.",
+      "business_idea": "• Cible : PME développant des assistants virtuels ; Produit : Service SaaS d'évaluation continue des skills via API ; difference : Abstraction du CLI en service hébergé, facturation à l'évaluation\n• Cible : Indépendants créant des agents open‑source ; Produit : Extension VS Code pour lancer les scans localement ; difference : Intégration IDE, supprime le besoin de CI externe"
+    },
+    {
+      "name": "nvm-sh/nvm",
+      "url": "https://github.com/nvm-sh/nvm",
+      "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
+      "language": "Shell",
+      "stars": 96233,
+      "forks": 10798,
+      "gained": "237 stars today",
+      "gained_n": 237,
+      "lang_color": "#89e051",
+      "category": "outil de gestion d'environnement Node.js (script Bash)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "nvm est un script Bash POSIX‑compliant qui permet à un développeur de sélectionner et d’installer différentes versions de Node.js sur une même machine, facilitant la gestion des dépendances de projets multiples.",
+      "workflow": "Entrée : version souhaitée de Node.js (ex. « 14.21.3 ») → Traitement : le script nvm télécharge, compile et active la version via `nvm install` et ajuste les variables d’environnement (`PATH`, `NVM_DIR`) ; Résultat : la version demandée devient active pour les commandes `node` et `npm`. Sources : procédure d’installation et d’utilisation décrite dans le README [S1]. Limites : nécessite un shell compatible, ne fonctionne pas comme binaire autonome, dépend du profil Bash et de l’accès réseau pour le téléchargement.",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Passer rapidement d’un projet utilisant Node 12 à un autre nécessitant Node 18 ; Résultat : Changement de version en quelques secondes sans re‑installer le runtime, réduisant les conflits de dépendances\n• Utilisateur : Équipe CI/CD ; Tâche : Installer une version précise de Node dans un conteneur Docker pour les tests automatisés ; Résultat : Dockerfile reproduit exactement l’environnement de build, garantissant la reproductibilité des builds",
+      "products": "• Cible : PME développeuses d’applications web ; Produit : Interface web de gestion de versions Node (wrapper SaaS) qui expose les fonctions de nvm via une API REST ; difference : Supprime la nécessité de manipuler le shell, ajoute une UI graphique et la persistance des configurations par projet\n• Cible : Agences de marketing digital ; Produit : Service de build on‑demand qui utilise nvm en arrière‑plan pour compiler des sites statiques avec la version Node requise ; difference : Automatise le choix de version, facture à l’usage (builds) et intègre la facturation Stripe",
+      "monetization": "Acheteur : agences ou freelances payant pour un accès à l’interface web ou à l’API ; raison : gain de temps et réduction d’erreurs de version ; unité facturée : abonnement mensuel ou paiement à la build ; fourchette de prix hypothétique : 15‑50 €/mois selon le nombre de builds, justifiée par le coût d’infrastructure cloud et le support.",
+      "build_plan": "Périmètre limité : créer une API Node.js (FastAPI/Express) qui invoque le script nvm via `child_process`; brique réutilisée : le script nvm existant ; travail à ajouter : UI React, authentification, gestion multi‑tenant, logs; exclusions : refonte du script Bash, support Windows natif; dépendances : Docker, PostgreSQL pour la persistance, Vercel/Fly.io pour le déploiement; coût estimé : 200‑300 $ de services cloud mensuels; délai : 4‑6 semaines (prototype fonctionnel) sous condition d’accès aux dépôts et à un environnement CI.",
+      "limitations": "Contraintes établies : nécessite un shell Bash, dépend du réseau pour télécharger les binaires, licence non vérifiée dans le dépôt ; inconnues : compatibilité avec Windows PowerShell, support de versions futures de Node ; maintenance : mise à jour du script nvm et des images Docker seront nécessaires.",
+      "next_step": "Réaliser un test technique : créer un petit service qui reçoit une version Node via HTTP et exécute `nvm install` puis `node -v` pour vérifier le résultat; question à poser à un potentiel utilisateur : « Quel problème rencontrez‑vous le plus souvent lorsqu’il faut changer de version Node pour différents projets ? »",
+      "assessment": "Score 7 reflète la maturité du projet (large adoption, documentation claire) et son adéquation avec le profil (full‑stack, besoin d’outils de productivité). Le fit_score reste neutre (5) car aucune contrainte régionale ou de conformité n’est démontrée dans les extraits. Les preuves proviennent du README d’installation et du package.json [S1, S2].",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "60e2ec3b8eaa689c904595ffc4aa62950558a7f7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/nvm-sh/nvm/blob/60e2ec3b8eaa689c904595ffc4aa62950558a7f7/README.md",
+            "excerpt": " \n   \n     \n     \n   \n \n\n\n\n\n## Installing and Updating\n\n\n\n### Install & Update Script\n\nTo **install** or **update** nvm, you should run the [install script][2]. To do that, you may either download and run the script manually, or use the following [cURL](https://curl.se) or [Wget](https://www.gnu.org/software/wget/) command:\n```sh\ncurl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n```\n```sh\nwget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n```\n\nRunning either of the above commands downloads a script and runs it. The script clones the nvm repository to `~/.nvm`, and attempts to add the source lines from the snippet below to the correct profil\n\n#### Installing in Docker\n\nWhen invoking bash as a non-interactive shell, like in a [Docker](https://www.docker.com) container, none of the regular profile files are sourced. In order to use `nvm`, `node`, and [`npm`](https://www.npmjs.com) like normal, you can instead specify the special `BASH_ENV` variable, which bash sources when invoked non-interactively.\n\n```Dockerfile\n\n\n# Download and install nvm\nRUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | PROFILE=\"${BASH_ENV}\" bash\nRUN echo node > .nvmrc\nRUN nvm install\n```\n\n##### Installing in Docker for CICD-Jobs\n\nMore robust, works in CI/CD-Jobs. Can be run in interactive and non-interactive containers.\nSee https://github.com/nvm-sh/nvm/issues/3531.\n\n```Dockerfile\nFROM ubuntu:latest\nARG NODE_VERSION=20\n\n\n\n# install curl\nRUN apt update && apt install curl -y\n\n\n\n# install nvm\nRUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash\n\n\n\n# install node\nRUN bash -c \"source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION\"\n\n\n\n### Verify Installation\n\nTo verify that nvm has been installed, do:\n\n```sh\ncommand -v nvm\n```\n\nwhich should output `nvm` if the installation was successful. Please note that `which nvm` will not work, since `nvm` is a sourced shell function, not an executable binary.\n\n**Note:** On Linux, after running the install script, if you get `nvm: command not found` or see no feedback from your terminal after you type `command -v nvm`, simply close your current"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/nvm-sh/nvm/blob/60e2ec3b8eaa689c904595ffc4aa62950558a7f7/package.json",
+            "excerpt": "{\n  \"name\": \"nvm\",\n  \"version\": \"0.41.0\",\n  \"description\": \"Node Version Manager - Simple bash script to manage multiple active node.js versions\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"test\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); make test-$shell\",\n    \"test/fast\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); env -i TERM=\\\"$TERM\\\" bash -lc \\\"make TEST_SUITE=fast test-$shell\\\"\",\n    \"test/slow\": \"shell=$(basename -- $(ps -o comm= $(ps -o ppid= -p $PPID)) | sed 's/^-//'); make TEST_SUITE=slow test-$sh"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "nvm est un script Bash POSIX‑compliant qui permet à un développeur de sélectionner et d’installer différentes versions de Node.js sur une même machine, facilitant la gestion des dépendances de projets multiples.",
+      "business_idea": "• Cible : PME développeuses d’applications web ; Produit : Interface web de gestion de versions Node (wrapper SaaS) qui expose les fonctions de nvm via une API REST ; difference : Supprime la nécessité de manipuler le shell, ajoute une UI graphique et la persistance des configurations par projet\n• Cible : Agences de marketing digital ; Produit : Service de build on‑demand qui utilise nvm en arrière‑plan pour compiler des sites statiques avec la version Node requise ; difference : Automatise le choix de version, facture à l’usage (builds) et intègre la facturation Stripe"
+    },
+    {
+      "name": "astral-sh/uv",
+      "url": "https://github.com/astral-sh/uv",
+      "description": "An extremely fast Python package and project manager, written in Rust.",
+      "language": "Rust",
+      "stars": 92379,
+      "forks": 3936,
+      "gained": "258 stars today",
+      "gained_n": 258,
+      "lang_color": "#dea584",
+      "category": "Gestionnaire de paquets Python (outil CLI)",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "uv est un gestionnaire de paquets et d'environnements Python ultra‑rapide écrit en Rust, destiné aux développeurs Python qui souhaitent remplacer pip, poetry, pyenv, etc. Il résout le problème de lenteur et de fragmentation des outils de gestion de dépendances.",
+      "workflow": "Entrée : fichier pyproject.toml ou requirements.txt → uv résout les dépendances, crée un lockfile universel et installe les paquets dans un environnement isolé → Résultat : répertoire .venv prêt à l'emploi, scripts exécutables et versions Python gérées. Limites : aucune interface graphique, dépend de Rust ≥ 1.98 et de la disponibilité du binaire pour la plateforme (voir README) [S1].",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Initialiser rapidement un nouveau projet data‑science avec des dépendances précises ; Résultat : En moins de 30 s, un lockfile est généré et un environnement virtuel configuré, évitant les temps d’attente de pip.\n• Utilisateur : Équipe DevOps ; Tâche : Standardiser l'installation des outils internes (linters, générateurs de code) sur les CI ; Résultat : Un seul appel `uv tool install <pkg>` déploie les binaires dans le conteneur, remplaçant plusieurs étapes pip/pipx.",
+      "products": "• Cible : PME de services numériques ; Produit : Plateforme SaaS de gestion de dépendances internes basée sur uv ; difference : Expose uv via une API REST pour automatiser la création d'environnements isolés à la demande, réduisant le temps de mise en place des projets clients.\n• Cible : Indépendants créateurs de contenu ; Produit : Extension VS Code qui invoque uv en arrière‑plan pour installer et mettre à jour les paquets d'un notebook Jupyter ; difference : Intégration directe dans l'IDE, éliminant le besoin de lignes de commande et de gestion manuelle des environnements.",
+      "monetization": "Facturation par abonnement mensuel aux équipes (ex. 15 €/utilisateur) pour l'accès à l'API de gestion d'environnements, avec facturation à l’usage (nombre d’environnements créés) comme option freemium. Le modèle repose sur la valeur de gain de productivité et les coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : wrapper API autour de la CLI uv, conteneur Docker, authentification OAuth. Réutilisation : binaire uv existant, Docker, FastAPI. Travail à ajouter : couche API, persistance des métadonnées, tableau de bord. Exclusions : réécriture du moteur de résolution. Dépendances : uv, FastAPI, PostgreSQL. Coût estimé : 120 h de développement (≈ 3 semaines à plein temps).",
+      "limitations": "Licence MIT/Apache‑2.0 confirmée dans Cargo.toml [S2]; aucune garantie de support Windows complet dans le README [S1]; performances dépendantes du cache local, aucune métrique d’usage fournie dans les extraits.",
+      "next_step": "Réaliser un prototype d’API qui invoque `uv init` et `uv add` sur un dépôt test, puis interroger un développeur Python sur la valeur perçue d’une telle automatisation.",
+      "assessment": "Score 7 reflète la maturité du projet (documentation, benchmarks, licence claire) et son alignement avec le besoin d’outils rapides pour les développeurs. Fit_score 5 par défaut, le profil ne précise pas de contrainte sectorielle stricte. Les preuves proviennent du README et du Cargo.toml [S1,S2]; aucune donnée de performance chiffrée n’est extraite du code source.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "469fe6513a86ebb59f64390669a64fd165b65b8a",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/astral-sh/uv/blob/469fe6513a86ebb59f64390669a64fd165b65b8a/README.md",
+            "excerpt": "\n\n## Installation\n\nInstall uv with our standalone installers:\n\n```bash\n\n\n## Features\n\n\n\n#### How do you pronounce uv?\n\nIt's pronounced as \"you - vee\" ([`/juː viː/`](https://en.wikipedia.org/wiki/Help:IPA/English#Key))\n\n\n\n#### How should I stylize uv?\n\nJust \"uv\", please. See the [style guide](./STYLE.md#styling-uv) for details.\n\n\n\n# uv\n\n   \n   \n   \n\nAn extremely fast Python package and project manager, written in Rust.\n\n \n   \n     \n     \n     \n   \n \n\n \n   Installing  Trio 's dependencies with a warm cache. \n \n\n\n\n## Highlights\n\n- A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and\n  more.\n- [10-100x faster](https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md) than `pip`.\n- Provides [comprehensive project management](#projects), with a\n  [universal lockfile](https://docs.astral.sh/uv/concepts/projects/layout#the-lockfile).\n- [Runs scripts](#scripts), with support for\n  [inline dependency metadata](https://docs.astral.sh/uv/guides/scripts#declaring-script-dependencies).\n- [Installs and manages](#python-versions) Python versions.\n- [Runs and installs](#tools) tools published as Python packages.\n- Include\n\n# On macOS and Linux.\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n```\n\n```bash\n\n\n# On Windows.\npowershell -ExecutionPolicy ByPass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n```\n\nOr, from [PyPI](https://pypi.org/project/uv/):\n\n```bash\n\n\n# With pip.\npip install uv\n```\n\n```bash\n\n\n# Or pipx.\npipx install uv\n```\n\nIf installed via the standalone installer, uv can update itself to the latest version:\n\n```bash\nuv self update\n```\n\nSee the [installation documentation](https://docs.astral.sh/uv/getting-started/installation/) for\ndetails and alternative installation methods.\n\n\n\n## Documentation\n\nuv's documentation is available at [docs.astral.sh/uv](https://docs.astral.sh/uv).\n\nAdditionally, the command line reference documentation can be viewed with `uv help`.\n\n\n\n### Projects\n\nuv manages project dependencies and environments, with support for lockfiles, workspaces, and more,\nsimilar to `rye` or `poetry`:\n\n```console\n$ uv init example\nInitialized project `example` at `/home/user/example`\n\n$ cd example\n\n$ uv add ruff\n"
+          },
+          {
+            "id": "S2",
+            "path": "Cargo.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/astral-sh/uv/blob/469fe6513a86ebb59f64390669a64fd165b65b8a/Cargo.toml",
+            "excerpt": "[workspace]\nmembers = [\"crates/*\"]\nexclude = [\n  \"scripts\",\n  # Needs nightly\n  \"crates/uv-trampoline\",\n]\nresolver = \"2\"\n\n[workspace.package]\nedition = \"2024\"\nrust-version = \"1.98.0\"\nhomepage = \"https://pypi.org/project/uv/\"\nrepository = \"https://github.com/astral-sh/uv\"\nauthors = [\"uv\"]\nlicense = \"MIT OR Apache-2.0\"\n\n[workspace.dependencies]\nuv = { version = \"0.13.9\", path = \"crates/uv\", default-features = false }\nuv-audit = { version = \"0.0.101\", path = \"crates/uv-audit\" }\nuv-audit-operations = { version = \"0.0.101\", path = \"crates/uv-audit-operations\" }\nuv-auth = { version = \"0.0.101\", path"
+          },
+          {
+            "id": "S3",
+            "path": "test/workspaces/albatross-in-example/examples/bird-feeder/src/bird_feeder/__init__.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/astral-sh/uv/blob/469fe6513a86ebb59f64390669a64fd165b65b8a/test/workspaces/albatross-in-example/examples/bird-feeder/src/bird_feeder/__init__.py",
+            "excerpt": "import iniconfig\n\n\ndef use():\n    print(\"squirrel\")\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "uv est un gestionnaire de paquets et d'environnements Python ultra‑rapide écrit en Rust, destiné aux développeurs Python qui souhaitent remplacer pip, poetry, pyenv, etc. Il résout le problème de lenteur et de fragmentation des outils de gestion de dépendances.",
+      "business_idea": "• Cible : PME de services numériques ; Produit : Plateforme SaaS de gestion de dépendances internes basée sur uv ; difference : Expose uv via une API REST pour automatiser la création d'environnements isolés à la demande, réduisant le temps de mise en place des projets clients.\n• Cible : Indépendants créateurs de contenu ; Produit : Extension VS Code qui invoque uv en arrière‑plan pour installer et mettre à jour les paquets d'un notebook Jupyter ; difference : Intégration directe dans l'IDE, éliminant le besoin de lignes de commande et de gestion manuelle des environnements."
+    },
+    {
+      "name": "google-research/paper-orchestra",
+      "url": "https://github.com/google-research/paper-orchestra",
+      "description": "PaperOrchestra is a multi-agent framework for automated AI research paper writing.",
+      "language": "Python",
+      "stars": 4748,
+      "forks": 583,
+      "gained": "1,524 stars today",
+      "gained_n": 1524,
+      "lang_color": "#3572A5",
+      "category": "framework de recherche IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "PaperOrchestra est un framework Python multi‑agents qui génère automatiquement des articles de recherche en LaTeX, destiné aux chercheurs ou aux équipes IA qui souhaitent accélérer la rédaction de publications.",
+      "workflow": "Entrée : texte brut (idées, logs d’expérimentation) + clés API → Traitement : agents spécialisés (outline, revue de littérature, rédaction de sections, génération de figures) orchestrés par un pipeline async → Résultat : manuscrit LaTeX complet avec références et graphiques intégrés. Limites : dépendance à des modèles externes (Gemini, OpenAI) et jeu de données non fourni [S1].",
+      "use_cases": "• Utilisateur : Chercheur en IA ; Tâche : Transformer les notes de laboratoire en article prêt à soumettre ; outcome : Manuscrit LaTeX complet en quelques minutes, incluant revue de littérature et figures\n• Utilisateur : Startup de génération de contenu scientifique ; Tâche : Automatiser la production de rapports techniques pour des clients ; outcome : Livraison de documents personnalisés à grande échelle, réduisant le temps de rédaction manuelle",
+      "products": "• Cible : PME de conseil en IA ; Produit : Service SaaS de rédaction d’études de cas automatisées ; differentiation : Utilise le pipeline multi‑agents existant mais ajoute une interface web et des modèles de facturation à l’usage\n• Cible : Établissements académiques ; Produit : Plateforme auto‑hébergée de génération de brouillons de thèses ; differentiation : Intègre le framework avec un gestionnaire de versions et des contrôles de conformité institutionnels",
+      "monetization": "Facturation à l’usage (€/article généré) ; les utilisateurs paient pour chaque manuscrit complet, justifié par le gain de temps de rédaction et les coûts de licences de modèles IA.",
+      "build_plan": "Réutiliser le pipeline d’agents et le code d’orchestration ; ajouter une UI Next.js, un système d’authentification (Supabase) et un module de facturation (Stripe). Exclure la création du dataset. Dépendances principales : python‑genai, openai, streamlit, matplotlib. Estimation : 200 h de développement (≈ 5 semaines à plein temps).",
+      "limitations": "Licence du dépôt non vérifiée, dépendance à des API externes payantes, jeu de données manquant, aucune preuve de robustesse en production.",
+      "next_step": "Tester le pipeline avec un petit jeu de prompts et interroger un chercheur sur la pertinence des références générées.",
+      "assessment": "Score 7 reflète la richesse fonctionnelle du framework et son alignement avec les priorités B2B SaaS du profil. Le fit_score reste neutre (5) faute de données de marché ou de conformité RGPD.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "d9bae997e793a015ed38bb1605be9eb58c00284f",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-research/paper-orchestra/blob/d9bae997e793a015ed38bb1605be9eb58c00284f/README.md",
+            "excerpt": "\n\n## Key Features\n\n- **Multi-Agent Pipeline**: Orchestrates specialized agents (Outline, Literature Review, Section Writing, Content Refinement, Plotting) for end-to-end paper generation.\n- **Comprehensive Literature Synthesis**: Automatically searches, prioritizes, and integrates relevant literature into the manuscript.\n- **Visuals Generation**: Generates plots and supports the inclusion of conceptual diagrams.\n- **LaTeX Automation**: Produces submission-ready LaTeX manuscripts adhering to target conference templates.\n\n\n\n## Installation\n\n1.  **Environment Setup**: The project relies on a Conda environment named `paper_orchestra`. You can set up a similar environment with Python 3.11 and install the required dependencies.\n    ```bash\n    conda create -n paper_orchestra python=3.11\n    conda activate paper_orchestra\n    pip install -r requirements.txt\n    ```\n\n2.  **Environment Variables**: Create a `.env` file in the root of the project and add your API keys:\n    ```env\n    # Add keys if you have them, otherwise leave them empty\n    # You need to specify related keys if you want to use the model\n    # For example, if you want to use Gemini models, you need to \n\n## Usage\n\nYou can run the paper generation pipeline using the provided bash script or directly via the Python CLI.\n\n\n\n#  🎻 PaperOrchestra: A Multi-Agent Framework for Automated AI Research Paper Writing \n Yiwen Song 1 , Yale Song 1 , Tomas Pfister 1 , and Jinsung Yoon 1  \n  1 Google Cloud AI Research \n  \n\nPaperOrchestra is a multi-agent framework for automated AI research paper writing. It flexibly transforms unconstrained pre-writing materials (ideas and experimental logs) into submission-ready LaTeX manuscripts, including comprehensive literature synthesis and generated visuals, such as plots and conceptual diagrams.\n\nActing like an orchestrated team of specialized agents, it handles outline generation, literature review, section writing, content refine\n\n## Dataset\n\nThe dataset used for paper generation is **not included** in this code repository. It will be released separately at a later date.\nOnce available, you should download the dataset and place it under the `datasets/` directory.\n\n\n\n### Using "
+          },
+          {
+            "id": "S2",
+            "path": "requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/google-research/paper-orchestra/blob/d9bae997e793a015ed38bb1605be9eb58c00284f/requirements.txt",
+            "excerpt": "google-genai\njoblib\njson_repair\nmatplotlib\nnumpy\nopenai\nopencv-python\npydantic\nPyMuPDF\npymupdf4llm\npyOpenSSL\npypdf\npython-dotenv\nrequests\nrich\nstreamlit\nthefuzz\ntqdm"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "PaperOrchestra est un framework Python multi‑agents qui génère automatiquement des articles de recherche en LaTeX, destiné aux chercheurs ou aux équipes IA qui souhaitent accélérer la rédaction de publications.",
+      "business_idea": "• Cible : PME de conseil en IA ; Produit : Service SaaS de rédaction d’études de cas automatisées ; differentiation : Utilise le pipeline multi‑agents existant mais ajoute une interface web et des modèles de facturation à l’usage\n• Cible : Établissements académiques ; Produit : Plateforme auto‑hébergée de génération de brouillons de thèses ; differentiation : Intègre le framework avec un gestionnaire de versions et des contrôles de conformité institutionnels"
+    },
+    {
+      "name": "google-labs-code/stitch-skills",
+      "url": "https://github.com/google-labs-code/stitch-skills",
+      "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
+      "language": "TypeScript",
+      "stars": 10552,
+      "forks": 1374,
+      "gained": "365 stars today",
+      "gained_n": 365,
+      "lang_color": "#3178c6",
+      "category": "bibliothèque de compétences d'agents",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Stitch‑Skills fournit une collection de compétences compatibles avec les agents de code (Claude, Cursor, Gemini…) et le serveur Stitch MCP. Elle cible les développeurs qui souhaitent enrichir leurs agents avec des actions de design‑to‑code ou de génération de composants.",
+      "workflow": "Entrée : un développeur invoque une compétence via la CLI (ex. `npx skills add google-labs-code/stitch-skills`). Traitement : le plugin télécharge les scripts définis dans le package (ex. `react-native-components`) et exécute le script de validation ou de génération. Résultat : le code source d’un composant (React Native, etc.) est produit dans le projet. Limites : les compétences ont des dépendances inter‑liées et nécessitent Node ≥ 18 ; aucune preuve de prise en charge d’autres runtimes. [S1][S2]",
+      "use_cases": "• Utilisateur : Développeur front‑end ; Tâche : Générer rapidement un composant React Native à partir d’une description de design. ; Résultat : Un fichier `.tsx` prêt à être intégré, avec les dépendances SWC configurées.\n• Utilisateur : Équipe d’ingénierie IA ; Tâche : Enrichir un agent de codage (ex. Claude Code) d’une capacité de conversion de maquettes Markdown en code. ; Résultat : L’agent peut transformer un document de design en code fonctionnel sans écriture manuelle.",
+      "products": "• cible : PME développant des applications mobiles internes ; produit : Service SaaS qui expose les compétences Stitch via une API REST, permettant de soumettre du texte de design et de recevoir du code React Native. ; différence : Abstraction de la CLI ; facturation à l’appel API, pas besoin d’installer Node localement.\n• cible : Agences de design digital ; produit : Plugin IDE (VS Code) qui intègre les compétences Stitch pour générer du code directement depuis l’éditeur. ; différence : Expérience intégrée, réduction du temps de prototypage, aucune infrastructure serveur supplémentaire.",
+      "monetization": "Acheteur : agences ou équipes produit. Raison : gain de productivité sur la génération de composants. Unité facturée : appel API ou licence IDE. Modèle : abonnement mensuel (hypothèse 30‑80 €/mois) ou paiement à l’usage (ex. 0,01 €/génération).",
+      "build_plan": "Périmètre : wrapper API autour du CLI existant, hébergement Docker sur Fly.io. Brique réutilisée : package `react-native-components` et scripts de validation. Travail à ajouter : couche HTTP, authentification, tableau de bord de suivi. Exclusions : support multi‑langage (seulement React Native). Dépendances : Node ≥ 18, @swc/core, Fly.io. Coût estimé : 0 €/mois (plan gratuit Fly) + 5 €/mois pour stockage de logs. Délai : 2‑3 semaines de développement intensif.",
+      "limitations": "Licence non vérifiée, donc risque de non‑conformité ; dépendance à Node ≥ 18 et à la CLI Stitch non documentée ; aucune preuve de scalabilité ou de support multi‑tenant. Non établi dans les extraits : performances sous charge, conformité RGPD.",
+      "next_step": "Réaliser un test technique : appeler `npx skills add google-labs-code/stitch-skills` dans un projet sandbox et vérifier la génération d’un composant. Question utilisateur : « Quel type de design (Figma, Markdown, etc.) souhaiteriez‑vous convertir en code via une API ? »",
+      "assessment": "Score 7 reflète la pertinence technique (TypeScript, compatibilité agents) et la disponibilité d’extraits concrets. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle ou régionale stricte. Manque de preuves : licence, support production, métriques de performance.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "4cf4db8e4143b09e40f9bc887429d81f41ab3947",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/README.md",
+            "excerpt": "\n\n## Quick Start\n\n\n\n### 1. Install Plugins (Recommended)\nThe fastest way to set up the full Stitch plugin suite globally.\n\n\n\n# Claude Code — installs into the current project\nnpx plugins add google-labs-code/stitch-skills --scope project --target claude-code\n```\n\n```bash\n\n\n# Cursor — installs into the current workspace\nnpx plugins add google-labs-code/stitch-skills --scope workspace --target cursor\n```\n\n\n\n### 2. Install Skills Selectively\nChoose only the specific skills you need.\n\n> [!IMPORTANT]\n> Stitch Design Skills often have inter-dependencies. If you choose to install skills selectively, ensure you include all required dependencies.\n\n```bash\nnpx skills add google-labs-code/stitch-skills\n```\n\nYou can run the following commands to see the help documentation for plugins and skills:\n\n```bash\nnpx plugins --help\n\nnpx skills --help\n```\n\n\n\n# Stitch Design Skills\n\nA collection of agent skills and plugins for [Google Stitch](https://stitch.withgoogle.com), following the [Agent Skills](https://agentskills.io) open standard. Compatible with coding agents such as Codex, Antigravity, Gemini CLI, Claude Code, Cursor, and OpenCode (manual install).\n\n\n\n#### Codex\n\nAdd the Stitch Skills marketplace, then install the plugins you need.\n\n \n  Via CLI  (recommended) \n\n```bash\ncodex plugin marketplace add google-labs-code/stitch-skills --ref main \\\n  --sparse .agents/plugins \\\n  --sparse plug"
+          },
+          {
+            "id": "S2",
+            "path": "plugins/stitch-build/skills/react-native/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/plugins/stitch-build/skills/react-native/package.json",
+            "excerpt": "{\n  \"name\": \"react-native-components\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Design-to-code prompt to React Native components for Stitch MCP\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"validate\": \"node scripts/validate.js\",\n    \"fetch\": \"bash scripts/fetch-stitch.sh\"\n  },\n  \"dependencies\": {\n    \"@swc/core\": \"^1.3.100\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n"
+          },
+          {
+            "id": "S3",
+            "path": "plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/google-labs-code/stitch-skills/blob/4cf4db8e4143b09e40f9bc887429d81f41ab3947/plugins/stitch-utilities/skills/design-md/examples/DESIGN.md",
+            "excerpt": "\n\n# Design System: Furniture Collections List\n**Project ID:** 13534454087919359824\n\n\n\n## 1. Visual Theme & Atmosphere\n\nThe Furniture Collections List embodies a **sophisticated, minimalist sanctuary** that marries the pristine simplicity of Scandinavian design with the refined visual language of luxury editorial presentation. The interface feels **spacious and tranquil**, prioritizing breathing room and visual clarity above all else. The design philosophy is gallery-like and photography-first, allowing each furniture piece to command attention as an individual art object.\n\nThe overall mood is **airy yet grounded**, creating an aspirational aesthetic that remains approachable and welcoming. The interface feels **utilitarian in \n\n## 2. Color Palette & Roles\n\n\n\n### Primary Foundation\n- **Warm Barely-There Cream** (#FCFAFA) – Primary background color. Creates an almost imperceptible warmth that feels more inviting than pure white, serving as the serene canvas for the entire experience.\n-"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Stitch‑Skills fournit une collection de compétences compatibles avec les agents de code (Claude, Cursor, Gemini…) et le serveur Stitch MCP. Elle cible les développeurs qui souhaitent enrichir leurs agents avec des actions de design‑to‑code ou de génération de composants.",
+      "business_idea": "• cible : PME développant des applications mobiles internes ; produit : Service SaaS qui expose les compétences Stitch via une API REST, permettant de soumettre du texte de design et de recevoir du code React Native. ; différence : Abstraction de la CLI ; facturation à l’appel API, pas besoin d’installer Node localement.\n• cible : Agences de design digital ; produit : Plugin IDE (VS Code) qui intègre les compétences Stitch pour générer du code directement depuis l’éditeur. ; différence : Expérience intégrée, réduction du temps de prototypage, aucune infrastructure serveur supplémentaire."
+    },
+    {
+      "name": "sveltejs/svelte",
+      "url": "https://github.com/sveltejs/svelte",
+      "description": "web development for the rest of us",
+      "language": "JavaScript",
+      "stars": 89742,
+      "forks": 6226,
+      "gained": "692 stars today",
+      "gained_n": 692,
+      "lang_color": "#f1e05a",
+      "category": "Framework front‑end",
+      "eligible": true,
+      "score": 8,
+      "fit_score": 5,
+      "summary": "Svelte est un compilateur JavaScript qui transforme des composants déclaratifs en code DOM optimisé, destiné aux développeurs web souhaitant réduire la charge du runtime.",
+      "workflow": "Entrée : fichiers .svelte contenant HTML, CSS et logique JavaScript → Traitement : le compilateur Svelte génère du JavaScript natif qui met à jour le DOM de façon ciblée → Résultat : application web légère sans charge de framework au runtime. Limite : le compilateur ne gère pas le rendu côté serveur natif, il faut ajouter une solution tierce. [S1]",
+      "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Construire une landing page interactive rapidement ; Résultat : Code généré minimal, temps de chargement inférieur à 1 s\n• Utilisateur : Agence digitale ; Tâche : Déployer un tableau de bord client avec mise à jour fréquente des données ; Résultat : Réactivité élevée grâce aux mises à jour DOM ciblées, maintenance simplifiée",
+      "products": "• Cible : PME souhaitant un site vitrine performant ; Produit : Service d’hébergement pré‑configuré SvelteKit avec CI/CD automatisé ; difference : Supprime la configuration du build et du déploiement, offre un environnement optimisé dès le départ\n• Cible : Indépendants créant des outils internes ; Produit : Bibliothèque de composants UI Svelte personnalisés pour la facturation et le suivi de projets ; difference : Réduit le temps de développement de formulaires complexes grâce à des composants prêts à l’emploi",
+      "monetization": "Abonnement mensuel aux services d’hébergement et de support, facturé par site actif ; modèle freemium avec quota de builds gratuits puis paiement à l’usage pour les builds supplémentaires. Hypothèse de prix : 15 €/mois pour 3 sites, 5 €/site supplémentaire, justifié par les coûts d’infrastructure et de support.",
+      "build_plan": "Périmètre : création d’un template SvelteKit, intégration CI/CD sur Vercel, documentation d’onboarding. Briques réutilisées : compilateur Svelte, Vercel CLI. Travail à ajouter : scripts de déploiement, tableau de bord de facturation. Exclusions : développement de fonctionnalités back‑end spécifiques. Dépendances : Node.js, Vercel, Stripe pour la facturation. Coût estimé : 0 € (plan gratuit Vercel) + frais Stripe (2 % + 0,30 € par transaction). Délai : 2 à 3 semaines pour MVP.",
+      "limitations": "Licence MIT confirmée dans le README, mais aucune vérification de conformité RGPD pour les données collectées via le service d’hébergement. Maintenance du compilateur dépend de la communauté Svelte. Inconnues : performances du rendu côté serveur sans adaptation supplémentaire.",
+      "next_step": "Réaliser un prototype de déploiement automatisé d’une application SvelteKit et interroger un développeur freelance sur la valeur perçue d’un hébergement clé en main.",
+      "assessment": "Score 8 reflète la maturité du compilateur et la pertinence pour les micro‑SaaS ; fit_score 5 par défaut faute de critères de région ou de délai précis. Les sources S1 et S2 confirment l’existence du projet et sa licence, mais ne prouvent aucune viabilité commerciale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "a0823d965a7894b621e0e30ad845ddd5a05d9d39",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/sveltejs/svelte/blob/a0823d965a7894b621e0e30ad845ddd5a05d9d39/README.md",
+            "excerpt": " \n\t \n\t\t \n\t\t \n\t \n \n\n[ ](LICENSE.md) [ ](https://svelte.dev/chat)\n\n\n\n## What is Svelte?\n\nSvelte is a new way to build web applications. It's a compiler that takes your declarative components and converts them into efficient JavaScript that surgically updates the DOM.\n\nLearn more at the [Svelte website](https://svelte.dev), or stop by the [Discord chatroom](https://svelte.dev/chat).\n\n\n\n## Supporting Svelte\n\nSvelte is an MIT-licensed open source project with its ongoing development made possible entirely by fantastic volunteers. If you'd like to support their efforts, please consider:\n\n- [Becoming a backer on Open Collective](https://opencollective.com/svelte).\n\nFunds donated via Open Collective will be used for compensating expenses related to Svelte's development such as hosting costs. If sufficient donations are received, funds may also be used to support Svelte's development more directly.\n\n\n\n## Roadmap\n\nYou may view [our roadmap](https://svelte.dev/roadmap) if you'd like to see what we're currently working on.\n\n\n\n## Contributing\n\nPlease see the [Contributing Guide](CONTRIBUTING.md) and the [`svelte`](packages/svelte) package for information on contributing to Svelte.\n\n\n\n## Is svelte.dev down?\n\nProbably not, but it's possible. If you can't seem to access any `.dev` sites, check out [this SuperUser question and answer](https://superuser.com/q/1413402).\n\n\n\n## License\n\n[MIT](LICENSE.md)\n"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/sveltejs/svelte/blob/a0823d965a7894b621e0e30ad845ddd5a05d9d39/package.json",
+            "excerpt": "{\n  \"name\": \"svelte-monorepo\",\n  \"version\": \"0.0.1\",\n  \"description\": \"monorepo for svelte and friends\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"license\": \"MIT\",\n  \"packageManager\": \"pnpm@10.33.4+sha512.1c67b3b359b2d408119ba1ed289f34b8fc3c6873412bec6fd264fbdc82489e510fcbecb9ce9d22dae7f3b76269d8441046014bdca53b9979cd7a561ad631b800\",\n  \"engines\": {\n    \"pnpm\": \">=9.0.0\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/sveltejs/svelte.git\"\n  },\n  \"scripts\": {\n    \"build\": \"pnpm -r --filter=./packages/* build\",\n    \"check\": \"cd packages/svelte && pnpm build && cd ../."
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Svelte est un compilateur JavaScript qui transforme des composants déclaratifs en code DOM optimisé, destiné aux développeurs web souhaitant réduire la charge du runtime.",
+      "business_idea": "• Cible : PME souhaitant un site vitrine performant ; Produit : Service d’hébergement pré‑configuré SvelteKit avec CI/CD automatisé ; difference : Supprime la configuration du build et du déploiement, offre un environnement optimisé dès le départ\n• Cible : Indépendants créant des outils internes ; Produit : Bibliothèque de composants UI Svelte personnalisés pour la facturation et le suivi de projets ; difference : Réduit le temps de développement de formulaires complexes grâce à des composants prêts à l’emploi"
+    }
+  ]
+}
