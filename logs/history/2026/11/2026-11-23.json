@@ -1,0 +1,538 @@
+{
+  "date": "2026-11-23",
+  "since": "daily",
+  "mode": "email",
+  "model": "openai/gpt-oss-120b",
+  "repos": [
+    {
+      "name": "elementalsouls/Claude-BugHunter",
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "description": "A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
+      "language": "Python",
+      "stars": 18730,
+      "forks": 2037,
+      "gained": "1,716 stars today",
+      "gained_n": 1716,
+      "lang_color": "#3572A5",
+      "category": "outil de sécurité / CLI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Claude-BugHunter est un bundle de compétences Claude destiné aux tests de pénétration et à la chasse aux bugs, utilisable via une interface CLI ou des commandes slash dans Claude Code. Il cible les chercheurs en sécurité qui souhaitent automatiser le flux recon‑>hunt‑>validation‑>report. [S1]",
+      "workflow": "Entrée : cible (nom de domaine ou URL) → traitement : commande `cbh recon` effectue enumeration passive, probe des hôtes et classification, génère un manifest JSON → résultat : dossiers `recon/<cible>/` contenant les données prêtes pour la phase de chasse. Limite : dépend de la disponibilité du réseau et ne supporte pas les scans actifs lourds. [S3]",
+      "use_cases": "1. Analyste sécurité : lance `cbh recon example.com` pour obtenir une cartographie initiale avant un audit. 2. Bug‑bounty hunter : utilise `cbh classify https://example.com/login` pour faire correspondre l’URL à des patterns de rapports divulgués et prioriser les vecteurs d’attaque. [S3]",
+      "products": "1. Service SaaS « BugHunter » : interface web qui orchestre les mêmes étapes que le CLI, cible les PME souhaitant externaliser la première phase de recon. Différence : UI graphique, stockage cloud des manifests. 2. Bibliothèque Python « cbh‑lib » : expose les fonctions du CLI comme API, permettant l’intégration dans des pipelines CI/CD de sécurité. Différence : usage programmatique, pas d’interface utilisateur. [S1][S3]",
+      "monetization": "Acheteur : équipes de sécurité internes ou indépendants payant pour gagner du temps. Raison de payer : automatisation fiable du flux de recon et de classification. Unité facturée : abonnement mensuel par utilisateur. Hypothèse de prix : 30 € / mois, justifiée par la valeur du gain de productivité et les coûts d’infrastructure cloud (stockage, exécution).",
+      "build_plan": "Périmètre limité : UI web pour orchestrer les commandes existantes, réutilisation du bundle Claude et du CLI comme backend. Travail à ajouter : frontend React, API FastAPI, authentification OAuth, hébergement Docker sur Fly.io. Exclusions : développement de nouvelles compétences de sécurité. Dépendances : Python ≥ 3.9, FastAPI, React, Docker. Coût estimé : 150 h de développement (≈ 3 semaines à 40 h/sem).",
+      "limitations": "Contraintes établies : nécessite Python ≥ 3.9, dépend de l’accès réseau pour la phase recon, licence MIT du projet mais licence du bundle non vérifiée. Inconnues : performances sur très grands périmètres, support multilingue. Maintenance : mise à jour des compétences Claude et des dépendances Python. [S2]",
+      "next_step": "Réaliser un test technique en déployant le CLI dans un conteneur Docker et exécuter `cbh recon` sur un domaine de test. Question à poser à un analyste sécurité : « Quel niveau de détail attendez‑vous du manifest JSON pour intégrer votre processus de triage ? »",
+      "assessment": "Score 7 reflète la maturité du code (CLI fonctionnel, documentation claire) et la pertinence pour le profil (Full‑Stack Engineer cherchant à créer un produit SaaS de sécurité). Fit_score reste neutre (5) faute d’indications précises sur le budget ou le timing. Les preuves proviennent des extraits README, pyproject.toml et cli.py. Absence de données sur la licence exacte et la demande du marché limite l’évaluation.",
+      "evidence_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "6a530fb3149c8c34d3ba0eb31b4eb431e91da648",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/6a530fb3149c8c34d3ba0eb31b4eb431e91da648/README.md",
+            "excerpt": " \n\n\n\n## Quickstart\n\n**Option A — install as a Claude Code plugin (recommended).** From inside Claude Code:\n\n```text\n/plugin marketplace add elementalsouls/Claude-BugHunter\n/plugin install claude-bughunter@elementalsouls\n```\n\nAll 83 skills + 15 commands load namespaced under `claude-bughunter:` and update when you bump the plugin version — no files copied into `~/.claude/`.\n\n**A HackerOne account is optional.** The install asks for a HackerOne API username and token. They only let the HackerOne MCP read your private programs and your own reports; leave both blank if you don't need that. Every skill, command and the MCP's public tools (duplicate\n\n## How it works\n\nA 6-phase, non-linear workflow — **recon → map & rank → hunt → validate → report** — with scope enforced in code and a **7-Question Gate** before anything is submitted. Two ways to drive it:\n\n- **Plain English** — describe what you're testing and the relevant skill loads automatically.\n- **`/hunt` scaffold + `cbh` CLI** — engagement-folder structure, state, and orchestration.\n\n→ [Usage guide & worked example](USAGE.md) · [6-phase architecture & skill-to-phase map](docs/architecture.md) · [`cbh` CLI](docs/cbh-cli.md)\n\n---\n\n\n# claude-bughunter\n\n> A self-contained Claude skill bundle for bug hunting and external red-team work · **83 skills** · 15 slash commands · **681 disclosed-report patterns** "
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/6a530fb3149c8c34d3ba0eb31b4eb431e91da648/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"setuptools>=61\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"claude-bughunter\"\nversion = \"2.1.0\"\ndescription = \"cbh — terminal-native recon/classify/triage/report runner for the Claude-BugHunter skill bundle\"\nreadme = \"README.md\"\nrequires-python = \">=3.9\"\nlicense = { text = \"MIT\" }\nauthors = [{ name = \"Sachin Sharma\" }]\nkeywords = [\"security\", \"bug-bounty\", \"recon\", \"claude\", \"pentest\"]\ndependencies = []\n\n[project.optional-dependencies]\n# `requests` is optional — cbh falls back to urllib when it's absent.\nhttp = [\"requests\"]\n\n[project.urls]\nHomepa"
+          },
+          {
+            "id": "S3",
+            "path": "cbh/cli.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/elementalsouls/Claude-BugHunter/blob/6a530fb3149c8c34d3ba0eb31b4eb431e91da648/cbh/cli.py",
+            "excerpt": "#!/usr/bin/env python3\n\"\"\"\ncbh — claude-bughunter CLI.\n\nBridges the repo's skill content into a real runner. Five subcommands compose\nthe engagement loop:\n\n  cbh recon <target>           passive subdomain enum + live-host probe + URL\n                               classification. Writes recon/<target>/ including\n                               manifest.json (the recon→hunt handoff contract).\n  cbh surface <target>         read recon/<target>/manifest.json and print the\n                               ranked P1/P2/Kill attack surface. See\n                               docs/recon-manifest.md.\n  cbh classify <url>           pattern-match a single URL against hunt-* skill\n                               descriptions; print the matched skills + ranked\n                               attack candidates from docs/disclosed-reports/.\n  cbh triage <finding.md>      run the triage-validation 7-Question Gate\n                               against a finding file. Output: PASS / DOWNGRADE\n         "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Claude-BugHunter est un bundle de compétences Claude destiné aux tests de pénétration et à la chasse aux bugs, utilisable via une interface CLI ou des commandes slash dans Claude Code. Il cible les chercheurs en sécurité qui souhaitent automatiser le flux recon‑>hunt‑>validation‑>report. [S1]",
+      "business_idea": "1. Service SaaS « BugHunter » : interface web qui orchestre les mêmes étapes que le CLI, cible les PME souhaitant externaliser la première phase de recon. Différence : UI graphique, stockage cloud des manifests. 2. Bibliothèque Python « cbh‑lib » : expose les fonctions du CLI comme API, permettant l’intégration dans des pipelines CI/CD de sécurité. Différence : usage programmatique, pas d’interface utilisateur. [S1][S3]"
+    },
+    {
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "description": "An agentic skills framework & software development methodology that works.",
+      "language": "Shell",
+      "stars": 324559,
+      "forks": 28798,
+      "gained": "788 stars today",
+      "gained_n": 788,
+      "lang_color": "#89e051",
+      "category": "framework de méthodologie de développement assisté par IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Superpowers propose un cadre de travail pour agents de codage, permettant à un développeur de spécifier une tâche, d’obtenir un design découpé et un plan d’implémentation orienté TDD. Il cible les développeurs full‑stack cherchant à automatiser la génération de code tout en conservant le contrôle sur la spécification.",
+      "workflow": "Entrée : description textuelle du besoin via l’agent ; Traitement : l’agent interroge l’utilisateur pour clarifier le problème, génère un spec découpé, attend validation, puis produit un plan d’implémentation détaillé (exemple dans le README) ; Résultat : code généré conforme au plan, prêt à être intégré. Limites : aucune exécution réelle n’est fournie, le cadre dépend d’un agent externe et ne garantit pas la qualité du code [S1].",
+      "use_cases": "1️⃣ Développeur freelance crée rapidement un micro‑service API en décrivant la fonctionnalité, reçoit un plan TDD et du code prêt à tester. 2️⃣ Équipe produit utilise Superpowers pour formaliser les exigences d’une nouvelle intégration tierce, obtient un design lisible et un squelette de code à réviser.",
+      "products": "1️⃣ Outil SaaS « SuperDev » : interface web où l’on saisit la description, l’agent utilise Superpowers en backend, cible les PME voulant accélérer le prototypage. 2️⃣ Extension VS Code « Superpowers‑CLI » : plugin local qui applique le même workflow dans l’IDE, cible les développeurs individuels cherchant à structurer leurs projets sans passer par le cloud.",
+      "monetization": "Acheteur : PME ou freelance. Raison : gain de temps sur la phase de conception et réduction des itérations de debugging. Unité facturée : abonnement mensuel par utilisateur. Modèle : abonnement tiered (5 €/mois pour 1 projet, 15 €/mois pour jusqu’à 5 projets). Hypothèse basée sur la valeur perçue d’un plan TDD automatisé.",
+      "build_plan": "Périmètre : UI web simple + API Node.js qui invoque le runtime Superpowers. Brique réutilisée : le package npm « superpowers » (S2). Travail à ajouter : interface utilisateur, gestion des comptes, facturation Stripe, hébergement Vercel. Exclusions : développement d’agents IA propriétaires (on utilise les agents existants). Dépendances : Node.js, Stripe, Supabase pour le stockage. Coût estimé : 0 € (GitHub, Vercel free tier) + 20 €/mois pour Supabase. Délai : 3‑4 semaines à temps plein (≈ 30 h/semaine).",
+      "limitations": "Contraintes établies : dépendance à un agent externe, aucune garantie de qualité du code, licence du dépôt non vérifiée. Inconnues : support commercial, conformité RGPD du service hébergé. Licence à vérifier avant redistribution.",
+      "next_step": "Réaliser un test technique : intégrer le package dans un petit projet Next.js et générer un endpoint API à partir d’une description simple. Question à poser à un utilisateur potentiel : « Quel niveau de contrôle souhaitez‑vous garder sur le code généré avant de l’accepter ? »",
+      "assessment": "Score 7 reflète la clarté du workflow et la pertinence pour un développeur full‑stack cherchant à automatiser la spécification. Fit_score 5 par défaut faute de données de profil détaillées. Les preuves proviennent du README (S1) et du package.json (S2). Absence de données sur la licence et la performance réelle limite l’évaluation.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "22f0b463e7a5e579904dd6211a520321035526f7",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/README.md",
+            "excerpt": "\n\n## How it works\n\nIt starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. \n\nOnce it's teased a spec out of the conversation, it shows it to you in chunks short enough to actually read and digest. \n\nAfter you've signed off on the design, your agent puts together an implementation plan that's clear enough for an enthusiastic junior engineer with poor taste, no judgement, no project context, and an aversion to testing to follow. It emphasizes true red/green TDD, YAGNI (You Aren'\n\n## Installation\n\nInstallation differs by harness. If you use more than one, install Superpowers separately for each one.\n\n\n\n# Superpowers\n\nSuperpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.\n\n\n\n## Table of Contents\n\n- [How it works](#how-it-works)\n- [Commercial Services](#commercial-services)\n- [Getting Started](#installation)\n  - [Claude Code](#claude-code)\n  - [Antigravity](#antigravity)\n  - [Codex App](#codex-app)\n  - [Codex CLI](#codex-cli)\n  - [Cursor](#cursor)\n  - [Devin CLI](#devin-cli)\n  - [Factory Droid](#factory-droid)\n  - [Gemini CLI](#gemini-cli)\n  - [GitHub Copilot CLI](#github-copilot-cli)\n  - [Grok Build CLI](#grok-build-cli)\n  - [Kimi Code](#kimi-code)\n  - [OpenCode](#opencode)\n  - [Pi](#pi)\n  - [Qwen Code](#qwen-code)\n  - [Hermes Agent](#hermes-agent)\n  - [Muse](#muse)\n- [The Basic Workflow](#the-basic-workflow)\n- [\n\n## Commercial Services\n\nIf you're using Superpowers in enterprise and could benefit from commercial support, additional tooling, or managed spending, please don't hesitate to drop us a line at sales@primeradiant.com.\n\n\n\n### Claude Code\n\nSuperpowers is available via the [official Claude plugin marketplace](https://claude.com/plugins/superpowers)\n\n\n\n#### Official Marketplace\n\n- Install the plugin from Anthropic's official marketplace:\n\n  ```bash\n  /plugin install superpowers@claude-plugins-official\n  ```\n\n\n\n#### Superpowers Marketplace\n\nThe Superpowers ma"
+          },
+          {
+            "id": "S2",
+            "path": "package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/obra/superpowers/blob/22f0b463e7a5e579904dd6211a520321035526f7/package.json",
+            "excerpt": "{\n  \"name\": \"superpowers\",\n  \"version\": \"7.0.2\",\n  \"description\": \"Superpowers skills and runtime bootstrap for coding agents\",\n  \"type\": \"module\",\n  \"main\": \".opencode/plugins/superpowers.js\",\n  \"keywords\": [\n    \"pi-package\",\n    \"skills\",\n    \"tdd\",\n    \"debugging\",\n    \"collaboration\",\n    \"workflow\"\n  ],\n  \"pi\": {\n    \"extensions\": [\n      \"./.pi/extensions/superpowers.ts\"\n    ],\n    \"skills\": [\n      \"./skills\"\n    ]\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Superpowers propose un cadre de travail pour agents de codage, permettant à un développeur de spécifier une tâche, d’obtenir un design découpé et un plan d’implémentation orienté TDD. Il cible les développeurs full‑stack cherchant à automatiser la génération de code tout en conservant le contrôle sur la spécification.",
+      "business_idea": "1️⃣ Outil SaaS « SuperDev » : interface web où l’on saisit la description, l’agent utilise Superpowers en backend, cible les PME voulant accélérer le prototypage. 2️⃣ Extension VS Code « Superpowers‑CLI » : plugin local qui applique le même workflow dans l’IDE, cible les développeurs individuels cherchant à structurer leurs projets sans passer par le cloud."
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "language": "Python",
+      "stars": 63141,
+      "forks": 5740,
+      "gained": "699 stars today",
+      "gained_n": 699,
+      "lang_color": "#3572A5",
+      "category": "Framework / Bibliothèque CLI",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "CLI-Anything propose un hub de gestion et d'exécution de lignes de commande, destiné aux agents IA pour interagir avec des logiciels existants. Il cible les développeurs et les intégrateurs qui souhaitent automatiser des outils de bureau ou serveur via des agents.",
+      "workflow": "Entrée : commande de l'agent (ex. `cli-hub install gimp`). → Traitement : le hub résout le paquet, télécharge les dépendances, installe le CLI et prépare un harness d'exécution (phase 1‑1.5). → Résultat : le CLI installé est lancé et l'agent peut invoquer ses fonctions via l'API du harness. Sources : S1 décrit les phases d'installation et d'exécution ; S2 montre le packaging Python du harness n8n, confirmant la capacité à générer un wrapper CLI. Limites : dépendance à des applications tierces (ex. GIMP, Blender) et besoin d'un environnement capable d'exécuter ces binaires, non couvert dans les extraits.",
+      "use_cases": "• Utilisateur : Développeur d'agent IA ; Tâche : Intégrer un outil de conversion d'images existant (ex. ImageMagick) dans le flux d'un agent. ; Résultat : L'agent invoque `cli-hub launch convert …` et reçoit le fichier transformé sans écrire de code d'adaptation.\n• Utilisateur : Agence de marketing automation ; Tâche : Automatiser la génération de rapports PDF via LibreOffice en ligne de commande. ; Résultat : Le workflow n8n déclenche `cli-hub launch libreoffice --convert-to pdf …`, produisant le PDF stocké dans un bucket cloud.",
+      "products": "• Cible : PME souhaitant automatiser des tâches bureautiques ; Produit : Plateforme SaaS qui expose les CLIs du hub via une API REST sécurisée. ; difference : Le dépôt brut fournit uniquement le gestionnaire CLI local ; la plateforme ajoute l'authentification, la facturation et le scaling cloud.\n• Cible : Développeurs d'agents autonomes ; Produit : SDK Python qui génère automatiquement le harness n8n à partir d'un fichier de description CLI. ; difference : Le SDK encapsule le processus de création de harness (décrit dans S2) et le rend réutilisable sans manipulation manuelle du pyproject.",
+      "monetization": "Acheteur : PME ou agence payant pour chaque exécution de CLI (pay‑per‑use) ou abonnement mensuel pour accès illimité. Unité facturée : appel d'API ou minute d'exécution. Modèle : abonnement tiered + crédits d'exécution. Fourchette hypothétique : 30 €/mois pour 1 000 appels, 0,02 €/appel supplémentaire, justifiée par le coût d'infrastructure cloud et de maintenance du hub.",
+      "build_plan": "Périmètre : API gateway, authentification JWT, facturation Stripe, conteneurisation du hub (Docker). Brique réutilisée : code du harness n8n (S2). Travail à ajouter : interface web, gestion des quotas, monitoring. Exclusions : développement de CLIs tiers. Dépendances : FastAPI, PostgreSQL, Docker, Stripe SDK. Coût estimé : 2 k€ de dev initial, hébergement cloud ~150 €/mois. Délai : 4‑6 semaines (prototype fonctionnel) sous condition de disponibilité des développeurs à temps plein.",
+      "limitations": "Licence du hub non vérifiée (S1) → risque juridique, dépendance à des binaires externes non packagés, aucune preuve de scalabilité cloud (non établi dans les extraits). Maintenance des CLIs tiers incombe aux utilisateurs.",
+      "next_step": "Réaliser un test d'intégration : déployer le hub sur un conteneur et appeler `cli-hub launch gimp` depuis une fonction FastAPI. Question à poser à un utilisateur potentiel : « Quels outils de bureau automatiseriez‑vous quotidiennement et quels critères de fiabilité attendez‑vous d’une API d’exécution ? »",
+      "assessment": "Score 7 reflète la pertinence du concept pour les besoins d'automatisation et d'agent‑native décrits dans le profil. Fit_score 5 par défaut (pas de contraintes de région ou de prix explicites). Les sources S1 et S2 confirment les capacités de gestion de CLI et de génération de harness, mais aucune donnée ne prouve la viabilité commerciale ou la conformité légale.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "34f519533bc175d2fe287ab8316b0dd99bb9cc43",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/README.md",
+            "excerpt": "  &nbsp; CLI-Anything: Making ALL Software Agent-Native \n\n \n       &#32;   &#32;       \n \n\n \n   Today's Software Serves Humans👨‍💻. Tomorrow's Users will be Agents🤖. \nCLI-Anything: Bridging the Gap Between AI Agents and the World's Software  \n \n\n**🌐 [CLI-Hub](https://hkuds.github.io/CLI-Anything/)**: `pip install cli-anything-hub` then `cli-hub install  ` — browse, install, and manage all community-built CLIs. Want to add your own?\n\n## 🚀 Quick Start\n\nCLI-Anything has two equally useful starting points:\n\n| Goal | Start Here |\n|------|------------|\n| **Use the existing CLI ecosystem now** | Install `cli-anything-hub`, browse the registry, and install ready-made CLIs. |\n| **Build a new agent-native CLI** | Install the CLI-Anything plugin/skill for your agent, then run the 7-phase harness generator. |\n\n \n  Phase 1: Empower yourself — your CLI toolkit  \n\nInstall the CLI-Hub package manager first. It lets you browse, search, inspect, install, update, uninstall, and launch CLI-Anything harnesses plus public third-party CLIs from one command.\n\n**PIP**\n\n```bash\npip install c\n\n# Install and try a CLI immediately\ncli-hub install gimp\ncli-hub info gimp\ncli-hub launch gimp\n```\n\n> Some CLIs wrap real desktop or backend software. If a selected CLI needs GIMP, Blender, LibreOffice, or another upstream tool, install that upstream application too.\n\n \n\n \n  Phase 1.5: Empower y"
+          },
+          {
+            "id": "S2",
+            "path": "n8n/agent-harness/pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/n8n/agent-harness/pyproject.toml",
+            "excerpt": "[build-system]\nrequires = [\"setuptools>=68.0,<76.0\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"cli-anything-n8n\"\nversion = \"2.4.7\"\ndescription = \"CLI harness for n8n workflow automation — CLI-Anything pattern (n8n API v1.1.1)\"\nreadme = \"cli_anything/n8n/README.md\"\nlicense = {text = \"MIT\"}\nrequires-python = \">=3.10\"\nauthors = [\n    {name = \"Juan Jose Sanchez Bernal\", email = \"info@webcomunica.solutions\"},\n]\nmaintainers = [\n    {name = \"Webcomunica Soluciones Informaticas\", email = \"info@webcomunica.solutions\"},\n]\nkeywords = [\"n8n\", \"cli\", \"workflow\", \"automation\", \"c"
+          },
+          {
+            "id": "S3",
+            "path": "macrocli/agent-harness/DEMO.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/HKUDS/CLI-Anything/blob/34f519533bc175d2fe287ab8316b0dd99bb9cc43/macrocli/agent-harness/DEMO.md",
+            "excerpt": "\n\n# 等价于: pip install mss Pillow numpy pynput\n```\n\n---\n\n\n\n# MacroCLI Demo — gedit 完整测试方案\n\n本文档记录 MacroCLI 在 **Linux 无头服务器 + Xvfb + noVNC** 环境下的完整测试过程，\n包括虚拟桌面搭建、VNC 远程查看、宏执行和录制回放的全链路验证。\n\n---\n\n\n\n## 环境架构\n\n```\n本地浏览器\n    │  SSH 隧道 (16080 → 16080)\n    ▼\n远程 Linux 服务器\n    │\n    ├─ Xvfb :99         虚拟显示器 1920x1080\n    ├─ openbox          窗口管理器\n    ├─ x11vnc           VNC 服务 (只监听 localhost:5900)\n    ├─ websockify       WebSocket → VNC 代理 (16080)\n    └─ gedit            被操控的 GUI 应用\n```\n\n---\n\n\n\n## 第一步：安装依赖\n\n```bash\n\n\n# 虚拟显示器和 VNC\nsudo apt install xvfb x11vnc openbox xdotool wmctrl\n\n\n\n# GUI 应用（demo 目标）\nsudo apt install gedit\n\n\n\n# noVNC（浏览器查看桌面）\nsudo apt install novnc websockify\n\n\n\n# AT-SPI 语义控制（可选，GTK "
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "CLI-Anything propose un hub de gestion et d'exécution de lignes de commande, destiné aux agents IA pour interagir avec des logiciels existants. Il cible les développeurs et les intégrateurs qui souhaitent automatiser des outils de bureau ou serveur via des agents.",
+      "business_idea": "• Cible : PME souhaitant automatiser des tâches bureautiques ; Produit : Plateforme SaaS qui expose les CLIs du hub via une API REST sécurisée. ; difference : Le dépôt brut fournit uniquement le gestionnaire CLI local ; la plateforme ajoute l'authentification, la facturation et le scaling cloud.\n• Cible : Développeurs d'agents autonomes ; Produit : SDK Python qui génère automatiquement le harness n8n à partir d'un fichier de description CLI. ; difference : Le SDK encapsule le processus de création de harness (décrit dans S2) et le rend réutilisable sans manipulation manuelle du pyproject."
+    },
+    {
+      "name": "jingyaogong/minimind",
+      "url": "https://github.com/jingyaogong/minimind",
+      "description": "🧠 两小时从 0 训出你的 64M 大模型。Train your own 64M LLM from scratch in 2 hours.",
+      "language": "Python",
+      "stars": 69164,
+      "forks": 9032,
+      "gained": "473 stars today",
+      "gained_n": 473,
+      "lang_color": "#3572A5",
+      "category": "LLM training framework",
+      "eligible": true,
+      "score": 6,
+      "fit_score": 5,
+      "summary": "MiniMind est un framework Python permettant d’entraîner un modèle de langage de 64 M paramètres en environ deux heures sur du matériel modestement coûteux. Il cible les chercheurs et développeurs souhaitant explorer les LLM sans infrastructure massive.",
+      "workflow": "Entrée : jeu de données texte brut (ex. datasets, jsonlines) → Traitement : tokenisation, pré‑entraînement dense + MoE via FastAPI/torch, suivi par SFT/LoRA/ RLHF (S1) → Résultat : modèle .bin prêt à être déployé via API ou interface Streamlit (S2). Limites : nécessite Python ≥ 3.10, GPU dédié, aucune garantie de performance comparée aux modèles propriétaires.",
+      "use_cases": "• Utilisateur : Développeur IA freelance ; Tâche : Créer un petit assistant conversationnel spécialisé dans le support client d’une PME ; Résultat : Déploiement d’un modèle 64 M personnalisable en moins de 3 jours, réduction des coûts d’API externes\n• Utilisateur : Chercheur académique ; Tâche : Expérimenter des algorithmes de RLHF sur un modèle contrôlable ; Résultat : Itération rapide grâce aux scripts de fine‑tuning fournis, sans besoin de licences coûteuses",
+      "products": "• Cible : PME souhaitant un chatbot interne ; Produit : Service SaaS hébergé qui expose le modèle MiniMind via une API REST ; difference : Utilise un modèle 64 M entraîné en interne, donc coûts d’inférence bien inférieurs aux LLM commerciaux\n• Cible : Agences de marketing digital ; Produit : Plateforme no‑code pour générer des contenus courts (posts, emails) à partir du modèle entraîné ; difference : Permet aux équipes non‑techniques de profiter d’un LLM propriétaire sans dépendre d’OpenAI",
+      "monetization": "Acheteur : PME ou agence ; raison : automatisation du support ou création de contenu ; unité facturée : appel API ou abonnement mensuel ; modèle : abonnement tiered (ex. 0 €/1000 req, 20 €/10 k req, 80 €/100 k req). Hypothèse de prix basée sur économies potentielles de licences tierces et coûts d’infrastructure cloud.",
+      "build_plan": "Périmètre : API FastAPI + conteneur Docker du modèle entraîné ; brique réutilisée : code d’entraînement MiniMind (S1) ; travail à ajouter : interface de facturation Stripe, tableau de bord admin, monitoring des quotas ; exclusions : entraînement distribué à grande échelle, UI avancée ; dépendances : fastapi, uvicorn, transformers (S2) ; coût estimé : 150 €/mois cloud GPU + 30 €/mois services SaaS ; délai : 3‑4 semaines pour MVP (conditionnel à disponibilité GPU).",
+      "limitations": "Contraintes établies : besoin de GPU, licence Apache 2.0 non vérifiée (S1) ; inconnues : stabilité du pipeline d’entraînement sur différents jeux de données, support long terme ; coûts de maintenance GPU non inclus.",
+      "next_step": "Réaliser un test technique d’entraînement d’un petit jeu de données avec le script fourni ; interroger un responsable support PME sur les exigences de latence et de confidentialité du chatbot.",
+      "assessment": "Score 6 reflète la pertinence du code source pour créer un LLM léger exploitable dans un produit SaaS, mais l’absence de preuves d’usage en production et de licence claire limite la confiance. Fit_score 5 car le profil indique un besoin de prototypes rapides sans exigences sectorielles spécifiques.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "858008eb98da4428f78053a1cc4d3a3bd5973629",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/jingyaogong/minimind/blob/858008eb98da4428f78053a1cc4d3a3bd5973629/README.md",
+            "excerpt": " \n\n \n\n \n\n \n\n \n[ ](https://github.com/jingyaogong/minimind/stargazers)\n[ ](LICENSE)\n[ ](https://github.com/jingyaogong/minimind/commits/master)\n[ ](https://github.com/jingyaogong/minimind/pulls)\n[ ](https://huggingface.co/collections/jingyaogong/minimind-66caf8d999f5c7fa64f399e5)\n\n \n\n \n\n \n\n \n\n \n   \"大道至简\" \n \n\n \n\n中文 | [English](./README_en.md)\n\n \n\n* 此开源项目旨在完全从 0 开始，仅用 3 块钱成本与 2 小时训练时间\n\n# 可能需要`python>=3.10`，安装 `pip install streamlit`\n\n\n## ❤️ 赞助\n\n \n\n \n   \n     \n       \n         \n       \n     \n     \n       MiniMind ×  Infistar.cc  ：Claude、GPT、Gemini、DeepSeek等200+模型一个Key搞定，低至官方0.1折（省99%），100%官方纯血可验真，千条线路自动切换。通过  专属链接  注册即送¥5。\n     \n   \n \n\n \n\n \n 关于赞助与合作 \n \n\nMiniMind 以 Apache 2.0 协议完全开源、永久免费。赞助完全自愿，不换取任何特权，也不影响项目使用。感谢每一位支持者，让这个业余时间维护的项目得以持续。\n\n赞助方式包括按月占位，或直接赞助 GPU 服务器（算力可能用于项目相\n\n# 📌 项目介绍\n\n大语言模型（Large Language Model, LLM）的出现，引发了全球范围内对 AI 的空前关注。无论是 ChatGPT、DeepSeek 还是 Qwen，都以惊艳的效果让人真切感受到这场技术浪潮的冲击力。然而，动辄数百亿参数的模型规模，使得它们对个人设备而言不仅难以训练，甚至连部署都显得遥不可及。打开大模型的“黑盒子”，真正去理解其内部运作机制，本应是一件令人心潮澎湃的事。遗憾的是，绝大多数探索最终都止步于使用 LoRA 等技术对现有大模型做少量微调，学习一些新指令或特定任务\n\n#### 🎉 本项目包含以下内容\n\n- 提供完整的 MiniMind-LLM 结构代码（Dense + MoE），当前主线结构对齐 `Qwen3 / Qwen3-MoE` 生态。\n- 提供 Tokenizer 与分词器训练代码，支持 ` `、` `、` ` 等模板标记。\n- 覆盖 Pretrain、SFT、LoRA、RLHF-DPO、RLAIF（PPO / GRPO / CISPO）、Tool Use、Agentic RL、自适应思考与模型蒸馏等完整"
+          },
+          {
+            "id": "S2",
+            "path": "requirements.txt",
+            "kind": "dépendances",
+            "url": "https://github.com/jingyaogong/minimind/blob/858008eb98da4428f78053a1cc4d3a3bd5973629/requirements.txt",
+            "excerpt": "datasets==3.6.0\ndatasketch==1.6.4\nFlask==3.0.3\nFlask_Cors==4.0.0\njieba==0.42.1\njsonlines==4.0.0\nmarshmallow==3.22.0\nngrok==1.4.0\nnltk==3.8\nnumpy==1.26.4\npyarrow>=15.0.0,<26\nopenai==1.59.6\npsutil==5.9.8\nprotobuf==6.33.5\npydantic==2.11.5\nrich==13.7.1\nscikit_learn==1.5.1\nsentence_transformers==2.3.1\nsentencepiece==0.2.0\nsimhash==2.1.2\ntiktoken==0.10.0\ntransformers==4.57.6\njinja2==3.1.2\njsonlines==4.0.0\ntrl==0.13.0\nujson==5.1.0\nwandb==0.22.3\nstreamlit==1.50.0\neinops==0.8.1\nswanlab==0.9.8\nmodelscope==1.37.0\nfastapi==0.120.1\nuvicorn==0.38.0\n# torch==2.6.0\n# torchvision==0.21.0\n# peft==0.7.1\n# matplo"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "MiniMind est un framework Python permettant d’entraîner un modèle de langage de 64 M paramètres en environ deux heures sur du matériel modestement coûteux. Il cible les chercheurs et développeurs souhaitant explorer les LLM sans infrastructure massive.",
+      "business_idea": "• Cible : PME souhaitant un chatbot interne ; Produit : Service SaaS hébergé qui expose le modèle MiniMind via une API REST ; difference : Utilise un modèle 64 M entraîné en interne, donc coûts d’inférence bien inférieurs aux LLM commerciaux\n• Cible : Agences de marketing digital ; Produit : Plateforme no‑code pour générer des contenus courts (posts, emails) à partir du modèle entraîné ; difference : Permet aux équipes non‑techniques de profiter d’un LLM propriétaire sans dépendre d’OpenAI"
+    },
+    {
+      "name": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "description": "Cursor plugin specification and official plugins",
+      "language": "TypeScript",
+      "stars": 18633,
+      "forks": 2025,
+      "gained": "294 stars today",
+      "gained_n": 294,
+      "lang_color": "#3178c6",
+      "category": "Marketplace de plugins pour IDE",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent étendre leurs outils de productivité. Chaque plugin est autonome et décrit dans un manifeste JSON.",
+      "workflow": "Entrée : l'utilisateur installe un plugin via le marketplace de Cursor (manifest.json). Traitement : le plugin charge ses compétences (SKILL.md), règles (*.mdc) et éventuellement un serveur MCP. Résultat : fonctionnalités supplémentaires intégrées à l'IDE (ex. plan d’apprentissage, mise à jour incrémentale de la mémoire). Sources : [S1] décrit la structure et le rôle des manifests, mais ne précise pas les limites d’exécution.",
+      "use_cases": "• Utilisateur : Développeur full‑stack ; Tâche : Activer le plugin \"Teaching\" pour obtenir des plans d’apprentissage personnalisés pendant le codage ; Résultat : Le développeur reçoit des suggestions de compétences à travailler, améliorant son efficacité\n• Utilisateur : Équipe de CI/CD ; Tâche : Déployer le plugin \"Cursor Team Kit\" pour automatiser les revues de code et les pipelines ; Résultat : Les flux de travail d’intégration continue sont orchestrés depuis l’IDE, réduisant les allers‑retours manuels",
+      "products": "• Cible : PME de développement logiciel ; Produit : Plateforme SaaS qui agrège les plugins Cursor et les expose via une interface web ; difference : Permet d’utiliser les plugins sans installer Cursor, en offrant un tableau de bord partagé et des métriques d’usage\n• Cible : Agences créatives ; Produit : Extension navigateur qui injecte les fonctionnalités des plugins Cursor dans des éditeurs en ligne (CodeSandbox, Replit) ; difference : Rend les outils de productivité disponibles dans des environnements cloud sans dépendance locale",
+      "monetization": "Acheteur : équipes de développement payant pour un abonnement mensuel. Raison : accès à un catalogue centralisé, support dédié et mises à jour automatiques. Unité facturée : abonnement par utilisateur actif. Modèle : abonnement SaaS avec tarif hypothétique 15‑30 €/mois selon le nombre de plugins activés, justifié par la valeur de gain de temps et le coût d’infrastructure cloud.",
+      "build_plan": "Périmètre limité : créer une couche d’API qui lit les manifests du dépôt et les expose. Brique réutilisée : le code de lecture JSON et le serveur FastAPI existant. Travail à ajouter : UI React, authentification, facturation Stripe. Exclusions : développement des plugins eux‑mêmes. Dépendances : FastAPI, PostgreSQL pour la gestion des licences, Stripe SDK. Coût estimé : 200 h de développement (≈ 4 semaines à plein temps).",
+      "limitations": "Licence MIT indiquée dans le README mais non vérifiée pour chaque plugin ([S1]), aucune garantie de compatibilité avec d’autres IDE, dépendance à l’écosystème Cursor non testée. Coûts de maintenance non chiffrés.",
+      "next_step": "Réaliser un prototype d’API qui liste les plugins et tester l’intégration avec un éditeur en ligne. Question à poser : « Quel problème de productivité cherchez‑vous à résoudre avec un plugin d’IDE ? »",
+      "assessment": "Score 7 basé sur la clarté du manifeste, la variété des plugins et la pertinence pour les secteurs ciblés (outils B2B, productivité). Fit_score 5 car aucune contrainte de région ou de prix n’est fournie dans le profil. Manque de preuves sur la viabilité commerciale et la licence exacte.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/cursor/plugins/blob/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/README.md",
+            "excerpt": "\n\n# Cursor plugins\n\nOfficial Cursor plugins for popular developer tools, frameworks, and SaaS products. Each plugin is a standalone directory at the repository root with its own `.cursor-plugin/plugin.json` manifest.\n\n\n\n## Plugins\n\n| `name` | Plugin | Author | Category | `description` (from marketplace) |\n|:-------|:-------|:-------|:---------|:-------------------------------------|\n| `teaching` | [Teaching](teaching/) | Cursor | Utilities | Skill mapping, practice plans, and learning retrospectives. |\n| `continual-learning` | [Continual Learning](continual-learning/) | Eric Zakariasson | Developer Tools | Incremental transcript-driven memory updates for AGENTS.md using high-signal bullet points only. |\n| `cursor-team-kit` | [Cursor Team Kit](cursor-team-kit/) | Eric Zakariasson | Developer Tools | Internal team workflows for CI, code review, shipping, local\n\n## Repository structure\n\nThis is a multi-plugin marketplace repository. The root `.cursor-plugin/marketplace.json` lists all plugins, and each plugin has its own manifest:\n\n```\nplugins/\n├── .cursor-plugin/\n│   └── marketplace.json       # Marketplace manifest (lists all plugins)\n├── plugin-name/\n│   ├── .cursor-plugin/\n│   │   └── plugin.json        # Per-plugin manifest\n│   ├── skills/                # Agent skills (SKILL.md with frontmatter)\n│   ├── rules/                 # Cursor rules (.mdc files)\n│   ├── mcp.json               # MCP server definitions\n│   ├── README.md\n\n## License\n\nMIT\n"
+          },
+          {
+            "id": "S2",
+            "path": "pstack/skills/statechart/scripts/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/cursor/plugins/blob/7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9/pstack/skills/statechart/scripts/package.json",
+            "excerpt": "{\n  \"name\": \"@cursor-skill/statechart\",\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"test\": \"node --disable-warning=ExperimentalWarning --test test/*.test.ts\"\n  },\n  \"devDependencies\": {\n    \"fast-check\": \"4.5.3\"\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent étendre leurs outils de productivité. Chaque plugin est autonome et décrit dans un manifeste JSON.",
+      "business_idea": "• Cible : PME de développement logiciel ; Produit : Plateforme SaaS qui agrège les plugins Cursor et les expose via une interface web ; difference : Permet d’utiliser les plugins sans installer Cursor, en offrant un tableau de bord partagé et des métriques d’usage\n• Cible : Agences créatives ; Produit : Extension navigateur qui injecte les fonctionnalités des plugins Cursor dans des éditeurs en ligne (CodeSandbox, Replit) ; difference : Rend les outils de productivité disponibles dans des environnements cloud sans dépendance locale"
+    },
+    {
+      "name": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "description": "Knowledge infrastructure to make your agents smarter. Search, scrape and access 550+ data providers through one API.",
+      "language": "TypeScript",
+      "stars": 207421,
+      "forks": 10841,
+      "gained": "915 stars today",
+      "gained_n": 915,
+      "lang_color": "#3178c6",
+      "category": "outil de scraping / extraction de connaissances",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Firecrawl fournit une API qui transforme des pages web en markdown propre et propose des fonctions de recherche, de crawl et d’interaction pour alimenter des agents IA ; il cible les développeurs d’agents autonomes qui ont besoin de données structurées rapidement.",
+      "workflow": "Entrée : URL fournie par l'utilisateur ou l'agent → Traitement : le serveur Firecrawl (local ou cloud) récupère la page, nettoie le HTML, génère du markdown et, si demandé, lance un crawl multi‑pages ; Résultat : texte markdown ou index de recherche renvoyé via l'API. Limites : nécessite Rust/Node.js pour le mode local, dépend d'une connexion internet et d'un quota d'appels cloud [S1].",
+      "use_cases": "1. Développeur d’assistant IA : l'agent envoie une URL, reçoit du markdown prêt à être ingéré pour la génération de réponses. 2. Équipe marketing : extraction automatisée de contenus de sites concurrents pour créer des bases de connaissances internes.",
+      "products": "1. Service SaaS de veille concurrentielle : cible les PME qui souhaitent suivre les évolutions de leurs concurrents, le produit ajoute un tableau de bord de suivi au-dessus de l'API Firecrawl. 2. Extension VS Code pour développeurs : cible les développeurs individuels, l’extension intègre le client Firecrawl et génère du markdown directement dans l’éditeur, différant du dépôt brut qui ne propose qu’une CLI.",
+      "monetization": "Acheteur : PME ou freelance qui paie pour un accès continu aux données structurées. Raison de payer : gain de temps sur la collecte manuelle d’informations. Unité facturée : appel API (scrape ou crawl). Modèle : abonnement mensuel avec forfait de 10 000 appels, prix hypothétique 30 €/mois à tester.",
+      "build_plan": "Périmètre limité : créer une interface web simple autour de l'API Firecrawl. Brique réutilisée : client JavaScript fourni dans le dépôt. Travail à ajouter : tableau de bord, gestion des utilisateurs, facturation Stripe. Exclusions : hébergement du moteur de recherche interne. Dépendances : Firecrawl API, Stripe, base PostgreSQL. Coût estimé : 150 h de développement (≈ 3 semaines à 40 h/semaine).",
+      "limitations": "Contraintes établies : nécessite Rust pour le mode local, quota d'appels cloud non précisé, licence non vérifiée dans le dépôt [S1]. Inconnues : coûts d’infrastructure cloud, support SLA, conformité RGPD du service cloud.",
+      "next_step": "Tester l'API en mode local avec un script de scrape simple et interroger un product‑owner potentiel sur la valeur d’un tableau de bord de veille.",
+      "assessment": "Score 7 reflète la maturité du code (client SDK, CLI, mode local) et la pertinence pour le profil (full‑stack, IA agents). Fit_score 5 par défaut faute de données de région ou de budget précis. Les preuves proviennent du README et du SDK [S1][S3].",
+      "evidence_ids": [
+        "S1",
+        "S3"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "e21a58e60f70872f420b87579c14775f56580bb0",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/firecrawl/firecrawl/blob/e21a58e60f70872f420b87579c14775f56580bb0/README.md",
+            "excerpt": " \n    \n   \n \n\n \n   \n     \n   \n   \n     \n   \n   \n     \n   \n   \n     \n   \n \n\n \n   \n     \n       \n     \n     \n       \n     \n     \n       \n     \n   \n \n\n---\n\n\n\n## Features\n- Search: Find information across the web\n- Scrape: Clean data from any page\n- Interact: Click, navigate, and operate pages\n- Agent: Autonomous data gathering\n```\n\n\n\n# **🔥 Firecrawl**\n\n**Knowledge infrastructure to make your agents smarter. 🔥** You can use Firecrawl three ways. This repo holds the code for Firecrawl Local and the self-hosted server, along with SDKs that work with all three.\n\n- **[Firecrawl Local](#firecrawl-local).** Run Firecrawl on your own machine as one binary that turns websites into clean markdown, plugs into your AI agent as an MCP server and serves the Firecrawl API on localhost.\n- **[Firecrawl Cloud](#firecrawl-cloud).** Use the hosted service at [firecrawl.dev](https://firecrawl.dev/?ref=github) for everything Local does at scale with nothing to run, plus search and the 55\n\n## Firecrawl Local\n\n[Firecrawl Local](apps/local) scrapes, crawls and maps from your own machine without a database, queue or container, and it reaches Firecrawl Cloud when your AI agents need search or Alexandria. It installs from crates.io. You need Rust and a C compiler, which on macOS means `xcode-select --install` and on Debian or Ubuntu means `build-essential`.\n\n```bash\ncargo install firecrawl-local\n```\n\nIf you don't have Rust, [Firecrawl Cloud](#firecrawl-cloud) runs the same scrape with nothing to build and no signup.\n\n```bash\nnpx -y firecrawl-cli@latest scrape https://firecrawl.dev\n```\n\nScrape a page and print its markdown.\n\n```bash\n\n\n### Add it to your AI agent\n\n`init` finds Claude Code, Claude Desktop, Cursor, Windsurf, Gemini CLI and Codex on your machine and adds Firecrawl Local to each one as an MCP server. It backs up every config file first, and the MCP server itself needs Node.js 22 or newer.\n\n```bash\nfirecrawl-local init\n```\n\nRestart your AI tool afterwards. Its scrape, crawl, map a"
+          },
+          {
+            "id": "S2",
+            "path": "apps/go-sdk/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/firecrawl/firecrawl/blob/e21a58e60f70872f420b87579c14775f56580bb0/apps/go-sdk/go.mod",
+            "excerpt": "module github.com/firecrawl/firecrawl/apps/go-sdk\n\ngo 1.23\n"
+          },
+          {
+            "id": "S3",
+            "path": "apps/js-sdk/example.js",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/firecrawl/firecrawl/blob/e21a58e60f70872f420b87579c14775f56580bb0/apps/js-sdk/example.js",
+            "excerpt": "// Placeholder v2 example (JavaScript)\n// Minimal usage of new FirecrawlClient. Replace with your API key before running.\n\nimport { FirecrawlClient } from './firecrawl/src/v2/client.js';\n\nasync function run() {\n  const apiKey = (globalThis.process && globalThis.process.env && globalThis.process.env.FIRECRAWL_API_KEY) || 'fc-YOUR_API_KEY';\n  const client = new FirecrawlClient({ apiKey });\n\n  const doc = await client.scrape('https://docs.firecrawl.dev', { formats: ['markdown'] });\n  console.log('scrape:', !!doc.markdown);\n\n  const crawl = await client.crawl('https://docs.firecrawl.dev', { limit: 3, pollInterval: 1, timeout: 120 });\n  console.log('crawl:', crawl.status, crawl.completed, '/', crawl.total);\n\n  const batch = await client.batchScrape([\n    'https://docs.firecrawl.dev',\n    'https://firecrawl.dev',\n  ], { options: { formats: ['markdown'] }, pollInterval: 1, timeout: 120 });\n  console.log('batch:', batch.status, batch.completed, '/', batch.total);\n\n  const search = await client"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Firecrawl fournit une API qui transforme des pages web en markdown propre et propose des fonctions de recherche, de crawl et d’interaction pour alimenter des agents IA ; il cible les développeurs d’agents autonomes qui ont besoin de données structurées rapidement.",
+      "business_idea": "1. Service SaaS de veille concurrentielle : cible les PME qui souhaitent suivre les évolutions de leurs concurrents, le produit ajoute un tableau de bord de suivi au-dessus de l'API Firecrawl. 2. Extension VS Code pour développeurs : cible les développeurs individuels, l’extension intègre le client Firecrawl et génère du markdown directement dans l’éditeur, différant du dépôt brut qui ne propose qu’une CLI."
+    },
+    {
+      "name": "nginx/nginx",
+      "url": "https://github.com/nginx/nginx",
+      "description": "The official NGINX Open Source repository.",
+      "language": "C",
+      "stars": 32966,
+      "forks": 8393,
+      "gained": "163 stars today",
+      "gained_n": 163,
+      "lang_color": "#555555",
+      "category": "Serveur Web / Proxy inverse",
+      "eligible": true,
+      "score": 8,
+      "fit_score": 5,
+      "summary": "NGINX est un serveur web open‑source, load‑balancer et reverse‑proxy très performant, destiné aux administrateurs systèmes qui doivent servir du trafic HTTP/HTTPS à grande échelle.",
+      "workflow": "Entrée : requête HTTP d’un client → Traitement : NGINX accepte la connexion, applique la configuration (routage, TLS, limites de débit) et transmet la requête au backend ou sert le contenu statique → Résultat : réponse HTTP renvoyée au client. La documentation indique que le binaire s’installe via les paquets officiels et que le code source peut être compilé localement [S1]. Limites : aucune interface graphique native, la configuration repose sur des fichiers texte et la mise à jour nécessite un redémarrage du processus.",
+      "use_cases": "1. Opérateur d’hébergement : configure NGINX comme reverse‑proxy devant plusieurs micro‑services afin de centraliser le TLS et le routage. 2. Agence de marketing digital : utilise NGINX comme cache de contenu statique pour accélérer la diffusion de pages publicitaires à fort trafic.",
+      "products": "1. Produit A – Service de gestion de certificats automatisé pour PME, s’appuie sur NGINX comme moteur de terminaison TLS et ajoute une interface web pour le renouvellement. 2. Produit B – Plateforme de monitoring de performances NGINX, intègre des agents de collecte de métriques et propose des tableaux de bord SaaS, différant du dépôt brut qui ne fournit que le serveur.",
+      "monetization": "Acheteur : PME ou agence cherchant à externaliser la gestion TLS ou le monitoring. Raison de payer : réduction du temps d’administration et visibilité sur les performances. Unité facturée : abonnement mensuel par instance surveillée. Hypothèse de prix : 30 €‑50 €/mois selon le nombre d’instances, justifiée par le coût d’infrastructure et le gain de productivité.",
+      "build_plan": "Périmètre limité : ajouter une UI de gestion TLS et un agent de métriques. Brique réutilisée : le binaire NGINX existant. Travail à ajouter : développement front‑end, API REST, intégration de Prometheus. Exclusions : réécriture du moteur de proxy. Dépendances : OpenSSL, Prometheus client, serveur de base de données pour stocker les certificats. Coût estimé : 120 h de développement (≈ 15 jours à 8 h/j). Délai : 3‑4 semaines conditionnellement au recrutement d’un développeur full‑stack.",
+      "limitations": "Contraintes établies : configuration uniquement via fichiers texte, nécessite un redémarrage pour appliquer les changements. Inconnues : support officiel pour les modules tiers, impact de la charge sur le CPU. Licence : licence BSD‑like à vérifier pour usage commercial. Coûts de maintenance : mise à jour de sécurité régulière, estimation non fournie.",
+      "next_step": "Réaliser un test d’intégration d’un certificat Let's Encrypt via l’API ACME et interroger un administrateur système sur la valeur perçue d’une UI de gestion.",
+      "assessment": "Score 8 reflète la maturité et la popularité du projet, tandis que le fit_score 5 reste neutre faute de preuves spécifiques aux besoins du profil. Les sources sont limitées à la README, d’où le manque de détails sur l’API ou les métriques intégrées.",
+      "evidence_ids": [
+        "S1"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "2e8440bcdc438f0f1cd03da778a3843ddb3c86d9",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/nginx/nginx/blob/2e8440bcdc438f0f1cd03da778a3843ddb3c86d9/README.md",
+            "excerpt": " \n   \n   \n   \n \n\n[ ](https://www.repostatus.org/#active)\n[ ](https://community.nginx.org)\n[ ](/LICENSE)\n[ ](/CODE_OF_CONDUCT.md)\n\nNGINX (pronounced \"engine x\" or \"en-jin-eks\") is the world's most popular Web Server, high performance Load Balancer, Reverse Proxy, API Gateway and Content Cache.\n\nNGINX is free and open source software, distributed under the terms of a simplified [2-clause BSD-like license](LICENSE).\n\nEnterprise distributions, commer\n\n# How it works\nNGINX is installed software with binary packages available for all major operating systems and Linux distributions. See [Tested OS and Platforms](https://nginx.org/en/#tested_os_and_platforms) for a full list of compatible systems.\n\n> [!IMPORTANT]\n> While nearly all popular Linux-based operating systems are distributed with a community version of nginx, we highly advise installation and usage of official [packages](https://nginx.org/en/linux_packages.html) or sources from this repository. Doing so ensures that you're using the most recent release or source code, including the latest feature-set, fixes and security patches.\n\n\n\n# Downloading and installing\nFollow these steps to download and install precompiled NGINX binaries. You may also choose to [build NGINX locally from source code](#building-from-source).\n\n\n\n## Linux binary installation process\nThe NGINX binary installation process takes advantage of package managers native to specific Linux distributions. For this reason, first-time installations involve adding the official NGINX package repository to your system's package manager. Follow [these steps](https://nginx.org/en/linux_packages.html) to download, verify, and install NGINX binaries using the package manager appropriate for your Linux distribution.\n\n\n\n## FreeBSD installation process\nFor more information on installing NGINX on FreeBSD system, visit https://nginx.org/en/docs/install.html\n\n\n\n## Installing SSL certificates and enabling TLS encryption\nSee [Configuring HTTPS servers](https://nginx.org/en/docs/http/configuring_https_servers.html) for a quick guide on how to enable secure traffic to your NGINX installation.\n\n\n\n## Rate limiting\nSee our [Rate Limiting with NGINX](https://blog.nginx.org"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "NGINX est un serveur web open‑source, load‑balancer et reverse‑proxy très performant, destiné aux administrateurs systèmes qui doivent servir du trafic HTTP/HTTPS à grande échelle.",
+      "business_idea": "1. Produit A – Service de gestion de certificats automatisé pour PME, s’appuie sur NGINX comme moteur de terminaison TLS et ajoute une interface web pour le renouvellement. 2. Produit B – Plateforme de monitoring de performances NGINX, intègre des agents de collecte de métriques et propose des tableaux de bord SaaS, différant du dépôt brut qui ne fournit que le serveur."
+    },
+    {
+      "name": "openvinotoolkit/openvino",
+      "url": "https://github.com/openvinotoolkit/openvino",
+      "description": "OpenVINO™ is an open source toolkit for optimizing and deploying AI inference",
+      "language": "C++",
+      "stars": 12186,
+      "forks": 3670,
+      "gained": "158 stars today",
+      "gained_n": 158,
+      "lang_color": "#f34b7d",
+      "category": "Toolkit d'optimisation et de déploiement d'inférence IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "OpenVINO est une boîte à outils open‑source permettant d’optimiser des modèles de deep learning et de les exécuter sur divers matériels (CPU, GPU, VPU). Elle cible les développeurs IA qui souhaitent réduire le temps d’inférence et la consommation de ressources.",
+      "workflow": "Entrée : modèle entraîné (ex. PyTorch, TensorFlow) → Traitement : conversion via ov.convert_model puis compilation avec ov.Core() pour le dispositif cible → Résultat : modèle optimisé prêt à l’inférence avec latence réduite. Limites : nécessite Python ≥ 3.11, dépend de bibliothèques natives et de la compatibilité matériel décrite dans la documentation [S1].",
+      "use_cases": "1. Développeur d’application SaaS d’analyse d’image : charge un modèle YOLOv11, l’optimise avec OpenVINO et le déploie sur CPU pour offrir une détection d’objets en temps réel aux clients. 2. Startup de chatbot LLM : convertit un modèle PyTorch en modèle OpenVINO, le compile pour CPU et le sert via une API FastAPI afin de réduire le coût d’inférence cloud.",
+      "products": "1. Service d’optimisation IA en ligne : cible les PME qui utilisent des modèles propriétaires, propose un tableau de bord où l’on téléverse le modèle, on choisit le hardware cible et on reçoit un artefact OpenVINO prêt à déployer. Différence : ajoute une couche SaaS d’automatisation autour du toolkit brut. 2. Bibliothèque Python « openvino‑lite » : cible les développeurs indépendants, fournit des wrappers simplifiés (load, compile, infer) et des exemples prêts à l’emploi, réduisant le besoin de lire la documentation officielle.",
+      "monetization": "Acheteur : développeur ou entreprise souhaitant réduire leurs coûts d’inférence. Raison de payer : gain de performance mesurable et support dédié. Unité facturée : abonnement mensuel par instance de service d’optimisation ou paiement à l’usage (nombre d’inférences optimisées). Hypothèse de prix : 30 € / mois pour le SaaS d’optimisation, 0,001 € / inférence pour le modèle à l’usage, justifié par les économies potentielles sur le cloud.",
+      "build_plan": "Périmètre limité : créer une interface web simple (Next.js) qui appelle les API Python d’OpenVINO via un micro‑service FastAPI. Brique réutilisée : le toolkit OpenVINO (déjà disponible). Travail à ajouter : UI, gestion des comptes, facturation Stripe, orchestration Docker. Exclusions : développement de nouveaux algorithmes d’optimisation. Dépendances : Python ≥ 3.11, FastAPI, Docker, Stripe, Vercel/Fly.io. Coût estimé : 150 h de développement (≈ 3 semaines à 40 h/semaine) + 0,10 €/h d’infrastructure cloud. Délai : 3‑4 semaines conditionnel selon disponibilité des ressources internes.",
+      "limitations": "Contraintes établies : licence Apache‑2.0 ([S2]), nécessite du matériel compatible, dépendance à des bibliothèques C++ natives. Inconnues : performance exacte sur GPU spécifiques, support complet des nouveaux modèles LLM. Maintenance : mise à jour du toolkit chaque version majeure, coût potentiel de support technique.",
+      "next_step": "Réaliser un test technique : convertir un petit modèle PyTorch (ex. shufflenet) avec OpenVINO et mesurer le temps d’inférence sur CPU vs. sans optimisation. Question à poser à un utilisateur potentiel : « Quel est le coût mensuel actuel de vos inférences IA et quelles économies viseriez‑vous ? »",
+      "assessment": "Score 7 reflète la maturité du toolkit (documentation, exemples, licence claire) et son adéquation avec le profil technique (Python, FastAPI, IA). Fit_score 5 reste neutre faute de critères de région ou de budget spécifiques. Les preuves proviennent des extraits README et pyproject.toml [S1][S2].",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0a39f6adc8b0cbaab873f9a674230ff02616662b",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/openvinotoolkit/openvino/blob/0a39f6adc8b0cbaab873f9a674230ff02616662b/README.md",
+            "excerpt": " \n \n\n \nOpen-source software toolkit for optimizing and deploying deep learning models.\n \n\n \n   Documentation   •   Blog   •   Key Features   •   Tutorials   •   Integrations   •   Benchmarks   •   Generative AI  \n \n\n[ ](https://badge.fury.io/py/openvino)\n[ ](https://www.npmjs.com/package/openvino-node)\n[ ](https://anaconda.org/conda-forge/openvino)\n[ ](https://formulae.brew.sh/formula/openvino)\n\n[ ](https://pepy.tech/project/openvino)\n\n## Installation\n\n[Get your preferred distribution of OpenVINO](https://docs.openvino.ai/2026/get-started/install-openvino.html) or use this command for quick installation:\n\n```sh\npip install -U openvino\n```\n\n\n\n### Verify Installation\n\nAfter installation, you can verify OpenVINO is installed correctly by running:\n\n```python\nimport openvino as ov\nprint(ov.__version__)\n```\n\nCheck [system requirements](https://docs.openvino.ai/2026/about-openvino/release-notes-openvino/system-requirements.html) and [supported devices](https://docs.openvino.ai/2026/documentation/compatibility-and-support/supported-devices.html) for detailed information.\n\n\n\n## Tutorials and Examples\n\n[OpenVINO Quickstart example](https://docs.openvino.ai/2026/get-started.html) will walk you through the basics of deploying your first model.\n\nLearn how to optimize and deploy popular models with the [OpenVINO Notebooks](https://github.com/openvinotoolkit/openvino_notebooks) 📚:\n- [Create an LLM-powered Chatbot using OpenVINO](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/llm-chatbot/llm-chatbot-generate-api.ipynb)\n- [YOLOv11 Optimization](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/yolov11-optimization/yolov11-object-detection.ipynb)\n- [Text-to-Image G\n\n# load PyTorch model into memory\nmodel = torch.hub.load(\"pytorch/vision\", \"shufflenet_v2_x1_0\", weights=\"DEFAULT\")\n\n\n\n# convert the model into OpenVINO model\nexample = torch.randn(1, 3, 224, 224)\nov_model = ov.convert_model(model, example_input=(example,))\n\n\n\n# compile the model for CPU device\ncore = ov.Core()\ncompiled_model = core.compile_model(ov_model, 'CPU')\n\n\n\n# infer the model on random data\noutput = compiled_model({0: example.numpy()})\n```\n\n*"
+          },
+          {
+            "id": "S2",
+            "path": "pyproject.toml",
+            "kind": "dépendances",
+            "url": "https://github.com/openvinotoolkit/openvino/blob/0a39f6adc8b0cbaab873f9a674230ff02616662b/pyproject.toml",
+            "excerpt": "[project]\nname = \"openvino\"\ndynamic = [\"version\", \"entry-points\", \"scripts\"]\ndescription = \"OpenVINO(TM) Runtime\"\nreadme = {file = \"README.md\", content-type=\"text/markdown\"}\nlicense = \"Apache-2.0\"\nauthors = [\n    { name = \"OpenVINO Developers\", email = \"openvino@intel.com\" },\n]\nclassifiers = [\n    \"Programming Language :: Python :: 3.11\",\n    \"Programming Language :: Python :: 3.12\",\n    \"Programming Language :: Python :: 3.13\",\n    \"Programming Language :: Python :: 3.14\",\n    \"Programming Language :: Python :: 3.15\",\n]\nrequires-python = \">=3.11\"\n\ndependencies = [\n    \"numpy>=1.16.6,<2.6.0\",\n"
+          },
+          {
+            "id": "S3",
+            "path": "src/bindings/python/docs/examples/openvino/__init__.py",
+            "kind": "extrait technique non exécuté",
+            "url": "https://github.com/openvinotoolkit/openvino/blob/0a39f6adc8b0cbaab873f9a674230ff02616662b/src/bindings/python/docs/examples/openvino/__init__.py",
+            "excerpt": "# -*- coding: utf-8 -*-\n# Copyright (C) 2018-2026 Intel Corporation\n# SPDX-License-Identifier: Apache-2.0\n\n__path__ = __import__(\"pkgutil\").extend_path(__path__, __name__)  # type: ignore # mypy issue #1422\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "OpenVINO est une boîte à outils open‑source permettant d’optimiser des modèles de deep learning et de les exécuter sur divers matériels (CPU, GPU, VPU). Elle cible les développeurs IA qui souhaitent réduire le temps d’inférence et la consommation de ressources.",
+      "business_idea": "1. Service d’optimisation IA en ligne : cible les PME qui utilisent des modèles propriétaires, propose un tableau de bord où l’on téléverse le modèle, on choisit le hardware cible et on reçoit un artefact OpenVINO prêt à déployer. Différence : ajoute une couche SaaS d’automatisation autour du toolkit brut. 2. Bibliothèque Python « openvino‑lite » : cible les développeurs indépendants, fournit des wrappers simplifiés (load, compile, infer) et des exemples prêts à l’emploi, réduisant le besoin de lire la documentation officielle."
+    },
+    {
+      "name": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 52 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+      "language": "HTML",
+      "stars": 70634,
+      "forks": 4738,
+      "gained": "518 stars today",
+      "gained_n": 518,
+      "lang_color": "#e34c26",
+      "category": "outil de génération de diagrammes HTML/SVG",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un agent skill qui crée des diagrammes éditoriaux sous forme de fichier HTML autonome contenant du SVG. Destiné aux développeurs qui souhaitent intégrer rapidement des schémas visuels dans leurs documents ou interfaces.",
+      "workflow": "Entrée : texte descriptif du diagramme fourni à l'agent (ex. via Claude Code). Traitement : l'agent interprète le texte, génère la mise en page sur une grille 4 px, produit du SVG intégré dans un fichier HTML. Résultat : fichier unique exportable en SVG ou PNG, prêt à être publié. Limites : aucune prise en charge de styles personnalisés complexes, dépend de la disponibilité du plugin sur la plateforme d'hébergement [S1].",
+      "use_cases": "1. Développeur front‑end crée un diagramme d'architecture système pour la documentation du projet et l'exporte en PNG pour le README. 2. Agence de design produit des schémas de processus client en HTML intégré à un site web, sans devoir manipuler d'outils de dessin manuels.",
+      "products": "1. Service SaaS « Diagram‑Pro » ciblant les PME qui veulent générer des diagrammes de processus à la volée via une API REST ; différence : offre un multitenant, facturation à l'usage et stockage des templates. 2. Extension VS Code « Diagram‑Lite » pour freelancers, fonctionnant en local, sans serveur ; différence : aucune dépendance cloud, licence unique.",
+      "monetization": "Acheteur : PME ou freelance cherchant à automatiser la création de diagrammes. Raison de payer : gain de temps sur la production visuelle et conformité à la charte graphique. Unité facturée : appel d'API ou licence annuelle. Modèle : abonnement mensuel (≈ 15 €/mois) ou paiement à l'usage (≈ 0,02 €/diagramme). Hypothèse basée sur la valeur perçue du gain de productivité.",
+      "build_plan": "Périmètre : API REST wrapper autour du skill existant, tableau de bord admin, facturation Stripe. Brique réutilisée : logique de génération HTML/SVG du dépôt. Travail à ajouter : authentification JWT, gestion des quotas, UI React. Exclusions : éditeur visuel avancé, export PDF. Dépendances : Node.js, @anthropic-ai/claude-code (voir S2), Stripe SDK. Coût estimé : 120 h de développement (≈ 15 jours ouvrés à 8 h/j).",
+      "limitations": "Contraintes connues : style unique, pas de personnalisation fine, dépendance à l'agent Claude/Code. Inconnues : performances à grande échelle, compatibilité avec d'autres LLM. Licence non vérifiée, il faut confirmer les droits de redistribution. Maintenance : mise à jour du skill et des dépendances Node.",
+      "next_step": "Réaliser un prototype d'API qui envoie un prompt au skill et retourne le HTML; interroger un product manager de PME sur le besoin de diagrammes automatisés.",
+      "assessment": "Score 7 reflète la pertinence du dépôt pour créer rapidement des diagrammes sans UI lourde. Fit_score 5 car le profil ne précise pas de contrainte de plateforme précise, mais le projet correspond aux priorités B2B SaaS et automatisation. Manque de preuves sur la licence et la scalabilité, d'où la mention « non établi dans les extraits » pour ces points.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "0eeda75a708f419560d5e032693618bb9954f17b",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/cathrynlavery/diagram-design/blob/0eeda75a708f419560d5e032693618bb9954f17b/README.md",
+            "excerpt": " \n\n \n   \n     \n     \n   \n \n\n**An agent skill that draws diagrams as one self-contained HTML + SVG file, in your brand. 52 diagram types. No shadows. No Mermaid slop.**\n\n[ ](https://github.com/cathrynlavery/diagram-design/stargazers)\n[ ](https://skills.sh/cathrynlavery/diagram-design/diagram-design)\n[ ](https://github.com/cathrynlavery/diagram-design/actions/workflows/ci.yml)\n[ ](CHANGELOG.md)\n[ ](LICENSE)\n\n   \n\n**[Website](https://diagramdesign.d\n\n## Install\n\nWorks with any host that reads Agent Skills, including Cursor, Claude Code, Codex, Qoder, GitHub Copilot, Gemini CLI, Cline, Windsurf and Amp:\n\n```bash\nnpx skills add cathrynlavery/diagram-design\n```\n\nIn Claude Code, the plugin marketplace gets you updates and the slash commands:\n\n```text\n/plugin marketplace add cathrynlavery/diagram-design\n/plugin install diagram-design@diagram-design\n```\n\nOfficial builds come only from this repository. LittleMight, Cathryn Lavery's company, publishes the plugin directory listings; a listing under any other name is an unofficial copy. [PRIVACY.md](PRIVACY.md) lists what the skill sends over the n\n\n## How it compares\n\n| | Mermaid / PlantUML | draw.io / Excalidraw | Diagram Design |\n|---|---|---|---|\n| You make it by | Writing text | Dragging shapes by hand | Describing it to your agent |\n| Layout | Automatic | Manual | Placed by the agent on a 4px grid, with CI checks for overlaps and clipping |\n| Look | The renderer's theme | Whatever you draw | One opinionated editorial style, matched to your brand |\n| Output | Text that renders on GitHub | An editable `.drawio` or `.excalidraw` file | One HTML file with inline SVG, exportable to SVG or PNG |\n| Change it later | Edit the text | Edit the canvas | Ask the agent again, or edit the SVG |\n\n\n## Quickstart\n\n```bash\n\n\n## Architecture\n\nProgressive disclosure. `SKILL.md` routes behavior first when needed, then layout. Semantic, type, and animation references load only when relevant.\n\n```\ndiagram-design/\n├── .agents/plugins/marketplace.json  # Codex marketplace catalog\n├── .claude-plugin/                   # Claude marketplace + plugin manifest\n├── .codex-plugin/                    # Codex plugin manifest\n├──"
+          },
+          {
+            "id": "S2",
+            "path": ".github/ci/node/package.json",
+            "kind": "dépendances",
+            "url": "https://github.com/cathrynlavery/diagram-design/blob/0eeda75a708f419560d5e032693618bb9954f17b/.github/ci/node/package.json",
+            "excerpt": "{\n  \"name\": \"diagram-design-ci\",\n  \"private\": true,\n  \"devDependencies\": {\n    \"@anthropic-ai/claude-code\": \"2.1.229\"\n  }\n}\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un agent skill qui crée des diagrammes éditoriaux sous forme de fichier HTML autonome contenant du SVG. Destiné aux développeurs qui souhaitent intégrer rapidement des schémas visuels dans leurs documents ou interfaces.",
+      "business_idea": "1. Service SaaS « Diagram‑Pro » ciblant les PME qui veulent générer des diagrammes de processus à la volée via une API REST ; différence : offre un multitenant, facturation à l'usage et stockage des templates. 2. Extension VS Code « Diagram‑Lite » pour freelancers, fonctionnant en local, sans serveur ; différence : aucune dépendance cloud, licence unique."
+    },
+    {
+      "name": "mvanhorn/last30days-skill",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+      "language": "Python",
+      "stars": 73081,
+      "forks": 6460,
+      "gained": "668 stars today",
+      "gained_n": 668,
+      "lang_color": "#3572A5",
+      "category": "Agent‑skill / moteur de recherche IA",
+      "eligible": true,
+      "score": 7,
+      "fit_score": 5,
+      "summary": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis synthétise un résumé. Destiné aux développeurs ou market‑researchers qui ont besoin d’une veille rapide et contextualisée.",
+      "workflow": "Entrée : texte du sujet recherché → Traitement : le skill lance des requêtes parallèles sur les API publiques (Reddit, YouTube, etc.), pondère les résultats par engagement, fraîcheur et pertinence, récupère les transcriptions et les scores d’interaction → Résultat : un document structuré contenant les liens, extraits et métriques clés. Sources : description du fonctionnement (S1). Limites : dépend des quotas API publics, aucune garantie de couverture exhaustive, licence non vérifiée (S2).",
+      "use_cases": "• Utilisateur : Analyste marketing ; Tâche : Obtenir un aperçu des tendances d’un produit sur les réseaux sociaux en 24 h ; Résultat : Rapport agrégé avec scores d’engagement et liens vers les contenus les plus pertinents\n• Utilisateur : Développeur de produit SaaS ; Tâche : Surveiller les retours utilisateurs d’une fonctionnalité récemment lancée ; Résultat : Synthèse quotidienne des commentaires Reddit, tweets et vidéos YouTube liés, prête à être intégrée dans le tableau de bord interne",
+      "products": "• Cible : PME souhaitant automatiser la veille concurrentielle ; Produit : Plateforme web SaaS qui intègre le skill comme service backend, propose des tableaux de bord personnalisés et des alertes email ; difference : Ajoute une couche UI, stockage des historiques et planification, ce qui n’est pas fourni par le skill brut\n• Cible : Agences de communication ; Produit : Extension Chrome qui invoque le skill en temps réel sur la page active et affiche un panneau latéral avec les résumés ; difference : Transforme le skill en outil de productivité instantanée, sans besoin de serveur dédié",
+      "monetization": "Acheteur : agences ou PME → paiement à l’usage (nombre de requêtes) → unité facturée : appel API → modèle freemium avec quota gratuit puis tarif hypothétique 0,005 €/ appel, justifié par le coût des API tierces et l’infrastructure serveur.",
+      "build_plan": "Périmètre : UI web + API wrapper autour du skill existant. Brique réutilisée : code du skill (S1). Travail à ajouter : interface React, authentification OAuth, stockage PostgreSQL pour historiques, tableau de bord. Exclusions : développement de nouvelles sources de données. Dépendances : FastAPI (Python), Next.js (TS), Supabase pour DB, Docker pour déploiement. Coût estimé : 150 € / mois (cloud + API). Délai : 4‑6 semaines (prototype fonctionnel).",
+      "limitations": "Contraintes établies : dépendance aux API publiques, besoin d’une licence claire (non vérifiée dans S2). Inconnues : volume de trafic supportable, conformité RGPD non attestée, maintenance des clés API. Licence du dépôt non confirmée, donc risque juridique.",
+      "next_step": "Réaliser un test technique : appeler le skill avec un sujet simple (ex. « Web3 ») et mesurer le temps de réponse. Question à poser à un utilisateur potentiel : « Quel niveau de détail et quelles métriques (likes, upvotes) vous sont utiles dans un résumé de veille ? »",
+      "assessment": "Score 7 reflète la pertinence du skill pour la veille automatisée et la facilité d’intégration. Fit_score 5 car le profil indique un besoin de prototypes rapides, mais aucune preuve de marché n’est fournie. Les sources S1 et S2 soutiennent les fonctionnalités et les dépendances, mais la licence et la conformité restent non établies.",
+      "evidence_ids": [
+        "S1",
+        "S2"
+      ],
+      "profile_loaded": true,
+      "evidence": {
+        "revision": "331025e662756ca51e86dfddcf59969f6dba25a0",
+        "sources": [
+          {
+            "id": "S1",
+            "path": "README.md",
+            "kind": "documentation auteur",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/331025e662756ca51e86dfddcf59969f6dba25a0/README.md",
+            "excerpt": "\n\n## Install\n\n| Surface | Install | Updates |\n|---------|---------|---------|\n| **Claude Code** (recommended) | `/plugin marketplace add mvanhorn/last30days-skill` | Auto via marketplace, or `claude plugin update last30days@last30days-skill` |\n| **Grok** (xAI Build CLI) | `grok plugin marketplace add mvanhorn/last30days-skill` then `grok plugin install last30days` | `grok plugin update last30days` |\n| **Grok Bot** | [Add it from the Grok Bot marketplace](https://x.ai/bot/marketplace/bots/last30days) | Managed by the marketplace |\n| **Codex, Cursor, Copilot, Gemini CLI, or any of 50+ [Agent Skills](https://agentskills.io) hosts** | `npx skills a\n\n## Showcase: community research feeds\n\nPublished a recurring AI update, market watch, or wonderfully narrow obsession with last30days? Share the public library URL—or the Atom URL after hosting `feed.xml` on a static host—in [the community showcase thread](https://github.com/mvanhorn/last30days-skill/issues/532). Community feeds will be linked here as their owners submit them; the thread is the collection point in the meantime.\n\n\n\n## How it works\n\n1. **You type a topic.** Person, company, product, technology, \"X vs Y.\" Anything.\n2. **The agent resolves who matters.** Finds X handles (including founders), GitHub repos, subreddits, TikTok hashtags, YouTube channels. For \"Kanye West\" it knows r/hiphopheads, @kanyewest, and \"bully review\" on YouTube. For \"OpenClaw\" it resolves openclaw/openclaw on GitHub and fetches live star counts.\n3. **All sources searched in parallel.** Multi-query expansion. Results scored by engagement, relevance, freshness.\n4. **The depth nobody else has.** Full YouTube transcripts from reaction videos. Top Reddit comments with upvote counts. TikTok\n\n# /last30days\n\nEnglish | [Français](README.fr.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md) | [العربية](README.ar.md) | [فارسی](README.fa.md) | [Türkçe](README.tr.md)\n\n \n   \n \n\n \n   \n     \n   \n   \n   \n     \n   \n   \n   \n     \n   \n \n\n**An AI agent-led search engine scored by upvotes, likes, and real money - not editors.**\n\nThi"
+          },
+          {
+            "id": "S2",
+            "path": "mcp/go.mod",
+            "kind": "dépendances",
+            "url": "https://github.com/mvanhorn/last30days-skill/blob/331025e662756ca51e86dfddcf59969f6dba25a0/mcp/go.mod",
+            "excerpt": "module github.com/mvanhorn/last30days-skill/mcp\n\ngo 1.25.5\n\nrequire (\n\tgithub.com/mark3labs/mcp-go v1.5.0\n\tgopkg.in/yaml.v3 v3.0.1\n)\n\nrequire (\n\tgithub.com/google/jsonschema-go v0.4.2 // indirect\n\tgithub.com/google/uuid v1.6.0 // indirect\n\tgithub.com/santhosh-tekuri/jsonschema/v6 v6.0.2 // indirect\n\tgithub.com/spf13/cast v1.7.1 // indirect\n\tgithub.com/yosida95/uritemplate/v3 v3.0.2 // indirect\n\tgolang.org/x/text v0.39.0 // indirect\n)\n"
+          }
+        ],
+        "notes": []
+      },
+      "eli5": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web, puis synthétise un résumé. Destiné aux développeurs ou market‑researchers qui ont besoin d’une veille rapide et contextualisée.",
+      "business_idea": "• Cible : PME souhaitant automatiser la veille concurrentielle ; Produit : Plateforme web SaaS qui intègre le skill comme service backend, propose des tableaux de bord personnalisés et des alertes email ; difference : Ajoute une couche UI, stockage des historiques et planification, ce qui n’est pas fourni par le skill brut\n• Cible : Agences de communication ; Produit : Extension Chrome qui invoque le skill en temps réel sur la page active et affiche un panneau latéral avec les résumés ; difference : Transforme le skill en outil de productivité instantanée, sans besoin de serveur dédié"
+    }
+  ]
+}
