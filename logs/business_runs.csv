@@ -24,3 +24,4 @@ date,time_utc,status,mode,model,opportunities,note
 2026-11-22,14:50:16,ok,email,openai/gpt-oss-120b,6,email sent | trouves=358 > filtres=358 > nouveaux=308 > shortlist=15 > retenus=6
 2026-11-23,18:11:33,ok,email,openai/gpt-oss-120b,6,email sent | trouves=350 > filtres=350 > nouveaux=303 > shortlist=15 > retenus=6
 2026-11-24,00:43:08,error,email,,0,Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise. | trouves=360 > filtres=360 > nouveaux=314 > shortlist=15
+2026-11-24,17:30:33,error,email,,0,Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise. | trouves=359 > filtres=359 > nouveaux=314 > shortlist=15
