@@ -350,6 +350,85 @@
       "estimated": false,
       "prompt_tokens": 2360,
       "completion_tokens": 1124
+    },
+    {
+      "at": 1795480403.7966502,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3666,
+      "estimated": false,
+      "prompt_tokens": 2258,
+      "completion_tokens": 1408
+    },
+    {
+      "at": 1795480468.7970276,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3652,
+      "estimated": false,
+      "prompt_tokens": 2270,
+      "completion_tokens": 1382
+    },
+    {
+      "at": 1795480533.797364,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3274,
+      "estimated": false,
+      "prompt_tokens": 2370,
+      "completion_tokens": 904
+    },
+    {
+      "at": 1795480598.7977326,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3549,
+      "estimated": false,
+      "prompt_tokens": 2370,
+      "completion_tokens": 1179
+    },
+    {
+      "at": 1795480663.7981203,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3351,
+      "estimated": false,
+      "prompt_tokens": 2370,
+      "completion_tokens": 981
+    },
+    {
+      "at": 1795480728.798481,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3457,
+      "estimated": false,
+      "prompt_tokens": 2370,
+      "completion_tokens": 1087
+    },
+    {
+      "at": 1795480793.7988155,
+      "stream": "business",
+      "model": "qwen/qwen3.8-27b",
+      "tokens": 6945,
+      "estimated": true
+    },
+    {
+      "at": 1795480858.799202,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3685,
+      "estimated": false,
+      "prompt_tokens": 2129,
+      "completion_tokens": 1556
+    },
+    {
+      "at": 1795480923.799465,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3561,
+      "estimated": false,
+      "prompt_tokens": 2139,
+      "completion_tokens": 1422
     }
   ],
   "cache": {
@@ -1052,7 +1131,90 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "a0982e69377faf7eed68d670aa65c4ea6d0190b0822960d57dfd2cb82b8bd22e": {
+      "at": 1795480407.0682223,
+      "data": {
+        "projects": [
+          {
+            "name": "4lwayz/portwatch-vi",
+            "category": "site web statique / tableau de bord",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "PortWatch VI est un site hébergé sur GitHub Pages qui agrège les tentatives de portage, d'émulation ou de recompilation de GTA VI vers PC. Il s’adresse aux passionnés et aux développeurs qui souhaitent suivre l’avancement des projets communautaires et identifier les obstacles techniques.",
+            "workflow": "Entrée : listes de dépôts GitHub/GitLab, flux RSS, posts sur Mastodon, Reddit, etc. → Traitement : le script `scripts/scout.mjs` interroge les API, récupère métadonnées (stars, forks, commits, issues), détecte les mentions de progrès dans les README, calcule un score de progression et met à jour `data/tracker.json`. → Résultat : le site statique est reconstruit (`scripts/build-site.mjs`) et déployé sur GitHub Pages, affichant un tableau de bord avec barre de progression, compte‑à‑rebours et cartes détaillées. Limites : dépend de la disponibilité des API externes, les revendications non vérifiées restent marquées comme « unverified claim » et aucune validation automatisée du fonctionnement réel du port n’est effectuée. [S1][S2]",
+            "use_cases": "• Utilisateur : Développeur indie ; Tâche : Surveiller les dernières avancées d’un projet de portage afin de décider d’investir du temps ou des ressources. ; Résultat : Accès à un tableau de bord actualisé toutes les 3 heures montrant le score de chaque effort et les blocages identifiés.\n• Utilisateur : Journaliste tech ; Tâche : Rédiger un article sur l’état du portage de GTA VI en s’appuyant sur des données consolidées. ; Résultat : Extraction rapide d’un résumé des projets les plus avancés et des dates estimées grâce au compte‑à‑rebours intégré.",
+            "products": "• Cible : Communauté de modding PC ; Produit : Service SaaS de suivi en temps réel avec notifications webhook et API publique. ; difference : Ajoute une couche d’abonnement pour recevoir des alertes personnalisées et expose les données sous forme d’API REST, ce qui n’est pas présent dans le dépôt brut.\n• Cible : Éditeur de jeux indépendant ; Produit : Tableau de bord interne intégré à leur pipeline CI/CD pour monitorer les dépendances tierces liées au portage. ; difference : Intègre le scout comme étape CI, fournit des métriques de santé du code et des rapports de conformité, au lieu d’un site public uniquement.",
+            "monetization": "Acheteur : PME ou studio indie souhaitant suivre l’évolution de technologies tierces ; reason to pay : Accès à des alertes instantanées, à une API fiable et à des rapports de conformité juridique (DMCA, licences). ; unit : abonnement mensuel par compte API ; model : Freemium : 0 €/mois pour 100 requêtes, 15 €/mois pour 10 k requêtes, prix justifié par le coût d’infrastructure (GitHub Actions, stockage JSON, serveur d’API).",
+            "build_plan": "scope : Transformer le dépôt en service SaaS avec API et système de notifications. ; reused bricks : scripts/scout.mjs, scripts/build-site.mjs, logique de scoring déjà implémentée. ; work to add : Développement d’une API Express/FastAPI, mise en place d’un système de webhook, tableau de bord React, gestion des abonnements Stripe, documentation OpenAPI. ; exclusions : Pas de refonte du moteur de collecte de données externe, pas de support mobile natif. ; dependencies : Node >=20, @anthropic-ai/sdk (déjà présent), Express, Stripe SDK, Docker, Vercel/Fly.io pour le déploiement. ; cost estimate : Infrastructure cloud ≈ 30 €/mois (GitHub Actions + serveur API), licences éventuelles Stripe ≈ 1 % des revenus. ; timeline : 4‑6 semaines : 1 semaine d’audit, 2 semaines de développement API + UI, 1 semaine d’intégration Stripe, 1‑2 semaines de tests et déploiement.",
+            "limitations": "established : Données limitées aux sources publiques indexées, aucune vérification du fonctionnement réel du portage, licence du dépôt non spécifiée (\"aucune\" dans le README). ; unknown : Fiabilité des API tierces, volume de requêtes supportable sans quota, conformité RGPD non évaluée. ; license check : Non établi dans les extraits – il faut vérifier la licence du projet avant toute commercialisation. ; maintenance : Mise à jour du scout chaque 3 h nécessite des GitHub Actions payants au-delà du quota gratuit.",
+            "next_step": "technical test : Déployer le scout sur un compte GitHub Actions personnel et mesurer le temps d’exécution et le coût des runs. ; user question : « Quel type d’alerte (email, webhook, Slack) vous serait le plus utile pour être informé d’une avancée critique du portage ? »",
+            "assessment": "Score 6 reflète la présence d’une architecture fonctionnelle (scout, génération de site) et d’un potentiel de monétisation via API/notifications. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle ou régionale stricte. Les preuves proviennent des extraits README et package.json ; l’absence de licence claire et de validation de marché limite la certitude.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "9ef733dd83494224b0e8e1711507ac087d58e0742221067c79405a934d66f08a": {
+      "at": 1795480862.3643181,
+      "data": {
+        "projects": [
+          {
+            "name": "usetuff/tuff",
+            "category": "outil de gestion de projet et collaboration (SaaS auto‑hébergé)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Tuff est une plateforme open‑source qui regroupe tâches, documents, chat et agents IA dans un même espace. Elle cible les équipes qui souhaitent une alternative auto‑hébergée aux solutions comme Linear, ClickUp ou Asana, tout en conservant la possibilité d’intégrer des agents IA via le protocole MCP.",
+            "workflow": "Entrée : un utilisateur crée ou importe un projet → le système crée les entités « Task », « Doc », « Chat » et les associe à un projet (décrit dans le README) [S1]. Traitement : les données sont stockées dans la base du serveur (Node.js, TypeScript) et les agents IA peuvent interagir via le protocole MCP, affichant leurs actions dans le fil d’activité. Résultat : les membres voient leurs tâches, documents et messages actualisés en temps réel, avec la possibilité de rechercher via ⌘K. Limites : le README ne précise pas de mécanisme de persistance détaillé, ni les exigences d’infrastructure au-delà du « run it on your own server » ; aucune métrique de performance n’est fournie [S1].",
+            "use_cases": "• Utilisateur : Chef de projet d’une PME ; Tâche : Planifier un sprint en créant des tâches, des documents de spécifications et un canal de discussion dédié ; Résultat : Toutes les informations sont centralisées, les membres peuvent suivre l’avancement et les agents IA peuvent proposer des suggestions de priorisation\n• Utilisateur : Développeur freelance ; Tâche : Gérer plusieurs petits projets clients en créant des espaces séparés, en partageant des fichiers et en automatisant des rappels via les agents IA ; Résultat : Réduction du temps de coordination, visibilité instantanée sur les livrables et possibilité d’étendre les capacités via des scripts MCP",
+            "products": "• Cible : PME recherchant une solution de gestion de projet souveraine ; Produit : Plateforme SaaS hébergée sur Vercel/Fly.io avec authentification SSO, facturation Stripe et tableau de bord admin ; difference : Ajout d’une couche SaaS gérée, d’un système de facturation et d’une UI optimisée, tout en conservant le cœur open‑source de Tuff\n• Cible : Agences créatives voulant automatiser la création de livrables ; Produit : Extension de Tuff qui intègre des agents IA spécialisés (ex. génération de briefs, résumé de réunions) via des wrappers Python/Node ; difference : Fonctionnalité d’agent IA enrichie, API d’orchestration d’agents et modèles de facturation à l’usage (pay‑per‑call) au lieu d’un abonnement global",
+            "monetization": "Acheteur : PME ou agence payant pour l’hébergement, la maintenance et les agents IA avancés ; reason to pay : Accès à une infrastructure sécurisée, support dédié, mises à jour automatiques et usage d’agents IA pré‑entraînés ; unit : abonnement mensuel par workspace (ou crédit d’appels IA) ; model : Abonnement SaaS avec plan de base (ex. 30 €/mois) + surcoût par appel IA (ex. 0,01 €/appel) – hypothèse à tester selon la valeur perçue et les coûts d’infrastructure ; price range hypothesis : 30‑80 €/mois selon le nombre d’utilisateurs et le volume d’appels IA, justifié par les coûts de serveur (Docker, base de données) et les licences d’IA locale",
+            "build_plan": "scope : Livrer une version SaaS minimale incluant authentification, gestion de projets, chat et intégration d’un agent IA de base ; reused bricks : Code source de Tuff (frontend React/Next.js, backend Node/TypeScript), Docker compose, schéma de base de données existant ; work to add : Implémentation d’un service d’authentification (Supabase ou Auth0), intégration Stripe, tableau de bord admin, wrapper d’agent IA (ex. Ollama) et documentation d’onboarding ; exclusions : Fonctionnalités avancées de recherche sémantique, IA personnalisée, multi‑région, conformité RGPD complète ; dependencies : Node ≥ 22, pnpm, Docker, Supabase/PostgreSQL, Stripe SDK, Ollama (ou autre modèle local) ; estimated costs : Infrastructure cloud (≈ 15 €/mois), licences IA (open‑source, coût serveur), temps de développement (~ 200 h) – hypothèse ; timeline : 4‑6 semaines de développement intensif (8‑10 h/j) si les briques existantes sont réutilisées, sinon délai non estimable",
+            "limitations": "established constraints : Licence AGPL‑3.0 (requiert partage du code modifié) [S2]; besoin d’un serveur Node ≥ 22; aucune indication de tests unitaires ou de couverture de code dans le dépôt fourni ; unknowns : Scalabilité réelle, exigences de stockage, performances des agents IA, conformité légale (RGPD) – non établi dans les extraits ; license to verify : AGPL‑3.0‑only (voir package.json) [S2] ; maintenance costs : Non établi dans les extraits",
+            "next_step": "technical test : Déployer le dépôt avec Docker compose, créer un projet test et vérifier l’interaction d’un agent IA simple via MCP ; user question : « Quel problème rencontrez‑vous actuellement avec vos outils de gestion de projet ? »",
+            "assessment": "Score 7 reflète la pertinence du projet pour les priorités du profil (outil B2B SaaS, intégration IA, stack TypeScript/Node). Le fit_score reste neutre (5) car aucune donnée de profil spécifique (région, prix cible) n’est confirmée dans les extraits. Le projet offre une base solide mais nécessite des ajouts significatifs (auth, facturation, IA) pour devenir un produit commercialisable. Les preuves proviennent des README et du package.json ; tout le reste est hypothétique.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "e6b94ef950f5ac9717e22ff9af66a0b40609349986af20f803e6ad5d5de6cdbf": {
+      "at": 1795480927.1785147,
+      "data": {
+        "projects": [
+          {
+            "name": "lexifina/germany-law",
+            "category": "bibliothèque de données juridiques",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Le dépôt propose un historique complet du droit allemand sous forme de dépôt Git, chaque texte juridique étant stocké dans un fichier et chaque version dans un commit. L'utilisateur cible est un développeur ou un analyste juridique qui souhaite interroger l'évolution législative de façon programmatique.",
+            "workflow": "Entrée : date cible (ex. 2025‑01‑01) et identifiant d'article (ex. 109). Traitement : le script Python tools/stand_am.py parcourt les commits du dépôt, filtre les versions dont le trailer `In‑Kraft:` correspond à la date demandée, puis reconstruit le texte de l'article à cette date. Résultat : texte complet de l'article tel qu'il était en vigueur à la date donnée. Limites : le dépôt ne couvre que les lois fédérales et certaines lois des Länder, les données sont fournies « gratuitement » mais aucune garantie de mise à jour continue n’est mentionnée. Source : [S1] (extraits du README).",
+            "use_cases": "• Utilisateur : Cabinet d'avocats spécialisé en droit constitutionnel ; Tâche : Vérifier l'historique d'un article du Grundgesetz pour préparer un mémoire juridique ; Résultat : Obtention du texte exact de chaque version de l'article, avec les dates d'entrée en vigueur, facilitant la rédaction du mémoire\n• Utilisateur : Développeur d'une application SaaS de conformité ; Tâche : Intégrer une API interne qui renvoie le texte législatif applicable à une date donnée ; Résultat : Fonctionnalité de consultation légale automatisée, permettant aux clients de vérifier la conformité de leurs processus à la législation en vigueur à tout moment",
+            "products": "• Cible : PME françaises souhaitant automatiser la veille juridique ; Produit : Service web qui expose une API REST (FastAPI) pour interroger le texte de lois allemandes à une date précise ; difference : Le dépôt brut ne propose qu'un accès Git; le produit ajoute une couche HTTP, authentification, mise en cache et documentation OpenAPI\n• Cible : Agences de traduction juridique ; Produit : Outil de génération de documents multilingues (Deutsch ↔ Français) basé sur les versions historiques du texte, avec export PDF ; difference : Le dépôt fournit uniquement les textes bruts; le produit intègre la traduction automatique, le formatage et la génération de documents prêts à l'emploi",
+            "monetization": "Acheteur : Entreprises de conformité et cabinets d'avocats ; reason to pay : Accès fiable à l'historique législatif avec garantie de disponibilité et support technique ; unit : abonnement mensuel par appel API ; model : Tarification à l'usage (ex. 0,001 € par requête) avec forfait de base incluant 10 000 requêtes/mois ; price hypothesis : Le prix est hypothétique, basé sur la valeur perçue d'un accès instantané à des données juridiques officielles et les coûts d'infrastructure (stockage Git, serveur d'API, bande passante).",
+            "build_plan": "scope : Création d'une API FastAPI qui lit le dépôt Git local, expose les endpoints /article/{id}?date=YYYY‑MM‑DD ; reused bricks : Dépôt Git existant, script Python tools/stand_am.py, Docker pour le conteneur ; work to add : Wrapper HTTP, authentification JWT, mise en cache Redis, documentation OpenAPI, tests unitaires ; exclusions : Gestion de lois des Länder non présentes, interface UI, traduction automatique ; dependencies : fastapi, uvicorn, gitpython, redis, docker, Git (pour le dépôt) ; Coûts estimés : Coût d'hébergement cloud (ex. 30 €/mois sur un petit serveur), licences éventuelles pour Redis, temps de développement estimé à 120 heures ; timeline : Estimation conditionnelle : 3 semaines de développement intensif (8‑10 h/jour) + 1 semaine de tests et déploiement",
+            "limitations": "established constraints : Couverture limitée aux lois fédérales et à certaines lois des Länder, dépendance à la qualité du dépôt Git, aucune garantie de mise à jour future ; unknowns : Fréquence de mise à jour du dépôt, conformité RGPD pour les données d'utilisateur, licence exacte du dépôt (indiquée comme « autre/inconnue ») ; license to check : Licence non clairement spécifiée, il faut vérifier les droits de réutilisation avant toute commercialisation ; maintenance costs : Mise à jour périodique du dépôt, surveillance des changements législatifs, gestion des incidents serveur",
+            "next_step": "technical test : Déployer rapidement un prototype FastAPI qui exécute tools/stand_am.py pour une requête d'exemple et mesurer le temps de réponse ; user question : « Quel niveau de précision et de fréquence de mise à jour attendez‑vous pour un service d’accès à l’historique juridique ? »",
+            "assessment": "Score 6 reflète la pertinence du dépôt pour créer un service d’interrogation légale, mais l'absence de licence claire et de garantie de mise à jour limite l'intérêt immédiat. Le fit_score reste neutre (5) car le profil indique une capacité à prototyper rapidement, sans contrainte sectorielle spécifique. Le manque de preuves sur la licence et la mise à jour est explicitement indiqué comme « non établi dans les extraits ».",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1795457554.2857091
+  "next_call_at": 1795480988.799465
 }
