@@ -1,60 +1,6 @@
 {
   "calls": [
     {
-      "at": 1795541043.4003997,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3904,
-      "estimated": false,
-      "prompt_tokens": 2320,
-      "completion_tokens": 1584
-    },
-    {
-      "at": 1795541108.400674,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3616,
-      "estimated": false,
-      "prompt_tokens": 2270,
-      "completion_tokens": 1346
-    },
-    {
-      "at": 1795541173.4009464,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3822,
-      "estimated": false,
-      "prompt_tokens": 2308,
-      "completion_tokens": 1514
-    },
-    {
-      "at": 1795541238.4012878,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3493,
-      "estimated": false,
-      "prompt_tokens": 2141,
-      "completion_tokens": 1352
-    },
-    {
-      "at": 1795541303.4015143,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3606,
-      "estimated": false,
-      "prompt_tokens": 2329,
-      "completion_tokens": 1277
-    },
-    {
-      "at": 1795541368.4017441,
-      "stream": "business",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3683,
-      "estimated": false,
-      "prompt_tokens": 2318,
-      "completion_tokens": 1365
-    },
-    {
       "at": 1795550534.935241,
       "stream": "business",
       "model": "openai/gpt-oss-120b",
@@ -431,177 +377,63 @@
       "estimated": false,
       "prompt_tokens": 2376,
       "completion_tokens": 1072
+    },
+    {
+      "at": 1795633348.5276482,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3770,
+      "estimated": false,
+      "prompt_tokens": 2381,
+      "completion_tokens": 1389
+    },
+    {
+      "at": 1795633413.5279503,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3988,
+      "estimated": false,
+      "prompt_tokens": 2381,
+      "completion_tokens": 1607
+    },
+    {
+      "at": 1795633478.5282447,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3760,
+      "estimated": false,
+      "prompt_tokens": 2306,
+      "completion_tokens": 1454
+    },
+    {
+      "at": 1795633543.5286477,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3821,
+      "estimated": false,
+      "prompt_tokens": 2351,
+      "completion_tokens": 1470
+    },
+    {
+      "at": 1795633608.5290248,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3472,
+      "estimated": false,
+      "prompt_tokens": 2451,
+      "completion_tokens": 1021
+    },
+    {
+      "at": 1795633673.5293872,
+      "stream": "business",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3615,
+      "estimated": false,
+      "prompt_tokens": 2451,
+      "completion_tokens": 1164
     }
   ],
   "cache": {
-    "4bfac254eac8ac9cb8f0b299c0f13b3da66d7abc8c13d0468a2d69860d28b8c0": {
-      "at": 1795541047.25565,
-      "data": {
-        "projects": [
-          {
-            "name": "rivet-dev/open-orange",
-            "category": "compatibilité / runtime Cloudflare Workers",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Open‑Orange fournit une couche de compatibilité qui permet d’exécuter des Cloudflare Workers et leurs Durable Objects sur des environnements AWS, GCP, Azure ou des serveurs privés. Le produit cible les développeurs qui souhaitent conserver leur code Workers sans les limites de runtime de Cloudflare tout en réduisant les coûts d’infrastructure.",
-            "workflow": "Entrée : projet Worker contenant un fichier `wrangler.jsonc` (ou équivalent) et du code JavaScript/TypeScript. Traitement : le CLI `orange` compile le projet, crée une image Docker contenant le runtime Open‑Orange, puis déploie l’image sur le provider choisi (ex. AWS ECS, GCP Cloud Run). Résultat : le Worker s’exécute dans le cloud choisi avec les mêmes API Cloudflare, sans les quotas de CPU/mémoire de la plateforme d’origine. Sources : description du fonctionnement général dans le README [S1]; exigences d’installation et besoin de Docker indiqués dans le même README [S1]; le script de build et la dépendance Node ≥22 listés dans le package.json [S2]. Limites : nécessite Docker, Node 22+, et ne supporte pas encore toutes les APIs Cloudflare (ex. Workers KV complet non testé).",
-            "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Déployer un Worker qui génère des PDFs à la volée sans être limité par le quota de CPU de Cloudflare. ; Résultat : Le service tourne sur un conteneur GCP Cloud Run, facturable à l’usage, avec la même API Workers, garantissant une latence comparable.\n• Utilisateur : Agence web ; Tâche : Migrer un ensemble de Workers existants vers un environnement interne pour des raisons de souveraineté des données. ; Résultat : Les Workers sont exécutés sur des serveurs on‑premise via Docker, conservant le code source et les bindings, tout en respectant les exigences de conformité locale.",
-            "products": "• Cible : PME souhaitant externaliser la logique de traitement d’images ; Produit : Plateforme SaaS « Orange‑Image » qui expose une API REST basée sur un Worker Open‑Orange pour le redimensionnement et le watermarking d’images. ; difference : Utilise la compatibilité Open‑Orange pour offrir une facturation à l’usage (pay‑per‑image) sans les limites de Cloudflare, tout en pouvant être hébergé sur des clouds européens pour la conformité RGPD.\n• Cible : Développeurs d’applications serverless multi‑cloud ; Produit : Framework CLI « Multi‑Orange » qui automatise la génération de pipelines CI/CD pour déployer le même Worker sur AWS, Azure et GCP simultanément. ; difference : Simplifie la gestion multi‑cloud en encapsulant les différences de configuration, ce qui n’est pas fourni par le dépôt brut qui ne propose qu’un seul CLI de base.",
-            "monetization": "Acheteur : PME ou agence utilisant l’API d’image ou le framework multi‑cloud ; reason to pay : Accès à un service de traitement d’image scalable, facturable à l’usage, et à un outil de déploiement multi‑cloud qui réduit le temps d’intégration. ; unit : nombre d’images traitées / nombre de déploiements automatisés ; model : Abonnement mensuel avec quota inclus + tarif à la consommation pour dépassement; hypothèse de prix : 30 €/mois pour 10 000 images + 0,003 €/image supplémentaire, justifiée par les coûts d’infrastructure cloud estimés et la valeur de gain de temps pour le client. ; price range hypothesis : 30 €–150 €/mois selon le volume, à tester auprès de premiers utilisateurs.",
-            "build_plan": "scope : Créer une API REST autour d’un Worker existant (ex. redimensionnement d’image) et ajouter un tableau de bord minimal. ; reused bricks : CLI `orange`, runtime Open‑Orange, Docker, code Worker d’exemple `hello-durable-object`. ; work to add : Implémenter les endpoints API, gestion des clés API, facturation Stripe, tableau de bord React (Next.js) et scripts de CI/CD multi‑cloud. ; exclusions : Support complet de toutes les APIs Workers (ex. Workers KV), authentification SSO avancée, localisation complète. ; dependencies : Node ≥22, pnpm, Docker, Stripe SDK, Supabase/PostgreSQL pour le stockage des métriques, Vercel ou Fly.io pour le front. ; estimated costs : Coût initial de développement ≈ 120 h (≈ 3 semaines à temps plein). Hébergement cloud estimé à 20–50 €/mois selon le trafic. ; timeline : 4–6 semaines conditionnelles (développement 3 semaines, tests & déploiement 1–2 semaines).",
-            "limitations": "established constraints : Nécessite Docker et Node 22+, ne supporte pas encore toutes les APIs Cloudflare, dépendance à un provider cloud pour le runtime. ; unknowns : Performance exacte comparée à un Worker natif Cloudflare, stabilité du runtime sur des charges très élevées, conformité juridique complète (licence Apache‑2.0 à vérifier pour usage commercial). ; license : Apache‑2.0 (à valider pour usage commercial sans modification majeure). ; maintenance costs : Mises à jour du runtime Open‑Orange, suivi des dépendances Node, renouvellement des images Docker.",
-            "next_step": "technical test : Déployer le Worker d’exemple `hello-durable-object` sur AWS Cloud Run via le CLI `orange` et mesurer latence vs Cloudflare. ; user question : Quel volume d’images traitez‑vous mensuellement et quelles contraintes de localisation des données avez‑vous?",
-            "assessment": "Score 7 reflète la pertinence du dépôt pour créer rapidement un service serverless multi‑cloud, aligné avec le profil Full‑Stack Engineer qui veut explorer des prototypes rapides. Le fit_score reste neutre (5) car aucune contrainte régionale ou de délai précis n’est fournie. Les preuves proviennent des extraits README et package.json [S1, S2]; plusieurs aspects restent non établis dans les extraits (ex. performances, support complet d’APIs, conformité RGPD).",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "a8fffb84c48da65c29e5657de239724be9fcd636e63b978e9a7ec9f55f7e98ce": {
-      "at": 1795541111.7910843,
-      "data": {
-        "projects": [
-          {
-            "name": "usetuff/tuff",
-            "category": "outil de gestion de projet et collaboration",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Tuff est une plateforme open‑source auto‑hébergée qui regroupe tâches, documents, chat et agents IA dans un même espace. Elle cible les équipes qui souhaitent un outil complet sans dépendre d’un SaaS propriétaire.",
-            "workflow": "Entrée : l'utilisateur crée un projet via l'interface web ou l'API REST ; Traitement : le serveur Node.js persiste les données dans PostgreSQL, déclenche le worker pour les actions asynchrones (ex. notifications, appels d’agents IA) ; Résultat : les tâches, fichiers et messages sont immédiatement visibles dans le tableau de bord et accessibles via recherche ⌘K. Limites : aucune preuve d’évolutivité au-delà de quelques dizaines d’utilisateurs, la gestion des agents IA repose sur le protocole MCP non détaillé dans les extraits [S1].",
-            "use_cases": "• Utilisateur : Chef de projet d’une PME ; Tâche : Planifier un sprint en créant des tickets, assigner les tâches et suivre l’avancement via le tableau Kanban ; Résultat : Visibilité en temps réel sur l’état des tickets et historique d’activité, sans frais de licence\n• Utilisateur : Développeur freelance ; Tâche : Utiliser un agent IA pour générer automatiquement des résumés de réunions stockés dans la section Chat ; Résultat : Gain de temps sur la prise de notes, les résumés apparaissent dans le fil d’activité et sont recherchables",
-            "products": "• Cible : PME cherchant à internaliser leurs outils de gestion ; Produit : Version auto‑hébergée de Tuff avec support premium (mise à jour, sauvegarde, SLA) ; diff : Ajout d’un contrat de support et d’un tableau de bord d’administration dédié, ce qui n’est pas présent dans le dépôt brut\n• Cible : Agences créatives voulant proposer un service clé en main ; Produit : Plateforme SaaS multi‑locataire basée sur Tuff, facturée à l’usage (nombre de projets actifs) ; diff : Transformation du modèle auto‑hébergé en service hébergé, avec facturation et isolation des données client",
-            "monetization": "Acheteur : PME ou agence ; reason to pay : Accès à un support dédié, hébergement sécurisé et mises à jour automatiques ; unit : abonnement mensuel par workspace actif ; model : Abonnement récurrent, prix hypothétique 30‑50 € / mois selon le nombre de projets ; hypothesis explanation : Le prix reflète le coût d’infrastructure (serveur, base de données) et la valeur perçue d’un outil tout‑en‑un sans licence tierce",
-            "build_plan": "scope : Mise en production d’une version SaaS multi‑locataire ; reused bricks : Code serveur Node.js, API REST, worker, interface React déjà fournis [S1] ; additional work : Gestion de la facturation (intégration Stripe), isolation des bases de données par client, tableau de bord d’administration, documentation d’onboarding ; exclusions : Développement d’un nouveau moteur d’IA (les agents existent déjà mais leur logique métier n’est pas fournie) ; dependencies : PostgreSQL, Docker, Caddy (déjà mentionnés), Stripe API, éventuellement un service d’envoi d’emails ; estimated costs : Infrastructure cloud (≈ 20 €/mois pour un petit déploiement), licences éventuelles de services tiers, temps développeur estimé 200‑250 h ; timeline : 4‑6 semaines conditionnelles : 2 semaines d’intégration Stripe et facturation, 1‑2 semaines de tests multi‑locataire, 1‑2 semaines de mise en place CI/CD",
-            "limitations": "established constraints : Licence AGPL‑3.0 (requiert partage du code source modifié) ; dépendance à Node ≥ 22 et PostgreSQL ; architecture décrite dans le README [S1] ; unknowns : Scalabilité du worker sous forte charge, performances du protocole MCP pour les agents IA, conformité RGPD (non mentionnée) ; license to check : AGPL‑3.0‑only (déjà indiqué dans package.json) [S2] ; maintenance costs : Mises à jour de dépendances Node, gestion des sauvegardes de bases, support utilisateur",
-            "next_step": "technical test : Déployer une instance de test avec Docker Compose, créer deux workspaces et vérifier le flux de facturation Stripe ; user question : Quel problème rencontrez‑vous le plus souvent avec vos outils actuels de gestion de projet ? (ex. licences, intégration IA, visibilité des tâches)",
-            "assessment": "Score 7 reflète la pertinence du dépôt pour le profil (full‑stack, besoin d’un produit B2B SaaS complet) et la présence d’une architecture prête à être transformée en service. Le fit_score reste neutre (5) car aucune contrainte régionale ou de délai n’est explicitement fournie. Les principales incertitudes concernent la scalabilité des agents IA et la conformité juridique, non couvertes par les extraits.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "1131ff6eabcf9256b37f1a1ccac06c2cf2d4e7632fb3518a4a4dd2a47c250c1d": {
-      "at": 1795541176.9206252,
-      "data": {
-        "projects": [
-          {
-            "name": "DEEIX-AI/Winc",
-            "category": "Éditeur de texte/IDE desktop",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Winc est un éditeur de texte desktop écrit en Rust, conçu pour être ultra‑léger (démarrage en 0,1 s, 52 Mo de RAM) et réactif même avec des fichiers de plusieurs centaines de mégaoctets. Il cible les développeurs qui ont besoin d’un outil d’édition rapide, multi‑curseurs et sans dépendance à un serveur de langage.",
-            "workflow": "Entrée : fichier source (texte brut, code, markdown) chargé depuis le disque → Traitement : le moteur de rendu interne de Winc parse le texte, applique la coloration syntaxique via le crate winc‑syntax, gère les curseurs multiples et les opérations de recherche/remplacement en mémoire → Résultat : affichage instantané dans la fenêtre native, possibilité d’enregistrer le fichier ou d’appliquer un formatage externe (rustfmt, Prettier, Black, Ruff). Limites : aucune prise en charge native de LSP complet, le mode Vim reste expérimental, la gestion de projets multi‑fichiers n’est pas fournie. Sources : description des fonctionnalités dans le README [S1] et la configuration du workspace Rust [S2].",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Ouvrir et modifier rapidement de gros fichiers logs (≥ 1 Go) pour extraire des traces d’erreur ; Résultat : Navigation fluide, recherche instantanée, aucune latence perceptible, réduction du temps de diagnostic de plusieurs minutes\n• Utilisateur : Équipe de documentation technique ; Tâche : Appliquer un formatage uniforme à des documents Markdown en batch via des outils externes (Prettier) ; Résultat : Winc lance les formatters externes depuis son interface, sauvegarde les fichiers formatés, garantit la cohérence du style sans quitter l’éditeur",
-            "products": "• Cible : PME de développement logiciel ; Produit : Winc‑Pro, version enrichie d’un gestionnaire de projets et d’un serveur LSP intégré ; difference : Ajout d’un workspace multi‑fichiers, d’un serveur de langage Rust‑based pour autocomplétion, et d’une interface de synchronisation cloud (via Supabase) – ce qui transforme l’outil brut en une plateforme de collaboration\n• Cible : Agences de création de contenu ; Produit : Winc‑Docs, éditeur spécialisé avec plugins de génération de documents (templates, export PDF/HTML) ; difference : Intégration de scripts Python/Node.js pour la génération dynamique de rapports, interface web légère pour le partage de documents, sans changer le cœur Rust",
-            "monetization": "Acheteur : PME ou agence payant pour gagner du temps sur l’édition de gros fichiers ou la production de documents ; reason to pay : Accès à des fonctionnalités avancées (LSP, gestion de projets, synchronisation cloud) et support dédié ; unit : abonnement mensuel par utilisateur ; model : Abonnement SaaS (30 € / mois) + option « pay‑as‑you‑go » pour le stockage cloud (0,02 €/Go) ; price hypothesis : Le prix repose sur la valeur perçue d’une édition instantanée et d’une collaboration sans latence ; les coûts d’infrastructure (hébergement Supabase, CI/CD) sont estimés à ~10 €/mois par 10 utilisateurs",
-            "build_plan": "scope : Ajout du serveur LSP et du module de synchronisation cloud ; reused bricks : Moteur de rendu, gestion des curseurs et parsing syntaxique déjà présents dans winc‑core et winc‑syntax ; work to add : Développer winc‑lsp (wrapper Rust autour de rust-analyzer), implémenter API REST pour le stockage (Supabase), UI pour la gestion de projets ; exclusions : Refonte du moteur de rendu, support mobile, éditeur de texte en ligne ; dependencies : Supabase client (JS/TS), rust‑analyzer, Docker pour CI, GitHub Actions ; estimated costs : Temps de développement ≈ 400 h (≈ 2 mois à plein temps), hébergement cloud ≈ 15 €/mois, licences éventuelles pour outils CI ; timeline : 4 à 6 semaines pour le MVP fonctionnel (si le développeur consacre 8‑10 h/jour)",
-            "limitations": "established constraints : Licence Apache‑2.0 (permet usage commercial, mais nécessite attribution), dépendance à Rust ≥ 1.89, aucune prise en charge native de LSP dans la version actuelle ; unknowns : Performance exacte du LSP intégré sur des projets très volumineux, coût réel de la synchronisation cloud à grande échelle, exigences de conformité RGPD pour le stockage de données utilisateurs ; maintenance costs : Mise à jour du moteur Rust chaque version stable, gestion des dépendances Cargo, support des plugins tiers",
-            "next_step": "technical test : Intégrer rust‑analyzer via le crate winc‑lsp et mesurer le temps de réponse d’autocomplétion sur un projet de 200 k lignes ; user question : « Quel serait votre critère décisif pour choisir un éditeur capable d’ouvrir des fichiers > 1 Go : vitesse d’ouverture, recherche instantanée ou support de plugins ? »",
-            "assessment": "Score 7 reflète la solidité technique (Rust performant, architecture modulaire) et la pertinence pour le profil (full‑stack, besoin d’outils B2B rapides). Fit_score reste neutre (5) car aucune donnée de préférence régionale ou de prix n’est fournie dans les extraits. Le manque de preuves sur la viabilité commerciale (demande, concurrence) est explicitement indiqué. Les hypothèses de prix et de délai sont conditionnelles et basées sur les coûts d’infrastructure estimés.",
-            "evidence_ids": [
-              "S1",
-              "S2",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "b90b7b3b05a212c424a360f39e45defd1389dad36122ea90e525d6c5cff07f6a": {
-      "at": 1795541241.615647,
-      "data": {
-        "projects": [
-          {
-            "name": "open-goat/pequalnp-proofs",
-            "category": "Bibliothèque de vérification formelle",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "Le dépôt fournit des preuves formelles en Lean 4 liées à la complexité computationnelle, notamment des lemmes autour du problème P vs NP. Il s’adresse aux chercheurs et aux développeurs qui souhaitent explorer ou contribuer à des preuves machine‑checked dans le domaine de la théorie de la complexité.",
-            "workflow": "Entrée : un fichier Lean décrivant une conjecture (gap) récupéré via l’API https://pequalnp.com/desk/next. Traitement : le fichier est compilé avec la chaîne d’outils Lean 4 et la bibliothèque Mathlib épinglée, le vérificateur s’assure de l’absence de `sorry` et de l’utilisation exclusive des trois axiomes autorisés. Résultat : un artefact Lean accepté par le CI, visible dans le répertoire `lean/PEqualNP/Outside/` et intégré au projet. Limites : seules les preuves compatibles avec les axiomes autorisés sont acceptées ; aucune garantie que les lemmes résolvent le problème P vs NP. [S1]",
-            "use_cases": "• Utilisateur : Chercheur en théorie de la complexité ; Tâche : Soumettre une preuve pour combler un gap identifié sur pequalnp.com ; Résultat : Preuve validée par le CI, ajoutée au dépôt et visible publiquement\n• Utilisateur : Développeur d’outils d’assistance à la preuve ; Tâche : Intégrer le vérificateur du projet dans un IDE pour proposer des suggestions automatiques ; Résultat : Environnement de développement qui compile et teste les contributions en temps réel",
-            "products": "• Cible : Laboratoires de recherche en informatique ; Produit : Plateforme SaaS de gestion collaborative de preuves Lean 4 ; difference : Ajoute une interface web, un tableau de bord de suivi des gaps et un moteur de CI partagé, alors que le dépôt brut ne propose qu’un script CLI et un workflow GitHub\n• Cible : Éducateurs universitaires ; Produit : Kit pédagogique contenant des exercices de preuve Lean 4 avec feedback automatisé ; difference : Enveloppe les lemmes existants dans des scénarios d’apprentissage et fournit des évaluations instantanées, fonction non présente dans le dépôt original",
-            "monetization": "Acheteur : Instituts de recherche ou universités ; reason to pay : Accès à un environnement hébergé, support technique, et fonctionnalités de collaboration avancées ; unit : abonnement mensuel par utilisateur ; model : Abonnement SaaS avec tarif hypothétique 30 € / mois, justifié par le coût d’infrastructure cloud, de stockage des artefacts et du support ; price range hypothesis : 20 €–40 € / mois selon le nombre d’utilisateurs et le niveau de service",
-            "build_plan": "scope : Création d’une couche web frontale et d’un service d’authentification autour du vérificateur existant ; reused bricks : Scripts `tools/pnp.sh`, le vérificateur Lean (`tools/check-lean.mjs`), CI GitHub Actions ; work to add : Développement d’une API REST (FastAPI) pour soumettre des gaps, UI Next.js, gestion des comptes (Supabase), conteneurisation Docker ; exclusions : Modification du noyau Lean ou de Mathlib, implémentation de nouveaux axiomes ; dependencies : Lean 4, Mathlib, Docker, FastAPI, Next.js, Supabase, Vercel/Fly.io ; estimated costs : Infrastructure cloud estimée à 50 €/mois, licences open‑source gratuites, effort de développement ≈ 200 heures ; timeline : 4 à 6 semaines de prototypage (conditionnel à la disponibilité du développeur à temps plein)",
-            "limitations": "established constraints : Nécessité d’utiliser uniquement les trois axiomes autorisés, dépendance à la version épinglée de Lean 4 et Mathlib, processus de validation via CI GitHub ; unknowns : Scalabilité du service sous forte charge, conformité RGPD du stockage des contributions, support multilingue ; license to check : Apache‑2.0 (déjà indiqué dans le dépôt) ; maintenance costs : Mise à jour périodique de Lean et Mathlib, surveillance du CI, support utilisateur",
-            "next_step": "technical test : Déployer le script `tools/pnp.sh check` dans un conteneur Docker et vérifier qu’il accepte un fichier de preuve minimal sans `sorry` ; user question : Quel type de visualisation ou de suivi des gaps serait le plus utile pour vos équipes de recherche ?",
-            "assessment": "Le score 6 reflète la solidité technique du dépôt (vérificateur automatisé, CI) mais l’absence de produit fini limite l’attractivité immédiate. Le fit_score 5 est neutre car le profil indique une préférence pour des outils SaaS B2B, alors que ce projet est une bibliothèque de preuve ; toutefois, il offre un potentiel de transformation en plateforme collaborative, ce qui correspond aux objectifs d’exploration du développeur. Le manque de preuves commerciales, de validation de marché et de conformité RGPD est explicitement noté. [S1]",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "9d8be8f7307ba1b695ce4ba2782bcebf36d0ac5258ac7ab43df87bf848bbcc0f": {
-      "at": 1795541306.577793,
-      "data": {
-        "projects": [
-          {
-            "name": "pithings/unkernel",
-            "category": "bibliothèque système / runtime WebAssembly",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "unkernel fournit un noyau Linux complet (7.x) compilé en WebAssembly, exécutable dans le navigateur ou Node.js. Il cible les développeurs qui souhaitent tester ou déployer des applications Linux sans serveur dédié, en profitant d'un démarrage en moins d'une seconde.",
-            "workflow": "Entrée : un paquet Linux (ex. Alpine, Debian) ou un binaire ELF fourni par l'utilisateur → Traitement : le module WASM du noyau est chargé, le système de fichiers virtuel (ext4) est monté, le scheduler et la MMU gèrent les appels système → Résultat : un shell interactif ou le processus demandé s'exécute dans le contexte du noyau WebAssembly. Limites : le noyau reste limité aux capacités du navigateur (mémoire, accès réseau) et ne supporte pas de périphériques matériels physiques. [S1] [S2]",
-            "use_cases": "• Utilisateur : Développeur d'outils CI/CD ; Tâche : Exécuter des scripts de build Linux dans un environnement isolé sans VM ; Résultat : Tests reproductibles en quelques secondes, sans coût d'infrastructure VM\n• Utilisateur : Équipe de formation DevOps ; Tâche : Proposer un laboratoire Linux accessible depuis un navigateur éducatif ; Résultat : Les apprenants accèdent à un shell Linux complet depuis n'importe quel appareil",
-            "products": "• Cible : PME souhaitant automatiser des pipelines de CI dans le cloud ; Produit : Service SaaS qui orchestre des jobs de compilation via un backend unkernel, facturé à l'usage ; difference : Évite le provisioning de VM ; facturation granulaire basée sur le temps d'exécution du noyau\n• Cible : Éducateurs en informatique ; Produit : Plateforme d'apprentissage en ligne intégrant un terminal Linux instantané via unkernel ; difference : Pas besoin d'infrastructure serveur lourde ; l'exécution se fait côté client, réduisant les coûts d'hébergement",
-            "monetization": "Acheteur : Entreprises ou institutions éducatives ; reason to pay : Accès à un environnement Linux instantané sans gestion d'infrastructure ; unit : minute d'exécution du noyau ; model : Tarification à l'usage avec forfaits mensuels (ex. 0 € – 100 € selon minutes consommées) ; price hypothesis : Hypothèse de 0,01 €/minute basée sur le coût de calcul serveur et la valeur perçue d'un environnement Linux sans VM",
-            "build_plan": "scope : Créer une API REST (FastAPI) qui expose le démarrage d'unkernel et la transmission de fichiers d'entrée ; reused bricks : Module unkernel (dist/web.mjs), Docker pour l'isolation du runtime Node.js ; work to add : Wrapper Python/TypeScript pour orchestrer le lancement, UI React pour le terminal web, gestion des quotas d'usage ; exclusions : Support de périphériques matériels, compilation de noyaux personnalisés ; dependencies : Node.js, FastAPI, WebSocket, Vercel/Fly.io pour le déploiement, stockage d'objets (S3) pour les images Linux ; cost estimate : Coût mensuel estimé 150‑250 € (serveurs compute, stockage, bande passante) ; heures de développement 200‑300 h ; timeline : Prototype fonctionnel 4‑6 semaines (développement backend + UI) ; MVP complet 8‑10 semaines",
-            "limitations": "established : Le noyau est limité aux appels système implémentés dans la version 7.x compilée en WASM ; pas de support GPU ou de périphériques physiques. Licence duale MIT + GPL‑2.0‑only nécessite vérification de conformité pour usage commercial. [S1] [S2] ; unknown : Performance exacte sous charge élevée, compatibilité avec toutes les distributions Linux, impact du sandboxing du navigateur ; maintenance costs : Mises à jour du noyau Linux, suivi des dépendances Node.js, support client",
-            "next_step": "technical test : Déployer un kernel unkernel sur un serveur Node.js et mesurer le temps de boot et l'utilisation CPU/mémoire pour un job de compilation simple ; user question : Quel serait le prix maximal que vous seriez prêt à payer pour exécuter un job de build Linux de 5 minutes sans provisionner de VM ?",
-            "assessment": "Score 7 reflète la maturité du projet (kernel complet, documentation claire) et son alignement avec le besoin d'outils B2B rapides. Fit_score 5 par défaut car le profil ne spécifie pas de contraintes sectorielles précises. Les preuves proviennent des extraits README et package.json ; aucune donnée sur la facturation ou la demande du marché n'est disponible, d'où les hypothèses de prix et de volume. \"non établi dans les extraits\" est indiqué lorsqu'aucune source ne confirme un point.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "ec84faed91ddad2ab90d5a2a770db8b484ddc7e08187d44baefea4a620d4f78a": {
-      "at": 1795541372.5890553,
-      "data": {
-        "projects": [
-          {
-            "name": "gesher-runtime/gesher",
-            "category": "exécution d'applications Android sur Windows (runtime natif)",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Gesher compile le runtime Android (ART) et le framework Android pour Windows, permettant d'exécuter des APK comme processus Windows natifs. L'utilisateur cible est un développeur ou un professionnel qui doit tester ou utiliser des applications Android sur un poste Windows sans recourir à un émulateur lourd.",
-            "workflow": "Entrée : fichier APK (.apk) → Loader d'APK qui extrait le manifeste, les ressources, le bytecode dex et les bibliothèques natives → ART (runtime Java d'Android) porté sur Windows avec JIT → framework.jar (framework Android complet) → services système ré‑implémentés en‑processus → rendu UI via HWUI + Skia → OpenGL ES → ANGLE → Direct3D 11 → Processus Windows natif. Limites : dépend du support des bibliothèques natives (.so) via le chargeur ELF + bionic, ne couvre pas les fonctionnalités nécessitant un noyau Linux complet. [S1]",
-            "use_cases": "• Utilisateur : Développeur mobile ; Tâche : Tester rapidement une version beta d'une application Android sur son poste de travail Windows sans installer Android Studio ou un émulateur. ; Résultat : L'application s'exécute comme un processus Windows, offrant des temps de démarrage et de réponse proches du natif, facilitant le débogage UI.\n• Utilisateur : Entreprise de formation ; Tâche : Fournir aux participants un environnement Windows où ils peuvent lancer des exercices Android sans configuration complexe. ; Résultat : Chaque participant lance l'APK directement depuis Windows, réduisant le temps de mise en place et les exigences matérielles.",
-            "products": "• Cible : PME de services IT ; Produit : Plateforme SaaS de test d'applications Android sur Windows avec interface web pour upload d'APK et visualisation des logs. ; difference : Ajoute une couche de gestion multi‑utilisateurs, stockage cloud des APK et tableau de bord de métriques, ce qui n'est pas présent dans le dépôt brut.\n• Cible : Indépendants créateurs d'outils de productivité ; Produit : Wrapper CLI qui transforme un APK en exécutable Windows autonome (installer.exe) via Gesher, avec options de packaging. ; difference : Automatise le processus de compilation et de packaging, offrant un artefact prêt à distribuer, alors que Gesher se limite à la bibliothèque d'exécution.",
-            "monetization": "Acheteur : PME ou freelance qui ont besoin de tester ou de distribuer des outils Android sur Windows. ; reason to pay : Gain de productivité (pas d'émulateur lourd), réduction des coûts d'infrastructure de test, support technique dédié. ; unit : abonnement mensuel par utilisateur actif ; model : SaaS avec tarif de base hypothétique 15 €/mois/utilisateur, ajustable selon le nombre d'instances simultanées. ; price hypothesis explanation : Le prix reflète la valeur perçue d'un environnement de test natif et les coûts d'hébergement cloud (VM Windows, stockage d'APK, bande passante).",
-            "build_plan": "scope : MVP : service web d'upload d'APK + orchestration du runtime Gesher sur VM Windows. ; reused bricks : Code Gesher (runtime, loader), conteneur Docker fourni par le projet. ; work to add : API REST (FastAPI) pour upload, gestion des sessions, UI Next.js, système de facturation Stripe, monitoring des processus. ; exclusions : Support multi‑plateforme (Linux/macOS), fonctionnalités avancées de debugging (profilage, breakpoints). ; dependencies : Docker, Windows Server VM, Stripe SDK, Supabase pour auth et DB. ; cost estimate : Infrastructure ≈ 30 €/mois (VM Windows), licences éventuelles (Stripe fees), développement ≈ 200 h (≈ 4 semaines à plein temps). ; timeline : 4‑6 semaines conditionnelles (développement MVP) si les dépendances Docker/VM fonctionnent sans ajustement majeur.",
-            "limitations": "established constraints : Nécessite un environnement Windows pour le runtime, dépend des bibliothèques natives compatibles, licence Apache‑2.0 du code source. ; unknowns : Performance exacte sur des APK très lourds, compatibilité avec les dernières API Android non testées, support de l'accélération GPU sous différents drivers. ; license check : Apache‑2.0, compatible avec une offre SaaS commerciale mais nécessite attribution et inclusion du NOTICE. ; maintenance costs : Mises à jour du runtime Android, suivi des vulnérabilités Windows, support client.",
-            "next_step": "technical test : Déployer Gesher dans un conteneur Docker Windows et lancer un APK de référence (ex. Calculator) pour mesurer le temps de démarrage et la consommation mémoire. ; user question : « Quel problème rencontrez‑vous aujourd’hui en testant des applications Android sur vos postes Windows ? »",
-            "assessment": "Score 7 reflète la maturité du code (runtime complet, documentation claire) et la pertinence pour le profil (full‑stack, besoin de prototypes rapides). Fit_score 5 par défaut car aucune contrainte régionale ou de délai n’est fournie. Les sources S1 (description du fonctionnement) et S3 (extrait technique) confirment la capacité d'exécution native, mais aucune donnée de performance ou de marché n’est disponible – d'où le manque de preuves pour les hypothèses de prix et de volume.",
-            "evidence_ids": [
-              "S1",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
     "149bf9199a652d045704a9a07078e8877f6a6536d23f554ef6c38b671eef6022": {
       "at": 1795550668.148983,
       "data": {
@@ -1551,7 +1383,119 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "52b038f58afaeb02e7447e026432f6bd7f3ab30253f0e25382432af2c4a0b9e6": {
+      "at": 1795633351.87495,
+      "data": {
+        "projects": [
+          {
+            "name": "martina1713/gow-pc-port-classic-recompiled",
+            "category": "Application native Windows (outil de triche / mod)",
+            "eligible": false,
+            "score": 3,
+            "fit_score": 5,
+            "summary": "Gow PC Port Classic Recompiled est un binaire Windows x64 qui fournit des modules de faible empreinte pour le jeu God of War Classic, incluant un radar 2D et un filtre de butin. L'utilisateur cible est un joueur cherchant à modifier le comportement du jeu sur Windows.",
+            "workflow": "Entrée : fichier zip `gow-pc-port-classic-recompiled-v3.7.9-win64.zip` téléchargé et extrait avec le mot de passe `2026`. → Traitement : l'exécutable `gow-pc-port-classic-recompiled-v3.7.9-win64.exe` s'exécute en tant qu'administrateur, injecte des modules en mémoire pour activer le radar 2D et le filtre de loot. → Résultat : affichage en temps réel du radar et du filtrage d'objets dans le jeu. Sources : S1 (description du package, spécifications techniques) ; limites : dépendance à Windows, nécessite les droits administrateur, aucune preuve d'intégration avec d'autres systèmes.",
+            "use_cases": "• Utilisateur : Joueur solo ; Tâche : Activer le radar 2D pour repérer les ennemis et objets rares pendant une partie ; Résultat : Le joueur voit les positions des entités sur une superposition graphique, améliorant sa prise de décision.\n• Utilisateur : Streamer de jeux vidéo ; Tâche : Utiliser le filtre de loot pour mettre en avant les objets de haute rareté pendant le streaming ; Résultat : Le public voit en temps réel les objets rares collectés, augmentant l'engagement du spectateur.",
+            "products": "• Cible : Communauté de modding de jeux PC ; Produit : Plateforme web qui héberge et distribue des modules de triche similaires, avec mise à jour automatisée et gestion des licences ; difference : Transforme le binaire autonome en service SaaS, ajoute un tableau de bord utilisateur, contrôle d'accès et notifications de mise à jour.\n• Cible : Développeurs d'outils d'analyse de jeux ; Produit : Bibliothèque C++/Python exposant les fonctions de radar et de filtrage via une API, permettant l'intégration dans des outils d'analyse de gameplay ; difference : Expose les capacités sous forme d'API réutilisable, supprime la nécessité d'exécuter le binaire en tant qu'administrateur.",
+            "monetization": "Acheteur : Joueurs ou streamers prêts à payer pour un avantage compétitif ; reason to pay : Accès à des fonctionnalités de visualisation en temps réel non disponibles dans le jeu d'origine ; unit : abonnement mensuel ; model : Abonnement avec tarif hypothétique 5 € / mois, justifié par la valeur perçue d'un avantage de jeu et les coûts d'hébergement du service de mise à jour ; price range hypothesis : 4–6 € / mois, à tester auprès d'utilisateurs",
+            "build_plan": "scope : Repackager le binaire existant dans un conteneur Docker et exposer une API REST simple ; reused bricks : Code source du module radar/loot (extraits du binaire), scripts d'extraction du zip ; work to add : Création d'un serveur FastAPI, gestion des licences, interface d'administration, CI/CD pour les builds Windows ; exclusions : Développement du moteur de jeu, création de nouvelles fonctionnalités de triche ; dependencies : • Docker\n• FastAPI (Python)\n• WinRM ou équivalent pour lancer l'exécutable sur le serveur Windows ; estimated costs : Coût d'une VM Windows (≈ 15 €/mois) + stockage S3 pour les archives, frais de CI (GitHub Actions gratuit dans les limites) ; timeline : 4–6 semaines conditionnelles (2 semaines d'analyse du binaire, 2 semaines de développement API, 1–2 semaines de tests)",
+            "limitations": "established constraints : Fonctionne uniquement sous Windows x64, nécessite les droits administrateur, distribution sous licence MIT du code source fourni ; unknowns : Stabilité du module sur différentes versions du jeu, risques légaux liés à la triche, performances en environnement cloud ; license to verify : MIT (déclaré dans le dépôt) ; maintenance costs : Mises à jour du binaire à chaque patch du jeu, surveillance des alertes antivirus",
+            "next_step": "technical test : Déployer le zip dans une VM Windows, automatiser le lancement via un script Python et vérifier que le radar s'affiche correctement ; user question : Quel gain de temps ou d'efficacité percevez‑vous en utilisant un radar 2D pendant vos sessions de jeu ?",
+            "assessment": "Score 3 reflète que le dépôt fournit un binaire fonctionnel mais limité à un usage de triche, sans API ni architecture extensible. L'intérêt pour inspirer un produit SaaS est faible (eligible = false) car les contraintes légales et techniques sont importantes. Le fit_score reste neutre (5) car le profil du développeur possède les compétences nécessaires (Python, Docker, API) mais le domaine ne correspond pas aux priorités sectorielles (B2B SaaS, IA, productivité). Les preuves proviennent uniquement de S1 et S2 ; toutes les autres affirmations sont marquées « non établi dans les extraits ».",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "bb81c76614f5d4b793232af0eeaa44b812579c87d078096c654df7fe405ed492": {
+      "at": 1795633417.376575,
+      "data": {
+        "projects": [
+          {
+            "name": "erkamyaman/rea-games",
+            "category": "outil de reverse‑engineering de jeux vidéo",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "rea-games est une bibliothèque JavaScript (et ports Rust/Bevy) qui enregistre le comportement d’un jeu original, puis permet de le reconstruire dans un autre moteur tout en vérifiant que chaque frame correspond exactement. L’utilisateur cible est un développeur ou un studio souhaitant migrer ou valider des ports de jeux existants.",
+            "workflow": "Entrée : fichier JSON décrivant les entrées du jeu (touches, mouvements) et les nombres aléatoires générés (extraits via le « fake clock ») ; Traitement : le moteur cible (ex. Bevy, Godot, Web) exécute le même flux d’évènements en utilisant le même seed, compare l’état après chaque tick avec les états enregistrés ; Résultat : un rapport de vérification indiquant « identique » ou les divergences détectées. Limites : la preuve repose sur la capacité à reproduire exactement le même générateur de nombres aléatoires et le même timing, ce qui n’est pas garanti pour les jeux dépendant de l’horloge système ou de comportements non déterministes. Sources : [S1] décrit le principe de « fake clock, seeded random numbers », [S3] montre l’implémentation du PRNG utilisé pour la reproduction ; [S2] confirme la portée du projet et les moteurs supportés.",
+            "use_cases": "• Utilisateur : Studio de jeux indie ; Tâche : Porter un jeu HTML5 existant vers le moteur Godot tout en garantissant la fidélité du gameplay ; Résultat : Le jeu est recompilé dans Godot, les tests automatisés montrent une correspondance frame‑à‑frame, réduisant le besoin de tests manuels longs.\n• Utilisateur : Développeur d’outils d’archivage ; Tâche : Documenter le comportement d’un jeu rétro pour le conserver dans une archive numérique ; Résultat : Un fichier JSON complet contenant toutes les entrées et états du jeu, exploitable pour des émulateurs ou des études historiques.",
+            "products": "• Cible : PME de développement de jeux souhaitant externaliser la migration de leurs titres ; Produit : Service SaaS de portage automatisé qui accepte un binaire ou un dépôt source, génère le JSON de référence, crée le port dans le moteur choisi et délivre un rapport de conformité ; difference : Le dépôt brut ne fournit qu’une bibliothèque et des exemples; le service ajoute une interface web, un orchestrateur de builds cloud et un tableau de bord de suivi des vérifications.\n• Cible : Agences de conformité logicielle ; Produit : Kit de validation open‑source (CLI) permettant d’intégrer la comparaison frame‑à‑frame dans les pipelines CI/CD ; difference : Le dépôt original propose déjà le code, mais le kit inclut des scripts d’automatisation, des templates de pipelines GitHub Actions et une documentation orientée CI, facilitant l’adoption en entreprise.",
+            "monetization": "Acheteur : Développeurs ou studios payant pour le service de portage ou le kit CI ; reason to pay : Réduction du temps de validation manuelle, garantie de conformité du gameplay, support technique dédié ; unit : abonnement mensuel par projet ou paiement à l’usage (nombre de builds vérifiés) ; model : Abonnement SaaS avec forfait de 5 builds inclus, puis $0.10 par build supplémentaire; le kit CLI peut être vendu sous licence MIT avec support payant ; price hypothesis : Entre 30 € et 150 € / mois selon le volume, justifié par le coût horaire estimé du travail manuel évité (≈ 2 h / build à 50 €/h).",
+            "build_plan": "scope : Développer une API REST (FastAPI) qui accepte le dépôt source, génère le JSON de référence, lance le portage dans un conteneur Docker (Bevy ou Godot) et renvoie le rapport de vérification. ; reused bricks : Code de génération de PRNG et de comparaison déjà présent dans le dépôt (S3), logique d’emballage du JSON (S1) ; work to add : Interface web (Next.js), orchestration de builds (Docker + GitHub Actions), facturation Stripe, tableau de bord utilisateur, tests d’intégration ; exclusions : Gestion avancée de licences de jeux propriétaires, support multi‑langues, hébergement de jeux lourds (GPU) ; dependencies : Docker, FastAPI, Stripe SDK, Supabase pour l’auth, Vercel pour le front ; cost estimate : Infrastructure cloud (≈ 30 €/mois), licences éventuelles (Bevy est MIT, Godot est MIT), heures de développement estimées à 120 h (≈ 15 jours plein‑temps) ; timeline : Prototype fonctionnel en 3‑4 semaines (2 semaines backend, 1 semaine front, 1 semaine d’intégration et tests).",
+            "limitations": "established constraints : Nécessite que le jeu original soit déterministe (seedable PRNG) ; ne gère pas les jeux dépendant de l’état du système ou de l’audio en temps réel ; unknowns : Performance du portage pour des jeux très complexes, capacité à reproduire exactement les timings sur différents navigateurs, conformité juridique pour la redistribution de jeux propriétaires ; license to check : MIT du dépôt principal, licences des moteurs cibles (Bevy MIT, Godot MIT) – aucune incompatibilité apparente ; maintenance costs : Mises à jour des dépendances Rust/Bevy, évolution des API de Stripe et Supabase, support utilisateur",
+            "next_step": "technical test : Déployer un conteneur Docker qui exécute le portage d’un petit jeu (ex. 2048) et vérifier que le rapport de comparaison renvoie « identique » sur 100 % des frames ; user question : Quel niveau de garantie de fidélité du gameplay attendez‑vous avant d’accepter un portage payant ?",
+            "assessment": "Score 6 reflète la solidité technique du dépôt (PRNG, architecture multi‑moteur) et la pertinence pour les secteurs ciblés (portage SaaS, kits CI). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes de région ou de budget spécifiques. Les principales incertitudes portent sur la capacité à gérer des jeux non déterministes et sur la viabilité commerciale sans validation de marché.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "81f94f0e356c9692e8cdf4184f36f2c0bae1b27fb67fcba99bde793f00df6d08": {
+      "at": 1795633481.9484954,
+      "data": {
+        "projects": [
+          {
+            "name": "gesher-runtime/gesher",
+            "category": "exécution d'applications Android sur Windows (runtime natif)",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Gesher compile le runtime Android (ART) et le framework Android pour Windows, permettant d'exécuter des APK comme processus Windows natifs, sans émulateur ni VM. L'utilisateur cible est un développeur ou un professionnel qui doit tester ou utiliser des applications Android sur un poste de travail Windows.",
+            "workflow": "Entrée : fichier APK → le chargeur d'APK analyse le manifeste, les ressources, le byte‑code dex et les bibliothèques natives (.so). Traitement : le runtime ART (porté sur Windows) JIT compile le dex, le framework.jar fournit les services système ré‑implémentés en‑process, le rendu graphique passe par HWUI → Skia → OpenGL ES → ANGLE → Direct3D 11. Sortie : le processus Windows expose les mêmes API d’entrée (clavier, souris, IME, presse‑papier) que l’application Android originale. Sources : description du pipeline dans le README [S1]. Limites : dépendance à la couche de traduction ELF + bionic, support limité aux architectures x86‑64/arm64 Windows, aucune garantie de compatibilité totale avec toutes les API Android.",
+            "use_cases": "• Utilisateur : Développeur mobile senior ; Tâche : Tester rapidement une nouvelle version d'une application Android sur son poste de travail Windows sans lancer d'émulateur lourd. ; Résultat : Temps de démarrage réduit de plusieurs minutes, accès direct aux outils de débogage Windows.\n• Utilisateur : Consultant en cybersécurité ; Tâche : Analyser le comportement d'une application Android suspecte dans un environnement contrôlé Windows. ; Résultat : Isolation du processus comme application Windows native, simplifiant la collecte de logs et l'application de politiques de sécurité Windows.",
+            "products": "• Cible : PME disposant d'équipes de développement multiplateforme ; Produit : Plateforme SaaS « Gesher Cloud » qui compile et héberge les APK, offrant un accès web aux applications Android via un navigateur. ; difference : Le dépôt source ne fournit qu'un runtime local ; le produit ajoute l'infrastructure cloud, la gestion multi‑utilisateur et la facturation à l'usage.\n• Cible : Indépendants souhaitant créer des outils internes basés sur Android ; Produit : Kit de développement (SDK) « Gesher SDK » qui expose des API Python/Node.js pour automatiser la compilation d'APK vers des exécutables Windows. ; difference : Le dépôt original ne propose pas d'API d'automatisation ; le SDK permet l'intégration dans des pipelines CI/CD.",
+            "monetization": "Acheteur : Développeurs et équipes IT ; reason to pay : Accès à un runtime performant, réduction du temps de test et de déploiement, support professionnel et mises à jour de compatibilité Android. ; unit : abonnement mensuel par utilisateur actif ; model : Abonnement SaaS avec tarif de base hypothétique 15 €/mois, ajustable selon le nombre d'instances simultanées et le volume d'APK traités. ; price range hypothesis : 10–30 €/mois, justifié par la valeur de gain de productivité estimée et les coûts d'infrastructure cloud (serveurs Windows, stockage d'APK).",
+            "build_plan": "scope : Création d'un service cloud minimal qui accepte un APK, le compile via le runtime Gesher et expose le processus via RDP ou WebRTC. ; reused bricks : Code du runtime Gesher (ART port, framework.jar, HWUI/Skia), scripts de chargement d'APK. ; work to add : Conteneurisation Docker, API REST (FastAPI), gestion d'utilisateurs (Supabase), interface front (Next.js), facturation Stripe. ; exclusions : Support complet de toutes les API Android, traduction de code natif ARM64 vers x86‑64 au-delà du bionic fourni. ; dependencies : Docker, FastAPI, Supabase/PostgreSQL, Stripe, Vercel/Fly.io pour le front, licences du runtime (à vérifier). ; cost estimate : Infrastructure cloud ≈ 150 €/mois (VM Windows + stockage), licences éventuelles non identifiées. ; timeline : Prototype fonctionnel 4‑6 semaines (2 semaines d'intégration du runtime, 2 semaines d'API + UI, 1‑2 semaines de tests).",
+            "limitations": "established constraints : Le runtime ne supporte que les appels système Linux ré‑implémentés, dépend de la traduction ELF + bionic, licence du projet non clairement définie (\"autre/inconnue\") [S1]. ; unknowns : Couverture complète des API Android, performance sur des applications lourdes, conformité juridique de la redistribution du runtime Android. ; license to verify : Licence du dépôt (non spécifiée) doit être clarifiée avant toute commercialisation. ; maintenance costs : Mises à jour du runtime Android, support Windows, gestion des vulnérabilités du bionic.",
+            "next_step": "technical test : Déployer le runtime Gesher dans un conteneur Docker, charger un APK simple et mesurer le temps de démarrage vs un émulateur. ; user question : Quel est le critère de performance le plus important pour vous : temps de démarrage, consommation mémoire ou compatibilité API ?",
+            "assessment": "Score 7 reflète la maturité du runtime (compilation du AOSP, support graphique) et son originalité (exécution native). Le fit_score reste neutre (5) car le profil ne précise pas de contrainte sectorielle précise, mais le projet correspond aux priorités B2B SaaS et aux wrappers de technologies complexes. Les preuves proviennent du README du projet [S1] et des extraits de code [S3]; d’autres aspects (licence, couverture API) restent non établis dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "8012e6cedde4446f39dd0be5c64f37272a4a0ac368a7dc55ea657d154c07d79a": {
+      "at": 1795633676.3593175,
+      "data": {
+        "projects": [
+          {
+            "name": "Hiroshis198/loki-patches-universal-build",
+            "category": "outil système Windows",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "Loki‑Patches Universal Build est un ensemble de modules natifs C++ pour Windows 10/11 qui fournit un radar 2D, un filtre de butin et un compilateur de shaders. Il cible les joueurs et les power‑users qui souhaitent améliorer la stabilité et la visibilité de leurs sessions de jeu.",
+            "workflow": "Entrée : fichier zip `loki-patches-universal-build-v2.1.6-win64.zip` téléchargé (4,8 Mo) avec mot de passe 2026. → Traitement : l'exécutable `loki-patches-universal-build-v2.1.6-win64.exe` s'exécute en mode administrateur, charge le module radar (polling 229 Hz) et le compilateur de shaders (polling 388 Hz) en user‑mode externe. → Résultat : affichage en temps réel d'un radar 2D et d'un filtre de loot dans la fenêtre du jeu, sans injection de DLL. Limites : fonctionne uniquement sur Windows 10 22H2 et Windows 11 24H2, nécessite des droits administrateur et ne supporte pas d’autres OS. [S1]",
+            "use_cases": "1. Joueur solo : l'utilisateur lance le jeu, active le radar via le module Loki‑Patches, obtient une vue d'ensemble des objets à proximité et filtre les butins rares, ce qui réduit le temps de recherche d'objets utiles. 2. Streamer : le streamer active le module de rendu sans hooks DLL, le radar s'affiche en overlay pendant le streaming, améliorant l'engagement du public sans impacter la stabilité du client.",
+            "products": "1. Produit SaaS « Radar‑Pro » : cible les studios indie qui souhaitent offrir un overlay radar intégré à leurs jeux via une licence serveur‑client, différant du dépôt brut qui reste un exécutable local. 2. Bibliothèque C++ « Loki‑Core » : cible les développeurs de jeux qui intègrent directement le radar et le compilateur de shaders dans leurs moteurs, apportant une API documentée et un support multiplateforme (Linux via Wine) contrairement au binaire Windows uniquement du dépôt.",
+            "monetization": "Acheteur : studios indie ou créateurs de contenu. Raison de payer : accès à des mises à jour automatiques, support technique et licence d’utilisation commerciale. Unité facturée : abonnement mensuel par licence (ex. 15 €/mois). Modèle économique : abonnement SaaS avec période d’essai gratuite limitée à 30 jours.",
+            "build_plan": "Périmètre limité : conserver le module radar et le compilateur de shaders existants, ajouter une API REST en FastAPI (Python) pour gérer les licences et les mises à jour. Brique réutilisée : code C++ du dépôt. Travail à ajouter : wrapper Python/CFFI, interface d’administration, conteneur Docker. Exclusions : portage natif vers macOS. Dépendances : FastAPI, Docker, PostgreSQL pour la gestion des licences. Coût estimé : 120 h de développement (≈ 15 jours plein‑temps) + 30 h d’infrastructure cloud. Délai : 3 à 4 semaines conditionnellement à la disponibilité du développeur.",
+            "limitations": "Contraintes établies : ne fonctionne que sous Windows 10/11, nécessite mot de passe 2026, dépend d’un exécutable signé. Inconnues : performances sous charge élevée, compatibilité avec d’autres moteurs de jeu. Licence : MIT (à vérifier pour usage commercial). Coûts de maintenance : mise à jour du binaire Windows et du wrapper Python, estimés à 5 % du temps de développement initial par an.",
+            "next_step": "Réaliser un test technique : créer un petit service FastAPI qui lance l’exécutable en mode headless et expose les données du radar via une API JSON. Question à poser à un streamer : « Quels éléments d’overlay vous seraient utiles en direct et seriez‑vous prêt à payer pour un service fiable et mis à jour automatiquement ? »",
+            "assessment": "Score 6 reflète la présence d’un produit fonctionnel avec une niche clairement définie (radar et filtre de loot) et une documentation de démarrage. Le fit_score reste neutre (5) car le profil ne précise pas de contrainte de plateforme ou de modèle économique spécifique. Les preuves proviennent du README (S1) et du fichier go.mod (S2) qui confirment l’existence du projet et son environnement de build. De nombreuses hypothèses (prix, abonnement, API) restent à valider auprès d’utilisateurs réels.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1795627299.3838518
+  "next_call_at": 1795633738.5293872
 }
