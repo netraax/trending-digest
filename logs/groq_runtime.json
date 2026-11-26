@@ -404,6 +404,42 @@
       "estimated": false,
       "prompt_tokens": 2193,
       "completion_tokens": 1257
+    },
+    {
+      "at": 1795691853.3603015,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3473,
+      "estimated": false,
+      "prompt_tokens": 2456,
+      "completion_tokens": 1017
+    },
+    {
+      "at": 1795691918.3606415,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3193,
+      "estimated": false,
+      "prompt_tokens": 2333,
+      "completion_tokens": 860
+    },
+    {
+      "at": 1795691983.3610249,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3761,
+      "estimated": false,
+      "prompt_tokens": 2658,
+      "completion_tokens": 1103
+    },
+    {
+      "at": 1795692048.361407,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3648,
+      "estimated": false,
+      "prompt_tokens": 2662,
+      "completion_tokens": 986
     }
   ],
   "cache": {
@@ -1354,7 +1390,92 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "ce17a6e1dddd75062e61d571561c09a4c2d4feacc01ff3cecd4bf33a23463eec": {
+      "at": 1795691856.2625136,
+      "data": {
+        "projects": [
+          {
+            "name": "elementalsouls/Claude-BugHunter",
+            "category": "outil de sécurité / automation de bug bounty",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Claude-BugHunter est un bundle de compétences Claude destiné aux chasseurs de bugs et aux équipes red‑team, permettant de structurer le flux de travail de recon à rapport. Il s’adresse aux chercheurs en sécurité qui souhaitent automatiser la collecte, le classement et la validation des vulnérabilités.",
+            "workflow": "Entrée : cible (URL ou domaine) → `cbh recon` effectue enumeration passive, probe et crée un manifest.json ; traitement : `cbh classify` compare chaque URL aux 681 modèles de rapports et classe les vecteurs d’attaque ; sortie : `cbh triage` applique le 7‑Question Gate et produit PASS ou DOWNGRADE. Limites : dépend du réseau, aucune intégration native de scanners externes, licence MIT non vérifiée ([S1],[S2],[S3]).",
+            "use_cases": "• Utilisateur : Chasseur de bugs freelance ; Tâche : Automatiser la phase de reconnaissance d’un programme bug bounty ; Résultat : Rapport de sous‑domaines actifs et classification initiale en minutes\n• Utilisateur : Équipe red‑team interne ; Tâche : Standardiser la validation des findings avant soumission au client ; Résultat : Passage systématique du 7‑Question Gate, réduction des faux positifs",
+            "products": "• Cible : PME avec programme de sécurité interne ; Produit : Plateforme SaaS qui expose les compétences Claude via une UI web, ajoute un tableau de bord de suivi des engagements ; difference : Transforme le CLI en service multi‑utilisateur, ajoute persistance et reporting centralisé\n• Cible : Agences de cybersécurité ; Produit : Wrapper Docker‑orchestré qui intègre Claude‑BugHunter avec des scanners open‑source (e.g., Nmap, Amass) ; difference : Enrichit le flux de recon avec des outils complémentaires, simplifie le déploiement en environnement CI/CD",
+            "monetization": "Acheteur : agences ou entreprises avec programme de bug bounty ; raison de payer : gain de temps sur la recon et réduction des erreurs humaines ; unité facturée : abonnement mensuel par utilisateur ou par nombre d’engagements traités ; modèle : SaaS avec tarif de base hypothétique 49 €/mois, ajustable selon volume d’analyses.",
+            "build_plan": "Périmètre limité : UI web et API autour du CLI existant ; brique réutilisée : le bundle de 85 compétences et le script `cbh` ([S3]) ; travail à ajouter : front React, authentification, persistance PostgreSQL, conteneurisation Docker ; exclusions : développement de nouveaux skills, intégration de scanners externes non critiques ; dépendances : FastAPI, Docker, Vercel/Fly.io pour hébergement ; coût estimé : 2 k€ de dev initial, 200 €/mois d’infra ; délai : 6‑8 semaines conditionnel selon disponibilité du développeur.",
+            "limitations": "Contraintes établies : nécessite Python ≥3.9, fonctionne en CLI uniquement, licence MIT à confirmer ([S2]) ; inconnues : performance sur très grands scopes, support multi‑langue, conformité RGPD non évaluée.",
+            "next_step": "Réaliser un test technique d’intégration du CLI dans un conteneur Docker et vérifier la génération du manifest.json ; interroger un chasseur de bugs sur les critères de validation du 7‑Question Gate.",
+            "assessment": "Score 7 reflète la richesse fonctionnelle (85 skills, workflow complet) et la pertinence pour le profil (Full‑Stack Engineer cherchant des outils de sécurité) ; fit_score 5 par défaut faute de critères de région ou de budget spécifiques. Les preuves proviennent des extraits S1, S2 et S3 ; le reste reste non établi dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S2",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "7e167a55a7fde9946a0e4844382ef6b4abb9abb3f239b0a13cf4c0e2d9a71adb": {
+      "at": 1795691920.4835892,
+      "data": {
+        "projects": [
+          {
+            "name": "obra/superpowers",
+            "category": "Méthodologie de développement logiciel / Framework d'agents",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Superpowers propose une méthodologie complète pour les agents de codage, en guidant la spécification, la conception et le TDD. Destiné aux développeurs qui souhaitent automatiser la génération de code tout en conservant le contrôle sur les exigences.",
+            "workflow": "Entrée : requête texte décrivant la fonctionnalité souhaitée → L'agent interroge l'utilisateur pour clarifier le besoin (S1) → Génération d'un spec découpé en morceaux lisibles → Validation par l'utilisateur → Production d'un plan d'implémentation détaillé, compatible TDD, puis génération du code (S1). Limite : aucune prise en charge native du test automatisé, dépend du respect du plan par l'utilisateur.",
+            "use_cases": "• Utilisateur : Développeur junior en agence ; Tâche : Transformer une description fonctionnelle en backlog TDD ; Résultat : Plan d'implémentation structuré et snippets de code prêts à être testés\n• Utilisateur : Startup SaaS ; Tâche : Accélérer le prototypage d'une API interne ; Résultat : Prototype fonctionnel livré en quelques heures grâce à la génération guidée",
+            "products": "• Cible : PME souhaitant internaliser le prototypage ; Produit : Plateforme web qui intègre Superpowers comme moteur de génération de code avec UI de validation ; diff : Ajoute une interface collaborative et un stockage des specs, ce qui n'existe pas dans le dépôt brut\n• Cible : Indépendants créant des micro‑SaaS ; Produit : Extension VS Code qui invoque Superpowers pour créer des modules Next.js à partir de prompts ; diff : Enveloppe le framework dans un plugin IDE, facilitant l'adoption sans infrastructure serveur",
+            "monetization": "Abonnement mensuel (15 €/mois) pour l'accès à l'interface web et aux mises à jour du moteur; facturation par utilisateur actif; modèle freemium avec 5 projets gratuits par mois.",
+            "build_plan": "Réutiliser le package npm (S2) comme cœur; développer une UI React (8 semaines, 200 h); ajouter un backend FastAPI pour la persistance (4 semaines, 120 h); exclure la création d'un marketplace externe; dépendances : Node, FastAPI, Docker; coût estimé ≈ 2 k€ d'infrastructure initiale.",
+            "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépend du respect du plan par l'utilisateur; maintenance du moteur de génération non fournie dans le repo.",
+            "next_step": "Tester la génération d'un spec simple via l'agent en local; interroger un développeur senior sur la lisibilité du plan produit.",
+            "assessment": "Score 7 reflète la pertinence du cadre pour le prototypage rapide et la présence de documentation claire (S1). Le fit_score reste moyen (5) faute de preuves d'intégration SaaS ou de conformité légale.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "9cb3b39964a16b5c55f193e294601abbe365c04f527ef4a588e81c13caf2fb1f": {
+      "at": 1795691986.0317674,
+      "data": {
+        "projects": [
+          {
+            "name": "HKUDS/CLI-Anything",
+            "category": "Framework / Bibliothèque CLI",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "CLI-Anything est un framework Python qui rend les logiciels exécutables via ligne de commande accessibles aux agents IA. Il cible les développeurs souhaitant exposer des outils existants ou créer de nouveaux CLI agent‑natifs.",
+            "workflow": "Entrée : commande `cli-hub install <outil>` → Traitement : le gestionnaire télécharge le paquet, résout les dépendances et génère un harness de 7 phases décrites dans le README [S1] → Résultat : le CLI est installé, listable (`cli-hub info`) et exécutable (`cli-hub launch`). Limite : certains CLI nécessitent des applications graphiques locales (GIMP, Blender…) qui doivent être installées séparément, ce qui restreint l’usage en environnement purement serveur [S1].",
+            "use_cases": "• Utilisateur : Développeur d’automatisation ; Tâche : Intégrer un outil de conversion d’image existant (ex. ImageMagick) dans un workflow n8n ; Résultat : Le CLI est installé via `cli-hub`, encapsulé dans un nœud n8n grâce au harness `cli-anything-n8n` et déclenché automatiquement.\n• Utilisateur : Agence marketing ; Tâche : Déployer rapidement un script de génération de rapports PDF à la demande d’un client ; Résultat : Le script est empaqueté comme CLI, publié dans le hub et lancé par un agent conversationnel qui récupère les données et renvoie le PDF.",
+            "products": "• Cible : PME souhaitant automatiser des tâches bureautiques ; Produit : Plateforme SaaS qui expose un catalogue de CLI‑Anything pré‑configurés (ex. conversion, OCR, génération de factures) ; difference : Le dépôt brut fournit uniquement le framework et les harness ; la plateforme ajoute l’interface web, la facturation et le monitoring.\n• Cible : Développeurs d’agents IA ; Produit : Kit de développement (SDK) qui génère automatiquement le harness 7‑phases pour tout script Python ; difference : Le dépôt propose déjà le concept ; le SDK formalise la génération, ajoute des templates et une CI/CD pour publier dans le hub.",
+            "monetization": "Acheteur : PME ou agence ; raison de payer : gain de temps sur l’intégration d’outils existants ; unité facturée : abonnement mensuel par utilisateur actif ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, majoré selon le nombre de CLI utilisés. Hypothèse basée sur la valeur perçue d’une automatisation sans développement sur‑mesure.",
+            "build_plan": "Périmètre : UI web de catalogue + facturation Stripe + hébergement Docker sur Fly.io. Brique réutilisée : core CLI‑Anything et le harness n8n ([S2]). Travail à ajouter : interface React, gestion des licences, monitoring. Exclusions : création de nouveaux CLI (hors scope). Dépendances : Python ≥ 3.10, FastAPI, PostgreSQL, Stripe SDK. Coût estimé : 150 € / mois d’infrastructure + 20 h de dev initiales. Délai : 4‑6 semaines conditionnellement à la disponibilité d’un développeur full‑stack.",
+            "limitations": "Contraintes établies : nécessite Python 3.10+, dépend de l’existence d’un CLI natif, licence du dépôt non vérifiée [S1] ; inconnues : compatibilité Windows/macOS, support de licences tierces, coût de maintenance du hub. Licence à confirmer avant redistribution.",
+            "next_step": "Réaliser un test technique : installer `cli-hub`, publier un petit CLI de conversion d’image et l’appeler depuis un workflow n8n. Question à poser à un potentiel utilisateur : « Quels types de logiciels existants aimeriez‑vous rendre accessibles à vos agents IA sans développer de nouveau code ? »",
+            "assessment": "Score 7 reflète la pertinence du framework pour le profil (full‑stack, IA, automatisation) et la présence de composants réutilisables ([S2]). Fit_score 5 par défaut car aucune contrainte régionale ou budgétaire précise n’est fournie. La plupart des informations proviennent du README et du pyproject [S1,S2]; d’autres aspects restent non établis dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1795645264.155637
+  "next_call_at": 1795692113.361407
 }
