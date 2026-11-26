@@ -1,69 +1,6 @@
 {
   "calls": [
     {
-      "at": 1795606458.4290316,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3361,
-      "estimated": false,
-      "prompt_tokens": 2462,
-      "completion_tokens": 899
-    },
-    {
-      "at": 1795606523.4292884,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3052,
-      "estimated": false,
-      "prompt_tokens": 2023,
-      "completion_tokens": 1029
-    },
-    {
-      "at": 1795606588.4296055,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3481,
-      "estimated": false,
-      "prompt_tokens": 2527,
-      "completion_tokens": 954
-    },
-    {
-      "at": 1795606653.429964,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 2971,
-      "estimated": false,
-      "prompt_tokens": 2007,
-      "completion_tokens": 964
-    },
-    {
-      "at": 1795606718.4303188,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3571,
-      "estimated": false,
-      "prompt_tokens": 2580,
-      "completion_tokens": 991
-    },
-    {
-      "at": 1795606783.430661,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3306,
-      "estimated": false,
-      "prompt_tokens": 2258,
-      "completion_tokens": 1048
-    },
-    {
-      "at": 1795606848.4310603,
-      "stream": "trending",
-      "model": "openai/gpt-oss-120b",
-      "tokens": 3382,
-      "estimated": false,
-      "prompt_tokens": 2425,
-      "completion_tokens": 957
-    },
-    {
       "at": 1795626064.3771827,
       "stream": "business",
       "model": "openai/gpt-oss-120b",
@@ -440,204 +377,63 @@
       "estimated": false,
       "prompt_tokens": 2662,
       "completion_tokens": 986
+    },
+    {
+      "at": 1795697775.5441139,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3690,
+      "estimated": false,
+      "prompt_tokens": 2662,
+      "completion_tokens": 1028
+    },
+    {
+      "at": 1795697840.5445356,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3001,
+      "estimated": false,
+      "prompt_tokens": 2025,
+      "completion_tokens": 976
+    },
+    {
+      "at": 1795697905.5449228,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3501,
+      "estimated": false,
+      "prompt_tokens": 2518,
+      "completion_tokens": 983
+    },
+    {
+      "at": 1795697970.5453532,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3021,
+      "estimated": false,
+      "prompt_tokens": 2005,
+      "completion_tokens": 1016
+    },
+    {
+      "at": 1795698035.5457006,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3678,
+      "estimated": false,
+      "prompt_tokens": 2595,
+      "completion_tokens": 1083
+    },
+    {
+      "at": 1795698100.5460298,
+      "stream": "trending",
+      "model": "openai/gpt-oss-120b",
+      "tokens": 3159,
+      "estimated": false,
+      "prompt_tokens": 2258,
+      "completion_tokens": 901
     }
   ],
   "cache": {
-    "785efdd4b9f45792745030c2db8cb0a6547da697b021c1fb2f1b75709b382497": {
-      "at": 1795606460.7801597,
-      "data": {
-        "projects": [
-          {
-            "name": "elementalsouls/Claude-BugHunter",
-            "category": "outil de sécurité / CLI",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Claude-BugHunter est un bundle de compétences Claude destiné au bug‑hunting et au red‑team externe, utilisable via un CLI Python. Il cible les chercheurs en sécurité qui souhaitent automatiser la collecte, la classification et la validation de vulnérabilités.",
-            "workflow": "Entrée : cible (ex. domaine) → `cbh recon` effectue enumeration passive, probe et crée un manifest.json ; traitement : `cbh classify` compare les URLs aux 681 patterns de rapports et classe les vecteurs d’attaque ; sortie : listes de vulnérabilités classées et validation via le 7‑Question Gate. Sources : S1 (description du workflow), S3 (extraits de la CLI). Limites : aucune dépendance réseau obligatoire, mais l’efficacité dépend de la qualité des patterns et d’un compte HackerOne optionnel.",
-            "use_cases": "• Utilisateur : pentester freelance ; Tâche : automatiser la phase de reconnaissance d’un nouveau programme de bug bounty ; Résultat : reconnaissance structurée avec manifest.json prêt pour la phase de chasse\n• Utilisateur : équipe de red‑team interne ; Tâche : valider rapidement les findings avant le reporting client ; Résultat : validation automatisée via le 7‑Question Gate, réduction du bruit",
-            "products": "• Cible : PME disposant d’applications web ; Produit : service SaaS qui expose les compétences de Claude‑BugHunter via une UI web ; difference : supprime la nécessité du CLI et intègre la gestion des tokens HackerOne\n• Cible : agences de cybersécurité ; Produit : module Python réutilisable intégré à leurs pipelines CI/CD ; difference : permet l’orchestration automatisée des phases recon‑hunt‑triage dans des pipelines",
-            "monetization": "Facturation à l’usage pour chaque exécution de `cbh recon` ou `cbh classify`, tarif hypothétique 0,05 €/opération, justifiée par le gain de temps sur la collecte manuelle et les coûts d’infrastructure cloud.",
-            "build_plan": "Réutiliser le bundle existant (S3, S1) comme cœur ; ajouter une API FastAPI (Python) pour exposer les commandes, conteneuriser avec Docker, héberger sur Fly.io. Travail supplémentaire : UI React, gestion des comptes, tests d’intégration. Exclusions : implémentation du moteur de recherche de vulnérabilités externe. Dépendances : FastAPI, Docker, éventuellement requests (optionnel). Coût estimé : 150 € de services cloud mensuels, 40 h de développement initial.",
-            "limitations": "Licence MIT indiquée dans pyproject.toml mais non vérifiée dans le dépôt (S2) ; aucune garantie de mise à jour des patterns, dépendance optionnelle à HackerOne, aucune preuve de conformité RGPD.",
-            "next_step": "Tester le CLI `cbh recon` sur un domaine de test et recueillir le feedback d’un pentester senior sur la pertinence des patterns.",
-            "assessment": "Score 7 reflète la richesse fonctionnelle (84 skills, 681 patterns) et la disponibilité d’un CLI complet (S1, S3). Fit_score 5 par défaut faute d’indications de besoins régionaux ou de contraintes de délai spécifiques. Les preuves sont limitées aux extraits fournis.",
-            "evidence_ids": [
-              "S1",
-              "S2",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "d6c9cb0fb71061af6c9657c934a8b054b349f60db6882ee855196de0ac1b578f": {
-      "at": 1795606525.800029,
-      "data": {
-        "projects": [
-          {
-            "name": "cursor/plugins",
-            "category": "Marketplace de plugins pour l'IDE Cursor",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Un dépôt contenant des plugins officiels pour l'IDE Cursor, destinés aux développeurs qui souhaitent étendre leurs outils de productivité. Chaque plugin est autonome et décrit par un manifeste JSON.",
-            "workflow": "Entrée : l'utilisateur installe un plugin via le marketplace de Cursor → Traitement : le plugin charge son manifeste, ses règles et ses compétences définies dans les dossiers `skills/` et `rules/` → Résultat : Cursor enrichit l'interface avec des fonctionnalités spécifiques (ex. plan d’apprentissage, mise à jour incrémentale de la mémoire) [S1]. Limite : les plugins sont limités aux capacités de l'API de Cursor et aucune exécution serveur n’est fournie.",
-            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Utiliser le plugin \"Teaching\" pour planifier des sessions d’apprentissage de nouvelles technologies ; Résultat : Génération automatique de plans d’étude et suivi de progression dans l’IDE\n• Utilisateur : Équipe de devOps ; Tâche : Déployer le plugin \"cursor-team-kit\" pour automatiser les flux CI/CD internes ; Résultat : Intégration de règles de revue de code et de déploiement directement depuis l’IDE",
-            "products": "• Cible : PME souhaitant internaliser des workflows de revue de code ; Produit : Plateforme SaaS qui expose les plugins Cursor via une API REST et ajoute des tableaux de bord de suivi ; difference : Ajoute une couche de gestion multi‑utilisateurs et de reporting qui n’existe pas dans le dépôt brut\n• Cible : Indépendants cherchant un assistant d’apprentissage personnalisé ; Produit : Extension navigateur qui consomme le plugin \"Teaching\" et propose des exercices interactifs hors‑IDE ; difference : Déplace la logique d’apprentissage hors de l’IDE, rendant le service accessible à tout utilisateur web",
-            "monetization": "Acheteur : PME ou indépendant ; raison : gain de temps sur la revue de code ou l’apprentissage structuré ; unité facturée : abonnement mensuel par utilisateur ; modèle : abonnement SaaS avec niveau freemium limité à 3 plugins, tarif hypothétique 15‑30 €/mois selon le nombre de plugins actifs, justifié par la valeur de productivité et les coûts d’infrastructure cloud.",
-            "build_plan": "Périmètre : wrapper API autour du dépôt, authentification OAuth, tableau de bord React. Briques réutilisées : manifestes JSON et logique de plugins existants. Travail à ajouter : serveur Node.js, UI React, persistance PostgreSQL. Exclusions : refonte des plugins eux‑mêmes. Dépendances : FastAPI ou Express, Supabase pour DB, Docker pour déploiement. Coût estimé : 200‑300 $ de services cloud mensuels. Délai : 4‑6 semaines de développement intensif (conditionnel à la disponibilité d’un développeur full‑stack).",
-            "limitations": "Contrainte : les plugins ne fonctionnent que dans l’écosystème Cursor ; licence MIT indiquée mais non vérifiée dans le README ; aucune donnée sur la maintenance ou le support fourni. Non établi dans les extraits : performances à grande échelle, conformité RGPD.",
-            "next_step": "Réaliser un test technique d’intégration du plugin \"Teaching\" via l’API REST proposée et interroger un développeur senior sur la valeur perçue d’un tableau de bord de suivi d’apprentissage.",
-            "assessment": "Score 7 reflète la clarté du manifeste et la variété de plugins utiles (S1). Le fit_score reste neutre (5) car le profil ne précise pas de secteur ciblé précis. Le projet offre une base solide pour créer des produits SaaS autour de workflows dev, mais manque de preuves sur la viabilité commerciale et la licence.",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "c0b01113f672c51255f222e0112e87a5806906d17580e2d8bd8d031622f27973": {
-      "at": 1795606590.8584037,
-      "data": {
-        "projects": [
-          {
-            "name": "firecrawl/firecrawl",
-            "category": "Infrastructure de connaissance / API de scraping et recherche web",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Firecrawl expose une API qui permet de rechercher, scraper et interagir avec des pages web, retournant du markdown propre. Il cible les développeurs d’agents IA qui ont besoin de données web structurées.",
-            "workflow": "Entrée : URL d’une page web → Traitement : le serveur Firecrawl (local ou cloud) récupère le HTML, le nettoie, le convertit en markdown et, si demandé, effectue un crawl multi‑pages ou une recherche indexée → Résultat : texte markdown, métadonnées de crawl et statut d’opération. Limites : nécessite Rust/Node 22 pour le mode local, aucune base de données interne, dépend du réseau et du format des sites ([S1]).",
-            "use_cases": "• Utilisateur : Développeur d’assistant IA ; Tâche : Enrichir le contexte d’un chatbot avec le contenu d’un site produit ; Résultat : Le bot reçoit du markdown prêt à être injecté dans le prompt, améliorant la pertinence des réponses\n• Utilisateur : Agence de marketing digital ; Tâche : Collecter automatiquement les mentions de marque sur plusieurs sites ; Résultat : Un rapport agrégé en markdown listant les extraits pertinents, prêt à être analysé",
-            "products": "• Cible : PME souhaitant automatiser la veille concurrentielle ; Produit : SaaS de veille web qui utilise Firecrawl en backend pour extraire et indexer les pages cibles ; difference : Fournit une interface no‑code et des alertes personnalisées, alors que le dépôt brut n’offre qu’une API brute\n• Cible : Développeurs d’agents autonomes ; Produit : Bibliothèque Python wrapper autour du SDK JavaScript, intégrée à FastAPI pour servir les données scrappées en temps réel ; difference : Ajoute un point d’entrée HTTP standardisé et la gestion d’authentification, absent du dépôt original",
-            "monetization": "Acheteur : PME ou agence ; raison : gain de temps sur la collecte de données ; unité facturée : appels API ou abonnement mensuel ; modèle : tarif à l’usage avec forfait de base, hypothèse de 0,01 €/appel pour couvrir les coûts d’infrastructure cloud et de support.",
-            "build_plan": "Périmètre : API de scraping + interface admin légère. Brique réutilisée : Firecrawl SDK (JS) et le binaire local. Travail à ajouter : wrapper Python, tableau de bord React, authentification OAuth, facturation Stripe. Exclusions : moteur de recherche interne complet. Dépendances : Rust, Node 22, PostgreSQL pour le suivi des jobs. Coût estimé : 200 € de serveur VPS + 50 € de licences éventuelles, délai 3‑4 semaines (prototype fonctionnel).",
-            "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à Rust/Node, performances variables selon la complexité des sites, besoin d’un C‑compiler pour le mode local ([S1]).",
-            "next_step": "Réaliser un test technique de scrapping d’une page produit avec le wrapper Python et mesurer le temps de réponse; questionner un responsable produit d’une agence sur le besoin d’une interface no‑code pour la veille.",
-            "assessment": "Score 7 reflète la pertinence technique du projet pour des agents IA et la disponibilité d’une API prête à l’emploi ; fit_score 5 par défaut faute de contraintes de région ou de budget précises. Les preuves proviennent du README et d’un extrait de code ([S1],[S3]).",
-            "evidence_ids": [
-              "S1",
-              "S3"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "830f646826388cd6968ca11edcae956e78e4ad36b450dde25f6cbddb02c530bf": {
-      "at": 1795606655.8884048,
-      "data": {
-        "projects": [
-          {
-            "name": "nginx/nginx",
-            "category": "serveur web / reverse proxy",
-            "eligible": true,
-            "score": 8,
-            "fit_score": 5,
-            "summary": "NGINX est un serveur web open‑source, load‑balancer et reverse proxy très performant, utilisé par les PME et les agences pour servir du contenu HTTP/HTTPS rapidement.",
-            "workflow": "Entrée : requête HTTP d’un client → Traitement : NGINX reçoit la requête, applique les directives de configuration (routing, TLS, rate‑limiting) et, le cas échéant, reverse‑proxy vers un backend → Résultat : réponse HTTP optimisée renvoyée au client. Sources : [S1] décrit le rôle de NGINX et ses fonctions de load‑balancing et de cache. Limites : la documentation ne précise pas les performances exactes ni les exigences de scaling pour des charges très élevées.",
-            "use_cases": "• Utilisateur : Agence web ; Tâche : Déployer un site vitrine avec SSL et mise en cache ; Résultat : Temps de chargement réduit, gestion simplifiée des certificats grâce aux directives intégrées\n• Utilisateur : PME e‑commerce ; Tâche : Balancer le trafic entre plusieurs instances d’application backend ; Résultat : Haute disponibilité et répartition de charge sans interruption de service",
-            "products": "• Cible : Indépendants créant des sites statiques ; Produit : Service d’hébergement « NGINX‑Lite » avec configuration pré‑remplie ; difference : Supprime la complexité de la configuration manuelle, offre un tableau de bord simple\n• Cible : Agences gérant plusieurs clients ; Produit : Plateforme de gestion multi‑sites NGINX‑Pro avec tableau de bord centralisé, monitoring et facturation par domaine ; difference : Permet de piloter plusieurs instances NGINX depuis une UI unique, ajout de métriques et alertes",
-            "monetization": "Acheteur : agences ou indépendants ; raison : gain de temps et fiabilité ; unité facturée : abonnement mensuel par domaine ou par instance ; modèle : SaaS avec tarif de base hypothétique 15 €/mois, ajustable selon le nombre de sites.",
-            "build_plan": "Périmètre : UI de gestion, wrapper API autour de la CLI NGINX, tableau de bord de monitoring. Brique réutilisée : le binaire NGINX existant. Travail à ajouter : interface React, API FastAPI, intégration Docker, système de facturation. Exclusions : développement du moteur NGINX lui‑même. Dépendances : Docker, FastAPI, PostgreSQL, Vercel/Fly.io pour le front. Coût estimé : heures de dev (≈200 h) + infrastructure cloud (≈30 €/mois). Délai : 6‑8 semaines conditionnellement à la disponibilité du développeur.",
-            "limitations": "Contraintes établies : licence BSD‑like, nécessite une configuration serveur, dépendance à la stabilité du binaire. Inconnues : performances précises sous charge extrême, support officiel pour des modules tiers. Licence à vérifier pour usage commercial. Coûts de maintenance du serveur et des certificats SSL non détaillés.",
-            "next_step": "Réaliser un prototype d’API de gestion de virtual hosts et tester la création d’un site via l’interface avec un client potentiel (agence web).",
-            "assessment": "Score 8 reflète la maturité, la popularité et la pertinence de NGINX pour les cibles du profil. Fit_score 5 car aucune contrainte régionale ou de délai spécifique n’est fournie. Le manque de données chiffrées sur les performances ou la tarification oblige à rester prudent.",
-            "evidence_ids": [
-              "S1"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "dbd9fbee95486e30a630fb3c59695d6ef556416819d5b28cefff8b5a56c6a128": {
-      "at": 1795606720.9375167,
-      "data": {
-        "projects": [
-          {
-            "name": "openvinotoolkit/openvino",
-            "category": "Toolkit d'optimisation et de déploiement d'inférence IA",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "OpenVINO™ est une boîte à outils open‑source permettant d’optimiser et de déployer des modèles de deep learning sur divers matériels. Elle cible les développeurs IA qui souhaitent réduire la latence et le coût d’inférence.",
-            "workflow": "Entrée : modèle entraîné (ex. PyTorch). → Traitement : conversion via `ov.convert_model`, compilation avec `ov.Core().compile_model` pour le dispositif choisi (CPU, GPU, VPU). → Résultat : objet modèle compilé prêt à recevoir des tenseurs et à retourner des prédictions. Limites : nécessite Python ≥ 3.11, dépend de numpy et de drivers matériels compatibles [ S1, S2 ].",
-            "use_cases": "• Utilisateur : Développeur d’application de vision industrielle ; Tâche : Optimiser un modèle YOLOv11 pour l’inspection en temps réel sur un edge device Intel ; outcome : Temps d’inférence réduit de 3 ×, consommation CPU diminuée, déploiement via un binaire unique\n• Utilisateur : Équipe R&D d’une PME SaaS ; Tâche : Déployer un LLM local pour un chatbot interne sans appel à l’API cloud ; outcome : Fonctionnement hors‑ligne, coûts d’API éliminés, conformité aux exigences de souveraineté des données",
-            "products": "• Cible : Agences marketing ; Produit : Service SaaS de génération d’images publicitaires optimisé OpenVINO ; difference : Utilise le runtime OpenVINO pour offrir des rendus 2‑3 fois plus rapides que les solutions purement cloud, tout en restant sur des serveurs européens\n• Cible : Fabricants de dispositifs IoT ; Produit : SDK embarqué pour la détection d’anomalies sur capteurs edge ; difference : Exploite la compilation native d’OpenVINO afin de réduire la taille du binaire et la consommation énergétique par rapport à TensorFlow Lite",
-            "monetization": "Facturation à l’usage (inférence) aux entreprises, tarif hypothétique 0,001 €/inférence, justifiée par la réduction des coûts d’infrastructure et la valeur ajoutée de la latence basse. Modèle freemium possible avec quota mensuel gratuit puis dépassement facturé.",
-            "build_plan": "Périmètre : wrapper API REST (FastAPI) autour du runtime OpenVINO existant. Brique réutilisée : `ov.Core`, `ov.convert_model`. Travail à ajouter : authentification, facturation, tableau de bord. Exclusions : UI frontale, gestion multi‑tenant avancée. Dépendances : Python ≥ 3.11, numpy, drivers Intel (non fournis). Coût estimé : 150 h de développement (≈ 3 semaines à plein temps).",
-            "limitations": "Licence Apache‑2.0 confirmée dans le pyproject.toml [ S2 ]; la licence du dépôt principal reste à vérifier. Nécessite du matériel compatible pour les gains de performance. Maintenance du runtime dépend d’Intel, mise à jour non garantie.",
-            "next_step": "Réaliser un test de conversion et d’inférence d’un modèle TinyYOLO sur un CPU Intel i7, puis interroger un responsable de production sur la valeur perçue d’une latence < 10 ms.",
-            "assessment": "Score 7 reflète la maturité du toolkit (documentation, exemples, support multi‑device) et son alignement avec les priorités IA et productivité du profil. Fit_score 5 par défaut faute de critères de région ou de budget spécifiques. Les preuves proviennent des extraits README et pyproject.toml.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "e3aef677f5591c7d7537fea08b0d2ac5ab58676e47a13bda842a3facc4f48416": {
-      "at": 1795606785.9101415,
-      "data": {
-        "projects": [
-          {
-            "name": "cathrynlavery/diagram-design",
-            "category": "outil de génération de diagrammes (plugin/skill)",
-            "eligible": true,
-            "score": 6,
-            "fit_score": 5,
-            "summary": "Diagram‑Design fournit un agent capable de créer des diagrammes éditoriaux sous forme de fichier HTML + SVG autonome, destiné aux développeurs qui utilisent des environnements d’IA comme Claude Code ou GitHub Copilot. Il cible les équipes qui souhaitent automatiser la production de schémas sans recourir à des éditeurs graphiques manuels.",
-            "workflow": "Entrée : texte descriptif du diagramme fourni à l’agent via la commande du plugin. Traitement : le skill génère le SVG en appliquant un layout sur une grille de 4 px et intègre le style éditorial propre à la marque. Résultat : un fichier HTML contenant le SVG exportable en PNG ou SVG. Limites : aucune prise en charge de styles personnalisés complexes, dépendance à l’infrastructure du host qui lit les Agent Skills. [S1]",
-            "use_cases": "• Utilisateur : Développeur SaaS ; Tâche : Générer automatiquement des diagrammes d’architecture pour la documentation technique ; Résultat : Un fichier HTML prêt à être intégré dans le README, sans besoin de retoucher le SVG\n• Utilisateur : Équipe marketing ; Tâche : Créer des diagrammes de processus métier à inclure dans des présentations ; Résultat : Des visuels cohérents avec la charte graphique, produits en quelques secondes via le prompt",
-            "products": "• Cible : PME souhaitant automatiser leurs docs ; Produit : Service SaaS qui expose l’API Diagram‑Design et propose un tableau de bord de gestion de templates ; diff : Ajoute la facturation à l’usage, l’authentification et le stockage des diagrammes, ce qui n’est pas présent dans le dépôt brut\n• Cible : Agences de design ; Produit : Extension VS Code qui intègre le skill et permet de générer et d’éditer le SVG directement dans l’IDE ; diff : Enveloppe le dépôt dans un plugin local, offrant une expérience d’édition instantanée sans passer par un serveur externe",
-            "monetization": "Acheteur : PME ou agence; raison : gain de temps sur la création de diagrammes; unité facturée : diagramme généré; modèle : abonnement mensuel de 15 €/mois incluant 200 diagrammes, puis paiement à l’usage (0,05 €/diagramme). Hypothèse basée sur la valeur perçue d’une automatisation rapide et les coûts d’infrastructure (hébergement statique, appels API).",
-            "build_plan": "Périmètre : API wrapper + tableau de bord web; brique réutilisée : moteur de génération SVG du dépôt; travail à ajouter : authentification, facturation, stockage cloud, UI React; exclusions : support multi‑langue, édition collaborative; dépendances : Node.js, FastAPI, Stripe, Supabase; coût estimé : 2 k€ de dev (≈200 h) + 100 €/mois d’hébergement. Délai : 4‑6 semaines si l’équipe travaille 8 h/jour.",
-            "limitations": "Constrainte : le skill ne supporte que les 52 types de diagrammes pré‑définis; licence non vérifiée, il faut confirmer les droits d’usage commercial; maintenance requise pour suivre les évolutions des agents IA. Non établi dans les extraits : compatibilité avec d’autres langages que HTML/SVG.",
-            "next_step": "Réaliser un prototype d’API qui accepte un prompt et renvoie le HTML + SVG; interroger un product‑owner d’une PME sur le besoin de diagrammes automatisés.",
-            "assessment": "Score 6 reflète la pertinence du dépôt pour créer rapidement un produit SaaS d’automatisation de diagrammes, mais l’absence de licence claire et de support multi‑langue limite l’adoption. Fit_score 5 car le profil ne fournit pas de contraintes de région ou de prix spécifiques.",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
-    "488e9ddf23a9bf5d1164fb05d519a507baae54eb50ec153a1ac75b246dbd614b": {
-      "at": 1795606851.198867,
-      "data": {
-        "projects": [
-          {
-            "name": "mvanhorn/last30days-skill",
-            "category": "Agent‑skill / moteur de recherche IA",
-            "eligible": true,
-            "score": 7,
-            "fit_score": 5,
-            "summary": "Un skill d'agent IA qui interroge Reddit, X, YouTube, Hacker News, Polymarket et le web pour produire un résumé synthétique. Destiné aux développeurs ou market‑researchers qui ont besoin d’une veille rapide et contextualisée.",
-            "workflow": "Entrée : texte du sujet recherché → Traitement : le skill lance des requêtes parallèles sur plusieurs API, agrège les résultats, les note par engagement et fraîcheur, extrait les transcriptions YouTube et les commentaires Reddit → Résultat : un document structuré contenant les sources les plus pertinentes. Limites : dépend des quotas publics des plateformes, aucune garantie d’exhaustivité, licence du dépôt non vérifiée. [S1]",
-            "use_cases": "• Utilisateur : Consultant en stratégie ; Tâche : Obtenir un panorama des opinions et métriques autour d’un nouveau produit tech ; Résultat : Rapport de veille incluant scores d’engagement, liens GitHub et extraits vidéo\n• Utilisateur : Créateur de newsletter ; Tâche : Rassembler les tendances hebdomadaires sur un thème (ex. IA générative) ; Résultat : Section de newsletter prête à publier avec citations et statistiques",
-            "products": "• Cible : PME souhaitant automatiser la veille concurrentielle ; Produit : SaaS web qui intègre le skill via une UI simple, planification et export PDF ; difference : Interface prête à l’emploi, facturation mensuelle, hébergement géré\n• Cible : Développeurs d’agents autonomes ; Produit : Bibliothèque Python réutilisable qui expose les fonctions du skill comme API interne ; difference : Permet l’intégration dans des workflows personnalisés sans UI frontale",
-            "monetization": "Acheteur : équipes marketing ou consultants ; raison : gain de temps sur la recherche de données ; unité facturée : abonnement mensuel par utilisateur ou forfait de requêtes ; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, ajustable selon volume d’appels API.",
-            "build_plan": "Périmètre : UI web + wrapper API autour du skill existant. Brique réutilisée : code du skill (Python) et le module Go ; travail à ajouter : front Next.js, authentification, facturation Stripe, déploiement Docker sur Fly.io. Exclusions : création de nouvelles sources de données, traduction multilingue. Dépendances : OpenAI/Claude API, API Reddit/X, YouTube Data API. Coût estimé : 150 h de dev (≈ 3 semaines intensives) + 0,10 $/requête API (hypothèse).",
-            "limitations": "Contraintes établies : besoin d’accès aux API tierces, licence du dépôt non vérifiée, coût variable des appels externes. Inconnues : stabilité du skill sous forte charge, conformité RGPD des données collectées. Licence à confirmer avant commercialisation.",
-            "next_step": "Réaliser un prototype fonctionnel qui interroge le skill sur un sujet test et mesurer le temps de réponse ; interroger un product‑owner potentiel sur la valeur d’un résumé automatisé.",
-            "assessment": "Score 7 reflète la pertinence du skill pour la veille automatisée et la compatibilité avec les langages maîtrisés (Python, Go). Le fit_score reste neutre (5) car le profil ne précise pas de contraintes sectorielles précises. Les preuves proviennent des extraits README (S1) et du fichier go.mod (S2).",
-            "evidence_ids": [
-              "S1",
-              "S2"
-            ]
-          }
-        ]
-      },
-      "model": "openai/gpt-oss-120b"
-    },
     "50f23400c3691479580332e5d7439f1958b6d9d0328b764313b425ce1c1b48ae": {
       "at": 1795626067.75084,
       "data": {
@@ -1475,7 +1271,173 @@
         ]
       },
       "model": "openai/gpt-oss-120b"
+    },
+    "ed6e38a203583a276c227f7b3ad2617ca7f5f170c8d878566a3a185f2ed0ca07": {
+      "at": 1795697778.1360836,
+      "data": {
+        "projects": [
+          {
+            "name": "jingyaogong/minimind",
+            "category": "Bibliothèque d'entraînement de LLM",
+            "eligible": true,
+            "score": 6,
+            "fit_score": 5,
+            "summary": "MiniMind est un framework Python permettant de former un petit modèle de langage (≈64 M paramètres) depuis zéro en deux heures, destiné aux développeurs souhaitant expérimenter le pré‑entraînement complet d’un LLM.",
+            "workflow": "Entrée : jeu de données texte brut (ex. datasets, JSONLines) → Traitement : tokenisation, pré‑entraînement dense + MoE via FastAPI/torch, suivi d’étapes SFT/LoRA/ RLHF selon le README [S1] → Résultat : modèle .bin prêt à être déployé via API ou interface Streamlit. Limites : nécessite GPU dédié, dépendances lourdes (torch, transformers) et aucune preuve d’entraînement réel fourni dans les extraits [S2].",
+            "use_cases": "• Utilisateur : Développeur IA freelance ; Tâche : Former un prototype de chatbot spécialisé sur un corpus interne en 2 h ; Résultat : Modèle 64 M déployable localement, utilisable via FastAPI\n• Utilisateur : Équipe R&D d’une PME ; Tâche : Évaluer l’impact de différentes stratégies de fine‑tuning (LoRA, RLHF) sur un petit LLM ; Résultat : Comparaison rapide des performances grâce aux pipelines fournis",
+            "products": "• Cible : PME souhaitant un assistant interne sans dépendance cloud ; Produit : Service SaaS hébergé (Docker + FastAPI) offrant une API de génération texte basée sur MiniMind ; difference : Utilise un modèle propriétaire 64 M, donc coûts GPU nettement inférieurs aux LLM commerciaux\n• Cible : Indépendants créant des outils de génération de contenu ; Produit : Extension VS Code qui invoque MiniMind en local pour compléter du code ou du texte ; difference : Pas de frais d’API externes, confidentialité totale des données",
+            "monetization": "Acheteur : PME ou freelance ; raison : réduire les dépenses d’API LLM tierces ; unité facturée : abonnement mensuel par instance serveur ; modèle : abonnement avec tarif hypothétique 30‑50 €/mois selon le nombre d’appels, justifié par la réduction estimée des coûts d’API (non établi dans les extraits).",
+            "build_plan": "Périmètre : wrapper FastAPI + UI Streamlit, réutiliser le code d’entraînement existant (MiniMind) ; travail à ajouter : gestion multi‑tenant, facturation Stripe, monitoring des ressources GPU ; exclusions : entraînement distribué, support mobile ; dépendances : torch, transformers, FastAPI, Docker ; coût : serveur GPU (≈ $0.8/h) + licences éventuelles ; délai : 3‑4 semaines (prototype fonctionnel) sous réserve de disponibilité GPU.",
+            "limitations": "Contrainte : besoin d’un GPU puissant, licence Apache 2.0 non vérifiée dans le repo [S1]; coûts d’infrastructure non détaillés; maintenance du pipeline d’entraînement non couverte [S2]; aucune preuve d’entraînement complet fourni.",
+            "next_step": "Tester l’entraînement d’un modèle 64 M sur un petit dataset public et mesurer le temps réel ; question à poser à un potentiel utilisateur : « Quel budget mensuel seriez‑vous prêt à allouer pour un LLM auto‑hébergé qui évite les frais d’API ? »",
+            "assessment": "Score 6 reflète la pertinence technique (framework complet, support de multiples étapes d’entraînement) mais l’absence de preuves d’entraînement réel et de licence claire limite l’évaluation. Fit_score 5 car le profil ne précise pas de contraintes sectorielles spécifiques. Les champs sont remplis à partir des extraits S1 et S2 ; tout le reste reste hypothétique.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "1aaf4d665aef3deee45fb2474be47e5a105772e4a3f0b9bab83b1f687a7dbd69": {
+      "at": 1795697843.1026094,
+      "data": {
+        "projects": [
+          {
+            "name": "cursor/plugins",
+            "category": "Marketplace de plugins pour IDE",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Un dépôt contenant des plugins officiels pour l’IDE Cursor, destinés aux développeurs souhaitant enrichir leurs workflows. Chaque plugin est autonome et décrit par un manifeste JSON.",
+            "workflow": "Entrée : développeur installe un plugin via le gestionnaire de plugins de Cursor → Traitement : le plugin charge son manifeste (.cursor-plugin/plugin.json), exécute les scripts ou règles définis, interagit avec l’API de Cursor ou des services externes → Résultat : nouvelles fonctionnalités (ex. plan d’apprentissage, mise à jour incrémentale de la mémoire) apparaissent dans l’IDE. Limites : la documentation ne précise pas de mécanisme de mise à jour automatique ni de tests d’intégration (non établi dans les extraits). [S1]",
+            "use_cases": "• Utilisateur : Développeur freelance ; Tâche : Utiliser le plugin \"Teaching\" pour planifier des sessions d’apprentissage ciblées ; Résultat : Génération automatique de plans de pratique et suivi de progression dans Cursor\n• Utilisateur : Équipe de dev ; Tâche : Déployer le plugin \"Cursor Team Kit\" pour automatiser les revues de code et le CI ; Résultat : Flux de travail unifié directement depuis l’IDE, réduction des allers‑retours vers des outils externes",
+            "products": "• Cible : PME de services numériques ; Produit : Plateforme SaaS qui agrège les plugins Cursor et les expose via un catalogue web ; difference : Offre une interface de découverte et de facturation centralisée, alors que le dépôt ne fournit que les fichiers sources\n• Cible : Indépendants souhaitant un assistant IA ; Produit : Wrapper Python qui consomme les manifests et expose les compétences sous forme d’API REST (FastAPI) ; difference : Permet d’intégrer les capacités des plugins dans des pipelines automatisés hors de l’IDE",
+            "monetization": "Acheteur : PME ou freelance payant pour l’accès à un catalogue enrichi ; raison : gain de productivité et réduction du temps de configuration ; unité facturée : abonnement mensuel par utilisateur ; modèle : abonnement SaaS avec tarif hypothétique 15‑30 €/mois selon le nombre de plugins activés, justifié par le coût d’hébergement et de support.",
+            "build_plan": "Périmètre : créer un service web qui lit les manifests du dépôt, génère une UI catalogue et expose une API d’installation. Brique réutilisée : lecture JSON, Docker, FastAPI. Travail à ajouter : authentification, facturation Stripe, UI React. Exclusions : développement des plugins eux‑mêmes. Dépendances : Node.js pour le parsing, PostgreSQL pour la gestion des licences. Coût estimé : 200 € de cloud mensuel + 50 € de licences tierces. Délai : 3‑4 semaines de prototypage (conditionnel à la disponibilité d’un développeur full‑stack).",
+            "limitations": "Licence MIT indiquée dans le README mais non vérifiée dans le dépôt complet ; aucune preuve de tests unitaires (non établi dans les extraits) ; dépendance à l’écosystème Cursor qui peut évoluer ; maintenance du catalogue externe non couverte.",
+            "next_step": "Réaliser un PoC qui charge un manifest et expose une route `/install` ; interroger un développeur Cursor sur les besoins de gestion centralisée des plugins.",
+            "assessment": "Score 7 reflète la clarté du dépôt et la pertinence pour des outils B2B ; fit_score 5 par défaut faute de critères de profil spécifiques. Le projet offre une base technique solide mais manque de preuves de viabilité commerciale et de tests automatisés.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "e33b261265db2d6efcd73662a7ea1ca486614b935995c996db2facb005ce22ec": {
+      "at": 1795697908.0219057,
+      "data": {
+        "projects": [
+          {
+            "name": "firecrawl/firecrawl",
+            "category": "outil de scraping et d'agrégation de connaissances",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Firecrawl fournit une API qui transforme des pages web en markdown propre et propose des fonctions de recherche, de crawl et d’interaction pour alimenter des agents IA. Il s’adresse aux développeurs qui intègrent du contenu web dans leurs applications.",
+            "workflow": "Entrée : URL d’une page web → Traitement : le serveur Firecrawl (local ou cloud) récupère le HTML, le nettoie, le convertit en markdown et, si demandé, lance un crawl multi‑pages ou une recherche indexée → Résultat : texte markdown, métadonnées de crawl ou identifiants de recherche. Limites : nécessite Rust et un compilateur C pour la version locale, dépend d’une licence non vérifiée et d’un accès à l’API cloud pour la recherche [ S1 ].",
+            "use_cases": "• Utilisateur : Développeur d’assistant IA ; Tâche : Enrichir le contexte d’un chatbot avec le contenu d’un site client ; Résultat : Le bot reçoit du markdown structuré et peut répondre avec des informations à jour\n• Utilisateur : Agence de marketing digital ; Tâche : Collecter et archiver les pages de documentation concurrentes ; Résultat : Base de connaissances interne exportable en markdown, prête à être analysée",
+            "products": "• cible : PME souhaitant automatiser la veille concurrentielle ; produit : Plateforme SaaS qui orchestre Firecrawl Cloud, stocke les résultats dans Supabase et propose un tableau de bord de recherche ; différence : Ajoute une couche de stockage, d’authentification et de visualisation, ce qui n’est pas fourni par le dépôt brut\n• cible : Freelance créateur de contenus ; produit : Extension VS Code qui invoque Firecrawl Local pour convertir des pages en markdown directement dans l’éditeur ; différence : Intégration locale sans dépendance cloud, interface UI légère, usage ponctuel",
+            "monetization": "Acheteur : PME ou freelance ; raison : gain de temps sur la collecte de contenus web ; unité facturée : abonnement mensuel par nombre de requêtes (ex. 0 €/100 req, 30 €/10 k req) ; modèle : abonnement tiered, hypothèse à tester selon volume d’usage.",
+            "build_plan": "Périmètre : API wrapper + UI tableau de bord + stockage Supabase. Réutiliser le SDK JS (S3) et le serveur Firecrawl Local (S1). Travail à ajouter : authentification OAuth, facturation Stripe, tableau de bord React/Next.js. Exclusions : implémentation du moteur de recherche avancée (déjà fourni par Firecrawl Cloud). Dépendances : Rust toolchain, Node 22, Supabase, Stripe. Coût estimé : 0 € (open‑source) + 20 €/mois Supabase + frais Stripe. Délai : 4‑6 semaines conditionnel selon disponibilité du développeur.",
+            "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, besoin de Rust/C‑compiler pour le mode local, quota d’API cloud non précisé, maintenance du serveur auto‑hosté à prévoir.",
+            "next_step": "Tester localement la conversion d’une URL en markdown avec le client JS (exemple S3) ; interroger un product‑owner potentiel sur le besoin de stockage persistant et de tableau de bord.",
+            "assessment": "Score 7 reflète la maturité du code (SDK, CLI, documentation) et la pertinence pour les secteurs ciblés (IA, productivité). Fit_score 5 par défaut faute de profil détaillé. Les preuves proviennent des extraits README et SDK [ S1, S3 ]; le reste reste non établi dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S3"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "a2d0eb28066953d8387a7f86bbd395185ac0a8f6f3cc9c8dadaf6980f25f4108": {
+      "at": 1795697973.2254124,
+      "data": {
+        "projects": [
+          {
+            "name": "nginx/nginx",
+            "category": "serveur web / reverse proxy",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "NGINX est un serveur web open‑source, load‑balancer et reverse proxy très performant. Il s’adresse aux administrateurs systèmes et aux développeurs qui ont besoin de servir du trafic HTTP/HTTPS à grande échelle.",
+            "workflow": "Entrée : requête HTTP d’un client → Traitement : NGINX accepte la connexion, applique la configuration (routing, TLS, rate‑limiting) et transmet la requête au backend ou sert un fichier statique → Résultat : réponse HTTP renvoyée au client. Sources : S1. Limites : la configuration reste manuelle, aucune interface graphique native, la sécurité dépend de la mise à jour du binaire.",
+            "use_cases": "• Utilisateur : Agence digitale ; Tâche : Déployer un site vitrine à forte affluence ; outcome : Temps de réponse < 100 ms grâce au cache et au load‑balancing intégré\n• Utilisateur : Startup SaaS ; Tâche : Exposer une API REST derrière un point d’entrée unique ; outcome : Gestion du trafic, TLS terminée en front, redirection vers plusieurs services Docker",
+            "products": "• Cible : PME souhaitant externaliser la gestion d’infrastructure ; Produit : Service d’hébergement NGINX managé avec tableau de bord simplifié ; difference : Supprime la nécessité de configurer manuellement les fichiers nginx.conf, ajoute des métriques en temps réel\n• Cible : Développeurs front‑end ; Produit : Wrapper JavaScript/TypeScript qui génère automatiquement la configuration NGINX à partir d’un fichier JSON ; difference : Permet de passer de la description d’API à la configuration serveur sans écrire de directives NGINX",
+            "monetization": "Acheteur : PME ou agence ; raison : réduction du temps d’administration et garantie de disponibilité ; unité facturée : abonnement mensuel par instance ; modèle : SaaS avec tarif de base 49 €/mois + frais d’usage (GB transférés). Hypothèse basée sur le coût d’infrastructure cloud et le support fourni.",
+            "build_plan": "Périmètre : créer un tableau de bord web (React + FastAPI) qui lit un JSON et génère le fichier nginx.conf, déployer NGINX dans un conteneur Docker, ajouter un module de métriques Prometheus. Briques réutilisées : image officielle nginx, FastAPI, React. Travail supplémentaire : UI, génération de config, CI/CD. Exclusions : certificats TLS automatisés, haute disponibilité multi‑zone. Dépendances : Docker, Prometheus, Grafana. Coût estimé : 0 € (open‑source) + hébergement cloud (≈ 10 €/mois). Délai : 3‑4 semaines (prototype fonctionnel).",
+            "limitations": "Contraintes établies : licence BSD‑like, nécessite des compétences sysadmin, aucune UI native. Inconnues : support officiel, évolutivité au-delà de quelques serveurs. Licence à vérifier dans le dépôt (non vérifiée dans l’extrait). Maintenance : mise à jour de sécurité à appliquer régulièrement.",
+            "next_step": "Réaliser un test technique : générer automatiquement un fichier nginx.conf à partir d’un JSON simple et le charger dans un conteneur Docker. Question utilisateur : « Quel niveau de granularité de contrôle de la configuration attendez‑vous d’un outil de génération ? »",
+            "assessment": "Score 7 reflète la maturité du produit (serveur largement adopté) et son potentiel d’inspiration pour des wrappers ou services managés. Fit_score 5 par défaut, le profil ne précise pas de contraintes sectorielles. Manque de preuves : aucune donnée sur la demande du marché, aucune étude de prix, aucune validation d’usage spécifique.",
+            "evidence_ids": [
+              "S1"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "abb5be4a921e7b10da9fea52335a593d36c8a2fdcd92a4f9de138ac96d3b2454": {
+      "at": 1795698038.232231,
+      "data": {
+        "projects": [
+          {
+            "name": "openvinotoolkit/openvino",
+            "category": "Toolkit d'optimisation et de déploiement d'inférence IA",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "OpenVINO est une boîte à outils open‑source permettant d’optimiser et de déployer des modèles d’apprentissage profond sur divers matériels. Elle cible les développeurs IA qui souhaitent réduire le temps d’inférence et exploiter le CPU, GPU ou VPU.",
+            "workflow": "Entrée : modèle entraîné (ex. PyTorch). → Traitement : conversion via `ov.convert_model`, compilation avec `ov.Core().compile_model` pour le dispositif choisi. → Résultat : modèle optimisé prêt à l’inférence, renvoyant les prédictions (exemple de code fourni dans le README) [S1]. Limite : le README ne précise pas la gestion d’erreurs ni les exigences de quantification avancée.",
+            "use_cases": "• Utilisateur : Développeur d’application web d’analyse d’image ; Tâche : Optimiser un modèle YOLOv11 pour l’inférence en temps réel sur CPU ; Résultat : Réduction du temps d’inférence de plusieurs fois, modèle chargé via l’API Python d’OpenVINO\n• Utilisateur : Ingénieur IA d’entreprise ; Tâche : Déployer un LLM localisé sur un serveur on‑premise sans GPU ; Résultat : Exécution du chatbot LLM avec latence acceptable grâce à la compilation CPU d’OpenVINO",
+            "products": "• Cible : PME souhaitant automatiser le tri d’images produit ; Produit : Service SaaS de classification d’images basé sur OpenVINO ; difference : Utilise l’optimisation CPU d’OpenVINO pour éviter les coûts GPU, offrant un prix d’abonnement inférieur\n• Cible : Agence de marketing digital ; Produit : Extension navigateur qui applique un modèle de génération de texte via OpenVINO en local ; difference : Exécution côté client, aucune donnée ne quitte le navigateur, conformité RGPD renforcée",
+            "monetization": "Acheteur : PME ou agence; raison : gain de productivité sur le traitement d’images ou de texte; unité facturée : abonnement mensuel par utilisateur ou par 1 000 requêtes; modèle : abonnement SaaS avec tarif de base hypothétique 30 €/mois, justifié par le coût d’infrastructure CPU et le support.",
+            "build_plan": "Périmètre : API Python d’OpenVINO + interface web (Next.js). Brique réutilisée : conversion et compilation du modèle (exemple S1). Travail à ajouter : UI, gestion multi‑tenant, facturation Stripe, monitoring. Exclusions : entraînement de modèles, support GPU avancé. Dépendances : openvino (Apache‑2.0), FastAPI, PostgreSQL. Coût estimé : 0 $ pour la licence, + dépenses cloud (≈20 €/mois). Délai : 4‑6 semaines en mode prototype (conditionnel à la disponibilité du développeur).",
+            "limitations": "Contraintes établies : nécessite Python ≥ 3.11, dépend de la compatibilité matériel (CPU, VPU). Inconnues : performances exactes sur différents CPU, support complet des modèles non‑PyTorch. Licence : Apache‑2.0 (à vérifier dans pyproject.toml). Maintenance : mise à jour du runtime OpenVINO et des dépendances Python.",
+            "next_step": "Réaliser un test technique : convertir et compiler un modèle YOLOv11 sur un serveur CPU et mesurer le temps d’inférence. Question à poser à un utilisateur potentiel : « Quel est le temps d’inférence maximal acceptable pour votre flux de travail ? »",
+            "assessment": "Score 7 reflète la maturité du toolkit (documentation, exemples) et son adéquation avec le profil (expert full‑stack, besoin d’outils IA rapides). Fit_score 5 par défaut, car aucune contrainte régionale ou de conformité spécifique n’est démontrée dans les extraits. Les preuves proviennent des extraits S1 et S2; le reste reste non établi dans les extraits.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
+    },
+    "e3aef677f5591c7d7537fea08b0d2ac5ab58676e47a13bda842a3facc4f48416": {
+      "at": 1795698102.9940298,
+      "data": {
+        "projects": [
+          {
+            "name": "cathrynlavery/diagram-design",
+            "category": "outil de génération de diagrammes HTML/SVG",
+            "eligible": true,
+            "score": 7,
+            "fit_score": 5,
+            "summary": "Diagram Design est un agent‑skill qui produit un fichier HTML autonome contenant du SVG pour 52 types de diagrammes, destiné aux développeurs utilisant Claude Code, GitHub Copilot, Cursor ou d’autres agents IA.",
+            "workflow": "Entrée : texte descriptif du diagramme fourni à l’agent → Traitement : le skill génère la mise en page sur une grille 4 px, applique le style éditorial et crée le SVG → Résultat : fichier HTML unique exportable en SVG ou PNG. Limite : le rendu reste limité aux styles pré‑définis et ne supporte pas les personnalisations avancées de Mermaid ou draw.io. [S1]",
+            "use_cases": "• Utilisateur : Développeur front‑end ; Tâche : Documenter rapidement l’architecture d’une API dans le README ; Résultat : Un diagramme HTML/SVG intégré au dépôt, sans dépendance externe\n• Utilisateur : Consultant en productivité ; Tâche : Générer des schémas de processus pour des présentations client ; Résultat : Export PNG prêt à l’insertion dans des slides, avec un style brandé",
+            "products": "• Cible : PME souhaitant automatiser la documentation technique ; Produit : SaaS de génération de diagrammes via API REST ; difference : Fournit un endpoint qui accepte du texte et renvoie le HTML/SVG, éliminant l’étape manuelle d’installation du skill\n• Cible : Agences créatives ; Produit : Plugin de design intégré à des éditeurs de texte (VS Code, Cursor) ; difference : Permet de créer des diagrammes directement depuis l’IDE, sans quitter l’environnement de travail",
+            "monetization": "Facturation à l’usage : chaque appel API génère un diagramme, facturé $0.005 par diagramme ; cible les équipes de dev et les agences qui paient pour la rapidité d’obtention de visuels. Hypothèse de prix basée sur le coût de calcul minimal et la valeur perçue du gain de temps.",
+            "build_plan": "Réutiliser le skill existant comme micro‑service Docker, ajouter une API FastAPI (Python) pour exposer le endpoint, intégrer la gestion de facturation Stripe, prévoir 2 semaines de développement, exclure la création d’un UI complet. Dépendances : @anthropic‑ai/claude-code (déjà dans le repo) et FastAPI. Coût estimé : 150 USD de cloud (Fonctions serverless) + 200 USD de temps dev.",
+            "limitations": "Licence non vérifiée, aucune garantie de conformité RGPD, dépendance à l’API Claude pour le rendu, maintenance du skill non couverte. Non établi dans les extraits.",
+            "next_step": "Tester l’API en local avec un appel de texte simple et interroger un développeur front‑end sur la pertinence du style éditorial proposé.",
+            "assessment": "Score 7 reflète la maturité du skill (HTML + SVG, CI, support multi‑agents) et son alignement avec le besoin d’outils B2B rapides ; fit_score 5 par défaut faute de critères de région ou de prix spécifiques. Manque de preuves sur la licence et la viabilité commerciale.",
+            "evidence_ids": [
+              "S1",
+              "S2"
+            ]
+          }
+        ]
+      },
+      "model": "openai/gpt-oss-120b"
     }
   },
-  "next_call_at": 1795692113.361407
+  "next_call_at": 1795698165.5460298
 }
