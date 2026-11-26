@@ -52,3 +52,4 @@ date,time_utc,status,mode,model,repos,top_repo,note
 2026-11-25,11:40:52,ok,email,openai/gpt-oss-120b,10,elementalsouls/Claude-BugHunter,email sent
 2026-11-26,11:21:53,error,email,,10,elementalsouls/Claude-BugHunter,explain: RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
 2026-11-26,13:02:45,error,email,,10,elementalsouls/Claude-BugHunter,explain: RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
+2026-11-26,15:35:49,error,email,,10,elementalsouls/Claude-BugHunter,explain: RuntimeError: Budget Groq partagé sur 24h atteint ; lots terminés conservés pour reprise.
